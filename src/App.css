@@ -1,0 +1,25 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+a{
+    color: inherit;
+    text-decoration: none;
+}
+.MuiDrawer-paper {
+    position: inherit !important;
+    overflow-y: hidden !important;
+    overflow: hidden !important;
+    height: 100vh !important;
+    padding-top: 6rem;
+}
+header{
+    position: fixed;
+}
+header .MuiPaper-rounded {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    height: 2.5rem;
+}
+
