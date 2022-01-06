@@ -46,7 +46,7 @@ const useStyles = makeStyles ( (theme ) => ({
         paddingLeft: '2rem',
     },
     liSpan : {
-        fontSize: '1.9rem',
+        fontSize: '.9rem',
         fontWeight : 'bold',
         color:'#555',
     }
@@ -65,14 +65,14 @@ export const SideDrawer = () =>{
             open={true}
         >
             <List style={{width : '20vw'}}>
-            <Link to="/">
-                <ListItem className={classes.li} button >
+            <Link to="/profile">
+                <ListItem className={classes.li} >
                     <ListItemIcon>
                         <Image src={UserProfileIcon} width="35" height="40" alt="icon"/>
                     </ListItemIcon>
                     <ListItemText>
-                        <Typography>Amir Basiri</Typography>
-                        <Typography                                      className={classes.userPhoneNumber} component="span">+98 914 123 4567</Typography>
+                        <Typography className={classes.liSpan}>Amir Basiri</Typography>
+                        <Typography className={classes.userPhoneNumber} component="span">+98 914 123 4567</Typography>
                     </ListItemText>
                 </ListItem>
             </Link>
@@ -85,7 +85,7 @@ export const SideDrawer = () =>{
             Quick Play
             </Button>
                 <Link to="/" className={classes.link} >
-                    <ListItem className={classes.li}>
+                    <ListItem button className={classes.li}>
                         <ListItemIcon>
                             <Image 
                                 src={HomeIcon} 
@@ -94,14 +94,14 @@ export const SideDrawer = () =>{
                                 alt="Home" />
                         </ListItemIcon>
                         <ListItemText >
-                            <Typography className={classes.liSpan}>
+                            <Typography button className={classes.liSpan}>
                                 Home
                             </Typography>
                         </ListItemText>
                     </ListItem>
                 </Link>
-                <Link to="/" className={classes.link} >
-                    <ListItem className={classes.li}> 
+                <Link to="/league" className={classes.link} >
+                    <ListItem button className={classes.li}> 
                         <ListItemIcon>
                             <Image 
                                 src={LeagueIcon} 
@@ -116,8 +116,8 @@ export const SideDrawer = () =>{
                         </ListItemText>
                     </ListItem>
                 </Link>
-                <Link to="/" className={classes.link} >
-                    <ListItem className={classes.li}>
+                <Link to="/profile" className={classes.link} >
+                    <ListItem button className={classes.li}>
                         <ListItemIcon>
                             <Image 
                                 src={ProfileIcon} 
@@ -126,12 +126,14 @@ export const SideDrawer = () =>{
                                 alt="Profile" />
                         </ListItemIcon>
                         <ListItemText>
-                            Profile
+                            <Typography className={classes.liSpan}>
+                                Profile
+                            </Typography>
                         </ListItemText>
                     </ListItem>
                 </Link>
-                <Link to="/" className={classes.link} >
-                    <ListItem className={classes.li}>
+                <Link to="/friends" className={classes.link} >
+                    <ListItem button className={classes.li}>
                         <ListItemIcon>
                             <Image 
                                 src={FriendsIcon} 
@@ -140,12 +142,14 @@ export const SideDrawer = () =>{
                                 alt="Friends" />
                         </ListItemIcon>
                         <ListItemText>
-                            Friends
+                            <Typography className={classes.liSpan}>
+                                Friends
+                            </Typography>
                         </ListItemText>
                     </ListItem>
                 </Link>
-                <Link to="/" className={classes.link} >
-                    <ListItem className={classes.li}>
+                <Link to="/wallet" className={classes.link} >
+                    <ListItem button className={classes.li}>
                         <ListItemIcon>
                             <Image 
                                 src={WalletIcon} 
@@ -154,12 +158,14 @@ export const SideDrawer = () =>{
                                 alt="Wallet" />
                         </ListItemIcon>
                         <ListItemText>
-                            Wallet
+                            <Typography className={classes.liSpan}>
+                                Wallet
+                            </Typography>
                         </ListItemText>
                     </ListItem>
                 </Link>
-                <Link to="/" className={classes.link} >
-                    <ListItem className={classes.li}>
+                <Link to="/contact-us" className={classes.link} >
+                    <ListItem button className={classes.li}>
                         <ListItemIcon>
                             <Image 
                                 src={SettingsIcon} 
@@ -168,7 +174,9 @@ export const SideDrawer = () =>{
                                 alt="Contact Us" />
                         </ListItemIcon>
                         <ListItemText>
-                            Contact Us
+                            <Typography className={classes.liSpan}>
+                                Contact Us
+                            </Typography>
                         </ListItemText>
                     </ListItem>
                 </Link>

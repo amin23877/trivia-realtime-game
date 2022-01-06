@@ -1,7 +1,8 @@
+import React , { useState } from 'react';
 import Image from '../app/ImageIcon';
 
 // material ui
-import { AppBar, Badge, Divider, Grid, IconButton, InputBase, makeStyles, Paper, Toolbar } from "@material-ui/core";
+import { AppBar, Badge, Divider, FormControl, Grid, IconButton, InputBase, InputLabel, makeStyles, MenuItem, Paper, Select, Toolbar } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import CircleNotificationsRoundedIcon from '@mui/icons-material/CircleNotificationsRounded';
 
@@ -29,7 +30,8 @@ const useStyles = makeStyles( (theme) =>({
     },
     inputSearchWidht : {
         width: '80%',
-    }
+        paddingLeft: '1rem'
+    },
 }))
 
 
@@ -37,6 +39,12 @@ const useStyles = makeStyles( (theme) =>({
 export const Header = () =>{
 
     const classes = useStyles();
+
+    const [search, setSearch] = useState('');
+
+  const searchHandleChange = (event) => {
+    setSearch(event.target.value);
+  };
 
     return(
         <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
@@ -53,10 +61,21 @@ export const Header = () =>{
                         component="form"
                         sx={{ p: '2px 4px', display: 'flex', justifyContent:'space-around', alignItems: 'center', width: '80%' }}
                         >
-                        <IconButton 
-                            sx={{ p: '10px'  }} aria-label="menu"
-                        >
-                            A
+                        <IconButton sx={{ p: '10px'  }} aria-label="menu">
+                        <Select
+                            xs={{padding:'5rem'}}
+                            value={search}
+                            onChange={searchHandleChange}
+                            displayEmpty
+                            inputProps={{ 'aria-label': 'Without label' }}
+                            >
+                            <MenuItem value="">
+                                <em>All</em>
+                            </MenuItem>
+                                <MenuItem value={10}>Ten</MenuItem>
+                                <MenuItem value={20}>Twenty</MenuItem>
+                                <MenuItem value={30}>Thirty</MenuItem>
+                            </Select>
                         </IconButton>
                         <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
                         <InputBase
