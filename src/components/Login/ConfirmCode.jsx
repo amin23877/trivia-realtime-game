@@ -57,7 +57,7 @@ export const ConfirmCode = () =>{
     const isDesktop = useMediaQuery({ query: '(min-width: 992px)' });
 
 // count dwon 
-    const endTime = new Date().getTime() + 10000 * 1; // 2 minutes
+    const endTime = new Date().getTime() + 60000 * 2; // 2 minutes
     const [timeLeft, setEndTime] = useCountDown(endTime);
 
     const minutes = Math.floor(timeLeft / 60000) % 60;
