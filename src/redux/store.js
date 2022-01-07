@@ -1,3 +1,4 @@
+// #redux step3
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { generalReducer } from './reducers/mainReducer/generalReducer';
