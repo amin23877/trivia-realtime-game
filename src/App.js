@@ -20,21 +20,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 //
 
-const useStyles = makeStyles((theme) => ({
-  link: {
-    textDecoration: 'none',
-    color: theme.palette.text.primary,
-  },
-  page: {
-    paddingTop: '3.8rem',
-  },
-}));
-
 export default function App() {
-  const classes = useStyles();
-
+  // #routerConfig step2
   return <RouterConfig />;
 }
+
+// const classes = useStyles();
+
+// const useStyles = makeStyles((theme) => ({
+//   link: {
+//     textDecoration: 'none',
+//     color: theme.palette.text.primary,
+//   },
+//   page: {
+//     paddingTop: '3.8rem',
+//   },
+// }));
 
 // <div>
 //     <Login/>
