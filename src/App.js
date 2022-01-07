@@ -25,28 +25,35 @@ export default function App() {
   return <RouterConfig />;
 }
 
-// const classes = useStyles();
+// import { SideDrawer, Header, Login } from "./components";
 
-// const useStyles = makeStyles((theme) => ({
-//   link: {
-//     textDecoration: 'none',
-//     color: theme.palette.text.primary,
-//   },
-//   page: {
-//     paddingTop: '3.8rem',
-//   },
-// }));
+// const useStyles = makeStyles ( (theme ) => ({
+//     link : {
+//         textDecoration : 'none',
+//         color: theme.palette.text.primary
+//     },
+//     page : {
+//         paddingTop: '3.8rem'
+//     }
+// }))
 
-// <div>
-//     <Login/>
-//     {/* <CssBaseline />
-//     <header className="header">
-//         <Header/>
-//     </header>
-//     <div style={{display : 'flex'}}>
-//         <SideDrawer />
-//         <Container className={classes.page} position="static">
-//             <PageRoutes />
-//         </Container>
-//     </div> */}
-// </div>
+// export default function App () {
+
+//     const classes = useStyles();
+
+//     return (
+//         <div>
+//             {/* <Login/> */}
+//             <CssBaseline />
+//             <header className="header">
+//                 <Header/>
+//             </header>
+//             <div style={{display : 'flex'}}>
+//                 <SideDrawer />
+//                 <Container className={classes.page} position="static">
+//                     <PageRoutes />
+//                 </Container>
+//             </div>
+//         </div>
+//     )
+// }
