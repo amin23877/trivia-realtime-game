@@ -32,8 +32,8 @@ const useStyles = makeStyles ( (theme ) => ({
         margin: '1.5rem',
         backgroundColor: '#F24973',
         padding: '.5rem',
-        paddingLeft: '1rem',
-        paddingRight: '1rem',
+        paddingLeft: '1.7rem',
+        paddingRight: '1.7rem',
         color: '#fff'
     },
     userPhoneNumber : {
@@ -47,9 +47,19 @@ const useStyles = makeStyles ( (theme ) => ({
         paddingLeft: '2rem',
     },
     liSpan : {
-        fontSize: '.9rem',
-        fontWeight : 'bold',
-        color:'#555',
+        fontFamily: 'Roboto',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: '1.1rem',
+        lineHeight: '1.5rem',
+        color:'#8E8B9E',
+    },
+    Typography2 :{
+        fontSize: '1.1rem',
+        color: '#2C2C2C',
+        fontFamily: 'Roboto',
+        fontStyle: 'normal',
+        fontWeight: '500',
     }
 }))
 
@@ -67,7 +77,7 @@ export const SideDrawer = () =>{
             {
                 isDesktop &&
                 <Drawer
-                style={{ width: "20vw" }}
+                style={{ width: "23vw", paddingLeft:'2rem' }}
                 variant = "persistent"
                 anchor="left"
                 open={true}
@@ -76,10 +86,10 @@ export const SideDrawer = () =>{
                 <Link to="/profile">
                     <ListItem className={classes.li} >
                         <ListItemIcon>
-                            <Image src={UserProfileIcon} width="35" height="40" alt="icon"/>
+                            <Image src={UserProfileIcon} width="40" height="40" alt="icon"/>
                         </ListItemIcon>
                         <ListItemText>
-                            <Typography className={classes.liSpan}>Amir Basiri</Typography>
+                            <Typography className={classes.Typography2}>Amir Basiri</Typography>
                             <Typography className={classes.userPhoneNumber} component="span">+98 914 123 4567</Typography>
                         </ListItemText>
                     </ListItem>
