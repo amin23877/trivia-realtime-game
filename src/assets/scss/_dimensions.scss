@@ -12,3 +12,7 @@ $xxl: 1920px;
 // ======================================================
 // Custom FontSize variables
 // ======================================================
+
+$height-header: 65px;
+$height-footer: 75px;
+$height-body: calc(100% - #{$height-header} - #{$height-header});
