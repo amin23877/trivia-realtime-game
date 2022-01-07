@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://...';
+export const BASE_URL = 'http://quizupp.ir/api/';
 
 export const CORE = {
   ERROR_MESSAGE: {
