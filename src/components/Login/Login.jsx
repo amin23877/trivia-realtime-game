@@ -1,6 +1,6 @@
 import { PhoneNumber } from './PhoneNumber';
 import { ConfirmCode } from './ConfirmCode';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const Login = () => {
   const [state, setState] = useState({
@@ -12,6 +12,17 @@ export const Login = () => {
       phoneNumberIsValid: phoneNumber.phoneNumberIsValid,
     });
   };
+
+  useEffect(() => {
+    let isMounted = true;
+    if (isMounted) {
+      localStorage.clear();
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   return (
     <div>
       <PhoneNumber submitPhoneNumber={submitPhoneNumber} />
