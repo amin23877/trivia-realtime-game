@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import {
   Container,
   Typography,
@@ -86,6 +88,7 @@ export const PhoneNumber = (props) => {
     return !errors.phone_number;
   };
 
+  const navigate = useNavigate();
   const apiCall = new ApiCall();
 
   const handleGetOtp = () => {
@@ -97,6 +100,7 @@ export const PhoneNumber = (props) => {
       .then((output) => {
         let res = output.res;
         console.log(res);
+        navigate('/otp');
       })
       .catch((err) => {
         console.log(err);
