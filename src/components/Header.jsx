@@ -2,12 +2,13 @@ import React , { useState } from 'react';
 import Image from '../app/ImageIcon';
 
 // material ui
-import { AppBar, Badge, Divider, FormControl, Grid, IconButton, InputBase, InputLabel, makeStyles, MenuItem, Paper, Select, Toolbar } from "@material-ui/core";
+import { AppBar, Badge, CssBaseline, Divider, FormControl, Grid, IconButton, InputBase, InputLabel, makeStyles, MenuItem, Paper, Select, Toolbar } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import CircleNotificationsRoundedIcon from '@mui/icons-material/CircleNotificationsRounded';
 
 // assets
 import HeaderLogo from '../assets/Home/HeaderLogo.png';
+import { useMediaQuery } from 'react-responsive';
 
 
 
@@ -40,6 +41,10 @@ export const Header = () =>{
 
     const classes = useStyles();
 
+    const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+    const isTablet = useMediaQuery({ query: '(max-width: 992px)' });
+    const isDesktop = useMediaQuery({ query: '(min-width: 992px)' });
+
     const [search, setSearch] = useState('');
 
   const searchHandleChange = (event) => {
@@ -47,7 +52,8 @@ export const Header = () =>{
   };
 
     return(
-        <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+        <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1}}>
+            <CssBaseline/>
             <Grid className={classes.headerContent} container>
                 <Grid item lg={3}>
                     <Toolbar>
@@ -56,7 +62,8 @@ export const Header = () =>{
                         </IconButton>
                     </Toolbar>
                 </Grid>
-                <Grid className={classes.headerSearchBarContent} item lg={6}>
+                {
+                    isDesktop && <Grid className={classes.headerSearchBarContent} item lg={6}>
                     <Paper 
                         component="form"
                         sx={{ p: '2px 4px', display: 'flex', justifyContent:'space-around', alignItems: 'center', width: '80%' }}
@@ -88,6 +95,7 @@ export const Header = () =>{
                         </IconButton>
                     </Paper>
                 </Grid>
+                }
                 <Grid className={classes.headerNotficationIcon}  item lg={3}>
                 <Badge color="secondary"  variant="dot">
                     <CircleNotificationsRoundedIcon />

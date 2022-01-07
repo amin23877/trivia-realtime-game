@@ -15,6 +15,7 @@ import QuickPlayIcon from '../assets/Home/SideBar/play-icon.png';
 import UserProfileIcon from '../assets/Home/SideBar/user-profile.png';
 import ArrowBottomIcon from '../assets/Home/SideBar/arrow-bottom-icon.png';
 import Image from '../app/ImageIcon';
+import { useMediaQuery } from 'react-responsive';
 
 
 
@@ -57,130 +58,139 @@ export const SideDrawer = () =>{
 
     const classes = useStyles();
 
+    const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+    const isTablet = useMediaQuery({ query: '(max-width: 992px)' });
+    const isDesktop = useMediaQuery({ query: '(min-width: 992px)' });
+
     return(
-        <Drawer
-            style={{ width: "20vw" }}
-            variant = "persistent"
-            anchor="left"
-            open={true}
-        >
-            <List style={{width : '20vw'}}>
-            <Link to="/profile">
-                <ListItem className={classes.li} >
-                    <ListItemIcon>
-                        <Image src={UserProfileIcon} width="35" height="40" alt="icon"/>
-                    </ListItemIcon>
-                    <ListItemText>
-                        <Typography className={classes.liSpan}>Amir Basiri</Typography>
-                        <Typography className={classes.userPhoneNumber} component="span">+98 914 123 4567</Typography>
-                    </ListItemText>
-                </ListItem>
-            </Link>
-            <Button 
-                className={classes.quickPlayButton}
-                variant="contained" 
-                startIcon={<Image src={QuickPlayIcon} alt="icon" width="16" height="16"/>}  
-                endIcon={<Image src={ArrowBottomIcon} alt="icon" width="12" height="8"/>}
+        <>
+            {
+                isDesktop &&
+                <Drawer
+                style={{ width: "20vw" }}
+                variant = "persistent"
+                anchor="left"
+                open={true}
             >
-            Quick Play
-            </Button>
-                <Link to="/" className={classes.link} >
-                    <ListItem button className={classes.li}>
+                <List style={{width : '20vw'}}>
+                <Link to="/profile">
+                    <ListItem className={classes.li} >
                         <ListItemIcon>
-                            <Image 
-                                src={HomeIcon} 
-                                width={20} 
-                                height={20} 
-                                alt="Home" />
-                        </ListItemIcon>
-                        <ListItemText >
-                            <Typography button className={classes.liSpan}>
-                                Home
-                            </Typography>
-                        </ListItemText>
-                    </ListItem>
-                </Link>
-                <Link to="/league" className={classes.link} >
-                    <ListItem button className={classes.li}> 
-                        <ListItemIcon>
-                            <Image 
-                                src={LeagueIcon} 
-                                width={20} 
-                                height={20} 
-                                alt="League" />
+                            <Image src={UserProfileIcon} width="35" height="40" alt="icon"/>
                         </ListItemIcon>
                         <ListItemText>
-                            <Typography className={classes.liSpan}>
-                                League
-                            </Typography>
+                            <Typography className={classes.liSpan}>Amir Basiri</Typography>
+                            <Typography className={classes.userPhoneNumber} component="span">+98 914 123 4567</Typography>
                         </ListItemText>
                     </ListItem>
                 </Link>
-                <Link to="/profile" className={classes.link} >
-                    <ListItem button className={classes.li}>
-                        <ListItemIcon>
-                            <Image 
-                                src={ProfileIcon} 
-                                width={20} 
-                                height={20} 
-                                alt="Profile" />
-                        </ListItemIcon>
-                        <ListItemText>
-                            <Typography className={classes.liSpan}>
-                                Profile
-                            </Typography>
-                        </ListItemText>
-                    </ListItem>
-                </Link>
-                <Link to="/friends" className={classes.link} >
-                    <ListItem button className={classes.li}>
-                        <ListItemIcon>
-                            <Image 
-                                src={FriendsIcon} 
-                                width={20} 
-                                height={20} 
-                                alt="Friends" />
-                        </ListItemIcon>
-                        <ListItemText>
-                            <Typography className={classes.liSpan}>
-                                Friends
-                            </Typography>
-                        </ListItemText>
-                    </ListItem>
-                </Link>
-                <Link to="/wallet" className={classes.link} >
-                    <ListItem button className={classes.li}>
-                        <ListItemIcon>
-                            <Image 
-                                src={WalletIcon} 
-                                width={20} 
-                                height={20} 
-                                alt="Wallet" />
-                        </ListItemIcon>
-                        <ListItemText>
-                            <Typography className={classes.liSpan}>
-                                Wallet
-                            </Typography>
-                        </ListItemText>
-                    </ListItem>
-                </Link>
-                <Link to="/contact-us" className={classes.link} >
-                    <ListItem button className={classes.li}>
-                        <ListItemIcon>
-                            <Image 
-                                src={SettingsIcon} 
-                                width={20} 
-                                height={20} 
-                                alt="Contact Us" />
-                        </ListItemIcon>
-                        <ListItemText>
-                            <Typography className={classes.liSpan}>
-                                Contact Us
-                            </Typography>
-                        </ListItemText>
-                    </ListItem>
-                </Link>
-            </List>
-        </Drawer>
+                <Button 
+                    className={classes.quickPlayButton}
+                    variant="contained" 
+                    startIcon={<Image src={QuickPlayIcon} alt="icon" width="16" height="16"/>}  
+                    endIcon={<Image src={ArrowBottomIcon} alt="icon" width="12" height="8"/>}
+                >
+                Quick Play
+                </Button>
+                    <Link to="/" className={classes.link} >
+                        <ListItem button className={classes.li}>
+                            <ListItemIcon>
+                                <Image 
+                                    src={HomeIcon} 
+                                    width={20} 
+                                    height={20} 
+                                    alt="Home" />
+                            </ListItemIcon>
+                            <ListItemText >
+                                <Typography button className={classes.liSpan}>
+                                    Home
+                                </Typography>
+                            </ListItemText>
+                        </ListItem>
+                    </Link>
+                    <Link to="/league" className={classes.link} >
+                        <ListItem button className={classes.li}> 
+                            <ListItemIcon>
+                                <Image 
+                                    src={LeagueIcon} 
+                                    width={20} 
+                                    height={20} 
+                                    alt="League" />
+                            </ListItemIcon>
+                            <ListItemText>
+                                <Typography className={classes.liSpan}>
+                                    League
+                                </Typography>
+                            </ListItemText>
+                        </ListItem>
+                    </Link>
+                    <Link to="/profile" className={classes.link} >
+                        <ListItem button className={classes.li}>
+                            <ListItemIcon>
+                                <Image 
+                                    src={ProfileIcon} 
+                                    width={20} 
+                                    height={20} 
+                                    alt="Profile" />
+                            </ListItemIcon>
+                            <ListItemText>
+                                <Typography className={classes.liSpan}>
+                                    Profile
+                                </Typography>
+                            </ListItemText>
+                        </ListItem>
+                    </Link>
+                    <Link to="/friends" className={classes.link} >
+                        <ListItem button className={classes.li}>
+                            <ListItemIcon>
+                                <Image 
+                                    src={FriendsIcon} 
+                                    width={20} 
+                                    height={20} 
+                                    alt="Friends" />
+                            </ListItemIcon>
+                            <ListItemText>
+                                <Typography className={classes.liSpan}>
+                                    Friends
+                                </Typography>
+                            </ListItemText>
+                        </ListItem>
+                    </Link>
+                    <Link to="/wallet" className={classes.link} >
+                        <ListItem button className={classes.li}>
+                            <ListItemIcon>
+                                <Image 
+                                    src={WalletIcon} 
+                                    width={20} 
+                                    height={20} 
+                                    alt="Wallet" />
+                            </ListItemIcon>
+                            <ListItemText>
+                                <Typography className={classes.liSpan}>
+                                    Wallet
+                                </Typography>
+                            </ListItemText>
+                        </ListItem>
+                    </Link>
+                    <Link to="/contact-us" className={classes.link} >
+                        <ListItem button className={classes.li}>
+                            <ListItemIcon>
+                                <Image 
+                                    src={SettingsIcon} 
+                                    width={20} 
+                                    height={20} 
+                                    alt="Contact Us" />
+                            </ListItemIcon>
+                            <ListItemText>
+                                <Typography className={classes.liSpan}>
+                                    Contact Us
+                                </Typography>
+                            </ListItemText>
+                        </ListItem>
+                    </Link>
+                </List>
+            </Drawer>
+            }
+        </>
     )
 }

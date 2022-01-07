@@ -29,8 +29,8 @@ export default function App () {
 
     return (
         <div>
-            <Login/>
-            {/* <CssBaseline />
+            {/* <Login/> */}
+            <CssBaseline />
             <header className="header">
                 <Header/>
             </header>
@@ -39,7 +39,7 @@ export default function App () {
                 <Container className={classes.page} position="static">
                     <PageRoutes />
                 </Container>
-            </div> */}
+            </div>
         </div>
     )
 }
