@@ -16,6 +16,8 @@ import './App.css';
 import { SideDrawer, Header, Login } from './components';
 import RouterConfig from 'common/services/Router';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 //
 
 const useStyles = makeStyles((theme) => ({
