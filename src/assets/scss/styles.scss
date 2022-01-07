@@ -1,0 +1,21 @@
+@import './color';
+@import './basic';
+@import './utility';
+@import './dimensions';
+
+// ------------------------------------------- Test
+.br1 {
+    border: 1px solid red;
+}
+.br2 {
+    border: 1px solid blue;
+}
+.br3 {
+    border: 2px solid green;
+}
+.bg1 {
+    background-color: bisque;
+}
+.bg2 {
+    background-color: aquamarine;
+}
