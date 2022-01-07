@@ -92,6 +92,7 @@ export const PhoneNumber = (props) => {
   const apiCall = new ApiCall();
 
   const handleGetOtp = () => {
+    localStorage.setItem('phone', state.formData.phone_number);
     apiCall
       .post(
         'user/register',
@@ -106,16 +107,6 @@ export const PhoneNumber = (props) => {
         console.log(err);
       });
   };
-
-  useEffect(() => {
-    let isMounted = true;
-    if (isMounted) {
-      //   getOtp();
-    }
-    return () => {
-      isMounted = false;
-    };
-  }, []);
 
   return (
     <div
