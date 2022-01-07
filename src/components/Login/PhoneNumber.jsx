@@ -1,3 +1,4 @@
+import React , { useState } from 'react';
 import { Container, Typography, Paper, Button, TextField  } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles';
 import { Link } from 'react-router-dom';
@@ -6,7 +7,10 @@ import Logo from '../../assets/Login/HeaderBuleLogo.png';
 import LoginBackground from '../../assets/Login/login-background.png';
 import PhoneNumberBackground from '../../assets/Login/phonenumber-background.png';
 
+
 import { useMediaQuery } from 'react-responsive'
+
+
 
 
 
@@ -42,13 +46,45 @@ const useStyles = makeStyles((theme) =>({
     }
 }));
 
-export const PhoneNumber = () =>{
+export const PhoneNumber = (props) =>{
 
     const classes = useStyles();
 
     const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
     const isTablet = useMediaQuery({ query: '(max-width: 992px)' });
     const isDesktop = useMediaQuery({ query: '(min-width: 992px)' });
+
+
+   
+
+    const [ state , setState ] = useState ({
+        phoneNumberIsValid: true,
+        formData : {} ,
+        errors: {}
+    });
+
+    const phoneNumberChangeHandler = (event) =>{
+        const inputValue = {[event.target.name] : event.target.value};
+        setState({...state , formData : {...state.formData , ...inputValue}})
+        
+    }
+
+    const submitPhoneNumberHandler = (event) =>{
+        event.preventDefault();
+        if(formIsValid()){
+            props.submitPhoneNumber(state)
+        }
+    }
+    
+    const formIsValid = () =>{
+        const errors = {} ;
+        if (!state.formData.phone_number || isNaN(state.formData.phone_number) || state.formData.phone_number.length != 10) {
+            errors.phone_number = "Please Enter a valid Phone number";
+        }
+
+        setState({ ...state, errors });
+        return !errors.phone_number ;
+    }
 
     return(
         <div style={{display:'flex', justifyContent:'center', alignItems :'flex-end'}}>
@@ -80,21 +116,30 @@ export const PhoneNumber = () =>{
                     textAlign: 'left'
                 }}>
                     <Typography variant="h6">Phone number</Typography>
-                    <TextField 
-                        className={classes.input} 
-                        label="Please Enter Your Phone number" 
-                        variant="outlined"
-                    />
-                    <div className={classes.error}>
-                        <Typography  variant="span">Please Enter a valid phone number</Typography>
-                    </div>
-                    <Button
-                        className={classes.Button}  
-                        variant="contained" 
-                        color="primary"
+                    <form
+                        onSubmit={submitPhoneNumberHandler}
                     >
-                        Log in
-                    </Button>
+                        <TextField 
+                            className={classes.input} 
+                            label="Please Enter Your Phone number" 
+                            variant="outlined"
+                            name="phone_number"
+                            type="text"
+                            value={state.formData.phone_number || "" }
+                            onChange={phoneNumberChangeHandler}
+                        />
+                        <div className={classes.error}>
+                            <Typography  variant="subtitle1">{state.errors.phone_number}</Typography>
+                        </div>
+                        <Button
+                            className={classes.Button}  
+                            variant="contained" 
+                            color="primary"
+                            type="submit"
+                        >
+                            Log in
+                        </Button>
+                    </form>
                 </div>
             </Container>
         </div>

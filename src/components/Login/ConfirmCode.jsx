@@ -8,7 +8,9 @@ import GoBackButton from '../../assets/Login/go-back-button.png';
 import PhoneNumberBackground from '../../assets/Login/confirmcode-background.png';
 
 import { useMediaQuery } from 'react-responsive'
+import { useCountDown } from '../../app/useCountDown';
 
+// import {useCountDown} from '../../app';
 
 
 const useStyles = makeStyles((theme) =>({
@@ -39,6 +41,10 @@ const useStyles = makeStyles((theme) =>({
     error : {
         marginTop: '.9rem',
         color: 'red'
+    },
+    typography: {
+        fontSize: '1rem',
+        color: '#222'
     }
 }));
 
@@ -50,6 +56,31 @@ export const ConfirmCode = () =>{
     const isTablet = useMediaQuery({ query: '(max-width: 992px)' });
     const isDesktop = useMediaQuery({ query: '(min-width: 992px)' });
 
+// count dwon 
+    const endTime = new Date().getTime() + 10000 * 1; // 2 minutes
+    const [timeLeft, setEndTime] = useCountDown(endTime);
+
+    const minutes = Math.floor(timeLeft / 60000) % 60;
+    const seconds = Math.floor(timeLeft / 1000) % 60;
+
+    const countDown = () =>{
+        if(minutes >0 || seconds > 0){
+            return(
+                <>
+                    Resent verification code until another
+                    <span style={{paddingRight:'.3rem'}}>{`${minutes}:${seconds < 10 ? '0'+ seconds : seconds}`}</span>
+                </>
+
+            )
+        }else{
+            return(
+                <>
+                    <span>Resend veryfiction ?</span>
+                </>
+            )
+        }
+    }
+// end count down
     
 
     return(
@@ -60,7 +91,7 @@ export const ConfirmCode = () =>{
                         width: isMobile ? '80%' : isTablet ? '70%' : '30%' , 
                         border: isDesktop ? '1px solid #e3dddd': '0' , 
                         borderRadius:'9px',
-                        height: isDesktop ? '83vh' : '85vh',  
+                        height: isDesktop ? '86vh' : '85vh',  
                     }} 
                     className={classes.container} 
                 >    
@@ -86,14 +117,17 @@ export const ConfirmCode = () =>{
                     <Image src={LoginBackground} width="100" height="100" alt="background"/>
                 </div>
                 <div style={{marginTop: '1.4rem' , textAlign: 'left'}}>
-                    <Typography variant="p">Confirmation code sent to +98914 123 4567</Typography>
+                    <Typography className={classes.typography} variant="h6">
+                        Confirmation code sent to 
+                        <span style={{color: '#6D6BE6' , marginLeft:'.3rem'}}>+98914 123 4567</span>
+                    </Typography>
                     <TextField 
                         className={classes.input} 
                         label="Please Enter Your Phone number" 
                         variant="outlined"
                     />
                     <div className={classes.error}>
-                        <Typography  variant="span">The code Enterd is inCorrect </Typography>
+                        <Typography  variant="subtitle1">The code Enterd is inCorrect </Typography>
                     </div>
                     <Button
                         className={classes.Button}  
@@ -103,7 +137,12 @@ export const ConfirmCode = () =>{
                         Continue
                     </Button>
                     <div className={classes.error}>
-                        <Typography  variant="span">Resent verification code until another 01:30</Typography>
+                        <Typography  variant="subtitle1">
+                         
+                        {
+                            countDown()
+                        }
+                        </Typography>
                     </div>
                 </div>
                 {
