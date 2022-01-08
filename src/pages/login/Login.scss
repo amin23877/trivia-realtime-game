@@ -1,0 +1,36 @@
+@import 'assets/scss/styles.scss';
+
+.login {
+    overflow: auto;
+    .login-body {
+        width: 100%;
+        max-width: 250px;
+
+        .title {
+            @include fsL;
+
+            width: 100%;
+            font-weight: 700;
+            margin: 50px 0 20px;
+            color: colorBlack(85);
+        }
+
+        .lable {
+            @include fsM;
+
+            width: 100%;
+            margin: 30px 0 10px;
+            color: colorBlack(80);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            color: white;
+            margin: 10px 0;
+            border-radius: 8px;
+            background: $primary;
+            border: 1px solid $primary;
+        }
+    }
+}
