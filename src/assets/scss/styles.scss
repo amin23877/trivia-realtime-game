@@ -1,0 +1,33 @@
+@import './color';
+@import './basic';
+@import './utility';
+@import './dimensions';
+
+._header {
+    height: $height-header;
+}
+
+._footer {
+    height: $height-footer;
+}
+
+._body-height {
+    height: $height-body;
+}
+
+// ------------------------------------------- Test
+.br1 {
+    border: 1px solid red;
+}
+.br2 {
+    border: 1px solid blue;
+}
+.br3 {
+    border: 2px solid green;
+}
+.bg1 {
+    background-color: bisque;
+}
+.bg2 {
+    background-color: aquamarine;
+}

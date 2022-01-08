@@ -1,7 +1,20 @@
 import { Link } from 'react-router-dom';
 
 // material ui
-import { Box, Button, Container, Drawer, Grid, IconButton, List, ListItem, ListItemIcon, ListItemText, makeStyles, Typography } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  Container,
+  Drawer,
+  Grid,
+  IconButton,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  makeStyles,
+  Typography,
+} from '@material-ui/core';
 
 // assets
 import HomeIcon from '../assets/Home/SideBar/Home-icon.png';
@@ -15,164 +28,182 @@ import QuickPlayIcon from '../assets/Home/SideBar/play-icon.png';
 import UserProfileIcon from '../assets/Home/SideBar/user-profile.png';
 import ArrowBottomIcon from '../assets/Home/SideBar/arrow-bottom-icon.png';
 import Image from '../app/ImageIcon';
+import { useMediaQuery } from 'react-responsive';
 
+const useStyles = makeStyles((theme) => ({
+  link: {
+    textDecoration: 'none',
+    color: theme.palette.text.primary,
+  },
+  quickPlayButton: {
+    display: 'flex',
+    alignItems: 'center',
+    margin: '1.5rem',
+    backgroundColor: '#F24973',
+    padding: '.5rem',
+    paddingLeft: '1.7rem',
+    paddingRight: '1.7rem',
+    color: '#fff',
+  },
+  userPhoneNumber: {
+    fontSize: '.9rem',
+    color: '#999',
+  },
+  li: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingLeft: '2rem',
+  },
+  liSpan: {
+    fontFamily: 'Roboto',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: '1.1rem',
+    lineHeight: '1.5rem',
+    color: '#8E8B9E',
+  },
+  Typography2: {
+    fontSize: '1.1rem',
+    color: '#2C2C2C',
+    fontFamily: 'Roboto',
+    fontStyle: 'normal',
+    fontWeight: '500',
+  },
+}));
 
+export const SideDrawer = () => {
+  const classes = useStyles();
 
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const isTablet = useMediaQuery({ query: '(max-width: 992px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 992px)' });
 
-
-const useStyles = makeStyles ( (theme ) => ({
-    link : {
-        textDecoration : 'none',
-        color: theme.palette.text.primary
-    },
-    quickPlayButton : {
-        display: 'flex',
-        alignItems: 'center',
-        margin: '1.5rem',
-        backgroundColor: '#F24973',
-        padding: '.5rem',
-        paddingLeft: '1rem',
-        paddingRight: '1rem',
-        color: '#fff'
-    },
-    userPhoneNumber : {
-        fontSize : '.9rem',
-        color: '#999',
-    },
-    li:{
-        display: 'flex',
-        justifyContent:'center',
-        alignItems: 'center',
-        paddingLeft: '2rem',
-    },
-    liSpan : {
-        fontSize: '1.9rem',
-        fontWeight : 'bold',
-        color:'#555',
-    }
-}))
-
-
-export const SideDrawer = () =>{
-
-    const classes = useStyles();
-
-    return(
+  return (
+    <>
+      {isDesktop && (
         <Drawer
-            style={{ width: "20vw" }}
-            variant = "persistent"
-            anchor="left"
-            open={true}
+          style={{ width: '23vw', paddingLeft: '2rem' }}
+          variant='persistent'
+          anchor='left'
+          open={true}
         >
-            <List style={{width : '20vw'}}>
-            <Link to="/">
-                <ListItem className={classes.li} button >
-                    <ListItemIcon>
-                        <Image src={UserProfileIcon} width="35" height="40" alt="icon"/>
-                    </ListItemIcon>
-                    <ListItemText>
-                        <Typography>Amir Basiri</Typography>
-                        <Typography                                      className={classes.userPhoneNumber} component="span">+98 914 123 4567</Typography>
-                    </ListItemText>
-                </ListItem>
+          <List style={{ width: '20vw' }}>
+            <Link to='/profile'>
+              <ListItem className={classes.li}>
+                <ListItemIcon>
+                  <Image
+                    src={UserProfileIcon}
+                    width='40'
+                    height='40'
+                    alt='icon'
+                  />
+                </ListItemIcon>
+                <ListItemText>
+                  <Typography className={classes.Typography2}>
+                    Amir Basiri
+                  </Typography>
+                  <Typography
+                    className={classes.userPhoneNumber}
+                    component='span'
+                  >
+                    +98 914 123 4567
+                  </Typography>
+                </ListItemText>
+              </ListItem>
             </Link>
-            <Button 
-                className={classes.quickPlayButton}
-                variant="contained" 
-                startIcon={<Image src={QuickPlayIcon} alt="icon" width="16" height="16"/>}  
-                endIcon={<Image src={ArrowBottomIcon} alt="icon" width="12" height="8"/>}
+            <Button
+              className={classes.quickPlayButton}
+              variant='contained'
+              startIcon={
+                <Image src={QuickPlayIcon} alt='icon' width='16' height='16' />
+              }
+              endIcon={
+                <Image src={ArrowBottomIcon} alt='icon' width='12' height='8' />
+              }
             >
-            Quick Play
+              Quick Play
             </Button>
-                <Link to="/" className={classes.link} >
-                    <ListItem className={classes.li}>
-                        <ListItemIcon>
-                            <Image 
-                                src={HomeIcon} 
-                                width={20} 
-                                height={20} 
-                                alt="Home" />
-                        </ListItemIcon>
-                        <ListItemText >
-                            <Typography className={classes.liSpan}>
-                                Home
-                            </Typography>
-                        </ListItemText>
-                    </ListItem>
-                </Link>
-                <Link to="/" className={classes.link} >
-                    <ListItem className={classes.li}> 
-                        <ListItemIcon>
-                            <Image 
-                                src={LeagueIcon} 
-                                width={20} 
-                                height={20} 
-                                alt="League" />
-                        </ListItemIcon>
-                        <ListItemText>
-                            <Typography className={classes.liSpan}>
-                                League
-                            </Typography>
-                        </ListItemText>
-                    </ListItem>
-                </Link>
-                <Link to="/" className={classes.link} >
-                    <ListItem className={classes.li}>
-                        <ListItemIcon>
-                            <Image 
-                                src={ProfileIcon} 
-                                width={20} 
-                                height={20} 
-                                alt="Profile" />
-                        </ListItemIcon>
-                        <ListItemText>
-                            Profile
-                        </ListItemText>
-                    </ListItem>
-                </Link>
-                <Link to="/" className={classes.link} >
-                    <ListItem className={classes.li}>
-                        <ListItemIcon>
-                            <Image 
-                                src={FriendsIcon} 
-                                width={20} 
-                                height={20} 
-                                alt="Friends" />
-                        </ListItemIcon>
-                        <ListItemText>
-                            Friends
-                        </ListItemText>
-                    </ListItem>
-                </Link>
-                <Link to="/" className={classes.link} >
-                    <ListItem className={classes.li}>
-                        <ListItemIcon>
-                            <Image 
-                                src={WalletIcon} 
-                                width={20} 
-                                height={20} 
-                                alt="Wallet" />
-                        </ListItemIcon>
-                        <ListItemText>
-                            Wallet
-                        </ListItemText>
-                    </ListItem>
-                </Link>
-                <Link to="/" className={classes.link} >
-                    <ListItem className={classes.li}>
-                        <ListItemIcon>
-                            <Image 
-                                src={SettingsIcon} 
-                                width={20} 
-                                height={20} 
-                                alt="Contact Us" />
-                        </ListItemIcon>
-                        <ListItemText>
-                            Contact Us
-                        </ListItemText>
-                    </ListItem>
-                </Link>
-            </List>
+            <Link to='/' className={classes.link}>
+              <ListItem button className={classes.li}>
+                <ListItemIcon>
+                  <Image src={HomeIcon} width={20} height={20} alt='Home' />
+                </ListItemIcon>
+                <ListItemText>
+                  <Typography button className={classes.liSpan}>
+                    Home
+                  </Typography>
+                </ListItemText>
+              </ListItem>
+            </Link>
+            <Link to='/league' className={classes.link}>
+              <ListItem button className={classes.li}>
+                <ListItemIcon>
+                  <Image src={LeagueIcon} width={20} height={20} alt='League' />
+                </ListItemIcon>
+                <ListItemText>
+                  <Typography className={classes.liSpan}>League</Typography>
+                </ListItemText>
+              </ListItem>
+            </Link>
+            <Link to='/profile' className={classes.link}>
+              <ListItem button className={classes.li}>
+                <ListItemIcon>
+                  <Image
+                    src={ProfileIcon}
+                    width={20}
+                    height={20}
+                    alt='Profile'
+                  />
+                </ListItemIcon>
+                <ListItemText>
+                  <Typography className={classes.liSpan}>Profile</Typography>
+                </ListItemText>
+              </ListItem>
+            </Link>
+            <Link to='/friends' className={classes.link}>
+              <ListItem button className={classes.li}>
+                <ListItemIcon>
+                  <Image
+                    src={FriendsIcon}
+                    width={20}
+                    height={20}
+                    alt='Friends'
+                  />
+                </ListItemIcon>
+                <ListItemText>
+                  <Typography className={classes.liSpan}>Friends</Typography>
+                </ListItemText>
+              </ListItem>
+            </Link>
+            <Link to='/wallet' className={classes.link}>
+              <ListItem button className={classes.li}>
+                <ListItemIcon>
+                  <Image src={WalletIcon} width={20} height={20} alt='Wallet' />
+                </ListItemIcon>
+                <ListItemText>
+                  <Typography className={classes.liSpan}>Wallet</Typography>
+                </ListItemText>
+              </ListItem>
+            </Link>
+            <Link to='/contact-us' className={classes.link}>
+              <ListItem button className={classes.li}>
+                <ListItemIcon>
+                  <Image
+                    src={SettingsIcon}
+                    width={20}
+                    height={20}
+                    alt='Contact Us'
+                  />
+                </ListItemIcon>
+                <ListItemText>
+                  <Typography className={classes.liSpan}>Contact Us</Typography>
+                </ListItemText>
+              </ListItem>
+            </Link>
+          </List>
         </Drawer>
-    )
-}
+      )}
+    </>
+  );
+};
