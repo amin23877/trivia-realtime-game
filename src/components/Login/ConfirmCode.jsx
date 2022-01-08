@@ -101,25 +101,22 @@ export const ConfirmCode = () => {
     let phone = localStorage.getItem('phone');
     if (phone) {
       apiCall
-        .post(
-          'user/code',
-          JSON.stringify({
-            phone: phone,
-            code: otp,
-          })
-        )
-        .then((output) => {
-          let res = output.res;
+        .post('user/code', {
+          phone: phone,
+          code: otp,
+        })
+        .then((res) => {
+          console.log('res > ', res);
 
-          res.token
-            ? localStorage.setItem('token', res.token)
+          res.data.token
+            ? localStorage.setItem('token', res.data.token)
             : localStorage.removeItem('token');
 
           console.log(res);
           navigate('/');
         })
         .catch((err) => {
-          console.log(err);
+          console.log('err > ', err);
           localStorage.removeItem('token');
         });
     } else {

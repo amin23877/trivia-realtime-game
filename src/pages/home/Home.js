@@ -1,10 +1,19 @@
-import React from 'react';
-
-import { Header } from 'components/Header';
+import ApiCall from 'common/services/ApiCall';
+import React, { useEffect } from 'react';
 
 import './Home.scss';
 
 const Home = () => {
+  const apiCall = new ApiCall();
+
+  useEffect(() => {
+    let isMounted = true;
+    if (isMounted) {
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, []);
   return (
     <div className='w-100 h-100 home'>
       <div className='_header br1'>

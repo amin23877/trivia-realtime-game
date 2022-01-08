@@ -64,7 +64,7 @@ export const PhoneNumber = (props) => {
   const phoneNumberChangeHandler = (event) => {
     const inputValue = { [event.target.name]: event.target.value };
     setState({ ...state, formData: { ...state.formData, ...inputValue } });
-    console.log(state);
+    // console.log(state);
   };
 
   const submitPhoneNumberHandler = (event) => {
@@ -93,18 +93,15 @@ export const PhoneNumber = (props) => {
 
   const handleGetOtp = () => {
     localStorage.setItem('phone', state.formData.phone_number);
+
     apiCall
-      .post(
-        'user/register',
-        JSON.stringify({ phone: state.formData.phone_number })
-      )
-      .then((output) => {
-        let res = output.res;
-        console.log(res);
+      .post('user/register', { phone: state.formData.phone_number })
+      .then((res) => {
+        console.log('res > ', res);
         navigate('/otp');
       })
       .catch((err) => {
-        console.log(err);
+        console.log('err > ', err);
       });
   };
 
