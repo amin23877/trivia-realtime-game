@@ -47,7 +47,6 @@ const VerificationCode = () => {
             ? localStorage.setItem('token', res.data.token)
             : localStorage.removeItem('token');
 
-          console.log(res);
           navigate('/');
         })
         .catch((err) => {
@@ -88,7 +87,6 @@ const VerificationCode = () => {
     let isMounted = true;
     if (isMounted) {
       if (!phone) {
-        console.log(1);
         navigate('/login');
       }
     }

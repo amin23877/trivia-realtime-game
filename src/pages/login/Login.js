@@ -21,18 +21,15 @@ const Login = () => {
   );
 
   const handleChangePhone = (e) => {
-    console.log(e);
     setPhone(e.target.value);
 
     const phoneno = /^0\d{10}$/;
-    console.log(e.target.value.length);
     // if (phone.match(phoneno) && e.target.value.length >= 10) {
     if (e.target.value.length >= 10) {
       setIsValidPhone(true);
     } else {
       setIsValidPhone(false);
     }
-    console.log(isValidPhone);
   };
 
   const handleGetOtp = () => {
