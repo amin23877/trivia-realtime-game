@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { TextField } from '@material-ui/core';
+
 import ApiCall from 'common/services/ApiCall';
 
 import './Login.scss';
 import logo from 'assets/images/logo/logo.svg';
 import mainImg from 'assets/images/pics/login-login.svg';
-import { TextField } from '@material-ui/core';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -20,16 +21,18 @@ const Login = () => {
   );
 
   const handleChangePhone = (e) => {
-    console.log(e.target.value);
+    console.log(e);
     setPhone(e.target.value);
 
-    // const phoneno = /^0\d{10}$/;
-
-    // if (phone.match(phoneno) && phone.length > 10) {
-    //   setIsValidPhone(true);
-    // } else {
-    //   setIsValidPhone(true);
-    // }
+    const phoneno = /^0\d{10}$/;
+    console.log(e.target.value.length);
+    // if (phone.match(phoneno) && e.target.value.length >= 10) {
+    if (e.target.value.length >= 10) {
+      setIsValidPhone(true);
+    } else {
+      setIsValidPhone(false);
+    }
+    console.log(isValidPhone);
   };
 
   const handleGetOtp = () => {
@@ -53,6 +56,8 @@ const Login = () => {
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
+      localStorage.clear();
+      sessionStorage.clear();
     }
     return () => {
       isMounted = false;
@@ -65,7 +70,9 @@ const Login = () => {
 
       <div className='login-body'>
         <p className='title'>Log in</p>
-        <img src={mainImg} />
+        <div className='text-center'>
+          <img src={mainImg} />
+        </div>
 
         <form noValidate autoComplete='off' className='_dish-textField'>
           <div className=''>

@@ -1,24 +1,40 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { TextField } from '@material-ui/core';
 
 import ApiCall from 'common/services/ApiCall';
 
 import './Login.scss';
-import { useNavigate } from 'react-router-dom';
+import logo from 'assets/images/logo/logo.svg';
+import mainImg from 'assets/images/pics/login-otp.svg';
+import arrowBack from 'assets/images/icons/arrow-back.svg';
 
 const VerificationCode = () => {
   const navigate = useNavigate();
 
   const apiCall = new ApiCall();
 
-  const [otp, setOtp] = useState();
+  let phone = localStorage.getItem('phone');
+
+  const [otp, setOtp] = useState('');
+  const [isValidOtp, setIsValidOtp] = useState(true);
+
+  const messageErrorDefault = 'Enter the verification code first';
+  const [messageError, setMessageError] = useState(messageErrorDefault);
+  const [hasTime, setHasTime] = useState(false);
+  const [timer, setTimer] = useState('01:30');
 
   const handlSetOtp = (e) => {
+    if (!isValidOtp && e.target.value.length) {
+      setIsValidOtp(true);
+      setMessageError(messageErrorDefault);
+    }
     setOtp(e.target.value);
   };
 
   const handleRegister = () => {
-    let phone = localStorage.getItem('phone');
-    if (phone) {
+    if (phone && otp) {
       apiCall
         .post('user/code', {
           phone: phone,
@@ -37,6 +53,31 @@ const VerificationCode = () => {
         .catch((err) => {
           console.log('err > ', err);
           localStorage.removeItem('token');
+          setIsValidOtp(true);
+          if (err.error) {
+            setMessageError(err.error);
+          } else {
+            setMessageError('Error!');
+          }
+        });
+    } else if (!phone) {
+      navigate('/login');
+    } else if (!otp) {
+      setIsValidOtp(false);
+    }
+  };
+
+  const handleReGetOtp = () => {
+    localStorage.setItem('phone', phone);
+
+    if (phone) {
+      apiCall
+        .post('user/register', { phone })
+        .then((res) => {
+          // TODO
+        })
+        .catch((err) => {
+          console.log('err > ', err);
         });
     } else {
       navigate('/login');
@@ -46,6 +87,10 @@ const VerificationCode = () => {
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
+      if (!phone) {
+        console.log(1);
+        navigate('/login');
+      }
     }
     return () => {
       isMounted = false;
@@ -53,8 +98,47 @@ const VerificationCode = () => {
   }, []);
 
   return (
-    <div className='w-100 h-100 login br2'>
-      <div className=''>VerificationCode</div>
+    <div className='w-100 h-100 p-3 d-flex flex-column align-items-center login'>
+      <img src={logo} />
+      <div className='w-100'>
+        <img src={arrowBack} onClick={() => navigate('/login')} />
+      </div>
+
+      <div className='login-body'>
+        <p className='title'>Enter Auth Code</p>
+        <div className='text-center'>
+          <img src={mainImg} />
+        </div>
+
+        <form noValidate autoComplete='off' className='_dish-textField'>
+          <div className=''>
+            <p className='lable'>{`Confirmation code sent to ${phone}`}</p>
+            <TextField
+              autoFocus={true}
+              type='tel'
+              placeholder='Enter your phone number'
+              className=''
+              helperText={!isValidOtp ? messageError : ''}
+              variant='outlined'
+              inputProps={{ maxLength: 11 }}
+              error={!isValidOtp}
+              onChange={(e) => handlSetOtp(e)}
+            />
+          </div>
+        </form>
+
+        <button className='login-btn' onClick={handleRegister}>
+          Continue
+        </button>
+
+        {hasTime ? (
+          <p className='timer timer-resend' onClick={handleReGetOtp}>
+            Resend verification code
+          </p>
+        ) : (
+          <p className='timer'>{`Resend verification code until another ${timer}`}</p>
+        )}
+      </div>
     </div>
   );
 };
