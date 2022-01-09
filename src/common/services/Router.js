@@ -5,8 +5,8 @@ import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRouter';
 
 import Home from 'pages/home/Home';
-import { Login } from 'components/Login/Login';
-import { ConfirmCode } from 'components/Login/ConfirmCode';
+import Login from 'pages/login/Login';
+import VerificationCode from 'pages/login/VerificationCode';
 
 const RouterConfig = () => {
   return (
@@ -17,7 +17,7 @@ const RouterConfig = () => {
         </Route>
 
         <Route path='/login' element={<Login />} />
-        <Route path='/otp' element={<ConfirmCode />} />
+        <Route path='/otp' element={<VerificationCode />} />
         <Route path='*' element={<Home />} />
       </Routes>
     </Router>

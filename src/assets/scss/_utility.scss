@@ -5,6 +5,25 @@
   width: 100%;
 }
 
+@mixin fsS() {
+  font-size: 10px;
+}
+@mixin fsM() {
+  font-size: 14px;
+}
+@mixin fsL() {
+  font-size: 16px;
+}
+@mixin fsXL() {
+  font-size: 18px;
+}
+@mixin fsXXL() {
+  font-size: 20px;
+}
+@mixin fsXXXL() {
+  font-size: 24px;
+}
+
 // ======================================================
 // Function
 // ======================================================
