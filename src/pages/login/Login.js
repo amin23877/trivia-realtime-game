@@ -23,7 +23,7 @@ const Login = () => {
     console.log(e.target.value);
     setPhone(e.target.value);
 
-    const phoneno = /^0\d{10}$/;
+    // const phoneno = /^0\d{10}$/;
 
     // if (phone.match(phoneno) && phone.length > 10) {
     //   setIsValidPhone(true);
@@ -75,11 +75,13 @@ const Login = () => {
               type='tel'
               placeholder='Enter your phone number'
               className=''
-              helperText={phone && !isValidPhone ? messageError : ''}
+              helperText={
+                phone.length > 10 && !isValidPhone ? messageError : ''
+              }
               variant='outlined'
               inputProps={{ maxLength: 11 }}
               // value={phone}
-              error={phone && !isValidPhone}
+              error={phone !== '' && !isValidPhone}
               onKeyPress={(e) => handleChangePhone(e)}
             />
           </div>
