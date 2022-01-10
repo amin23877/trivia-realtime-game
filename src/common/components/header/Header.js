@@ -8,9 +8,9 @@ import iconPeople from 'assets/images/icons/header-people.svg';
 const Header = () => {
   return (
     <div className='d-flex justify-content-between align-items-center header'>
-      <img src={iconMenu} />
-      <img src={logo} />
-      <img src={iconPeople} />
+      <img src={iconMenu} alt='' />
+      <img src={logo} alt='' />
+      <img src={iconPeople} alt='' />
     </div>
   );
 };

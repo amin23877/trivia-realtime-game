@@ -63,12 +63,12 @@ const Login = () => {
 
   return (
     <div className='w-100 h-100 p-3 d-flex flex-column align-items-center login'>
-      <img src={logo} />
+      <img src={logo} alt='' />
 
       <div className='login-body'>
         <p className='title'>Log in</p>
         <div className='text-center'>
-          <img src={mainImg} />
+          <img src={mainImg} alt='' />
         </div>
 
         <form noValidate autoComplete='off' className='_dish-textField'>
