@@ -15,43 +15,48 @@ import { Navigate, useLocation } from 'react-router-dom';
 
 const Footer = () => {
   const location = useLocation();
-  console.log(location.pathname);
+  const pathname = location.pathname;
 
   const menu = [
     {
       title: 'Home',
-      icon: iconHome,
-      iconActive: iconHomeActive,
+      pathname: '/',
       path: '/',
       isCenter: false,
+      icon: iconHome,
+      iconActive: iconHomeActive,
     },
     {
       title: 'League',
-      icon: iconLeague,
-      iconActive: iconLeagueActive,
+      pathname: '/league',
       path: 'league',
       isCenter: false,
+      icon: iconLeague,
+      iconActive: iconLeagueActive,
     },
     {
       title: '',
-      icon: iconPlay,
-      iconActive: iconPlay,
+      pathname: '/play',
       path: 'play',
       isCenter: true,
+      icon: iconPlay,
+      iconActive: iconPlay,
     },
     {
       title: 'Search',
-      icon: iconSearch,
-      iconActive: iconSearchActive,
+      pathname: '/search',
       path: 'search',
       isCenter: false,
+      icon: iconSearch,
+      iconActive: iconSearchActive,
     },
     {
       title: 'Profile',
-      icon: iconProfile,
-      iconActive: iconProfileActive,
+      pathname: '/profile',
       path: 'profile',
       isCenter: false,
+      icon: iconProfile,
+      iconActive: iconProfileActive,
     },
   ];
   return (
@@ -62,36 +67,18 @@ const Footer = () => {
           className={`d-flex flex-column justify-content-between align-items-center icons ${
             el.isCenter ? 'icon-center' : ''
           }`}
-          onClick={() => Navigate(el.path)}
+          //   onClick={() => Navigate(el.path)}
         >
-          <img src={el.icon} alt='' />
-          <p>{el.title}</p>
+          {pathname == el.pathname ? (
+            <img src={el.iconActive} alt='' />
+          ) : (
+            <img src={el.icon} alt='' />
+          )}
+          <p className={`${pathname == el.pathname ? 'p-active' : ''}`}>
+            {el.title}
+          </p>
         </div>
       ))}
-
-      {/* <div className='d-flex flex-column justify-content-between align-items-center icons'>
-        <img src={iconHome} alt='' />
-        <p>Home</p>
-      </div> */}
-
-      {/* <div className='d-flex flex-column justify-content-between align-items-center icons'>
-        <img src={iconLeague} alt='' />
-        <p>League</p>
-      </div> */}
-
-      {/* <div className='d-flex flex-column justify-content-between align-items-center icons icon-play'>
-        <img src={iconPlay} alt='' />
-      </div> */}
-
-      {/* <div className='d-flex flex-column justify-content-between align-items-center icons'>
-        <img src={iconSearch} alt='' />
-        <p>Search</p>
-      </div> */}
-
-      {/* <div className='d-flex flex-column justify-content-between align-items-center icons'>
-        <img src={iconProfile} alt='' />
-        <p>Profile</p>
-      </div> */}
     </div>
   );
 };

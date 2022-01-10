@@ -13,6 +13,9 @@ $height-icon-center: 60px;
             @include fsS;
             color: $text-footer;
         }
+        .p-active {
+            color: $primary;
+        }
     }
 
     .icon-center {
