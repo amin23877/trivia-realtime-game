@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { TextField } from '@material-ui/core';
+
 import ApiCall from 'common/services/ApiCall';
 
 import './Login.scss';
 import logo from 'assets/images/logo/logo.svg';
 import mainImg from 'assets/images/pics/login-login.svg';
-import { TextField } from '@material-ui/core';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -20,16 +21,15 @@ const Login = () => {
   );
 
   const handleChangePhone = (e) => {
-    console.log(e.target.value);
     setPhone(e.target.value);
 
     const phoneno = /^0\d{10}$/;
-
-    // if (phone.match(phoneno) && phone.length > 10) {
-    //   setIsValidPhone(true);
-    // } else {
-    //   setIsValidPhone(true);
-    // }
+    // if (phone.match(phoneno) && e.target.value.length >= 10) {
+    if (e.target.value.length >= 10) {
+      setIsValidPhone(true);
+    } else {
+      setIsValidPhone(false);
+    }
   };
 
   const handleGetOtp = () => {
@@ -53,6 +53,8 @@ const Login = () => {
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
+      localStorage.clear();
+      sessionStorage.clear();
     }
     return () => {
       isMounted = false;
@@ -65,7 +67,9 @@ const Login = () => {
 
       <div className='login-body'>
         <p className='title'>Log in</p>
-        <img src={mainImg} />
+        <div className='text-center'>
+          <img src={mainImg} />
+        </div>
 
         <form noValidate autoComplete='off' className='_dish-textField'>
           <div className=''>
@@ -75,11 +79,13 @@ const Login = () => {
               type='tel'
               placeholder='Enter your phone number'
               className=''
-              helperText={phone && !isValidPhone ? messageError : ''}
+              helperText={
+                phone.length > 10 && !isValidPhone ? messageError : ''
+              }
               variant='outlined'
               inputProps={{ maxLength: 11 }}
               // value={phone}
-              error={phone && !isValidPhone}
+              error={phone !== '' && !isValidPhone}
               onKeyPress={(e) => handleChangePhone(e)}
             />
           </div>
