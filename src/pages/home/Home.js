@@ -1,14 +1,17 @@
 import ApiCall from 'common/services/ApiCall';
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import './Home.scss';
 
 const Home = () => {
   const apiCall = new ApiCall();
+  const stateGeneral = useSelector((state) => state.stateGeneral);
 
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
+      console.log(stateGeneral);
     }
     return () => {
       isMounted = false;
