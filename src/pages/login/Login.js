@@ -86,7 +86,7 @@ const Login = () => {
               inputProps={{ maxLength: 11 }}
               // value={phone}
               error={phone !== '' && !isValidPhone}
-              onKeyPress={(e) => handleChangePhone(e)}
+              onChange={(e) => handleChangePhone(e)}
             />
           </div>
         </form>
