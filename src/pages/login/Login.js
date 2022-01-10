@@ -53,8 +53,8 @@ const Login = () => {
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
-      localStorage.clear();
-      sessionStorage.clear();
+      // localStorage.clear();
+      // sessionStorage.clear();
     }
     return () => {
       isMounted = false;

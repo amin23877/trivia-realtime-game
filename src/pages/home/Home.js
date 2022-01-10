@@ -27,7 +27,7 @@ const Home = () => {
 
       <div className='_body-height home-body'>Home</div>
 
-      <div className='_footer br1'>
+      <div className='_footer'>
         <Footer />
       </div>
     </div>
