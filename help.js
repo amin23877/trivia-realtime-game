@@ -50,6 +50,19 @@ const Template = () => {
 };
 
 export default Template;
+
+
+    <div className='w-100 h-100 home'>
+      <div className='_header br1'>
+        <Header />
+      </div>
+
+      <div className='_body-height home-body'>Home</div>
+
+      <div className='_footer br1'>
+        <Footer />
+      </div>
+    </div>
 Template ___________________________________________________________________
 
 
