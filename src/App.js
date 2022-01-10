@@ -7,5 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function App() {
   // #routerConfig step2
-  return <RouterConfig />;
+  return (
+    <div className='dish'>
+      <RouterConfig />
+    </div>
+  );
 }
