@@ -53,8 +53,8 @@ const Login = () => {
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
-      localStorage.clear();
-      sessionStorage.clear();
+      // localStorage.clear();
+      // sessionStorage.clear();
     }
     return () => {
       isMounted = false;
@@ -63,12 +63,12 @@ const Login = () => {
 
   return (
     <div className='w-100 h-100 p-3 d-flex flex-column align-items-center login'>
-      <img src={logo} />
+      <img src={logo} alt='' />
 
       <div className='login-body'>
         <p className='title'>Log in</p>
         <div className='text-center'>
-          <img src={mainImg} />
+          <img src={mainImg} alt='' />
         </div>
 
         <form noValidate autoComplete='off' className='_dish-textField'>
@@ -86,7 +86,7 @@ const Login = () => {
               inputProps={{ maxLength: 11 }}
               // value={phone}
               error={phone !== '' && !isValidPhone}
-              onKeyPress={(e) => handleChangePhone(e)}
+              onChange={(e) => handleChangePhone(e)}
             />
           </div>
         </form>

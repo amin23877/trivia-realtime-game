@@ -1,0 +1,24 @@
+@import 'assets/scss/styles.scss';
+
+$height-icon-center: 60px;
+.footer {
+    width: 100%;
+    height: $height-footer;
+    padding: 0 15px;
+    background-color: white;
+
+    .icons {
+        cursor: pointer;
+        p {
+            @include fsS;
+            color: $text-footer;
+        }
+        .p-active {
+            color: $primary;
+        }
+    }
+
+    .icon-center {
+        margin-top: calc(-1 * #{$height-icon-center} / 2);
+    }
+}

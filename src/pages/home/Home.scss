@@ -1,7 +1,46 @@
 @import 'assets/scss/styles.scss';
 
 .home {
+    background-color: $bg-home;
     .home-body {
+        padding: 20px 0;
         overflow-y: auto;
+
+        .home-card {
+            width: 90%;
+            min-height: 150px;
+            margin: auto;
+            background: $bg-home-card;
+            border-radius: 15px;
+        }
+    }
+}
+
+.topics {
+    .topics-header {
+        padding: 15px;
+
+        .title {
+            @include fsL;
+            font-weight: 700;
+            color: colorBlack(85);
+        }
+
+        .subtitle {
+            @include fsM;
+            color: colorBlack(55);
+        }
+    }
+
+    .topics-body {
+        width: 100%;
+        overflow-x: auto;
+        .topic-card {
+            min-width: 40%;
+            min-height: 120px;
+            margin: 10px;
+            background: green;
+            border-radius: 15px;
+        }
     }
 }

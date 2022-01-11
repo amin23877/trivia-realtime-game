@@ -9,9 +9,12 @@ import './Login.scss';
 import logo from 'assets/images/logo/logo.svg';
 import mainImg from 'assets/images/pics/login-otp.svg';
 import arrowBack from 'assets/images/icons/arrow-back.svg';
+import { useDispatch } from 'react-redux';
+import { SET_USER_INFO } from 'redux/actions/mainActions/generalActions';
 
 const VerificationCode = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const apiCall = new ApiCall();
 
@@ -46,6 +49,8 @@ const VerificationCode = () => {
           res.data.token
             ? localStorage.setItem('token', res.data.token)
             : localStorage.removeItem('token');
+
+          dispatch(SET_USER_INFO(res.data.user));
 
           navigate('/');
         })
@@ -97,15 +102,15 @@ const VerificationCode = () => {
 
   return (
     <div className='w-100 h-100 p-3 d-flex flex-column align-items-center login'>
-      <img src={logo} />
+      <img src={logo} alt='' />
       <div className='w-100'>
-        <img src={arrowBack} onClick={() => navigate('/login')} />
+        <img src={arrowBack} onClick={() => navigate('/login')} alt='' />
       </div>
 
       <div className='login-body'>
         <p className='title'>Enter Auth Code</p>
         <div className='text-center'>
-          <img src={mainImg} />
+          <img src={mainImg} alt='' />
         </div>
 
         <form noValidate autoComplete='off' className='_dish-textField'>

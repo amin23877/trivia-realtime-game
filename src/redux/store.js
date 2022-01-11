@@ -16,3 +16,8 @@ const store = createStore(
 );
 
 export default store;
+
+// HOW WE USE: #redux step7
+// const dispatch = useDispatch();
+// dispatch(ACTION_TYPE(payload));
+// const stateGeneral = useSelector((state) => state.stateGeneral);

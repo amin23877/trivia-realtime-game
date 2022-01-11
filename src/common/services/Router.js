@@ -1,6 +1,11 @@
 // #routerConfig step1
 import React from 'react';
-import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
+import {
+  Routes,
+  Route,
+  BrowserRouter as Router,
+  Navigate,
+} from 'react-router-dom';
 
 import ProtectedRoute from './ProtectedRouter';
 
@@ -18,7 +23,7 @@ const RouterConfig = () => {
 
         <Route path='/login' element={<Login />} />
         <Route path='/otp' element={<VerificationCode />} />
-        <Route path='*' element={<Home />} />
+        <Route path='*' element={<Navigate to='/' />} />
       </Routes>
     </Router>
   );
