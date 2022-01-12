@@ -46,6 +46,12 @@ const Home = () => {
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
+      localStorage.setItem('remainingTime', cardInfo.remainingTime);
+      // let remainingTime = localStorage.getItem('remainingTime');
+      // remainingTime
+      //   ? localStorage.setItem('remainingTime', remainingTime)
+      //   : localStorage.setItem('remainingTime', cardInfo.remainingTime);
+
       // console.log(stateGeneral);
     }
     return () => {

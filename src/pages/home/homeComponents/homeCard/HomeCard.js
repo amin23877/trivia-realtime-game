@@ -3,41 +3,19 @@ import React, { useEffect, useState } from 'react';
 import './HomeCard.scss';
 import mainImg from 'assets/images/pics/home-card-main.svg';
 import iconPlayer from 'assets/images/icons/home-card-player.svg';
+import Countdown from 'react-countdown';
+import CountdownTimer from 'common/components/CountdownTimer/CountDownTimer';
 
 const HomeCard = ({ info }) => {
-  const [time, setTime] = useState(info.remainingTime);
-  const [timer, setTimer] = useState({ h: '1', m: '30', s: '0' });
+  const timeRemain = localStorage.getItem('remainingTime');
 
-  const handleSetTimer = (time) => {
-    let h, m, s, r;
-
-    r = time;
-
-    h = Math.floor(r / 3600);
-    r = time % 3600;
-    m = Math.floor(r / 60);
-    s = time % 60;
-
-    setTimer({
-      h: h < 10 ? `0${h}` : `${h}`,
-      m: h < 10 ? `0${m}` : `${m}`,
-      s: h < 10 ? `0${s}` : `${s}`,
-    });
-
-    console.log(h, m, s, r);
+  const handleStop = (e) => {
+    console.log(e);
   };
 
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
-      // let handleTimer = setInterval(() => {
-      //   if (time > 1) {
-      //     handleSetTimer(time);
-      //     setTime(time - 1);
-      //   } else {
-      //     clearInterval(handleTimer);
-      //   }
-      // }, 1000);
     }
     return () => {
       isMounted = false;
@@ -53,14 +31,11 @@ const HomeCard = ({ info }) => {
         </div>
 
         <div className='d-flex timer'>
-          <p className='box'>{timer.h.substring(0, 1)}</p>
-          <p className='box'>{timer.h.substring(1, 2)}</p>
-          <span className='colon'>{':'}</span>
-          <p className='box'>{timer.m.substring(0, 1)}</p>
-          <p className='box'>{timer.m.substring(1, 2)}</p>
-          <span className='colon'>{':'}</span>
-          <p className='box'>{timer.s.substring(0, 1)}</p>
-          <p className='box'>{timer.s.substring(1, 2)}</p>
+          <Countdown
+            date={Date.now() + timeRemain * 1000}
+            renderer={CountdownTimer}
+            onComplete={(e) => handleStop(e)}
+          />
         </div>
 
         <p className='price'>{`$${info.price}`}</p>
