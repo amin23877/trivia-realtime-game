@@ -28,11 +28,17 @@ RouterConfig ___________________________________________________________________
 
 @Template ___________________________________________________________________
 import React from 'react';
-
 import './Template.scss';
 // @import 'assets/scss/styles.scss';
-
 const Template = () => {
+  return (
+    <div className='w-100 h-100 template'>
+      <div className='template-body'></div>
+    </div>
+  );
+};
+export default Template;
+
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
@@ -41,15 +47,6 @@ const Template = () => {
       isMounted = false;
     };
   }, []);
-
-  return (
-    <div className='w-100 h-100 template'>
-      <div className='template-body'></div>
-    </div>
-  );
-};
-
-export default Template;
 
 
     <div className='w-100 h-100 home'>

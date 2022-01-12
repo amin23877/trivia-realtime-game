@@ -4,8 +4,8 @@ import './HomeTopics.scss';
 
 const HomeTopics = () => {
   return (
-    <div className='w-100 h-100 home-topics'>
-      <div className='home-topics-body'></div>
+    <div className='w-100 h-100 homeTopics'>
+      <div className='homeTopics-body'></div>
     </div>
   );
 };
