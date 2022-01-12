@@ -6,12 +6,11 @@
         padding: 20px 0;
         overflow-y: auto;
 
-        .home-card {
+        .home-body-card {
             width: 90%;
-            min-height: 150px;
+            // height: 150px;
             margin: auto;
-            background: $bg-home-card;
-            border-radius: 15px;
+            --bs-aspect-ratio: 35%; // #ratio
         }
     }
 }

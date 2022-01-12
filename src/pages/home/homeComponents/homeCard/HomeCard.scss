@@ -1,6 +1,14 @@
 @import 'assets/scss/styles.scss';
 
+$radius-card: 15px;
+
 .homeCard {
-    .homeCard-body {
+    background-color: $bg-home-card;
+    border-radius: $radius-card;
+
+    img {
+        min-height: 100%;
+        width: auto;
+        border-radius: 0 $radius-card $radius-card 0;
     }
 }

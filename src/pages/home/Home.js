@@ -6,10 +6,13 @@ import { useSelector } from 'react-redux';
 
 import './Home.scss';
 import arrowForwardMini from 'assets/images/icons/arrow-forward-mini.svg';
+import HomeCard from './homeComponents/homeCard/HomeCard';
 
 const Home = () => {
   const apiCall = new ApiCall();
   const stateGeneral = useSelector((state) => state.stateGeneral);
+
+  const cardInfo = {};
 
   const topics = [
     {
@@ -50,7 +53,11 @@ const Home = () => {
       </div>
 
       <div className='_body-height home-body'>
-        <div className='home-card br-1'></div>
+        <div className='ratio home-body-card'>
+          {/* #ratio */}
+          <HomeCard info={cardInfo} />
+        </div>
+
         <div className='topics'>
           <div className='d-flex justify-content-between align-items-center topics-header'>
             <p className='title'>Top Topics</p>
