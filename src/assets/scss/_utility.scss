@@ -34,3 +34,7 @@
 @function colorWhite($opacity) {
   @return rgba(255, 255, 255, $opacity / 100);
 }
+
+@function bullet($size, $color) {
+  @return rgba(0, 0, 0, $opacity / 100);
+}
