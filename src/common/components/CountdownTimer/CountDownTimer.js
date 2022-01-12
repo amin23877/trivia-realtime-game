@@ -13,10 +13,10 @@ const CountdownTimer = ({ hours, minutes, seconds }) => {
     <div className='d-flex countdownTimer'>
       <p className='box'>{rt.h.substring(0, 1)}</p>
       <p className='box'>{rt.h.substring(1, 2)}</p>
-      <span className='colon'>{':'}</span>
+      <p className='colon'>{':'}</p>
       <p className='box'>{rt.m.substring(0, 1)}</p>
       <p className='box'>{rt.m.substring(1, 2)}</p>
-      <span className='colon'>{':'}</span>
+      <p className='colon'>{':'}</p>
       <p className='box'>{rt.s.substring(0, 1)}</p>
       <p className='box'>{rt.s.substring(1, 2)}</p>
     </div>
