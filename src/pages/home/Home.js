@@ -12,7 +12,13 @@ const Home = () => {
   const apiCall = new ApiCall();
   const stateGeneral = useSelector((state) => state.stateGeneral);
 
-  const cardInfo = {};
+  const cardInfo = {
+    title: 'Chemical Compounds',
+    remainingTime: 8407,
+    price: 5000,
+    players: 2,
+    img: '',
+  };
 
   const topics = [
     {
@@ -40,7 +46,7 @@ const Home = () => {
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
-      console.log(stateGeneral);
+      // console.log(stateGeneral);
     }
     return () => {
       isMounted = false;
@@ -69,7 +75,7 @@ const Home = () => {
 
           <div className='d-flex justify-content-between align-items-center topics-body'>
             {topics.map((el, index) => (
-              <div className='topic-card'></div>
+              <div key={index} className='topic-card'></div>
             ))}
           </div>
         </div>

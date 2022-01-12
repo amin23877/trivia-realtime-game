@@ -8,9 +8,9 @@
 
         .home-body-card {
             width: 90%;
-            // height: 150px;
+            min-height: 150px;
             margin: auto;
-            --bs-aspect-ratio: 35%; // #ratio
+            --bs-aspect-ratio: 40%; // #ratio
         }
     }
 }

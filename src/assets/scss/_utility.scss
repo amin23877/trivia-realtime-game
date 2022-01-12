@@ -8,6 +8,9 @@
 @mixin fsS() {
   font-size: 10px;
 }
+@mixin fsNormal() {
+  font-size: 12px;
+}
 @mixin fsM() {
   font-size: 14px;
 }
