@@ -3,8 +3,10 @@ import React, { useEffect, useState } from 'react';
 import './HomeCard.scss';
 import mainImg from 'assets/images/pics/home-card-main.svg';
 import iconPlayer from 'assets/images/icons/home-card-player.svg';
+
+// #countdownTimer step2
 import Countdown from 'react-countdown';
-import CountdownTimer from 'common/components/CountdownTimer/CountDownTimer';
+import CountdownTimer from 'common/components/countdownTimer/CountDownTimer';
 
 const HomeCard = ({ info }) => {
   const timeRemain = localStorage.getItem('remainingTime');
@@ -31,6 +33,7 @@ const HomeCard = ({ info }) => {
         </div>
 
         <div className='d-flex timer'>
+          {/* #countdownTimer step3 */}
           <Countdown
             date={Date.now() + timeRemain * 1000}
             renderer={CountdownTimer}
