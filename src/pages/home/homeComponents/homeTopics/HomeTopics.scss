@@ -5,7 +5,7 @@
     overflow-x: auto;
     .topic-card {
         min-width: calc(clamp(100px, 40%, 200px));
-        margin: 5px;
+        margin: 5px !important;
         background-color: white;
         border-radius: 15px;
         // --bs-aspect-ratio: 90%; // #ratio
