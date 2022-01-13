@@ -19,6 +19,7 @@ $height-icon-center: 60px;
     }
 
     .icon-center {
+        z-index: 1;
         margin-top: calc(-1 * #{$height-icon-center} / 2);
     }
 }
