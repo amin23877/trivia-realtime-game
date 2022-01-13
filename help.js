@@ -14,12 +14,21 @@ Redux __________________________________________________________________________
 @Bootstrap _______________________________________________________________________
 1. > npm install bootstrap
 2. import 'bootstrap/dist/css/bootstrap.min.css'; // Add to App.js
+
+#ratio
 Bootstrap _______________________________________________________________________
 
 @RouterConfig ___________________________________________________________________
 1. search #routerConfig
 RouterConfig ___________________________________________________________________
 
+
+@CountdownTimer _______________________________________________________________________
+1. > npm install react-countdown --save
+2. search #countdownTimer
+
+#ratio
+CountdownTimer _______________________________________________________________________
 
 
 
@@ -28,11 +37,17 @@ RouterConfig ___________________________________________________________________
 
 @Template ___________________________________________________________________
 import React from 'react';
-
 import './Template.scss';
 // @import 'assets/scss/styles.scss';
-
 const Template = () => {
+  return (
+    <div className='w-100 h-100 template'>
+      <div className='template-body'></div>
+    </div>
+  );
+};
+export default Template;
+
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
@@ -41,15 +56,6 @@ const Template = () => {
       isMounted = false;
     };
   }, []);
-
-  return (
-    <div className='w-100 h-100 template'>
-      <div className='template-body'></div>
-    </div>
-  );
-};
-
-export default Template;
 
 
     <div className='w-100 h-100 home'>

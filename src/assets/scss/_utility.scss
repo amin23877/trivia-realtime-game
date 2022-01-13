@@ -5,8 +5,14 @@
   width: 100%;
 }
 
-@mixin fsS() {
+@mixin fsXS() {
   font-size: 10px;
+}
+@mixin fsS() {
+  font-size: 11px;
+}
+@mixin fsNormal() {
+  font-size: 12px;
 }
 @mixin fsM() {
   font-size: 14px;
@@ -22,6 +28,14 @@
 }
 @mixin fsXXXL() {
   font-size: 24px;
+}
+
+@mixin bullet($size, $color, $radius: 100%) {
+  width: $size;
+  height: $size;
+  display: inline-block;
+  border-radius: $radius;
+  background-color: $color;
 }
 
 // ======================================================

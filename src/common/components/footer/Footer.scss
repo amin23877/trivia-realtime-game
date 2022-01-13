@@ -10,7 +10,7 @@ $height-icon-center: 60px;
     .icons {
         cursor: pointer;
         p {
-            @include fsS;
+            @include fsXS;
             color: $text-footer;
         }
         .p-active {
@@ -19,6 +19,7 @@ $height-icon-center: 60px;
     }
 
     .icon-center {
+        z-index: 1;
         margin-top: calc(-1 * #{$height-icon-center} / 2);
     }
 }

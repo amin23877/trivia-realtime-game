@@ -1,0 +1,63 @@
+@import 'assets/scss/styles.scss';
+
+$size-avatar: 60px;
+$padding-left: 40px;
+
+.profile {
+    .profile-header {
+        padding: 50px $padding-left 30px;
+        background-color: $primary;
+
+        .avatar {
+            width: $size-avatar;
+            height: $size-avatar;
+            border-radius: 100%;
+            background: wheat;
+            border: 1px solid white;
+        }
+
+        .name {
+            @include fsM;
+
+            padding: 15px 0 5px;
+            color: white;
+            font-family: RobotoBold;
+        }
+
+        .level {
+            @include fsNormal;
+
+            color: white;
+        }
+
+        .close {
+            margin-top: 0 !important;
+            margin-top: 0 !important;
+
+            img {
+            }
+        }
+    }
+    .profile-body {
+        .menu-item {
+            padding: 25px $padding-left;
+
+            .icon {
+                // min-width: 40px;
+                color: colorBlack(70);
+            }
+
+            p {
+                @include fsXL;
+
+                color: colorBlack(70);
+
+                margin-left: 10px;
+            }
+        }
+
+        .br-b {
+            border-bottom: 1px solid $br-light;
+        }
+    }
+}

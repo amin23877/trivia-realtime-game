@@ -12,6 +12,7 @@ import ProtectedRoute from './ProtectedRouter';
 import Home from 'pages/home/Home';
 import Login from 'pages/login/Login';
 import VerificationCode from 'pages/login/VerificationCode';
+import Profile from 'pages/profile/Profile';
 
 const RouterConfig = () => {
   return (
@@ -19,6 +20,10 @@ const RouterConfig = () => {
       <Routes>
         <Route exact path='/' element={<ProtectedRoute />}>
           <Route exact path='/' element={<Home />} />
+        </Route>
+
+        <Route exact path='/profile' element={<ProtectedRoute />}>
+          <Route exact path='/profile' element={<Profile />} />
         </Route>
 
         <Route path='/login' element={<Login />} />
