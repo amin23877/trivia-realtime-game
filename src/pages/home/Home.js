@@ -4,9 +4,11 @@ import ApiCall from 'common/services/ApiCall';
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
+import HomeCard from './homeComponents/homeCard/HomeCard';
+import HomeTopics from './homeComponents/homeTopics/HomeTopics';
+
 import './Home.scss';
 import arrowForwardMini from 'assets/images/icons/arrow-forward-mini.svg';
-import HomeCard from './homeComponents/homeCard/HomeCard';
 
 const Home = () => {
   const apiCall = new ApiCall();
@@ -46,12 +48,11 @@ const Home = () => {
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
-      localStorage.setItem('remainingTime', cardInfo.remainingTime);
+      // localStorage.setItem('remainingTime', cardInfo.remainingTime);
       // let remainingTime = localStorage.getItem('remainingTime');
       // remainingTime
       //   ? localStorage.setItem('remainingTime', remainingTime)
       //   : localStorage.setItem('remainingTime', cardInfo.remainingTime);
-
       // console.log(stateGeneral);
     }
     return () => {
@@ -79,10 +80,8 @@ const Home = () => {
             </p>
           </div>
 
-          <div className='d-flex justify-content-between align-items-center topics-body'>
-            {topics.map((el, index) => (
-              <div key={index} className='topic-card'></div>
-            ))}
+          <div>
+            <HomeTopics topics={topics} />
           </div>
         </div>
       </div>
