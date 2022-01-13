@@ -9,6 +9,7 @@
         color: white;
         margin: 2px !important;
     }
+
     .box {
         min-width: 20px;
         min-height: 20px;
@@ -16,5 +17,14 @@
         border-radius: 4px;
 
         box-shadow: 0px 1px 2px rgba(118, 112, 112, 0.25), inset 0px 1px 2px #f092aa, inset 0px -1px 2px #ab1f42;
+    }
+}
+
+// DELETE // for test
+@media screen and (max-width: 370px) {
+    .countdownTimer {
+        .box {
+            min-width: 12px;
+        }
     }
 }
