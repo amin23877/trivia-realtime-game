@@ -2,6 +2,7 @@ import React from 'react';
 
 import './HomeTopics.scss';
 import mainImg from 'assets/images/test/1.png';
+import iconRate from 'assets/images/icons/rate-mini.svg';
 
 const HomeTopics = ({ topics }) => {
   console.log(topics);
@@ -12,11 +13,14 @@ const HomeTopics = ({ topics }) => {
           <div className='card-img'>
             <img src={mainImg} alt='' />
           </div>
-          <div className='d-flex flex-column card-info'>
+          <div className='d-flex flex-column justify-content-between card-info br3'>
             <p className='title'>{el.title}</p>
             <div className='d-flex justify-content-between align-items-center'>
               <p className='subtitle'>{el.subTitle}</p>
-              <p className='rate'>{el.rate}</p>
+              <p className='rate'>
+                <img className='mx-1' src={iconRate} alt='' />
+                <span>{el.rate}</span>
+              </p>
             </div>
           </div>
         </div>

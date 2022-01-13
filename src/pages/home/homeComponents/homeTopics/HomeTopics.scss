@@ -12,7 +12,7 @@
         box-shadow: 0px 3px 5px rgba(39, 39, 40, 0.1);
 
         .card-img {
-            // height: 70%;
+            height: 60%;
             width: 100%;
             overflow: hidden;
 
@@ -23,7 +23,8 @@
         }
 
         .card-info {
-            padding: 2px 3px;
+            padding: 2px 5px;
+            height: 40%; // TEMP
             // min-height: 30%;
             .title {
                 @include fsNormal;
