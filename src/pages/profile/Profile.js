@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
+
+import _ from 'lodash';
 
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
@@ -11,13 +13,31 @@ import AccountBalanceWalletOutlinedIcon from '@material-ui/icons/AccountBalanceW
 import './Profile.scss';
 import avatar from 'assets/images/logo/logo.svg';
 import iconClose from 'assets/images/icons/icon-close.svg';
+import { useSelector } from 'react-redux';
 
 const Profile = () => {
   const navigate = useNavigate();
+  const stateGeneral = useSelector((state) => state.stateGeneral);
+
+  const [profile, setProfile] = useState(stateGeneral.userInfo);
 
   const handleGoBack = () => {
     navigate(-1);
   };
+
+  const getProfile = () => {
+    console.log('TODO');
+  };
+
+  useEffect(() => {
+    let isMounted = true;
+    if (isMounted) {
+      if (_.isEmpty(profile)) getProfile();
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
     <div className='w-100 h-100 profile'>

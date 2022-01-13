@@ -111,7 +111,7 @@ const Home = () => {
       // remainingTime
       //   ? localStorage.setItem('remainingTime', remainingTime)
       //   : localStorage.setItem('remainingTime', cardInfo.remainingTime);
-      // console.log(stateGeneral);
+      console.log(stateGeneral);
     }
     return () => {
       isMounted = false;
