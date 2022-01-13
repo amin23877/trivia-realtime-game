@@ -1,10 +1,11 @@
 @import 'assets/scss/styles.scss';
 
 $size-avatar: 60px;
+$padding-left: 40px;
 
 .profile {
     .profile-header {
-        padding: 50px 30px 30px;
+        padding: 50px $padding-left 30px;
         background-color: $primary;
 
         .avatar {
@@ -38,5 +39,25 @@ $size-avatar: 60px;
         }
     }
     .profile-body {
+        .menu-item {
+            padding: 25px $padding-left;
+
+            .icon {
+                // min-width: 40px;
+                color: colorBlack(70);
+            }
+
+            p {
+                @include fsXL;
+
+                color: colorBlack(70);
+
+                margin-left: 10px;
+            }
+        }
+
+        .br-b {
+            border-bottom: 1px solid $br-light;
+        }
     }
 }

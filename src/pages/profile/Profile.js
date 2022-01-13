@@ -1,5 +1,9 @@
 import React from 'react';
 
+import ShareIcon from '@material-ui/icons/Share';
+import SettingsIcon from '@material-ui/icons/Settings';
+import HeadsetMicIcon from '@material-ui/icons/HeadsetMic';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 
 import './Profile.scss';
@@ -22,9 +26,29 @@ const Profile = () => {
         </div>
       </div>
       <div className='profile-body'>
-        <div>
-          <AccountBalanceWalletIcon />
-          <p></p>
+        <div className='d-flex align-items-center menu-item br-b'>
+          <AccountBalanceWalletIcon className='icon' />
+          <p>Wallet</p>
+        </div>
+
+        <div className='d-flex align-items-center menu-item br-b'>
+          <NotificationsIcon className='icon' />
+          <p>notification</p>
+        </div>
+
+        <div className='d-flex align-items-center menu-item br-b'>
+          <SettingsIcon className='icon' />
+          <p>Settings</p>
+        </div>
+
+        <div className='d-flex align-items-center menu-item br-b'>
+          <ShareIcon className='icon' />
+          <p>introduce to friends</p>
+        </div>
+
+        <div className='d-flex align-items-center menu-item'>
+          <HeadsetMicIcon className='icon' />
+          <p>Contact us</p>
         </div>
       </div>
     </div>
