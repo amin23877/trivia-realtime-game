@@ -1,10 +1,10 @@
 import React from 'react';
 
-import ShareIcon from '@material-ui/icons/Share';
-import SettingsIcon from '@material-ui/icons/Settings';
-import HeadsetMicIcon from '@material-ui/icons/HeadsetMic';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
+import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
+import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
+import HeadsetMicOutlinedIcon from '@material-ui/icons/HeadsetMicOutlined';
+import NotificationsOutlinedIcon from '@material-ui/icons/NotificationsOutlined';
+import AccountBalanceWalletOutlinedIcon from '@material-ui/icons/AccountBalanceWalletOutlined';
 
 import './Profile.scss';
 import avatar from 'assets/images/logo/logo.svg';
@@ -27,27 +27,27 @@ const Profile = () => {
       </div>
       <div className='profile-body'>
         <div className='d-flex align-items-center menu-item br-b'>
-          <AccountBalanceWalletIcon className='icon' />
+          <AccountBalanceWalletOutlinedIcon className='icon' />
           <p>Wallet</p>
         </div>
 
         <div className='d-flex align-items-center menu-item br-b'>
-          <NotificationsIcon className='icon' />
+          <NotificationsOutlinedIcon className='icon' />
           <p>notification</p>
         </div>
 
         <div className='d-flex align-items-center menu-item br-b'>
-          <SettingsIcon className='icon' />
+          <SettingsOutlinedIcon className='icon' />
           <p>Settings</p>
         </div>
 
         <div className='d-flex align-items-center menu-item br-b'>
-          <ShareIcon className='icon' />
+          <ShareOutlinedIcon className='icon' />
           <p>introduce to friends</p>
         </div>
 
         <div className='d-flex align-items-center menu-item'>
-          <HeadsetMicIcon className='icon' />
+          <HeadsetMicOutlinedIcon className='icon' />
           <p>Contact us</p>
         </div>
       </div>
