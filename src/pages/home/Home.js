@@ -22,26 +22,84 @@ const Home = () => {
     img: '',
   };
 
-  const topics = [
+  const homeTopics = [
     {
-      title: 'Car design hgdfh hsagd  shdg ',
-      subTitle: '10K plays',
-      rate: '4.8',
+      topic: 'Top Topics',
+      path: '',
+      topicList: [
+        {
+          title: 'Car design hgdfh hsagd  shdg ',
+          subTitle: '10K plays',
+          rate: '4.8',
+        },
+        {
+          title: 'Car design',
+          subTitle: '10K plays',
+          rate: '4.8',
+        },
+        {
+          title: 'Car design',
+          subTitle: '10K plays',
+          rate: '4.8',
+        },
+        {
+          title: 'Car design',
+          subTitle: '10K plays',
+          rate: '4.8',
+        },
+      ],
     },
     {
-      title: 'Car design',
-      subTitle: '10K plays',
-      rate: '4.8',
+      topic: 'Lastest Topics',
+      path: '',
+      topicList: [
+        {
+          title: 'Car design hgdfh hsagd  shdg ',
+          subTitle: '10K plays',
+          rate: '4.8',
+        },
+        {
+          title: 'Car design',
+          subTitle: '10K plays',
+          rate: '4.8',
+        },
+        {
+          title: 'Car design',
+          subTitle: '10K plays',
+          rate: '4.8',
+        },
+        {
+          title: 'Car design',
+          subTitle: '10K plays',
+          rate: '4.8',
+        },
+      ],
     },
     {
-      title: 'Car design',
-      subTitle: '10K plays',
-      rate: '4.8',
-    },
-    {
-      title: 'Car design',
-      subTitle: '10K plays',
-      rate: '4.8',
+      topic: 'Favorite Topics',
+      path: '',
+      topicList: [
+        {
+          title: 'Car design hgdfh hsagd  shdg ',
+          subTitle: '10K plays',
+          rate: '4.8',
+        },
+        {
+          title: 'Car design',
+          subTitle: '10K plays',
+          rate: '4.8',
+        },
+        {
+          title: 'Car design',
+          subTitle: '10K plays',
+          rate: '4.8',
+        },
+        {
+          title: 'Car design',
+          subTitle: '10K plays',
+          rate: '4.8',
+        },
+      ],
     },
   ];
 
@@ -65,56 +123,27 @@ const Home = () => {
         <Header />
       </div>
 
-      <div className='_body-height home-body'>
+      <div className='_body-height home-body br1'>
         <div className='ratio home-body-card'>
           {/* #ratio */}
           <HomeCard info={cardInfo} />
         </div>
 
-        {/* Topic 1 */}
-        <div className='topics'>
-          <div className='d-flex justify-content-between align-items-center topics-header'>
-            <p className='title'>Top Topics</p>
-            <p className='subtitle'>
-              see all
-              <img className='mx-2' src={arrowForwardMini} alt='' />
-            </p>
-          </div>
+        {homeTopics.map((item, index) => (
+          <div key={index} className='topics'>
+            <div className='d-flex justify-content-between align-items-center topics-header'>
+              <p className='title'>{item.topic}</p>
+              <p className='subtitle'>
+                see all
+                <img className='mx-2' src={arrowForwardMini} alt='' />
+              </p>
+            </div>
 
-          <div>
-            <HomeTopics topics={topics} />
+            <div>
+              <HomeTopics topics={item.topicList} />
+            </div>
           </div>
-        </div>
-
-        {/* Topic 2 */}
-        <div className='topics'>
-          <div className='d-flex justify-content-between align-items-center topics-header'>
-            <p className='title'>Lastest Topics</p>
-            <p className='subtitle'>
-              see all
-              <img className='mx-2' src={arrowForwardMini} alt='' />
-            </p>
-          </div>
-
-          <div>
-            <HomeTopics topics={topics} />
-          </div>
-        </div>
-
-        {/* Topic 3 */}
-        <div className='topics'>
-          <div className='d-flex justify-content-between align-items-center topics-header'>
-            <p className='title'>Favorite Topics</p>
-            <p className='subtitle'>
-              see all
-              <img className='mx-2' src={arrowForwardMini} alt='' />
-            </p>
-          </div>
-
-          <div>
-            <HomeTopics topics={topics} />
-          </div>
-        </div>
+        ))}
       </div>
 
       <div className='_footer'>
