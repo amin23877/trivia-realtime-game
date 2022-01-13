@@ -7,13 +7,13 @@ import iconRate from 'assets/images/icons/rate-mini.svg';
 const HomeTopics = ({ topics }) => {
   console.log(topics);
   return (
-    <div className='w-100 h-100 d-flex justify-content-between align-items-stretch homeTopics br1'>
+    <div className='w-100 h-100 d-flex justify-content-between align-items-stretch homeTopics'>
       {topics.map((el, index) => (
         <div key={index} className='topic-card'>
           <div className='card-img'>
             <img src={mainImg} alt='' />
           </div>
-          <div className='d-flex flex-column justify-content-between card-info br3'>
+          <div className='d-flex flex-column justify-content-between card-info'>
             <p className='title'>{el.title}</p>
             <div className='d-flex justify-content-between align-items-center'>
               <p className='subtitle'>{el.subTitle}</p>

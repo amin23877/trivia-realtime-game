@@ -71,9 +71,40 @@ const Home = () => {
           <HomeCard info={cardInfo} />
         </div>
 
+        {/* Topic 1 */}
         <div className='topics'>
           <div className='d-flex justify-content-between align-items-center topics-header'>
             <p className='title'>Top Topics</p>
+            <p className='subtitle'>
+              see all
+              <img className='mx-2' src={arrowForwardMini} alt='' />
+            </p>
+          </div>
+
+          <div>
+            <HomeTopics topics={topics} />
+          </div>
+        </div>
+
+        {/* Topic 2 */}
+        <div className='topics'>
+          <div className='d-flex justify-content-between align-items-center topics-header'>
+            <p className='title'>Lastest Topics</p>
+            <p className='subtitle'>
+              see all
+              <img className='mx-2' src={arrowForwardMini} alt='' />
+            </p>
+          </div>
+
+          <div>
+            <HomeTopics topics={topics} />
+          </div>
+        </div>
+
+        {/* Topic 3 */}
+        <div className='topics'>
+          <div className='d-flex justify-content-between align-items-center topics-header'>
+            <p className='title'>Favorite Topics</p>
             <p className='subtitle'>
               see all
               <img className='mx-2' src={arrowForwardMini} alt='' />
