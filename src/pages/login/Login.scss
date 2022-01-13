@@ -10,7 +10,7 @@
             @include fsL;
 
             width: 100%;
-            font-weight: 700;
+            font-family: RobotoBlack;
             margin: 50px 0 20px;
             color: colorBlack(85);
         }
@@ -50,7 +50,7 @@
         }
 
         .timer-resend {
-            font-weight: 700;
+            font-family: RobotoBlack;
             text-decoration: underline;
         }
     }

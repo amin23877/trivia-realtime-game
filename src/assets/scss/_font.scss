@@ -1,10 +1,37 @@
 @font-face {
     font-family: 'Roboto';
-    src: url('../fonts/Roboto/Roboto-Bold.ttf') format('ttf');
-    //   url("../fonts/Roboto/Roboto-Medium.woff2")
-    //     format("woff2"),
-    //   url("../fonts/Roboto/Roboto-Medium.woff")
-    //     format("woff"),
-    //   url("../fonts/Roboto/Roboto-Medium.eot")
-    //     format("eot");
+    src: url('../fonts/Roboto/Roboto-Medium.ttf') format('ttf'),
+        url('../fonts/Roboto/Roboto-Medium.woff2') format('woff2'),
+        url('../fonts/Roboto/Roboto-Medium.woff') format('woff'), url('../fonts/Roboto/Roboto-Medium.eot') format('eot'),
+        url('../fonts/Roboto/Roboto-Medium.otf') format('otf');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto/Roboto-Medium.ttf') format('ttf'),
+        url('../fonts/Roboto/Roboto-Medium.woff2') format('woff2'),
+        url('../fonts/Roboto/Roboto-Medium.woff') format('woff'), url('../fonts/Roboto/Roboto-Medium.eot') format('eot'),
+        url('../fonts/Roboto/Roboto-Medium.otf') format('otf');
+}
+
+@font-face {
+    font-family: 'RobotoBold';
+    src: url('../fonts/Roboto/Roboto-Bold.ttf') format('ttf'), url('../fonts/Roboto/Roboto-Bold.woff2') format('woff2'),
+        url('../fonts/Roboto/Roboto-Bold.woff') format('woff'), url('../fonts/Roboto/Roboto-Bold.eot') format('eot'),
+        url('../fonts/Roboto/Roboto-Bold.otf') format('otf');
+}
+
+@font-face {
+    font-family: 'RobotoThin';
+    src: url('../fonts/Roboto/Roboto-Thin.ttf') format('ttf'), url('../fonts/Roboto/Roboto-Thin.woff2') format('woff2'),
+        url('../fonts/Roboto/Roboto-Thin.woff') format('woff'), url('../fonts/Roboto/Roboto-Thin.eot') format('eot'),
+        url('../fonts/Roboto/Roboto-Thin.otf') format('otf');
+}
+
+@font-face {
+    font-family: 'RobotoBlack';
+    src: url('../fonts/Roboto/Roboto-Black.ttf') format('ttf'),
+        url('../fonts/Roboto/Roboto-Black.woff2') format('woff2'),
+        url('../fonts/Roboto/Roboto-Black.woff') format('woff'), url('../fonts/Roboto/Roboto-Black.eot') format('eot'),
+        url('../fonts/Roboto/Roboto-Black.otf') format('otf');
 }
