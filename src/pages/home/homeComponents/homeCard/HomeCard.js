@@ -9,7 +9,8 @@ import Countdown from 'react-countdown';
 import CountdownTimer from 'common/components/countdownTimer/CountDownTimer';
 
 const HomeCard = ({ info }) => {
-  const timeRemain = localStorage.getItem('remainingTime');
+  // const timeRemain = localStorage.getItem('remainingTime');
+  const timeRemain = 8407;
 
   const handleStop = (e) => {
     console.log(e);
