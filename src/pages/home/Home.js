@@ -28,12 +28,12 @@ const Home = () => {
       path: '',
       topicList: [
         {
-          title: 'Car design hgdfh hsagd  shdg ',
+          title: 'Car design',
           subTitle: '10K plays',
           rate: '4.8',
         },
         {
-          title: 'Car design',
+          title: 'The world under the ocean',
           subTitle: '10K plays',
           rate: '4.8',
         },
@@ -54,12 +54,12 @@ const Home = () => {
       path: '',
       topicList: [
         {
-          title: 'Car design hgdfh hsagd  shdg ',
+          title: 'Car design',
           subTitle: '10K plays',
           rate: '4.8',
         },
         {
-          title: 'Car design',
+          title: 'Art & Modern Graphicn',
           subTitle: '10K plays',
           rate: '4.8',
         },
@@ -80,12 +80,12 @@ const Home = () => {
       path: '',
       topicList: [
         {
-          title: 'Car design hgdfh hsagd  shdg ',
+          title: 'Child protection',
           subTitle: '10K plays',
           rate: '4.8',
         },
         {
-          title: 'Car design',
+          title: '10K plays',
           subTitle: '10K plays',
           rate: '4.8',
         },
@@ -123,7 +123,7 @@ const Home = () => {
         <Header />
       </div>
 
-      <div className='_body-height home-body br1'>
+      <div className='_body-height home-body'>
         <div className='ratio home-body-card'>
           {/* #ratio */}
           <HomeCard info={cardInfo} />
