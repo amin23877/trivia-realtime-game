@@ -123,7 +123,7 @@ const Home = () => {
         <Header />
       </div>
 
-      <div className='_body-height home-body br1'>
+      <div className='_body-height home-body'>
         <div className='ratio home-body-card'>
           {/* #ratio */}
           <HomeCard info={cardInfo} />

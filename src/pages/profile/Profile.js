@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import HeadsetMicOutlinedIcon from '@material-ui/icons/HeadsetMicOutlined';
@@ -11,6 +13,12 @@ import avatar from 'assets/images/logo/logo.svg';
 import iconClose from 'assets/images/icons/icon-close.svg';
 
 const Profile = () => {
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div className='w-100 h-100 profile'>
       <div className='d-flex justify-content-between align-items-stretch profile-header'>
@@ -22,7 +30,7 @@ const Profile = () => {
         </div>
 
         <div className='close'>
-          <img src={iconClose} alt='' />
+          <img src={iconClose} onClick={handleGoBack} alt='' />
         </div>
       </div>
       <div className='profile-body'>
