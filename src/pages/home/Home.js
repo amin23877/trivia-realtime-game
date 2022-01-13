@@ -24,7 +24,7 @@ const Home = () => {
 
   const topics = [
     {
-      title: 'Car design',
+      title: 'Car design hgdfh hsagd  shdg ',
       subTitle: '10K plays',
       rate: '4.8',
     },

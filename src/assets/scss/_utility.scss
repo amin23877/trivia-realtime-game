@@ -5,8 +5,11 @@
   width: 100%;
 }
 
-@mixin fsS() {
+@mixin fsXS() {
   font-size: 10px;
+}
+@mixin fsS() {
+  font-size: 11px;
 }
 @mixin fsNormal() {
   font-size: 12px;

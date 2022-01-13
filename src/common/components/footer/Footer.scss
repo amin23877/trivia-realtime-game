@@ -10,7 +10,7 @@ $height-icon-center: 60px;
     .icons {
         cursor: pointer;
         p {
-            @include fsS;
+            @include fsXS;
             color: $text-footer;
         }
         .p-active {

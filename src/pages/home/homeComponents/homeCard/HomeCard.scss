@@ -15,10 +15,6 @@ $radius-card: 15px;
     .homeCard-info {
         padding: 10px;
 
-        p {
-            margin: 0;
-        }
-
         .bullet {
             @include bullet(8px, $green-1);
             margin-right: 10px;
@@ -27,6 +23,11 @@ $radius-card: 15px;
         .title {
             color: white;
             font-weight: 500;
+
+            // max-width: 100px;
+            // white-space: nowrap;
+            // overflow: hidden;
+            // text-overflow: ellipsis;
         }
 
         .timer {
