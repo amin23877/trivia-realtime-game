@@ -3,8 +3,8 @@
 $size-avatar: 60px;
 $padding-left: 40px;
 
-.profile {
-    .profile-header {
+.menu {
+    .menu-header {
         padding: 50px $padding-left 30px;
         background-color: $primary;
 
@@ -38,7 +38,7 @@ $padding-left: 40px;
             }
         }
     }
-    .profile-body {
+    .menu-body {
         .menu-item {
             padding: 25px $padding-left;
 

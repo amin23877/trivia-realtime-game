@@ -10,7 +10,7 @@ import HeadsetMicOutlinedIcon from '@material-ui/icons/HeadsetMicOutlined';
 import NotificationsOutlinedIcon from '@material-ui/icons/NotificationsOutlined';
 import AccountBalanceWalletOutlinedIcon from '@material-ui/icons/AccountBalanceWalletOutlined';
 
-import './Profile.scss';
+import './Menu.scss';
 import avatar from 'assets/images/logo/logo.svg';
 import iconClose from 'assets/images/icons/icon-close.svg';
 import { useSelector } from 'react-redux';
@@ -18,20 +18,20 @@ import ApiCall from 'common/services/ApiCall';
 import { useDispatch } from 'react-redux';
 import { SET_USER_INFO } from 'redux/actions/mainActions/generalActions';
 
-const Profile = () => {
+const Menu = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const apiCall = new ApiCall();
 
   const stateGeneral = useSelector((state) => state.stateGeneral);
 
-  const [profile, setProfile] = useState(stateGeneral.userInfo);
+  const [userInfo, setUserInfo] = useState(stateGeneral.userInfo);
 
   const handleGoBack = () => {
     navigate(-1);
   };
 
-  const getProfile = () => {
+  const getUserInfo = () => {
     console.log('TODO');
 
     apiCall
@@ -48,7 +48,7 @@ const Profile = () => {
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
-      if (_.isEmpty(profile)) getProfile();
+      if (_.isEmpty(userInfo)) getUserInfo();
       console.log(stateGeneral);
     }
     return () => {
@@ -57,8 +57,8 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className='w-100 h-100 profile'>
-      <div className='d-flex justify-content-between align-items-stretch profile-header'>
+    <div className='w-100 h-100 menu'>
+      <div className='d-flex justify-content-between align-items-stretch menu-header'>
         <div className=''>
           <div className='avatar'>{/* <img src={avatar} alt='' /> */}</div>
 
@@ -70,7 +70,7 @@ const Profile = () => {
           <img src={iconClose} onClick={handleGoBack} alt='' />
         </div>
       </div>
-      <div className='profile-body'>
+      <div className='menu-body'>
         <div className='d-flex align-items-center menu-item br-b'>
           <AccountBalanceWalletOutlinedIcon className='icon' />
           <p>Wallet</p>
@@ -99,4 +99,4 @@ const Profile = () => {
     </div>
   );
 };
-export default Profile;
+export default Menu;
