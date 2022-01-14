@@ -14,14 +14,14 @@ import Home from 'pages/home/Home';
 import Login from 'pages/login/Login';
 import Friends from 'pages/friends/Friends';
 import Leagues from 'pages/leagues/Leagues';
-import VerificationCode from 'pages/login/VerificationCode';
 import Profile from 'pages/profile/Profile';
-import HomeTopicsInner from 'pages/home/homeComponents/homeTopics/HomeTopicsInner';
 import QuickPlay from 'pages/quickPlay/QuickPlay';
-import ProfileEdit from 'pages/profile/ProfileEdit';
 import Wallet from 'pages/menuPages/wallet/Wallet';
-import Notification from 'pages/menuPages/notification/Notification';
+import ProfileEdit from 'pages/profile/ProfileEdit';
+import VerificationCode from 'pages/login/VerificationCode';
 import SearchExplore from 'pages/searchExplore/SearchExplore';
+import Notification from 'pages/menuPages/notification/Notification';
+import HomeTopicsInner from 'pages/home/homeComponents/homeTopics/HomeTopicsInner';
 
 const RouterConfig = () => {
   return (
