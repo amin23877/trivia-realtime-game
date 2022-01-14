@@ -16,6 +16,7 @@ import Friends from 'pages/friends/Friends';
 import Leagues from 'pages/leagues/Leagues';
 import VerificationCode from 'pages/login/VerificationCode';
 import Profile from 'pages/profile/Profile';
+import HomeTopicsInner from 'pages/home/homeComponents/homeTopics/HomeTopicsInner';
 
 const RouterConfig = () => {
   return (
@@ -23,6 +24,10 @@ const RouterConfig = () => {
       <Routes>
         <Route exact path='/' element={<ProtectedRoute />}>
           <Route exact path='/' element={<Home />} />
+        </Route>
+
+        <Route exact path='/topics' element={<ProtectedRoute />}>
+          <Route exact path='/topics/:id' element={<HomeTopicsInner />} />
         </Route>
 
         <Route exact path='/menu' element={<ProtectedRoute />}>
