@@ -14,6 +14,7 @@ import Login from 'pages/login/Login';
 import VerificationCode from 'pages/login/VerificationCode';
 import Profile from 'pages/profile/Profile';
 import Friends from 'pages/friends/Friends';
+import Leagues from 'pages/leagues/Leagues';
 
 const RouterConfig = () => {
   return (
@@ -29,6 +30,10 @@ const RouterConfig = () => {
 
         <Route exact path='/friends' element={<ProtectedRoute />}>
           <Route exact path='/friends' element={<Friends />} />
+        </Route>
+
+        <Route exact path='/leagues' element={<ProtectedRoute />}>
+          <Route exact path='/leagues' element={<Leagues />} />
         </Route>
 
         <Route path='/login' element={<Login />} />
