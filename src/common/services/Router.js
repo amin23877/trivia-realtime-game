@@ -17,6 +17,7 @@ import Leagues from 'pages/leagues/Leagues';
 import VerificationCode from 'pages/login/VerificationCode';
 import Profile from 'pages/profile/Profile';
 import HomeTopicsInner from 'pages/home/homeComponents/homeTopics/HomeTopicsInner';
+import QuickPlay from 'pages/quickPlay/QuickPlay';
 
 const RouterConfig = () => {
   return (
@@ -36,6 +37,10 @@ const RouterConfig = () => {
 
         <Route exact path='/friends' element={<ProtectedRoute />}>
           <Route exact path='/friends' element={<Friends />} />
+        </Route>
+
+        <Route exact path='/quickPlay' element={<ProtectedRoute />}>
+          <Route exact path='/quickPlay' element={<QuickPlay />} />
         </Route>
 
         <Route exact path='/leagues' element={<ProtectedRoute />}>
