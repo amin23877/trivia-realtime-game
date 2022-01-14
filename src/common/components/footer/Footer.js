@@ -14,9 +14,9 @@ import iconProfileActive from 'assets/images/icons/footer-profile-active.svg';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const pathname = location.pathname;
+  const navigate = useNavigate();
 
   const menu = [
     {
@@ -63,7 +63,7 @@ const Footer = () => {
 
   const handleNavigate = (path) => {
     console.log(path);
-    Navigate('/profile');
+    navigate(path);
   };
   return (
     <div className='d-flex justify-content-between align-items-center footer'>
