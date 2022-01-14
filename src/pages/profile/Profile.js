@@ -14,9 +14,15 @@ import './Profile.scss';
 import avatar from 'assets/images/logo/logo.svg';
 import iconClose from 'assets/images/icons/icon-close.svg';
 import { useSelector } from 'react-redux';
+import ApiCall from 'common/services/ApiCall';
+import { useDispatch } from 'react-redux';
+import { SET_USER_INFO } from 'redux/actions/mainActions/generalActions';
 
 const Profile = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const apiCall = new ApiCall();
+
   const stateGeneral = useSelector((state) => state.stateGeneral);
 
   const [profile, setProfile] = useState(stateGeneral.userInfo);
@@ -27,12 +33,23 @@ const Profile = () => {
 
   const getProfile = () => {
     console.log('TODO');
+
+    apiCall
+      .get('user/me')
+      .then((res) => {
+        console.log('res > ', res);
+        dispatch(SET_USER_INFO(res.data.user));
+      })
+      .catch((err) => {
+        console.log('err > ', err);
+      });
   };
 
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
       if (_.isEmpty(profile)) getProfile();
+      console.log(stateGeneral);
     }
     return () => {
       isMounted = false;

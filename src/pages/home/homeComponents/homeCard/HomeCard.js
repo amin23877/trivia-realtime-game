@@ -6,7 +6,8 @@ import iconPlayer from 'assets/images/icons/home-card-player.svg';
 
 // #countdownTimer step2
 import Countdown from 'react-countdown';
-import CountdownTimer from 'common/components/countdownTimer/CountDownTimer';
+import CountdownTimer from 'common/components/CountdownTimer/CountDownTimer';
+// import CountdownTimer from 'common/components/countdownTimer/CountDownTimer';
 
 const HomeCard = ({ info }) => {
   // const timeRemain = localStorage.getItem('remainingTime');
