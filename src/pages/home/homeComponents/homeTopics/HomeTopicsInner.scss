@@ -1,1 +1,35 @@
 @import 'assets/scss/styles.scss';
+
+$height-header-inner: 250px;
+$height-footer-inner: 70px;
+$height-body-inner: calc(100% - #{$height-header-inner} - #{$height-footer-inner});
+
+.topicsInner {
+    background-color: $bg-home;
+    .topicsInner-header {
+        height: $height-header-inner;
+        background-color: white;
+        box-shadow: 0px 3px 5px rgba(94, 92, 106, 0.1);
+        border-radius: 0px 0px 16px 16px;
+    }
+    .topicsInner-body {
+        height: $height-body-inner;
+        overflow-y: auto;
+    }
+    .topicsInner-footer {
+        height: $height-footer-inner;
+        background-color: white;
+        box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.1);
+        .btn-play {
+            padding: 10px;
+            width: calc(min(50%, 200px));
+            background-color: $bg-btn-play;
+            box-shadow: 0px 3px 6px rgba(248, 63, 95, 0.3);
+            border-radius: 10px;
+            border: 1px solid $bg-btn-play;
+            color: white;
+            @include fsL;
+            font-family: RobotoBold;
+        }
+    }
+}
