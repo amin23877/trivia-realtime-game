@@ -15,7 +15,9 @@ $breakpoint-xxl: 1920px;
 
 $height-header: 30px;
 $height-footer: 70px;
-$height-body: calc(100% - #{$height-header} - #{$height-footer});
+$height-body-HF: calc(100% - #{$height-header} - #{$height-footer});
+$height-body-H: calc(100% - #{$height-header});
+$height-body-F: calc(100% - #{$height-footer});
 
 // Sum: 2:30'
 
