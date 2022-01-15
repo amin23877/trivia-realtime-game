@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import './CardLeagueInfo.scss';
-import mainImg from 'assets/images/pics/home-card-main.svg';
+import imgMain from 'assets/images/pics/home-card-main.svg';
 import iconPlayer from 'assets/images/icons/card-player.svg';
 
 // #countdownTimer step2
@@ -49,7 +49,7 @@ const CardLeagueInfo = ({ info }) => {
           <p>{`${info.players} player`}</p>
         </div>
       </div>
-      <img src={mainImg} alt='' />
+      <img src={imgMain} alt='' />
       {/* <img src={info.img} alt='' /> */}
     </div>
   );
