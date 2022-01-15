@@ -9,15 +9,15 @@ import iconPeople from 'assets/images/icons/header-people.svg';
 const Header = () => {
   const navigate = useNavigate();
 
-  const handleNavigate = () => {
-    navigate('/menu');
+  const handleNavigate = (path) => {
+    navigate(path);
   };
 
   return (
     <div className='d-flex justify-content-between align-items-center header'>
-      <img src={iconMenu} onClick={handleNavigate} alt='' />
+      <img src={iconMenu} onClick={() => handleNavigate('/menu')} alt='' />
       <img src={logo} alt='' />
-      <img src={iconPeople} alt='' />
+      <img src={iconPeople} alt='' onClick={() => handleNavigate('/friends')} />
     </div>
   );
 };

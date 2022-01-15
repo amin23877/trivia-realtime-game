@@ -72,7 +72,7 @@ const Menu = () => {
       </div>
       <div className='menu-body'>
         <div
-          className='d-flex align-items-center menu-item br-b'
+          className='d-flex align-items-center menu-item _br-bottom'
           onClick={() => navigate('wallet')}
         >
           <AccountBalanceWalletOutlinedIcon className='icon' />
@@ -80,19 +80,19 @@ const Menu = () => {
         </div>
 
         <div
-          className='d-flex align-items-center menu-item br-b'
+          className='d-flex align-items-center menu-item _br-bottom'
           onClick={() => navigate('notification')}
         >
           <NotificationsOutlinedIcon className='icon' />
           <p>notification</p>
         </div>
 
-        <div className='d-flex align-items-center menu-item br-b'>
+        <div className='d-flex align-items-center menu-item _br-bottom'>
           <SettingsOutlinedIcon className='icon' />
           <p>Settings</p>
         </div>
 
-        <div className='d-flex align-items-center menu-item br-b'>
+        <div className='d-flex align-items-center menu-item _br-bottom'>
           <ShareOutlinedIcon className='icon' />
           <p>introduce to friends</p>
         </div>

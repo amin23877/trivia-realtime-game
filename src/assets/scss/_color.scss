@@ -13,9 +13,14 @@ $grey-1: #8e8b9e;
 $bg-login: #f7f8fc;
 $bg-home: #e5e5e5;
 $bg-home-card: #f5a367;
+$bg-seachbox: #eeedf7;
 
 $br-light: #d2d5d9;
 
 $input-bg-default: rgba(20, 35, 186, 0.05);
 
 $text-footer: #8e8b9e;
+
+.color-primary {
+    color: $primary !important;
+}

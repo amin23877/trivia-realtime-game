@@ -1,1 +1,41 @@
 @import 'assets/scss/styles.scss';
+
+$size-avatar: 40px;
+$height-searchbox: 80px;
+$height-header-goback: $height-header-goback;
+
+.friends {
+    .friends-body {
+        .searchbox {
+            height: $height-searchbox;
+            padding: 20px;
+        }
+
+        .friends-list {
+            height: calc(100% - #{$height-searchbox} - #{$height-header-goback});
+            overflow-y: auto;
+            .friends-item {
+                padding: 15px 20px;
+
+                .avatar {
+                    width: $size-avatar;
+                    height: $size-avatar;
+                    border-radius: 100%;
+                    background: wheat;
+                    border: 1px solid white;
+                }
+
+                .remove {
+                    color: colorBlack(50);
+                }
+
+                .name {
+                    @include fsL;
+                    color: colorBlack(85);
+                    margin-left: 10px;
+                    font-family: RobotoBold;
+                }
+            }
+        }
+    }
+}

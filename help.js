@@ -63,7 +63,7 @@ export default Template;
         <Header />
       </div>
 
-      <div className='_body-height home-body'>Home</div>
+      <div className='_body-height-HF home-body'>Home</div>
 
       <div className='_footer br1'>
         <Footer />
