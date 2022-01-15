@@ -132,9 +132,11 @@ const Home = () => {
       </div>
 
       <div className='_body-height-HF home-body'>
-        <div className='ratio home-body-card'>
-          {/* #ratio */}
-          <CardLeagueInfo info={cardInfo} />
+        <div className='card-league'>
+          <div className='ratio _dish-cardLeagueInfo'>
+            {/* #ratio */}
+            <CardLeagueInfo info={cardInfo} />
+          </div>
         </div>
 
         {homeTopics.map((item, index) => (

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import CardLeagueInfo from 'common/components/cardLeagueInfo/CardLeagueInfo';
+
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
@@ -14,6 +16,14 @@ import { useNavigate } from 'react-router-dom';
 const HomeTopicsInner = () => {
   const styleBgImg = {
     // background: `url('../../../../assets/images/test/2.png')`,
+  };
+
+  const cardInfo = {
+    title: 'Chemical Compounds',
+    remainingTime: 8407,
+    price: 5000,
+    players: 2,
+    img: '',
   };
 
   const navigate = useNavigate();
@@ -74,7 +84,11 @@ const HomeTopicsInner = () => {
         </div>
       </div>
 
-      <div className='topicsInner-body'></div>
+      <div className='topicsInner-body'>
+        <div className='ratio _dish-cardLeagueInfo'>
+          <CardLeagueInfo info={cardInfo} />
+        </div>
+      </div>
 
       <div className='d-flex justify-content-center align-items-center topicsInner-footer'>
         <button className='btn-play' onClick={handlePlay}>

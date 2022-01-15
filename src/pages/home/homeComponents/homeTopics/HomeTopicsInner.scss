@@ -61,6 +61,7 @@ $size-square: 40px;
     .topicsInner-body {
         height: $height-body-inner;
         overflow-y: auto;
+        padding: 20px;
     }
     .topicsInner-footer {
         height: $height-footer-inner;

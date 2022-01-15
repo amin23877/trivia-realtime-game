@@ -41,6 +41,13 @@
     border-bottom: 1px solid $br-light;
 }
 
+._dish-cardLeagueInfo {
+    width: 100% !important;
+    min-height: 150px;
+    margin: auto !important;
+    --bs-aspect-ratio: 40%; // #ratio
+}
+
 // ------------------------------------------- Test
 .br1 {
     border: 1px solid red;
