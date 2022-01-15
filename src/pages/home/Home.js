@@ -4,8 +4,8 @@ import ApiCall from 'common/services/ApiCall';
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
-import HomeCard from './homeComponents/homeCard/HomeCard';
 import HomeTopics from './homeComponents/homeTopics/HomeTopics';
+import CardLeagueInfo from 'common/components/cardLeagueInfo/CardLeagueInfo';
 
 import './Home.scss';
 import arrowForwardMini from 'assets/images/icons/arrow-forward-mini.svg';
@@ -126,7 +126,7 @@ const Home = () => {
       <div className='_body-height-HF home-body'>
         <div className='ratio home-body-card'>
           {/* #ratio */}
-          <HomeCard info={cardInfo} />
+          <CardLeagueInfo info={cardInfo} />
         </div>
 
         {homeTopics.map((item, index) => (

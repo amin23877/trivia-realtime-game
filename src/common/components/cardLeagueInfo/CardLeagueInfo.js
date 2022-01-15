@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
-import './HomeCard.scss';
+import './CardLeagueInfo.scss';
 import mainImg from 'assets/images/pics/home-card-main.svg';
-import iconPlayer from 'assets/images/icons/home-card-player.svg';
+import iconPlayer from 'assets/images/icons/card-player.svg';
 
 // #countdownTimer step2
 import Countdown from 'react-countdown';
 import CountdownTimer from 'common/components/CountdownTimer/CountDownTimer';
 // import CountdownTimer from 'common/components/countdownTimer/CountDownTimer';
 
-const HomeCard = ({ info }) => {
+const CardLeagueInfo = ({ info }) => {
   // const timeRemain = localStorage.getItem('remainingTime');
   const timeRemain = 8407;
 
@@ -27,8 +27,8 @@ const HomeCard = ({ info }) => {
   }, []);
 
   return (
-    <div className='w-100 h-100 d-flex homeCard'>
-      <div className='d-flex flex-column justify-content-between  w-100 homeCard-info'>
+    <div className='w-100 h-100 d-flex cardLeagueInfo'>
+      <div className='d-flex flex-column justify-content-between  w-100 cardLeagueInfo-info'>
         <div className='d-flex justify-content-start align-items-center'>
           <div className='bullet'></div>
           <p className='title'> {info.title}</p>
@@ -54,4 +54,4 @@ const HomeCard = ({ info }) => {
     </div>
   );
 };
-export default HomeCard;
+export default CardLeagueInfo;
