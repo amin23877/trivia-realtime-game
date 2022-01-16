@@ -7,7 +7,7 @@ import ApiCall from 'common/services/ApiCall';
 
 import './Login.scss';
 import logo from 'assets/images/logo/logo.svg';
-import mainImg from 'assets/images/pics/login-otp.svg';
+import imgMain from 'assets/images/pics/login-otp.svg';
 import arrowBack from 'assets/images/icons/arrow-back.svg';
 import { useDispatch } from 'react-redux';
 import { SET_USER_INFO } from 'redux/actions/mainActions/generalActions';
@@ -110,7 +110,7 @@ const VerificationCode = () => {
       <div className='login-body'>
         <p className='title'>Enter Auth Code</p>
         <div className='text-center'>
-          <img src={mainImg} alt='' />
+          <img src={imgMain} alt='' />
         </div>
 
         <form noValidate autoComplete='off' className='_dish-textField'>

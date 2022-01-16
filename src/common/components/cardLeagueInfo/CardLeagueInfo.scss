@@ -2,7 +2,7 @@
 
 $radius-card: 15px;
 
-.homeCard {
+.cardLeagueInfo {
     background-color: $bg-home-card;
     border-radius: $radius-card;
 
@@ -12,7 +12,7 @@ $radius-card: 15px;
         border-radius: 0 $radius-card $radius-card 0;
     }
 
-    .homeCard-info {
+    .cardLeagueInfo-info {
         padding: 10px;
 
         .bullet {

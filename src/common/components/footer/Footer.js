@@ -11,11 +11,12 @@ import iconHomeActive from 'assets/images/icons/footer-home-active.svg';
 import iconLeagueActive from 'assets/images/icons/footer-league-active.svg';
 import iconSearchActive from 'assets/images/icons/footer-search-active.svg';
 import iconProfileActive from 'assets/images/icons/footer-profile-active.svg';
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
   const location = useLocation();
   const pathname = location.pathname;
+  const navigate = useNavigate();
 
   const menu = [
     {
@@ -29,7 +30,7 @@ const Footer = () => {
     {
       title: 'League',
       pathname: '/league',
-      path: 'league',
+      path: '/leagues',
       isCenter: false,
       icon: iconLeague,
       iconActive: iconLeagueActive,
@@ -37,7 +38,7 @@ const Footer = () => {
     {
       title: '',
       pathname: '/play',
-      path: 'play',
+      path: '/quickPlay',
       isCenter: true,
       icon: iconPlay,
       iconActive: iconPlay,
@@ -45,7 +46,7 @@ const Footer = () => {
     {
       title: 'Search',
       pathname: '/search',
-      path: 'search',
+      path: '/search',
       isCenter: false,
       icon: iconSearch,
       iconActive: iconSearchActive,
@@ -53,12 +54,17 @@ const Footer = () => {
     {
       title: 'Profile',
       pathname: '/profile',
-      path: 'profile',
+      path: '/profile',
       isCenter: false,
       icon: iconProfile,
       iconActive: iconProfileActive,
     },
   ];
+
+  const handleNavigate = (path) => {
+    console.log(path);
+    navigate(path);
+  };
   return (
     <div className='d-flex justify-content-between align-items-center footer'>
       {menu.map((el, index) => (
@@ -67,7 +73,7 @@ const Footer = () => {
           className={`d-flex flex-column justify-content-between align-items-center icons ${
             el.isCenter ? 'icon-center' : ''
           }`}
-          //   onClick={() => Navigate(el.path)}
+          onClick={() => handleNavigate(el.path)}
         >
           {pathname == el.pathname ? (
             <img src={el.iconActive} alt='' />

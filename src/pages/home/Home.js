@@ -1,17 +1,21 @@
+import React, { useEffect } from 'react';
+
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import ApiCall from 'common/services/ApiCall';
+
 import Footer from 'common/components/footer/Footer';
 import Header from 'common/components/header/Header';
-import ApiCall from 'common/services/ApiCall';
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-
-import HomeCard from './homeComponents/homeCard/HomeCard';
 import HomeTopics from './homeComponents/homeTopics/HomeTopics';
+import CardLeagueInfo from 'common/components/cardLeagueInfo/CardLeagueInfo';
 
 import './Home.scss';
 import arrowForwardMini from 'assets/images/icons/arrow-forward-mini.svg';
 
 const Home = () => {
+  const navigate = useNavigate();
   const apiCall = new ApiCall();
+
   const stateGeneral = useSelector((state) => state.stateGeneral);
 
   const cardInfo = {
@@ -103,6 +107,10 @@ const Home = () => {
     },
   ];
 
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
+
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
@@ -123,14 +131,20 @@ const Home = () => {
         <Header />
       </div>
 
-      <div className='_body-height home-body'>
-        <div className='ratio home-body-card'>
-          {/* #ratio */}
-          <HomeCard info={cardInfo} />
+      <div className='_body-height-HF home-body'>
+        <div className='card-league'>
+          <div className='ratio _dish-cardLeagueInfo'>
+            {/* #ratio */}
+            <CardLeagueInfo info={cardInfo} />
+          </div>
         </div>
 
         {homeTopics.map((item, index) => (
-          <div key={index} className='topics'>
+          <div
+            key={index}
+            className='topics'
+            onClick={() => handleNavigate('/topics/5')}
+          >
             <div className='d-flex justify-content-between align-items-center topics-header'>
               <p className='title'>{item.topic}</p>
               <p className='subtitle'>

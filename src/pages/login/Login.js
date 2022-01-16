@@ -7,7 +7,7 @@ import ApiCall from 'common/services/ApiCall';
 
 import './Login.scss';
 import logo from 'assets/images/logo/logo.svg';
-import mainImg from 'assets/images/pics/login-login.svg';
+import imgMain from 'assets/images/pics/login-login.svg';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -68,7 +68,7 @@ const Login = () => {
       <div className='login-body'>
         <p className='title'>Log in</p>
         <div className='text-center'>
-          <img src={mainImg} alt='' />
+          <img src={imgMain} alt='' />
         </div>
 
         <form noValidate autoComplete='off' className='_dish-textField'>
