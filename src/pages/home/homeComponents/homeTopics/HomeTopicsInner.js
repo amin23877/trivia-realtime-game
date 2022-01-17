@@ -12,6 +12,9 @@ import HelpIcon from '@material-ui/icons/Help';
 import './HomeTopicsInner.scss';
 import { useNavigate } from 'react-router-dom';
 import { Badge } from '@material-ui/core';
+import { MOCK_BADGETES } from 'common/mocks/MOCK';
+import { MOCK_LEADERS } from 'common/mocks/MOCK';
+
 // import imgMain from 'assets/images/test/2.png';
 
 const HomeTopicsInner = () => {
@@ -27,16 +30,12 @@ const HomeTopicsInner = () => {
     img: '',
   };
 
-  const mockBadges = [
-    'Jungle',
-    'Land protection',
-    'Jungle',
-    'Land protection',
-    'Jungle',
-    'Culture',
-    'Jungle',
-    'Jungle',
-  ];
+  const mockBadges = MOCK_BADGETES;
+
+  const mockLeaders = MOCK_LEADERS;
+
+  const mockLeadersBest = [mockLeaders[0], mockLeaders[1], mockLeaders[2]];
+  const mockLeadersOther = mockLeaders;
 
   const tabs = ['All points', 'Daily', 'Weekly', 'Monthly'];
   const [activatedTab, setActivatedTab] = useState(0);
@@ -137,6 +136,42 @@ const HomeTopicsInner = () => {
                 {el}
               </button>
             ))}
+          </div>
+
+          <div className='best'>
+            <div className='d-flex best-users'>
+              {mockLeadersBest.map((el, index) => (
+                <div
+                  key={index}
+                  className={`user ${index === 1 ? 'best-user' : ''}`}
+                >
+                  <div className='mx-auto avatar'></div>
+                  <p className='username'>{el.username}</p>
+                  <p className='points'>{`${el.points} points`}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className='d-flex align-items-center levels'>
+              <div className='level level-2'>2</div>
+              <div className='level level-1'>1</div>
+              <div className='level level-3'>3</div>
+            </div>
+          </div>
+          <div className='results'>
+            {mockLeadersOther.map((el, index) => (
+              <div
+                key={index}
+                className='d-flex align-items-center _br-bottom user'
+              >
+                <span className='index'>{`${index + 4}.`}</span>
+                <div className='avatar'></div>
+                <p className='username'>{el.username}</p>
+                <p className='points'>{`${el.points} points`}</p>
+              </div>
+            ))}
+
+            <p className='seemore'>See more</p>
           </div>
         </div>
       </div>

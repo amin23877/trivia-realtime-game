@@ -41,6 +41,14 @@
   background-color: $color;
 }
 
+@mixin avatarShape($size, $color: wheat) {
+  width: $size;
+  height: $size;
+  border-radius: 100%;
+  background: wheat;
+  border: 1px solid white;
+}
+
 // ======================================================
 // Function
 // ======================================================

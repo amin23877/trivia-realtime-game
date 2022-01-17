@@ -5,6 +5,7 @@ $height-footer-inner: 70px;
 $height-body-inner: calc(100% - #{$height-header-inner} - #{$height-footer-inner});
 
 $size-square: 40px;
+$size-avatar: 30px;
 
 .topicsInner {
     background-color: $bg-home;
@@ -110,6 +111,106 @@ $size-square: 40px;
                     color: white;
                     background-color: $primary;
                 }
+            }
+        }
+
+        .avatar {
+            @include avatarShape($size-avatar);
+        }
+
+        .best {
+            margin: 30px 0 20px;
+            .best-users {
+                .user {
+                    width: 100px;
+                    height: 100px;
+                    padding: 10px;
+                    margin: auto;
+                    border-radius: 16px;
+                    background-color: white;
+                    text-align: center;
+                    box-shadow: 0px 3px 5px rgba(39, 39, 40, 0.1);
+
+                    .username {
+                        @include fsS;
+                        padding: 5px 0;
+                    }
+
+                    .points {
+                        @include fsS;
+                        color: $primary;
+                        margin-left: auto !important;
+                    }
+                }
+
+                .best-user {
+                    margin-top: -10px;
+                }
+            }
+
+            .levels {
+                margin: 10px 0 0;
+
+                .level {
+                    width: 35%;
+                    color: white;
+                    text-align: center;
+                    font-size: 20px;
+                    font-weight: 900;
+                    border-radius: 3px;
+                    box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.1);
+                }
+                .level-1 {
+                    z-index: 1;
+                    height: 40px;
+                    font-size: 25px;
+                    background-color: $orange-3;
+                }
+
+                .level-2 {
+                    height: 28px;
+                    margin-right: -5px;
+                    background-color: $grey-2;
+                }
+
+                .level-3 {
+                    height: 28px;
+                    background-color: $orange-4;
+                    margin-left: -5px;
+                }
+            }
+        }
+
+        .results {
+            background-color: white;
+            border-radius: 16px;
+
+            .user {
+                padding: 15px;
+
+                .index {
+                    @include fsNormal;
+                    color: $primary;
+                    min-width: 25px;
+                }
+
+                .username {
+                    @include fsM;
+                    padding-left: 10px;
+                }
+
+                .points {
+                    @include fsNormal;
+                    color: $primary;
+                    margin-left: auto !important;
+                }
+            }
+
+            .seemore {
+                @include fsNormal;
+                color: $primary;
+                padding: 15px;
+                text-align: center;
             }
         }
     }
