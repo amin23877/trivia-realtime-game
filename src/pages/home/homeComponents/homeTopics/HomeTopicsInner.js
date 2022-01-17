@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import CardLeagueInfo from 'common/components/cardLeagueInfo/CardLeagueInfo';
 
@@ -37,6 +37,9 @@ const HomeTopicsInner = () => {
     'Jungle',
     'Jungle',
   ];
+
+  const tabs = ['All points', 'Daily', 'Weekly', 'Monthly'];
+  const [activatedTab, setActivatedTab] = useState(0);
 
   const navigate = useNavigate();
 
@@ -119,6 +122,22 @@ const HomeTopicsInner = () => {
               {el}
             </p>
           ))}
+        </div>
+
+        <div className='board'>
+          <p className='title'>Topic Leaderboard</p>
+
+          <div className='tabs'>
+            {tabs.map((el, index) => (
+              <button
+                key={index}
+                className={`tab ${activatedTab === index ? 'tab-active' : ''}`}
+                onClick={() => setActivatedTab(index)}
+              >
+                {el}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 

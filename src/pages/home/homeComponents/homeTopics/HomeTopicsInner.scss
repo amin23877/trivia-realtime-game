@@ -19,6 +19,9 @@ $size-square: 40px;
             height: 40%;
             padding: 20px;
             background: url('../../../../assets/images/test/2.png');
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+
             p {
                 width: $size-square;
                 height: $size-square;
@@ -88,6 +91,25 @@ $size-square: 40px;
                 border: 1px solid $grey-1;
                 border-radius: 8px;
                 cursor: pointer;
+            }
+        }
+
+        .board {
+            .tabs {
+                margin: 20px 0;
+                .tab {
+                    @include fsNormal;
+                    color: colorBlack(50);
+                    padding: 5px;
+                    border: 1px solid transparent;
+                    width: 25%;
+                    cursor: pointer;
+                }
+                .tab-active {
+                    border-radius: 6px;
+                    color: white;
+                    background-color: $primary;
+                }
             }
         }
     }
