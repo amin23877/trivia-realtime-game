@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { MOCK_LEADERS } from 'common/mocks/MOCK';
+import { MOCK_BADGETES } from 'common/mocks/MOCK';
 
 import CardLeagueInfo from 'common/components/cardLeagueInfo/CardLeagueInfo';
 
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import AddIcon from '@material-ui/icons/Add';
-import HelpOutlineOutlinedIcon from '@material-ui/icons/HelpOutlineOutlined';
-import StarRateOutlinedIcon from '@material-ui/icons/StarRateOutlined';
-import HelpIcon from '@material-ui/icons/Help';
 import './HomeTopicsInner.scss';
-import { useNavigate } from 'react-router-dom';
-import { Badge } from '@material-ui/core';
-import { MOCK_BADGETES } from 'common/mocks/MOCK';
-import { MOCK_LEADERS } from 'common/mocks/MOCK';
-
-// import imgMain from 'assets/images/test/2.png';
+import AddIcon from '@material-ui/icons/Add';
+import HelpIcon from '@material-ui/icons/Help';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
+import StarRateOutlinedIcon from '@material-ui/icons/StarRateOutlined';
 
 const HomeTopicsInner = () => {
   const styleBgImg = {
@@ -31,9 +28,7 @@ const HomeTopicsInner = () => {
   };
 
   const mockBadges = MOCK_BADGETES;
-
   const mockLeaders = MOCK_LEADERS;
-
   const mockLeadersBest = [mockLeaders[0], mockLeaders[1], mockLeaders[2]];
   const mockLeadersOther = mockLeaders;
 
