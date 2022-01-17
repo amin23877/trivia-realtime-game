@@ -11,6 +11,7 @@ import StarRateOutlinedIcon from '@material-ui/icons/StarRateOutlined';
 import HelpIcon from '@material-ui/icons/Help';
 import './HomeTopicsInner.scss';
 import { useNavigate } from 'react-router-dom';
+import { Badge } from '@material-ui/core';
 // import imgMain from 'assets/images/test/2.png';
 
 const HomeTopicsInner = () => {
@@ -25,6 +26,17 @@ const HomeTopicsInner = () => {
     players: 2,
     img: '',
   };
+
+  const mockBadges = [
+    'Jungle',
+    'Land protection',
+    'Jungle',
+    'Land protection',
+    'Jungle',
+    'Culture',
+    'Jungle',
+    'Jungle',
+  ];
 
   const navigate = useNavigate();
 
@@ -99,6 +111,14 @@ const HomeTopicsInner = () => {
             care. And let me introduce you to the challenges around it. I'm glad
             you are with me.
           </p>
+        </div>
+
+        <div className='d-flex flex-wrap badges'>
+          {mockBadges.map((el, index) => (
+            <p key={index} className='badge'>
+              {el}
+            </p>
+          ))}
         </div>
       </div>
 
