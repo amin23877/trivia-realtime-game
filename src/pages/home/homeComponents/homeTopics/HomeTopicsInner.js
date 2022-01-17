@@ -88,6 +88,18 @@ const HomeTopicsInner = () => {
         <div className='ratio _dish-cardLeagueInfo'>
           <CardLeagueInfo info={cardInfo} />
         </div>
+
+        <div className='description'>
+          <p className='title'>Description</p>
+          <p className='text'>
+            Considering the great and undeniable importance of nature and the
+            environment in the life of every creature on this planet, I decided
+            to teach this subject to get better and more acquainted with the
+            environment around you and to create a culture of environmental
+            care. And let me introduce you to the challenges around it. I'm glad
+            you are with me.
+          </p>
+        </div>
       </div>
 
       <div className='d-flex justify-content-center align-items-center topicsInner-footer'>
