@@ -19,6 +19,11 @@ ul {
 li {
   list-style: none;
 }
+button {
+  outline: unset;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
 
 // ======================================================
 // Scrollbar

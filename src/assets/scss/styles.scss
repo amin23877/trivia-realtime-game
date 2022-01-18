@@ -3,6 +3,7 @@
 @import './color';
 @import './basic';
 @import './utility';
+@import './material';
 @import './dimensions';
 
 ._header {
@@ -13,8 +14,38 @@
     height: $height-footer;
 }
 
-._body-height {
-    height: $height-body;
+._body-height-HF {
+    height: $height-body-HF;
+}
+
+._body-height-H {
+    height: $height-body-H;
+}
+
+._body-height-F {
+    height: $height-body-F;
+}
+
+._header-goback {
+    padding: 0 20px;
+    height: $height-header-goback;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    ._header-title {
+        @include fsM;
+        color: $primary;
+        font-family: RobotoBold;
+    }
+}
+
+._br-bottom {
+    border-bottom: 1px solid $br-light;
+}
+
+._dish-cardLeagueInfo {
+    width: 100% !important;
+    min-height: 150px;
+    margin: auto !important;
+    --bs-aspect-ratio: 40%; // #ratio
 }
 
 // ------------------------------------------- Test

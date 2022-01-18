@@ -6,11 +6,8 @@
         padding: 20px 0;
         overflow-y: auto;
 
-        .home-body-card {
-            width: 90%;
-            min-height: 150px;
-            margin: auto;
-            --bs-aspect-ratio: 40%; // #ratio
+        .card-league {
+            padding: 20px !important;
         }
     }
 }

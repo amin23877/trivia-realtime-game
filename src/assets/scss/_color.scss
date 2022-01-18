@@ -8,14 +8,23 @@ $red-1: #f24973;
 $green-1: #12ae25;
 $orange-1: #cfa306;
 $orange-2: #eeb217;
+$orange-3: #f8b827;
+$orange-4: #c06434;
 $grey-1: #8e8b9e;
+$grey-2: #cac7c7;
 
 $bg-login: #f7f8fc;
 $bg-home: #e5e5e5;
 $bg-home-card: #f5a367;
+$bg-seachbox: #eeedf7;
+$bg-btn-play: #f83f5f;
 
 $br-light: #d2d5d9;
 
 $input-bg-default: rgba(20, 35, 186, 0.05);
 
 $text-footer: #8e8b9e;
+
+.color-primary {
+    color: $primary !important;
+}
