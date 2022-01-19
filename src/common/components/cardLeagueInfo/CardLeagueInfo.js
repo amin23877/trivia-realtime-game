@@ -48,7 +48,7 @@ const CardLeagueInfo = ({ info }) => {
                     <p>{`${info.players} player`}</p>
                 </div>
             </div>
-            <img src={mainImg} alt="" />
+            <img src={imgMain} alt="" />
             {/* <img src={info.img} alt='' /> */}
         </div>
   );
