@@ -1,6 +1,7 @@
 @import "../../../assets/scss/styles.scss";
 
-$profile-header-height: 135px;
+$profile-header-image-height: 135px;
+$profile-header-height: 225px;
 $profile-header-avatar: 54px;
 $profile-info-padding-top: 4px;
 /* ------Header Info------- */
@@ -25,6 +26,7 @@ $tab-bar-height: 2.5px;
   &__image {
     object-fit: cover;
     object-position: top;
+    height: $profile-header-image-height;
   }
   &__info {
     padding: $profile-info-padding-top 25px 0 25px;
@@ -51,14 +53,16 @@ $tab-bar-height: 2.5px;
 }
 
 .profile--tabs {
-  @include fsM;
-  font-weight: 400;
   box-shadow: $profile-header-info-boxShadow;
   &__tab {
-    padding: 10px 20px;
-    color: $grey-1;
+    padding: 0 20px 10px 20px;
     text-align: center;
     position: relative;
+    &__text {
+      @include fsM;
+      font-weight: 400;
+      color: $grey-1;
+    }
     &__bar {
       background-color: $primary;
       height: 2.5px;
@@ -69,9 +73,6 @@ $tab-bar-height: 2.5px;
     }
   }
 }
-.active-profile-tab {
-  color: $primary;
-  & > .profile--tabs__bar {
-    display: block;
-  }
+.profile--tabs__tab.profile-active-tab > span.profile--tabs__tab__text {
+    color: $primary;
 }
