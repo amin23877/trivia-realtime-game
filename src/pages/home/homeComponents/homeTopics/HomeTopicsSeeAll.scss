@@ -1,0 +1,12 @@
+@import 'assets/scss/styles.scss';
+
+$height-body: calc(100% - #{$height-header-path});
+
+.topicsSeeAll {
+    padding: 20px;
+
+    .topicsSeeAll-body {
+        height: $height-body;
+        overflow-y: auto;
+    }
+}
