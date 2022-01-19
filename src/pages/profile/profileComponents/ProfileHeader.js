@@ -39,21 +39,6 @@ const ProfileHeader = ({tabHandler,activeTab}) => {
           <div className="profile--header__info__level">Level 6</div>
         </div>
       </div>
-      <div className="profile--tabs">
-        <ul className="d-flex flex-row w-100 p-0 justify-content-center">
-          {tabs.map((t, i) => (
-            <li
-              key={i}
-              className={`profile--tabs__tab ${
-                t.name === activeTab ? "profile-active-tab":""
-              }`}
-            >
-              <span>{t.name}</span>
-              {t.name === activeTab && <span className="profile--tabs__tab__bar"></span>}
-            </li>
-          ))}
-        </ul>
-      </div>
     </header>
   );
 }
