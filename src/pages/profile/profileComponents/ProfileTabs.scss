@@ -23,6 +23,6 @@ $profile-header-info-boxShadow: 0px 3px 5px rgba(94, 92, 106, 0.1);
     }
   }
 }
-.profile--tabs__tab.profile-active-tab > span.profile--tabs__tab__text {
+.profile--tabs__tab.profile-active-tab > a span.profile--tabs__tab__text {
     color: $primary;
 }

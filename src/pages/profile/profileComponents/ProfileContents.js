@@ -1,16 +1,15 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 // --- components
-import ProfileNoTopics from "./ProfileNoTopics"
 // --- assets
 import "./ProfileContents.scss";
 
-const ProfileContents = ({data}) => {
+const ProfileContents = ({children}) => {
   return (
     <div className="profile--contents">
-      <ProfileNoTopics />
+      {children}
     </div>
   )
 }
+
 export default ProfileContents

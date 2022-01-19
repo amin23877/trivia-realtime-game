@@ -2,24 +2,15 @@ import React from "react"
 import PropTypes from "prop-types"
 // --- components
 import ProfileEditButton from "./ProfileEditButton"
+import ProfileTabs from "./ProfileTabs"
 
 // --- assets
 import "./ProfileHeader.scss"
 import ProfileImg from "assets/images/test/profile-header.jpg"
 import UserPicImg from "assets/images/test/profile-pic.jpg"
 
-export const P_TABS = {
-  FAVORITE_TOPICS:"Favorite Topics", // default open tab
-  PERFORMANCE:"Performance",
-  FRIENDS:"Friends",
-}
-const tabs = [
-  {name: P_TABS.FAVORITE_TOPICS},
-  {name: P_TABS.PERFORMANCE},
-  {name: P_TABS.FRIENDS},
-]
 
-const ProfileHeader = ({tabHandler,activeTab}) => {
+const ProfileHeader = ({activeTab}) => {
   return (
     <header className="profile--header">
       <img
@@ -39,6 +30,7 @@ const ProfileHeader = ({tabHandler,activeTab}) => {
           <div className="profile--header__info__level">Level 6</div>
         </div>
       </div>
+      <ProfileTabs activeTab={activeTab} />
     </header>
   );
 }
