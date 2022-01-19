@@ -1,0 +1,77 @@
+@import "../../../assets/scss/styles.scss";
+
+$profile-header-height: 135px;
+$profile-header-avatar: 54px;
+$profile-info-padding-top: 4px;
+/* ------Header Info------- */
+$profile-header-info-height: 84px;
+$profile-header-info-boxShadow: 0px 3px 5px rgba(94, 92, 106, 0.1);
+/* ------Header Name------- */
+$profile-name-font-weight: 500;
+$profile-name-font-color: #2C2C2C;
+/* ------Header Level------- */
+$profile-level-font-weight: 400;
+/* ------Tab------- */
+$tab-bar-height: 2.5px;
+
+@function calculateAvatarTranslate() {
+  @return -(($profile-header-avatar / 2) + $profile-info-padding-top)
+}
+
+.profile--header {
+  width: 100%;
+  height: $profile-header-height;
+  position: relative;
+  &__image {
+    object-fit: cover;
+    object-position: top;
+  }
+  &__info {
+    padding: $profile-info-padding-top 25px 0 25px;
+    display: flex;
+    // height: $profile-header-info-height;
+    border-radius: 0px;
+    &__pic {
+      @include avatarShape($profile-header-avatar);
+      border: none;
+      transform: translateY(calculateAvatarTranslate());
+      margin-right: 4px;
+    }
+    &__name {
+      @include fsM;
+      color: $profile-name-font-color;
+      font-weight: $profile-name-font-weight;
+    }
+    &__level {
+      @include fsNormal;
+      color: $grey-1;
+      font-weight: $profile-level-font-weight;
+    }
+  }
+}
+
+.profile--tabs {
+  @include fsM;
+  font-weight: 400;
+  box-shadow: $profile-header-info-boxShadow;
+  &__tab {
+    padding: 10px 20px;
+    color: $grey-1;
+    text-align: center;
+    position: relative;
+    &__bar {
+      background-color: $primary;
+      height: 2.5px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}
+.active-profile-tab {
+  color: $primary;
+  & > .profile--tabs__bar {
+    display: block;
+  }
+}
