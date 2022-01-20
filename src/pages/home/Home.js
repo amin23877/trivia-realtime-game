@@ -10,6 +10,8 @@ import HomeTopics from './homeComponents/homeTopics/HomeTopics';
 import SelectGameType from './homeComponents/selectGameType/SelectGameType';
 import CardLeagueInfo from 'common/components/cardLeagueInfo/CardLeagueInfo';
 
+import { MOCK_TOPICS } from 'common/mocks/MOCK';
+
 import './Home.scss';
 import arrowForwardMini from 'assets/images/icons/arrow-forward-mini.svg';
 
@@ -27,88 +29,11 @@ const Home = () => {
     img: '',
   };
 
-  const homeTopics = [
-    {
-      topic: 'Top Topics',
-      path: '',
-      topicList: [
-        {
-          title: 'Car design',
-          subTitle: '10K plays',
-          rate: '4.8',
-        },
-        {
-          title: 'The world under the ocean',
-          subTitle: '10K plays',
-          rate: '4.8',
-        },
-        {
-          title: 'Car design',
-          subTitle: '10K plays',
-          rate: '4.8',
-        },
-        {
-          title: 'Car design',
-          subTitle: '10K plays',
-          rate: '4.8',
-        },
-      ],
-    },
-    {
-      topic: 'Lastest Topics',
-      path: '',
-      topicList: [
-        {
-          title: 'Car design',
-          subTitle: '10K plays',
-          rate: '4.8',
-        },
-        {
-          title: 'Art & Modern Graphicn',
-          subTitle: '10K plays',
-          rate: '4.8',
-        },
-        {
-          title: 'Car design',
-          subTitle: '10K plays',
-          rate: '4.8',
-        },
-        {
-          title: 'Car design',
-          subTitle: '10K plays',
-          rate: '4.8',
-        },
-      ],
-    },
-    {
-      topic: 'Favorite Topics',
-      path: '',
-      topicList: [
-        {
-          title: 'Child protection',
-          subTitle: '10K plays',
-          rate: '4.8',
-        },
-        {
-          title: '10K plays',
-          subTitle: '10K plays',
-          rate: '4.8',
-        },
-        {
-          title: 'Car design',
-          subTitle: '10K plays',
-          rate: '4.8',
-        },
-        {
-          title: 'Car design',
-          subTitle: '10K plays',
-          rate: '4.8',
-        },
-      ],
-    },
-  ];
+  const homeTopics = MOCK_TOPICS;
 
-  const handleNavigate = (path) => {
+  const handleNavigate = (event, path) => {
+    event.stopPropagation();
+    console.log(path);
     navigate(path);
   };
 
@@ -147,11 +72,14 @@ const Home = () => {
           <div
             key={index}
             className='topics'
-            onClick={() => handleNavigate('/topics/5')}
+            onClick={(e) => handleNavigate(e, '/topics/5')}
           >
             <div className='d-flex justify-content-between align-items-center topics-header'>
               <p className='title'>{item.topic}</p>
-              <p className='subtitle'>
+              <p
+                className='subtitle'
+                onClick={(e) => handleNavigate(e, '/topics/5/all')}
+              >
                 see all
                 <img className='mx-2' src={arrowForwardMini} alt='' />
               </p>
