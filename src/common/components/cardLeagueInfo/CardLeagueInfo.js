@@ -25,7 +25,6 @@ const CardLeagueInfo = ({ info }) => {
             isMounted = false;
         };
     }, []);
-
     return (
         <div className="w-100 h-100 d-flex homeCard">
             <div className="d-flex flex-column justify-content-between  w-100 homeCard-info">
