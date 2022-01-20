@@ -60,7 +60,7 @@ $radius-card: 15px;
     }
 
     .ratio::before {
-        display: unset;
+        display: unset !important;
     }
 }
 
