@@ -11,8 +11,11 @@ import CardLeagueInfo from 'common/components/cardLeagueInfo/CardLeagueInfo';
 
 import { MOCK_TOPICS } from 'common/mocks/MOCK';
 
+import { Drawer } from '@material-ui/core';
+
 import './Home.scss';
 import arrowForwardMini from 'assets/images/icons/arrow-forward-mini.svg';
+import Menu from 'pages/menu/Menu';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -36,6 +39,16 @@ const Home = () => {
     navigate(path);
   };
 
+  const [openDrawerMenu, setOpenDrawerMenu] = React.useState(false);
+
+  const handleDrawerOpen = () => {
+    setOpenDrawerMenu(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpenDrawerMenu(false);
+  };
+
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
@@ -53,9 +66,20 @@ const Home = () => {
   return (
     <div className='w-100 h-100 home'>
       <div className='_header'>
-        <Header />
+        <Header onDrawerOpen={handleDrawerOpen} />
       </div>
 
+      <Drawer
+        // className={classes.drawer}
+        variant='persistent'
+        anchor='left'
+        open={openDrawerMenu}
+        // classes={{
+        //   paper: classes.drawerPaper,
+        // }}
+      >
+        <Menu onDrawerClose={handleDrawerClose} />
+      </Drawer>
       <div className='_body-height-HF home-body'>
         <div className='card-league'>
           <div className='ratio _dish-cardLeagueInfo'>

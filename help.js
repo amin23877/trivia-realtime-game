@@ -42,6 +42,13 @@ Pagination _____________________________________________________________________
 
 
 @Template ___________________________________________________________________
+// Reacts
+// Hooks
+// Packages
+// Components, Services, Functions
+// Redux
+// Material - lab
+// Styles, Icons, Images
 import React from 'react';
 import './Template.scss';
 // @import 'assets/scss/styles.scss';
