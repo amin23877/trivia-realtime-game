@@ -14,7 +14,7 @@ const Header = ({ onDrawerOpen }) => {
   };
 
   return (
-    <div className='d-flex justify-content-between align-items-center header'>
+    <div className='d-flex justify-content-between align-items-center _header-shadow header'>
       {/* <img src={iconMenu} onClick={() => handleNavigate('/menu')} alt='' /> */}
       <img src={iconMenu} onClick={onDrawerOpen} alt='' />
       <img src={logo} alt='' />
