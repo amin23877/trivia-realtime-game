@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import "./CardLeagueInfo.scss";
 import imgMain from "assets/images/pics/home-card-main.svg";
@@ -25,7 +25,6 @@ const CardLeagueInfo = ({ info }) => {
             isMounted = false;
         };
     }, []);
-
     return (
         <div className="w-100 h-100 d-flex homeCard">
             <div className="d-flex flex-column justify-content-between  w-100 homeCard-info">

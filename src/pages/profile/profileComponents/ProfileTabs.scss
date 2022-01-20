@@ -1,0 +1,28 @@
+@import "assets/scss/styles.scss";
+
+$profile-header-info-boxShadow: 0px 3px 5px rgba(94, 92, 106, 0.1);
+
+.profile--tabs {
+  box-shadow: $profile-header-info-boxShadow;
+  &__tab {
+    padding: 0 20px 10px 20px;
+    text-align: center;
+    position: relative;
+    &__text {
+      @include fsM;
+      font-weight: 400;
+      color: $grey-1;
+    }
+    &__bar {
+      background-color: $primary;
+      height: 2.5px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}
+.profile--tabs__tab.profile-active-tab > a span.profile--tabs__tab__text {
+    color: $primary;
+}
