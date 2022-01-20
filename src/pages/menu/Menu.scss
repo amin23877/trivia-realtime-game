@@ -34,26 +34,36 @@ $padding-left: 40px;
             margin-top: 0 !important;
             margin-top: 0 !important;
 
-            img {
+            .icon {
+                color: white;
+                font-size: 35px;
             }
         }
     }
     .menu-body {
-        .menu-item {
-            padding: 25px $padding-left;
+    }
 
-            .icon {
-                // min-width: 40px;
-                color: colorBlack(70);
-            }
+    .menu-item {
+        padding: 20px $padding-left;
 
-            p {
-                @include fsXL;
+        .icon {
+            // min-width: 40px;
+            color: colorBlack(70);
+        }
 
-                color: colorBlack(70);
+        p {
+            @include fsXL;
 
-                margin-left: 10px;
-            }
+            margin-left: 10px;
+            color: colorBlack(70);
+        }
+    }
+
+    .deactivation {
+        padding-top: 20px;
+        p,
+        .icon {
+            color: $red-2;
         }
     }
 }
