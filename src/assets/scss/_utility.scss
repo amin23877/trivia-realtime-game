@@ -1,0 +1,61 @@
+// ======================================================
+// Mixin
+// ======================================================
+@mixin btnMain() {
+  width: 100%;
+}
+
+@mixin fsXS() {
+  font-size: 10px;
+}
+@mixin fsS() {
+  font-size: 11px;
+}
+@mixin fsNormal() {
+  font-size: 12px;
+}
+@mixin fsSM() {
+  font-size: 13px;
+}
+@mixin fsM() {
+  font-size: 14px;
+}
+@mixin fsL() {
+  font-size: 16px;
+}
+@mixin fsXL() {
+  font-size: 18px;
+}
+@mixin fsXXL() {
+  font-size: 20px;
+}
+@mixin fsXXXL() {
+  font-size: 24px;
+}
+
+@mixin bullet($size, $color, $radius: 100%) {
+  width: $size;
+  height: $size;
+  display: inline-block;
+  border-radius: $radius;
+  background-color: $color;
+}
+
+@mixin avatarShape($size, $color: wheat) {
+  width: $size;
+  height: $size;
+  border-radius: 100%;
+  background: wheat;
+  border: 1px solid white;
+}
+
+// ======================================================
+// Function
+// ======================================================
+@function colorBlack($opacity) {
+  @return rgba(0, 0, 0, $opacity / 100);
+}
+
+@function colorWhite($opacity) {
+  @return rgba(255, 255, 255, $opacity / 100);
+}

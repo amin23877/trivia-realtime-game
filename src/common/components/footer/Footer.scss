@@ -1,0 +1,25 @@
+@import 'assets/scss/styles.scss';
+
+$height-icon-center: 60px;
+.footer {
+    width: 100%;
+    height: $height-footer;
+    padding: 0 15px;
+    background-color: white;
+
+    .icons {
+        cursor: pointer;
+        p {
+            @include fsXS;
+            color: $text-footer;
+        }
+        .p-active {
+            color: $primary;
+        }
+    }
+
+    .icon-center {
+        z-index: 1;
+        margin-top: calc(-1 * #{$height-icon-center} / 2);
+    }
+}

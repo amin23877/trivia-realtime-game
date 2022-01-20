@@ -1,0 +1,30 @@
+@import 'assets/scss/styles.scss';
+
+.home {
+    background-color: $bg-home;
+    .home-body {
+        padding: 20px 0;
+        overflow-y: auto;
+
+        .card-league {
+            padding: 20px !important;
+        }
+    }
+}
+
+.topics {
+    .topics-header {
+        padding: 15px;
+
+        .title {
+            @include fsL;
+            font-family: RobotoBlack;
+            color: colorBlack(80);
+        }
+
+        .subtitle {
+            @include fsM;
+            color: colorBlack(50);
+        }
+    }
+}

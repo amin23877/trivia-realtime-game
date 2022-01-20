@@ -1,0 +1,38 @@
+@import './color';
+
+._dish-textField {
+    height: 120px;
+    // min-height: 200px;
+    width: 100%;
+
+    .MuiFormControl-root,
+    .MuiTextField-root,
+    .MuiInputBase-root {
+        width: 100% !important;
+    }
+
+    fieldset {
+        border-radius: 8px !important;
+        // background-color: white;
+        border: 1px solid $input-bg-default;
+    }
+
+    .Mui-focused fieldset {
+        border: 1px solid $primary !important;
+    }
+
+    .MuiInputLabel-outlined {
+    }
+
+    .MuiInput {
+        border: 1px solid red !important;
+    }
+
+    .Mui-focused {
+        color: $primary !important;
+    }
+
+    input {
+        width: 100% !important;
+    }
+}

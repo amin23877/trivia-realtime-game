@@ -1,0 +1,57 @@
+@import 'assets/scss/styles.scss';
+
+$radius-card: 15px;
+
+.cardLeagueInfo {
+    background-color: $bg-home-card;
+    border-radius: $radius-card;
+
+    img {
+        min-height: 100%;
+        width: auto;
+        border-radius: 0 $radius-card $radius-card 0;
+    }
+
+    .cardLeagueInfo-info {
+        padding: 10px;
+
+        .bullet {
+            @include bullet(8px, $green-1);
+            margin-right: 10px;
+        }
+
+        .title {
+            color: white;
+            font-weight: 500;
+
+            // max-width: 100px;
+            // white-space: nowrap;
+            // overflow: hidden;
+            // text-overflow: ellipsis;
+        }
+
+        .timer {
+        }
+
+        .price {
+            @include fsM;
+            width: fit-content;
+            color: $orange-1;
+            background-color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin: 5px 0 !important;
+            font-weight: 500;
+        }
+
+        .players {
+            @include fsS;
+            font-weight: 500;
+
+            color: $grey-1;
+            p {
+                margin: 0 5px;
+            }
+        }
+    }
+}
