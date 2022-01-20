@@ -1,0 +1,29 @@
+.categories-list {
+    background-color: #6d6be6;
+    background-image: url("../../../../assets/images/backgrounds/categoriesPattern.svg");
+    padding: 24px;
+    overflow-y: auto;
+    &__header {
+        text-align: center;
+        position: sticky;
+        top:0;
+        margin-bottom: 30px;
+        &--title {
+            color: #fff;
+            font-size: 14px;
+        }
+        &--back-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
+    &__category-item-container{
+        display:grid;
+        grid-template-columns: repeat(3 , calc((100% - 36px)/3));
+        column-gap:18px;
+        row-gap:18px;
+    }
+}

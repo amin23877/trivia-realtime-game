@@ -1,4 +1,6 @@
 export const BASE_URL = 'http://quizupp.ir/api/';
+export const SOCKET_BASE_URL = 'http://quizup.site/';
+export const IMAGE_URL = 'http://quizup.site';
 
 export const CORE = {
   ERROR_MESSAGE: {
