@@ -45,6 +45,14 @@ export const MOCK_BADGETES = [
   'Jungle',
 ];
 
+export const MOCK_CARDINFO = {
+  title: 'Chemical Compounds',
+  remainingTime: 8407,
+  price: 5000,
+  players: 2,
+  img: '',
+};
+
 export const MOCK_TOPICS = [
   {
     topic: 'Top Topics',
