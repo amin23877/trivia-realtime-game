@@ -9,9 +9,10 @@ import _ from 'lodash';
 import ApiCall from 'common/services/ApiCall';
 // Redux
 import { useDispatch } from 'react-redux';
+import { MODALS } from 'common/values/MODALS';
+import { SET_MODALS } from 'redux/actions/mainActions/generalActions';
 import { SET_USER_INFO } from 'redux/actions/mainActions/generalActions';
 // Material - lab
-
 // Styles, Icons, Images
 import './Menu.scss';
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
@@ -52,6 +53,12 @@ const Menu = ({ onDrawerClose }) => {
       .catch((err) => {
         console.log('err > ', err);
       });
+  };
+
+  const handleOpenModal = (value) => {
+    // #modalUse step1
+    onDrawerClose();
+    dispatch(SET_MODALS({ [MODALS[value]]: true }));
   };
 
   useEffect(() => {
@@ -123,8 +130,11 @@ const Menu = ({ onDrawerClose }) => {
       </div>
 
       <div className='d-flex align-items-center menu-item deactivation mt-auto mb-0'>
-        <PowerSettingsNewOutlinedIcon className='icon' />
-        <p>deactivation</p>
+        <PowerSettingsNewOutlinedIcon
+          className='icon'
+          onClick={() => handleOpenModal('deactivation')}
+        />
+        <p onClick={() => handleOpenModal('deactivation')}>deactivation</p>
       </div>
     </div>
   );
