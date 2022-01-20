@@ -23,6 +23,7 @@ import SearchExplore from 'pages/searchExplore/SearchExplore';
 import Notification from 'pages/menuPages/notification/Notification';
 import HomeTopicsInner from 'pages/home/homeComponents/homeTopics/HomeTopicsInner';
 import HomeTopicsSeeAll from 'pages/home/homeComponents/homeTopics/HomeTopicsSeeAll';
+import LeaguesHistory from 'pages/leagues/leaguesComponents/LeaguesHistory';
 
 const RouterConfig = () => {
   return (
@@ -40,6 +41,7 @@ const RouterConfig = () => {
 
         <Route exact path='/leagues' element={<ProtectedRoute />}>
           <Route exact path='/leagues' element={<Leagues />} />
+          <Route exact path='/leagues/history' element={<LeaguesHistory />} />
         </Route>
 
         <Route exact path='/quickPlay' element={<ProtectedRoute />}>
