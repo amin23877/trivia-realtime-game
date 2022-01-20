@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +7,7 @@ import ApiCall from 'common/services/ApiCall';
 import Footer from 'common/components/footer/Footer';
 import Header from 'common/components/header/Header';
 import HomeTopics from './homeComponents/homeTopics/HomeTopics';
+import SelectGameType from './homeComponents/selectGameType/SelectGameType';
 import CardLeagueInfo from 'common/components/cardLeagueInfo/CardLeagueInfo';
 
 import './Home.scss';
@@ -17,7 +18,7 @@ const Home = () => {
   const apiCall = new ApiCall();
 
   const stateGeneral = useSelector((state) => state.stateGeneral);
-
+  const [openGameTypes, setOpenGameTypes] = useState(false)
   const cardInfo = {
     title: 'Chemical Compounds',
     remainingTime: 8407,
@@ -125,6 +126,9 @@ const Home = () => {
       isMounted = false;
     };
   }, []);
+  const _handleOpenGameTypes = (state=true) => {
+    setOpenGameTypes(state)
+  }
   return (
     <div className='w-100 h-100 home'>
       <div className='_header'>
@@ -158,10 +162,15 @@ const Home = () => {
             </div>
           </div>
         ))}
+        {
+          openGameTypes &&
+          <SelectGameType open={openGameTypes} handleOpenGameTypes={_handleOpenGameTypes}/>
+        }
+
       </div>
 
       <div className='_footer'>
-        <Footer />
+        <Footer handleOpenGameTypes={_handleOpenGameTypes} />
       </div>
     </div>
   );
