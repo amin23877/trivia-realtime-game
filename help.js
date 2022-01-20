@@ -1,7 +1,7 @@
 /*
 @Redux               @Bootstrap               
 
-@RouterConfig        
+@RouterConfig        @Pagination
 
 @Redux ____________________________________________________________________________
 1. > npm install 
@@ -27,9 +27,15 @@ RouterConfig ___________________________________________________________________
 1. > npm install react-countdown --save
 2. search #countdownTimer
 
-#ratio
 CountdownTimer _______________________________________________________________________
 
+
+
+@Pagination _______________________________________________________________________
+1. > npm i @material-ui/lab
+2. search #pagination
+
+Pagination _______________________________________________________________________
 
 
 
@@ -69,6 +75,9 @@ export default Template;
         <Footer />
       </div>
     </div>
+
+
+    {array.map((el, index) => (<p key={index} className=''>{el}</p>))}
 Template ___________________________________________________________________
 
 

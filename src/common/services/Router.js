@@ -22,6 +22,7 @@ import VerificationCode from 'pages/login/VerificationCode';
 import SearchExplore from 'pages/searchExplore/SearchExplore';
 import Notification from 'pages/menuPages/notification/Notification';
 import HomeTopicsInner from 'pages/home/homeComponents/homeTopics/HomeTopicsInner';
+import HomeTopicsSeeAll from 'pages/home/homeComponents/homeTopics/HomeTopicsSeeAll';
 
 const RouterConfig = () => {
   return (
@@ -30,6 +31,11 @@ const RouterConfig = () => {
         <Route exact path='/' element={<ProtectedRoute />}>
           <Route exact path='/' element={<Home />} />
           <Route exact path='/topics/:id' element={<HomeTopicsInner />} />
+          <Route
+            exact
+            path='/topics/:topicId/all'
+            element={<HomeTopicsSeeAll />}
+          />
         </Route>
 
         <Route exact path='/leagues' element={<ProtectedRoute />}>

@@ -25,6 +25,7 @@
         .subtitle {
             @include fsM;
             color: colorBlack(50);
+            cursor: pointer;
         }
     }
 }
