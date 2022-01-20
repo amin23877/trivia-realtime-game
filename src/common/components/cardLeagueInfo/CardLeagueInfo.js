@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import "./CardLeagueInfo.scss";
 import imgMain from "assets/images/pics/home-card-main.svg";
