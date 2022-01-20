@@ -17,9 +17,7 @@
         padding: 15px;
 
         .title {
-            @include fsL;
-            font-family: RobotoBlack;
-            color: colorBlack(80);
+            @include pageTitle;
         }
 
         .subtitle {
