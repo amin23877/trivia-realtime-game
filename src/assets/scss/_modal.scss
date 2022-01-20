@@ -1,0 +1,16 @@
+._modal-center {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+
+    ._modal-body {
+        width: fit-content;
+        // min-width: 50%;
+        max-width: 90%;
+        max-height: 90%;
+        overflow-y: auto;
+
+        border-radius: 8px;
+        background-color: white;
+    }
+}

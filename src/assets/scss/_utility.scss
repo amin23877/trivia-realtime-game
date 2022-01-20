@@ -49,6 +49,17 @@
   border: 1px solid white;
 }
 
+@mixin pageTitle() {
+  @include fsL;
+  font-family: RobotoBlack;
+  color: colorBlack(80);
+}
+
+@mixin pageSubTitle() {
+  @include fsM;
+  color: colorBlack(50);
+}
+
 // ======================================================
 // Function
 // ======================================================

@@ -2,6 +2,7 @@
 @import './font';
 @import './color';
 @import './basic';
+@import './modal';
 @import './utility';
 @import './material';
 @import './dimensions';
@@ -53,6 +54,10 @@
         font-size: 14px;
         margin: 0 5px;
     }
+}
+
+._header-shadow {
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 ._br-bottom {
@@ -108,6 +113,10 @@
             font-weight: 500;
         }
     }
+}
+
+._cursor-pointer {
+    cursor: pointer;
 }
 
 // #pagination step2: start -------------------------------------
