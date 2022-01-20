@@ -21,9 +21,12 @@ import ProfileEdit from 'pages/profile/ProfileEdit';
 import VerificationCode from 'pages/login/VerificationCode';
 import SearchExplore from 'pages/searchExplore/SearchExplore';
 import Notification from 'pages/menuPages/notification/Notification';
+import LeaguesHistory from 'pages/leagues/leaguesComponents/LeaguesHistory';
 import HomeTopicsInner from 'pages/home/homeComponents/homeTopics/HomeTopicsInner';
 import HomeTopicsSeeAll from 'pages/home/homeComponents/homeTopics/HomeTopicsSeeAll';
-import LeaguesHistory from 'pages/leagues/leaguesComponents/LeaguesHistory';
+import ProfileFriends from 'pages/profile/profileComponents/Contents/ProfileFriends';
+import ProfileFavoriteTopics from 'pages/profile/profileComponents/Contents/ProfileFavoriteTopics';
+import ProfilePerformance from 'pages/profile/profileComponents/Contents/ProfilePerformance';
 
 const RouterConfig = () => {
   return (
@@ -49,7 +52,19 @@ const RouterConfig = () => {
         </Route>
 
         <Route exact path='/profile' element={<ProtectedRoute />}>
-          <Route exact path='/profile' element={<Profile />} />
+          <Route exact path='/profile' element={<Profile />}>
+            <Route
+              exact
+              path='/profile/favorite-topics'
+              element={<ProfileFavoriteTopics />}
+            />
+            <Route
+              exact
+              path='/profile/performance'
+              element={<ProfilePerformance />}
+            />
+            <Route exact path='/profile/friends' element={<ProfileFriends />} />
+          </Route>
           <Route exact path='/profile/edit' element={<ProfileEdit />} />
         </Route>
 

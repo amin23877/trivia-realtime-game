@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import './CardLeagueInfo.scss';
 import imgExpired from 'assets/images/icons/expired.svg';
@@ -17,15 +17,6 @@ const CardLeagueInfo = ({ info, expired = false }) => {
   const handleStop = (e) => {
     console.log(e);
   };
-
-  useEffect(() => {
-    let isMounted = true;
-    if (isMounted) {
-    }
-    return () => {
-      isMounted = false;
-    };
-  }, []);
 
   return (
     <div
@@ -52,7 +43,6 @@ const CardLeagueInfo = ({ info, expired = false }) => {
             onComplete={(e) => handleStop(e)}
           />
         </div>
-
         <p className='price'>{`$${info.price}`}</p>
         <div className='d-flex justify-content-start align-items-center players'>
           <img src={iconPlayer} alt='' />
