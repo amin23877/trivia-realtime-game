@@ -13,7 +13,6 @@ const QuickPlay = () => {
     ? `${localStorage.getItem('token')}`
     : null;
 
-  // const socket = io(socketUrl, { transports: ["websocket"] });
   const socket = io.connect(socketUrl, { transports: ["websocket"] });
 
   const [categories, setCategories] = useState([])

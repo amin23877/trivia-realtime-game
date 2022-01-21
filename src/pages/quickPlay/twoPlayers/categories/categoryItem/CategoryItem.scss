@@ -1,23 +1,39 @@
-.category-item{
-    height:114px;
+@keyframes showCategoryAnimation {
+    50% {
+        transform: translateY(-15px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.category-item {
+    height: 114px;
     background-color: #fff;
     border-radius: 12px;
-    padding:9px;
-    &__image{
-        width:100%;
-        height:74px;
-        background-color: #EEEDF7;
+    padding: 9px;
+    transform: translateY(15px);
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-duration: 150ms;
+    animation-name: showCategoryAnimation;
+
+    &__image {
+        width: 100%;
+        height: 74px;
+        background-color: #eeedf7;
         border-radius: 8px;
-        display:flex;
+        display: flex;
         align-items: center;
         justify-content: center;
-        padding:14px;
-        img{
-            width:100%;
+        padding: 14px;
+        img {
+            width: 100%;
         }
     }
-    &__name{
-        margin-top:3px;
+    &__name {
+        margin-top: 3px;
         font-size: 12px;
         text-align: center;
     }

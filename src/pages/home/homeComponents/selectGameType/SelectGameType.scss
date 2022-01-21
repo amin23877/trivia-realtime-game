@@ -19,7 +19,7 @@
     width: 100vw;
     height: calc(100vh - 70px);
     backdrop-filter: blur(6px);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(33, 33, 51, 0.9);
     position: absolute;
     top: 0;
     left: 0;
@@ -45,7 +45,7 @@
             border-radius: 28px;
             transform: translateY(114px);
             animation-fill-mode: forwards;
-            animation-duration: 250ms;
+            animation-duration: 150ms;
 
             &:nth-child(1) {
                 animation-name: onePlayerAnimation;
@@ -53,12 +53,12 @@
             }
             &:nth-child(2) {
                 animation-name: twoPlayersAnimation;
-                animation-delay: 250ms;
+                animation-delay: 150ms;
                 margin: 0 8px;
             }
             &:nth-child(3) {
                 animation-name: onePlayerAnimation;
-                animation-delay: 500ms;
+                animation-delay: 300ms;
             }
             & > img {
                 margin-bottom: 10px;

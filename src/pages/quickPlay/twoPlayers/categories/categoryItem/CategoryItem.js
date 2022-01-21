@@ -5,13 +5,13 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { useNavigate } from "react-router-dom";
 import { IMAGE_URL } from "common/values/CORE";
 
-const CategoryItem = ({ data }) => {
+const CategoryItem = ({ data, index, handleSelectCategory }) => {
     const Dispatch = useDispatch()
     const navigate = useNavigate();
 
     return (
 
-        <div className="category-item">
+        <div onClick={() => handleSelectCategory(data)} className="category-item" style={{ animationDelay: `${150 * index}ms` }}>
             <div className="category-item__image">
                 <img src={IMAGE_URL + data.logo} />
             </div>
