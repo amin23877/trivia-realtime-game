@@ -67,6 +67,11 @@
   transform: translate(-50%, -50%);
 }
 
+@mixin imageFit($fit: cover,$position: center) {
+  object-fit: $fit;
+  object-position: $position;
+}
+
 // ======================================================
 // Function
 // ======================================================
