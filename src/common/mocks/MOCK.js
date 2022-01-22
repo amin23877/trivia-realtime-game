@@ -298,3 +298,9 @@ export const MOCK_FAVORITE_TOPICS = [
     image: Img4
   },
 ]
+
+export const MOCK_PERFORMANCE_LEVEL = {
+  xp: 40,
+  max_xp: 100,
+  level: 6
+}
