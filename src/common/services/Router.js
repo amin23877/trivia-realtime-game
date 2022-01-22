@@ -16,12 +16,15 @@ import ProfileEdit from "pages/profile/ProfileEdit";
 import VerificationCode from "pages/login/VerificationCode";
 import SearchExplore from "pages/searchExplore/SearchExplore";
 import Notification from "pages/menuPages/notification/Notification";
+import LeaguesInner from "pages/leagues/leaguesComponents/LeaguesInner";
+import LeaguesResult from "pages/leagues/leaguesComponents/LeaguesResult";
+import LeaguesHistory from "pages/leagues/leaguesComponents/LeaguesHistory";
+import CategoriesList from "pages/quickPlay/twoPlayers/categories/CategoriesList";
 import HomeTopicsInner from "pages/home/homeComponents/homeTopics/HomeTopicsInner";
 import HomeTopicsSeeAll from "pages/home/homeComponents/homeTopics/HomeTopicsSeeAll";
 import ProfileFavoriteTopics from "pages/profile/profileComponents/Contents/ProfileFavoriteTopics";
 import ProfilePerformance from "pages/profile/profileComponents/Contents/ProfilePerformance";
 import ProfileFriends from "pages/profile/profileComponents/Contents/ProfileFriends";
-import CategoriesList from "pages/quickPlay/twoPlayers/categories/CategoriesList";
 
 const RouterConfig = () => {
 	return (
@@ -35,6 +38,9 @@ const RouterConfig = () => {
 
 				<Route exact path="/leagues" element={<ProtectedRoute />}>
 					<Route exact path="/leagues" element={<Leagues />} />
+					<Route exact path="/leagues/history" element={<LeaguesHistory />} />
+					<Route exact path="/leagues/:id" element={<LeaguesInner />} />
+					<Route exact path="/leagues/result" element={<LeaguesResult />} />
 				</Route>
 
 				<Route exact path="/quickPlay" element={<ProtectedRoute />}>
