@@ -2,4 +2,10 @@
 
 .profile-performance {
   margin: 0 24px;
+  &--title {
+    margin: 20px 0;
+    text-align: left;
+    color: #2C2C2C;
+    @include fsM;
+  }
 }
