@@ -72,6 +72,17 @@
   object-position: $position;
 }
 
+@mixin box(
+  $box-border-radius: 12px,
+  $box-shadow: 0px 3px 5px rgba(39, 39, 40, 0.1),
+  $box-background:#FFFFFF,
+  $box-width: auto
+) {
+  background: $box-background;
+  width: $box-width;
+  box-shadow: $box-shadow;
+  border-radius: $box-border-radius;
+}
 // ======================================================
 // Function
 // ======================================================
