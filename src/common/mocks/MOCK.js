@@ -304,3 +304,51 @@ export const MOCK_PERFORMANCE_LEVEL = {
   max_xp: 100,
   level: 6
 }
+
+export const MOCK_HISTORY_OF_PARTICIPATING = [
+  {
+    title: "Grand League of Genes and Inheritance",
+    category: "Art & Modren Graphic",
+    date: "December 22 2021",
+    score: 148,
+    yourPosition: 7,
+    reward: 20,
+    image: Img1
+  },
+  {
+    title: "Chemical Compounds",
+    category: "Go on a diet",
+    date: "December 10 2021",
+    score: 108,
+    yourPosition: 7,
+    reward: 0,
+    image: Img2
+  },
+  {
+    title: "Solar System",
+    category: "Genes and inheritence",
+    date: "December 25 2021",
+    score: 148,
+    yourPosition: 7,
+    reward: 20,
+    image: Img3
+  },
+  {
+    title: "Tennis Knowledge",
+    category: "The world under the ocean",
+    date: "December 15 2021",
+    score: 88,
+    yourPosition: 7,
+    reward: 20,
+    image: Img4
+  },
+  {
+    title: "Grand League of Genes and Inheritance",
+    category: "Kids and games",
+    date: "December 22 2021",
+    score: 148,
+    yourPosition: 7,
+    reward: 20,
+    image: Img1
+  },
+]
