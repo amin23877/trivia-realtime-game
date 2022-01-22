@@ -352,3 +352,15 @@ export const MOCK_HISTORY_OF_PARTICIPATING = [
     image: Img1
   },
 ]
+
+
+export const FRIENDS_MOCK_DATA = [
+	{ id: 1, name: "Tanaz-MRD", image: Img1 },
+	{ id: 2, name: "Mohammad fari", image: Img2 },
+	{ id: 3, name: "Ali Mansoorie", image: Img3 },
+	{ id: 4, name: "Fatemeh 2u", image: Img4 },
+	{ id: 5, name: "Mohammad fari", image: Img2 },
+	{ id: 6, name: "Tanaz-MRD", image: Img3 },
+	{ id: 7, name: "Mohammad fari", image: Img4 },
+];
+
