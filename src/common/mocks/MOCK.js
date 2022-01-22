@@ -1,3 +1,7 @@
+import Img1 from "assets/images/test/profile-favorite-topics/image-1.jpg"
+import Img2 from "assets/images/test/profile-favorite-topics/image-2.jpg"
+import Img3 from "assets/images/test/profile-favorite-topics/image-3.jpg"
+import Img4 from "assets/images/test/profile-favorite-topics/image-4.jpg"
 export const MOCK_LEADERS = [
   {
     username: 'Fatemeh_120',
@@ -227,3 +231,70 @@ export const MOCK_TOPICS_ALL = [
     questions: 90,
   },
 ];
+
+export const MOCK_FAVORITE_TOPICS = [
+  {
+    title: "Nature and the environment",
+    questions: 110,
+    plays: 94,
+    rating: 4.6,
+    rates: 35,
+    category: "category of geography",
+    image: Img1
+  },
+  {
+    title: "Nature and the environment",
+    questions: 110,
+    plays: 94,
+    rating: 4.6,
+    rates: 35,
+    category: "category of geography",
+    image: Img2
+  },
+  {
+    title: "Nature and the environment",
+    questions: 110,
+    plays: 94,
+    rating: 4.6,
+    rates: 35,
+    category: "category of geography",
+    image:  Img3
+
+  },
+  {
+    title: "Nature and the environment",
+    questions: 110,
+    plays: 94,
+    rating: 4.6,
+    rates: 35,
+    category: "category of geography",
+    image: Img4
+  },
+  {
+    title: "Nature and the environment",
+    questions: 110,
+    plays: 94,
+    rating: 4.6,
+    rates: 35,
+    category: "category of geography",
+    image: Img4
+  },
+  {
+    title: "Nature and the environment",
+    questions: 110,
+    plays: 94,
+    rating: 4.6,
+    rates: 35,
+    category: "category of geography",
+    image: Img4
+  },
+  {
+    title: "Nature and the environment",
+    questions: 110,
+    plays: 94,
+    rating: 4.6,
+    rates: 35,
+    category: "category of geography",
+    image: Img4
+  },
+]
