@@ -18,7 +18,7 @@ const Profile = () => {
   return (
     <Layout
       header={false}
-      className="profile"
+      className="profile d-flex flex-column"
     >
       <ProfileHeader/>
       <ProfileContents>

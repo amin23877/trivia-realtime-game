@@ -1,9 +1,11 @@
 @import "assets/scss/styles.scss";
 
 .profile--contents {
+  flex-grow: 1;
+  background-color: $bg-profile;
   width: 100%;
   height: auto;
   overflow-y: auto;
-  margin: 20px 0;
+  padding: 20px 0;
   text-align: center;
 }
