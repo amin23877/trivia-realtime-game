@@ -1,6 +1,6 @@
 import React, {useEffect,useState} from "react";
-import ProfileFavoriteTopicCard from "./Cards/FavoriteTopicCard"
-import ProfileNoTopics from "../ProfileNoTopics";
+import ProfileFavoriteTopicCard from "./FavoriteTopicCard"
+import ProfileNoTopics from "../../ProfileNoTopics";
 import {MOCK_FAVORITE_TOPICS} from "common/mocks/MOCK"
 
 const ProfileFavoriteTopics = () => {

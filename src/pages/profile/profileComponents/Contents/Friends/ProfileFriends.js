@@ -1,7 +1,7 @@
 import React, {useEffect,useState} from "react";
-import ProfileNoTopics from "../ProfileNoTopics";
+import ProfileNoTopics from "../../ProfileNoTopics";
 
-const ProfilePerformance = () => {
+const ProfileFriends = () => {
   const [data, setData] = useState();
   const [isLoading,setIsLoading] = useState(true);
   useEffect(() => {
@@ -22,4 +22,4 @@ const ProfilePerformance = () => {
   );
 }
 
-export default ProfilePerformance;
+export default ProfileFriends;
