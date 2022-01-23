@@ -7,6 +7,16 @@
 @import './material';
 @import './dimensions';
 
+.backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+}
+
 ._header {
     height: $height-header;
 }
