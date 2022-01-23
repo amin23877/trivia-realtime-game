@@ -25,10 +25,7 @@ import HomeTopicsSeeAll from "pages/home/homeComponents/homeTopics/HomeTopicsSee
 import ProfileFavoriteTopics from "pages/profile/profileComponents/Contents/ProfileFavoriteTopics";
 import ProfilePerformance from "pages/profile/profileComponents/Contents/ProfilePerformance";
 import ProfileFriends from "pages/profile/profileComponents/Contents/ProfileFriends";
-<<<<<<< HEAD
 import TwoPlayers from "pages/quickPlay/twoPlayers/TwoPlayers";
-=======
->>>>>>> dbbd1890d574e8a2d25a2958f9babbad0c749f68
 
 const RouterConfig = () => {
 	return (
