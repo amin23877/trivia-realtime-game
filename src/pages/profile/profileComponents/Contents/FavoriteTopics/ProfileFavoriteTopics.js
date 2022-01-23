@@ -1,7 +1,8 @@
 import React, {useEffect,useState} from "react";
-import ProfileFavoriteTopicCard from "./FavoriteTopicCard"
+import ProfileFavoriteTopicCard2 from "./FavoriteTopicCard2"
 import ProfileNoTopics from "../../ProfileNoTopics";
 import {MOCK_FAVORITE_TOPICS} from "common/mocks/MOCK"
+import Grid from '@material-ui/core/Grid';
 
 const ProfileFavoriteTopics = () => {
   const [data, setData] = useState();
@@ -13,20 +14,22 @@ const ProfileFavoriteTopics = () => {
     // set loading status
   }, []);
   return (
-    <>
-      {/* {isLoading && <div>Loading...</div>} */}
-      {!isLoading && data.length > 0 ? (
-        <>
-          {
-            data.map((ft,i) => <ProfileFavoriteTopicCard key={i} data={ft} />)
-          }
-        </>
-      ) : (
-        <>
-          <ProfileNoTopics />
-        </>
-      )}
-    </>
+		<>
+			{/* {isLoading && <div>Loading...</div>} */}
+			{!isLoading && data.length > 0 ? (
+        <Grid container style={{width: "auto",padding: "0 24px"}} spacing={1}>
+					{data.map((ft, i) => (
+						<Grid item key={i} xs={6}>
+							<ProfileFavoriteTopicCard2 data={ft} />
+						</Grid>
+					))}
+				</Grid>
+			) : (
+				<>
+					<ProfileNoTopics />
+				</>
+			)}
+		</>
   );
 }
 
