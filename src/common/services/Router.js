@@ -22,15 +22,9 @@ import LeaguesHistory from "pages/leagues/leaguesComponents/LeaguesHistory";
 import CategoriesList from "pages/quickPlay/twoPlayers/categories/CategoriesList";
 import HomeTopicsInner from "pages/home/homeComponents/homeTopics/HomeTopicsInner";
 import HomeTopicsSeeAll from "pages/home/homeComponents/homeTopics/HomeTopicsSeeAll";
-<<<<<<< HEAD
-import ProfileFavoriteTopics from "pages/profile/profileComponents/Contents/ProfileFavoriteTopics";
-import ProfilePerformance from "pages/profile/profileComponents/Contents/ProfilePerformance";
-import ProfileFriends from "pages/profile/profileComponents/Contents/ProfileFriends";
-=======
 import ProfileFavoriteTopics from "pages/profile/profileComponents/Contents/FavoriteTopics/ProfileFavoriteTopics";
 import ProfilePerformance from "pages/profile/profileComponents/Contents/Performance/ProfilePerformance";
 import ProfileFriends from "pages/profile/profileComponents/Contents/Friends/ProfileFriends";
->>>>>>> 040e8c3666c2eec76276debc9eb07b44247d4ee8
 import TwoPlayers from "pages/quickPlay/twoPlayers/TwoPlayers";
 
 const RouterConfig = () => {
