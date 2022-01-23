@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from 'react';
 import PropTypes from "prop-types"
-import {Outlet, useNavigate, usePath} from 'react-router-dom';
+import {Outlet, useNavigate, useLocation} from 'react-router-dom';
 // import {} from "";
 
 // --- components
@@ -12,8 +12,11 @@ import './Profile.scss';
 
 const Profile = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   useEffect(() => {
-    navigate("/profile/favorite-topics");
+    if(/\/(profile)$/.test(location.pathname)) {
+      navigate("/profile/favorite-topics");
+    }
   },[]);
   return (
     <Layout
