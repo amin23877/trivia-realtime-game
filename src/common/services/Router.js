@@ -25,6 +25,7 @@ import HomeTopicsSeeAll from "pages/home/homeComponents/homeTopics/HomeTopicsSee
 import ProfileFavoriteTopics from "pages/profile/profileComponents/Contents/ProfileFavoriteTopics";
 import ProfilePerformance from "pages/profile/profileComponents/Contents/ProfilePerformance";
 import ProfileFriends from "pages/profile/profileComponents/Contents/ProfileFriends";
+import TwoPlayers from "pages/quickPlay/twoPlayers/TwoPlayers";
 
 const RouterConfig = () => {
 	return (
@@ -45,7 +46,7 @@ const RouterConfig = () => {
 
 				<Route exact path="/quickPlay" element={<ProtectedRoute />}>
 					<Route exact path="/quickPlay" element={<QuickPlay />} />
-					<Route exact path="/quickPlay/twoPlayers/categories" element={<CategoriesList />} />
+					<Route exact path="/quickPlay/twoPlayers" element={<TwoPlayers />} />
 				</Route>
 
 				<Route exact path="/profile" element={<ProtectedRoute />}>

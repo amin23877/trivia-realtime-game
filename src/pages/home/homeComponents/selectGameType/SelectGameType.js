@@ -20,7 +20,7 @@ const SelectGameType = ({ handleOpenGameTypes, open }) => {
         {
             title: '2 Players',
             icon: twoPlayersIcon,
-            link:'/quickPlay/twoPlayers/categories'
+            link:'/quickPlay/twoPlayers'
         },
         {
             title: 'With Friends',

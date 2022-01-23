@@ -3,9 +3,8 @@ import './WaitForStart.scss'
 import explosion from 'assets/images/icons/explosion.svg';
 import { IMAGE_URL } from "common/values/CORE";
 
-const WaitForStart = ({ socket, doubleGameReady }) => {
+const WaitForStart = ({ doubleGameReady }) => {
     console.log('doubleGameReady', doubleGameReady)
-    console.log('socket', socket)
     const [rivalInfo, setRivalInfo] = useState(doubleGameReady.player1.phone == localStorage.getItem('phone') ? doubleGameReady.player2 : doubleGameReady.player1)
     const [myInfo, setMyInfo] = useState(doubleGameReady.player1.phone == localStorage.getItem('phone') ? doubleGameReady.player1 : doubleGameReady.player2)
 
