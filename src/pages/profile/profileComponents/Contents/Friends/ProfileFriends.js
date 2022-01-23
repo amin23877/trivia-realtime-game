@@ -6,6 +6,7 @@ import "./ProfileFriends.scss"
 //----components
 import ProfileNoTopics from "../../ProfileNoTopics";
 import FriendCard from "./FriendCard"
+import Search from "common/components/UI/Search"
 
 const ProfileFriends = () => {
   const [data, setData] = useState();
@@ -20,11 +21,14 @@ const ProfileFriends = () => {
 		<>
 			{isLoading && <div>Loading...</div>}
 			{!isLoading && data.length > 0 ? (
-				<div className="profile-friends">
+				<>
+          <div className="">
+            <Search cb={(value) => console.log(value)} />
+          </div>
 					{data.map((f, i) => (
             <FriendCard key={i} data={f} />
 					))}
-				</div>
+				</>
 			) : (
 				<>
 					<ProfileNoTopics />
