@@ -11,10 +11,8 @@ const Layout = ({children,header = true,className = ""}) => {
           <Header />
         </div>
       }
-      <div>
-        {children}
-      </div>
-      <div className="_footer position-fixed fixed-bottom w-100">
+      {children}
+      <div style={{height: 70}} className="_footer w-100">
         <Footer />
       </div>
     </div>
