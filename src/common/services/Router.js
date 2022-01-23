@@ -21,6 +21,10 @@ import HomeTopicsSeeAll from "pages/home/homeComponents/homeTopics/HomeTopicsSee
 import ProfileFavoriteTopics from "pages/profile/profileComponents/Contents/FavoriteTopics/ProfileFavoriteTopics";
 import ProfilePerformance from "pages/profile/profileComponents/Contents/Performance/ProfilePerformance";
 import ProfileFriends from "pages/profile/profileComponents/Contents/Friends/ProfileFriends";
+import FriendsProfileFavoriteTopics from "pages/friends/profile/profileComponents/Contents/FavoriteTopics/ProfileFavoriteTopics";
+import FriendsProfilePerformance from "pages/friends/profile/profileComponents/Contents/Performance/ProfilePerformance";
+import FriendsProfileFriends from "pages/friends/profile/profileComponents/Contents/Friends/ProfileFriends";
+import FriendsProfile from "pages/friends/profile/FriendsProfile"
 import CategoriesList from "pages/quickPlay/twoPlayers/categories/CategoriesList";
 
 const RouterConfig = () => {
@@ -63,6 +67,15 @@ const RouterConfig = () => {
 
 				<Route exact path="/friends" element={<ProtectedRoute />}>
 					<Route exact path="/friends" element={<Friends />} />
+					<Route exact path="/friends/:id/profile" element={<FriendsProfile />}>
+						<Route
+							exact
+							path="/friends/:id/profile/favorite-topics"
+							element={<FriendsProfileFavoriteTopics />}
+						/>
+						<Route exact path="/friends/:id/profile/performance" element={<FriendsProfilePerformance />} />
+						<Route exact path="/friends/:id/profile/friends" element={<FriendsProfileFriends />} />
+					</Route>
 				</Route>
 
 				<Route path="/login" element={<Login />} />

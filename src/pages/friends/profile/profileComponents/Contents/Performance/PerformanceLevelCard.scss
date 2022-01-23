@@ -1,0 +1,66 @@
+@import "assets/scss/styles.scss";
+
+$performance-xp-color: #2C2C2C;
+$performance-xp-progress-max: $primary;
+$performance-xp-progress-bar-color: $primary;
+$performance-xp-progress-bg-color: #EEEDF7;
+// -------- level
+$performance-level-color: #E9436C;
+$performance-level-size: 18px;
+$performance-level-weight: bold;
+
+.level-card {
+  @include box();
+  display: flex;
+  padding: 13px 20px;
+  justify-content: space-between;
+  align-items: center;
+  &--xp {
+    margin-right: 15px;
+    text-align: left;
+    flex-grow: 1;
+    &__value {
+      color: $performance-xp-color;
+    }
+    &__progress {
+      position: relative;
+      progress {
+      width: 100%;
+        margin-top: 13px;
+        border: none;
+      }
+      progress::-webkit-progress-bar {
+        background-color: $performance-xp-progress-bg-color;
+        border-radius: 20px;
+      }
+      progress::-webkit-progress-value {
+        background-color: $performance-xp-progress-bar-color;
+        border-radius: 20px;
+      }
+      span {
+        position: absolute;
+        top: -5px;
+        right: 0;
+        @include fsM;
+        color: $primary;
+        font-weight: 500;
+        line-height: 16px;
+      }
+    }
+  }
+  &--level {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    transform: translateY(10px);
+    span{
+      color: $performance-level-color;
+      font-size: $performance-level-size;
+      font-weight: $performance-level-weight;
+      transform: translateY(-10px);
+    }
+  }
+}
