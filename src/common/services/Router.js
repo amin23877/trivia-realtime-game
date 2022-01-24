@@ -13,6 +13,7 @@ import Profile from "pages/profile/Profile";
 import QuickPlay from "pages/quickPlay/QuickPlay";
 import Wallet from "pages/menuPages/wallet/Wallet";
 import ProfileEdit from "pages/profile/ProfileEdit";
+import Leaderboard from "pages/leaderboard/Leaderboard";
 import VerificationCode from "pages/login/VerificationCode";
 import SearchExplore from "pages/searchExplore/SearchExplore";
 import Notification from "pages/menuPages/notification/Notification";
@@ -39,6 +40,7 @@ const RouterConfig = () => {
 					<Route exact path="/" element={<Home />} />
 					<Route exact path="/topics/:id" element={<HomeTopicsInner />} />
 					<Route exact path="/topics/:topicId/all" element={<HomeTopicsSeeAll />} />
+					<Route exact path="/leaderboard" element={<Leaderboard />} />
 				</Route>
 
 				<Route exact path="/leagues" element={<ProtectedRoute />}>
