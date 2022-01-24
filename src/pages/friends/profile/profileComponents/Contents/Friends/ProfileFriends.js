@@ -1,5 +1,6 @@
 import {FRIENDS_MOCK_DATA} from "common/mocks/MOCK";
 import React, {useEffect,useState} from "react";
+import {useParams} from "react-router-dom";
 
 //----assets
 import "./ProfileFriends.scss"
@@ -11,10 +12,11 @@ import Search from "common/components/UI/Search"
 const ProfileFriends = () => {
   const [data, setData] = useState();
   const [isLoading,setIsLoading] = useState(true);
+  const {id: friendId} = useParams();
   useEffect(() => {
     setData(FRIENDS_MOCK_DATA);
     setIsLoading(false);
-    // fetch favorite topics
+    // fetch friends
     // set loading status
   }, []);
   return (

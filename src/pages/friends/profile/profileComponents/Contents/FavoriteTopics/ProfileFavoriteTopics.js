@@ -3,10 +3,12 @@ import ProfileFavoriteTopicCard2 from "./FavoriteTopicCard2"
 import ProfileNoTopics from "../../ProfileNoTopics";
 import {MOCK_FAVORITE_TOPICS} from "common/mocks/MOCK"
 import Grid from '@material-ui/core/Grid';
+import {useParams} from "react-router-dom";
 
 const ProfileFavoriteTopics = () => {
   const [data, setData] = useState();
   const [isLoading,setIsLoading] = useState(true);
+  const {id: friendId} = useParams();
   useEffect(() => {
     setData(MOCK_FAVORITE_TOPICS);
     setIsLoading(false);

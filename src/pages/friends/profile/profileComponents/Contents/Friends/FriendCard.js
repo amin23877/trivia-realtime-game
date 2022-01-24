@@ -29,7 +29,7 @@ const FriendCard = ({data}) => {
 			/>
 			<div className="profile-friend">
 				<div className="profile-friend--item">
-          <div onClick={() => navigate(`/friends/${data.id}/profile/favorite-topics`)} className="profile-friend--item__info">
+          <div onClick={() => navigate(`/profile/friend/${data.id}`)} className="profile-friend--item__info">
 						<div className="profile-friend--item__info__avatar">
 							<img src={data.image} alt={data.name} />
 						</div>

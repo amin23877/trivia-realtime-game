@@ -24,15 +24,22 @@ $performance-level-weight: bold;
     }
     &__progress {
       position: relative;
-      background-color: $performance-xp-progress-bg-color;
-      border-radius: 20px;
-      margin-top: 13px;
-      border: none;
+      progress {
       width: 100%;
-      height: 14px;
+        margin-top: 13px;
+        border: none;
+      }
+      progress::-webkit-progress-bar {
+        background-color: $performance-xp-progress-bg-color;
+        border-radius: 20px;
+      }
+      progress::-webkit-progress-value {
+        background-color: $performance-xp-progress-bar-color;
+        border-radius: 20px;
+      }
       span {
         position: absolute;
-        top: -18px !important;
+        top: -5px;
         right: 0;
         @include fsM;
         color: $primary;

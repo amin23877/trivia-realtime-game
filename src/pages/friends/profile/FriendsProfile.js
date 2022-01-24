@@ -1,36 +1,34 @@
 import React, {useState,useEffect} from 'react';
-import PropTypes from "prop-types"
-import {Outlet, useNavigate, useLocation} from 'react-router-dom';
-// import {} from "";
+// import PropTypes from "prop-types"
+import {Outlet, useNavigate,useParams} from 'react-router-dom';
 
 // --- components
-import Layout from "../../common/components/layout/Layout"
+import Layout from "common/components/layout/Layout"
 import ProfileHeader from "./profileComponents/ProfileHeader"
 import ProfileContents from "./profileComponents/ProfileContents"
 // --- assets
-import './Profile.scss';
+import 'pages/profile/Profile.scss';
 
-const Profile = () => {
+const ProfileFriend = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+  const params = useParams();
+  const friendId = params.id;
   useEffect(() => {
-    if(/\/(profile)$/.test(location.pathname)) {
-      navigate("/profile/favorite-topics");
-    }
+    console.log(params)
+    //fetching friend profile
   },[]);
   return (
     <Layout
       header={false}
       className="profile d-flex flex-column"
     >
-      <ProfileHeader/>
+      <ProfileHeader data={{}}/>
       <ProfileContents>
         <Outlet />
       </ProfileContents>
     </Layout>
   );
 };
-Profile.propTypes = {
-  tab: PropTypes.string
+ProfileFriend.propTypes = {
 }
-export default Profile;
+export default ProfileFriend;

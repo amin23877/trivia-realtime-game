@@ -1,4 +1,4 @@
-import React, {useRef,useEffect,useState} from "react"
+import React from "react"
 import PropTypes from "prop-types"
 import ProgressBar from "common/components/UI/ProgressBar"
 //----assets
