@@ -23,6 +23,12 @@ const TwoPlayers = () => {
     const [socketId, setSocketId] = useState()
     const [myInfo, setMyInfo] = useState({ player: 'player1', score: 0 })
     const [rivalInfo, setRivalInfo] = useState({ player: 'player2', score: 0 })
+    const [time, setTime] = useState(20)
+    const [questionNumber, setQuestionNumber] = useState(0)
+    const [correctAnswer, setCorrectAnswer] = useState()
+    const [rivalAnswer, setRivalAnswer] = useState()
+    const [myOption, setMyOption] = useState()
+
     const socketUrl = SOCKET_BASE_URL;
     const token = localStorage.getItem('token')
         ? `${localStorage.getItem('token')}`
@@ -63,24 +69,43 @@ const TwoPlayers = () => {
                 socket.emit("doubleGame", { CategoryId: selectedCategory._id });
             }
             socket.on("doubleGame", (e) => {
-                console.log("doubleGame", e);
+                // console.log("doubleGame", e);
             });
             socket.on("doubleGameReady", (e) => {
                 setDoubleGameReady(e);
                 setGameState('showWaitForStart');
                 localStorage.setItem('quickPlay-token', e.token)
             });
+
             socket.on("doubleGameQuestion", (e) => {
-                setDoubleGameQuestion(e);
-                setGameState('showQuestions');
+                setTimeout(() => {
+                    setDoubleGameQuestion(e);
+                    setGameState('showQuestions');
+                    setCorrectAnswer(null)
+                    setRivalAnswer(null)
+                    setMyOption(null)
+                }, 1000)
+
+            });
+            socket.on("doubleGameScore", (e) => {
+                console.log('score', e)
+                if (e.answer) {
+                    setCorrectAnswer(e.answer)
+                } else {
+                    setRivalAnswer(e[`${rivalInfo.player}Answer`])
+                    setMyInfo({ ...myInfo, score: e[`${myInfo.player}Score`] })
+                    setRivalInfo({ ...myInfo, score: e[`${rivalInfo.player}Score`] })
+                }
+                // setDoubleGameQuestion(e);
+                // setGameState('showQuestions');
             });
             socket.on("doubleGameFinish", (e) => {
                 socket.close();
             });
         }
     }, [selectedCategory])
-    console.log('selectedCategory', selectedCategory)
-    console.log('socket', socket)
+    // console.log('selectedCategory', selectedCategory)
+    // console.log('socket', socket)
 
     const handleGotoBack = () => {
         navigate('/')
@@ -97,8 +122,8 @@ const TwoPlayers = () => {
         // socket.io.open();
     }
     const handleSelectOption = (opt) => {
-        console.log('opt', socket)
         socket.emit("doubleGameAnswer", { gameToken: localStorage.getItem('quickPlay-token'), answer: opt });
+        setMyOption(opt)
     }
 
     return (
@@ -131,9 +156,15 @@ const TwoPlayers = () => {
                     handleSelectOption={handleSelectOption}
                     myInfo={myInfo}
                     rivalInfo={rivalInfo}
+                    time={time}
+                    setTime={setTime}
+                    questionNumber={questionNumber}
+                    setQuestionNumber={setQuestionNumber}
+                    correctAnswer={correctAnswer}
+                    rivalAnswer={rivalAnswer}
+                    myOption={myOption}
                 />
             }
-
         </>
     )
 }
