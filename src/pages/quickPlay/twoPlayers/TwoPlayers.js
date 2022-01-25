@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import './TwoPlayers.scss'
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,7 @@ import { io } from "socket.io-client";
 import WaitForStart from "./waitForStart/WaitForStart";
 import ShowQuestion from "./showQuestion/ShowQuestion";
 import CategoriesList from "./categories/CategoriesList";
+import GameResult from "./gameResult/GameResult";
 
 const TwoPlayers = () => {
     const Dispatch = useDispatch()
@@ -28,13 +29,20 @@ const TwoPlayers = () => {
     const [correctAnswer, setCorrectAnswer] = useState()
     const [rivalAnswer, setRivalAnswer] = useState()
     const [myOption, setMyOption] = useState()
+    const [gameResultData, setGameResult] = useState()
 
     const socketUrl = SOCKET_BASE_URL;
     const token = localStorage.getItem('token')
         ? `${localStorage.getItem('token')}`
         : null;
 
+    const myRef = useRef(myInfo);
+    const rivalRef = useRef(rivalInfo);
 
+    useEffect(() => {
+        myRef.current = myInfo;
+        rivalRef.current = rivalInfo;
+    }, [myInfo, rivalInfo]);
     useEffect(() => {
         const socketp = io(socketUrl, { transports: ["websocket"] });
         setSocket(socketp);
@@ -46,20 +54,26 @@ const TwoPlayers = () => {
         socketp.on('authentication', (e) => {
             setSocketId(e.socketid)
         })
+        socketp.on("doubleGameReady", handleDoubleGameReady);
+        socketp.on("doubleGame", (e) => {
+            // console.log("doubleGame", e);
+        });
+        socketp.on("doubleGameQuestion", handleDoubleGameQuestion);
+        socketp.on("doubleGameScore", handleDoubleGameScore);
+        socketp.on("doubleGameFinish", (e) => {
+            setGameState('gameResult');
+            setGameResult(e);
+            socketp.close();
+        });
+
     }, [])
-    useEffect(() => {
-        if (doubleGameReady) {
-            setMyInfo({ ...myInfo, player: doubleGameReady.player1.phone == localStorage.getItem('phone') ? 'player1' : 'player2' })
-            setRivalInfo({ ...rivalInfo, player: doubleGameReady.player1.phone == localStorage.getItem('phone') ? 'player2' : 'player1' })
-        }
-    }, [doubleGameReady])
+
     useEffect(() => {
         if (!categories) {
             // alert('ok!')
             Dispatch(GET_CATEGORIES_LIST(`Bearer ${token}`))
         } else {
             // alert(categories.length)
-
         }
     }, [categories])
 
@@ -68,44 +82,43 @@ const TwoPlayers = () => {
             if (socketId) {
                 socket.emit("doubleGame", { CategoryId: selectedCategory._id });
             }
-            socket.on("doubleGame", (e) => {
-                // console.log("doubleGame", e);
-            });
-            socket.on("doubleGameReady", (e) => {
-                setDoubleGameReady(e);
-                setGameState('showWaitForStart');
-                localStorage.setItem('quickPlay-token', e.token)
-            });
-
-            socket.on("doubleGameQuestion", (e) => {
-                setTimeout(() => {
-                    setDoubleGameQuestion(e);
-                    setGameState('showQuestions');
-                    setCorrectAnswer(null)
-                    setRivalAnswer(null)
-                    setMyOption(null)
-                }, 1000)
-
-            });
-            socket.on("doubleGameScore", (e) => {
-                console.log('score', e)
-                if (e.answer) {
-                    setCorrectAnswer(e.answer)
-                } else {
-                    setRivalAnswer(e[`${rivalInfo.player}Answer`])
-                    setMyInfo({ ...myInfo, score: e[`${myInfo.player}Score`] })
-                    setRivalInfo({ ...myInfo, score: e[`${rivalInfo.player}Score`] })
-                }
-                // setDoubleGameQuestion(e);
-                // setGameState('showQuestions');
-            });
-            socket.on("doubleGameFinish", (e) => {
-                socket.close();
-            });
         }
     }, [selectedCategory])
     // console.log('selectedCategory', selectedCategory)
     // console.log('socket', socket)
+    const handleDoubleGameReady = (e) => {
+        setDoubleGameReady(e);
+        setGameState('showWaitForStart');
+        localStorage.setItem('quickPlay-token', e.token)
+        setMyInfo({ ...myInfo, player: e.player1.phone == localStorage.getItem('phone') ? 'player1' : 'player2' })
+        setRivalInfo({ ...rivalInfo, player: e.player1.phone == localStorage.getItem('phone') ? 'player2' : 'player1' })
+    }
+    const handleDoubleGameQuestion = (e) => {
+        setTimeout(() => {
+            setDoubleGameQuestion(e);
+            setGameState('showQuestions');
+            setCorrectAnswer(null)
+            setRivalAnswer(null)
+            setMyOption(null)
+        }, 1000)
+    }
+
+    const handleDoubleGameScore = (e) => {
+        console.log('score', e)
+        if (e.answer) {
+            setCorrectAnswer(e.answer)
+        } else {
+            setRivalAnswer(() => {
+                console.log('rival', rivalRef.current)
+                console.log('me', myRef.current)
+                return (e[`${rivalRef.current.player}Answer`])
+            })
+            setMyInfo({ ...myRef.current, score: myRef.current.score + e[`${myRef.current.player}Score`] })
+            setRivalInfo({ ...rivalRef.current, score: rivalRef.current.score + e[`${rivalRef.current.player}Score`] })
+        }
+        // setDoubleGameQuestion(e);
+        // setGameState('showQuestions');
+    }
 
     const handleGotoBack = () => {
         navigate('/')
@@ -163,6 +176,14 @@ const TwoPlayers = () => {
                     correctAnswer={correctAnswer}
                     rivalAnswer={rivalAnswer}
                     myOption={myOption}
+                />
+            }
+            {gameState == 'gameResult' &&
+                <GameResult
+                    myInfo={myInfo}
+                    rivalInfo={rivalInfo}
+                    gameResultData={gameResultData}
+                    doubleGameReady={doubleGameReady}
                 />
             }
         </>
