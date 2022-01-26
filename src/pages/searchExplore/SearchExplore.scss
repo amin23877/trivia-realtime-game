@@ -1,9 +1,8 @@
 @import '../../assets/scss/styles.scss';
 
 .explore-root {
-  // variables
   --filter-bg : #fff;
-  --border-bottom-color: #00000033;
+  --border-bottom-color: #00000020;
   --filter-box-shadow : 0px 3px 5px rgba(94, 92, 106, 0.1);
   --space-x : 2rem;
 
@@ -15,9 +14,10 @@
 }
 
 .explore-search-input {
+  @include fsM();
   appearance: none;
   border: none;
-  height: 63px;
+  height: 55px;
   width: 100%;
   padding : 0 var(--space-x);
 
@@ -40,10 +40,10 @@
   padding-top: 3rem;
   display: flex;
   flex-direction: column;
-  gap: .5rem;
 }
 
 .explore-result-filter{
+  @include fsL();
   width: 100%;
   position: absolute;
   top: 0;
@@ -56,6 +56,8 @@
   padding: 1rem var(--space-x);
   display: flex;
   justify-content: space-between;
+  align-items: end;
+  @include fsM();
 }
 
 .explore-result-remove {
@@ -69,18 +71,24 @@
 }
 
 .explore-result-item {
+  --avatar-size : 36px;
+
   display: flex;
-  gap: .8rem;
+  gap: .5rem;
   padding: .5rem 2rem;
   border-bottom: 1px solid var(--border-bottom-color);
-  font-size: .8rem;
+  @include fsXS();
 
   &__avatar {
-    width: 3rem;
-    height: 3rem;
+    width: var(--avatar-size);
+    height: var(--avatar-size);
     border-radius: 50%;
     background-size: contain;
     background-position: center;
+  }
+
+  &__title {
+    padding-bottom: 5px;
   }
 
   &__desc {
@@ -89,14 +97,17 @@
 
   &__rate {
     color : $gold;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
   }
 
   &__hashtag {
     position: relative;
-    width: 3rem;
-    height: 3rem;
+    width: var(--avatar-size);
+    height:  var(--avatar-size);
     border-radius: 50%;
-    border: 3px solid $grey-1;
+    border: 1px solid $grey-1;
     display: grid;
     place-items: center;
   }
