@@ -1,15 +1,15 @@
 import React from "react";
 import { Tab, Tabs } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-import Footer from "../../common/components/footer/Footer";
+import Footer from "common/components/footer/Footer";
 
 import "./SearchExplore.scss";
 
 // images
-import searchIcon from "../../assets/images/icons/search-primary-icon.svg";
-import rateIcon from "../../assets/images/icons/rate-mini.svg";
-import hashtagIcon from "../../assets/images/icons/hashtag.svg";
-import profilePic from "../../assets/images/test/profile-pic.jpg";
+import searchIcon from "assets/images/icons/search-primary-icon.svg";
+import rateIcon from "assets/images/icons/rate-mini.svg";
+import hashtagIcon from "assets/images/icons/hashtag.svg";
+import profilePic from "assets/images/test/profile-pic.jpg";
 
 // customize mui tab
 const StyledTab = withStyles({
