@@ -20,7 +20,6 @@ const ShowQuestion = ({
     rivalAnswer,
     myOption
 }) => {
-    console.log('correctAnswer', correctAnswer)
     const [pauseTimer, setPauseTimer] = useState(false)
     // let timeT = 20;
     let timerInterval;
