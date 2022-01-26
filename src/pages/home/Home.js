@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 // Packages
 // Components, Services, Functions
@@ -21,12 +21,16 @@ import { Drawer } from "@material-ui/core";
 // Styles, Icons, Images
 import "./Home.scss";
 import arrowForwardMini from "assets/images/icons/arrow-forward-mini.svg";
+import { fetchTopics } from "redux/actions/topicActions/topicsActions";
 
 const Home = () => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+
 	const apiCall = new ApiCall();
 
 	const stateGeneral = useSelector((state) => state.stateGeneral);
+	const stateTopic = useSelector((state) => state.stateTopic);
 	const [openGameTypes, setOpenGameTypes] = useState(false);
 	const cardInfo = {
 		title: "Chemical Compounds",
@@ -36,7 +40,8 @@ const Home = () => {
 		img: "",
 	};
 
-	const homeTopics = MOCK_TOPICS;
+	// const homeTopics = MOCK_TOPICS;
+	// const homeTopics = [];
 
 	const handleNavigate = (event, path) => {
 		event.stopPropagation();
@@ -61,7 +66,9 @@ const Home = () => {
 			// remainingTime
 			//   ? localStorage.setItem('remainingTime', remainingTime)
 			//   : localStorage.setItem('remainingTime', cardInfo.remainingTime);
+			dispatch(fetchTopics());
 			console.log(stateGeneral);
+			console.log(stateTopic);
 		}
 		return () => {
 			isMounted = false;
@@ -87,21 +94,22 @@ const Home = () => {
 					</div>
 				</div>
 
-				{homeTopics.map((item, index) => (
-					<div key={index} className="topics" onClick={(e) => handleNavigate(e, "/topics/5")}>
-						<div className="d-flex justify-content-between align-items-center topics-header">
-							<p className="title">{item.topic}</p>
-							<p className="subtitle" onClick={(e) => handleNavigate(e, "/topics/5/all")}>
-								see all
-								<img className="mx-2" src={arrowForwardMini} alt="" />
-							</p>
-						</div>
+				{stateTopic.topics.length &&
+					stateTopic.topics.map((item, index) => (
+						<div key={index} className="topics" onClick={(e) => handleNavigate(e, "/topics/5")}>
+							<div className="d-flex justify-content-between align-items-center topics-header">
+								<p className="title">{item.topic}</p>
+								<p className="subtitle" onClick={(e) => handleNavigate(e, "/topics/5/all")}>
+									see all
+									<img className="mx-2" src={arrowForwardMini} alt="" />
+								</p>
+							</div>
 
-						<div>
-							<HomeTopics topics={item.topicList} />
+							<div>
+								<HomeTopics topics={item.topicList} />
+							</div>
 						</div>
-					</div>
-				))}
+					))}
 				{openGameTypes && <SelectGameType open={openGameTypes} handleOpenGameTypes={_handleOpenGameTypes} />}
 			</div>
 

@@ -1,18 +1,17 @@
 // #redux step3
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
-import thunk from 'redux-thunk';
-import { generalReducer } from './reducers/mainReducer/generalReducer';
+import { createStore, applyMiddleware, combineReducers, compose } from "redux";
+import thunk from "redux-thunk";
+import { topicsReducer } from "./reducers/topicReducer/topicsReducer";
+import { generalReducer } from "./reducers/mainReducer/generalReducer";
 
 const rootReducer = combineReducers({
-  stateGeneral: generalReducer,
+	stateGeneral: generalReducer,
+	stateTopic: topicsReducer,
 });
 
 const store = createStore(
-  rootReducer,
-  compose(
-    applyMiddleware(thunk),
-    window.devToolsExtension ? window.devToolsExtension() : (f) => f
-  )
+	rootReducer,
+	compose(applyMiddleware(thunk), window.devToolsExtension ? window.devToolsExtension() : (f) => f)
 );
 
 export default store;
