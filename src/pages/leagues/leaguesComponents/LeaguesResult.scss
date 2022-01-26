@@ -1,0 +1,94 @@
+@import 'assets/scss/styles.scss';
+
+$size-avatar: 80px;
+
+.leaguesResult {
+    background-color: $primary;
+    background-image: url('../../../assets/images/pics/leagues-result-bg.png');
+
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+
+    .avatar {
+        @include avatarShape($size-avatar);
+    }
+
+    .leaguesResult-header {
+        padding: 30px;
+        .score {
+            padding: 20px;
+            color: white;
+        }
+    }
+
+    .leaguesResult-body {
+        text-align: center;
+        padding: auto;
+        .box-result {
+            background-color: white;
+            width: 80%;
+            border-radius: 16px;
+            .ressults {
+                padding: 15px;
+            }
+            .bg-grey {
+                background-color: $bg-seachbox;
+            }
+
+            .score {
+                border-radius: 16px 16px 0 0;
+                color: $red-1;
+            }
+
+            .reward {
+                color: $orange-2;
+            }
+        }
+
+        .box-level {
+            background-color: white;
+            border-radius: 20px;
+            height: 30px;
+            width: 80%;
+            margin: 20px auto !important;
+            .level {
+                width: 60%;
+                height: 100%;
+                background-color: $orange-2;
+                border-radius: 20px;
+                color: white;
+            }
+        }
+        .box-btns {
+            width: fit-content;
+            margin: 30px auto !important;
+
+            .btns {
+                @include fsM;
+                width: 180px;
+                display: block;
+                margin: 20px;
+                padding: 8px;
+                border-radius: 8px;
+                color: white;
+            }
+
+            .btn-play {
+                background-color: $red-1;
+            }
+
+            .btn-back {
+                background-color: transparent;
+                border-color: white;
+            }
+        }
+    }
+}
+
+.ml-auto {
+    margin-left: auto !important;
+}
+
+.m-auto {
+    margin: auto !important;
+}

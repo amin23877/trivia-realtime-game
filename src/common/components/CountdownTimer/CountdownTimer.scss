@@ -20,6 +20,21 @@
     }
 }
 
+#primaryWhiteBlack {
+    .countdownTimer {
+        .box {
+            color: white;
+        }
+        .colon {
+            color: black;
+        }
+        .box {
+            background-color: $primary;
+            border-radius: 4px;
+        }
+    }
+}
+
 // DELETE // for test
 @media screen and (max-width: 370px) {
     .countdownTimer {

@@ -1,105 +1,108 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { TextField } from '@material-ui/core';
+import { TextField } from "@material-ui/core";
 
-import ApiCall from 'common/services/ApiCall';
+import ApiCall from "common/services/ApiCall";
 
-import './Login.scss';
-import logo from 'assets/images/logo/logo.svg';
-import imgMain from 'assets/images/pics/login-login.svg';
+import "./Login.scss";
+import logo from "assets/images/logo/logo.svg";
+import imgMain from "assets/images/pics/login-login.svg";
 
 const Login = () => {
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
-  const apiCall = new ApiCall();
+	const apiCall = new ApiCall();
 
-  const [phone, setPhone] = useState('');
-  const [isValidPhone, setIsValidPhone] = useState(false);
-  const [messageError, setMessageError] = useState(
-    'Please enter a valid phone number'
-  );
+	const [phone, setPhone] = useState("");
+	const [isValidPhone, setIsValidPhone] = useState(false);
+	const [messageError, setMessageError] = useState("Please enter a valid phone number");
 
-  const handleChangePhone = (e) => {
-    setPhone(e.target.value);
+	const handleEnterKeyMobile = (e) => {
+		if (e.code === "Enter" || e.code === "NumpadEnter") {
+			e.preventDefault();
+			if (isValidPhone) {
+				handleGetOtp();
+			}
+		}
+	};
 
-    const phoneno = /^0\d{10}$/;
-    // if (phone.match(phoneno) && e.target.value.length >= 10) {
-    if (e.target.value.length >= 10) {
-      setIsValidPhone(true);
-    } else {
-      setIsValidPhone(false);
-    }
-  };
+	const handleChangePhone = (e) => {
+		setPhone(e.target.value);
 
-  const handleGetOtp = () => {
-    localStorage.setItem('phone', phone);
+		const phoneno = /^0\d{10}$/;
+		// if (phone.match(phoneno) && e.target.value.length >= 10) {
+		if (e.target.value.length >= 10) {
+			setIsValidPhone(true);
+		} else {
+			setIsValidPhone(false);
+		}
+	};
 
-    if (phone && isValidPhone) {
-      apiCall
-        .post('user/register', { phone })
-        .then((res) => {
-          console.log('res > ', res);
-          navigate('/otp');
-        })
-        .catch((err) => {
-          console.log('err > ', err);
-        });
-    } else {
-      // TODO
-    }
-  };
+	const handleGetOtp = () => {
+		localStorage.setItem("phone", phone);
 
-  useEffect(() => {
-    let isMounted = true;
-    if (isMounted) {
-      // localStorage.clear();
-      // sessionStorage.clear();
-    }
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+		if (phone && isValidPhone) {
+			apiCall
+				.post("user/register", { phone })
+				.then((res) => {
+					console.log("res > ", res);
+					navigate("/otp");
+				})
+				.catch((err) => {
+					console.log("err > ", err);
+					navigate("/login");
+				});
+		} else {
+			// TODO
+		}
+	};
 
-  return (
-    <div className='w-100 h-100 p-3 d-flex flex-column align-items-center login'>
-      <img src={logo} alt='' />
+	useEffect(() => {
+		let isMounted = true;
+		if (isMounted) {
+			// localStorage.clear();
+			// sessionStorage.clear();
+		}
+		return () => {
+			isMounted = false;
+		};
+	}, []);
 
-      <div className='login-body'>
-        <p className='title'>Log in</p>
-        <div className='text-center'>
-          <img src={imgMain} alt='' />
-        </div>
+	return (
+		<div className="w-100 h-100 p-3 d-flex flex-column align-items-center login">
+			<img src={logo} alt="" />
 
-        <form noValidate autoComplete='off' className='_dish-textField'>
-          <div className=''>
-            <p className='lable'>Phone Number</p>
-            <TextField
-              autoFocus={true}
-              type='tel'
-              placeholder='Enter your phone number'
-              className=''
-              helperText={
-                phone.length > 10 && !isValidPhone ? messageError : ''
-              }
-              variant='outlined'
-              inputProps={{ maxLength: 11 }}
-              // value={phone}
-              error={phone !== '' && !isValidPhone}
-              onChange={(e) => handleChangePhone(e)}
-            />
-          </div>
-        </form>
+			<div className="login-body">
+				<p className="title">Log in</p>
+				<div className="text-center">
+					<img src={imgMain} alt="" />
+				</div>
 
-        <button
-          className='login-btn'
-          disabled={!isValidPhone}
-          onClick={handleGetOtp}
-        >
-          Login
-        </button>
-      </div>
-    </div>
-  );
+				<form noValidate autoComplete="off" className="_dish-textField">
+					<div className="">
+						<p className="lable">Phone Number</p>
+						<TextField
+							autoFocus={true}
+							type="tel"
+							placeholder="Enter your phone number"
+							className=""
+							helperText={phone.length > 10 && !isValidPhone ? messageError : ""}
+							variant="outlined"
+							inputProps={{ maxLength: 11 }}
+							// value={phone}
+							error={phone !== "" && !isValidPhone}
+							onChange={(e) => handleChangePhone(e)}
+							onKeyPress={(e) => handleEnterKeyMobile(e)}
+						/>
+					</div>
+				</form>
+
+				<button className="login-btn" disabled={!isValidPhone} onClick={handleGetOtp}>
+					Login
+				</button>
+			</div>
+		</div>
+	);
 };
 export default Login;

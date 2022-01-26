@@ -1,0 +1,31 @@
+@import "assets/scss/styles.scss";
+
+.custom-modal {
+  z-index: 10;
+  @include box;
+  @include centerInBox;
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  border: none;
+  padding: 0;
+  button {
+    background-color: transparent;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+  &--remove {
+    color: $red-2;
+  }
+  &--cancel {
+    color: $text-footer;
+  }
+  &--new {
+    color: $text-dark;
+    border-top: .2px solid  rgba(0, 0, 0, 0.2);
+    border-bottom: .2px solid rgba(0, 0, 0, 0.2);
+  }
+}

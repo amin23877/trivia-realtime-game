@@ -1,0 +1,122 @@
+@import 'assets/scss/styles.scss';
+
+$size-avatar: 30px;
+
+.tabPanel {
+    .user-first {
+        background-color: white;
+        border-radius: 16px;
+        height: 60px;
+
+        .index {
+            @include fsM;
+            min-width: 25px;
+        }
+
+        .username {
+            @include fsL;
+            padding-left: 10px;
+        }
+        .points {
+            @include fsNormal;
+            color: $primary;
+            font-weight: 500;
+            padding-left: 10px;
+        }
+
+        .info {
+            padding: 15px;
+        }
+
+        .bundle {
+            @include fsL;
+
+            height: 100%;
+            padding: 20px;
+            color: white;
+            margin-left: auto;
+            background-color: $red-1;
+            border-radius: 58px 8px 8px 58px;
+
+            position: relative;
+            img {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+            }
+        }
+    }
+    .subtitle {
+        color: $primary;
+        padding: 20px 0;
+    }
+
+    .results {
+        background-color: white;
+        border-radius: 16px;
+
+        .user {
+            padding: 15px;
+
+            .index {
+                @include fsNormal;
+                min-width: 25px;
+            }
+
+            .username {
+                @include fsM;
+                padding-left: 10px;
+            }
+            .points {
+                @include fsS;
+                color: $primary;
+                margin-left: auto !important;
+            }
+        }
+
+        .seemore {
+            @include fsNormal;
+            padding: 15px;
+            color: $primary;
+            text-align: center;
+        }
+    }
+    .avatar {
+        @include avatarShape($size-avatar);
+    }
+}
+
+@media screen and (max-width: $breakpoint-s) {
+    .tabPanel {
+        .user-first {
+            .index {
+                @include fsM;
+                min-width: 25px;
+            }
+
+            .username {
+                @include fsM;
+                padding-left: 5px;
+            }
+            .points {
+                @include fsS;
+                padding-left: 5px;
+            }
+
+            .info {
+                padding: 10px;
+            }
+
+            .bundle {
+                @include fsM;
+
+                padding: 10px;
+
+                img {
+                    top: 3px;
+                    right: 3px;
+                }
+            }
+        }
+    }
+}

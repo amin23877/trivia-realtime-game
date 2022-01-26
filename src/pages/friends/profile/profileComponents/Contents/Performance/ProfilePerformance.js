@@ -1,0 +1,58 @@
+import React, {useEffect,useState} from "react";
+import {useParams} from "react-router-dom";
+
+//---assets
+import "./ProfilePerformance.scss";
+import {MOCK_HISTORY_OF_PARTICIPATING} from "common/mocks/MOCK";
+import {MOCK_PERFORMANCE_LEVEL} from "common/mocks/MOCK";
+//----components
+import ProfileNoTopics from "../../ProfileNoTopics";
+import PerformanceLevelCard from "./PerformanceLevelCard";
+import ParticipatingHistoryCard from "./ParticipatingHistoryCard";
+import PlayedHistoryCard from "./PlayedHistoryCard";
+import PerformanceContentSection from "./PerformanceContentSectoin";
+
+const ProfilePerformance = () => {
+  const {id: friendId} = useParams();
+  //----data states
+  const [performanceData, setPerformanceData] = useState();
+  const [participatingHistoryData, setParticipatingHistoryData] = useState();
+  const [playedTopicsData, setPlayedTopics] = useState();
+  //----loading states
+  const [isLoading,setIsLoading] = useState(true);
+  useEffect(() => {
+    setPerformanceData(MOCK_PERFORMANCE_LEVEL)
+    setParticipatingHistoryData(MOCK_HISTORY_OF_PARTICIPATING)
+    setPlayedTopics(MOCK_HISTORY_OF_PARTICIPATING)
+    setIsLoading(false)
+    // fetch participating history
+    // fetch played topics
+    // set loading status
+  }, []);
+  return (
+		<>
+			{isLoading && <div>Loading...</div>}
+			{!isLoading && (playedTopicsData.length > 0 || participatingHistoryData.length > 0) ? (
+				<div className="profile-performance">
+					<PerformanceLevelCard data={performanceData} />
+					<PerformanceContentSection title="History Of Participating Leagues" seeMoreLink="/">
+						{participatingHistoryData.map((p, i) => (
+							<ParticipatingHistoryCard key={i} data={p} />
+						))}
+					</PerformanceContentSection>
+					<PerformanceContentSection title="Played Topics History" seeMoreLink="/">
+						{playedTopicsData.map((p, i) => (
+							<PlayedHistoryCard key={i} data={p} />
+						))}
+					</PerformanceContentSection>
+				</div>
+			) : (
+				<>
+					<ProfileNoTopics />
+				</>
+			)}
+		</>
+  );
+}
+
+export default ProfilePerformance;
