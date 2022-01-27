@@ -11,3 +11,9 @@ export const CORE = {
 		notJson: "NotJson Error",
 	},
 };
+
+export const TOPIC_TYPE = {
+	TOP: "TOP",
+	LATEST: "LATEST",
+	FAVORITE: "FAVORITE",
+};
