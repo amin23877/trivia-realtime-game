@@ -5,6 +5,7 @@ const initialState = {
 	userInfo: {},
 	modals: {}, // #modalRedux step3
 	categoriesList: null,
+	openGameTypes: false,
 };
 export const generalReducer = (state = initialState, action) => {
 	// console.log("payload", action);
@@ -15,8 +16,9 @@ export const generalReducer = (state = initialState, action) => {
 		case actionsTypeGeneral.SET_MODALS: // #modalRedux step4
 			return { ...state, modals: action.payload };
 		case actionsTypeGeneral.GET_CATEGORIES_LIST:
-			console.log("payload", action);
 			return { ...state, categoriesList: action.payload };
+		case actionsTypeGeneral.SET_OPEN_GAME_TYPES:
+			return { ...state, openGameTypes: action.payload };
 		default:
 			return state;
 	}

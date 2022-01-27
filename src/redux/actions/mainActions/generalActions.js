@@ -20,3 +20,10 @@ export const GET_CATEGORIES_LIST = (token) => async (dispatch) => {
 	});
 	dispatch({ type: actionsTypeGeneral.GET_CATEGORIES_LIST, payload: cats.data });
 };
+
+export const SET_OPEN_GAME_TYPES = (payload) => {
+	return {
+		type: actionsTypeGeneral.SET_OPEN_GAME_TYPES,
+		payload,
+	};
+};
