@@ -5,10 +5,6 @@ import { useNavigate } from "react-router-dom";
 // Packages
 // Components, Services, Functions
 import Menu from "pages/menu/Menu";
-import ApiCall from "common/services/ApiCall";
-import { MOCK_TOPICS } from "common/mocks/MOCK";
-import { MOCK_CARDINFO } from "common/mocks/MOCK";
-import Footer from "common/components/footer/Footer";
 import Header from "common/components/header/Header";
 import HomeTopics from "./homeComponents/homeTopics/HomeTopics";
 import SelectGameType from "./homeComponents/selectGameType/SelectGameType";
@@ -16,22 +12,20 @@ import CardLeagueInfo from "common/components/cardLeagueInfo/CardLeagueInfo";
 import ModalConfirmDeactivation from "pages/modals/ModalConfirmDeactivation";
 // Redux
 import { MODALS } from "common/values/MODALS";
+import { fetchTopics } from "redux/actions/topicActions/topicsActions";
 // Material - lab
 import { Drawer } from "@material-ui/core";
 // Styles, Icons, Images
 import "./Home.scss";
 import arrowForwardMini from "assets/images/icons/arrow-forward-mini.svg";
-import { fetchTopics } from "redux/actions/topicActions/topicsActions";
 
 const Home = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
-	const apiCall = new ApiCall();
-
 	const stateGeneral = useSelector((state) => state.stateGeneral);
 	const stateTopic = useSelector((state) => state.stateTopic);
-	const [openGameTypes, setOpenGameTypes] = useState(false);
+
 	const cardInfo = {
 		title: "Chemical Compounds",
 		remainingTime: 8407,
@@ -40,12 +34,9 @@ const Home = () => {
 		img: "",
 	};
 
-	// const homeTopics = MOCK_TOPICS;
-	// console.log(stateTopic.topics);
-
 	const handleNavigate = (event, path) => {
 		event.stopPropagation();
-		console.log(path);
+		// console.log(path);
 		navigate(path);
 	};
 	// Drawer Menu --------------------------------------
@@ -72,9 +63,11 @@ const Home = () => {
 			isMounted = false;
 		};
 	}, []);
-	const _handleOpenGameTypes = (state = true) => {
-		setOpenGameTypes(state);
-	};
+
+	// DELETE
+	// const _handleOpenGameTypes = (state = true) => {
+	// 	setOpenGameTypes(state);
+	// };
 	return (
 		<div className="w-100 h-100 home">
 			<div className="_header">
@@ -84,7 +77,8 @@ const Home = () => {
 			<Drawer variant="persistent" anchor="left" open={openDrawerMenu}>
 				<Menu onDrawerClose={handleDrawerClose} />
 			</Drawer>
-			<div className="_body-height-HF home-body">
+
+			<div className="_body-height-H home-body">
 				<div className="card-league">
 					<div className="ratio _dish-cardLeagueInfo">
 						{/* #ratio */}
@@ -103,15 +97,10 @@ const Home = () => {
 						</div>
 
 						<div>
-							<HomeTopics topics={item.topicList} />
+							<HomeTopics type={item.type} />
 						</div>
 					</div>
 				))}
-				{openGameTypes && <SelectGameType open={openGameTypes} handleOpenGameTypes={_handleOpenGameTypes} />}
-			</div>
-
-			<div className="_footer">
-				<Footer handleOpenGameTypes={_handleOpenGameTypes} />
 			</div>
 
 			{/* #modalUse step0 */}
