@@ -5,10 +5,10 @@ import imgMain from "assets/images/test/1.png";
 import iconRate from "assets/images/icons/rate-mini.svg";
 
 const HomeTopics = ({ topics }) => {
-	// console.log(topics);
+	console.log(topics);
 	return (
 		<div className="w-100 h-100 d-flex justify-content-between align-items-stretch homeTopics">
-			{topics.map((el, index) => (
+			{topics?.map((el, index) => (
 				<div key={index} className="topic-card">
 					<div className="card-img">
 						<img src={imgMain} alt="" />

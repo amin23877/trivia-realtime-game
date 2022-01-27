@@ -41,7 +41,7 @@ const Home = () => {
 	};
 
 	// const homeTopics = MOCK_TOPICS;
-	// const homeTopics = [];
+	// console.log(stateTopic.topics);
 
 	const handleNavigate = (event, path) => {
 		event.stopPropagation();
@@ -67,8 +67,6 @@ const Home = () => {
 			//   ? localStorage.setItem('remainingTime', remainingTime)
 			//   : localStorage.setItem('remainingTime', cardInfo.remainingTime);
 			dispatch(fetchTopics());
-			console.log(stateGeneral);
-			console.log(stateTopic);
 		}
 		return () => {
 			isMounted = false;
@@ -94,22 +92,21 @@ const Home = () => {
 					</div>
 				</div>
 
-				{stateTopic.topics.length &&
-					stateTopic.topics.map((item, index) => (
-						<div key={index} className="topics" onClick={(e) => handleNavigate(e, "/topics/5")}>
-							<div className="d-flex justify-content-between align-items-center topics-header">
-								<p className="title">{item.topic}</p>
-								<p className="subtitle" onClick={(e) => handleNavigate(e, "/topics/5/all")}>
-									see all
-									<img className="mx-2" src={arrowForwardMini} alt="" />
-								</p>
-							</div>
-
-							<div>
-								<HomeTopics topics={item.topicList} />
-							</div>
+				{stateTopic.topics?.map((item, index) => (
+					<div key={index} className="topics" onClick={(e) => handleNavigate(e, "/topics/5")}>
+						<div className="d-flex justify-content-between align-items-center topics-header">
+							<p className="title">{item.topic}</p>
+							<p className="subtitle" onClick={(e) => handleNavigate(e, "/topics/5/all")}>
+								see all
+								<img className="mx-2" src={arrowForwardMini} alt="" />
+							</p>
 						</div>
-					))}
+
+						<div>
+							<HomeTopics topics={item.topicList} />
+						</div>
+					</div>
+				))}
 				{openGameTypes && <SelectGameType open={openGameTypes} handleOpenGameTypes={_handleOpenGameTypes} />}
 			</div>
 

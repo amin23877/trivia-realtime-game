@@ -10,7 +10,7 @@ export const TOPICS_FETCH_ERROR = (error) => {
 	return { type: actionsTypeTopic.FETCH_ERROR, payload: error };
 };
 export const TOPICS_FETCH_SUCCESS = (response) => {
-	return { type: actionsTypeTopic.FETCH_SUCCESS, response };
+	return { type: actionsTypeTopic.FETCH_SUCCESS, payload: response };
 };
 
 export const fetchTopics = () => {
@@ -19,23 +19,23 @@ export const fetchTopics = () => {
 		apiCall
 			.get("home")
 			.then((response) => {
-				console.log(response);
+				// console.log(response);
 				// dispatch(SET_SPINNER(false));
 				let topics = [
 					{
 						topic: "Top Topics",
 						path: "",
-						topicList: response.data.top,
+						topicList: response.top,
 					},
 					{
 						topic: "Lastest Topics",
 						path: "",
-						topicList: response.data.latest,
+						topicList: response.latest,
 					},
 					{
 						topic: "Favorite TopicsTop Topics",
 						path: "",
-						topicList: response.data.followed,
+						topicList: response.followed,
 					},
 				];
 				dispatch(TOPICS_FETCH_SUCCESS(topics));

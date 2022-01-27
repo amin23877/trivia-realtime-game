@@ -7,7 +7,7 @@ const initialState = {
 	categoriesList: null,
 };
 export const generalReducer = (state = initialState, action) => {
-	console.log("payload", action);
+	// console.log("payload", action);
 
 	switch (action.type) {
 		case actionsTypeGeneral.SET_USER_INFO:

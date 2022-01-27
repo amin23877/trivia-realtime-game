@@ -1,7 +1,7 @@
 import { actionsTypeTopic } from "redux/actions/topicActions/actionsType";
 
 const initialState = {
-	topics: [],
+	topics: null,
 	error: null,
 };
 export const topicsReducer = (state = initialState, action) => {
