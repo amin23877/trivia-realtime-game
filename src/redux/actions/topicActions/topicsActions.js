@@ -1,6 +1,7 @@
 import { actionsTypeTopic } from "./actionsType";
 
 import ApiCall from "common/services/ApiCall";
+import { TOPIC_TYPE } from "common/values/CORE";
 // import { MODALS } from "common/values/MODALS";
 // import { handleCatchErrorApiCall } from "functions/handleCatchErrorApiCall";
 
@@ -24,18 +25,21 @@ export const fetchTopics = () => {
 				let topics = [
 					{
 						topic: "Top Topics",
+						type: TOPIC_TYPE.TOP,
 						path: "",
-						topicList: response.top,
+						topicList: response.data.top,
 					},
 					{
 						topic: "Lastest Topics",
+						type: TOPIC_TYPE.LATEST,
 						path: "",
-						topicList: response.latest,
+						topicList: response.data.latest,
 					},
 					{
-						topic: "Favorite TopicsTop Topics",
+						topic: "Favorite Topics",
+						type: TOPIC_TYPE.FAVORITE,
 						path: "",
-						topicList: response.followed,
+						topicList: response.data.followed,
 					},
 				];
 				dispatch(TOPICS_FETCH_SUCCESS(topics));
