@@ -1,0 +1,24 @@
+
+
+.wait-for-start-single {
+    background-color: #282680;
+    background-image: url('../../../../assets/images/backgrounds/singleGameBg.svg');
+    padding-top:117px;
+    background-position: center;
+    background-size:contain;
+    background-repeat: no-repeat;
+    &__title {
+        height:38px;
+        // background-color:rgba(255,255,255,0.2);
+        text-align: center;
+        &>p{
+            color:#fff;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 38px;
+        }
+    }
+  
+
+    
+}
