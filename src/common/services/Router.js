@@ -30,8 +30,8 @@ import FriendsProfileFavoriteTopics from "pages/friends/profile/profileComponent
 import FriendsProfilePerformance from "pages/friends/profile/profileComponents/Contents/Performance/ProfilePerformance";
 import FriendsProfileFriends from "pages/friends/profile/profileComponents/Contents/Friends/ProfileFriends";
 import FriendsProfile from "pages/friends/profile/FriendsProfile";
-import CategoriesList from "pages/quickPlay/twoPlayers/categories/CategoriesList";
 import WrapperLayoutFooter from "common/components/layout/wrapperLayoutFooter";
+import OnePlayer from "pages/quickPlay/onePlayer/OnePlayer";
 
 const RouterConfig = () => {
 	return (
@@ -65,6 +65,7 @@ const RouterConfig = () => {
 				<Route exact path="/quickPlay" element={<ProtectedRoute />}>
 					<Route exact path="/quickPlay" element={<QuickPlay />} />
 					<Route exact path="/quickPlay/twoPlayers" element={<TwoPlayers />} />
+					<Route exact path="/quickPlay/onePlayer" element={<OnePlayer />} />
 				</Route>
 
 				<Route exact path="/menu" element={<ProtectedRoute />}>

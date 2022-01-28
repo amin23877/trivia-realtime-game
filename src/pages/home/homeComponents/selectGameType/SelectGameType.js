@@ -14,7 +14,7 @@ const SelectGameType = ({ handleOpenGameTypes, open }) => {
         {
             title: '1 Player',
             icon: onePlayerIcon,
-            link:'/'
+            link:'/quickPlay/onePlayer'
 
         },
         {
