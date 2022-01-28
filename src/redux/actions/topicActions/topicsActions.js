@@ -2,6 +2,7 @@ import { actionsTypeTopic } from "./actionsType";
 
 import ApiCall from "common/services/ApiCall";
 import { TOPIC_TYPE } from "common/values/CORE";
+import { handleCatchErrorFunc } from "common/functions/handleCatchErrorFunc";
 // import { MODALS } from "common/values/MODALS";
 // import { handleCatchErrorApiCall } from "functions/handleCatchErrorApiCall";
 
@@ -45,6 +46,7 @@ export const fetchTopics = () => {
 				dispatch(TOPICS_FETCH_SUCCESS(topics));
 			})
 			.catch((error) => {
+				handleCatchErrorFunc(error);
 				dispatch(TOPICS_FETCH_ERROR(error));
 				// dispatch(SET_SPINNER(false));
 				// let err = handleCatchErrorApiCall(error);

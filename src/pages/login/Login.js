@@ -63,6 +63,7 @@ const Login = () => {
 		if (isMounted) {
 			// localStorage.clear();
 			// sessionStorage.clear();
+			localStorage.removeItem("token");
 		}
 		return () => {
 			isMounted = false;

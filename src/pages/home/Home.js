@@ -57,6 +57,7 @@ const Home = () => {
 			// remainingTime
 			//   ? localStorage.setItem('remainingTime', remainingTime)
 			//   : localStorage.setItem('remainingTime', cardInfo.remainingTime);
+
 			dispatch(fetchTopics());
 		}
 		return () => {
