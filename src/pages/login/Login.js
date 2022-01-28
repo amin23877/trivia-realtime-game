@@ -8,9 +8,12 @@ import ApiCall from "common/services/ApiCall";
 import "./Login.scss";
 import logo from "assets/images/logo/logo.svg";
 import imgMain from "assets/images/pics/login-login.svg";
+import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	const apiCall = new ApiCall();
 
@@ -43,15 +46,16 @@ const Login = () => {
 		localStorage.setItem("phone", phone);
 
 		if (phone && isValidPhone) {
+			dispatch(SET_SPINNER(true));
 			apiCall
 				.post("user/register", { phone })
 				.then((res) => {
-					console.log("res > ", res);
+					dispatch(SET_SPINNER(false));
 					navigate("/otp");
 				})
 				.catch((err) => {
-					console.log("err > ", err);
-					navigate("/login");
+					dispatch(SET_SPINNER(false));
+					// navigate("/login");
 				});
 		} else {
 			// TODO

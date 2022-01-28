@@ -9,6 +9,8 @@ import ApiCall from "common/services/ApiCall";
 import CountDownTimerSecond from "common/components/CountdownTimer/CountDownTimerSecond";
 // Redux
 import { useDispatch } from "react-redux";
+import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
+import { SET_USER_INFO } from "redux/actions/mainActions/generalActions";
 // Material - lab
 import { TextField } from "@material-ui/core";
 // Styles, Icons, Images
@@ -16,7 +18,6 @@ import "./Login.scss";
 import logo from "assets/images/logo/logo.svg";
 import imgMain from "assets/images/pics/login-otp.svg";
 import arrowBack from "assets/images/icons/arrow-back.svg";
-import { SET_USER_INFO } from "redux/actions/mainActions/generalActions";
 
 const VerificationCode = () => {
 	const timeRemain = 90;
@@ -56,22 +57,21 @@ const VerificationCode = () => {
 
 	const handleRegister = () => {
 		if (phone && otp) {
+			dispatch(SET_SPINNER(true));
+
 			apiCall
 				.post("user/code", {
 					phone: phone,
 					code: otp,
 				})
 				.then((res) => {
-					console.log("res > ", res);
-
+					dispatch(SET_SPINNER(false));
 					res.data.token ? localStorage.setItem("token", res.data.token) : localStorage.removeItem("token");
-
 					dispatch(SET_USER_INFO(res.data.user));
-
 					navigate("/");
 				})
 				.catch((err) => {
-					console.log("err > ", err);
+					dispatch(SET_SPINNER(false));
 					localStorage.removeItem("token");
 					setIsValidOtp(false);
 					if (err.error) {
@@ -92,13 +92,16 @@ const VerificationCode = () => {
 		localStorage.setItem("phone", phone);
 
 		if (phone) {
+			dispatch(SET_SPINNER(true));
+
 			apiCall
 				.post("user/register", { phone })
 				.then((res) => {
+					dispatch(SET_SPINNER(false));
 					// TODO
 				})
 				.catch((err) => {
-					console.log("err > ", err);
+					dispatch(SET_SPINNER(false));
 				});
 		} else {
 			navigate("/login");

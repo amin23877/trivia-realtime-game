@@ -3,8 +3,13 @@ import axios from "axios";
 import { BASE_URL } from "common/values/CORE";
 import { actionsTypeGeneral } from "./actionsType";
 const baseUrl = BASE_URL;
+
 export const SET_USER_INFO = (payload) => {
 	return { type: actionsTypeGeneral.SET_USER_INFO, payload };
+};
+
+export const SET_SPINNER = (payload) => {
+	return { type: actionsTypeGeneral.SET_SPINNER, payload };
 };
 
 export const SET_MODALS = (payload) => {

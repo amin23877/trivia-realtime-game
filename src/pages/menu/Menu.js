@@ -26,6 +26,7 @@ import PowerSettingsNewOutlinedIcon from "@material-ui/icons/PowerSettingsNewOut
 import AccountBalanceWalletOutlinedIcon from "@material-ui/icons/AccountBalanceWalletOutlined";
 
 import avatar from "assets/images/logo/logo.svg";
+import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
 
 const Menu = ({ onDrawerClose }) => {
 	const navigate = useNavigate();
@@ -43,15 +44,16 @@ const Menu = ({ onDrawerClose }) => {
 
 	const getUserInfo = () => {
 		// console.log("TODO");
+		dispatch(SET_SPINNER(true));
 
 		apiCall
 			.get("user/me")
 			.then((res) => {
-				// console.log('res > ', res);
+				dispatch(SET_SPINNER(false));
 				dispatch(SET_USER_INFO(res.data.user));
 			})
 			.catch((err) => {
-				console.log("err > ", err);
+				dispatch(SET_SPINNER(false));
 			});
 	};
 
