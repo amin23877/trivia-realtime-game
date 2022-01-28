@@ -33,6 +33,7 @@ const Footer = ({ handleOpenGameTypes }) => {
 			pathname: "/",
 			path: "/",
 			isCenter: false,
+			isActivated: false,
 			icon: iconHome,
 			iconActive: iconHomeActive,
 		},
@@ -42,6 +43,7 @@ const Footer = ({ handleOpenGameTypes }) => {
 			pathname: "/league",
 			path: "/leagues",
 			isCenter: false,
+			isActivated: false,
 			icon: iconLeague,
 			iconActive: iconLeagueActive,
 		},
@@ -51,6 +53,7 @@ const Footer = ({ handleOpenGameTypes }) => {
 			pathname: "/play",
 			path: "/quickPlay",
 			isCenter: true,
+			isActivated: false,
 			icon: iconPlay,
 			iconActive: iconPlay,
 		},
@@ -60,6 +63,7 @@ const Footer = ({ handleOpenGameTypes }) => {
 			pathname: "/search",
 			path: "/search",
 			isCenter: false,
+			isActivated: false,
 			icon: iconSearch,
 			iconActive: iconSearchActive,
 		},
@@ -69,10 +73,20 @@ const Footer = ({ handleOpenGameTypes }) => {
 			pathname: "/profile",
 			path: "/profile",
 			isCenter: false,
+			isActivated: false,
 			icon: iconProfile,
 			iconActive: iconProfileActive,
 		},
 	];
+
+	const setPathNameArray = (type) => {
+		let pathNameArray = [];
+		menu.forEach((el) => {
+			if (el.type !== type) pathNameArray.push(el.pathname);
+		});
+		return pathNameArray;
+	};
+	const pathNameArray = setPathNameArray("HOME");
 
 	const handleNavigate = (path) => {
 		// console.log(path);
@@ -107,8 +121,27 @@ const Footer = ({ handleOpenGameTypes }) => {
 					// onClick={() => handleNavigate(el.path)}
 					onClick={(e) => handleOnClickFooter(el)}
 				>
-					{pathname.includes(el.pathname) ? <img src={el.iconActive} alt="" /> : <img src={el.icon} alt="" />}
-					<p className={`${pathname.includes(el.pathname) ? "p-active" : ""}`}>{el.title}</p>
+					{el.type !== "HOME" ? (
+						<>
+							{pathname.includes(el.pathname) ? (
+								<img src={el.iconActive} alt="" />
+							) : (
+								<img src={el.icon} alt="" />
+							)}
+							<p className={`${pathname.includes(el.pathname) ? "p-active" : ""}`}>{el.title}</p>
+						</>
+					) : (
+						<>
+							{!pathNameArray.some((el) => pathname.includes(el)) ? (
+								<img src={el.iconActive} alt="" />
+							) : (
+								<img src={el.icon} alt="" />
+							)}
+							<p className={`${!pathNameArray.some((el) => pathname.includes(el)) ? "p-active" : ""}`}>
+								{el.title}
+							</p>
+						</>
+					)}
 				</div>
 			))}
 		</div>
