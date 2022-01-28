@@ -35,7 +35,7 @@ const VerificationCode = () => {
 	const [otp, setOtp] = useState("");
 	const [isValidOtp, setIsValidOtp] = useState(true);
 
-	const messageErrorDefault = "Enter the verification code first";
+	const messageErrorDefault = "The code entered is incorrect";
 	const [messageError, setMessageError] = useState(messageErrorDefault);
 	const [hasTime, setHasTime] = useState(false);
 
@@ -73,11 +73,11 @@ const VerificationCode = () => {
 				.catch((err) => {
 					console.log("err > ", err);
 					localStorage.removeItem("token");
-					setIsValidOtp(true);
+					setIsValidOtp(false);
 					if (err.error) {
 						setMessageError(err.error);
 					} else {
-						setMessageError("Error!");
+						setMessageError(messageErrorDefault);
 					}
 				});
 		} else if (!phone) {
