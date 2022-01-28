@@ -1,18 +1,30 @@
+// Reacts
 import React, { useEffect, useState } from "react";
+import Countdown from "react-countdown";
+// Hooks
 import { useNavigate } from "react-router-dom";
-
-import { TextField } from "@material-ui/core";
-
+// Packages
+// Components, Services, Functions
 import ApiCall from "common/services/ApiCall";
-
+import CountDownTimerSecond from "common/components/CountdownTimer/CountDownTimerSecond";
+// Redux
+import { useDispatch } from "react-redux";
+// Material - lab
+import { TextField } from "@material-ui/core";
+// Styles, Icons, Images
 import "./Login.scss";
 import logo from "assets/images/logo/logo.svg";
 import imgMain from "assets/images/pics/login-otp.svg";
 import arrowBack from "assets/images/icons/arrow-back.svg";
-import { useDispatch } from "react-redux";
 import { SET_USER_INFO } from "redux/actions/mainActions/generalActions";
 
 const VerificationCode = () => {
+	const timeRemain = 90;
+	const handleStopTimer = (e) => {
+		// console.log(e);
+		setHasTime(true);
+	};
+
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
@@ -26,7 +38,6 @@ const VerificationCode = () => {
 	const messageErrorDefault = "Enter the verification code first";
 	const [messageError, setMessageError] = useState(messageErrorDefault);
 	const [hasTime, setHasTime] = useState(false);
-	const [timer, setTimer] = useState("01:30");
 
 	const handlSetOtp = (e) => {
 		if (!isValidOtp && e.target.value.length) {
@@ -77,6 +88,7 @@ const VerificationCode = () => {
 	};
 
 	const handleReGetOtp = () => {
+		setHasTime(false);
 		localStorage.setItem("phone", phone);
 
 		if (phone) {
@@ -145,7 +157,14 @@ const VerificationCode = () => {
 						Resend verification code
 					</p>
 				) : (
-					<p className="timer">{`Resend verification code until another ${timer}`}</p>
+					<div className="timer">
+						<p className="timer">Resend verification code until another</p>
+						<Countdown
+							date={Date.now() + timeRemain * 1000}
+							renderer={CountDownTimerSecond}
+							onComplete={(e) => handleStopTimer(e)}
+						/>
+					</div>
 				)}
 			</div>
 		</div>
