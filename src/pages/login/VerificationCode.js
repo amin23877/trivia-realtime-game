@@ -128,7 +128,7 @@ const VerificationCode = () => {
 							className=""
 							helperText={!isValidOtp ? messageError : ""}
 							variant="outlined"
-							inputProps={{ maxLength: 11 }}
+							inputProps={{ maxLength: 4 }}
 							error={!isValidOtp}
 							onChange={(e) => handlSetOtp(e)}
 							onKeyPress={(e) => handleEnterKeyOtp(e)}
