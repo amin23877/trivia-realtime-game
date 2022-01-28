@@ -4,6 +4,7 @@
     width: 100%;
     overflow-x: auto;
     .topic-card {
+        // min-height: 160px;
         min-width: calc(clamp(100px, 40%, 200px));
         margin: 5px !important;
         background-color: white;
@@ -15,6 +16,7 @@
             height: 60%;
             width: 100%;
             overflow: hidden;
+            border-radius: 15px 15px 0 0;
 
             img {
                 width: 100%;

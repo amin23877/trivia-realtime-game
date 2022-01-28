@@ -33,7 +33,7 @@ const Leagues = () => {
 				<img src={logo} alt="" />
 			</div>
 
-			<div className="_body-height-HF leagues-body">
+			<div className="_body-height-H leagues-body">
 				<p className="leagues-title">Daily League</p>
 
 				<div className="card-league">
@@ -76,10 +76,6 @@ const Leagues = () => {
 						</div>
 					))}
 				</div>
-			</div>
-
-			<div className="_footer">
-				<Footer />
 			</div>
 		</div>
 	);
