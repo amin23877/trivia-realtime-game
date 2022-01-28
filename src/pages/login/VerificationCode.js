@@ -66,7 +66,9 @@ const VerificationCode = () => {
 				})
 				.then((res) => {
 					dispatch(SET_SPINNER(false));
-					res.data.token ? localStorage.setItem("token", res.data.token) : localStorage.removeItem("token");
+					res.data.token
+						? localStorage.setItem("token", `Bearer ${res.data.token}`)
+						: localStorage.removeItem("token");
 					dispatch(SET_USER_INFO(res.data.user));
 					navigate("/");
 				})

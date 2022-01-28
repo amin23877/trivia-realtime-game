@@ -65,10 +65,6 @@ const Home = () => {
 		};
 	}, []);
 
-	// DELETE
-	// const _handleOpenGameTypes = (state = true) => {
-	// 	setOpenGameTypes(state);
-	// };
 	return (
 		<div className="fadeInFast w-100 h-100 home">
 			<div className="_header">
