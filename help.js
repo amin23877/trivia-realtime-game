@@ -51,6 +51,7 @@ Modal __________________________________________________________________________
 import React from 'react';
 import './Template.scss';
 // @import 'assets/scss/styles.scss';
+// fadeInFast 
 const Template = () => {
   return (
     <div className='w-100 h-100 template'>

@@ -28,7 +28,7 @@ const Leagues = () => {
 		navigate(path);
 	};
 	return (
-		<div className="w-100 h-100 leagues">
+		<div className="fadeInFast w-100 h-100 leagues">
 			<div className="d-flex justify-content-center align-items-center _header _header-shadow">
 				<img src={logo} alt="" />
 			</div>

@@ -69,7 +69,7 @@ const Home = () => {
 	// 	setOpenGameTypes(state);
 	// };
 	return (
-		<div className="w-100 h-100 home">
+		<div className="fadeInFast w-100 h-100 home">
 			<div className="_header">
 				<Header onDrawerOpen={handleDrawerOpen} />
 			</div>

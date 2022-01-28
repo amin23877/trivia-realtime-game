@@ -70,7 +70,7 @@ const Login = () => {
 	}, []);
 
 	return (
-		<div className="w-100 h-100 p-3 d-flex flex-column align-items-center login">
+		<div className="fadeInFast w-100 h-100 p-3 d-flex flex-column align-items-center login">
 			<img src={logo} alt="" />
 
 			<div className="login-body">

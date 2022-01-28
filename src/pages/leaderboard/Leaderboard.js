@@ -12,7 +12,7 @@ import "./Leaderboard.scss";
 
 const Leaderboard = () => {
 	return (
-		<div className="w-100 h-100 leaderboard">
+		<div className="fadeInFast w-100 h-100 leaderboard">
 			<HeaderGoBack title="General Leaderboard" />
 			<div className="_body-height-H leaderboard-body">
 				<LeaderboardTabs />
