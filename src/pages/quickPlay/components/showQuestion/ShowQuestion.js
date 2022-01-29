@@ -3,6 +3,7 @@ import './ShowQuestion.scss'
 import redTime from 'assets/images/icons/Red-time.svg';
 import yellowTime from 'assets/images/icons/Yellow-time.svg';
 import greenTime from 'assets/images/icons/Green-time.svg';
+import userIcon from 'assets/images/icons/footer-profile.svg';
 import { IMAGE_URL } from "common/values/CORE";
 import { Button } from "@material-ui/core";
 
@@ -18,7 +19,9 @@ const ShowQuestion = ({
     setQuestionNumber,
     correctAnswer,
     rivalAnswer,
-    myOption
+    myOption,
+    single,
+    singleGameQuestion
 }) => {
     const [pauseTimer, setPauseTimer] = useState(false)
     // let timeT = 20;
@@ -42,7 +45,7 @@ const ShowQuestion = ({
         setQuestionNumber(questionNumber + 1)
         setTime(20);
         setPauseTimer(false)
-    }, [doubleGameQuestion])
+    }, [single ? singleGameQuestion : doubleGameQuestion])
 
     const _handleSelectOption = (e) => {
         clearInterval(timerInterval)
@@ -88,22 +91,26 @@ const ShowQuestion = ({
     return (
         <div className="show-question w-100 h-100">
             <div className="show-question__header">
+
                 <div className="show-question__header--player-info">
-                    <img src={IMAGE_URL + doubleGameReady[myInfo.player].avatar} />
+                    <img src={single ? userIcon : IMAGE_URL + doubleGameReady[myInfo.player].avatar} />
                     <p>your score</p>
                     <span>{myInfo.score}</span>
                 </div>
-                <div className="show-question__header--player-info pull-right">
-                    <img src={IMAGE_URL + doubleGameReady[rivalInfo.player].avatar} />
-                    <p>{doubleGameReady[rivalInfo.player].username}</p>
-                    <span>{rivalInfo.score}</span>
-                </div>
+
+                {!single &&
+                    <div className="show-question__header--player-info pull-right">
+                        <img src={IMAGE_URL + doubleGameReady[rivalInfo.player].avatar} />
+                        <p>{doubleGameReady[rivalInfo.player].username}</p>
+                        <span>{rivalInfo.score}</span>
+                    </div>
+                }
             </div>
             <div className="show-question__question">
                 <div className="show-question__question--number">
                     {questionNumber}/7
                 </div>
-                <p className="show-question__question--text">{doubleGameQuestion.title}</p>
+                <p className="show-question__question--text">{(single ? singleGameQuestion : doubleGameQuestion).title}</p>
             </div>
             <div className="show-question__timer" style={pauseTimer ? { filter: 'opacity(0.5)' } : {}}>
                 <img src={_renderClockIcon()} />
@@ -114,24 +121,24 @@ const ShowQuestion = ({
             </div>
             <div className="show-question__options">
                 <Button
-                    className={`${pauseTimer?'show-question__options--disabled':''} ${correctAnswer == doubleGameQuestion.option1 ? 'show-question__options--true' : ''} ${(myOption == doubleGameQuestion.option1 && myOption != correctAnswer) ? 'show-question__options--false' : ''}`}
-                    onClick={() => _handleSelectOption(doubleGameQuestion.option1)}>
-                    {doubleGameQuestion.option1}
+                    className={`${pauseTimer ? 'show-question__options--disabled' : ''} ${correctAnswer == (single ? singleGameQuestion : doubleGameQuestion).option1 ? 'show-question__options--true' : ''} ${(myOption == (single ? singleGameQuestion : doubleGameQuestion).option1 && myOption != correctAnswer) ? 'show-question__options--false' : ''}`}
+                    onClick={() => _handleSelectOption((single ? singleGameQuestion : doubleGameQuestion).option1)}>
+                    {(single ? singleGameQuestion : doubleGameQuestion).option1}
                 </Button>
                 <Button
-                    className={`${pauseTimer?'show-question__options--disabled':''} ${correctAnswer == doubleGameQuestion.option2 ? 'show-question__options--true' : ''} ${(myOption == doubleGameQuestion.option2 && myOption != correctAnswer) ? 'show-question__options--false' : ''}`}
-                    onClick={() => _handleSelectOption(doubleGameQuestion.option2)}>
-                    {doubleGameQuestion.option2}
+                    className={`${pauseTimer ? 'show-question__options--disabled' : ''} ${correctAnswer == (single ? singleGameQuestion : doubleGameQuestion).option2 ? 'show-question__options--true' : ''} ${(myOption == (single ? singleGameQuestion : doubleGameQuestion).option2 && myOption != correctAnswer) ? 'show-question__options--false' : ''}`}
+                    onClick={() => _handleSelectOption((single ? singleGameQuestion : doubleGameQuestion).option2)}>
+                    {(single ? singleGameQuestion : doubleGameQuestion).option2}
                 </Button>
                 <Button
-                    className={`${pauseTimer?'show-question__options--disabled':''} ${correctAnswer == doubleGameQuestion.option3 ? 'show-question__options--true' : ''} ${(myOption == doubleGameQuestion.option3 && myOption != correctAnswer) ? 'show-question__options--false' : ''}`}
-                    onClick={() => _handleSelectOption(doubleGameQuestion.option3)}>
-                    {doubleGameQuestion.option3}
+                    className={`${pauseTimer ? 'show-question__options--disabled' : ''} ${correctAnswer == (single ? singleGameQuestion : doubleGameQuestion).option3 ? 'show-question__options--true' : ''} ${(myOption == (single ? singleGameQuestion : doubleGameQuestion).option3 && myOption != correctAnswer) ? 'show-question__options--false' : ''}`}
+                    onClick={() => _handleSelectOption((single ? singleGameQuestion : doubleGameQuestion).option3)}>
+                    {(single ? singleGameQuestion : doubleGameQuestion).option3}
                 </Button>
                 <Button
-                    className={`${pauseTimer?'show-question__options--disabled':''} ${correctAnswer == doubleGameQuestion.option4 ? 'show-question__options--true' : ''} ${(myOption == doubleGameQuestion.option4 && myOption != correctAnswer) ? 'show-question__options--false' : ''}`}
-                    onClick={() => _handleSelectOption(doubleGameQuestion.option4)}>
-                    {doubleGameQuestion.option4}
+                    className={`${pauseTimer ? 'show-question__options--disabled' : ''} ${correctAnswer == (single ? singleGameQuestion : doubleGameQuestion).option4 ? 'show-question__options--true' : ''} ${(myOption == (single ? singleGameQuestion : doubleGameQuestion).option4 && myOption != correctAnswer) ? 'show-question__options--false' : ''}`}
+                    onClick={() => _handleSelectOption((single ? singleGameQuestion : doubleGameQuestion).option4)}>
+                    {(single ? singleGameQuestion : doubleGameQuestion).option4}
                 </Button>
             </div>
 
