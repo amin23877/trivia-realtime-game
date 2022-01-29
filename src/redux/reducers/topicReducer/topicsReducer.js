@@ -3,7 +3,7 @@ import { actionsTypeTopic } from "redux/actions/topicActions/actionsType";
 const initialState = {
 	topics: null,
 	topicsByTop: null,
-	topicsByLastest: null,
+	topicsByLatest: null,
 	topicsByFavorite: null,
 	error: null,
 };
@@ -15,11 +15,11 @@ export const topicsReducer = (state = initialState, action) => {
 			return { ...state, error: action.payload };
 
 		case actionsTypeTopic.FETCH_SUCCESS_TOPICS_SORT_TOP:
-			return { ...state, topics: action.payload };
+			return { ...state, topicsByTop: action.payload };
 		case actionsTypeTopic.FETCH_SUCCESS_TOPICS_SORT_LATEST:
-			return { ...state, topics: action.payload };
+			return { ...state, topicsByLatest: action.payload };
 		case actionsTypeTopic.FETCH_SUCCESS_TOPICS_SORT_FAVORITE:
-			return { ...state, topics: action.payload };
+			return { ...state, topicsByFavorite: action.payload };
 
 		default:
 			return state;
