@@ -28,12 +28,12 @@ const Leagues = () => {
 		navigate(path);
 	};
 	return (
-		<div className="w-100 h-100 leagues">
+		<div className="fadeInFast w-100 h-100 leagues">
 			<div className="d-flex justify-content-center align-items-center _header _header-shadow">
 				<img src={logo} alt="" />
 			</div>
 
-			<div className="_body-height-HF leagues-body">
+			<div className="_body-height-H leagues-body">
 				<p className="leagues-title">Daily League</p>
 
 				<div className="card-league">
@@ -76,10 +76,6 @@ const Leagues = () => {
 						</div>
 					))}
 				</div>
-			</div>
-
-			<div className="_footer">
-				<Footer />
 			</div>
 		</div>
 	);

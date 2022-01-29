@@ -1,7 +1,9 @@
 // #redux step5
 
 export const actionsTypeGeneral = {
+	SET_SPINNER: "SET_SPINNER",
 	SET_USER_INFO: "SET_USER_INFO",
-	SET_MODALS: "SET_MODALS", // #modalRedux step1
+	SET_OPEN_GAME_TYPES: "SET_OPEN_GAME_TYPES",
 	GET_CATEGORIES_LIST: "GET_CATEGORIES_LIST",
+	SET_MODALS: "SET_MODALS", // #modalRedux step1
 };

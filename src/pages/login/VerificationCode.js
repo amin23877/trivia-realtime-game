@@ -1,18 +1,31 @@
+// Reacts
 import React, { useEffect, useState } from "react";
+import Countdown from "react-countdown";
+// Hooks
 import { useNavigate } from "react-router-dom";
-
-import { TextField } from "@material-ui/core";
-
+// Packages
+// Components, Services, Functions
 import ApiCall from "common/services/ApiCall";
-
+import CountDownTimerSecond from "common/components/CountdownTimer/CountDownTimerSecond";
+// Redux
+import { useDispatch } from "react-redux";
+import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
+import { SET_USER_INFO } from "redux/actions/mainActions/generalActions";
+// Material - lab
+import { TextField } from "@material-ui/core";
+// Styles, Icons, Images
 import "./Login.scss";
 import logo from "assets/images/logo/logo.svg";
 import imgMain from "assets/images/pics/login-otp.svg";
 import arrowBack from "assets/images/icons/arrow-back.svg";
-import { useDispatch } from "react-redux";
-import { SET_USER_INFO } from "redux/actions/mainActions/generalActions";
 
 const VerificationCode = () => {
+	const timeRemain = 90;
+	const handleStopTimer = (e) => {
+		// console.log(e);
+		setHasTime(true);
+	};
+
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
@@ -23,10 +36,9 @@ const VerificationCode = () => {
 	const [otp, setOtp] = useState("");
 	const [isValidOtp, setIsValidOtp] = useState(true);
 
-	const messageErrorDefault = "Enter the verification code first";
+	const messageErrorDefault = "The code entered is incorrect";
 	const [messageError, setMessageError] = useState(messageErrorDefault);
 	const [hasTime, setHasTime] = useState(false);
-	const [timer, setTimer] = useState("01:30");
 
 	const handlSetOtp = (e) => {
 		if (!isValidOtp && e.target.value.length) {
@@ -45,28 +57,29 @@ const VerificationCode = () => {
 
 	const handleRegister = () => {
 		if (phone && otp) {
+			dispatch(SET_SPINNER(true));
+
 			apiCall
 				.post("user/code", {
 					phone: phone,
 					code: otp,
 				})
 				.then((res) => {
-					console.log("res > ", res);
-
-					res.data.token ? localStorage.setItem("token", res.data.token) : localStorage.removeItem("token");
-
+					dispatch(SET_SPINNER(false));
+					res.data.token
+						? localStorage.setItem("token", `Bearer ${res.data.token}`)
+						: localStorage.removeItem("token");
 					dispatch(SET_USER_INFO(res.data.user));
-
 					navigate("/");
 				})
 				.catch((err) => {
-					console.log("err > ", err);
+					dispatch(SET_SPINNER(false));
 					localStorage.removeItem("token");
-					setIsValidOtp(true);
+					setIsValidOtp(false);
 					if (err.error) {
 						setMessageError(err.error);
 					} else {
-						setMessageError("Error!");
+						setMessageError(messageErrorDefault);
 					}
 				});
 		} else if (!phone) {
@@ -77,16 +90,20 @@ const VerificationCode = () => {
 	};
 
 	const handleReGetOtp = () => {
+		setHasTime(false);
 		localStorage.setItem("phone", phone);
 
 		if (phone) {
+			dispatch(SET_SPINNER(true));
+
 			apiCall
 				.post("user/register", { phone })
 				.then((res) => {
+					dispatch(SET_SPINNER(false));
 					// TODO
 				})
 				.catch((err) => {
-					console.log("err > ", err);
+					dispatch(SET_SPINNER(false));
 				});
 		} else {
 			navigate("/login");
@@ -106,7 +123,7 @@ const VerificationCode = () => {
 	}, []);
 
 	return (
-		<div className="w-100 h-100 p-3 d-flex flex-column align-items-center login">
+		<div className="fadeInFast w-100 h-100 p-3 d-flex flex-column align-items-center login">
 			<img src={logo} alt="" />
 			<div className="w-100">
 				<img src={arrowBack} onClick={() => navigate("/login")} alt="" />
@@ -128,7 +145,7 @@ const VerificationCode = () => {
 							className=""
 							helperText={!isValidOtp ? messageError : ""}
 							variant="outlined"
-							inputProps={{ maxLength: 11 }}
+							inputProps={{ maxLength: 4 }}
 							error={!isValidOtp}
 							onChange={(e) => handlSetOtp(e)}
 							onKeyPress={(e) => handleEnterKeyOtp(e)}
@@ -145,7 +162,14 @@ const VerificationCode = () => {
 						Resend verification code
 					</p>
 				) : (
-					<p className="timer">{`Resend verification code until another ${timer}`}</p>
+					<div className="timer">
+						<p className="timer">Resend verification code until another</p>
+						<Countdown
+							date={Date.now() + timeRemain * 1000}
+							renderer={CountDownTimerSecond}
+							onComplete={(e) => handleStopTimer(e)}
+						/>
+					</div>
 				)}
 			</div>
 		</div>
