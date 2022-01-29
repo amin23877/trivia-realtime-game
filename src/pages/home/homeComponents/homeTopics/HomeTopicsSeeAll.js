@@ -6,7 +6,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import _ from "lodash";
 // Components, Services, Functions
 import { LIST_PAGESIZE } from "common/values/CORE";
-import { MOCK_TOPICS_ALL } from "common/mocks/MOCK";
 import { TYPE_TOPIC_SORTKEY } from "common/values/TYPES";
 import EmptyList from "common/components/empties/EmptyList";
 import { TYPE_TOPIC_SORTKEY_LIST } from "common/values/TYPES";
@@ -17,7 +16,6 @@ import { fetchTopicsSort } from "redux/actions/topicActions/topicsActions";
 import Pagination from "@material-ui/lab/Pagination"; // #pagination step0
 // Styles, Icons, Images
 import "./HomeTopicsSeeAll.scss";
-import imgMain from "assets/images/test/3.png";
 import iconRate from "assets/images/icons/rate-mini.svg";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { IMAGE_URL } from "common/values/CORE";
@@ -46,7 +44,7 @@ const HomeTopicsSeeAll = (props) => {
 		},
 	];
 
-	const [pagination, setPagination] = useState({ page: 0, pageSize: LIST_PAGESIZE });
+	const [pagination, setPagination] = useState({ page: 1, pageSize: LIST_PAGESIZE });
 
 	const handleNavigate = (event, path) => {
 		event.stopPropagation();
@@ -111,7 +109,6 @@ const HomeTopicsSeeAll = (props) => {
 										<div className="d-flex justify-content-between align-items-center">
 											<p className="subtitle">
 												<span>{`${el.questions} questions /`}</span>
-												{/* <span className="mx-1">questions /</span> */}
 
 												<span>{`${el?.singlePlays + el?.doublePlays} plays`}</span>
 											</p>
