@@ -1,1 +1,115 @@
-@import 'assets/scss/styles.scss';
+@import '../../assets/scss/styles.scss';
+
+.explore-root {
+  --filter-bg : #fff;
+  --border-bottom-color: #00000020;
+  --filter-box-shadow : 0px 3px 5px rgba(94, 92, 106, 0.1);
+  --space-x : 2rem;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: $bg-login;
+}
+
+.explore-search-input {
+  @include fsM();
+  appearance: none;
+  border: none;
+  height: 55px;
+  width: 100%;
+  padding : 0 var(--space-x);
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.explore-search-button {
+  position: absolute;
+  right: var(--space-x);
+  top : 50%;
+  transform: translateY(-50%);
+}
+
+.explore-result-wrapper {
+  position: relative;
+  overflow-y: auto;
+  flex-grow: 1;
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.explore-result-filter{
+  @include fsL();
+  width: 100%;
+  position: absolute;
+  top: 0;
+  background: var(--filter-bg);
+  box-shadow: var(--filter-box-shadow);
+  padding: 0 var(--space-x);
+}
+
+.explore-result-header {
+  padding: 1rem var(--space-x);
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  @include fsM();
+}
+
+.explore-result-remove {
+  color : $grey-1;
+  cursor: pointer;
+}
+
+.explore-result-list {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.explore-result-item {
+  --avatar-size : 36px;
+
+  display: flex;
+  gap: .5rem;
+  padding: .5rem 2rem;
+  border-bottom: 1px solid var(--border-bottom-color);
+  @include fsXS();
+
+  &__avatar {
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    border-radius: 50%;
+    background-size: contain;
+    background-position: center;
+  }
+
+  &__title {
+    padding-bottom: 5px;
+  }
+
+  &__desc {
+    color : $grey-1;
+  }
+
+  &__rate {
+    color : $gold;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__hashtag {
+    position: relative;
+    width: var(--avatar-size);
+    height:  var(--avatar-size);
+    border-radius: 50%;
+    border: 1px solid $grey-1;
+    display: grid;
+    place-items: center;
+  }
+}
+
