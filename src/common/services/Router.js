@@ -53,7 +53,7 @@ const RouterConfig = () => {
 
 				{/* ------------------------- HOME ------------------------- */}
 				<Route exact path="/topics/:id" element={<HomeTopicsInner />} />
-				<Route exact path="/topics/:topicId/all" element={<HomeTopicsSeeAll />} />
+				<Route exact path="/topics/all/:type" element={<HomeTopicsSeeAll />} />
 				<Route exact path="/leaderboard" element={<Leaderboard />} />
 
 				{/* ------------------------- LEAGUE ------------------------- */}

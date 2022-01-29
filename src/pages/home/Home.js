@@ -39,6 +39,7 @@ const Home = () => {
 		// console.log(path);
 		navigate(path);
 	};
+
 	// Drawer Menu --------------------------------------
 	const [openDrawerMenu, setOpenDrawerMenu] = React.useState(false);
 	const handleDrawerOpen = () => {
@@ -87,7 +88,7 @@ const Home = () => {
 					<div key={index} className="topics" onClick={(e) => handleNavigate(e, "/topics/5")}>
 						<div className="d-flex justify-content-between align-items-center topics-header">
 							<p className="title">{item.topic}</p>
-							<p className="subtitle" onClick={(e) => handleNavigate(e, "/topics/5/all")}>
+							<p className="subtitle" onClick={(e) => handleNavigate(e, `/topics/all/${item.type}`)}>
 								see all
 								<img className="mx-2" src={arrowForwardMini} alt="" />
 							</p>
