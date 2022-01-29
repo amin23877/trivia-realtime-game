@@ -6,6 +6,12 @@ export const TYPE_TOPIC = {
 
 export const TYPE_TOPIC_SORTKEY = {
 	TOP: "rate",
-	LATEST: "createDate",
-	FAVORITE: "followed",
+	LATEST: "createAt",
+	FAVORITE: "favorite",
+};
+
+export const TYPE_TOPIC_SORTKEY_LIST = {
+	TOP: "topicsByTop",
+	LATEST: "topicsByLatest",
+	FAVORITE: "topicsByFavorite",
 };
