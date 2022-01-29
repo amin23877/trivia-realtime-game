@@ -3,16 +3,21 @@ import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import thunk from "redux-thunk";
 import { topicsReducer } from "./reducers/topicReducer/topicsReducer";
 import { generalReducer } from "./reducers/mainReducer/generalReducer";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 const rootReducer = combineReducers({
 	stateGeneral: generalReducer,
 	stateTopic: topicsReducer,
 });
 
-const store = createStore(
-	rootReducer,
-	compose(applyMiddleware(thunk), window.devToolsExtension ? window.devToolsExtension() : (f) => f)
-);
+const composeEnhancers = composeWithDevTools({});
+
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
+
+// const store = createStore(
+// 	rootReducer,
+// 	compose(applyMiddleware(thunk), window.devToolsExtension ? window.devToolsExtension() : (f) => f)
+// );
 
 export default store;
 
