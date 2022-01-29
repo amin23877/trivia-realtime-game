@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Tab, Tabs } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
 
 import "./SearchExplore.scss";
 
@@ -52,29 +50,6 @@ const useSearch = (word) => {
 	return response;
 };
 
-// customize mui tab
-const StyledTab = withStyles({
-	root: {
-		minWidth: "25%",
-		textTransform: "none",
-		fontSize: 16,
-		"&$selected": {
-			color: "#6D6BE6",
-		},
-		"&:focus": {
-			color: "#6D6BE6",
-		},
-	},
-	selected: {},
-})(Tab);
-
-const StyledTabs = withStyles({
-	indicator: {
-		borderRadius: 2,
-		backgroundColor: "#6D6BE6",
-	},
-})(Tabs);
-
 const Search = (props) => {
 	return (
 		<div className="position-relative">
@@ -82,25 +57,6 @@ const Search = (props) => {
 			<span className="explore-search-button">
 				<img alt="search" src={searchIcon} />
 			</span>
-		</div>
-	);
-};
-
-const FilterResult = () => {
-	const [value, setValue] = React.useState(0);
-
-	const handleChange = (event, newValue) => {
-		setValue(newValue);
-	};
-
-	return (
-		<div className="explore-result-filter">
-			<StyledTabs value={value} onChange={handleChange} aria-label="filter-result-tabs">
-				<StyledTab label="All" />
-				<StyledTab label="Tags" />
-				<StyledTab label="People" />
-				<StyledTab label="Topics" />
-			</StyledTabs>
 		</div>
 	);
 };
@@ -143,8 +99,6 @@ const SearchResult = ({ searchText }) => {
 
 	return (
 		<div className="explore-result-wrapper">
-			<FilterResult />
-
 			<div className="explore-result-header">
 				<p>Recent searches</p>
 				<p className="explore-result-remove">Remove</p>
