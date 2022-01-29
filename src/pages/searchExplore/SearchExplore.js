@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Tab, Tabs } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-import Footer from "common/components/footer/Footer";
 
 import "./SearchExplore.scss";
 
@@ -168,7 +167,6 @@ const SearchExplore = () => {
 		<div className="explore-root">
 			<Search value={searchText} onChange={handleSearchInput} />
 			<SearchResult searchText={searchText} />
-			<Footer />
 		</div>
 	);
 };
