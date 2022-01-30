@@ -19,7 +19,11 @@
 }
 
 ._header {
-    height: $height-header;
+    height: $mobile-header-height;
+
+    @media (min-width: $breakpoint-xl) {
+        height: $desktop-header-height;
+    }
 }
 
 ._footer {
@@ -36,6 +40,11 @@
 
 ._body-height-F {
     height: $height-body-F;
+
+    /* there is no footer on desktop */
+    @media (min-width: $breakpoint-xl) {
+        height: 100%;
+    }
 }
 
 ._header-goback {
