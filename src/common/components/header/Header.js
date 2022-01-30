@@ -1,24 +1,42 @@
 import React from "react";
+import Search from "common/components/UI/Search";
+
 import { useNavigate } from "react-router-dom";
 
 import "./Header.scss";
-import logo from "assets/images/icons/header-logo.svg";
+
+// images
+import mobileLogo from "assets/images/icons/header-logo.svg";
+import desktopLogo from "assets/images/logo/logo-white.svg";
 import iconMenu from "assets/images/icons/header-menu.svg";
 import iconLeaderboard from "assets/images/icons/icon-leaderboard.svg";
+import notifIcon from "assets/images/icons/notifications.svg";
 
 const Header = ({ onDrawerOpen }) => {
 	const navigate = useNavigate();
 
-	const handleNavigate = (path) => {
-		navigate(path);
-	};
-
 	return (
-		<div className="d-flex justify-content-between align-items-center _header-shadow header">
-			{/* <img src={iconMenu} onClick={() => handleNavigate('/menu')} alt='' /> */}
-			<img src={iconMenu} onClick={onDrawerOpen} alt="" />
-			<img src={logo} alt="" />
-			<img src={iconLeaderboard} alt="" onClick={() => handleNavigate("/leaderboard")} />
+		<div className="_header-shadow header">
+			{/* show toggle menu button in mobile */}
+			<img width={24} className="d-xl-none" src={iconMenu} onClick={onDrawerOpen} alt="" />
+
+			{/* show appropriate logo based screen size*/}
+			<img className="d-xl-none" src={mobileLogo} alt="logo" />
+			<img className="d-none d-xl-inline" src={desktopLogo} alt="logo" />
+
+			{/* search bar showed in desktop */}
+			<div className="d-none d-xl-block">
+				<Search cb={() => {}} />
+			</div>
+
+			{/* show leader board button in mobile and notification icon in desktop */}
+			<img className="d-xl-none" src={iconLeaderboard} alt="" onClick={() => navigate("/leaderboard")} />
+			<img
+				className="d-none d-xl-inline"
+				src={notifIcon}
+				alt="notifications"
+				onClick={() => navigate("/menu/notification")}
+			/>
 		</div>
 	);
 };

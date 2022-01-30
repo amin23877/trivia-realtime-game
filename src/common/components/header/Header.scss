@@ -1,14 +1,21 @@
 @import 'assets/scss/styles.scss';
 
 .header {
+    --mobile-header-height : 35px;
+    --desktop-header-height: 64px;
+
     width: 100%;
-    height: $height-header;
-
-    padding: 0 15px;
+    height: var(--mobile-header-height);
     background-color: white;
+    padding: 0 1.5rem;
 
-    img {
-        height: 50%;
-        width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (min-width: $breakpoint-xl) {
+        height: var(--desktop-header-height);
+        background-color: $primary;
+        padding: 0 6rem;
     }
 }
