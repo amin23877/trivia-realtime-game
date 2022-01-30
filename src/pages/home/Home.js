@@ -18,6 +18,7 @@ import { Drawer } from "@material-ui/core";
 // Styles, Icons, Images
 import "./Home.scss";
 import arrowForwardMini from "assets/images/icons/arrow-forward-mini.svg";
+import Sidebar from "common/components/sidebar/Sidebar";
 
 const Home = () => {
 	const navigate = useNavigate();
@@ -76,7 +77,9 @@ const Home = () => {
 				<Menu onDrawerClose={handleDrawerClose} />
 			</Drawer>
 
-			<div className="home__sidebar" />
+			<div className="home__sidebar">
+				<Sidebar />
+			</div>
 
 			<div className="home__body">
 				<div className="card-league">

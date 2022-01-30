@@ -25,6 +25,8 @@ $gap-between-sidebar-and-body : 120px;
   }
 
   &__sidebar {
+    @include fsM();
+
     display: none;
     background-color: #FFFFFF;
 
