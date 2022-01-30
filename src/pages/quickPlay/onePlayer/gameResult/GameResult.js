@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react";
 import './GameResult.scss'
-import explosion from 'assets/images/icons/explosion.svg';
-import { IMAGE_URL } from "common/values/CORE";
-import kingImage from 'assets/images/icons/king.svg';
-import looserCup from 'assets/images/icons/looser.svg';
-import winnerCup from 'assets/images/icons/winner.svg';
 import { Button } from "@material-ui/core";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import userIcon from 'assets/images/icons/footer-profile.svg';
