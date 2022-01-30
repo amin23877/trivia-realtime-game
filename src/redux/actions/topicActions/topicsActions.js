@@ -68,26 +68,40 @@ export const fetchTopics = () => {
 	};
 };
 
-export const fetchTopicsSort = (sortKey, orderKey = "DESC") => {
+export const fetchTopicsSort = (sortKey, pagination = {}, orderKey = "DESC") => {
 	return (dispatch) => {
 		dispatch(SET_SPINNER(true));
+		let url =
+			sortKey === TYPE_TOPIC_SORTKEY.FAVORITE ? "user/me/membership" : `topic?sort=${sortKey}&order=${orderKey}`;
+		url += pagination?.page ? `&page=${pagination?.page}` : "";
+		url += pagination?.pageSize ? `&pageSize=${pagination?.pageSize}` : "";
+
 		apiCall
-			.get(`topic?sort=${sortKey}&order=${orderKey}`)
+			.get(url)
 			.then((response) => {
-				console.log(response);
+				// console.log(response);
 				dispatch(SET_SPINNER(false));
 
 				switch (sortKey) {
 					case TYPE_TOPIC_SORTKEY.TOP:
-						dispatch(FETCH_SUCCESS_TOPICS_SORT_TOP());
+						dispatch(
+							FETCH_SUCCESS_TOPICS_SORT_TOP({ list: response.data.result, total: response.data.total })
+						);
 						break;
 
 					case TYPE_TOPIC_SORTKEY.LATEST:
-						dispatch(FETCH_SUCCESS_TOPICS_SORT_LATEST());
+						dispatch(
+							FETCH_SUCCESS_TOPICS_SORT_LATEST({ list: response.data.result, total: response.data.total })
+						);
 						break;
 
 					case TYPE_TOPIC_SORTKEY.FAVORITE:
-						dispatch(FETCH_SUCCESS_TOPICS_SORT_FAVORITE());
+						dispatch(
+							FETCH_SUCCESS_TOPICS_SORT_FAVORITE({
+								list: response.data.result,
+								total: response.data.total,
+							})
+						);
 						break;
 
 					default:

@@ -8,5 +8,17 @@ $height-body: calc(100% - #{$height-header-path});
     .topicsSeeAll-body {
         height: $height-body;
         overflow-y: auto;
+
+        .card-img {
+            height: 60%;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 15px 15px 0 0;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
     }
 }
