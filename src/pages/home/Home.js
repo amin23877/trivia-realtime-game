@@ -67,8 +67,8 @@ const Home = () => {
 	}, []);
 
 	return (
-		<div className="fadeInFast w-100 h-100 home">
-			<div className="_header">
+		<div className="fadeInFast home">
+			<div className="_header home__header">
 				<Header onDrawerOpen={handleDrawerOpen} />
 			</div>
 
@@ -76,7 +76,9 @@ const Home = () => {
 				<Menu onDrawerClose={handleDrawerClose} />
 			</Drawer>
 
-			<div className="_body-height-H home-body">
+			<div className="home__sidebar" />
+
+			<div className="home__body">
 				<div className="card-league">
 					<div className="ratio _dish-cardLeagueInfo">
 						{/* #ratio */}
