@@ -72,7 +72,7 @@ const Home = () => {
 				<Header onDrawerOpen={handleDrawerOpen} />
 			</div>
 
-			<Drawer variant="persistent" anchor="left" open={openDrawerMenu}>
+			<Drawer className="d-xl-none" variant="persistent" anchor="left" open={openDrawerMenu}>
 				<Menu onDrawerClose={handleDrawerClose} />
 			</Drawer>
 
