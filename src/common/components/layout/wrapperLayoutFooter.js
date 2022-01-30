@@ -24,7 +24,7 @@ const WrapperLayoutFooter = () => {
 				<Outlet />
 			</div>
 
-			<div className="_footer">
+			<div className="_footer d-xl-none">
 				<Footer />
 			</div>
 
