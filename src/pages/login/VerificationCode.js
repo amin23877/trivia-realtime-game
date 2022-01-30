@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 // Packages
 // Components, Services, Functions
 import ApiCall from "common/services/ApiCall";
-import CountDownTimerSecond from "common/components/countdownTimer/CountDownTimerSecond";
+import CountDownTimerSecond from "common/components/CountdownTimer/CountDownTimerSecond";
 // Redux
 import { useDispatch } from "react-redux";
 import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
