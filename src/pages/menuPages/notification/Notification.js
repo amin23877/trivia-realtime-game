@@ -1,4 +1,5 @@
 import React from "react";
+import EmptyList from "common/components/empties/EmptyList";
 
 import "./Notification.scss";
 
@@ -75,7 +76,9 @@ const Notification = () => {
 						)
 					)}
 				</div>
-			) : null}
+			) : (
+				<EmptyList />
+			)}
 		</div>
 	);
 };
