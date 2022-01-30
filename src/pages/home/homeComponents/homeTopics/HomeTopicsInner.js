@@ -1,184 +1,243 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-import { MOCK_LEADERS } from 'common/mocks/MOCK';
-import { MOCK_BADGETES } from 'common/mocks/MOCK';
+import { MOCK_LEADERS } from "common/mocks/MOCK";
+import { MOCK_BADGETES } from "common/mocks/MOCK";
 
-import CardLeagueInfo from 'common/components/cardLeagueInfo/CardLeagueInfo';
+import CardLeagueInfo from "common/components/cardLeagueInfo/CardLeagueInfo";
 
-import './HomeTopicsInner.scss';
-import AddIcon from '@material-ui/icons/Add';
-import HelpIcon from '@material-ui/icons/Help';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
-import StarRateOutlinedIcon from '@material-ui/icons/StarRateOutlined';
+import "./HomeTopicsInner.scss";
+import AddIcon from "@material-ui/icons/Add";
+import HelpIcon from "@material-ui/icons/Help";
+import RemoveIcon from "@material-ui/icons/Remove";
+import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
+import StarRateOutlinedIcon from "@material-ui/icons/StarRateOutlined";
+import ApiCall from "common/services/ApiCall";
+import { useDispatch } from "react-redux";
+import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
+import { IMAGE_URL } from "common/values/CORE";
 
 const HomeTopicsInner = () => {
-  const styleBgImg = {
-    // background: `url('../../../../assets/images/test/2.png')`,
-  };
+	let { id } = useParams();
 
-  const cardInfo = {
-    title: 'Chemical Compounds',
-    remainingTime: 8407,
-    price: 5000,
-    players: 2,
-    img: '',
-  };
+	const apiCall = new ApiCall();
 
-  const mockBadges = MOCK_BADGETES;
-  const mockLeaders = MOCK_LEADERS;
-  const mockLeadersBest = [mockLeaders[0], mockLeaders[1], mockLeaders[2]];
-  const mockLeadersOther = mockLeaders;
+	const [data, setData] = useState();
+	const [testFlagAdd, setTestFlagAdd] = useState(true);
 
-  const tabs = ['All points', 'Daily', 'Weekly', 'Monthly'];
-  const [activatedTab, setActivatedTab] = useState(0);
+	const styleBgImg = {
+		backgroundImage: `url(${IMAGE_URL}${data?.logo})`,
+	};
 
-  const navigate = useNavigate();
+	// const bgImgUrl = `${IMAGE_URL}${data?.logo}`;
 
-  const handleGoBack = () => {
-    navigate(-1);
-  };
+	const cardInfo = {
+		title: "Chemical Compounds",
+		remainingTime: 8407,
+		price: 5000,
+		players: 2,
+		img: "",
+	};
 
-  const handlePlay = () => {
-    console.log('TODO handlePlay');
-  };
+	const mockBadges = MOCK_BADGETES;
+	const mockLeaders = MOCK_LEADERS;
+	const mockLeadersBest = [mockLeaders[0], mockLeaders[1], mockLeaders[2]];
+	const mockLeadersOther = mockLeaders;
 
-  const handleAddToFavorites = () => {
-    console.log('TODO handleAddToFavorites');
-  };
+	const tabs = ["All points", "Daily", "Weekly", "Monthly"];
+	const [activatedTab, setActivatedTab] = useState(0);
 
-  return (
-    <div className='w-100 h-100 topicsInner'>
-      <div className='topicsInner-header'>
-        <div
-          className='d-flex justify-content-between align-items-center sec-img'
-          style={styleBgImg}
-        >
-          <p
-            className='d-flex justify-content-center align-items-center'
-            onClick={handleGoBack}
-          >
-            <ArrowBackIcon />
-          </p>
-          <p className='d-flex justify-content-center align-items-center'>
-            <ShareOutlinedIcon />
-          </p>
-        </div>
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
-        <div className='sec-info'>
-          <p className='title'>Nature and the environment</p>
-          <p className='subtitle'>category of geography</p>
-          <div className='pt-2 d-flex justify-content-between align-items-center'>
-            <p className='grey'>
-              <PlayArrowIcon />
-              <span className='mx-1'>54</span>
-            </p>
-            <p className='grey'>
-              <HelpIcon />
-              <span className='mx-1'>84</span>
-            </p>
-            <p className='gold'>
-              <StarRateOutlinedIcon />
-              <span className='mx-1'>4.5</span>
-            </p>
-          </div>
+	const handleGoBack = () => {
+		navigate(-1);
+	};
 
-          <hr />
+	const handlePlay = () => {
+		console.log("TODO handlePlay & id: ", id);
+	};
 
-          <p className='text-center add' onClick={handleAddToFavorites}>
-            <AddIcon /> Add to favorites
-          </p>
-        </div>
-      </div>
+	const handleAddToFavorites = () => {
+		setTestFlagAdd(false);
+		dispatch(SET_SPINNER(true));
+		apiCall
+			.post(`topic/${id}/add`)
+			.then((res) => {
+				dispatch(SET_SPINNER(false));
+				console.log(res.data);
+			})
+			.catch((err) => {
+				dispatch(SET_SPINNER(false));
+				console.log(err);
+			});
+	};
 
-      <div className='topicsInner-body'>
-        <div className='ratio _dish-cardLeagueInfo'>
-          <CardLeagueInfo info={cardInfo} />
-        </div>
+	const handleRemoveFavorites = () => {
+		setTestFlagAdd(true);
+		dispatch(SET_SPINNER(true));
+		apiCall
+			.post(`topic/${id}/remove`)
+			.then((res) => {
+				dispatch(SET_SPINNER(false));
+				console.log(res.data);
+			})
+			.catch((err) => {
+				dispatch(SET_SPINNER(false));
+				console.log(err);
+			});
+	};
 
-        <div className='description'>
-          <p className='title'>Description</p>
-          <p className='text'>
-            Considering the great and undeniable importance of nature and the
-            environment in the life of every creature on this planet, I decided
-            to teach this subject to get better and more acquainted with the
-            environment around you and to create a culture of environmental
-            care. And let me introduce you to the challenges around it. I'm glad
-            you are with me.
-          </p>
-        </div>
+	// .get("topicleaderboard/614c26b0b1e4a4815030b691/day")
+	// .post("/topic/61bf3bb79328db0eb516bfe3/add")
+	// .post("/topic/61bf3bb79328db0eb516bfe3/add")
+	const getData = () => {
+		dispatch(SET_SPINNER(true));
+		apiCall
+			.get(`topic/${id}`)
+			.then((res) => {
+				dispatch(SET_SPINNER(false));
+				setData(res.data);
+				console.log(res.data);
+			})
+			.catch((err) => {
+				dispatch(SET_SPINNER(false));
+				console.log(err);
+			});
+	};
 
-        <div className='d-flex flex-wrap badges'>
-          {mockBadges.map((el, index) => (
-            <p key={index} className='badge'>
-              {el}
-            </p>
-          ))}
-        </div>
+	useEffect(() => {
+		let isMounted = true;
+		if (isMounted) {
+			getData();
+		}
+		return () => {
+			isMounted = false;
+		};
+	}, []);
 
-        <div className='board'>
-          <p className='title'>Topic Leaderboard</p>
+	return (
+		<div className="w-100 h-100 topicsInner">
+			<div className="topicsInner-header">
+				<div className="d-flex justify-content-between align-items-center sec-img" style={styleBgImg}>
+					{/* <img src={bgImgUrl} /> */}
 
-          <div className='tabs'>
-            {tabs.map((el, index) => (
-              <button
-                key={index}
-                className={`tab ${activatedTab === index ? 'tab-active' : ''}`}
-                onClick={() => setActivatedTab(index)}
-              >
-                {el}
-              </button>
-            ))}
-          </div>
+					<p className="d-flex justify-content-center align-items-center" onClick={handleGoBack}>
+						<ArrowBackIcon />
+					</p>
+					<p className="d-flex justify-content-center align-items-center">
+						<ShareOutlinedIcon />
+					</p>
+				</div>
 
-          <div className='best'>
-            <div className='d-flex best-users'>
-              {mockLeadersBest.map((el, index) => (
-                <div
-                  key={index}
-                  className={`user ${index === 1 ? 'best-user' : ''}`}
-                >
-                  <div className='mx-auto avatar'></div>
-                  <p className='username'>{el.username}</p>
-                  <p className='points'>{`${el.points} points`}</p>
-                </div>
-              ))}
-            </div>
+				<div className="sec-info">
+					<p className="title">{data?.name}</p>
+					<p className="subtitle">{data?.categoryName}</p>
+					<div className="pt-2 d-flex justify-content-between align-items-center">
+						<p className="grey">
+							<PlayArrowIcon />
+							<span className="mx-1">{data?.singlePlays + data?.doublePlays}</span>
+						</p>
+						<p className="grey">
+							<HelpIcon />
+							<span className="mx-1">{data?.questions}</span>
+						</p>
+						<p className="gold">
+							<StarRateOutlinedIcon />
+							<span className="mx-1">{data?.rate}</span>
+							<span className="mx-1 grey">{`(${data?.raters})`}</span>
+						</p>
+					</div>
 
-            <div className='d-flex align-items-center levels'>
-              <div className='level level-2'>2</div>
-              <div className='level level-1'>1</div>
-              <div className='level level-3'>3</div>
-            </div>
-          </div>
-          <div className='results'>
-            {mockLeadersOther.map((el, index) => (
-              <div
-                key={index}
-                className='d-flex align-items-center _br-bottom user'
-              >
-                <span className='index'>{`${index + 4}.`}</span>
-                <div className='avatar'></div>
-                <p className='username'>{el.username}</p>
-                <p className='points'>{`${el.points} points`}</p>
-              </div>
-            ))}
+					<hr />
 
-            <p className='seemore'>See more</p>
-          </div>
-        </div>
-      </div>
+					{testFlagAdd ? (
+						<p className="text-center add" onClick={handleAddToFavorites}>
+							<AddIcon /> Add to favorites
+						</p>
+					) : (
+						<p className="text-center remove" onClick={handleRemoveFavorites}>
+							<RemoveIcon /> Remove from Favorites
+						</p>
+					)}
+				</div>
+			</div>
 
-      <div className='d-flex justify-content-center align-items-center topicsInner-footer'>
-        <button className='btn-play' onClick={handlePlay}>
-          <span className='mx-1'>Play</span>
-          <PlayArrowIcon className='mx-1' />
-        </button>
-      </div>
-    </div>
-  );
+			<div className="topicsInner-body">
+				<div className="ratio _dish-cardLeagueInfo">
+					<CardLeagueInfo info={cardInfo} />
+				</div>
+
+				<div className="description">
+					<p className="title">Description</p>
+					<p className="text">{data?.description}</p>
+				</div>
+
+				<div className="d-flex flex-wrap badges">
+					{data?.tags?.map((el, index) => (
+						<p key={index} className="badge">
+							{el}
+						</p>
+					))}
+				</div>
+
+				<div className="board">
+					<p className="title">Topic Leaderboard</p>
+
+					<div className="tabs">
+						{tabs.map((el, index) => (
+							<button
+								key={index}
+								className={`tab ${activatedTab === index ? "tab-active" : ""}`}
+								onClick={() => setActivatedTab(index)}
+							>
+								{el}
+							</button>
+						))}
+					</div>
+
+					<div className="best">
+						<div className="d-flex best-users">
+							{mockLeadersBest.map((el, index) => (
+								<div key={index} className={`user ${index === 1 ? "best-user" : ""}`}>
+									<div className="mx-auto avatar"></div>
+									<p className="username">{el.username}</p>
+									<p className="points">{`${el.points} points`}</p>
+								</div>
+							))}
+						</div>
+
+						<div className="d-flex align-items-center levels">
+							<div className="level level-2">2</div>
+							<div className="level level-1">1</div>
+							<div className="level level-3">3</div>
+						</div>
+					</div>
+					<div className="results">
+						{mockLeadersOther.map((el, index) => (
+							<div key={index} className="d-flex align-items-center _br-bottom user">
+								<span className="index">{`${index + 4}.`}</span>
+								<div className="avatar"></div>
+								<p className="username">{el.username}</p>
+								<p className="points">{`${el.points} points`}</p>
+							</div>
+						))}
+
+						<p className="seemore">See more</p>
+					</div>
+				</div>
+			</div>
+
+			<div className="d-flex justify-content-center align-items-center topicsInner-footer">
+				<button className="btn-play" onClick={handlePlay}>
+					<span className="mx-1">Play</span>
+					<PlayArrowIcon className="mx-1" />
+				</button>
+			</div>
+		</div>
+	);
 };
 
 export default HomeTopicsInner;
