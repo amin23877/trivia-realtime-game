@@ -1,8 +1,83 @@
-import React from 'react';
+import React from "react";
 
-import './Notification.scss';
+import "./Notification.scss";
+
+//images
+import backIcon from "assets/images/icons/arrow-back.svg";
+import userImg from "assets/images/test/profile-pic-2.jpg";
+import notifBanner from "assets/images/test/notification-banner.jpg";
+
+/*
+ *   fake data
+ * */
+const notifications = [
+	{ type: "user", image: userImg, name: "tanaz-MRD", accepted: false },
+	{ type: "user", image: userImg, name: "tanaz-MRD", accepted: true },
+	{ type: "league", image: notifBanner, name: "Chemistry League started on your favorite topic" },
+];
+
+function UserNotif({ name, image, accepted }) {
+	return (
+		<div className="notif-item">
+			<img className="notif-item__avatar" alt="notif-img" width={32} height={32} src={image} />
+			<div className="notif-item__info-wrapper">
+				<p>{name}</p>
+				<p className="notif-item__desc">{!accepted && "Wants to be your friend"}</p>
+			</div>
+			{!accepted ? (
+				<div className="notif-item__controls">
+					<span className="notif-item__accept">Accept</span>
+					<span className="notif-item__reject">Reject</span>
+				</div>
+			) : (
+				<p className="notif-item__accepted">is your friend Now!</p>
+			)}
+		</div>
+	);
+}
+
+function LeagueNotif({ name, image }) {
+	return (
+		<div className="notif-item">
+			<img
+				className="notif-item__avatar notif-item__avatar_square"
+				alt="notif-img"
+				width={34}
+				height={32}
+				src={image}
+			/>
+			<div className="notif-item__info-wrapper">
+				<p className="notif-item__desc">{name}</p>
+			</div>
+
+			<p className="notif-item__see-details">See details</p>
+		</div>
+	);
+}
 
 const Notification = () => {
-  return <div className='w-100 h-100 notification bg1'>Notification</div>;
+	return (
+		<div className="notif-root">
+			<div className="notif-header">
+				<span>
+					<img alt="back" width={14} height={10} src={backIcon} />
+				</span>
+				<p>Notification</p>
+			</div>
+
+			{notifications ? (
+				<div className="notif-list">
+					{notifications.map((notif, index) =>
+						notif.type === "user" ? (
+							<UserNotif name={notif.name} image={notif.image} accepted={notif.accepted} key={index} />
+						) : (
+							<LeagueNotif key={index} name={notif.name} image={notif.image} />
+						)
+					)}
+				</div>
+			) : null}
+		</div>
+	);
 };
+
 export default Notification;
