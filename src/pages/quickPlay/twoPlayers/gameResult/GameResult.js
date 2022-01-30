@@ -8,7 +8,7 @@ import winnerCup from 'assets/images/icons/winner.svg';
 import { Button } from "@material-ui/core";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { useNavigate } from "react-router-dom";
-const GameResult = ({ myInfo, rivalInfo, gameResultData, doubleGameReady }) => {
+const GameResult = ({ myInfo, rivalInfo, gameResultData, doubleGameReady ,handleShowAnswers }) => {
     const [winState, setWinState] = useState(1);
     const navigate = useNavigate();
 
@@ -83,7 +83,7 @@ const GameResult = ({ myInfo, rivalInfo, gameResultData, doubleGameReady }) => {
             </div>
             <Button className="game-result__play-again">Play Again</Button>
             <Button className="game-result__new-opponent">New Opponent</Button>
-            <a className="game-result__view-answer" href="#">View Answers</a>
+            <Button className="game-result__view-answer" onClick={handleShowAnswers}>View Answers</Button>
             <Button onClick={() => navigate('/')} className="game-result__back-to-home"><ArrowBackIcon />Back To Home</Button>
 
         </div>

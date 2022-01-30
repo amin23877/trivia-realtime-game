@@ -10,6 +10,7 @@ import WaitForStart from "./waitForStart/WaitForStart";
 import ShowQuestion from "../components/showQuestion/ShowQuestion";
 import CategoriesList from "../components/categories/CategoriesList";
 import GameResult from "./gameResult/GameResult";
+import ViewAnswers from "../components/viewAnswers/ViewAnswers";
 
 const TwoPlayers = () => {
 	const Dispatch = useDispatch();
@@ -134,11 +135,19 @@ const TwoPlayers = () => {
 		// socket.io.disconnect();
 		// socket.io.open();
 	};
-	const handleSelectOption = (opt) => {
-		socket.emit("doubleGameAnswer", { gameToken: localStorage.getItem("quickPlay-token"), answer: opt });
-		setMyOption(opt);
+
+	const handleShowAnswers = () => {
+		setGameState("showAnswers");
 	};
 
+	const handleSelectOption = (opt) => {
+		socket.emit("doubleGameAnswer", { gameToken: localStorage.getItem("quickPlay-token"), answer: opt });
+		setCorrectAnswer(null);
+		setMyOption(opt);
+	};
+	const handleBackAnswers = () => {
+		setGameState("gameResult");
+	};
 	return (
 		<>
 			{(gameState == "showCategories" || gameState == "showSearchForPlayer") && (
@@ -151,7 +160,6 @@ const TwoPlayers = () => {
 			{gameState == "showSearchForPlayer" && (
 				<SearchForPlayer handleClose={handleCloseSearch} selectedCategory={selectedCategory} />
 			)}
-
 			{gameState == "showWaitForStart" && <WaitForStart doubleGameReady={doubleGameReady} />}
 			{gameState == "showQuestions" && (
 				<ShowQuestion
@@ -175,6 +183,16 @@ const TwoPlayers = () => {
 					rivalInfo={rivalInfo}
 					gameResultData={gameResultData}
 					doubleGameReady={doubleGameReady}
+					handleShowAnswers={handleShowAnswers}
+				/>
+			)}
+			{gameState == "showAnswers" && (
+				<ViewAnswers
+					gameResultData={gameResultData}
+					myInfo={myInfo}
+					rivalInfo={rivalInfo}
+					doubleGameReady={doubleGameReady}
+					handleBackAnswers={handleBackAnswers}
 				/>
 			)}
 		</>
