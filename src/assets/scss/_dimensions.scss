@@ -13,10 +13,11 @@ $breakpoint-xxl: 1920px;
 // Custom FontSize variables
 // ======================================================
 
-$height-header: 30px;
+$desktop-header-height: 65px;
+$mobile-header-height : 35px;
 $height-footer: 70px;
-$height-body-HF: calc(100% - #{$height-header} - #{$height-footer});
-$height-body-H: calc(100% - #{$height-header});
+$height-body-HF: calc(100% - #{$mobile-header-height} - #{$height-footer});
+$height-body-H: calc(100% - #{$mobile-header-height});
 $height-body-F: calc(100% - #{$height-footer});
 
 $height-header-goback: 60px;
