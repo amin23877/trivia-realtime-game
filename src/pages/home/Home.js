@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 // Packages
 // Components, Services, Functions
 import Menu from "pages/menu/Menu";
-import Header from "common/components/header/Header";
+import MobileHeader from "common/components/header/MobileHeader";
 import HomeTopics from "./homeComponents/homeTopics/HomeTopics";
-import SelectGameType from "./homeComponents/selectGameType/SelectGameType";
 import CardLeagueInfo from "common/components/cardLeagueInfo/CardLeagueInfo";
 import ModalConfirmDeactivation from "pages/modals/ModalConfirmDeactivation";
 // Redux
@@ -18,7 +17,6 @@ import { Drawer } from "@material-ui/core";
 // Styles, Icons, Images
 import "./Home.scss";
 import arrowForwardMini from "assets/images/icons/arrow-forward-mini.svg";
-import Sidebar from "common/components/sidebar/Sidebar";
 
 const Home = () => {
 	const navigate = useNavigate();
@@ -69,17 +67,11 @@ const Home = () => {
 
 	return (
 		<div className="fadeInFast home">
-			<div className="_header home__header">
-				<Header onDrawerOpen={handleDrawerOpen} />
-			</div>
+			<MobileHeader onDrawerOpen={handleDrawerOpen} />
 
 			<Drawer className="d-xl-none" variant="persistent" anchor="left" open={openDrawerMenu}>
 				<Menu onDrawerClose={handleDrawerClose} />
 			</Drawer>
-
-			<div className="home__sidebar">
-				<Sidebar />
-			</div>
 
 			<div className="home__body">
 				<div className="card-league">
