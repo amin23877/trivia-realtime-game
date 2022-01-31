@@ -30,15 +30,15 @@ import FriendsProfileFavoriteTopics from "pages/friends/profile/profileComponent
 import FriendsProfilePerformance from "pages/friends/profile/profileComponents/Contents/Performance/ProfilePerformance";
 import FriendsProfileFriends from "pages/friends/profile/profileComponents/Contents/Friends/ProfileFriends";
 import FriendsProfile from "pages/friends/profile/FriendsProfile";
-import WrapperLayoutFooter from "common/components/layout/wrapperLayoutFooter";
 import OnePlayer from "pages/quickPlay/onePlayer/OnePlayer";
+import MainLayout from "common/components/layout/MainLayout";
 
 const RouterConfig = () => {
 	return (
 		<Router>
 			<Routes>
 				<Route exact path="/" element={<ProtectedRoute />}>
-					<Route exact path="/" element={<WrapperLayoutFooter />}>
+					<Route exact path="/" element={<MainLayout />}>
 						<Route exact path="/" element={<Home />} />
 						<Route exact path="/leagues" element={<Leagues />} />
 						<Route exact path="/search" element={<SearchExplore />} />
@@ -70,7 +70,9 @@ const RouterConfig = () => {
 
 				<Route exact path="/menu" element={<ProtectedRoute />}>
 					<Route exact path="/menu" element={<Menu />} />
-					<Route exact path="/menu/wallet" element={<Wallet />} />
+					<Route exact path="/menu/wallet" element={<MainLayout footer={false} />}>
+						<Route exact path="/menu/wallet" element={<Wallet />} />
+					</Route>
 					<Route exact path="/menu/notification" element={<Notification />} />
 				</Route>
 
