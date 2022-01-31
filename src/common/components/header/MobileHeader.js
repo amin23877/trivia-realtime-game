@@ -12,11 +12,11 @@ import iconMenu from "assets/images/icons/header-menu.svg";
 import iconLeaderboard from "assets/images/icons/icon-leaderboard.svg";
 import notifIcon from "assets/images/icons/notifications.svg";
 
-const Header = ({ onDrawerOpen }) => {
+const MobileHeader = ({ onDrawerOpen }) => {
 	const navigate = useNavigate();
 
 	return (
-		<div className="_header-shadow header">
+		<div className="_header-shadow mobile-header">
 			{/* show toggle menu button in mobile */}
 			<img width={24} className="d-xl-none" src={iconMenu} onClick={onDrawerOpen} alt="" />
 
@@ -41,4 +41,4 @@ const Header = ({ onDrawerOpen }) => {
 	);
 };
 
-export default Header;
+export default MobileHeader;
