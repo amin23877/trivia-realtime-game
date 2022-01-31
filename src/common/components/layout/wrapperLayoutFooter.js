@@ -31,10 +31,10 @@ const WrapperLayoutFooter = () => {
 			{stateGeneral.openGameTypes && (
 				<SelectGameType
 					open={stateGeneral.openGameTypes}
-					handleOpenGameTypes={() => {}}
-					// handleOpenGameTypes={() => {
-					// 	dispatch(SET_OPEN_GAME_TYPES(true));
-					// }}
+					// handleOpenGameTypes={() => {}}
+					handleOpenGameTypes={() => {
+						dispatch(SET_OPEN_GAME_TYPES(false));
+					}}
 				/>
 			)}
 		</div>
