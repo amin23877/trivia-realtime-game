@@ -37,7 +37,7 @@ const WaitForStart = ({ doubleGameReady }) => {
                 </div>
             </div>
 
-            <p style={{color:'#fff'}}>{localStorage.getItem('quickPlay-token')}</p>
+            {/* <p style={{color:'#fff'}}>{localStorage.getItem('quickPlay-token')}</p> */}
         </div>
     )
 }

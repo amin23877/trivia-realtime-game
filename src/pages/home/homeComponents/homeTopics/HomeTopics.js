@@ -1,6 +1,7 @@
 // Reacts
 import React from "react";
 // Hooks
+import { useNavigate } from "react-router-dom";
 // Packages
 // Components, Services, Functions
 import { IMAGE_URL } from "common/values/CORE";
@@ -13,13 +14,31 @@ import imgMain from "assets/images/test/1.png";
 import iconRate from "assets/images/icons/rate-mini.svg";
 
 const HomeTopics = ({ type }) => {
+	const navigate = useNavigate();
+
 	const stateTopic = useSelector((state) => state.stateTopic);
 	const topics = stateTopic.topics.filter((el) => el.type === type)[0]?.topicList;
+
+	const handleShowTopicInner = (event, info) => {
+		console.log(info);
+		handleNavigate(event, `/topics/${info._id}`);
+	};
+
+	const handleNavigate = (event, path) => {
+		event.stopPropagation();
+		navigate(path);
+	};
 
 	return (
 		<div className="w-100 h-100 d-flex justify-content-between align-items-stretch homeTopics">
 			{topics?.map((el, index) => (
-				<div key={index} className="topic-card">
+				<div
+					key={index}
+					className="topic-card"
+					onClick={(e) => {
+						handleShowTopicInner(e, el);
+					}}
+				>
 					<div className="card-img">
 						<img src={`${IMAGE_URL}${el?.logo}`} alt="" />
 						{/* <img src={imgMain} alt="" /> */}

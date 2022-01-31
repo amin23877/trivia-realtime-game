@@ -121,22 +121,23 @@ const ShowQuestion = ({
             </div>
             <div className="show-question__options">
                 <Button
-                    className={`${pauseTimer ? 'show-question__options--disabled' : ''} ${correctAnswer == (single ? singleGameQuestion : doubleGameQuestion).option1 ? 'show-question__options--true' : ''} ${(myOption == (single ? singleGameQuestion : doubleGameQuestion).option1 && myOption != correctAnswer) ? 'show-question__options--false' : ''}`}
+                    className={`${pauseTimer ? 'show-question__options--disabled' : ''} ${correctAnswer == (single ? singleGameQuestion : doubleGameQuestion).option1 ? 'show-question__options--true' : ''} ${(myOption == (single ? singleGameQuestion : doubleGameQuestion).option1 && myOption != correctAnswer && correctAnswer != null) ? 'show-question__options--false' : ''}`}
                     onClick={() => _handleSelectOption((single ? singleGameQuestion : doubleGameQuestion).option1)}>
                     {(single ? singleGameQuestion : doubleGameQuestion).option1}
+                    {(!single && rivalAnswer==doubleGameQuestion?.option1) && <p className="show-question__options--rival-selection">{doubleGameReady[rivalInfo.player].username}</p>}
                 </Button>
                 <Button
-                    className={`${pauseTimer ? 'show-question__options--disabled' : ''} ${correctAnswer == (single ? singleGameQuestion : doubleGameQuestion).option2 ? 'show-question__options--true' : ''} ${(myOption == (single ? singleGameQuestion : doubleGameQuestion).option2 && myOption != correctAnswer) ? 'show-question__options--false' : ''}`}
+                    className={`${pauseTimer ? 'show-question__options--disabled' : ''} ${correctAnswer == (single ? singleGameQuestion : doubleGameQuestion).option2 ? 'show-question__options--true' : ''} ${(myOption == (single ? singleGameQuestion : doubleGameQuestion).option2 && myOption != correctAnswer && correctAnswer != null) ? 'show-question__options--false' : ''}`}
                     onClick={() => _handleSelectOption((single ? singleGameQuestion : doubleGameQuestion).option2)}>
                     {(single ? singleGameQuestion : doubleGameQuestion).option2}
                 </Button>
                 <Button
-                    className={`${pauseTimer ? 'show-question__options--disabled' : ''} ${correctAnswer == (single ? singleGameQuestion : doubleGameQuestion).option3 ? 'show-question__options--true' : ''} ${(myOption == (single ? singleGameQuestion : doubleGameQuestion).option3 && myOption != correctAnswer) ? 'show-question__options--false' : ''}`}
+                    className={`${pauseTimer ? 'show-question__options--disabled' : ''} ${correctAnswer == (single ? singleGameQuestion : doubleGameQuestion).option3 ? 'show-question__options--true' : ''} ${(myOption == (single ? singleGameQuestion : doubleGameQuestion).option3 && myOption != correctAnswer && correctAnswer != null) ? 'show-question__options--false' : ''}`}
                     onClick={() => _handleSelectOption((single ? singleGameQuestion : doubleGameQuestion).option3)}>
                     {(single ? singleGameQuestion : doubleGameQuestion).option3}
                 </Button>
                 <Button
-                    className={`${pauseTimer ? 'show-question__options--disabled' : ''} ${correctAnswer == (single ? singleGameQuestion : doubleGameQuestion).option4 ? 'show-question__options--true' : ''} ${(myOption == (single ? singleGameQuestion : doubleGameQuestion).option4 && myOption != correctAnswer) ? 'show-question__options--false' : ''}`}
+                    className={`${pauseTimer ? 'show-question__options--disabled' : ''} ${correctAnswer == (single ? singleGameQuestion : doubleGameQuestion).option4 ? 'show-question__options--true' : ''} ${(myOption == (single ? singleGameQuestion : doubleGameQuestion).option4 && myOption != correctAnswer && correctAnswer != null) ? 'show-question__options--false' : ''}`}
                     onClick={() => _handleSelectOption((single ? singleGameQuestion : doubleGameQuestion).option4)}>
                     {(single ? singleGameQuestion : doubleGameQuestion).option4}
                 </Button>
