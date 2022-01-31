@@ -1,21 +1,29 @@
 @import 'assets/scss/styles.scss';
 
-.header {
-    --mobile-header-height : 35px;
-    --desktop-header-height: 64px;
+.mobile-header {
+  width: 100%;
+  height: $mobile-header-height;
+  background-color: white;
+  padding: 0 1.5rem;
 
-    width: 100%;
-    height: var(--mobile-header-height);
-    background-color: white;
-    padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  @media (min-width: $breakpoint-xl) {
+    display: none;
+  }
+}
 
-    @media (min-width: $breakpoint-xl) {
-        height: var(--desktop-header-height);
-        background-color: $primary;
-        padding: 0 6rem;
-    }
+.desktop-header {
+  width: 100%;
+  height: $desktop-header-height;
+  background-color: $primary;
+  padding: 0 6rem;
+
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
 }
