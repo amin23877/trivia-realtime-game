@@ -57,12 +57,12 @@ $menu-item-h : 54px;
   }
 }
 
-.menu {
+.sidebar-menu {
   margin: 0;
   padding: 0 0 8rem;
 }
 
-.menu__item {
+.sidebar-menu-item {
   position: relative;
   padding-left: $space-x;
   height: $menu-item-h;
@@ -71,22 +71,44 @@ $menu-item-h : 54px;
   align-items: center;
   cursor: pointer;
 
-  &:hover {
+  svg {
+    flex-basis: 30px;
+  }
+
+  &_red {
+    color: $red-2;
+  }
+
+  &_hover-effect-red, &_hover-effect-purple {
+    &:after {
+      content: '';
+      position: absolute;
+      right: 0;
+      height: 100%;
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+    }
+  }
+
+  &_hover-effect-red:hover {
+    background-color: #f5363620;
+    &:after {
+      width: 5px;
+      background-color: $red-2;
+    }
+  }
+
+  &_hover-effect-purple:hover {
     background-color: $bg-seachbox;
     color: $primary;
-  }
 
-  &:after {
-    content: '';
-    position: absolute;
-    right: 0;
-    height: 100%;
-    background-color: $primary;
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
-  }
+    path {
+      stroke: $primary;
+    }
 
-  &:hover:after {
-    width: 5px;
+    &:after {
+      width: 5px;
+      background-color: $primary;
+    }
   }
 }
