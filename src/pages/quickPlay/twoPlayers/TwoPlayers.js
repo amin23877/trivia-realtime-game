@@ -33,7 +33,7 @@ const TwoPlayers = () => {
 	const [gameResultData, setGameResult] = useState();
 
 	const socketUrl = SOCKET_BASE_URL;
-	const token = localStorage.getItem("token") ? `${localStorage.getItem("token")}` : null;
+	const token = localStorage.getItem("token") ? `${localStorage.getItem("token").replace('Bearer ', '')}` : null;
 
 	const myRef = useRef(myInfo);
 	const rivalRef = useRef(rivalInfo);

@@ -8,7 +8,7 @@ import { io } from "socket.io-client";
 import ShowQuestion from "../components/showQuestion/ShowQuestion";
 import CategoriesList from "../components/categories/CategoriesList";
 import EnterGameCode from "./EnterGameCode/EnterGameCode";
-
+import FriendsList from "./FriendsList/FriendsList";
 const WithFriends = () => {
 	const Dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -26,9 +26,11 @@ const WithFriends = () => {
 	const [myOption, setMyOption] = useState();
 	const [gameResultData, setGameResult] = useState();
 	const [mpGamesId, setMpGamesId] = useState();
+	const [joinCode, setJoinCode] = useState('')
+	const [users, setUsers] = useState([])
 
 	const socketUrl = SOCKET_BASE_URL;
-	const token = localStorage.getItem("token") ? `${localStorage.getItem("token")}` : null;
+	const token = localStorage.getItem("token") ? `${localStorage.getItem("token").replace('Bearer ', '')}` : null;
 
 	const myRef = useRef(myInfo);
 	const socketRef = useRef(socket);
@@ -47,9 +49,17 @@ const WithFriends = () => {
 
 		socketp.on("authentication", (e) => {
 			setSocketId(e.socketid);
+			setUsers([e])
+		});
+		socketp.on("mpPlayerList", (e) => {
+			setUsers([...e])
 		});
 		socketp.on("mpGamesId", (e) => {
 			setMpGamesId(e);
+			// setJoinCode(e.categoryGameId);
+		});
+		socketp.on("entermp", (e) => {
+			setGameState('friendsList')
 		});
 
 		socketp.on("singleGameToken", handleSingleGameToken);
@@ -73,7 +83,9 @@ const WithFriends = () => {
 	useEffect(() => {
 		if (selectedCategory) {
 			if (socketId) {
-				socket.emit("setidmp", { CategoryId: selectedCategory._id });
+				socket.emit("setidmp", { CategoryId: selectedCategory._id, id: mpGamesId.categoryGameId });
+				socket.emit("preparemp", { id: mpGamesId.categoryGameId });
+				setGameState('friendsList')
 			}
 		}
 	}, [selectedCategory]);
@@ -110,8 +122,28 @@ const WithFriends = () => {
 		socket.emit("singleGameAnswer", { gameToken: localStorage.getItem("quickPlay-token"), answer: opt });
 		setMyOption(opt);
 	};
+	const handleJoinWithCode = (opt) => {
+		if (joinCode !== '') {
+			socket.emit("entermp", { id: joinCode });
+
+		}
+	};
 	const handleOpenCategories = () => {
+		if (joinCode == '') {
+			setJoinCode(mpGamesId.categoryGameId)
+		}
 		setGameState("showCategories");
+	}
+	const handleLeaveGame = () => {
+		if (joinCode !== '') {
+			if (joinCode === mpGamesId.categoryGameId) {
+				socket.emit("cancelmp", { id: joinCode });
+
+			} else {
+				socket.emit("exitmp", { id: joinCode });
+			}
+			navigate('/')
+		}
 
 	}
 
@@ -123,6 +155,9 @@ const WithFriends = () => {
 					categories={categories}
 					handleGotoBack={handleGotoBack}
 					handleSelectCategory={handleSelectCategory}
+					joinCode={joinCode}
+					setJoinCode={setJoinCode}
+					handleJoinWithCode={handleJoinWithCode}
 				/>
 			)}
 			{gameState == "showCategories" && (
@@ -130,6 +165,17 @@ const WithFriends = () => {
 					categories={categories}
 					handleGotoBack={handleGotoBack}
 					handleSelectCategory={handleSelectCategory}
+				/>
+			)}
+			{gameState == "friendsList" && (
+				<FriendsList
+					joinCode={joinCode}
+					categories={categories}
+					handleGotoBack={handleGotoBack}
+					handleSelectCategory={handleSelectCategory}
+					users={users}
+					mpGamesId={mpGamesId}
+					handleLeaveGame={handleLeaveGame}
 				/>
 			)}
 			{gameState == "showQuestions" && (
