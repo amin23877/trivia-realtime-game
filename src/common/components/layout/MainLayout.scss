@@ -27,13 +27,12 @@
   }
 
   &__content {
+    background-color: $bg-home;
     width: 100%;
     flex: 1 1 100%;
-    height: $height-body-F;
     overflow-y: auto;
 
     @media (min-width: $breakpoint-xl) {
-      height: 100%;
       flex : 0 1 calc(100% - #{$sidebar-width});
     }
   }

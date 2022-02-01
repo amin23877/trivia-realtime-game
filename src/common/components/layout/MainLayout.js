@@ -9,7 +9,7 @@ import SelectGameType from "pages/home/homeComponents/selectGameType/SelectGameT
 
 import "./MainLayout.scss";
 
-const MainLayout = ({ footer = true }) => {
+const MainLayout = ({ footer = false }) => {
 	const openGameTypes = useSelector((state) => state.stateGeneral.openGameTypes);
 
 	return (
@@ -22,7 +22,7 @@ const MainLayout = ({ footer = true }) => {
 				<Sidebar />
 			</aside>
 
-			<main className="main-layout__content">
+			<main className={`main-layout__content ${footer ? "_body-height-F" : ""}`}>
 				<Outlet />
 			</main>
 
