@@ -33,6 +33,7 @@ import FriendsProfile from "pages/friends/profile/FriendsProfile";
 import OnePlayer from "pages/quickPlay/onePlayer/OnePlayer";
 import MainLayout from "common/components/layout/MainLayout";
 import SuperCenterLayout from "common/components/layout/SuperCenterLayout";
+import Subscribe from "pages/subscripe/Subscribe";
 
 const RouterConfig = () => {
 	return (
@@ -91,6 +92,7 @@ const RouterConfig = () => {
 				<Route exact path="/" element={<SuperCenterLayout />}>
 					<Route path="/login" element={<Login />} />
 					<Route path="/otp" element={<VerificationCode />} />
+					<Route path="/purchase" element={<Subscribe />} />
 				</Route>
 
 				{/* this routes not have specific layout */}
