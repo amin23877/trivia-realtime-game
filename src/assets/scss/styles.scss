@@ -8,6 +8,10 @@
 @import './animation';
 @import './dimensions';
 
+._bg-home {
+    background-color: $bg-home;
+}
+
 .backdrop {
     position: fixed;
     top: 0;
