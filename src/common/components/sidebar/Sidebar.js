@@ -1,4 +1,7 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { SET_MODALS } from "redux/actions/mainActions/generalActions";
+import { MODALS } from "common/values/MODALS";
 
 import "./Sidebar.scss";
 
@@ -15,6 +18,12 @@ import { ReactComponent as DeactivateIcon } from "assets/images/icons/deactivati
 import { ReactComponent as WalletIcon } from "assets/images/icons/wallet-icon.svg";
 
 const Sidebar = () => {
+	const dispatch = useDispatch();
+
+	const openDeactivateModal = () => {
+		dispatch(SET_MODALS({ [MODALS.deactivation]: true }));
+	};
+
 	return (
 		<div className="sidebar">
 			<div className="sidebar-header">
@@ -60,7 +69,10 @@ const Sidebar = () => {
 					<LogoutIcon />
 					Logout
 				</li>
-				<li className="sidebar-menu-item sidebar-menu-item_red sidebar-menu-item_hover-effect-red">
+				<li
+					onClick={openDeactivateModal}
+					className="sidebar-menu-item sidebar-menu-item_red sidebar-menu-item_hover-effect-red"
+				>
 					<DeactivateIcon />
 					deactivation
 				</li>
