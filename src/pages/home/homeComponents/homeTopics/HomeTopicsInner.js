@@ -1,11 +1,21 @@
+// Reacts
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
+// Hooks
+// Packages
+import _ from "lodash";
+// Components, Services, Functions
+import ApiCall from "common/services/ApiCall";
+import { IMAGE_URL } from "common/values/CORE";
 import { MOCK_LEADERS } from "common/mocks/MOCK";
-import { MOCK_BADGETES } from "common/mocks/MOCK";
-
+import { TYPE_LEADERBOARD } from "common/values/TYPES";
+import EmptyList from "common/components/empties/EmptyList";
 import CardLeagueInfo from "common/components/cardLeagueInfo/CardLeagueInfo";
-
+// Redux
+import { useDispatch } from "react-redux";
+import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
+// Material - lab
+// Styles, Icons, Images
 import "./HomeTopicsInner.scss";
 import AddIcon from "@material-ui/icons/Add";
 import HelpIcon from "@material-ui/icons/Help";
@@ -14,24 +24,24 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
 import StarRateOutlinedIcon from "@material-ui/icons/StarRateOutlined";
-import ApiCall from "common/services/ApiCall";
-import { useDispatch } from "react-redux";
-import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
-import { IMAGE_URL } from "common/values/CORE";
 
 const HomeTopicsInner = () => {
 	let { id } = useParams();
-
 	const apiCall = new ApiCall();
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
-	const [data, setData] = useState();
-	const [testFlagAdd, setTestFlagAdd] = useState(true);
+	const [dataInnerTopic, setDataInnerTopic] = useState();
+	const [dataLeague, setDataLeague] = useState();
+	const [dataLeaderboard, setDataLeaderboard] = useState([]);
 
 	const styleBgImg = {
-		backgroundImage: `url(${IMAGE_URL}${data?.logo})`,
+		backgroundImage: `url(${IMAGE_URL}${dataInnerTopic?.logo})`,
 	};
 
-	// const bgImgUrl = `${IMAGE_URL}${data?.logo}`;
+	const mockLeaders = MOCK_LEADERS;
+	const mockLeadersBest = [mockLeaders[0], mockLeaders[1], mockLeaders[2]];
+	const mockLeadersOther = mockLeaders;
 
 	const cardInfo = {
 		title: "Chemical Compounds",
@@ -41,16 +51,13 @@ const HomeTopicsInner = () => {
 		img: "",
 	};
 
-	const mockBadges = MOCK_BADGETES;
-	const mockLeaders = MOCK_LEADERS;
-	const mockLeadersBest = [mockLeaders[0], mockLeaders[1], mockLeaders[2]];
-	const mockLeadersOther = mockLeaders;
-
-	const tabs = ["All points", "Daily", "Weekly", "Monthly"];
+	const tabs = [
+		{ name: "All points", type: TYPE_LEADERBOARD.ALL },
+		{ name: "Daily", type: TYPE_LEADERBOARD.DAY },
+		{ name: "Weekly", type: TYPE_LEADERBOARD.WEEK },
+		{ name: "Monthly", type: TYPE_LEADERBOARD.MONTH },
+	];
 	const [activatedTab, setActivatedTab] = useState(0);
-
-	const navigate = useNavigate();
-	const dispatch = useDispatch();
 
 	const handleGoBack = () => {
 		navigate(-1);
@@ -61,13 +68,12 @@ const HomeTopicsInner = () => {
 	};
 
 	const handleAddToFavorites = () => {
-		setTestFlagAdd(false);
 		dispatch(SET_SPINNER(true));
 		apiCall
 			.post(`topic/${id}/add`)
 			.then((res) => {
-				dispatch(SET_SPINNER(false));
-				console.log(res.data);
+				// dispatch(SET_SPINNER(false));
+				getDataInnerTopic();
 			})
 			.catch((err) => {
 				dispatch(SET_SPINNER(false));
@@ -76,42 +82,89 @@ const HomeTopicsInner = () => {
 	};
 
 	const handleRemoveFavorites = () => {
-		setTestFlagAdd(true);
 		dispatch(SET_SPINNER(true));
 		apiCall
 			.post(`topic/${id}/remove`)
 			.then((res) => {
-				dispatch(SET_SPINNER(false));
-				console.log(res.data);
+				getDataInnerTopic();
+				// dispatch(SET_SPINNER(false));
+				// console.log(res.data);
 			})
 			.catch((err) => {
 				dispatch(SET_SPINNER(false));
-				console.log(err);
+				// console.log(err);
 			});
 	};
 
-	// .get("topicleaderboard/614c26b0b1e4a4815030b691/day")
-	// .post("/topic/61bf3bb79328db0eb516bfe3/add")
-	// .post("/topic/61bf3bb79328db0eb516bfe3/add")
-	const getData = () => {
+	const getDataInnerTopic = () => {
 		dispatch(SET_SPINNER(true));
 		apiCall
 			.get(`topic/${id}`)
 			.then((res) => {
 				dispatch(SET_SPINNER(false));
-				setData(res.data);
+				setDataInnerTopic(res.data);
+			})
+			.catch((err) => {
+				dispatch(SET_SPINNER(false));
+				// console.log(err);
+			});
+	};
+
+	const getDataLeague = () => {
+		dispatch(SET_SPINNER(true));
+		apiCall
+			.get(`league/${id}?minendtime=${Date.now()}`)
+			.then((res) => {
+				dispatch(SET_SPINNER(false));
+				setDataLeague(res.data);
 				console.log(res.data);
 			})
 			.catch((err) => {
 				dispatch(SET_SPINNER(false));
-				console.log(err);
 			});
 	};
 
+	const getDataLeaderboard = (type, index) => {
+		setActivatedTab(index);
+		dispatch(SET_SPINNER(true));
+		apiCall
+			.get(`topicleaderboard/${id}/${type}`)
+			.then((res) => {
+				dispatch(SET_SPINNER(false));
+				let LeaderboardSorted = _.orderBy(res.data.result, ["xp"], ["desc"]);
+				switch (LeaderboardSorted.length) {
+					case 0:
+						setDataLeaderboard([]);
+						break;
+					case 1:
+						setDataLeaderboard(_.concat([{}], LeaderboardSorted[0], [{}]));
+						break;
+					case 2:
+						setDataLeaderboard(_.concat(LeaderboardSorted[1], LeaderboardSorted[0], [{}]));
+						break;
+
+					default:
+						setDataLeaderboard(
+							_.concat(
+								LeaderboardSorted[1],
+								LeaderboardSorted[0],
+								_.slice(LeaderboardSorted, 2, LeaderboardSorted.length)
+							)
+						);
+						break;
+				}
+			})
+			.catch((err) => {
+				dispatch(SET_SPINNER(false));
+				// console.log(err);
+			});
+	};
 	useEffect(() => {
 		let isMounted = true;
 		if (isMounted) {
-			getData();
+			getDataInnerTopic();
+			// getDataLeague();
+			getDataLeaderboard(TYPE_LEADERBOARD.ALL, 0);
 		}
 		return () => {
 			isMounted = false;
@@ -133,27 +186,27 @@ const HomeTopicsInner = () => {
 				</div>
 
 				<div className="sec-info">
-					<p className="title">{data?.name}</p>
-					<p className="subtitle">{data?.categoryName}</p>
+					<p className="title">{dataInnerTopic?.name}</p>
+					<p className="subtitle">{dataInnerTopic?.categoryName}</p>
 					<div className="pt-2 d-flex justify-content-between align-items-center">
 						<p className="grey">
 							<PlayArrowIcon />
-							<span className="mx-1">{data?.singlePlays + data?.doublePlays}</span>
+							<span className="mx-1">{dataInnerTopic?.singlePlays + dataInnerTopic?.doublePlays}</span>
 						</p>
 						<p className="grey">
 							<HelpIcon />
-							<span className="mx-1">{data?.questions}</span>
+							<span className="mx-1">{dataInnerTopic?.questions}</span>
 						</p>
 						<p className="gold">
 							<StarRateOutlinedIcon />
-							<span className="mx-1">{data?.rate}</span>
-							<span className="mx-1 grey">{`(${data?.raters})`}</span>
+							<span className="mx-1">{dataInnerTopic?.rate}</span>
+							<span className="mx-1 grey">{`(${dataInnerTopic?.raters})`}</span>
 						</p>
 					</div>
 
 					<hr />
 
-					{testFlagAdd ? (
+					{!dataInnerTopic?.status ? (
 						<p className="text-center add" onClick={handleAddToFavorites}>
 							<AddIcon /> Add to favorites
 						</p>
@@ -167,16 +220,17 @@ const HomeTopicsInner = () => {
 
 			<div className="topicsInner-body">
 				<div className="ratio _dish-cardLeagueInfo">
-					<CardLeagueInfo info={cardInfo} />
+					{/* <CardLeagueInfo info={cardInfo} /> */}
+					{/* EDIT */}
 				</div>
 
 				<div className="description">
 					<p className="title">Description</p>
-					<p className="text">{data?.description}</p>
+					<p className="text">{dataInnerTopic?.description}</p>
 				</div>
 
 				<div className="d-flex flex-wrap badges">
-					{data?.tags?.map((el, index) => (
+					{dataInnerTopic?.tags?.map((el, index) => (
 						<p key={index} className="badge">
 							{el}
 						</p>
@@ -191,42 +245,61 @@ const HomeTopicsInner = () => {
 							<button
 								key={index}
 								className={`tab ${activatedTab === index ? "tab-active" : ""}`}
-								onClick={() => setActivatedTab(index)}
+								onClick={() => getDataLeaderboard(el.type, index)}
 							>
-								{el}
+								{el.name}
 							</button>
 						))}
 					</div>
 
-					<div className="best">
-						<div className="d-flex best-users">
-							{mockLeadersBest.map((el, index) => (
-								<div key={index} className={`user ${index === 1 ? "best-user" : ""}`}>
-									<div className="mx-auto avatar"></div>
-									<p className="username">{el.username}</p>
-									<p className="points">{`${el.points} points`}</p>
+					{dataLeaderboard.length > 0 ? (
+						<>
+							<div className="best">
+								<div className="d-flex best-users">
+									{_.slice(dataLeaderboard, 0, 3).map((el, index) => (
+										<div key={index} className={`user ${index === 1 ? "best-user" : ""}`}>
+											{!_.isEmpty(el) ? (
+												<>
+													<img
+														className="avatar"
+														src={`${IMAGE_URL}${el?.UserId?.avatar}`}
+														alt=""
+													/>
+													<p className="username">{el?.UserId?.username}</p>
+													<p className="points">{`${el?.xp} points`}</p>
+												</>
+											) : (
+												<></>
+											)}
+										</div>
+									))}
 								</div>
-							))}
-						</div>
 
-						<div className="d-flex align-items-center levels">
-							<div className="level level-2">2</div>
-							<div className="level level-1">1</div>
-							<div className="level level-3">3</div>
-						</div>
-					</div>
-					<div className="results">
-						{mockLeadersOther.map((el, index) => (
-							<div key={index} className="d-flex align-items-center _br-bottom user">
-								<span className="index">{`${index + 4}.`}</span>
-								<div className="avatar"></div>
-								<p className="username">{el.username}</p>
-								<p className="points">{`${el.points} points`}</p>
+								<div className="d-flex align-items-center levels">
+									<div className="level level-2">2</div>
+									<div className="level level-1">1</div>
+									<div className="level level-3">3</div>
+								</div>
 							</div>
-						))}
-
-						<p className="seemore">See more</p>
-					</div>
+							{dataLeaderboard.length > 3 ? (
+								<div className="results">
+									{_.slice(dataLeaderboard, 3, dataLeaderboard?.length).map((el, index) => (
+										<div key={index} className="d-flex align-items-center _br-bottom user">
+											<span className="index">{`${index + 4}.`}</span>
+											<img className="avatar" src={`${IMAGE_URL}${el?.UserId?.avatar}`} alt="" />
+											<p className="username">{el?.UserId?.username}</p>
+											<p className="points">{`${el?.xp} points`}</p>
+										</div>
+									))}
+									<p className="seemore">See more</p>
+								</div>
+							) : (
+								<></>
+							)}
+						</>
+					) : (
+						<EmptyList />
+					)}
 				</div>
 			</div>
 
