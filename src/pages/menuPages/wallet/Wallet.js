@@ -36,7 +36,7 @@ const Transaction = ({ icon, type, date, amount }) => {
 
 	return (
 		<li className="wallet-transactions-item">
-			<img className="wallet-transactions-item__icon" width={30} height={30} alt="transaction" src={icon} />
+			<img className="wallet-transactions-item__icon" alt="transaction" src={icon} />
 			<div className="wallet-transactions-item__info-wrapper">
 				<p className="wallet-transactions-item__type">{type}</p>
 				<p className="wallet-transactions-item__date">{date}</p>
@@ -67,27 +67,29 @@ const Wallet = () => {
 
 			<div className="wallet-details">
 				<div className="wallet-balance">
+					<img width={36} height={36} className="d-none d-xl-inline" alt="logo" src={afghanWirelessLogo} />
 					<p>MY Balance</p>
+					<span className="wallet-details__line d-xl-none" />
 					<p className="wallet-balance__amount">$ 18,240</p>
 				</div>
 
 				<div className="wallet-actions">
 					<div className="wallet-actions__btn">
-						<img width={40} height={40} alt="increase" src={increaseIcon} />
+						<img alt="increase" src={increaseIcon} />
 						Increase
 					</div>
 					<div className="wallet-actions__btn">
-						<img width={40} height={40} alt="increase" src={cashOutIcon} />
+						<img alt="increase" src={cashOutIcon} />
 						Cash Out
 					</div>
 					<div className="wallet-actions__btn">
-						<img width={40} height={40} alt="increase" src={sendToIcon} />
+						<img alt="increase" src={sendToIcon} />
 						Send To
 					</div>
 				</div>
 			</div>
 
-			<p style={{ padding: "1.5rem 1.5rem 0.8rem 1.5rem" }}>Transactions:</p>
+			<p className="transaction-title">Transactions:</p>
 
 			<ul className="wallet-transactions">
 				{transactions.map((transaction, index) => (

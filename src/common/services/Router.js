@@ -30,18 +30,22 @@ import FriendsProfileFavoriteTopics from "pages/friends/profile/profileComponent
 import FriendsProfilePerformance from "pages/friends/profile/profileComponents/Contents/Performance/ProfilePerformance";
 import FriendsProfileFriends from "pages/friends/profile/profileComponents/Contents/Friends/ProfileFriends";
 import FriendsProfile from "pages/friends/profile/FriendsProfile";
-import WrapperLayoutFooter from "common/components/layout/wrapperLayoutFooter";
 import OnePlayer from "pages/quickPlay/onePlayer/OnePlayer";
+import MainLayout from "common/components/layout/MainLayout";
+import SuperCenterLayout from "common/components/layout/SuperCenterLayout";
+import Subscribe from "pages/subscripe/Subscribe";
 
 const RouterConfig = () => {
 	return (
 		<Router>
 			<Routes>
+				{/* routes with main layout with footer on mobile */}
 				<Route exact path="/" element={<ProtectedRoute />}>
-					<Route exact path="/" element={<WrapperLayoutFooter />}>
+					<Route exact path="/" element={<MainLayout footer />}>
 						<Route exact path="/" element={<Home />} />
 						<Route exact path="/leagues" element={<Leagues />} />
 						<Route exact path="/search" element={<SearchExplore />} />
+
 						<Route exact path="/profile" element={<Profile />}>
 							<Route exact path="/profile/favorite-topics" element={<ProfileFavoriteTopics />} />
 							<Route exact path="/profile/performance" element={<ProfilePerformance />} />
@@ -51,17 +55,47 @@ const RouterConfig = () => {
 					</Route>
 				</Route>
 
-				{/* ------------------------- HOME ------------------------- */}
-				<Route exact path="/topics/:id" element={<HomeTopicsInner />} />
-				<Route exact path="/topics/all/:type" element={<HomeTopicsSeeAll />} />
-				<Route exact path="/leaderboard" element={<Leaderboard />} />
+				{/* routes with main layout without footer */}
+				<Route exact path="/" element={<MainLayout />}>
+					<Route exact path="/topics/:id" element={<HomeTopicsInner />} />
+					<Route exact path="/topics/all/:type" element={<HomeTopicsSeeAll />} />
 
-				{/* ------------------------- LEAGUE ------------------------- */}
-				<Route exact path="/leagues/history" element={<LeaguesHistory />} />
-				<Route exact path="/leagues/:id" element={<LeaguesInner />} />
-				<Route exact path="/leagues/result" element={<LeaguesResult />} />
+					<Route exact path="/leaderboard" element={<Leaderboard />} />
 
-				{/* ------------------------- OTHER ------------------------- */}
+					<Route exact path="/leagues/history" element={<LeaguesHistory />} />
+					<Route exact path="/leagues/:id" element={<LeaguesInner />} />
+					<Route exact path="/leagues/result" element={<LeaguesResult />} />
+
+					<Route exact path="/menu/wallet" element={<ProtectedRoute />}>
+						<Route index element={<Wallet />} />
+					</Route>
+
+					<Route exact path="/friends" element={<ProtectedRoute />}>
+						<Route exact path="/friends" element={<Friends />} />
+						<Route exact path="/friends/:id/profile" element={<FriendsProfile />}>
+							<Route
+								exact
+								path="/friends/:id/profile/favorite-topics"
+								element={<FriendsProfileFavoriteTopics />}
+							/>
+							<Route
+								exact
+								path="/friends/:id/profile/performance"
+								element={<FriendsProfilePerformance />}
+							/>
+							<Route exact path="/friends/:id/profile/friends" element={<FriendsProfileFriends />} />
+						</Route>
+					</Route>
+				</Route>
+
+				{/* routes with super centered layout */}
+				<Route exact path="/" element={<SuperCenterLayout />}>
+					<Route path="/login" element={<Login />} />
+					<Route path="/otp" element={<VerificationCode />} />
+					<Route path="/purchase" element={<Subscribe />} />
+				</Route>
+
+				{/* this routes not have specific layout */}
 				<Route exact path="/quickPlay" element={<ProtectedRoute />}>
 					<Route exact path="/quickPlay" element={<QuickPlay />} />
 					<Route exact path="/quickPlay/twoPlayers" element={<TwoPlayers />} />
@@ -70,25 +104,9 @@ const RouterConfig = () => {
 
 				<Route exact path="/menu" element={<ProtectedRoute />}>
 					<Route exact path="/menu" element={<Menu />} />
-					<Route exact path="/menu/wallet" element={<Wallet />} />
 					<Route exact path="/menu/notification" element={<Notification />} />
 				</Route>
 
-				<Route exact path="/friends" element={<ProtectedRoute />}>
-					<Route exact path="/friends" element={<Friends />} />
-					<Route exact path="/friends/:id/profile" element={<FriendsProfile />}>
-						<Route
-							exact
-							path="/friends/:id/profile/favorite-topics"
-							element={<FriendsProfileFavoriteTopics />}
-						/>
-						<Route exact path="/friends/:id/profile/performance" element={<FriendsProfilePerformance />} />
-						<Route exact path="/friends/:id/profile/friends" element={<FriendsProfileFriends />} />
-					</Route>
-				</Route>
-
-				<Route path="/login" element={<Login />} />
-				<Route path="/otp" element={<VerificationCode />} />
 				<Route path="*" element={<Navigate to="/" />} />
 			</Routes>
 		</Router>

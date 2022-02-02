@@ -1,14 +1,12 @@
-import { React } from "react";
 import PropTypes from "prop-types";
-import Header from "../header/Header";
-import Footer from "../footer/Footer";
+import MobileHeader from "../header/MobileHeader";
 
 const Layout = ({ children, header = true, className = "" }) => {
 	return (
 		<div className={`w-100 h-100  ${className}`}>
 			{header && (
 				<div className="_header">
-					<Header />
+					<MobileHeader />
 				</div>
 			)}
 			{children}

@@ -1,0 +1,48 @@
+@import "assets/scss/styles.scss";
+
+.main-layout {
+  height: 100%;
+  display: flex;
+  flex-flow: row wrap;
+
+  &__desktop-header {
+    display: none;
+
+    @media (min-width: $breakpoint-xl) {
+      display: block;
+      flex: 1 1 100%;
+    }
+  }
+
+
+  &__sidebar { // show only on desktop
+    display: none;
+    height: calc(100% - #{$desktop-header-height});
+    overflow-y: auto;
+
+    @media (min-width: $breakpoint-xl) {
+      display: block;
+      flex: 0 1 $sidebar-width;
+    }
+  }
+
+  &__content {
+    background-color: $bg-home;
+    width: 100%;
+    flex: 1 1 100%;
+    overflow-y: auto;
+
+    @media (min-width: $breakpoint-xl) {
+      flex : 0 1 calc(100% - #{$sidebar-width});
+    }
+  }
+
+  &__footer { // show only on mobile
+    flex: 1 1 100%;
+    height: $height-footer;
+
+    @media (min-width: $breakpoint-xl) {
+      display: none;
+    }
+  }
+}

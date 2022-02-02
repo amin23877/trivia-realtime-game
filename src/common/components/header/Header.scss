@@ -1,14 +1,29 @@
 @import 'assets/scss/styles.scss';
 
-.header {
-    width: 100%;
-    height: $height-header;
+.mobile-header {
+  width: 100%;
+  height: $mobile-header-height;
+  background-color: white;
+  padding: 0 1.5rem;
 
-    padding: 0 15px;
-    background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    img {
-        height: 50%;
-        width: auto;
-    }
+  @media (min-width: $breakpoint-xl) {
+    display: none;
+  }
+}
+
+.desktop-header {
+  width: 100%;
+  height: $desktop-header-height;
+  background-color: $primary;
+  padding: 0 6rem;
+
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
 }

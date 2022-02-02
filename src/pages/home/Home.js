@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 // Packages
 // Components, Services, Functions
 import Menu from "pages/menu/Menu";
-import Header from "common/components/header/Header";
+import MobileHeader from "common/components/header/MobileHeader";
 import HomeTopics from "./homeComponents/homeTopics/HomeTopics";
-import SelectGameType from "./homeComponents/selectGameType/SelectGameType";
 import CardLeagueInfo from "common/components/cardLeagueInfo/CardLeagueInfo";
 import ModalConfirmDeactivation from "pages/modals/ModalConfirmDeactivation";
 // Redux
@@ -67,16 +66,14 @@ const Home = () => {
 	}, []);
 
 	return (
-		<div className="fadeInFast w-100 h-100 home">
-			<div className="_header">
-				<Header onDrawerOpen={handleDrawerOpen} />
-			</div>
+		<div className="fadeInFast home">
+			<MobileHeader onDrawerOpen={handleDrawerOpen} />
 
-			<Drawer variant="persistent" anchor="left" open={openDrawerMenu}>
+			<Drawer className="d-xl-none" variant="persistent" anchor="left" open={openDrawerMenu}>
 				<Menu onDrawerClose={handleDrawerClose} />
 			</Drawer>
 
-			<div className="_body-height-H home-body">
+			<div className="home__body">
 				<div className="card-league">
 					<div className="ratio _dish-cardLeagueInfo">
 						{/* #ratio */}

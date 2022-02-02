@@ -83,6 +83,13 @@
   box-shadow: $box-shadow;
   border-radius: $box-border-radius;
 }
+
+@mixin borderedBox($padding) {
+  border-radius: 1.5rem;
+  border: 1px solid #00000033;
+  padding: $padding;
+}
+
 // ======================================================
 // Function
 // ======================================================
