@@ -15,7 +15,6 @@ import { SET_USER_INFO } from "redux/actions/mainActions/generalActions";
 import { TextField } from "@material-ui/core";
 // Styles, Icons, Images
 import "./Login.scss";
-import logo from "assets/images/logo/logo.svg";
 import imgMain from "assets/images/pics/login-otp.svg";
 import arrowBack from "assets/images/icons/arrow-back.svg";
 import Logo from "common/components/UI/Logo";
