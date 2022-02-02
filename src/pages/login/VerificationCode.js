@@ -20,7 +20,7 @@ import arrowBack from "assets/images/icons/arrow-back.svg";
 import Logo from "common/components/UI/Logo";
 
 const VerificationCode = () => {
-	const timeRemain = 900;
+	const timeRemain = 90;
 	const handleStopTimer = (e) => {
 		// console.log(e);
 		setHasTime(true);
