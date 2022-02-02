@@ -3,17 +3,15 @@ import React from "react";
 import "./Subscribe.scss";
 
 // images
-import logo from "assets/images/logo/logo.svg";
 import calenderDaily from "assets/images/pics/calender-daily.svg";
 import calenderWeekly from "assets/images/pics/calender-weekly.svg";
 import calenderMonthly from "assets/images/pics/calender-weekly.svg";
+import Logo from "common/components/UI/Logo";
 
 const Subscribe = () => {
 	return (
 		<div className="subscribe">
-			<div className="logo">
-				<img width="100%" alt="logo" src={logo} />
-			</div>
+			<Logo className="logo-space" />
 
 			<p className="subscribe-desc">Select the subscription package you want</p>
 

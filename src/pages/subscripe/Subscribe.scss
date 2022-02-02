@@ -8,21 +8,17 @@
   padding: 0 1.5rem;
 
   @include xl() {
+    @include borderedBox(0 6rem 3.25rem);
     @include fsXXL;
     height: auto;
-    border: 1px solid #00000033;
-    border-radius: 1.5rem;
-    padding: 0 6rem 3.25rem;
   }
 }
 
-.logo {
+.logo-space {
   padding: 1rem 0 2.375rem;
-  margin: 0 auto;
-  width: 104px;
+
   @include xl() {
     padding-top: 2rem;
-    width: 177px;
   }
 }
 
