@@ -1,9 +1,12 @@
 @import "assets/scss/styles.scss";
 
+$notif-drawer-width: 500px;
+
 .main-layout {
   height: 100%;
   display: flex;
   flex-flow: row wrap;
+  position: relative;
 
   &__desktop-header {
     display: none;
@@ -13,7 +16,6 @@
       flex: 1 1 100%;
     }
   }
-
 
   &__sidebar { // show only on desktop
     display: none;
@@ -33,7 +35,7 @@
     overflow-y: auto;
 
     @media (min-width: $breakpoint-xl) {
-      flex : 0 1 calc(100% - #{$sidebar-width});
+      flex: 0 1 calc(100% - #{$sidebar-width});
     }
   }
 
@@ -43,6 +45,29 @@
 
     @media (min-width: $breakpoint-xl) {
       display: none;
+    }
+  }
+}
+
+.main-layout__notif-drawer { // show only on desktop
+  position: absolute;
+  right: 0;
+  top: $desktop-header-height;
+  width: $notif-drawer-width;
+  height: 100%;
+  background-color: white;
+  z-index: 1;
+  box-shadow: 0 3px 5px rgba(39, 39, 40, 0.1);
+  padding: 1.25rem 6rem 1.25rem 1.25rem;
+  overflow: auto;
+  transform: translate3d(100%, 0, 0);
+  transition: transform .15s ease-in-out;
+  display: none;
+
+  @include xl {
+    display: block;
+    &_open {
+      transform: translate3d(0, 0, 0);
     }
   }
 }

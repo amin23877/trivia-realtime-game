@@ -8,12 +8,17 @@ import Footer from "common/components/footer/Footer";
 import SelectGameType from "pages/home/homeComponents/selectGameType/SelectGameType";
 
 import "./MainLayout.scss";
+import NotificationWidget from "common/components/NotificationWidget/NotificationWidget";
 
 const MainLayout = ({ footer = false }) => {
-	const openGameTypes = useSelector((state) => state.stateGeneral.openGameTypes);
+	const { openGameTypes, openNotifDrawer } = useSelector((state) => state.stateGeneral);
 
 	return (
 		<div className="main-layout">
+			<aside className={`main-layout__notif-drawer ${openNotifDrawer ? "main-layout__notif-drawer_open" : ""}`}>
+				<NotificationWidget />
+			</aside>
+
 			<header className="main-layout__desktop-header">
 				<DesktopHeader />
 			</header>
