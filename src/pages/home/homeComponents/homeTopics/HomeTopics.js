@@ -20,7 +20,7 @@ const HomeTopics = ({ type }) => {
 	const topics = stateTopic.topics.filter((el) => el.type === type)[0]?.topicList;
 
 	const handleShowTopicInner = (event, info) => {
-		console.log(info);
+		// console.log(info);
 		handleNavigate(event, `/topics/${info._id}`);
 	};
 
