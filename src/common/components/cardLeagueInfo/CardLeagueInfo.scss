@@ -3,13 +3,22 @@
 $radius-card: 15px;
 
 .cardLeagueInfo {
-    background-color: $bg-home-card;
+    // background-color: $bg-home-card;
     border-radius: $radius-card;
+    // background: url('../../../assets/images/test/2.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: relative;
 
     img {
         min-height: 100%;
         width: auto;
         border-radius: 0 $radius-card $radius-card 0;
+    }
+
+    .card-logo {
+        max-width: 100%;
+        overflow: hidden;
     }
 
     .cardLeagueInfo-info {
@@ -57,6 +66,11 @@ $radius-card: 15px;
                 margin: 0 5px;
             }
         }
+
+        .date {
+            @include fsM;
+            color: $grey-1;
+        }
     }
 
     .ratio::before {
@@ -76,7 +90,7 @@ $radius-card: 15px;
         height: 100%;
         position: absolute;
         border-radius: $radius-card;
-        background-color: colorBlack(60);
+        background-color: colorBlack(50);
 
         .img-expired {
             max-width: 22%;
@@ -85,4 +99,7 @@ $radius-card: 15px;
             position: absolute;
         }
     }
+}
+
+@media screen and (max-width: $breakpoint-s) {
 }
