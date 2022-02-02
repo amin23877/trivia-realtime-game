@@ -8,7 +8,7 @@ import userIcon from 'assets/images/icons/footer-profile.svg';
 import { IMAGE_URL } from "common/values/CORE";
 import PlayArrowRoundedIcon from '@material-ui/icons/PlayArrowRounded';
 
-const FriendsList = ({ joinCode, users, mpGamesId, handleLeaveGame }) => {
+const FriendsList = ({ joinCode, users, mpGamesId, handleLeaveGame, handleStartGame }) => {
     const navigate = useNavigate();
 
     return (
@@ -45,7 +45,7 @@ const FriendsList = ({ joinCode, users, mpGamesId, handleLeaveGame }) => {
             </div>
             <div className="friends-list__footer">
                 <Button onClick={handleLeaveGame}>{joinCode == mpGamesId.categoryGameId ? 'Cancel' : 'Leave'}</Button>
-                <Button className={joinCode !== mpGamesId.categoryGameId && 'disabled-btn'}>
+                <Button onClick={handleStartGame} className={joinCode !== mpGamesId.categoryGameId && 'disabled-btn'}>
                     {joinCode == mpGamesId.categoryGameId ? 'Start Game' : 'Wait To Start '}
                     <PlayArrowRoundedIcon />
                 </Button>

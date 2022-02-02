@@ -9,16 +9,17 @@ import ShowQuestion from "../components/showQuestion/ShowQuestion";
 import CategoriesList from "../components/categories/CategoriesList";
 import EnterGameCode from "./EnterGameCode/EnterGameCode";
 import FriendsList from "./FriendsList/FriendsList";
+import StartTimer from "./startTimer/StartTimer";
 const WithFriends = () => {
 	const Dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	const categories = useSelector((state) => state.stateGeneral.categoriesList);
 	const [selectedCategory, setSelectedCategory] = useState();
-	const [singleGameQuestion, setSingleGameQuestion] = useState();
+	const [mpQuestion, setMpQuestion] = useState();
 	const [gameState, setGameState] = useState("EnterGameCode");
 	const [socket, setSocket] = useState();
-	const [socketId, setSocketId] = useState();
+	const [authData, setAuthData] = useState();
 	const [myInfo, setMyInfo] = useState({ player: "player1", score: 0 });
 	const [time, setTime] = useState(20);
 	const [questionNumber, setQuestionNumber] = useState(0);
@@ -48,7 +49,7 @@ const WithFriends = () => {
 		});
 
 		socketp.on("authentication", (e) => {
-			setSocketId(e.socketid);
+			setAuthData(e);
 			setUsers([e])
 		});
 		socketp.on("mpPlayerList", (e) => {
@@ -61,17 +62,20 @@ const WithFriends = () => {
 		socketp.on("entermp", (e) => {
 			setGameState('friendsList')
 		});
+		socketp.on("mpready", () => {
+			setGameState("startTimer");
+		});
 
-		socketp.on("singleGameToken", handleSingleGameToken);
-		socketp.on("singleGameQuestion", handleSingleGameQuestion);
-		socketp.on("singleGameScore", handleSingleGameScore);
-		socketp.on("singleGameFinish", (e) => {
+		socketp.on("mpquestion", handleMpQuestion);
+		socketp.on("mpscore", handleMpScore);
+		socketp.on("mpfinish", (e) => {
 			setTimeout(() => {
-				setGameState("gameResult");
+				// setGameState("gameResult");
 				setGameResult(e);
 				socketp.close();
 			}, 1000);
 		});
+
 	}, []);
 
 	useEffect(() => {
@@ -82,7 +86,7 @@ const WithFriends = () => {
 
 	useEffect(() => {
 		if (selectedCategory) {
-			if (socketId) {
+			if (authData.socketid) {
 				socket.emit("setidmp", { CategoryId: selectedCategory._id, id: mpGamesId.categoryGameId });
 				socket.emit("preparemp", { id: mpGamesId.categoryGameId });
 				setGameState('friendsList')
@@ -90,24 +94,22 @@ const WithFriends = () => {
 		}
 	}, [selectedCategory]);
 
-	const handleSingleGameToken = (e) => {
-		console.log("eee", e);
-		localStorage.setItem("quickPlay-token", e.token);
-		socketRef.current.emit("singleGameStart", { gameToken: e.token });
-	};
-	const handleSingleGameQuestion = (e) => {
+
+	const handleMpQuestion = (e) => {
 		setTimeout(() => {
-			setSingleGameQuestion(e);
+			setMpQuestion(e);
 			setGameState("showQuestions");
 			setCorrectAnswer(null);
 			setMyOption(null);
 		}, 1000);
 	};
 
-	const handleSingleGameScore = (e) => {
+	const handleMpScore = (e) => {
 		console.log("score", e);
-		setCorrectAnswer(e.answer);
-		setMyInfo({ ...myRef.current, score: myRef.current.score + e.score });
+		if (e.answer) {
+			setCorrectAnswer(e.answer);
+			setMyInfo({ ...myRef.current, score: myRef.current.score + e.score });
+		}
 	};
 
 	const handleGotoBack = () => {
@@ -119,7 +121,7 @@ const WithFriends = () => {
 		setSelectedCategory(category);
 	};
 	const handleSelectOption = (opt) => {
-		socket.emit("singleGameAnswer", { gameToken: localStorage.getItem("quickPlay-token"), answer: opt });
+		socket.emit("answermp", { id: joinCode, answer: opt });
 		setMyOption(opt);
 	};
 	const handleJoinWithCode = (opt) => {
@@ -143,6 +145,14 @@ const WithFriends = () => {
 				socket.emit("exitmp", { id: joinCode });
 			}
 			navigate('/')
+		}
+
+	}
+	const handleStartGame = () => {
+		if (joinCode !== '') {
+			if (joinCode === mpGamesId.categoryGameId) {
+				socket.emit("startmp", { id: joinCode });
+			}
 		}
 
 	}
@@ -176,15 +186,20 @@ const WithFriends = () => {
 					users={users}
 					mpGamesId={mpGamesId}
 					handleLeaveGame={handleLeaveGame}
+					handleStartGame={handleStartGame}
 				/>
+			)}
+			{gameState == "startTimer" && (
+				<StartTimer />
 			)}
 			{gameState == "showQuestions" && (
 				<ShowQuestion
-					singleGameQuestion={singleGameQuestion}
+					singleGameQuestion={mpQuestion}
 					handleSelectOption={handleSelectOption}
 					myInfo={myInfo}
 					single={true}
 					time={time}
+					authData={authData}
 					setTime={setTime}
 					questionNumber={questionNumber}
 					setQuestionNumber={setQuestionNumber}
