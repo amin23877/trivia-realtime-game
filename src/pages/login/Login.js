@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Logo from "common/components/UI/Logo";
 
 import { TextField } from "@material-ui/core";
 
 import ApiCall from "common/services/ApiCall";
 
 import "./Login.scss";
-import logo from "assets/images/logo/logo.svg";
+
 import imgMain from "assets/images/pics/login-login.svg";
-import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
-import { useDispatch } from "react-redux";
 
 const Login = () => {
 	const navigate = useNavigate();
@@ -75,23 +76,22 @@ const Login = () => {
 	}, []);
 
 	return (
-		<div className="fadeInFast w-100 h-100 p-3 d-flex flex-column align-items-center login">
-			<img src={logo} alt="" />
+		<div className="fadeInFast d-flex flex-column align-items-center login">
+			<Logo />
 
 			<div className="login-body">
-				<p className="title">Log in</p>
-				<div className="text-center">
-					<img src={imgMain} alt="" />
+				<div className="login-body__title">
+					<p className="title">Log in</p>
+					<img className="login-body__image" src={imgMain} alt="" />
 				</div>
 
 				<form noValidate autoComplete="off" className="_dish-textField">
 					<div className="">
-						<p className="lable">Phone Number</p>
+						<p className="label">Phone Number</p>
 						<TextField
 							autoFocus={true}
 							type="tel"
 							placeholder="Enter your phone number"
-							className=""
 							helperText={phone.length > 10 && !isValidPhone ? messageError : ""}
 							variant="outlined"
 							inputProps={{ maxLength: 11 }}
@@ -103,7 +103,7 @@ const Login = () => {
 					</div>
 				</form>
 
-				<button className="login-btn" disabled={!isValidPhone} onClick={handleGetOtp}>
+				<button className="login-body__submit" disabled={!isValidPhone} onClick={handleGetOtp}>
 					Login
 				</button>
 			</div>

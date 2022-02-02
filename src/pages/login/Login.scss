@@ -1,58 +1,91 @@
 @import 'assets/scss/styles.scss';
 
 .login {
-    overflow: auto;
-    .login-body {
-        width: 100%;
-        max-width: 250px;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  max-width: 480px;
+  padding: 1rem;
 
-        .title {
-            @include fsL;
+  @include xl {
+    @include borderedBox(2.25rem 1rem 4rem);
+    height: auto;
+  }
+}
 
-            width: 100%;
-            font-family: RobotoBlack;
-            margin: 50px 0 20px !important;
-            color: colorBlack(85);
-        }
+.timer {
+  @include fsM;
 
-        .lable {
-            @include fsM;
+  width: 100%;
+  margin: 5px 0 !important;
+  color: $red-1;
+  font-weight: 500;
+  text-align: center;
+}
 
-            width: 100%;
-            margin: 30px 0 10px !important;
-            color: colorBlack(80);
-            font-weight: 500;
-        }
+.timer-resend {
+  font-family: RobotoBlack;
+  text-decoration: underline;
+  cursor: pointer;
+}
 
-        .login-btn {
-            width: 100%;
-            padding: 10px;
-            color: white;
-            margin: 10px 0;
-            border-radius: 8px;
-            background: $primary;
-            border: 1px solid $primary;
-        }
+.label {
+  @include fsM;
 
-        .login-btn:disabled {
-            background: $primary-light;
-            border: 1px solid $primary-light;
-        }
+  width: 100%;
+  margin: 1rem 0 14px !important;
+  color: colorBlack(80);
+  font-weight: 500;
+}
 
-        .timer {
-            @include fsM;
+.login-body {
+  width: 100%;
+  max-width: 250px;
 
-            width: 100%;
-            margin: 5px 0 !important;
-            color: $red-1;
-            font-weight: 500;
-            text-align: center;
-        }
+  @include xl {
+    max-width: 320px;
+  }
 
-        .timer-resend {
-            font-family: RobotoBlack;
-            text-decoration: underline;
-            cursor: pointer;
-        }
+  &__title {
+    @include fsL;
+    margin: 1.25rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+    font-family: RobotoBlack;
+    color: colorBlack(85);
+
+    @include xl {
+      flex-direction: column-reverse;
     }
+  }
+
+  &__image {
+    width: 163px;
+    align-self: center;
+  }
+
+  &__submit {
+    display: block;
+    appearance: none;
+    border: none;
+    border-radius: 8px;
+    height: 44px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: $primary;
+    box-shadow: 0 3px 6px rgba(109, 107, 230, 0.35), inset 0 2px 2px rgba(255, 255, 255, 0.25);
+    color: #fff;
+
+    &:disabled {
+      background-color: #00000033;
+      box-shadow: none;
+    }
+
+    @include xl() {
+      @include fsL;
+      height: 56px;
+    }
+  }
 }
