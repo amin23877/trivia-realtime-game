@@ -1,16 +1,20 @@
 import React from "react";
 import Search from "common/components/UI/Search";
-
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import "./Header.scss";
 
 // images
 import desktopLogo from "assets/images/logo/logo-white.svg";
 import notifIcon from "assets/images/icons/notifications.svg";
+import { TOGGLE_NOTIF_DRAWER } from "redux/actions/mainActions/generalActions";
 
 const DesktopHeader = () => {
-	const navigate = useNavigate();
+	const dispatch = useDispatch();
+
+	const handleToggleDrawer = () => {
+		dispatch(TOGGLE_NOTIF_DRAWER());
+	};
 
 	return (
 		<div className="_header-shadow desktop-header">
@@ -18,7 +22,7 @@ const DesktopHeader = () => {
 
 			<Search cb={() => {}} />
 
-			<img src={notifIcon} alt="notifications" onClick={() => navigate("/menu/notification")} />
+			<img className="_cursor-pointer" src={notifIcon} alt="notifications" onClick={handleToggleDrawer} />
 		</div>
 	);
 };
