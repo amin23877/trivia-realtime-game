@@ -1,0 +1,9 @@
+@import 'assets/scss/styles.scss';
+
+.quizup-logo {
+  width: 104px;
+  margin: 0 auto;
+  @include xl {
+    width: 145px;
+  }
+}
