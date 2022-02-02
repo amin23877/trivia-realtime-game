@@ -19,10 +19,11 @@ $size-avatar: 30px;
             width: 100%;
             height: 60%;
             padding: 20px;
-            background: url('../../../assets/images/test/4.png');
+            // background: url('../../../assets/images/test/4.png');
 
             background-size: 100% auto;
             background-repeat: no-repeat;
+            position: relative;
 
             p {
                 color: white;
