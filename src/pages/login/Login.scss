@@ -5,10 +5,10 @@
   height: 100%;
   width: 100%;
   max-width: 480px;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
 
   @include xl {
-    @include borderedBox(2.25rem 1rem 4rem);
+    @include borderedBox(2.25rem 5rem 4rem);
     height: auto;
   }
 }
@@ -38,12 +38,26 @@
   font-weight: 500;
 }
 
+.login-header {
+  position: relative;
+  width: 100%;
+
+  &__back-btn {
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform:translateY(-50%);
+  }
+}
+
 .login-body {
+  position: relative;
   width: 100%;
   max-width: 250px;
 
   @include xl {
-    max-width: 320px;
+    max-width: 100%;
   }
 
   &__title {

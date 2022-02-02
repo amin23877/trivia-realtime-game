@@ -18,9 +18,10 @@ import "./Login.scss";
 import logo from "assets/images/logo/logo.svg";
 import imgMain from "assets/images/pics/login-otp.svg";
 import arrowBack from "assets/images/icons/arrow-back.svg";
+import Logo from "common/components/UI/Logo";
 
 const VerificationCode = () => {
-	const timeRemain = 90;
+	const timeRemain = 900;
 	const handleStopTimer = (e) => {
 		// console.log(e);
 		setHasTime(true);
@@ -123,21 +124,25 @@ const VerificationCode = () => {
 	}, []);
 
 	return (
-		<div className="fadeInFast w-100 h-100 p-3 d-flex flex-column align-items-center login">
-			<img src={logo} alt="" />
-			<div className="w-100">
-				<img src={arrowBack} onClick={() => navigate("/login")} alt="" />
+		<div className="fadeInFast d-flex flex-column align-items-center login">
+			<div className="login-header">
+				<Logo />
+
+				<div className="login-header__back-btn">
+					<img src={arrowBack} onClick={() => navigate("/login")} alt="" />
+				</div>
 			</div>
 
 			<div className="login-body">
-				<p className="title">Enter Auth Code</p>
-				<div className="text-center">
+				<p className="login-body__title">Enter Auth Code</p>
+
+				<div className="text-center mt-3">
 					<img src={imgMain} alt="" />
 				</div>
 
 				<form noValidate autoComplete="off" className="_dish-textField">
 					<div className="">
-						<p className="lable">{`Confirmation code sent to ${phone}`}</p>
+						<p className="label">{`Confirmation code sent to ${phone}`}</p>
 						<TextField
 							autoFocus={true}
 							type="tel"
@@ -153,7 +158,7 @@ const VerificationCode = () => {
 					</div>
 				</form>
 
-				<button className="login-btn" onClick={handleRegister}>
+				<button className="login-body__submit" onClick={handleRegister}>
 					Continue
 				</button>
 
