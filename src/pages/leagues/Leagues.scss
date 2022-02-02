@@ -22,5 +22,12 @@
 
         .history {
         }
+
+        .empty-list {
+            @include fsNormal;
+            padding: 30px;
+            color: colorBlack(50);
+            text-align: center;
+        }
     }
 }
