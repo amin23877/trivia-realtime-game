@@ -5,6 +5,7 @@ const initialState = {
 	spinner: false,
 	userInfo: {},
 	modals: {}, // #modalRedux step3
+	snackbar: {},
 	categoriesList: null,
 	openGameTypes: false,
 	openNotifDrawer: false,
@@ -17,6 +18,8 @@ export const generalReducer = (state = initialState, action) => {
 			return { ...state, modals: action.payload };
 		case actionsTypeGeneral.SET_SPINNER:
 			return { ...state, spinner: action.payload };
+		case actionsTypeGeneral.SET_SNACKBAR:
+			return { ...state, snackbar: action.payload };
 		case actionsTypeGeneral.SET_USER_INFO:
 			return { ...state, userInfo: action.payload };
 		case actionsTypeGeneral.GET_CATEGORIES_LIST:

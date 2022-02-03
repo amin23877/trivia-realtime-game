@@ -12,6 +12,13 @@ export const SET_SPINNER = (payload) => {
 	return { type: actionsTypeGeneral.SET_SPINNER, payload };
 };
 
+export const SET_SNACKBAR = (payload) => {
+	return {
+		type: actionsTypeGeneral.SET_SNACKBAR,
+		payload,
+	};
+};
+
 export const SET_MODALS = (payload) => {
 	// #modalRedux step2
 	return {
