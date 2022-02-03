@@ -15,7 +15,7 @@ import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 
 // #countdownTimer step2
 import Countdown from "react-countdown";
-import CountdownTimer from "../CountdownTimer/CountDownTimer";
+import CountdownTimer from "common/components/countdownTimer/CountDownTimer"; // FIX
 import { IMAGE_URL } from "common/values/CORE";
 
 const CardLeagueInfo = ({ info, expired = false }) => {
