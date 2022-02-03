@@ -25,7 +25,7 @@ const SelectGameType = ({ handleOpenGameTypes, open }) => {
         {
             title: 'With Friends',
             icon: withFriendsIcon,
-            link:'/'
+            link:'/quickPlay/withFriends'
 
         },
     ]
@@ -45,7 +45,7 @@ const SelectGameType = ({ handleOpenGameTypes, open }) => {
 
         <div className="select-game-type">
             <ClickAwayListener
-                onClickAway={closeGameTypes}
+                onClickAway={()=>closeGameTypes()}
             >
 
                 <div className="select-game-type__game-types-container">

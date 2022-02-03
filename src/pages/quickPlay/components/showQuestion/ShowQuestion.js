@@ -21,7 +21,8 @@ const ShowQuestion = ({
     rivalAnswer,
     myOption,
     single,
-    singleGameQuestion
+    singleGameQuestion,
+    authData
 }) => {
     const [pauseTimer, setPauseTimer] = useState(false)
     // let timeT = 20;
@@ -93,7 +94,7 @@ const ShowQuestion = ({
             <div className="show-question__header">
 
                 <div className="show-question__header--player-info">
-                    <img src={single ? userIcon : IMAGE_URL + doubleGameReady[myInfo.player].avatar} />
+                    <img src={single ? IMAGE_URL + authData.avatar : IMAGE_URL + doubleGameReady[myInfo.player].avatar} />
                     <p>your score</p>
                     <span>{myInfo.score}</span>
                 </div>
@@ -124,7 +125,7 @@ const ShowQuestion = ({
                     className={`${pauseTimer ? 'show-question__options--disabled' : ''} ${correctAnswer == (single ? singleGameQuestion : doubleGameQuestion).option1 ? 'show-question__options--true' : ''} ${(myOption == (single ? singleGameQuestion : doubleGameQuestion).option1 && myOption != correctAnswer && correctAnswer != null) ? 'show-question__options--false' : ''}`}
                     onClick={() => _handleSelectOption((single ? singleGameQuestion : doubleGameQuestion).option1)}>
                     {(single ? singleGameQuestion : doubleGameQuestion).option1}
-                    {(!single && rivalAnswer==doubleGameQuestion?.option1) && <p className="show-question__options--rival-selection">{doubleGameReady[rivalInfo.player].username}</p>}
+                    {(!single && rivalAnswer == doubleGameQuestion?.option1) && <p className="show-question__options--rival-selection">{doubleGameReady[rivalInfo.player].username}</p>}
                 </Button>
                 <Button
                     className={`${pauseTimer ? 'show-question__options--disabled' : ''} ${correctAnswer == (single ? singleGameQuestion : doubleGameQuestion).option2 ? 'show-question__options--true' : ''} ${(myOption == (single ? singleGameQuestion : doubleGameQuestion).option2 && myOption != correctAnswer && correctAnswer != null) ? 'show-question__options--false' : ''}`}

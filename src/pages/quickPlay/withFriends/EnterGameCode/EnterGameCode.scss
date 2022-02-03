@@ -1,0 +1,86 @@
+@import "assets/scss/styles.scss";
+
+.enter-game-code {
+    background-color: #e5e5e5;
+    overflow-y: auto;
+    &__header {
+        width: 100%;
+        height: 40px;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        box-shadow: 0px 3px 6px 0px #0000001a;
+        padding: 0 27px;
+        position: sticky;
+        top: 0;
+        margin-bottom: 28px;
+        img {
+            margin-right: 20px;
+        }
+        p {
+            color: #6d6be6;
+            font-size: 14px;
+        }
+    }
+    &__join-code {
+        width: 100%;
+        padding: 0 24px;
+        border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+
+        & > p {
+            font-size: 14px;
+        }
+        &--form {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 44px;
+            & > input,
+            & > button {
+                width: 150px !important;
+                height: 44px !important;
+                border: none !important;
+                outline: none !important;
+                border-radius: 8px !important;
+            }
+            & > button {
+                background-color: #6d6be6 !important;
+                box-shadow: 0px 3px 6px 0px #6d6be659;
+                box-shadow: 0px 2px 2px 0px #ffffff40 inset;
+                color: #fff !important;
+                text-transform: capitalize !important;
+            }
+            &--disabled {
+                background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+                    linear-gradient(0deg, #ffffff, #ffffff) !important;
+                box-shadow: none !important;
+            }
+        }
+    }
+    &__create-game {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 44px;
+        & > p {
+            font-size: 14px;
+        }
+        &--button {
+            margin-top: 17px;
+            & > button {
+                width: 150px !important;
+                height: 44px !important;
+                border-radius: 8px !important;
+                background-color: #f83f5f !important;
+                color: #f83f5f !important;
+                box-shadow: 0px 4px 8px 0px #f83f5f66;
+                span {
+                    color: #fff;
+                }
+                text-transform: capitalize !important;
+            }
+        }
+    }
+}
