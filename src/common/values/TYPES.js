@@ -23,6 +23,12 @@ export const TYPE_LEADERBOARD = {
 	MONTH: "month",
 };
 
+export const TYPE_LEADERBOARD_COMPONENT = {
+	GENERAL: "GENERAL",
+	INNER_TOPIC: "INNER_TOPIC",
+	INNER_LEAGUE: "INNER_LEAGUE",
+};
+
 export const TYPE_LEAGUE_HOME = {
 	DAILY: "daily",
 	WEEKLY: "weekly",
