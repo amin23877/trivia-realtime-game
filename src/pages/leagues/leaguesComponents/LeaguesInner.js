@@ -7,7 +7,7 @@ import _ from "lodash";
 // Components, Services, Functions
 import { MOCK_LEADERS } from "common/mocks/MOCK";
 import { MOCK_CARDINFO } from "common/mocks/MOCK";
-import CountdownTimer from "common/components/countdownTimer/CountDownTimer";
+import CountdownTimer from "../../../common/components/CountdownTimer/CountDownTimer";
 // Redux
 // Material - lab
 // Styles, Icons, Images
