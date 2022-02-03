@@ -24,6 +24,9 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
 import StarRateOutlinedIcon from "@material-ui/icons/StarRateOutlined";
+import { SET_SNACKBAR } from "redux/actions/mainActions/generalActions";
+import { TYPE_SNAKBAR } from "common/values/TYPES";
+import { CORE } from "common/values/CORE";
 
 const HomeTopicsInner = () => {
 	let { id } = useParams();
@@ -74,9 +77,24 @@ const HomeTopicsInner = () => {
 			.then((res) => {
 				// dispatch(SET_SPINNER(false));
 				getDataInnerTopic();
+				dispatch(
+					SET_SNACKBAR({
+						show: true,
+						type: TYPE_SNAKBAR.SUCCESS,
+						message: res.data.msg,
+					})
+				);
 			})
 			.catch((err) => {
 				dispatch(SET_SPINNER(false));
+				dispatch(
+					SET_SNACKBAR({
+						show: true,
+						type: TYPE_SNAKBAR.ERROR,
+						message: err.message,
+					})
+				);
+
 				console.log(err);
 			});
 	};
@@ -87,11 +105,27 @@ const HomeTopicsInner = () => {
 			.post(`topic/${id}/remove`)
 			.then((res) => {
 				getDataInnerTopic();
+				dispatch(
+					SET_SNACKBAR({
+						show: true,
+						type: TYPE_SNAKBAR.SUCCESS,
+						message: res.data.msg,
+					})
+				);
+
 				// dispatch(SET_SPINNER(false));
 				// console.log(res.data);
 			})
 			.catch((err) => {
 				dispatch(SET_SPINNER(false));
+				dispatch(
+					SET_SNACKBAR({
+						show: true,
+						type: TYPE_SNAKBAR.ERROR,
+						message: err.message,
+					})
+				);
+
 				// console.log(err);
 			});
 	};
