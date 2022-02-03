@@ -7,12 +7,11 @@ import ProtectedRoute from "./ProtectedRouter";
 import Menu from "pages/menu/Menu";
 import Home from "pages/home/Home";
 import Login from "pages/login/Login";
-import Friends from "pages/friends/Friends";
 import Leagues from "pages/leagues/Leagues";
 import Profile from "pages/profile/Profile";
 import QuickPlay from "pages/quickPlay/QuickPlay";
 import Wallet from "pages/menuPages/wallet/Wallet";
-import ProfileEdit from "pages/profile/ProfileEdit";
+import ProfileEdit from "pages/profile-edit/ProfileEdit";
 import Leaderboard from "pages/leaderboard/Leaderboard";
 import VerificationCode from "pages/login/VerificationCode";
 import SearchExplore from "pages/searchExplore/SearchExplore";
@@ -26,10 +25,6 @@ import ProfileFavoriteTopics from "pages/profile/profileComponents/Contents/Favo
 import ProfilePerformance from "pages/profile/profileComponents/Contents/Performance/ProfilePerformance";
 import ProfileFriends from "pages/profile/profileComponents/Contents/Friends/ProfileFriends";
 import TwoPlayers from "pages/quickPlay/twoPlayers/TwoPlayers";
-import FriendsProfileFavoriteTopics from "pages/friends/profile/profileComponents/Contents/FavoriteTopics/ProfileFavoriteTopics";
-import FriendsProfilePerformance from "pages/friends/profile/profileComponents/Contents/Performance/ProfilePerformance";
-import FriendsProfileFriends from "pages/friends/profile/profileComponents/Contents/Friends/ProfileFriends";
-import FriendsProfile from "pages/friends/profile/FriendsProfile";
 import OnePlayer from "pages/quickPlay/onePlayer/OnePlayer";
 import MainLayout from "common/components/layout/MainLayout";
 import SuperCenterLayout from "common/components/layout/SuperCenterLayout";
@@ -50,7 +45,6 @@ const RouterConfig = () => {
 							<Route exact path="/profile/favorite-topics" element={<ProfileFavoriteTopics />} />
 							<Route exact path="/profile/performance" element={<ProfilePerformance />} />
 							<Route exact path="/profile/friends" element={<ProfileFriends />} />
-							<Route exact path="/profile/edit" element={<ProfileEdit />} />
 						</Route>
 					</Route>
 				</Route>
@@ -66,25 +60,9 @@ const RouterConfig = () => {
 					<Route exact path="/leagues/:id" element={<LeaguesInner />} />
 					<Route exact path="/leagues/result" element={<LeaguesResult />} />
 
-					<Route exact path="/menu/wallet" element={<ProtectedRoute />}>
-						<Route index element={<Wallet />} />
-					</Route>
-
-					<Route exact path="/friends" element={<ProtectedRoute />}>
-						<Route exact path="/friends" element={<Friends />} />
-						<Route exact path="/friends/:id/profile" element={<FriendsProfile />}>
-							<Route
-								exact
-								path="/friends/:id/profile/favorite-topics"
-								element={<FriendsProfileFavoriteTopics />}
-							/>
-							<Route
-								exact
-								path="/friends/:id/profile/performance"
-								element={<FriendsProfilePerformance />}
-							/>
-							<Route exact path="/friends/:id/profile/friends" element={<FriendsProfileFriends />} />
-						</Route>
+					<Route exact path="/" element={<ProtectedRoute />}>
+						<Route exact path="/menu/wallet" element={<Wallet />} />
+						<Route exact path="/profile/edit" element={<ProfileEdit />} />
 					</Route>
 				</Route>
 
