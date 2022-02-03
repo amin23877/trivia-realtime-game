@@ -51,6 +51,10 @@ $size-avatar: 30px;
             .grey {
                 color: colorBlack(50);
             }
+
+            .players-num {
+                min-width: 100px;
+            }
         }
     }
     .leaguesInner-body {

@@ -21,6 +21,10 @@ import { useDispatch } from "react-redux";
 import ApiCall from "common/services/ApiCall";
 import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
 import { IMAGE_URL } from "common/values/CORE";
+import { TYPE_LEADERBOARD } from "common/values/TYPES";
+import LeaderboardTabs from "pages/leaderboard/leaderboardComponents/LeaderboardTabs";
+import { TYPE_LEADERBOARD_COMPONENT } from "common/values/TYPES";
+import { SET_TYPE_LEADERBOARD_COMPONENT } from "redux/actions/mainActions/generalActions";
 
 const LeaguesInner = () => {
 	let { id } = useParams();
@@ -30,7 +34,10 @@ const LeaguesInner = () => {
 	const apiCall = new ApiCall();
 	const dispatch = useDispatch();
 
+	const [activatedTab, setActivatedTab] = useState(0);
+
 	const [dataInnerLeague, setDataInnerLeague] = useState();
+	const [dataLeaderboard, setDataLeaderboard] = useState([]);
 
 	const mockLeaders = MOCK_LEADERS;
 	const mockLeadersBest = [mockLeaders[0], mockLeaders[1], mockLeaders[2]];
@@ -39,7 +46,7 @@ const LeaguesInner = () => {
 	const navigate = useNavigate();
 
 	const styleBgImg = {
-		backgroundImage: `url(${IMAGE_URL}${dataInnerLeague?.logo})`,
+		backgroundImage: `url(${IMAGE_URL}${encodeURI(dataInnerLeague?.logo)})`,
 	};
 
 	const handleGoBack = () => {
@@ -54,12 +61,48 @@ const LeaguesInner = () => {
 		console.log("TODO handlePlay");
 	};
 
+	const getDataLeaderboard = (type, index) => {
+		setActivatedTab(index);
+		dispatch(SET_SPINNER(true));
+		apiCall
+			.get(`topicleaderboard/${id}/${type}`)
+			.then((res) => {
+				dispatch(SET_SPINNER(false));
+				let LeaderboardSorted = _.orderBy(res.data.result, ["xp"], ["desc"]);
+				switch (LeaderboardSorted.length) {
+					case 0:
+						setDataLeaderboard([]);
+						break;
+					case 1:
+						setDataLeaderboard(_.concat([{}], LeaderboardSorted[0], [{}]));
+						break;
+					case 2:
+						setDataLeaderboard(_.concat(LeaderboardSorted[1], LeaderboardSorted[0], [{}]));
+						break;
+
+					default:
+						setDataLeaderboard(
+							_.concat(
+								LeaderboardSorted[1],
+								LeaderboardSorted[0],
+								_.slice(LeaderboardSorted, 2, LeaderboardSorted.length)
+							)
+						);
+						break;
+				}
+			})
+			.catch((err) => {
+				dispatch(SET_SPINNER(false));
+				// console.log(err);
+			});
+	};
+
 	const getDataInnerLeague = () => {
 		dispatch(SET_SPINNER(true));
 		apiCall
 			.get(`league/${id}`)
 			.then((res) => {
-				console.log(res.data);
+				// console.log(res.data);
 				dispatch(SET_SPINNER(false));
 				setDataInnerLeague(res.data);
 			})
@@ -72,8 +115,9 @@ const LeaguesInner = () => {
 	useEffect(() => {
 		let isMounted = true;
 		if (isMounted) {
+			dispatch(SET_TYPE_LEADERBOARD_COMPONENT(TYPE_LEADERBOARD_COMPONENT.INNER_LEAGUE));
 			getDataInnerLeague();
-			// getDataLeaderboard(TYPE_LEADERBOARD.ALL, 0);
+			getDataLeaderboard(TYPE_LEADERBOARD.ALL, 0);
 		}
 		return () => {
 			isMounted = false;
@@ -106,7 +150,7 @@ const LeaguesInner = () => {
 							/>
 						</div>
 
-						<p className="grey">
+						<p className="grey players-num">
 							{dataInnerLeague?.players > 1 ? <SupervisorAccountIcon /> : <PersonIcon />}
 							<span className="mx-1">{`${dataInnerLeague?.players} player`}</span>
 						</p>
@@ -142,7 +186,10 @@ const LeaguesInner = () => {
 
 				<div className="board">
 					<p className="title">Latest results:</p>
-					<p className="subtitle">Your position: 0</p>
+
+					<LeaderboardTabs />
+
+					{/* <p className="subtitle">Your position: 0</p>
 
 					<div className="best">
 						<div className="d-flex best-users">
@@ -181,7 +228,7 @@ const LeaguesInner = () => {
 						))}
 
 						<p className="seemore">See more</p>
-					</div>
+					</div> */}
 				</div>
 			</div>
 
