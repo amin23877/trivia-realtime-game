@@ -32,3 +32,9 @@ export const SET_OPEN_GAME_TYPES = (payload) => {
 		payload,
 	};
 };
+
+export const TOGGLE_NOTIF_DRAWER = () => {
+	return {
+		type: actionsTypeGeneral.TOGGLE_NOTIF_DRAWER,
+	};
+};

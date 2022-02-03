@@ -1,62 +1,31 @@
 import React from "react";
-import EmptyList from "common/components/empties/EmptyList";
+import { Navigate } from "react-router-dom";
+import { useMediaQuery } from "@material-ui/core";
+import { useDispatch } from "react-redux";
+import { TOGGLE_NOTIF_DRAWER } from "redux/actions/mainActions/generalActions";
+import NotificationWidget from "common/components/NotificationWidget/NotificationWidget";
 
 import "./Notification.scss";
 
 //images
 import backIcon from "assets/images/icons/arrow-back.svg";
-import userImg from "assets/images/test/profile-pic-2.jpg";
-import notifBanner from "assets/images/test/notification-banner.jpg";
 
-/*
- *   fake data
- * */
-const notifications = [
-	{ type: "user", image: userImg, name: "tanaz-MRD", accepted: false },
-	{ type: "user", image: userImg, name: "tanaz-MRD", accepted: true },
-	{ type: "league", image: notifBanner, name: "Chemistry League started on your favorite topic" },
-];
-
-function UserNotif({ name, image, accepted }) {
-	return (
-		<div className="notif-item">
-			<img className="notif-item__avatar" alt="notif-img" width={32} height={32} src={image} />
-			<div className="notif-item__info-wrapper">
-				<p>{name}</p>
-				<p className="notif-item__desc">{!accepted && "Wants to be your friend"}</p>
-			</div>
-			{!accepted ? (
-				<div className="notif-item__controls">
-					<span className="notif-item__accept">Accept</span>
-					<span className="notif-item__reject">Reject</span>
-				</div>
-			) : (
-				<p className="notif-item__accepted">is your friend Now!</p>
-			)}
-		</div>
-	);
-}
-
-function LeagueNotif({ name, image }) {
-	return (
-		<div className="notif-item">
-			<img
-				className="notif-item__avatar notif-item__avatar_square"
-				alt="notif-img"
-				width={34}
-				height={32}
-				src={image}
-			/>
-			<div className="notif-item__info-wrapper">
-				<p className="notif-item__desc">{name}</p>
-			</div>
-
-			<p className="notif-item__see-details">See details</p>
-		</div>
-	);
-}
+const DESKTOP_BREAKPOINT = "1366px";
 
 const Notification = () => {
+	const isDesktop = useMediaQuery(`(min-width : ${DESKTOP_BREAKPOINT})`);
+	const dispatch = useDispatch();
+
+	if (isDesktop) {
+		/*
+		 *	Because there is no page called notifications on the desktop,
+		 *  so if someone navigates to the address /menu/notification on the desktop,
+		 *  they will be redirected to the main page and the notification drawer will open for them.
+		 * */
+		dispatch(TOGGLE_NOTIF_DRAWER());
+		return <Navigate to="/" />;
+	}
+
 	return (
 		<div className="notif-root">
 			<div className="notif-header">
@@ -66,19 +35,7 @@ const Notification = () => {
 				<p>Notification</p>
 			</div>
 
-			{notifications ? (
-				<div className="notif-list">
-					{notifications.map((notif, index) =>
-						notif.type === "user" ? (
-							<UserNotif name={notif.name} image={notif.image} accepted={notif.accepted} key={index} />
-						) : (
-							<LeagueNotif key={index} name={notif.name} image={notif.image} />
-						)
-					)}
-				</div>
-			) : (
-				<EmptyList />
-			)}
+			<NotificationWidget />
 		</div>
 	);
 };
