@@ -3,6 +3,7 @@ import React from "react";
 import RouterConfig from "common/services/Router";
 
 import Spinner from "./common/components/spinner/Spinner";
+import SnackbarShow from "common/components/snackbar/SnackbarShow";
 
 import { useSelector } from "react-redux";
 
@@ -17,6 +18,7 @@ export default function App() {
 		<div className="dish">
 			<RouterConfig />
 			{stateGeneral.spinner ? <Spinner /> : null}
+			{stateGeneral.snackbar?.show ? <SnackbarShow /> : null}
 		</div>
 	);
 }
