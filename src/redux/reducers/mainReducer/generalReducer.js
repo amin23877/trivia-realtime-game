@@ -9,6 +9,7 @@ const initialState = {
 	categoriesList: null,
 	openGameTypes: false,
 	openNotifDrawer: false,
+	typeLeaderboardComponent: null,
 };
 export const generalReducer = (state = initialState, action) => {
 	// console.log("payload", action);
@@ -26,6 +27,8 @@ export const generalReducer = (state = initialState, action) => {
 			return { ...state, categoriesList: action.payload };
 		case actionsTypeGeneral.SET_OPEN_GAME_TYPES:
 			return { ...state, openGameTypes: action.payload };
+		case actionsTypeGeneral.SET_TYPE_LEADERBOARD_COMPONENT:
+			return { ...state, typeLeaderboardComponen: action.payload };
 		case actionsTypeGeneral.TOGGLE_NOTIF_DRAWER:
 			return { ...state, openNotifDrawer: !state.openNotifDrawer };
 		default:

@@ -19,6 +19,13 @@ export const SET_SNACKBAR = (payload) => {
 	};
 };
 
+export const SET_TYPE_LEADERBOARD_COMPONENT = (payload) => {
+	return {
+		type: actionsTypeGeneral.SET_TYPE_LEADERBOARD_COMPONENT,
+		payload,
+	};
+};
+
 export const SET_MODALS = (payload) => {
 	// #modalRedux step2
 	return {
