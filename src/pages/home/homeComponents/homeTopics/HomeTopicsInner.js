@@ -5,15 +5,17 @@ import { useNavigate, useParams } from "react-router-dom";
 // Packages
 import _ from "lodash";
 // Components, Services, Functions
+import { CORE } from "common/values/CORE";
 import ApiCall from "common/services/ApiCall";
 import { IMAGE_URL } from "common/values/CORE";
-import { MOCK_LEADERS } from "common/mocks/MOCK";
+import { TYPE_SNAKBAR } from "common/values/TYPES";
 import { TYPE_LEADERBOARD } from "common/values/TYPES";
 import EmptyList from "common/components/empties/EmptyList";
 import CardLeagueInfo from "common/components/cardLeagueInfo/CardLeagueInfo";
 // Redux
 import { useDispatch } from "react-redux";
 import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
+import { SET_SNACKBAR } from "redux/actions/mainActions/generalActions";
 // Material - lab
 // Styles, Icons, Images
 import "./HomeTopicsInner.scss";
@@ -24,9 +26,6 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
 import StarRateOutlinedIcon from "@material-ui/icons/StarRateOutlined";
-import { SET_SNACKBAR } from "redux/actions/mainActions/generalActions";
-import { TYPE_SNAKBAR } from "common/values/TYPES";
-import { CORE } from "common/values/CORE";
 
 const HomeTopicsInner = () => {
 	let { id } = useParams();
@@ -39,19 +38,7 @@ const HomeTopicsInner = () => {
 	const [dataLeaderboard, setDataLeaderboard] = useState([]);
 
 	const styleBgImg = {
-		backgroundImage: `url(${IMAGE_URL}${dataInnerTopic?.logo})`,
-	};
-
-	const mockLeaders = MOCK_LEADERS;
-	const mockLeadersBest = [mockLeaders[0], mockLeaders[1], mockLeaders[2]];
-	const mockLeadersOther = mockLeaders;
-
-	const cardInfo = {
-		title: "Chemical Compounds",
-		remainingTime: 8407,
-		price: 5000,
-		players: 2,
-		img: "",
+		backgroundImage: `url(${IMAGE_URL}${encodeURI(dataInnerTopic?.logo)})`,
 	};
 
 	const tabs = [
@@ -148,11 +135,12 @@ const HomeTopicsInner = () => {
 	const getDataLeague = () => {
 		dispatch(SET_SPINNER(true));
 		apiCall
-			.get(`league/${id}?minendtime=${Date.now()}`)
+			// .get(`league?TopicId=${id}}`)
+			.get(`league`) // EDIT
 			.then((res) => {
 				dispatch(SET_SPINNER(false));
-				setDataLeague(res.data);
-				console.log(res.data);
+				setDataLeague(res.data[0]); // EDIT
+				// console.log(res.data);
 			})
 			.catch((err) => {
 				dispatch(SET_SPINNER(false));
@@ -198,7 +186,7 @@ const HomeTopicsInner = () => {
 		let isMounted = true;
 		if (isMounted) {
 			getDataInnerTopic();
-			// getDataLeague();
+			getDataLeague();
 			getDataLeaderboard(TYPE_LEADERBOARD.ALL, 0);
 		}
 		return () => {
@@ -255,8 +243,7 @@ const HomeTopicsInner = () => {
 
 			<div className="topicsInner-body">
 				<div className="ratio _dish-cardLeagueInfo">
-					{/* <CardLeagueInfo info={cardInfo} /> */}
-					{/* EDIT */}
+					<CardLeagueInfo info={dataLeague} />
 				</div>
 
 				<div className="description">
