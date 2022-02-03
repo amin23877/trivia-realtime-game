@@ -1,0 +1,50 @@
+@import 'assets/scss/styles.scss';
+
+.snackbar {
+    // #snackbar step_2
+
+    .snackbar-body {
+        border-radius: 10px;
+
+        .snackbar-btn {
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            background-color: transparent;
+        }
+    }
+
+    .icon-close {
+        margin-left: 20px !important;
+    }
+
+    .success {
+        background-color: $snackbar-success-bg !important;
+        color: $snackbar-success !important;
+
+        .MuiSnackbarContent-root {
+            // background-color: $snackbar-success-bg !important;
+            color: $snackbar-success;
+            width: 90% !important;
+            justify-content: space-between;
+        }
+        .MuiSnackbarContent-action {
+            margin: 0;
+        }
+        .MuiSnackbarContent-message {
+        }
+        .MuiSnackbarContent-action {
+        }
+    }
+
+    .error {
+        background-color: $snackbar-error-bg !important;
+        color: $snackbar-error !important;
+    }
+
+    .alert {
+        background-color: $snackbar-alert-bg !important;
+        color: $snackbar-alert !important;
+    }
+}
