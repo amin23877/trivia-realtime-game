@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -17,13 +17,18 @@ import { Drawer } from "@material-ui/core";
 // Styles, Icons, Images
 import "./Home.scss";
 import arrowForwardMini from "assets/images/icons/arrow-forward-mini.svg";
+import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
+import ApiCall from "common/services/ApiCall";
 
 const Home = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const apiCall = new ApiCall();
 
 	const stateGeneral = useSelector((state) => state.stateGeneral);
 	const stateTopic = useSelector((state) => state.stateTopic);
+
+	const [dataLeague, setDataLeague] = useState();
 
 	const cardInfo = {
 		title: "Chemical Compounds",
@@ -49,6 +54,21 @@ const Home = () => {
 	};
 	// -------------------------------------- Drawer Menu
 
+	const getDataLeague = () => {
+		dispatch(SET_SPINNER(true));
+		apiCall
+			// .get(`league?minEndTime=${Date.now()}`)
+			.get(`league`) // EDIT
+			.then((res) => {
+				dispatch(SET_SPINNER(false));
+				setDataLeague(res.data[0]); // EDIT
+				// console.log(res.data);
+			})
+			.catch((err) => {
+				dispatch(SET_SPINNER(false));
+			});
+	};
+
 	useEffect(() => {
 		let isMounted = true;
 		if (isMounted) {
@@ -59,6 +79,7 @@ const Home = () => {
 			//   : localStorage.setItem('remainingTime', cardInfo.remainingTime);
 
 			dispatch(fetchTopics());
+			getDataLeague();
 		}
 		return () => {
 			isMounted = false;
@@ -77,8 +98,7 @@ const Home = () => {
 				<div className="card-league">
 					<div className="ratio _dish-cardLeagueInfo">
 						{/* #ratio */}
-						{/* <CardLeagueInfo info={cardInfo} /> */}
-						{/* EDIT */}
+						<CardLeagueInfo info={dataLeague} />
 					</div>
 				</div>
 
