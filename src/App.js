@@ -3,7 +3,7 @@ import React from "react";
 import RouterConfig from "common/services/Router";
 
 import Spinner from "./common/components/spinner/Spinner";
-import SnackbarShow from "common/components/snackbar/SnackbarShow";
+import SnackbarShow from "common/components/snackbar/SnackbarShow"; // #snackbar step1
 
 import { useSelector } from "react-redux";
 

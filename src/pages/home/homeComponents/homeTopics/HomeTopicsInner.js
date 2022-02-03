@@ -77,6 +77,7 @@ const HomeTopicsInner = () => {
 			.then((res) => {
 				// dispatch(SET_SPINNER(false));
 				getDataInnerTopic();
+				// #snackbar step2
 				dispatch(
 					SET_SNACKBAR({
 						show: true,

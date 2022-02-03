@@ -1,9 +1,9 @@
+// #snackbar step0
 import React, { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { SET_SNACKBAR } from "redux/actions/mainActions/generalActions";
 
-// #snackbar step_0
 import Snackbar from "@material-ui/core/Snackbar";
 import { makeStyles } from "@material-ui/core/styles";
 
