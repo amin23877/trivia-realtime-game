@@ -29,3 +29,9 @@ export const TYPE_LEAGUE_HOME = {
 	GRAND: "grand",
 	HISTORY: "history",
 };
+
+export const TYPE_SNAKBAR = {
+	SUCCESS: "SUCCESS",
+	ERROR: "ERROR",
+	ALERT: "ALERT",
+};
