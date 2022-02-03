@@ -34,7 +34,7 @@ const Leagues = () => {
 
 	const handleNavigate = (event, path) => {
 		event.stopPropagation();
-		console.log(path);
+		// console.log(path);
 		navigate(path);
 	};
 
@@ -108,7 +108,7 @@ const Leagues = () => {
 							className="ratio _dish-cardLeagueInfo"
 							onClick={(e) => handleNavigate(e, `/leagues/${dataLeagueHome[TYPE_LEAGUE_HOME.GRAND]._id}`)}
 						>
-							<CardLeagueInfo info={dataLeagueHome[TYPE_LEAGUE_HOME.GRAND]} />
+							<CardLeagueInfo info={dataLeagueHome[TYPE_LEAGUE_HOME.GRAND]} hasEnterBtn={false} />
 						</div>
 					</div>
 				) : (
