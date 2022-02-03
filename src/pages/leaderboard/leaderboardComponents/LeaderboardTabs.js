@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -7,6 +7,11 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import LeaderboardTabPanel from "./LeaderboardTabPanel";
+import { TYPE_LEADERBOARD } from "common/values/TYPES";
+import ApiCall from "common/services/ApiCall";
+import { useDispatch } from "react-redux";
+import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
+import _ from "lodash";
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
@@ -48,9 +53,14 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function LeaderboardTabs() {
+const LeaderboardTabs = () => {
 	const classes = useStyles();
 	const [value, setValue] = React.useState(0);
+
+	const tabs = ["All", "Daily", "Weekly", "Mounthly"];
+
+	const apiCall = new ApiCall();
+	const dispatch = useDispatch();
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
@@ -59,24 +69,34 @@ export default function LeaderboardTabs() {
 
 	const propsPanel = {};
 
+	const [dataLeaderboard, setDataLeaderboard] = useState([]);
+
+	useEffect(() => {
+		let isMounted = true;
+		if (isMounted) {
+		}
+		return () => {
+			isMounted = false;
+		};
+	}, []);
+
 	return (
 		<div id="tabs">
 			<AppBar position="static">
-				<Tabs value={value} onChange={handleChange}>
-					<Tab label="Daily" {...a11yProps(0)} />
-					<Tab label="Weekly" {...a11yProps(1)} />
-					<Tab label="Mounthly" {...a11yProps(2)} />
+				<Tabs value={value} onChange={handleChange} TabIndicatorProps={{ style: { backgroundColor: "white" } }}>
+					{tabs.map((el, index) => (
+						<Tab key={index} label={el} {...a11yProps(index)} />
+					))}
 				</Tabs>
 			</AppBar>
-			<TabPanel value={value} index={0}>
-				<LeaderboardTabPanel props={propsPanel} />
-			</TabPanel>
-			<TabPanel value={value} index={1}>
-				<LeaderboardTabPanel props={propsPanel} />
-			</TabPanel>
-			<TabPanel value={value} index={2}>
-				<LeaderboardTabPanel props={propsPanel} />
-			</TabPanel>
+
+			{tabs.map((el, index) => (
+				<TabPanel key={index} value={value} index={index}>
+					<LeaderboardTabPanel />
+				</TabPanel>
+			))}
 		</div>
 	);
-}
+};
+
+export default LeaderboardTabs;
