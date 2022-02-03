@@ -1,35 +1,45 @@
+// Reacts
 import React, { useEffect, useState } from 'react';
-
+// Hooks
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
+// Packages
 import _ from 'lodash';
-
+// Components, Services, Functions
+import ApiCall from 'common/services/ApiCall';
+// Redux
+import { useDispatch } from 'react-redux';
+import { MODALS } from 'common/values/MODALS';
+import { SET_MODALS } from 'redux/actions/mainActions/generalActions';
+import { SET_USER_INFO } from 'redux/actions/mainActions/generalActions';
+// Material - lab
+// Styles, Icons, Images
+import './Menu.scss';
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
+import CachedOutlinedIcon from '@material-ui/icons/CachedOutlined';
+import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 import HeadsetMicOutlinedIcon from '@material-ui/icons/HeadsetMicOutlined';
 import NotificationsOutlinedIcon from '@material-ui/icons/NotificationsOutlined';
+import PowerSettingsNewOutlinedIcon from '@material-ui/icons/PowerSettingsNewOutlined';
 import AccountBalanceWalletOutlinedIcon from '@material-ui/icons/AccountBalanceWalletOutlined';
 
-import './Menu.scss';
 import avatar from 'assets/images/logo/logo.svg';
-import iconClose from 'assets/images/icons/icon-close.svg';
-import { useSelector } from 'react-redux';
-import ApiCall from 'common/services/ApiCall';
-import { useDispatch } from 'react-redux';
-import { SET_USER_INFO } from 'redux/actions/mainActions/generalActions';
 
-const Menu = () => {
+const Menu = ({ onDrawerClose }) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
   const apiCall = new ApiCall();
 
+  const dispatch = useDispatch();
   const stateGeneral = useSelector((state) => state.stateGeneral);
 
   const [userInfo, setUserInfo] = useState(stateGeneral.userInfo);
 
-  const handleGoBack = () => {
-    navigate(-1);
-  };
+  // const handleGoBack = () => {
+  //   navigate(-1);
+  // };
 
   const getUserInfo = () => {
     console.log('TODO');
@@ -45,6 +55,12 @@ const Menu = () => {
       });
   };
 
+  const handleOpenModal = (value) => {
+    // #modalUse step1
+    onDrawerClose();
+    dispatch(SET_MODALS({ [MODALS[value]]: true }));
+  };
+
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
@@ -57,7 +73,7 @@ const Menu = () => {
   }, []);
 
   return (
-    <div className='w-100 h-100 menu'>
+    <div className='d-flex flex-column w-100 h-100 menu'>
       <div className='d-flex justify-content-between align-items-stretch menu-header'>
         <div className=''>
           <div className='avatar'>{/* <img src={avatar} alt='' /> */}</div>
@@ -67,7 +83,7 @@ const Menu = () => {
         </div>
 
         <div className='close'>
-          <img src={iconClose} onClick={handleGoBack} alt='' />
+          <CancelOutlinedIcon className='icon' onClick={onDrawerClose} />
         </div>
       </div>
       <div className='menu-body'>
@@ -97,10 +113,28 @@ const Menu = () => {
           <p>introduce to friends</p>
         </div>
 
-        <div className='d-flex align-items-center menu-item'>
+        <div className='d-flex align-items-center menu-item _br-bottom'>
           <HeadsetMicOutlinedIcon className='icon' />
           <p>Contact us</p>
         </div>
+
+        <div className='d-flex align-items-center menu-item _br-bottom'>
+          <CachedOutlinedIcon className='icon' />
+          <p>Update</p>
+        </div>
+
+        <div className='d-flex align-items-center menu-item'>
+          <ExitToAppOutlinedIcon className='icon' />
+          <p>Logout</p>
+        </div>
+      </div>
+
+      <div className='d-flex align-items-center menu-item deactivation mt-auto mb-0'>
+        <PowerSettingsNewOutlinedIcon
+          className='icon'
+          onClick={() => handleOpenModal('deactivation')}
+        />
+        <p onClick={() => handleOpenModal('deactivation')}>deactivation</p>
       </div>
     </div>
   );

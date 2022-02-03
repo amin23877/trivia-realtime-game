@@ -13,7 +13,7 @@ import iconSearchActive from 'assets/images/icons/footer-search-active.svg';
 import iconProfileActive from 'assets/images/icons/footer-profile-active.svg';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
-const Footer = () => {
+const Footer = ({ handleOpenGameTypes }) => {
   const location = useLocation();
   const pathname = location.pathname;
   const navigate = useNavigate();
@@ -63,16 +63,19 @@ const Footer = () => {
 
   const handleNavigate = (path) => {
     console.log(path);
-    navigate(path);
+    if (path === '/quickPlay') {
+      handleOpenGameTypes(true);
+    } else {
+      navigate(path);
+    }
   };
   return (
     <div className='d-flex justify-content-between align-items-center footer'>
       {menu.map((el, index) => (
         <div
           key={index}
-          className={`d-flex flex-column justify-content-between align-items-center icons ${
-            el.isCenter ? 'icon-center' : ''
-          }`}
+          className={`d-flex flex-column justify-content-between align-items-center icons ${el.isCenter ? 'icon-center' : ''
+            }`}
           onClick={() => handleNavigate(el.path)}
         >
           {pathname == el.pathname ? (

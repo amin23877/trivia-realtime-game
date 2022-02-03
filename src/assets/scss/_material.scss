@@ -1,8 +1,40 @@
+@import './color';
+
 #seachbox {
     .MuiOutlinedInput-root {
         width: 100%;
         height: 35px;
         border-radius: 15px !important;
         background-color: $bg-seachbox;
+    }
+}
+
+#tabs {
+    .MuiAppBar-root {
+        background-color: $bg-home;
+        color: $grey-1;
+    }
+
+    .MuiTab-root {
+        font-family: Roboto;
+        min-height: 30px;
+    }
+
+    .MuiPaper-elevation4 {
+        box-shadow: unset;
+    }
+
+    .MuiBox-root {
+        // background-color: aquamarine !important;
+        // max-height: calc(100vh - 200px);
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+
+    .Mui-selected {
+        background-color: $primary;
+        color: white;
+        border-radius: 6px;
+        margin: 5px;
     }
 }

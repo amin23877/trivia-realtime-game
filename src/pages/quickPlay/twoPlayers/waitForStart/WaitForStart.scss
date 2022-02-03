@@ -1,0 +1,79 @@
+
+
+.wait-for-start {
+    background-color: #282680;
+    background-image: url('../../../../assets/images/backgrounds/waitForStart.png');
+    padding-top:57px;
+
+    &__title {
+        height:38px;
+        background-color:rgba(255,255,255,0.2);
+        text-align: center;
+        margin-bottom: 70px;
+        &>p{
+            color:#fff;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 38px;
+        }
+    }
+    &__user-info{
+        width:100%;
+        padding:0 44px;
+        display:flex;
+        align-items:center;
+        &--avatar{
+            width:74px;
+            height:74px;
+            border:3px solid #fff;
+            border-radius: 50%;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-right:15px;
+            &>img{
+                width:100%;
+                height:100%;
+                object-fit: cover;
+            }
+        }
+        &--name{
+            &>p{
+                color:#fff;
+                &:nth-child(1){
+                    font-size: 16px;
+                    line-height:19px;
+                }
+                &:nth-child(2){
+                    font-size: 12px;
+                    line-height:14px;
+                    margin-top:4px;
+
+                }
+            }
+        }
+    }
+    &__user-info-pull-right{
+        direction: rtl;
+        &--avatar{
+            margin-left:15px;
+            margin-right:0;
+        }
+    }
+    &__divider-container{
+        width:calc(100% - 48px);
+        height:2px;
+        background-color: #EEB21780;
+        margin:45px auto;
+        position:relative;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        &>img{
+            position:absolute;
+        }
+        
+    }
+    
+}

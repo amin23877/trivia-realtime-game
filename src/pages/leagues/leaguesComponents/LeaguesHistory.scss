@@ -1,0 +1,14 @@
+@import 'assets/scss/styles.scss';
+
+.history {
+    .history-header {
+        padding: 0 20px;
+    }
+
+    .history-body {
+        overflow-y: auto;
+        .card-league {
+            padding: 10px 20px !important;
+        }
+    }
+}

@@ -1,0 +1,73 @@
+@import "assets/scss/styles.scss";
+
+//---card-image
+$p-h-card-image-width: 55px;
+$p-h-card-image-height: 28.5px;
+$p-h-card-image-border-radius: 4px;
+//---card-title
+$p-h-card-title-color: $text-dark;
+$p-h-card-title-size: 10px;
+$p-h-card-title-weight: normal;
+//---card-date
+$p-h-card-date-color: $text-footer;
+$p-h-card-date-size: 8px;
+$p-h-card-date-weight: normal;
+//---card-details
+$p-h-card-details-size: 10px;
+$p-h-card-details-weight: normal;
+$p-h-card-details-gap: 14px;
+//---card-score
+$p-h-card-score-color: $primary;
+//---card-position
+$p-h-card-position-color: $red-1;
+//---card-reward
+$p-h-card-reward-color: $gold;
+
+.participating-history-card {
+  display:flex;
+  align-items: start;
+  padding: 8px 4px;
+  border-bottom: 1px solid $bg-seachbox;
+  &--image {
+    img {
+      @include imageFit;
+      width: $p-h-card-image-width;
+      height: $p-h-card-image-height;
+      margin-right: 4px;
+      border-radius: $p-h-card-image-border-radius;
+    }
+  }
+  &--content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    &__title {
+      color: $p-h-card-title-color;
+      font-size: $p-h-card-title-size;
+      font-weight: $p-h-card-title-weight;
+    }
+    &__date {
+      color: $p-h-card-date-color;
+      font-size: $p-h-card-date-size;
+      font-weight: $p-h-card-date-weight;
+      margin-top: 4px;
+    }
+    &__details {
+      display: flex;
+      font-size: $p-h-card-details-size;
+      font-weight: $p-h-card-details-weight;
+      margin-top: 11px;
+      align-items: center;
+      gap: $p-h-card-details-gap;
+      &__score {
+        color: $p-h-card-score-color;
+      }
+      &__position {
+        color: $p-h-card-position-color;
+      }
+      &__reward {
+        color: $p-h-card-reward-color;
+      }
+    }
+  }
+}

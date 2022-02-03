@@ -1,0 +1,29 @@
+@import "assets/scss/styles.scss";
+
+$search-icon-width: 22px;
+$search-icon-height: 22px;
+
+.search--box {
+  position: relative;
+  width: auto;
+  margin: 0 24px;
+  &__input {
+    width: 100%;
+    background-color: $bg-seachbox;
+    padding: 5px 10px;
+    color: $text-dark;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+  }
+  &__button {
+    img {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      width: $search-icon-width;
+      height: $search-icon-height;
+      transform: translateY(-100%);
+    }
+  }
+}

@@ -2,9 +2,20 @@
 @import './font';
 @import './color';
 @import './basic';
+@import './modal';
 @import './utility';
 @import './material';
 @import './dimensions';
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+}
 
 ._header {
     height: $height-header;
@@ -37,6 +48,28 @@
     }
 }
 
+._header-path {
+    height: $height-header-path;
+    ._path {
+        @include fsM;
+        color: colorBlack(50);
+        cursor: pointer;
+    }
+    ._lastPath {
+        color: $primary;
+        font-family: RobotoBold;
+    }
+
+    ._arrow {
+        font-size: 14px;
+        margin: 0 5px;
+    }
+}
+
+._header-shadow {
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
 ._br-bottom {
     border-bottom: 1px solid $br-light;
 }
@@ -47,6 +80,70 @@
     margin: auto !important;
     --bs-aspect-ratio: 40%; // #ratio
 }
+
+._topic-card {
+    min-width: calc(clamp(100px, 40%, 200px));
+    max-width: 200px !important;
+
+    margin: 5px !important;
+    background-color: white;
+    border-radius: 15px;
+    // --bs-aspect-ratio: 90%; // #ratio
+    box-shadow: 0px 3px 5px rgba(39, 39, 40, 0.1);
+
+    .card-img {
+        height: 60%;
+        width: 100%;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .card-info {
+        padding: 2px 5px;
+        height: 40%; // TEMP
+        // min-height: 30%;
+        .title {
+            @include fsNormal;
+            color: colorBlack(85);
+            // font-weight: 600;
+            font-family: RobotoBold;
+        }
+        .subtitle {
+            @include fsS;
+            color: colorBlack(65);
+            // font-weight: 500;
+        }
+        .rate {
+            @include fsS;
+            color: $orange-2;
+            font-weight: 500;
+        }
+    }
+}
+
+._cursor-pointer {
+    cursor: pointer;
+}
+
+// #pagination step2: start -------------------------------------
+._pagination {
+    width: fit-content !important;
+
+    .Mui-selected {
+        background-color: $primary !important;
+        color: white !important;
+    }
+}
+._pagination.MuiPagination-root {
+    width: fit-content !important;
+    margin: auto;
+}
+
+// #pagination step2: end -------------------------------------
 
 // ------------------------------------------- Test
 .br1 {
