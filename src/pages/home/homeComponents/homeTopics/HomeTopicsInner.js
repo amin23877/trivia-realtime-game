@@ -13,7 +13,7 @@ import { TYPE_LEADERBOARD } from "common/values/TYPES";
 import EmptyList from "common/components/empties/EmptyList";
 import CardLeagueInfo from "common/components/cardLeagueInfo/CardLeagueInfo";
 // Redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
 import { SET_SNACKBAR } from "redux/actions/mainActions/generalActions";
 // Material - lab
@@ -26,6 +26,9 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
 import StarRateOutlinedIcon from "@material-ui/icons/StarRateOutlined";
+import { SET_TYPE_LEADERBOARD_COMPONENT } from "redux/actions/mainActions/generalActions";
+import { TYPE_LEADERBOARD_COMPONENT } from "common/values/TYPES";
+import LeaderboardTabs from "pages/leaderboard/leaderboardComponents/LeaderboardTabs";
 
 const HomeTopicsInner = () => {
 	let { id } = useParams();
@@ -35,19 +38,11 @@ const HomeTopicsInner = () => {
 
 	const [dataInnerTopic, setDataInnerTopic] = useState();
 	const [dataLeague, setDataLeague] = useState();
-	const [dataLeaderboard, setDataLeaderboard] = useState([]);
+	const stateGeneral = useSelector((state) => state.stateGeneral);
 
 	const styleBgImg = {
 		backgroundImage: `url(${IMAGE_URL}${encodeURI(dataInnerTopic?.logo)})`,
 	};
-
-	const tabs = [
-		{ name: "All points", type: TYPE_LEADERBOARD.ALL },
-		{ name: "Daily", type: TYPE_LEADERBOARD.DAY },
-		{ name: "Weekly", type: TYPE_LEADERBOARD.WEEK },
-		{ name: "Monthly", type: TYPE_LEADERBOARD.MONTH },
-	];
-	const [activatedTab, setActivatedTab] = useState(0);
 
 	const handleGoBack = () => {
 		navigate(-1);
@@ -135,59 +130,22 @@ const HomeTopicsInner = () => {
 	const getDataLeague = () => {
 		dispatch(SET_SPINNER(true));
 		apiCall
-			// .get(`league?TopicId=${id}}`)
-			.get(`league`) // EDIT
+			.get(`league?TopicId=${id}&minendTime=${Date.now()}`)
 			.then((res) => {
 				dispatch(SET_SPINNER(false));
-				setDataLeague(res.data[0]); // EDIT
-				// console.log(res.data);
+				res.data.length > 0 ? setDataLeague(res.data[0]) : setDataLeague({});
 			})
 			.catch((err) => {
 				dispatch(SET_SPINNER(false));
 			});
 	};
 
-	const getDataLeaderboard = (type, index) => {
-		setActivatedTab(index);
-		dispatch(SET_SPINNER(true));
-		apiCall
-			.get(`topicleaderboard/${id}/${type}`)
-			.then((res) => {
-				dispatch(SET_SPINNER(false));
-				let LeaderboardSorted = _.orderBy(res.data.result, ["xp"], ["desc"]);
-				switch (LeaderboardSorted.length) {
-					case 0:
-						setDataLeaderboard([]);
-						break;
-					case 1:
-						setDataLeaderboard(_.concat([{}], LeaderboardSorted[0], [{}]));
-						break;
-					case 2:
-						setDataLeaderboard(_.concat(LeaderboardSorted[1], LeaderboardSorted[0], [{}]));
-						break;
-
-					default:
-						setDataLeaderboard(
-							_.concat(
-								LeaderboardSorted[1],
-								LeaderboardSorted[0],
-								_.slice(LeaderboardSorted, 2, LeaderboardSorted.length)
-							)
-						);
-						break;
-				}
-			})
-			.catch((err) => {
-				dispatch(SET_SPINNER(false));
-				// console.log(err);
-			});
-	};
 	useEffect(() => {
 		let isMounted = true;
 		if (isMounted) {
+			dispatch(SET_TYPE_LEADERBOARD_COMPONENT(TYPE_LEADERBOARD_COMPONENT.INNER_TOPIC));
 			getDataInnerTopic();
 			getDataLeague();
-			getDataLeaderboard(TYPE_LEADERBOARD.ALL, 0);
 		}
 		return () => {
 			isMounted = false;
@@ -242,9 +200,11 @@ const HomeTopicsInner = () => {
 			</div>
 
 			<div className="topicsInner-body">
-				<div className="ratio _dish-cardLeagueInfo">
-					<CardLeagueInfo info={dataLeague} />
-				</div>
+				{!_.isEmpty(dataLeague) ? (
+					<div className="ratio _dish-cardLeagueInfo">
+						<CardLeagueInfo info={dataLeague} />
+					</div>
+				) : null}
 
 				<div className="description">
 					<p className="title">Description</p>
@@ -261,67 +221,7 @@ const HomeTopicsInner = () => {
 
 				<div className="board">
 					<p className="title">Topic Leaderboard</p>
-
-					<div className="tabs">
-						{tabs.map((el, index) => (
-							<button
-								key={index}
-								className={`tab ${activatedTab === index ? "tab-active" : ""}`}
-								onClick={() => getDataLeaderboard(el.type, index)}
-							>
-								{el.name}
-							</button>
-						))}
-					</div>
-
-					{dataLeaderboard.length > 0 ? (
-						<>
-							<div className="best">
-								<div className="d-flex best-users">
-									{_.slice(dataLeaderboard, 0, 3).map((el, index) => (
-										<div key={index} className={`user ${index === 1 ? "best-user" : ""}`}>
-											{!_.isEmpty(el) ? (
-												<>
-													<img
-														className="avatar"
-														src={`${IMAGE_URL}${el?.UserId?.avatar}`}
-														alt=""
-													/>
-													<p className="username">{el?.UserId?.username}</p>
-													<p className="points">{`${el?.xp} points`}</p>
-												</>
-											) : (
-												<></>
-											)}
-										</div>
-									))}
-								</div>
-
-								<div className="d-flex align-items-center levels">
-									<div className="level level-2">2</div>
-									<div className="level level-1">1</div>
-									<div className="level level-3">3</div>
-								</div>
-							</div>
-							{dataLeaderboard.length > 3 ? (
-								<div className="results">
-									{_.slice(dataLeaderboard, 3, dataLeaderboard?.length).map((el, index) => (
-										<div key={index} className="d-flex align-items-center _br-bottom user">
-											<span className="index">{`${index + 4}.`}</span>
-											<img className="avatar" src={`${IMAGE_URL}${el?.UserId?.avatar}`} alt="" />
-											<p className="username">{el?.UserId?.username}</p>
-											<p className="points">{`${el?.xp} points`}</p>
-										</div>
-									))}
-									<p className="seemore">See more</p>
-								</div>
-							) : (
-								<></>
-							)}
-						</>
-					) : (
-						<EmptyList />
-					)}
+					{stateGeneral.typeLeaderboardComponent ? <LeaderboardTabs /> : null}
 				</div>
 			</div>
 
