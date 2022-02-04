@@ -9,9 +9,12 @@ import Box from "@material-ui/core/Box";
 import LeaderboardTabPanel from "./LeaderboardTabPanel";
 import { TYPE_LEADERBOARD } from "common/values/TYPES";
 import ApiCall from "common/services/ApiCall";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
 import _ from "lodash";
+import LeaderboardTabPanelHeader from "./LeaderboardTabPanelHeader";
+import { useParams } from "react-router-dom";
+import { TYPE_LEADERBOARD_COMPONENT } from "common/values/TYPES";
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
@@ -55,44 +58,40 @@ const useStyles = makeStyles((theme) => ({
 
 const LeaderboardTabs = () => {
 	const classes = useStyles();
+	const [type, setType] = useState(TYPE_LEADERBOARD.ALL);
 	const [value, setValue] = React.useState(0);
 
-	const tabs = ["All", "Daily", "Weekly", "Mounthly"];
+	const tabs = [
+		{ name: "All", type: TYPE_LEADERBOARD.ALL },
+		{ name: "Daily", type: TYPE_LEADERBOARD.DAY },
+		{ name: "Weekly", type: TYPE_LEADERBOARD.WEEK },
+		{ name: "Mounthly", type: TYPE_LEADERBOARD.MONTH },
+	];
 
-	const apiCall = new ApiCall();
-	const dispatch = useDispatch();
-
-	const handleChange = (event, newValue) => {
-		setValue(newValue);
-		console.log(event, newValue);
+	const handleChangeTab = (event, index) => {
+		setValue(index);
+		setType(tabs[index].type);
 	};
 
 	const propsPanel = {};
 
-	const [dataLeaderboard, setDataLeaderboard] = useState([]);
-
-	useEffect(() => {
-		let isMounted = true;
-		if (isMounted) {
-		}
-		return () => {
-			isMounted = false;
-		};
-	}, []);
-
 	return (
 		<div id="tabs">
 			<AppBar position="static">
-				<Tabs value={value} onChange={handleChange} TabIndicatorProps={{ style: { backgroundColor: "white" } }}>
+				<Tabs
+					value={value}
+					onChange={handleChangeTab}
+					TabIndicatorProps={{ style: { backgroundColor: "white" } }}
+				>
 					{tabs.map((el, index) => (
-						<Tab key={index} label={el} {...a11yProps(index)} />
+						<Tab key={index} label={el.name} {...a11yProps(index)} />
 					))}
 				</Tabs>
 			</AppBar>
 
 			{tabs.map((el, index) => (
 				<TabPanel key={index} value={value} index={index}>
-					<LeaderboardTabPanel />
+					<LeaderboardTabPanel type={type} />
 				</TabPanel>
 			))}
 		</div>
