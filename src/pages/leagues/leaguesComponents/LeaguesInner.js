@@ -17,7 +17,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import PersonIcon from "@material-ui/icons/Person";
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ApiCall from "common/services/ApiCall";
 import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
 import { IMAGE_URL } from "common/values/CORE";
@@ -34,10 +34,11 @@ const LeaguesInner = () => {
 	const apiCall = new ApiCall();
 	const dispatch = useDispatch();
 
+	const stateGeneral = useSelector((state) => state.stateGeneral);
+
 	const [activatedTab, setActivatedTab] = useState(0);
 
 	const [dataInnerLeague, setDataInnerLeague] = useState();
-	const [dataLeaderboard, setDataLeaderboard] = useState([]);
 
 	const mockLeaders = MOCK_LEADERS;
 	const mockLeadersBest = [mockLeaders[0], mockLeaders[1], mockLeaders[2]];
@@ -61,42 +62,6 @@ const LeaguesInner = () => {
 		console.log("TODO handlePlay");
 	};
 
-	const getDataLeaderboard = (type, index) => {
-		setActivatedTab(index);
-		dispatch(SET_SPINNER(true));
-		apiCall
-			.get(`topicleaderboard/${id}/${type}`)
-			.then((res) => {
-				dispatch(SET_SPINNER(false));
-				let LeaderboardSorted = _.orderBy(res.data.result, ["xp"], ["desc"]);
-				switch (LeaderboardSorted.length) {
-					case 0:
-						setDataLeaderboard([]);
-						break;
-					case 1:
-						setDataLeaderboard(_.concat([{}], LeaderboardSorted[0], [{}]));
-						break;
-					case 2:
-						setDataLeaderboard(_.concat(LeaderboardSorted[1], LeaderboardSorted[0], [{}]));
-						break;
-
-					default:
-						setDataLeaderboard(
-							_.concat(
-								LeaderboardSorted[1],
-								LeaderboardSorted[0],
-								_.slice(LeaderboardSorted, 2, LeaderboardSorted.length)
-							)
-						);
-						break;
-				}
-			})
-			.catch((err) => {
-				dispatch(SET_SPINNER(false));
-				// console.log(err);
-			});
-	};
-
 	const getDataInnerLeague = () => {
 		dispatch(SET_SPINNER(true));
 		apiCall
@@ -117,7 +82,6 @@ const LeaguesInner = () => {
 		if (isMounted) {
 			dispatch(SET_TYPE_LEADERBOARD_COMPONENT(TYPE_LEADERBOARD_COMPONENT.INNER_LEAGUE));
 			getDataInnerLeague();
-			getDataLeaderboard(TYPE_LEADERBOARD.ALL, 0);
 		}
 		return () => {
 			isMounted = false;
@@ -186,49 +150,7 @@ const LeaguesInner = () => {
 
 				<div className="board">
 					<p className="title">Latest results:</p>
-
-					<LeaderboardTabs />
-
-					{/* <p className="subtitle">Your position: 0</p>
-
-					<div className="best">
-						<div className="d-flex best-users">
-							{mockLeadersBest.map((el, index) => (
-								<div key={index} className={`user ${index === 1 ? "best-user" : ""}`}>
-									<div className="mx-auto avatar"></div>
-									<p className="username">{el.username}</p>
-									<p className="points">{`${el.points} points`}</p>
-									<p className="reward">{`$ ${el.reward}`}</p>
-								</div>
-							))}
-						</div>
-
-						<div className="d-flex align-items-center levels">
-							<div className="level level-2">2</div>
-							<div className="level level-1">1</div>
-							<div className="level level-3">3</div>
-						</div>
-					</div>
-					<div className="results">
-						<div className="d-flex headers">
-							<p className="clm reward">reward</p>
-							{playerNum > 1 ? <p className="clm points">points</p> : null}
-
-							<p className="clm score">score</p>
-						</div>
-						{mockLeadersOther.map((el, index) => (
-							<div key={index} className="d-flex align-items-center _br-bottom user">
-								<span className="index">{`${index + 4}.`}</span>
-								<div className="avatar"></div>
-								<p className="username">{el.username}</p>
-								<p className="clm reward">{`$ ${el.reward}`}</p>
-								{playerNum > 1 ? <p className="clm points">{`${el.points}`}</p> : null}
-								<p className="clm score">{`${el.score}`}</p>
-							</div>
-						))}
-
-						<p className="seemore">See more</p>
-					</div> */}
+					{stateGeneral.typeLeaderboardComponent ? <LeaderboardTabs /> : null}
 				</div>
 			</div>
 
