@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 // Packages
+import _ from "lodash";
 // Components, Services, Functions
 import Menu from "pages/menu/Menu";
 import MobileHeader from "common/components/header/MobileHeader";
@@ -57,12 +58,14 @@ const Home = () => {
 	const getDataLeague = () => {
 		dispatch(SET_SPINNER(true));
 		apiCall
-			// .get(`league?minEndTime=${Date.now()}`)
-			.get(`league`) // EDIT
+			.get(`league?minEndTime=${Date.now()}`)
 			.then((res) => {
 				dispatch(SET_SPINNER(false));
-				setDataLeague(res.data[0]); // EDIT
-				// console.log(res.data);
+				res.data.length < 1
+					? setDataLeague({})
+					: res.data.length > 1
+					? setDataLeague(_.orderBy(res.data, ["startTime"], ["asc"])[0])
+					: setDataLeague(res.data[0]);
 			})
 			.catch((err) => {
 				dispatch(SET_SPINNER(false));
@@ -96,10 +99,12 @@ const Home = () => {
 
 			<div className="home__body">
 				<div className="card-league">
-					<div className="ratio _dish-cardLeagueInfo">
-						{/* #ratio */}
-						<CardLeagueInfo info={dataLeague} />
-					</div>
+					{!_.isEmpty(dataLeague) ? (
+						<div className="ratio _dish-cardLeagueInfo">
+							{/* #ratio */}
+							<CardLeagueInfo info={dataLeague} />
+						</div>
+					) : null}
 				</div>
 
 				{stateTopic.topics?.map((item, index) => (
