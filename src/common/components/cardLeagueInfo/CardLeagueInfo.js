@@ -42,7 +42,7 @@ const CardLeagueInfo = ({ info, expired = false, hasEnterBtn = true }) => {
 	const handleSetRewards = (rewards) => {
 		let rewardsSum = 0;
 		rewards?.forEach((el) => {
-			rewardsSum += el.place ? el.place : (el?.endPlace - el?.startPlace + 1) * el?.reward;
+			rewardsSum += el.place ? el?.reward : (el?.endPlace - el?.startPlace + 1) * el?.reward;
 		});
 		setRewards(rewardsSum);
 	};
