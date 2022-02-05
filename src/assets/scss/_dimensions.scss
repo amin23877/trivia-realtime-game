@@ -24,12 +24,6 @@ $height-body-F: calc(100% - #{$height-footer});
 $height-header-goback: 60px;
 $height-header-path: 45px;
 
-// responsive mixins
-@mixin xl() {
-  @media (min-width: $breakpoint-xl) {
-    @content;
-  }
-}
 
 // Sum: 13: 30'
 

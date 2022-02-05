@@ -1,6 +1,15 @@
 // ======================================================
 // Mixin
 // ======================================================
+@import './dimensions';
+@import "./font";
+
+@mixin desktop() {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
 @mixin btnMain() {
   width: 100%;
 }
@@ -33,6 +42,16 @@
   font-size: 24px;
 }
 
+@mixin fontSize($mobile ,$desktop : false) {
+  font-size: $mobile;
+
+  @if $desktop {
+    @include desktop {
+      font-size: $desktop;
+    }
+  }
+}
+
 @mixin bullet($size, $color, $radius: 100%) {
   width: $size;
   height: $size;
@@ -41,12 +60,18 @@
   background-color: $color;
 }
 
-@mixin avatarShape($size, $color: wheat) {
-  width: $size;
-  height: $size;
-  border-radius: 100%;
-  background: wheat;
-  border: 1px solid white;
+@mixin avatarShape($mobile-size: 72px, $desktop-size :100px) {
+  width:$mobile-size;
+  height: $mobile-size ;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid white;
+
+  @include desktop {
+    width: $desktop-size;
+    height: $desktop-size;
+    border-width: 1px;
+  }
 }
 
 @mixin pageTitle() {
