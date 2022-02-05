@@ -3,11 +3,13 @@ import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import thunk from "redux-thunk";
 import { topicsReducer } from "./reducers/topicReducer/topicsReducer";
 import { generalReducer } from "./reducers/mainReducer/generalReducer";
+import { userReducer } from "./reducers/userReducer/userReducer";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 const rootReducer = combineReducers({
 	stateGeneral: generalReducer,
 	stateTopic: topicsReducer,
+	stateUser: userReducer,
 });
 
 const composeEnhancers = composeWithDevTools({});
