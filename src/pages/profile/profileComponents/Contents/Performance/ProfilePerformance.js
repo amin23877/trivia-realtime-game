@@ -1,9 +1,8 @@
-import React, {useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 
 //---assets
 import "./ProfilePerformance.scss";
-import {MOCK_HISTORY_OF_PARTICIPATING} from "common/mocks/MOCK";
-import {MOCK_PERFORMANCE_LEVEL} from "common/mocks/MOCK";
+import { MOCK_HISTORY_OF_PARTICIPATING, MOCK_PERFORMANCE_LEVEL } from "common/mocks/MOCK";
 //----components
 import ProfileNoTopics from "../../ProfileNoTopics";
 import PerformanceLevelCard from "./PerformanceLevelCard";
@@ -12,21 +11,21 @@ import PlayedHistoryCard from "./PlayedHistoryCard";
 import PerformanceContentSection from "./PerformanceContentSectoin";
 
 const ProfilePerformance = () => {
-  //----data states
-  const [performanceData, setPerformanceData] = useState();
-  const [participatingHistoryData, setParticipatingHistoryData] = useState();
-  const [playedTopicsData, setPlayedTopics] = useState();
-  //----loading states
-  const [isLoading,setIsLoading] = useState(true);
-  useEffect(() => {
-    setPerformanceData(MOCK_PERFORMANCE_LEVEL)
-    setParticipatingHistoryData(MOCK_HISTORY_OF_PARTICIPATING)
-    setPlayedTopics(MOCK_HISTORY_OF_PARTICIPATING)
-    setIsLoading(false)
-    // fetch favorite topics
-    // set loading status
-  }, []);
-  return (
+	//----data states
+	const [performanceData, setPerformanceData] = useState();
+	const [participatingHistoryData, setParticipatingHistoryData] = useState();
+	const [playedTopicsData, setPlayedTopics] = useState();
+	//----loading states
+	const [isLoading, setIsLoading] = useState(true);
+	useEffect(() => {
+		setPerformanceData(MOCK_PERFORMANCE_LEVEL);
+		setParticipatingHistoryData(MOCK_HISTORY_OF_PARTICIPATING);
+		setPlayedTopics(MOCK_HISTORY_OF_PARTICIPATING);
+		setIsLoading(false);
+		// fetch favorite topics
+		// set loading status
+	}, []);
+	return (
 		<>
 			{isLoading && <div>Loading...</div>}
 			{!isLoading && (playedTopicsData.length > 0 || participatingHistoryData.length > 0) ? (
@@ -49,7 +48,7 @@ const ProfilePerformance = () => {
 				</>
 			)}
 		</>
-  );
-}
+	);
+};
 
 export default ProfilePerformance;

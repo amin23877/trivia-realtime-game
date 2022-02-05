@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import './FavoriteTopicCard2.scss';
-import iconRate from 'assets/images/icons/rate-mini.svg';
+import "./FavoriteTopicCard2.scss";
+import iconRate from "assets/images/icons/rate-mini.svg";
 
 const HomeTopics = ({ data }) => {
-  return (
+	return (
 		<div className="favorite-card-2--item">
 			<div className="favorite-card-2--item__image">
 				<img src={data.image} alt={data.title + " image"} />
@@ -22,7 +22,7 @@ const HomeTopics = ({ data }) => {
 				</div>
 			</div>
 		</div>
-  );
+	);
 };
 
 export default HomeTopics;
