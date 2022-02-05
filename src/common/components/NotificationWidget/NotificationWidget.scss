@@ -12,7 +12,7 @@ $desktop-square-avatar-height : 42px;
   @include fsNormal;
   padding: 1.4rem var(--space-x) 0;
 
-  @include xl {
+  @include desktop {
     @include fsM;
   }
 }
@@ -28,7 +28,7 @@ $desktop-square-avatar-height : 42px;
     height: $mobile-circle-avatar-size;
     border-radius: 50%;
 
-    @include xl {
+    @include desktop {
       width: $desktop-circle-avatar-size;
       height: $desktop-circle-avatar-size;
     }
@@ -38,7 +38,7 @@ $desktop-square-avatar-height : 42px;
       width: $mobile-square-avatar-width;
       height: $mobile-square-avatar-height;
 
-      @include xl {
+      @include desktop {
         width: $desktop-square-avatar-width;
         height: $desktop-square-avatar-height;
       }
@@ -48,14 +48,14 @@ $desktop-square-avatar-height : 42px;
   &__info-wrapper {
     flex-basis: 150px;
 
-    @include xl {
+    @include desktop {
       flex-basis: 165px;
     }
   }
 
   &__accept ,&__see-details ,&__reject {
     cursor: pointer;
-    @include xl {
+    @include desktop {
       @include fsL;
     }
   }
@@ -82,7 +82,7 @@ $desktop-square-avatar-height : 42px;
   &__desc {
     line-height: 1rem;
 
-    @include xl {
+    @include desktop {
       line-height: 1.25rem;
     }
   }
