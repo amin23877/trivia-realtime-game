@@ -1,0 +1,12 @@
+@import 'assets/scss/styles.scss';
+
+.avatar {
+  border-radius: 50%;
+  overflow: hidden;
+
+  img {
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid $bg-home;
+  }
+}
