@@ -1,0 +1,21 @@
+@import '../../../assets/scss/styles';
+
+.change-avatar-btn {
+  cursor: pointer;
+  position: relative;
+  width: max-content;
+  margin-left: 28px;
+  transform: translateY(-50%);
+
+  @include desktop {
+    margin-left: 54px;
+  }
+
+  &:after {
+    content: url("/assets/images/icons/camera-icon.svg");
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% ,-50%);
+  }
+}

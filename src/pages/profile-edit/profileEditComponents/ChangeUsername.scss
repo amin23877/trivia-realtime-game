@@ -1,0 +1,39 @@
+@import "../../../assets/scss/styles";
+
+.change-info-form {
+  width: 100%;
+  max-width: 405px;
+  flex: 1 1 100%;
+  padding: 0 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: .5rem;
+
+  @include desktop {
+    padding: 0;
+  }
+
+  &__label {
+    @include fontSize($fs-m, $fs-xl);
+  }
+
+  &__input {
+    @include fontSize($fs-normal, $fs-l);
+
+    width: 100%;
+    height: 44px;
+    padding: 0 1.2rem;
+    border-radius: .5rem;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__details {
+    @include fontSize($fs-xs, $fs-m);
+    color: $grey-1;
+  }
+}
