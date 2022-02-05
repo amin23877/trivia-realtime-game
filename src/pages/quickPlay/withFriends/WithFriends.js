@@ -10,6 +10,7 @@ import CategoriesList from "../components/categories/CategoriesList";
 import EnterGameCode from "./EnterGameCode/EnterGameCode";
 import FriendsList from "./FriendsList/FriendsList";
 import StartTimer from "./startTimer/StartTimer";
+import MpGameResult from "./gameResult/MpGameResult";
 const WithFriends = () => {
 	const Dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -70,9 +71,9 @@ const WithFriends = () => {
 		socketp.on("mpscore", handleMpScore);
 		socketp.on("mpfinish", (e) => {
 			setTimeout(() => {
-				// setGameState("gameResult");
+				setGameState("gameResult");
 				setGameResult(e);
-				socketp.close();
+				// socketp.close();
 			}, 1000);
 		});
 
@@ -207,6 +208,17 @@ const WithFriends = () => {
 					myOption={myOption}
 				/>
 			)}
+			{gameState == "gameResult" &&
+				<MpGameResult
+					authData={authData}
+					myInfo={myInfo}
+					gameResultData={gameResultData}
+					handleStartGame={handleStartGame}
+					mpGamesId={mpGamesId}
+					joinCode={joinCode}
+				/>
+			}
+
 		</>
 	);
 };
