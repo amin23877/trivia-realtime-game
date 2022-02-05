@@ -29,6 +29,8 @@ import { SET_TYPE_LEADERBOARD_COMPONENT } from "redux/actions/mainActions/genera
 const LeaguesInner = () => {
 	let { id } = useParams();
 
+	var ordinal = require("ordinal");
+
 	const playerNum = 2;
 	const timeRemain = 45050;
 	const apiCall = new ApiCall();
@@ -88,6 +90,8 @@ const LeaguesInner = () => {
 		};
 	}, []);
 
+	console.log(dataInnerLeague);
+
 	return (
 		<div className="w-100 h-100 leaguesInner">
 			<div className="leaguesInner-header">
@@ -130,22 +134,20 @@ const LeaguesInner = () => {
 
 				<div className="awards">
 					<p className="title">Winners Awards:</p>
-					<p>
-						<span className="key">first one:</span>
-						<span className="mx-2 value">$ 250</span>
-					</p>
-					<p>
-						<span className="key">second one:</span>
-						<span className="mx-2 value">$ 200</span>
-					</p>
-					<p>
-						<span className="key">Third one:</span>
-						<span className="mx-2 value">$ 180</span>
-					</p>
-					<p>
-						<span className="key">Fourth to tenth one:</span>
-						<span className="mx-2 value">$ 90</span>
-					</p>
+
+					{dataInnerLeague?.rewards?.map((el, index) => (
+						<p key={index}>
+							{el.place ? (
+								<span className="key">{`${ordinal(el?.place)} one:`}</span>
+							) : (
+								<span className="key">{`${ordinal(el?.startPlace)} to ${ordinal(
+									el?.endPlace
+								)} one:`}</span>
+							)}
+
+							<span className="mx-2 value">{`$ ${el.reward}`}</span>
+						</p>
+					))}
 				</div>
 
 				<div className="board">
