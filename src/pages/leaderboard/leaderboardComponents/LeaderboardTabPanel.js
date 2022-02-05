@@ -25,6 +25,7 @@ const LeaderboardTabPanel = ({ type }) => {
 	const stateGeneral = useSelector((state) => state.stateGeneral);
 
 	const [dataLeaderboard, setDataLeaderboard] = useState([]);
+	const [position, setPosition] = useState(null);
 
 	const makeUrl = () => {
 		let url;
@@ -33,11 +34,11 @@ const LeaderboardTabPanel = ({ type }) => {
 				url = `topicleaderboard/${id}/${type}`;
 				break;
 			case TYPE_LEADERBOARD_COMPONENT.INNER_LEAGUE:
-				url = `league/leaderboard/${id}/${type}`;
+				url = `league/leaderboard/${id}`;
 				break;
 
 			default:
-				url = `topicleaderboard/${"all"}/me`;
+				url = `leaderboard/${type}`;
 				break;
 		}
 
@@ -52,7 +53,13 @@ const LeaderboardTabPanel = ({ type }) => {
 			.get(url)
 			.then((res) => {
 				dispatch(SET_SPINNER(false));
-				let LeaderboardSorted = _.orderBy(res.data.result, ["xp"], ["desc"]);
+				let response =
+					stateGeneral.typeLeaderboardComponent === TYPE_LEADERBOARD_COMPONENT.INNER_LEAGUE
+						? res.data
+						: res.data.result;
+				let LeaderboardSorted = _.orderBy(response, ["xp"], ["desc"]);
+
+				console.log("type ", stateGeneral.typeLeaderboardComponent, response);
 				switch (LeaderboardSorted.length) {
 					case 0:
 						setDataLeaderboard([]);
@@ -81,10 +88,28 @@ const LeaderboardTabPanel = ({ type }) => {
 			});
 	};
 
+	const getDataMe = () => {
+		// let url = makeUrl();
+		dispatch(SET_SPINNER(true));
+		apiCall
+			// .get(`topicleaderboard/${id}/${type}`)
+			.get(`topicleaderboard/${id}/${type}/me`)
+			.then((res) => {
+				dispatch(SET_SPINNER(false));
+				console.log(res);
+				setPosition(res);
+			})
+			.catch((err) => {
+				dispatch(SET_SPINNER(false));
+				// console.log(err);
+			});
+	};
+
 	useEffect(() => {
 		let isMounted = true;
 		if (isMounted) {
 			getDataLeaderboard();
+			getDataMe();
 		}
 		return () => {
 			isMounted = false;

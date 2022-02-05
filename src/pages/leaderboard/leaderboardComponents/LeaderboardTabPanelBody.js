@@ -24,14 +24,25 @@ const LeaderboardTabPanelBody = ({ dataLeaderboard }) => {
 				<>
 					{dataLeaderboard?.length > 3 ? (
 						<div className="results">
-							{_.slice(dataLeaderboard, 3, dataLeaderboard?.length).map((el, index) => (
-								<div key={index} className="d-flex align-items-center _br-bottom user">
-									<span className="index">{`${index + indexStart}.`}</span>
-									<img className="avatar" src={`${IMAGE_URL}${el?.UserId?.avatar}`} alt="" />
-									<p className="username">{el?.UserId?.username}</p>
-									<p className="points">{`${el?.xp} points`}</p>
-								</div>
-							))}
+							{_.slice(dataLeaderboard, 3, dataLeaderboard?.length).map((el, index) =>
+								stateGeneral.typeLeaderboardComponent === TYPE_LEADERBOARD_COMPONENT.INNER_LEAGUE ? (
+									<div key={index} className="d-flex align-items-center _br-bottom user">
+										<span className="index">{`${index + indexStart}.`}</span>
+										<img className="avatar" src={`${IMAGE_URL}${el?.UserId?.avatar}`} alt="" />
+										<p className="username">{el?.UserId?.username}</p>
+										<p className="reward">{`$ ${el?.reward}`}</p>
+										<p className="points">{`${el?.point}`}</p>
+										<p className="score">{`${el?.score}`}</p>
+									</div>
+								) : (
+									<div key={index} className="d-flex align-items-center _br-bottom user">
+										<span className="index">{`${index + indexStart}.`}</span>
+										<img className="avatar" src={`${IMAGE_URL}${el?.UserId?.avatar}`} alt="" />
+										<p className="username">{el?.UserId?.username}</p>
+										<p className="points">{`${el?.xp} points`}</p>
+									</div>
+								)
+							)}
 							<p className="seemore">See more</p>
 						</div>
 					) : (

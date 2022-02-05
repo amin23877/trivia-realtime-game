@@ -156,8 +156,6 @@ const HomeTopicsInner = () => {
 		<div className="w-100 h-100 topicsInner">
 			<div className="topicsInner-header">
 				<div className="d-flex justify-content-between align-items-center sec-img" style={styleBgImg}>
-					{/* <img src={bgImgUrl} /> */}
-
 					<p className="d-flex justify-content-center align-items-center" onClick={handleGoBack}>
 						<ArrowBackIcon />
 					</p>

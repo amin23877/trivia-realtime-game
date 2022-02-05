@@ -29,7 +29,7 @@ function TabPanel(props) {
 		>
 			{value === index && (
 				<Box p={3}>
-					<Typography>{children}</Typography>
+					<Typography>{children ? children : null}</Typography>
 				</Box>
 			)}
 		</div>
@@ -57,6 +57,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LeaderboardTabs = () => {
+	const stateGeneral = useSelector((state) => state.stateGeneral);
+
 	const classes = useStyles();
 	const [type, setType] = useState(TYPE_LEADERBOARD.ALL);
 	const [value, setValue] = React.useState(0);
@@ -77,23 +79,31 @@ const LeaderboardTabs = () => {
 
 	return (
 		<div id="tabs">
-			<AppBar position="static">
-				<Tabs
-					value={value}
-					onChange={handleChangeTab}
-					TabIndicatorProps={{ style: { backgroundColor: "white" } }}
-				>
-					{tabs.map((el, index) => (
-						<Tab key={index} label={el.name} {...a11yProps(index)} />
-					))}
-				</Tabs>
-			</AppBar>
+			{stateGeneral.typeLeaderboardComponent !== TYPE_LEADERBOARD_COMPONENT.INNER_LEAGUE ? (
+				<>
+					<AppBar position="static">
+						<Tabs
+							value={value}
+							onChange={handleChangeTab}
+							TabIndicatorProps={{ style: { backgroundColor: "white" } }}
+						>
+							{tabs.map((el, index) => (
+								<Tab key={index} label={el.name} {...a11yProps(index)} />
+							))}
+						</Tabs>
+					</AppBar>
 
-			{tabs.map((el, index) => (
-				<TabPanel key={index} value={value} index={index}>
-					<LeaderboardTabPanel type={type} />
-				</TabPanel>
-			))}
+					{tabs.map((el, index) => (
+						<TabPanel key={index} value={value} index={index}>
+							<LeaderboardTabPanel type={type} />
+						</TabPanel>
+					))}
+				</>
+			) : (
+				<>
+					<LeaderboardTabPanel type={""} />
+				</>
+			)}
 		</div>
 	);
 };

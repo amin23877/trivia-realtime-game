@@ -24,11 +24,29 @@ const LeaderboardTabPanelHeader = ({ dataLeaderboard }) => {
 							{_.slice(dataLeaderboard, 0, 3).map((el, index) => (
 								<div key={index} className={`user ${index === 1 ? "best-user" : ""}`}>
 									{!_.isEmpty(el) ? (
-										<>
-											<img className="avatar" src={`${IMAGE_URL}${el?.UserId?.avatar}`} alt="" />
-											<p className="username">{el?.UserId?.username}</p>
-											<p className="points">{`${el?.xp} points`}</p>
-										</>
+										stateGeneral.typeLeaderboardComponent ===
+										TYPE_LEADERBOARD_COMPONENT.INNER_LEAGUE ? (
+											<>
+												<img
+													className="avatar"
+													src={`${IMAGE_URL}${el?.UserId?.avatar}`}
+													alt=""
+												/>
+												<p className="username">{el?.UserId?.username}</p>
+												<p className="points">{`${el?.point} points`}</p>
+												<p className="reward">{`$ ${el?.reward}`}</p>
+											</>
+										) : (
+											<>
+												<img
+													className="avatar"
+													src={`${IMAGE_URL}${el?.UserId?.avatar}`}
+													alt=""
+												/>
+												<p className="username">{el?.UserId?.username}</p>
+												<p className="points">{`${el?.xp} points`}</p>
+											</>
+										)
 									) : (
 										<></>
 									)}

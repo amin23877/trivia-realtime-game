@@ -67,9 +67,21 @@ $size-avatar: 30px;
                 @include fsM;
                 padding-left: 10px;
             }
+            .reward {
+                @include fsS;
+                color: $orange-2;
+                margin-left: auto !important;
+            }
+
             .points {
                 @include fsS;
                 color: $primary;
+                margin-left: auto !important;
+            }
+
+            .score {
+                @include fsS;
+                color: $red-1;
                 margin-left: auto !important;
             }
         }
@@ -128,6 +140,11 @@ $size-avatar: 30px;
                     @include fsS;
                     color: $primary;
                     margin-left: auto !important;
+                }
+
+                .reward {
+                    @include fsS;
+                    color: $red-1;
                 }
             }
 
