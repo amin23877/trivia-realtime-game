@@ -59,7 +59,7 @@ const LeaderboardTabPanel = ({ type }) => {
 						: res.data.result;
 				let LeaderboardSorted = _.orderBy(response, ["xp"], ["desc"]);
 
-				console.log("type ", stateGeneral.typeLeaderboardComponent, response);
+				// console.log("type ", stateGeneral.typeLeaderboardComponent, response);
 				switch (LeaderboardSorted.length) {
 					case 0:
 						setDataLeaderboard([]);
@@ -96,7 +96,7 @@ const LeaderboardTabPanel = ({ type }) => {
 			.get(`topicleaderboard/${id}/${type}/me`)
 			.then((res) => {
 				dispatch(SET_SPINNER(false));
-				console.log(res);
+				// console.log(res);
 				setPosition(res);
 			})
 			.catch((err) => {

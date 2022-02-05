@@ -90,7 +90,7 @@ const LeaguesInner = () => {
 		};
 	}, []);
 
-	console.log(dataInnerLeague);
+	// console.log(dataInnerLeague);
 
 	return (
 		<div className="w-100 h-100 leaguesInner">
