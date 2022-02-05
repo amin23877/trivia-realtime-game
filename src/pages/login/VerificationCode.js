@@ -10,7 +10,6 @@ import CountDownTimerSecond from "common/components/CountdownTimer/CountDownTime
 // Redux
 import { useDispatch } from "react-redux";
 import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
-import { SET_USER_INFO } from "redux/actions/mainActions/generalActions";
 // Material - lab
 import { TextField } from "@material-ui/core";
 // Styles, Icons, Images
@@ -66,16 +65,20 @@ const VerificationCode = () => {
 				})
 				.then((res) => {
 					dispatch(SET_SPINNER(false));
+
 					res.data.token
 						? localStorage.setItem("token", `Bearer ${res.data.token}`)
 						: localStorage.removeItem("token");
-					dispatch(SET_USER_INFO(res.data.user));
+
 					navigate("/");
 				})
 				.catch((err) => {
 					dispatch(SET_SPINNER(false));
+
 					localStorage.removeItem("token");
+
 					setIsValidOtp(false);
+
 					if (err.error) {
 						setMessageError(err.error);
 					} else {

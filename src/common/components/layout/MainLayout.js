@@ -1,5 +1,5 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 
 import DesktopHeader from "common/components/header/DesktopHeader";
@@ -9,9 +9,15 @@ import SelectGameType from "pages/home/homeComponents/selectGameType/SelectGameT
 
 import "./MainLayout.scss";
 import NotificationWidget from "common/components/NotificationWidget/NotificationWidget";
+import { fetchUser } from "redux/actions/userActions/userActions";
 
 const MainLayout = ({ footer = false }) => {
+	const dispatch = useDispatch();
 	const { openGameTypes, openNotifDrawer } = useSelector((state) => state.stateGeneral);
+
+	useEffect(() => {
+		dispatch(fetchUser());
+	}, [dispatch]);
 
 	return (
 		<div className="main-layout">
