@@ -55,6 +55,9 @@ function LeagueNotif({ name, image }) {
 	);
 }
 
+/*
+ * 	this component get notifications from server and render notifications list
+ * */
 const NotificationWidget = () => {
 	return notifications ? (
 		<ul className="notif-widget">
