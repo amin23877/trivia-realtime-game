@@ -77,7 +77,8 @@ const Home = () => {
 				<div className="card-league">
 					<div className="ratio _dish-cardLeagueInfo">
 						{/* #ratio */}
-						<CardLeagueInfo info={cardInfo} />
+						{/* <CardLeagueInfo info={cardInfo} /> */}
+						{/* EDIT */}
 					</div>
 				</div>
 

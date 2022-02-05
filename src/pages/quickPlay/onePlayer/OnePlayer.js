@@ -19,7 +19,7 @@ const OnePlayer = () => {
 	const [singleGameQuestion, setSingleGameQuestion] = useState();
 	const [gameState, setGameState] = useState("showCategories");
 	const [socket, setSocket] = useState();
-	const [socketId, setSocketId] = useState();
+	const [authData, setAuthData] = useState();
 	const [myInfo, setMyInfo] = useState({ player: "player1", score: 0 });
 	const [time, setTime] = useState(20);
 	const [questionNumber, setQuestionNumber] = useState(0);
@@ -28,7 +28,7 @@ const OnePlayer = () => {
 	const [gameResultData, setGameResult] = useState();
 
 	const socketUrl = SOCKET_BASE_URL;
-	const token = localStorage.getItem("token") ? `${localStorage.getItem("token")}` : null;
+	const token = localStorage.getItem("token") ? `${localStorage.getItem("token").replace('Bearer ', '')}` : null;
 
 	const myRef = useRef(myInfo);
 	const socketRef = useRef(socket);
@@ -46,7 +46,7 @@ const OnePlayer = () => {
 		});
 
 		socketp.on("authentication", (e) => {
-			setSocketId(e.socketid);
+			setAuthData(e)
 		});
 		socketp.on("singleGameToken", handleSingleGameToken);
 		socketp.on("singleGameQuestion", handleSingleGameQuestion);
@@ -68,7 +68,7 @@ const OnePlayer = () => {
 
 	useEffect(() => {
 		if (selectedCategory) {
-			if (socketId) {
+			if (authData.socketid) {
 				socket.emit("singleGame", { CategoryId: selectedCategory._id });
 			}
 		}
@@ -129,6 +129,7 @@ const OnePlayer = () => {
 					setQuestionNumber={setQuestionNumber}
 					correctAnswer={correctAnswer}
 					myOption={myOption}
+					authData={authData}
 				/>
 			)}
 			{gameState == "gameResult" && <GameResult myInfo={myInfo} gameResultData={gameResultData} />}

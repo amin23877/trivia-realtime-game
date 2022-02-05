@@ -2,7 +2,7 @@ import React from "react";
 
 import RouterConfig from "common/services/Router";
 
-import Spinner from "common/components/spinner/Spinner";
+import Spinner from "./common/components/spinner/Spinner";
 
 import { useSelector } from "react-redux";
 

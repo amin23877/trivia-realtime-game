@@ -1,0 +1,70 @@
+@keyframes borderColor {
+    50% {
+        border-color: #f24973;
+    }
+    100% {
+        border-color: #fff;
+    }
+}
+.start-timer {
+    background: radial-gradient(86.81% 86.81% at 50% 50%, rgba(40, 38, 128, 0.5) 0%, #282680 79.67%);
+    padding: 24px 40px;
+    text-align: center;
+    & > img {
+        margin-bottom: 80px;
+    }
+    &__timer {
+        display: flex;
+        position: relative;
+        width: 100%;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+        animation-name: borderColor;
+        animation-delay: 0;
+        animation-duration: 1000ms;
+        animation-iteration-count: infinite;
+        animation-fill-mode: forwards;
+
+        &:after {
+            content: "";
+            position: absolute;
+            border: 1px solid #fff;
+            width: 90%;
+            height: 90%;
+            border-radius: 50%;
+            
+        }
+        &:before {
+            content: "";
+            position: absolute;
+            border: 1px solid #fff;
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            animation-name: borderColor;
+            animation-delay: 600ms;
+            animation-duration: 1000ms;
+            animation-iteration-count: infinite;
+            animation-fill-mode: forwards;
+        }
+        &--dummy {
+            margin-top: 100%;
+            /* 4:3 aspect ratio */
+        }
+
+        &--data {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 150px;
+            color: #fff;
+        }
+    }
+}

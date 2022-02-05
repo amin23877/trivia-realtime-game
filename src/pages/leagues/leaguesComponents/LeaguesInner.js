@@ -1,8 +1,9 @@
 // Reacts
-import React from "react";
+import React, { useEffect, useState } from "react";
 // Hooks
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // Packages
+import _ from "lodash";
 // Components, Services, Functions
 import { MOCK_LEADERS } from "common/mocks/MOCK";
 import { MOCK_CARDINFO } from "common/mocks/MOCK";
@@ -16,14 +17,20 @@ import CloseIcon from "@material-ui/icons/Close";
 import PersonIcon from "@material-ui/icons/Person";
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
+import { useDispatch } from "react-redux";
+import ApiCall from "common/services/ApiCall";
+import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
+import { IMAGE_URL } from "common/values/CORE";
 
 const LeaguesInner = () => {
+	let { id } = useParams();
+
 	const playerNum = 2;
 	const timeRemain = 45050;
+	const apiCall = new ApiCall();
+	const dispatch = useDispatch();
 
-	const styleBgImg = {
-		// background: `url('...')`,
-	};
+	const [dataInnerLeague, setDataInnerLeague] = useState();
 
 	const mockLeaders = MOCK_LEADERS;
 	const mockLeadersBest = [mockLeaders[0], mockLeaders[1], mockLeaders[2]];
@@ -31,17 +38,47 @@ const LeaguesInner = () => {
 
 	const navigate = useNavigate();
 
+	const styleBgImg = {
+		backgroundImage: `url(${IMAGE_URL}${dataInnerLeague?.logo})`,
+	};
+
 	const handleGoBack = () => {
 		navigate(-1);
 	};
 
 	const handleStop = (e) => {
-		console.log(e);
+		// console.log(e);
 	};
 
 	const handlePlay = () => {
 		console.log("TODO handlePlay");
 	};
+
+	const getDataInnerLeague = () => {
+		dispatch(SET_SPINNER(true));
+		apiCall
+			.get(`league/${id}`)
+			.then((res) => {
+				console.log(res.data);
+				dispatch(SET_SPINNER(false));
+				setDataInnerLeague(res.data);
+			})
+			.catch((err) => {
+				dispatch(SET_SPINNER(false));
+				// console.log(err);
+			});
+	};
+
+	useEffect(() => {
+		let isMounted = true;
+		if (isMounted) {
+			getDataInnerLeague();
+			// getDataLeaderboard(TYPE_LEADERBOARD.ALL, 0);
+		}
+		return () => {
+			isMounted = false;
+		};
+	}, []);
 
 	return (
 		<div className="w-100 h-100 leaguesInner">
@@ -56,8 +93,10 @@ const LeaguesInner = () => {
 				</div>
 
 				<div className="sec-info">
-					<p className="title">Grand League of Genes and Inheritance</p>
-					<p className="subtitle">Topic: Biology and living things</p>
+					<p className="title">{_.truncate(dataInnerLeague?.name, { length: 35, separator: " " })}</p>
+					<p className="subtitle">
+						{_.truncate(dataInnerLeague?.TopicId?.name, { length: 40, separator: " " })}
+					</p>
 					<div className="pt-2 d-flex justify-content-between align-items-center">
 						<div id="primaryWhiteBlack" className="d-flex timer">
 							<Countdown
@@ -68,8 +107,8 @@ const LeaguesInner = () => {
 						</div>
 
 						<p className="grey">
-							{playerNum > 1 ? <SupervisorAccountIcon /> : <PersonIcon />}
-							<span className="mx-1">{`${playerNum} player`}</span>
+							{dataInnerLeague?.players > 1 ? <SupervisorAccountIcon /> : <PersonIcon />}
+							<span className="mx-1">{`${dataInnerLeague?.players} player`}</span>
 						</p>
 					</div>
 				</div>
@@ -78,12 +117,7 @@ const LeaguesInner = () => {
 			<div className="leaguesInner-body">
 				<div className="description">
 					<p className="title">Description:</p>
-					<p className="text">
-						Considering the great and undeniable importance of genes in the life of every creature on this
-						planet, I decided to design this league to make you better and more familiar with your own genes
-						and the different races of humanity. It goes without saying that there are special prizes for
-						the winners of this league I will be happy if you participate in this challenge
-					</p>
+					<p className="text">{dataInnerLeague?.description}</p>
 				</div>
 
 				<div className="awards">

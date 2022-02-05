@@ -15,3 +15,17 @@ export const TYPE_TOPIC_SORTKEY_LIST = {
 	LATEST: "topicsByLatest",
 	FAVORITE: "topicsByFavorite",
 };
+
+export const TYPE_LEADERBOARD = {
+	ALL: "all",
+	DAY: "day",
+	WEEK: "week",
+	MONTH: "month",
+};
+
+export const TYPE_LEAGUE_HOME = {
+	DAILY: "daily",
+	WEEKLY: "weekly",
+	GRAND: "grand",
+	HISTORY: "history",
+};

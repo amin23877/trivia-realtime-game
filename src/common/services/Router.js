@@ -29,6 +29,7 @@ import OnePlayer from "pages/quickPlay/onePlayer/OnePlayer";
 import MainLayout from "common/components/layout/MainLayout";
 import SuperCenterLayout from "common/components/layout/SuperCenterLayout";
 import Subscribe from "pages/subscripe/Subscribe";
+import WithFriends from "pages/quickPlay/withFriends/WithFriends";
 
 const RouterConfig = () => {
 	return (
@@ -78,6 +79,7 @@ const RouterConfig = () => {
 					<Route exact path="/quickPlay" element={<QuickPlay />} />
 					<Route exact path="/quickPlay/twoPlayers" element={<TwoPlayers />} />
 					<Route exact path="/quickPlay/onePlayer" element={<OnePlayer />} />
+					<Route exact path="/quickPlay/withFriends" element={<WithFriends />} />
 				</Route>
 
 				<Route exact path="/menu" element={<ProtectedRoute />}>

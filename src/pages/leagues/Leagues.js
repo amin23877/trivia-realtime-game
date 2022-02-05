@@ -1,8 +1,9 @@
 // Reacts
-import React from "react";
+import React, { useEffect, useState } from "react";
 // Hooks
 import { useNavigate } from "react-router-dom";
 // Packages
+import _ from "lodash";
 // Components, Services, Functions
 import { MOCK_CARDINFO } from "common/mocks/MOCK";
 import Footer from "common/components/footer/Footer";
@@ -14,9 +15,18 @@ import "./Leagues.scss";
 import arrowForwardMini from "assets/images/icons/arrow-forward-mini.svg";
 
 import logo from "assets/images/icons/header-logo.svg";
+import ApiCall from "common/services/ApiCall";
+import { useDispatch } from "react-redux";
+import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
+import { TYPE_LEAGUE_HOME } from "common/values/TYPES";
+import EmptyList from "common/components/empties/EmptyList";
 
 const Leagues = () => {
 	const navigate = useNavigate();
+	const apiCall = new ApiCall();
+	const dispatch = useDispatch();
+
+	const [dataLeagueHome, setDataLeagueHome] = useState([]);
 
 	const cardInfo = MOCK_CARDINFO;
 
@@ -27,6 +37,32 @@ const Leagues = () => {
 		console.log(path);
 		navigate(path);
 	};
+
+	const getDataLeagueHome = () => {
+		dispatch(SET_SPINNER(true));
+		apiCall
+			.get("league/home")
+			.then((res) => {
+				dispatch(SET_SPINNER(false));
+				setDataLeagueHome(res.data);
+				// console.log(res.data);
+			})
+			.catch((err) => {
+				dispatch(SET_SPINNER(false));
+				// console.log(err);
+			});
+	};
+
+	useEffect(() => {
+		let isMounted = true;
+		if (isMounted) {
+			getDataLeagueHome();
+		}
+		return () => {
+			isMounted = false;
+		};
+	}, []);
+
 	return (
 		<div className="fadeInFast w-100 h-100 leagues">
 			<div className="d-flex justify-content-center align-items-center _header _header-shadow">
@@ -36,25 +72,48 @@ const Leagues = () => {
 			<div className="_body-height-H leagues-body">
 				<p className="leagues-title">Daily League</p>
 
-				<div className="card-league">
-					<div className="ratio _dish-cardLeagueInfo" onClick={(e) => handleNavigate(e, "/leagues/5")}>
-						<CardLeagueInfo info={cardInfo} />
+				{dataLeagueHome[TYPE_LEAGUE_HOME.DAILY] ? (
+					<div className="card-league">
+						<div
+							className="ratio _dish-cardLeagueInfo"
+							onClick={(e) => handleNavigate(e, `/leagues/${dataLeagueHome[TYPE_LEAGUE_HOME.DAILY]._id}`)}
+						>
+							<CardLeagueInfo info={dataLeagueHome[TYPE_LEAGUE_HOME.DAILY]} />
+						</div>
 					</div>
-				</div>
+				) : (
+					<p className="empty-list">There is nothing ... </p>
+				)}
 
 				<p className="leagues-title">Weekly League</p>
-				<div className="card-league">
-					<div className="ratio _dish-cardLeagueInfo" onClick={(e) => handleNavigate(e, "/leagues/5")}>
-						<CardLeagueInfo info={cardInfo} />
+				{dataLeagueHome[TYPE_LEAGUE_HOME.WEEKLY] ? (
+					<div className="card-league">
+						<div
+							className="ratio _dish-cardLeagueInfo"
+							onClick={(e) =>
+								handleNavigate(e, `/leagues/${dataLeagueHome[TYPE_LEAGUE_HOME.WEEKLY]._id}`)
+							}
+						>
+							<CardLeagueInfo info={dataLeagueHome[TYPE_LEAGUE_HOME.WEEKLY]} />
+						</div>
 					</div>
-				</div>
+				) : (
+					<p className="empty-list">There is nothing ... </p>
+				)}
 
 				<p className="leagues-title">Grand League</p>
-				<div className="card-league">
-					<div className="ratio _dish-cardLeagueInfo" onClick={(e) => handleNavigate(e, "/leagues/5")}>
-						<CardLeagueInfo info={cardInfo} />
+				{dataLeagueHome[TYPE_LEAGUE_HOME.GRAND] ? (
+					<div className="card-league">
+						<div
+							className="ratio _dish-cardLeagueInfo"
+							onClick={(e) => handleNavigate(e, `/leagues/${dataLeagueHome[TYPE_LEAGUE_HOME.GRAND]._id}`)}
+						>
+							<CardLeagueInfo info={dataLeagueHome[TYPE_LEAGUE_HOME.GRAND]} />
+						</div>
 					</div>
-				</div>
+				) : (
+					<p className="empty-list">There is nothing ... </p>
+				)}
 
 				<div className="d-flex justify-content-between align-items-center">
 					<p className="leagues-title">League History</p>
@@ -65,16 +124,20 @@ const Leagues = () => {
 				</div>
 
 				<div className=" history">
-					{mockHistory.map((el, index) => (
-						<div key={index} className="card-league">
-							<div
-								className="ratio _dish-cardLeagueInfo"
-								onClick={(e) => handleNavigate(e, "/leagues/5")}
-							>
-								<CardLeagueInfo info={el} expired={true} />
+					{dataLeagueHome[TYPE_LEAGUE_HOME.HISTORY] ? (
+						dataLeagueHome[TYPE_LEAGUE_HOME.HISTORY]?.map((el, index) => (
+							<div key={index} className="card-league">
+								<div
+									className="ratio _dish-cardLeagueInfo"
+									onClick={(e) => handleNavigate(e, `/leagues/${el._id}`)}
+								>
+									<CardLeagueInfo info={el} expired={true} />
+								</div>
 							</div>
-						</div>
-					))}
+						))
+					) : (
+						<p className="empty-list">There is nothing ... </p>
+					)}
 				</div>
 			</div>
 		</div>
