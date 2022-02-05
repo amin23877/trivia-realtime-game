@@ -1,7 +1,5 @@
 @import 'assets/scss/styles.scss';
 
-$gap-between-sidebar-and-body : 120px;
-
 .home {
   background-color: $bg-home;
   height: 100%;
@@ -11,10 +9,10 @@ $gap-between-sidebar-and-body : 120px;
     padding: 1.5rem 0 1.5rem 1.5rem;
     overflow-y: auto;
     height: 100%;
+  }
 
-    @media (min-width: $breakpoint-xl) {
-      padding-left: $gap-between-sidebar-and-body;
-    }
+  @include desktop {
+    margin-right: -6rem;
   }
 }
 

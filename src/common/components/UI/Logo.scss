@@ -3,7 +3,7 @@
 .quizup-logo {
   width: 104px;
   margin: 0 auto;
-  @include xl {
+  @include desktop {
     width: 145px;
   }
 }
