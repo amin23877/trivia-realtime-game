@@ -9,7 +9,7 @@ const Layout = ({ children, header = true, className = "" }) => {
 					<MobileHeader />
 				</div>
 			)}
-			{children}
+			{children ? children : null}
 			{/* <div style={{height: 70}} className="_footer w-100">
         <Footer />
       </div> */}

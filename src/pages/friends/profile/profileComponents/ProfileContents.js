@@ -4,12 +4,8 @@ import React from "react";
 // --- assets
 import "./ProfileContents.scss";
 
-const ProfileContents = ({children}) => {
-  return (
-    <div className="profile--contents">
-      {children}
-    </div>
-  )
-}
+const ProfileContents = ({ children }) => {
+	return <div className="profile--contents">{children ? children : null}</div>;
+};
 
-export default ProfileContents
+export default ProfileContents;
