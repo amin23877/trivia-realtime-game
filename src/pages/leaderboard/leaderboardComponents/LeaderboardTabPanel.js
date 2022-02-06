@@ -1,48 +1,126 @@
 // Reacts
-import React from "react";
+import React, { useEffect, useState } from "react";
 // Hooks
 // Packages
+import _ from "lodash";
 // Components, Services, Functions
-import { MOCK_LEADERS } from "common/mocks/MOCK";
 // Redux
 // Material - lab
 // Styles, Icons, Images
 import "./LeaderboardTabPanel.scss";
-import iconBundle from "assets/images/icons/icon-bundle.svg";
+import LeaderboardTabPanelHeader from "./LeaderboardTabPanelHeader";
+import LeaderboardTabPanelBody from "./LeaderboardTabPanelBody";
+import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
+import { TYPE_LEADERBOARD_COMPONENT } from "common/values/TYPES";
+import { useDispatch, useSelector } from "react-redux";
+import ApiCall from "common/services/ApiCall";
+import { useParams } from "react-router-dom";
 
-const LeaderboardTabPanel = (props) => {
-	const mockLeaders = MOCK_LEADERS;
+const LeaderboardTabPanel = ({ type }) => {
+	let { id } = useParams();
+
+	const apiCall = new ApiCall();
+	const dispatch = useDispatch();
+
+	const stateGeneral = useSelector((state) => state.stateGeneral);
+
+	const [dataLeaderboard, setDataLeaderboard] = useState([]);
+	const [position, setPosition] = useState(null);
+
+	const makeUrl = () => {
+		let url;
+		switch (stateGeneral.typeLeaderboardComponent) {
+			case TYPE_LEADERBOARD_COMPONENT.INNER_TOPIC:
+				url = `topicleaderboard/${id}/${type}`;
+				break;
+			case TYPE_LEADERBOARD_COMPONENT.INNER_LEAGUE:
+				url = `league/leaderboard/${id}`;
+				break;
+
+			default:
+				url = `leaderboard/${type}`;
+				break;
+		}
+
+		return url;
+	};
+
+	const getDataLeaderboard = () => {
+		let url = makeUrl();
+		dispatch(SET_SPINNER(true));
+		apiCall
+			// .get(`topicleaderboard/${id}/${type}`)
+			.get(url)
+			.then((res) => {
+				dispatch(SET_SPINNER(false));
+				let response =
+					stateGeneral.typeLeaderboardComponent === TYPE_LEADERBOARD_COMPONENT.INNER_LEAGUE
+						? res.data
+						: res.data.result;
+				let LeaderboardSorted = _.orderBy(response, ["xp"], ["desc"]);
+
+				// console.log("type ", stateGeneral.typeLeaderboardComponent, response);
+				switch (LeaderboardSorted.length) {
+					case 0:
+						setDataLeaderboard([]);
+						break;
+					case 1:
+						setDataLeaderboard(_.concat([{}], LeaderboardSorted[0], [{}]));
+						break;
+					case 2:
+						setDataLeaderboard(_.concat(LeaderboardSorted[1], LeaderboardSorted[0], [{}]));
+						break;
+
+					default:
+						setDataLeaderboard(
+							_.concat(
+								LeaderboardSorted[1],
+								LeaderboardSorted[0],
+								_.slice(LeaderboardSorted, 2, LeaderboardSorted.length)
+							)
+						);
+						break;
+				}
+			})
+			.catch((err) => {
+				dispatch(SET_SPINNER(false));
+				// console.log(err);
+			});
+	};
+
+	const getDataMe = () => {
+		// let url = makeUrl();
+		dispatch(SET_SPINNER(true));
+		apiCall
+			// .get(`topicleaderboard/${id}/${type}`)
+			.get(`topicleaderboard/${id}/${type}/me`)
+			.then((res) => {
+				dispatch(SET_SPINNER(false));
+				// console.log(res);
+				setPosition(res);
+			})
+			.catch((err) => {
+				dispatch(SET_SPINNER(false));
+				// console.log(err);
+			});
+	};
+
+	useEffect(() => {
+		let isMounted = true;
+		if (isMounted) {
+			getDataLeaderboard();
+			getDataMe();
+		}
+		return () => {
+			isMounted = false;
+		};
+	}, []);
 
 	return (
 		<div className="w-100 h-100 tabPanel">
-			<div className="">
-				<div className="d-flex align-items-center _br-bottom user-first">
-					<div className="d-flex align-items-center info">
-						<span className="index">{"1."}</span>
-						<div className="avatar"></div>
-						<div>
-							<p className="username">{mockLeaders[0].username}</p>
-							<p className="points">{`${mockLeaders[0].points} points`}</p>
-						</div>
-					</div>
-					<div className="d-flex align-items-center bundle">
-						<img src={iconBundle} />1 GB Data bundle
-					</div>
-				</div>
-			</div>
-
-			<p className="subtitle">Your position: 12</p>
-			<div className="results">
-				{mockLeaders.map((el, index) => (
-					<div key={index} className="d-flex align-items-center _br-bottom user">
-						<span className="index">{`${index + 2}.`}</span>
-						<div className="avatar"></div>
-						<p className="username">{el.username}</p>
-						<p className="points">{`${el.points} points`}</p>
-					</div>
-				))}
-
-				<p className="seemore">See more</p>
+			{dataLeaderboard.length > 0 ? <LeaderboardTabPanelHeader dataLeaderboard={dataLeaderboard} /> : <></>}
+			<div className="mt-5">
+				<LeaderboardTabPanelBody dataLeaderboard={dataLeaderboard} />
 			</div>
 		</div>
 	);

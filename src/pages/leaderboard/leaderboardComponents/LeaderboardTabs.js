@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -7,6 +7,14 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import LeaderboardTabPanel from "./LeaderboardTabPanel";
+import { TYPE_LEADERBOARD } from "common/values/TYPES";
+import ApiCall from "common/services/ApiCall";
+import { useDispatch, useSelector } from "react-redux";
+import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
+import _ from "lodash";
+import LeaderboardTabPanelHeader from "./LeaderboardTabPanelHeader";
+import { useParams } from "react-router-dom";
+import { TYPE_LEADERBOARD_COMPONENT } from "common/values/TYPES";
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
@@ -21,7 +29,7 @@ function TabPanel(props) {
 		>
 			{value === index && (
 				<Box p={3}>
-					<Typography>{children}</Typography>
+					<Typography>{children ? children : null}</Typography>
 				</Box>
 			)}
 		</div>
@@ -48,35 +56,56 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function LeaderboardTabs() {
+const LeaderboardTabs = () => {
+	const stateGeneral = useSelector((state) => state.stateGeneral);
+
 	const classes = useStyles();
+	const [type, setType] = useState(TYPE_LEADERBOARD.ALL);
 	const [value, setValue] = React.useState(0);
 
-	const handleChange = (event, newValue) => {
-		setValue(newValue);
-		console.log(event, newValue);
+	const tabs = [
+		{ name: "All", type: TYPE_LEADERBOARD.ALL },
+		{ name: "Daily", type: TYPE_LEADERBOARD.DAY },
+		{ name: "Weekly", type: TYPE_LEADERBOARD.WEEK },
+		{ name: "Mounthly", type: TYPE_LEADERBOARD.MONTH },
+	];
+
+	const handleChangeTab = (event, index) => {
+		setValue(index);
+		setType(tabs[index].type);
 	};
 
 	const propsPanel = {};
 
 	return (
 		<div id="tabs">
-			<AppBar position="static">
-				<Tabs value={value} onChange={handleChange}>
-					<Tab label="Daily" {...a11yProps(0)} />
-					<Tab label="Weekly" {...a11yProps(1)} />
-					<Tab label="Mounthly" {...a11yProps(2)} />
-				</Tabs>
-			</AppBar>
-			<TabPanel value={value} index={0}>
-				<LeaderboardTabPanel props={propsPanel} />
-			</TabPanel>
-			<TabPanel value={value} index={1}>
-				<LeaderboardTabPanel props={propsPanel} />
-			</TabPanel>
-			<TabPanel value={value} index={2}>
-				<LeaderboardTabPanel props={propsPanel} />
-			</TabPanel>
+			{stateGeneral.typeLeaderboardComponent !== TYPE_LEADERBOARD_COMPONENT.INNER_LEAGUE ? (
+				<>
+					<AppBar position="static">
+						<Tabs
+							value={value}
+							onChange={handleChangeTab}
+							TabIndicatorProps={{ style: { backgroundColor: "white" } }}
+						>
+							{tabs.map((el, index) => (
+								<Tab key={index} label={el.name} {...a11yProps(index)} />
+							))}
+						</Tabs>
+					</AppBar>
+
+					{tabs.map((el, index) => (
+						<TabPanel key={index} value={value} index={index}>
+							<LeaderboardTabPanel type={type} />
+						</TabPanel>
+					))}
+				</>
+			) : (
+				<>
+					<LeaderboardTabPanel type={""} />
+				</>
+			)}
 		</div>
 	);
-}
+};
+
+export default LeaderboardTabs;

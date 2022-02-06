@@ -60,18 +60,12 @@
   background-color: $color;
 }
 
-@mixin avatarShape($mobile-size: 72px, $desktop-size :100px) {
-  width:$mobile-size;
-  height: $mobile-size ;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid white;
-
-  @include desktop {
-    width: $desktop-size;
-    height: $desktop-size;
-    border-width: 1px;
-  }
+@mixin avatarShape($size, $color: white) {
+  width: $size;
+  height: $size;
+  border-radius: 100%;
+  background: $color;
+  border: 1px solid white;
 }
 
 @mixin pageTitle() {
@@ -92,7 +86,7 @@
   transform: translate(-50%, -50%);
 }
 
-@mixin imageFit($fit: cover,$position: center) {
+@mixin imageFit($fit: cover, $position: center) {
   object-fit: $fit;
   object-position: $position;
 }
@@ -100,7 +94,7 @@
 @mixin box(
   $box-border-radius: 12px,
   $box-shadow: 0px 3px 5px rgba(39, 39, 40, 0.1),
-  $box-background:#FFFFFF,
+  $box-background: #ffffff,
   $box-width: auto
 ) {
   background: $box-background;

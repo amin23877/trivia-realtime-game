@@ -17,18 +17,28 @@ import CloseIcon from "@material-ui/icons/Close";
 import PersonIcon from "@material-ui/icons/Person";
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ApiCall from "common/services/ApiCall";
 import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
 import { IMAGE_URL } from "common/values/CORE";
+import { TYPE_LEADERBOARD } from "common/values/TYPES";
+import LeaderboardTabs from "pages/leaderboard/leaderboardComponents/LeaderboardTabs";
+import { TYPE_LEADERBOARD_COMPONENT } from "common/values/TYPES";
+import { SET_TYPE_LEADERBOARD_COMPONENT } from "redux/actions/mainActions/generalActions";
 
 const LeaguesInner = () => {
 	let { id } = useParams();
+
+	var ordinal = require("ordinal");
 
 	const playerNum = 2;
 	const timeRemain = 45050;
 	const apiCall = new ApiCall();
 	const dispatch = useDispatch();
+
+	const stateGeneral = useSelector((state) => state.stateGeneral);
+
+	const [activatedTab, setActivatedTab] = useState(0);
 
 	const [dataInnerLeague, setDataInnerLeague] = useState();
 
@@ -39,7 +49,7 @@ const LeaguesInner = () => {
 	const navigate = useNavigate();
 
 	const styleBgImg = {
-		backgroundImage: `url(${IMAGE_URL}${dataInnerLeague?.logo})`,
+		backgroundImage: `url(${IMAGE_URL}${encodeURI(dataInnerLeague?.logo)})`,
 	};
 
 	const handleGoBack = () => {
@@ -59,7 +69,7 @@ const LeaguesInner = () => {
 		apiCall
 			.get(`league/${id}`)
 			.then((res) => {
-				console.log(res.data);
+				// console.log(res.data);
 				dispatch(SET_SPINNER(false));
 				setDataInnerLeague(res.data);
 			})
@@ -72,13 +82,15 @@ const LeaguesInner = () => {
 	useEffect(() => {
 		let isMounted = true;
 		if (isMounted) {
+			dispatch(SET_TYPE_LEADERBOARD_COMPONENT(TYPE_LEADERBOARD_COMPONENT.INNER_LEAGUE));
 			getDataInnerLeague();
-			// getDataLeaderboard(TYPE_LEADERBOARD.ALL, 0);
 		}
 		return () => {
 			isMounted = false;
 		};
 	}, []);
+
+	// console.log(dataInnerLeague);
 
 	return (
 		<div className="w-100 h-100 leaguesInner">
@@ -106,7 +118,7 @@ const LeaguesInner = () => {
 							/>
 						</div>
 
-						<p className="grey">
+						<p className="grey players-num">
 							{dataInnerLeague?.players > 1 ? <SupervisorAccountIcon /> : <PersonIcon />}
 							<span className="mx-1">{`${dataInnerLeague?.players} player`}</span>
 						</p>
@@ -122,66 +134,25 @@ const LeaguesInner = () => {
 
 				<div className="awards">
 					<p className="title">Winners Awards:</p>
-					<p>
-						<span className="key">first one:</span>
-						<span className="mx-2 value">$ 250</span>
-					</p>
-					<p>
-						<span className="key">second one:</span>
-						<span className="mx-2 value">$ 200</span>
-					</p>
-					<p>
-						<span className="key">Third one:</span>
-						<span className="mx-2 value">$ 180</span>
-					</p>
-					<p>
-						<span className="key">Fourth to tenth one:</span>
-						<span className="mx-2 value">$ 90</span>
-					</p>
+
+					{dataInnerLeague?.rewards?.map((el, index) => (
+						<p key={index}>
+							{el.place ? (
+								<span className="key">{`${ordinal(el?.place)} one:`}</span>
+							) : (
+								<span className="key">{`${ordinal(el?.startPlace)} to ${ordinal(
+									el?.endPlace
+								)} one:`}</span>
+							)}
+
+							<span className="mx-2 value">{`$ ${el.reward}`}</span>
+						</p>
+					))}
 				</div>
 
 				<div className="board">
 					<p className="title">Latest results:</p>
-					<p className="subtitle">Your position: 0</p>
-
-					<div className="best">
-						<div className="d-flex best-users">
-							{mockLeadersBest.map((el, index) => (
-								<div key={index} className={`user ${index === 1 ? "best-user" : ""}`}>
-									<div className="mx-auto avatar"></div>
-									<p className="username">{el.username}</p>
-									<p className="points">{`${el.points} points`}</p>
-									<p className="reward">{`$ ${el.reward}`}</p>
-								</div>
-							))}
-						</div>
-
-						<div className="d-flex align-items-center levels">
-							<div className="level level-2">2</div>
-							<div className="level level-1">1</div>
-							<div className="level level-3">3</div>
-						</div>
-					</div>
-					<div className="results">
-						<div className="d-flex headers">
-							<p className="clm reward">reward</p>
-							{playerNum > 1 ? <p className="clm points">points</p> : null}
-
-							<p className="clm score">score</p>
-						</div>
-						{mockLeadersOther.map((el, index) => (
-							<div key={index} className="d-flex align-items-center _br-bottom user">
-								<span className="index">{`${index + 4}.`}</span>
-								<div className="avatar"></div>
-								<p className="username">{el.username}</p>
-								<p className="clm reward">{`$ ${el.reward}`}</p>
-								{playerNum > 1 ? <p className="clm points">{`${el.points}`}</p> : null}
-								<p className="clm score">{`${el.score}`}</p>
-							</div>
-						))}
-
-						<p className="seemore">See more</p>
-					</div>
+					{stateGeneral.typeLeaderboardComponent ? <LeaderboardTabs /> : null}
 				</div>
 			</div>
 

@@ -5,9 +5,11 @@ const initialState = {
 	spinner: false,
 	userInfo: {},
 	modals: {}, // #modalRedux step3
+	snackbar: {},
 	categoriesList: null,
 	openGameTypes: false,
 	openNotifDrawer: false,
+	typeLeaderboardComponent: null,
 };
 export const generalReducer = (state = initialState, action) => {
 	// console.log("payload", action);
@@ -17,12 +19,16 @@ export const generalReducer = (state = initialState, action) => {
 			return { ...state, modals: action.payload };
 		case actionsTypeGeneral.SET_SPINNER:
 			return { ...state, spinner: action.payload };
+		case actionsTypeGeneral.SET_SNACKBAR:
+			return { ...state, snackbar: action.payload };
 		case actionsTypeGeneral.SET_USER_INFO:
 			return { ...state, userInfo: action.payload };
 		case actionsTypeGeneral.GET_CATEGORIES_LIST:
 			return { ...state, categoriesList: action.payload };
 		case actionsTypeGeneral.SET_OPEN_GAME_TYPES:
 			return { ...state, openGameTypes: action.payload };
+		case actionsTypeGeneral.SET_TYPE_LEADERBOARD_COMPONENT:
+			return { ...state, typeLeaderboardComponent: action.payload };
 		case actionsTypeGeneral.TOGGLE_NOTIF_DRAWER:
 			return { ...state, openNotifDrawer: !state.openNotifDrawer };
 		default:

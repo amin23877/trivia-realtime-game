@@ -12,4 +12,9 @@ export const CORE = {
 		timeOut: "TimeOut Error",
 		notJson: "NotJson Error",
 	},
+	SNAKBAR_MESSAGE: {
+		success: "The operation was successful.",
+		error: "Operation encountered an error.",
+		alert: "alert",
+	},
 };

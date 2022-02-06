@@ -10,6 +10,7 @@ import SelectGameType from "pages/home/homeComponents/selectGameType/SelectGameT
 import "./MainLayout.scss";
 import NotificationWidget from "common/components/notificationWidget/NotificationWidget";
 import { fetchUser } from "redux/actions/userActions/userActions";
+import { SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
 
 const MainLayout = ({ footer = false }) => {
 	const dispatch = useDispatch();
@@ -46,10 +47,9 @@ const MainLayout = ({ footer = false }) => {
 			{openGameTypes && (
 				<SelectGameType
 					open={openGameTypes}
-					handleOpenGameTypes={() => {}}
-					// handleOpenGameTypes={() => {
-					// 	dispatch(SET_OPEN_GAME_TYPES(true));
-					// }}
+					handleOpenGameTypes={() => {
+						dispatch(SET_OPEN_GAME_TYPES(false));
+					}}
 				/>
 			)}
 		</div>

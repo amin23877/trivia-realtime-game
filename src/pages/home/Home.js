@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 // Packages
+import _ from "lodash";
 // Components, Services, Functions
 import Menu from "pages/menu/Menu";
 import MobileHeader from "common/components/header/MobileHeader";
@@ -17,13 +18,18 @@ import { Drawer } from "@material-ui/core";
 // Styles, Icons, Images
 import "./Home.scss";
 import arrowForwardMini from "assets/images/icons/arrow-forward-mini.svg";
+import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
+import ApiCall from "common/services/ApiCall";
 
 const Home = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const apiCall = new ApiCall();
 
 	const stateGeneral = useSelector((state) => state.stateGeneral);
 	const stateTopic = useSelector((state) => state.stateTopic);
+
+	const [dataLeague, setDataLeague] = useState();
 
 	const cardInfo = {
 		title: "Chemical Compounds",
@@ -49,6 +55,23 @@ const Home = () => {
 	};
 	// -------------------------------------- Drawer Menu
 
+	const getDataLeague = () => {
+		dispatch(SET_SPINNER(true));
+		apiCall
+			.get(`league?minEndTime=${Date.now()}`)
+			.then((res) => {
+				dispatch(SET_SPINNER(false));
+				res.data.length < 1
+					? setDataLeague({})
+					: res.data.length > 1
+					? setDataLeague(_.orderBy(res.data, ["startTime"], ["asc"])[0])
+					: setDataLeague(res.data[0]);
+			})
+			.catch((err) => {
+				dispatch(SET_SPINNER(false));
+			});
+	};
+
 	useEffect(() => {
 		let isMounted = true;
 		if (isMounted) {
@@ -59,6 +82,7 @@ const Home = () => {
 			//   : localStorage.setItem('remainingTime', cardInfo.remainingTime);
 
 			dispatch(fetchTopics());
+			getDataLeague();
 		}
 		return () => {
 			isMounted = false;
@@ -75,11 +99,12 @@ const Home = () => {
 
 			<div className="home__body">
 				<div className="card-league">
-					<div className="ratio _dish-cardLeagueInfo">
-						{/* #ratio */}
-						{/* <CardLeagueInfo info={cardInfo} /> */}
-						{/* EDIT */}
-					</div>
+					{!_.isEmpty(dataLeague) ? (
+						<div className="ratio _dish-cardLeagueInfo">
+							{/* #ratio */}
+							<CardLeagueInfo info={dataLeague} />
+						</div>
+					) : null}
 				</div>
 
 				{stateTopic.topics?.map((item, index) => (

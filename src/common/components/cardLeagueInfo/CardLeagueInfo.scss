@@ -10,6 +10,32 @@ $radius-card: 15px;
     background-repeat: no-repeat;
     position: relative;
 
+    .btn-enter {
+        width: 20%;
+        position: absolute;
+        bottom: 10px;
+        left: 40%;
+        @include fsM;
+        color: white;
+        padding: 5px;
+        border-radius: 4px;
+        background-color: $green-1;
+        cursor: pointer;
+        .icon {
+            @include fsS;
+            margin: 0 5px;
+        }
+    }
+
+    // .enter {
+    //     position: relative;
+
+    //     width: 100%;
+    //     height: 100%;
+    //     z-index: 1;
+    //     text-align: center;
+    //     }
+
     img {
         min-height: 100%;
         width: auto;
@@ -102,4 +128,8 @@ $radius-card: 15px;
 }
 
 @media screen and (max-width: $breakpoint-s) {
+    .btn-enter {
+        width: 30% !important;
+        left: 35% !important;
+    }
 }
