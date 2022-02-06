@@ -97,11 +97,13 @@ const RouterConfig = () => {
 				</Route>
 
 				{/* this routes not have specific layout */}
-				<Route exact path="/quickPlay" element={<ProtectedRoute />}>
-					<Route exact path="/quickPlay" element={<QuickPlay />} />
-					<Route exact path="/quickPlay/twoPlayers" element={<TwoPlayers />} />
-					<Route exact path="/quickPlay/onePlayer" element={<OnePlayer />} />
-					<Route exact path="/quickPlay/withFriends" element={<WithFriends />} />
+				<Route exact path="/" element={<ProtectedRoute />}>
+					<Route exact path="/" element={<MainLayout />}>
+						<Route exact path="/quickPlay" element={<QuickPlay />} />
+						<Route exact path="/quickPlay/twoPlayers" element={<TwoPlayers />} />
+						<Route exact path="/quickPlay/onePlayer" element={<OnePlayer />} />
+						<Route exact path="/quickPlay/withFriends" element={<WithFriends />} />
+					</Route>
 				</Route>
 
 				<Route exact path="/menu" element={<ProtectedRoute />}>

@@ -7,6 +7,13 @@
     background-position: center;
     background-size:contain;
     background-repeat: no-repeat;
+    @media (min-width: 1366px) {
+        min-width: 100vw;
+        min-height: 100vh;
+        position: absolute;
+        top: 0;
+        left:0;
+    }
     &__title {
         height:38px;
         // background-color:rgba(255,255,255,0.2);
@@ -16,6 +23,10 @@
             font-size: 16px;
             font-weight: 500;
             line-height: 38px;
+            @media (min-width: 1366px) {
+                font-size: 20px;
+
+            }
         }
     }
   
