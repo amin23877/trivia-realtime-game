@@ -8,7 +8,7 @@ import Footer from "common/components/footer/Footer";
 import SelectGameType from "pages/home/homeComponents/selectGameType/SelectGameType";
 
 import "./MainLayout.scss";
-import NotificationWidget from "common/components/notificationWidget/NotificationWidget";
+import NotificationWidget from "common/components/NotificationWidget/NotificationWidget";
 import { fetchUser } from "redux/actions/userActions/userActions";
 import { SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
 
