@@ -28,6 +28,9 @@ $size-avatar: 30px;
     border-radius: 0 0 16px 16px;
     box-shadow: 0 3px 5px rgba(94, 92, 106, 0.1);
 
+    // position:sticky; // CHECK
+    // top:0; // CHECK
+
     @include desktop {
       height: $desktop-height-header-inner;
       border-radius: 16px;
