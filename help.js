@@ -91,6 +91,8 @@ export default Template;
 
 
     {array.map((el, index) => (<p key={index} className=''>{el}</p>))}
+
+    `${IMAGE_URL}${encodeURI(url)}`
 Template ___________________________________________________________________
 
 
