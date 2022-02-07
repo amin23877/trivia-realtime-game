@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./OnePlayer.scss";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { GET_CATEGORIES_LIST } from "redux/actions/mainActions/generalActions";
 import { SOCKET_BASE_URL } from "common/values/CORE";
 import { io } from "socket.io-client";
@@ -10,14 +10,15 @@ import ShowQuestion from "../components/showQuestion/ShowQuestion";
 import CategoriesList from "../components/categories/CategoriesList";
 import GameResult from "./gameResult/GameResult";
 
-const OnePlayer = () => {
+const OnePlayer = ({ type = 'quickPlay' }) => {
 	const Dispatch = useDispatch();
 	const navigate = useNavigate();
-
+	let { id } = useParams();
+	console.log('type', type)
 	const categories = useSelector((state) => state.stateGeneral.categoriesList);
 	const [selectedCategory, setSelectedCategory] = useState();
 	const [singleGameQuestion, setSingleGameQuestion] = useState();
-	const [gameState, setGameState] = useState("showCategories");
+	const [gameState, setGameState] = useState(type === 'quickPlay' ? "showCategories" : 'showWaitForStart');
 	const [socket, setSocket] = useState();
 	const [authData, setAuthData] = useState();
 	const [myInfo, setMyInfo] = useState({ player: "player1", score: 0 });
@@ -37,6 +38,7 @@ const OnePlayer = () => {
 		myRef.current = myInfo;
 		socketRef.current = socket;
 	}, [myInfo, socket]);
+
 	useEffect(() => {
 		const socketp = io(socketUrl, { transports: ["websocket"] });
 		setSocket(socketp);
@@ -47,6 +49,10 @@ const OnePlayer = () => {
 
 		socketp.on("authentication", (e) => {
 			setAuthData(e)
+			if (type == 'topic') {
+				console.log('id is', id)
+				setSelectedCategory({ _id: id })
+			}
 		});
 		socketp.on("singleGameToken", handleSingleGameToken);
 		socketp.on("singleGameQuestion", handleSingleGameQuestion);
@@ -69,7 +75,14 @@ const OnePlayer = () => {
 	useEffect(() => {
 		if (selectedCategory) {
 			if (authData.socketid) {
-				socket.emit("singleGame", { CategoryId: selectedCategory._id });
+				switch (type) {
+					case 'quickPlay':
+						socket.emit("singleGame", { CategoryId: selectedCategory._id });
+						break;
+					case 'topic':
+						socket.emit("singleGame", { TopicId: id });
+						break;
+				}
 			}
 		}
 	}, [selectedCategory]);
@@ -95,7 +108,15 @@ const OnePlayer = () => {
 	};
 
 	const handleGotoBack = () => {
-		navigate("/");
+		switch (type) {
+			case 'quickPlay':
+				navigate('/');
+
+				break;
+			case 'topic':
+				navigate("/topics/" + id);
+				break;
+		}
 	};
 
 	const handleSelectCategory = (category) => {

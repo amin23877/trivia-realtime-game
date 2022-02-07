@@ -10,6 +10,7 @@ const initialState = {
 	openGameTypes: false,
 	openNotifDrawer: false,
 	typeLeaderboardComponent: null,
+	gameSelectionType: { type: 'quickPlay' }
 };
 export const generalReducer = (state = initialState, action) => {
 	// console.log("payload", action);
@@ -27,6 +28,8 @@ export const generalReducer = (state = initialState, action) => {
 			return { ...state, categoriesList: action.payload };
 		case actionsTypeGeneral.SET_OPEN_GAME_TYPES:
 			return { ...state, openGameTypes: action.payload };
+		case actionsTypeGeneral.SET_GAME_SELECTION_TYPE:
+			return { ...state, gameSelectionType: action.payload };
 		case actionsTypeGeneral.SET_TYPE_LEADERBOARD_COMPONENT:
 			return { ...state, typeLeaderboardComponent: action.payload };
 		case actionsTypeGeneral.TOGGLE_NOTIF_DRAWER:

@@ -31,6 +31,7 @@ import { TYPE_LEADERBOARD_COMPONENT } from "common/values/TYPES";
 import LeaderboardTabs from "pages/leaderboard/leaderboardComponents/LeaderboardTabs";
 import SelectGameType from "../selectGameType/SelectGameType";
 import { SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
+import { SET_GAME_SELECTION_TYPE } from "redux/actions/mainActions/generalActions";
 
 const HomeTopicsInner = () => {
 	let { id } = useParams();
@@ -41,7 +42,6 @@ const HomeTopicsInner = () => {
 	const [dataInnerTopic, setDataInnerTopic] = useState();
 	const [dataLeague, setDataLeague] = useState();
 	const stateGeneral = useSelector((state) => state.stateGeneral);
-	const { openGameTypes } = useSelector((state) => state.stateGeneral);
 
 	const styleBgImg = {
 		backgroundImage: `url(${IMAGE_URL}${encodeURI(dataInnerTopic?.logo)})`,
@@ -52,6 +52,8 @@ const HomeTopicsInner = () => {
 	};
 
 	const handlePlay = () => {
+		dispatch(SET_GAME_SELECTION_TYPE({ type: 'topic', id: id }));
+		dispatch(SET_OPEN_GAME_TYPES(true));
 		console.log("TODO handlePlay & id: ", id);
 	};
 
@@ -157,18 +159,6 @@ const HomeTopicsInner = () => {
 
 	return (
 		<div className="w-100 h-100 topicsInner">
-
-			{openGameTypes && (
-				<SelectGameType
-					open={openGameTypes}
-					type={'topic'}
-					id={dataInnerTopic?.id}
-					handleOpenGameTypes={() => {
-						dispatch(SET_OPEN_GAME_TYPES(false));
-					}}
-				/>
-			)}
-
 			<div className="topicsInner-header">
 				<div className="d-flex justify-content-between align-items-center sec-img" style={styleBgImg}>
 					<p className="d-flex justify-content-center align-items-center" onClick={handleGoBack}>

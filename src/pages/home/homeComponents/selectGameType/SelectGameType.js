@@ -5,27 +5,40 @@ import withFriendsIcon from 'assets/images/icons/withFriends.svg';
 import { useState } from 'react';
 import './SelectGameType.scss';
 import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 
 const SelectGameType = ({ handleOpenGameTypes, open }) => {
     const [clickedIndex, setClickedIndex] = useState()
+    const { gameSelectionType } = useSelector((state) => state.stateGeneral);
+
     const navigate = useNavigate();
+    const baseUrl = () => {
+        switch (gameSelectionType.type) {
+            case 'quickPlay':
+                return '/quickPlay';
+            case 'topic':
+                return '/topics/' + gameSelectionType.id;
+            default:
+                return '/quickPlay'
+        }
+    }
     const gameTypes = [
         {
             title: '1 Player',
             icon: onePlayerIcon,
-            link:'/quickPlay/onePlayer'
+            link: baseUrl() + '/onePlayer'
 
         },
         {
             title: '2 Players',
             icon: twoPlayersIcon,
-            link:'/quickPlay/twoPlayers'
+            link: baseUrl() + '/twoPlayers'
         },
         {
             title: 'With Friends',
             icon: withFriendsIcon,
-            link:'/quickPlay/withFriends'
+            link: baseUrl() + '/withFriends'
 
         },
     ]
@@ -47,7 +60,7 @@ const SelectGameType = ({ handleOpenGameTypes, open }) => {
 
         <div className="select-game-type">
             <ClickAwayListener
-                onClickAway={()=>closeGameTypes()}
+                onClickAway={() => closeGameTypes()}
             >
 
                 <div className="select-game-type__game-types-container">
