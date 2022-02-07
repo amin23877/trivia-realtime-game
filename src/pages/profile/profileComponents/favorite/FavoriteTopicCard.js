@@ -1,11 +1,11 @@
 import React from "react";
 
-import "./FavoriteTopicCard2.scss";
+import "./FavoriteTopicCard.scss";
 import iconRate from "assets/images/icons/rate-mini.svg";
 
-const HomeTopics = ({ data }) => {
+const FavoriteTopicCard = ({ data }) => {
 	return (
-		<div className="favorite-card-2--item">
+		<div className="favorite-card-2--item bg2 br3">
 			<div className="favorite-card-2--item__image">
 				<img src={data.image} alt={data.title + " image"} />
 			</div>
@@ -25,4 +25,4 @@ const HomeTopics = ({ data }) => {
 	);
 };
 
-export default HomeTopics;
+export default FavoriteTopicCard;

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import ProfileFavoriteTopicCard2 from "./FavoriteTopicCard2";
-import ProfileNoTopics from "../../ProfileNoTopics";
+// import ProfileNoTopics from "../../ProfileNoTopics";
 import { MOCK_FAVORITE_TOPICS } from "common/mocks/MOCK";
+
+import FavoriteTopicCard from "pages/profile/profileComponents/favorite/FavoriteTopicCard";
+import ProfileNoTopics from "pages/profile/profileComponents/ProfileNoTopics";
 
 import "./ProfileFavoriteTopics.scss";
 
@@ -17,9 +19,9 @@ const ProfileFavoriteTopics = () => {
 	}, []);
 
 	return !isLoading && data.length > 0 ? (
-		<div className="favorite-topics-grid">
-			{data.map((ft, i) => (
-				<ProfileFavoriteTopicCard2 key={i} data={ft} />
+		<div className="favorite-topics-grid bg1">
+			{data.map((el, index) => (
+				<FavoriteTopicCard key={index} data={el} />
 			))}
 		</div>
 	) : (
