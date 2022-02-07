@@ -96,43 +96,58 @@
 }
 
 ._topic-card {
+    --image-h : 100px;
+
+    @include desktop {
+        --image-h: 135px;
+    }
+
     min-width: calc(clamp(100px, 40%, 200px));
-    max-width: 200px !important;
+
+    display: flex;
+    flex-direction: column;
 
     margin: 5px !important;
     background-color: white;
     border-radius: 15px;
+    overflow: hidden;
     // --bs-aspect-ratio: 90%; // #ratio
-    box-shadow: 0px 3px 5px rgba(39, 39, 40, 0.1);
+    box-shadow: 0 3px 5px rgba(39, 39, 40, 0.1);
 
     .card-img {
-        height: 60%;
+        flex-grow: 1;
         width: 100%;
-        overflow: hidden;
+        height: var(--image-h);
 
         img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
         }
     }
 
     .card-info {
+        @include fontSize($fs-normal ,$fs-m);
         padding: 2px 5px;
-        height: 40%; // TEMP
-        // min-height: 30%;
+
+        @include desktop {
+            padding: .5rem;
+        }
+
         .title {
-            @include fsNormal;
+            padding-bottom: .5rem;
             color: colorBlack(85);
-            // font-weight: 600;
             font-family: RobotoBold;
+
+            @include desktop {
+                padding-bottom: 1.25rem;
+            }
         }
         .subtitle {
-            @include fsS;
+            @include fontSize(8px ,$fs-m);
             color: colorBlack(65);
-            // font-weight: 500;
         }
         .rate {
-            @include fsS;
             color: $orange-2;
             font-weight: 500;
         }
