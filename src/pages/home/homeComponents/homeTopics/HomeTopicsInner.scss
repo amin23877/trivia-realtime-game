@@ -1,142 +1,226 @@
 @import 'assets/scss/styles.scss';
 
-$height-header-inner: 280px;
+$mobile-height-header-inner: 280px;
+$desktop-height-header-inner: 220px;
 $height-footer-inner: 70px;
-$height-body-inner: calc(100% - #{$height-header-inner} - #{$height-footer-inner});
+$height-body-inner: calc(100vh - #{$mobile-height-header-inner} - #{$height-footer-inner});
 
 $size-square: 40px;
 $size-avatar: 30px;
 
 .topicsInner {
-    background-color: $bg-home;
+  @include limitContent;
 
-    .topicsInner-header {
-        background-color: white;
-        height: $height-header-inner;
-        border-radius: 0px 0px 16px 16px;
-        box-shadow: 0px 3px 5px rgba(94, 92, 106, 0.1);
+  background-color: $bg-home;
 
-        .sec-img {
-            width: 100%;
-            height: 40%;
-            padding: 20px;
-            // background: url('../../../../assets/images/test/2.png');
+  @include desktop {
+    padding-top: 2rem;
+  }
 
-            background-size: 100% auto;
-            background-repeat: no-repeat;
-            position: relative;
+  .title {
+    @include fontSize($fs-m ,$fs-xxxl);
+    font-family: RobotoBold;
+  }
 
-            p {
-                color: white;
-                border-radius: 4px;
-                width: $size-square;
-                height: $size-square;
-                background-color: colorBlack(30);
-            }
+  .topicsInner-header {
+    background-color: white;
+    height: $mobile-height-header-inner;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 3px 5px rgba(94, 92, 106, 0.1);
 
-            // img {
-            //     position: absolute;
-            //     width: 100%;
-            //     // max-height: 40%;
-            //     height: auto;
-            //     overflow-y: hidden;
-            //     margin: auto;
-            //     z-index: 0;
-            // }
-        }
-
-        .sec-info {
-            padding: 5px 20px;
-
-            .title {
-                @include fsXL;
-                font-family: RobotoBold;
-            }
-
-            .subtitle {
-                @include fsM;
-                padding-top: 10px;
-                color: colorBlack(55);
-            }
-
-            .add {
-                @include fsXL;
-                color: $red-1;
-                cursor: pointer;
-                font-family: RobotoBold;
-            }
-
-            .remove {
-                @include fsXL;
-                color: $grey-1;
-                cursor: pointer;
-                font-family: RobotoBold;
-            }
-
-            .grey {
-                color: colorBlack(50);
-            }
-
-            .gold {
-                color: $orange-2;
-            }
-        }
+    @include desktop {
+      height: $desktop-height-header-inner;
+      border-radius: 16px;
+      display: flex;
+      overflow: hidden;
     }
-    .topicsInner-body {
-        padding: 20px;
-        overflow-y: auto !important;
-        height: $height-body-inner;
 
-        .description {
-            .title {
-                @include fsL;
-                padding-top: 20px;
-                font-family: RobotoBold;
-            }
 
-            .text {
-                @include fsM;
-                padding-top: 10px;
-                line-height: 22px;
-                color: colorBlack(50);
-            }
-        }
 
-        .badges {
-            margin: 20px 0;
-            .badge {
-                @include fsNormal;
-                padding: 5px;
-                cursor: pointer;
-                margin: 8px 3px;
-                border-radius: 8px;
-                color: colorBlack(50);
-                border: 1px solid $grey-1;
-            }
-        }
+    .sec-img {
+      width: 100%;
+      height: 40%;
+      padding: 20px;
+      // background: url('../../../../assets/images/test/2.png');
 
-        .board {
-            .title {
-                padding: 20px 0;
-                @include fsL;
-                font-family: RobotoBold;
-            }
-        }
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      position: relative;
+
+      @include desktop {
+        width: 50%;
+        height: 100%;
+      }
+
+      p {
+        color: white;
+        border-radius: 4px;
+        width: $size-square;
+        height: $size-square;
+        background-color: colorBlack(30);
+      }
+
+      // img {
+      //     position: absolute;
+      //     width: 100%;
+      //     // max-height: 40%;
+      //     height: auto;
+      //     overflow-y: hidden;
+      //     margin: auto;
+      //     z-index: 0;
+      // }
     }
-    .topicsInner-footer {
-        height: $height-footer-inner;
-        background-color: white;
-        box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.1);
-        .btn-play {
-            @include fsL;
-            color: white;
-            padding: 10px;
-            border-radius: 10px;
-            font-family: RobotoBold;
-            width: calc(min(50%, 200px));
-            background-color: $bg-btn-play;
-            border: 1px solid $bg-btn-play;
-            box-shadow: 0px 3px 6px rgba(248, 63, 95, 0.3);
+
+    .sec-info {
+      flex-grow: 1;
+      padding: 5px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      @include desktop {
+        padding: 13px 21px;
+      }
+
+      .icons-container {
+        padding-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include desktop {
+          padding: 0;
+          max-width: 130px;
+          flex-wrap: wrap;
         }
+      }
+
+      .actions-btn-container {
+        @include desktop {
+          display: flex;
+          //align-items: center;
+          gap: 1.75rem;
+
+          padding-top: 16px;
+        }
+      }
+
+      .subtitle {
+        @include fsM;
+        padding-top: 10px;
+        color: colorBlack(55);
+
+        @include desktop {
+          padding: 0;
+        }
+      }
+
+      .add, .remove {
+        @include fsXL;
+        cursor: pointer;
+        font-family: RobotoBold;
+        flex-grow: 1;
+
+        @include desktop {
+          @include fsL;
+          box-shadow: 0 3px 6px rgba(149, 66, 87, 0.15), inset -1px -1px 2px rgba(111, 92, 97, 0.3), inset 1px 1px 2px rgba(255, 255, 255, 0.4);
+          padding: 10px;
+          border-radius: 10px;
+          width: calc(min(50%, 220px));
+        }
+      }
+
+      .add {
+        color: $red-1;
+      }
+
+      .remove {
+        color: $grey-1;
+        white-space: nowrap;
+      }
+
+      .grey {
+        color: colorBlack(50);
+      }
+
+      .gold {
+        color: $orange-2;
+
+        @include desktop {
+          padding-top: 28px;
+        }
+      }
     }
+  }
+
+  .topicsInner-body {
+    padding: 20px;
+    overflow-y: auto;
+    height: $height-body-inner;
+
+    @include desktop {
+      padding: 32px 0;
+      overflow-y: visible;
+      height: auto;
+    }
+
+    .description {
+      .title {
+        @include fontSize($fs-m ,$fs-xxl);
+        padding-top: 1.5em;
+        font-family: RobotoBold;
+      }
+
+      .text {
+        @include fsM;
+        padding-top: 10px;
+        line-height: 22px;
+        color: colorBlack(50);
+      }
+    }
+
+    .badges {
+      margin: 20px 0;
+
+      .badge {
+        @include fsNormal;
+        padding: 5px;
+        cursor: pointer;
+        margin: 8px 3px;
+        border-radius: 8px;
+        color: colorBlack(50);
+        border: 1px solid $grey-1;
+      }
+    }
+
+    .board {
+      .title {
+        @include fontSize($fs-m ,$fs-xxl);
+        padding: 20px 0;
+        font-family: RobotoBold;
+      }
+    }
+  }
+
+  .topicsInner-footer {
+    height: $height-footer-inner;
+    background-color: white;
+    box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+  }
+}
+
+.btn-play {
+  @include fsL;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: RobotoBold;
+  width: calc(min(50%, 200px));
+  background-color: $bg-btn-play;
+  border: 1px solid $bg-btn-play;
+  box-shadow: 0px 3px 6px rgba(248, 63, 95, 0.3);
 }
