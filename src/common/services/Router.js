@@ -22,7 +22,7 @@ import LeaguesHistory from "pages/leagues/leaguesComponents/LeaguesHistory";
 import HomeTopicsInner from "pages/home/homeComponents/homeTopics/HomeTopicsInner";
 import HomeTopicsSeeAll from "pages/home/homeComponents/homeTopics/HomeTopicsSeeAll";
 import ProfilePerformance from "pages/profile/profileComponents/Contents/Performance/ProfilePerformance";
-import ProfileFriends from "pages/profile/profileComponents/Contents/Friends/ProfileFriends";
+import ProfileFriends from "pages/profile/profileComponents/Friends/ProfileFriends";
 import TwoPlayers from "pages/quickPlay/twoPlayers/TwoPlayers";
 import OnePlayer from "pages/quickPlay/onePlayer/OnePlayer";
 import MainLayout from "common/components/layout/MainLayout";
