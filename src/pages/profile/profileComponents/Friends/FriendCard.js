@@ -8,10 +8,13 @@ import { useNavigate } from "react-router-dom";
 import GeneralModal from "pages/modals/GeneralModal";
 //----assets
 import "./FriendCard.scss";
+import { useSelector } from "react-redux";
 
 const FriendCard = ({ data }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+
+	const stateGeneral = useSelector((state) => state.stateGeneral);
 
 	const handleOpen = () => {
 		dispatch(SET_MODALS({ [MODALS.generalModal]: true }));
@@ -21,26 +24,29 @@ const FriendCard = ({ data }) => {
 	};
 	return (
 		<>
-			<GeneralModal
-				actionText="Remove"
-				question={`Remove ${data.name} from Friends ?`}
-				icon={data.image}
-				cb={() => removeFriendHandler(data.id || "No id provided to remove a friend.")}
-			/>
 			<div className="profile-friend--item">
 				<div
-					onClick={() => navigate(`/friends/${data.id}/profile/favorite-topics`)}
+					onClick={() => navigate(`/friends/${data?.id}/profile/favorite-topics`)}
 					className="profile-friend--item__info"
 				>
 					<div className="profile-friend--item__info__avatar">
-						<img src={data.image} alt={data.name} />
+						<img src={data?.image} alt={data?.name} />
 					</div>
-					<p className="profile-friend--item__info__name">{data.name}</p>
+					<p className="profile-friend--item__info__name">{data?.name}</p>
 				</div>
 				<button onClick={handleOpen} className="profile-friend--item__remove">
 					Remove
 				</button>
 			</div>
+
+			{stateGeneral.modals[MODALS.generalModal] ? (
+				<GeneralModal
+					actionText="Remove"
+					question={`Remove ${data?.name} from Friends ?`}
+					icon={data.image}
+					cb={() => removeFriendHandler(data?.id || "No id provided to remove a friend.")}
+				/>
+			) : null}
 		</>
 	);
 };
