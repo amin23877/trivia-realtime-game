@@ -10,7 +10,7 @@ import React from "react";
 import "./CardTopic.scss";
 import iconRate from "assets/images/icons/rate-mini.svg";
 
-const CardTopic = ({ data, onClickCardTopic }) => {
+const CardTopic = ({ data }) => {
 	return (
 		<div className="_wh-100 cardTopic">
 			<div className="_wh-100 card-img">
@@ -19,7 +19,7 @@ const CardTopic = ({ data, onClickCardTopic }) => {
 			<div className="d-flex flex-column justify-content-between card-info">
 				<p className="title">{data?.name}</p>
 				<div className="d-flex justify-content-between align-items-center">
-					<p className="subtitle">{`${data?.singlePlays + data?.doublePlays} plays`}</p>
+					<p className="subtitle">{`${data?.singlePlays || 0 + data?.doublePlays || 0} plays`}</p>
 					<p className="rate">
 						<img className="mx-1" src={iconRate} alt="" />
 						<span>{data?.rate}</span>
