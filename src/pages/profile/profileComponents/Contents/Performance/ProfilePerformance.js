@@ -4,11 +4,11 @@ import React, { useEffect, useState } from "react";
 import "./ProfilePerformance.scss";
 import { MOCK_HISTORY_OF_PARTICIPATING, MOCK_PERFORMANCE_LEVEL } from "common/mocks/MOCK";
 //----components
-import ProfileNoTopics from "../../ProfileNoTopics";
 import PerformanceLevelCard from "./PerformanceLevelCard";
 import ParticipatingHistoryCard from "./ParticipatingHistoryCard";
 import PlayedHistoryCard from "./PlayedHistoryCard";
 import PerformanceContentSection from "./PerformanceContentSectoin";
+import EmptyList from "common/components/empties/EmptyList";
 
 const ProfilePerformance = () => {
 	//----data states
@@ -44,7 +44,7 @@ const ProfilePerformance = () => {
 				</div>
 			) : (
 				<>
-					<ProfileNoTopics />
+					<EmptyList type="PROFILE_TOPIC" />
 				</>
 			)}
 		</>

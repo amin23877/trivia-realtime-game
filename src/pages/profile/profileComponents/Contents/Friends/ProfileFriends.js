@@ -4,9 +4,9 @@ import React, { useEffect, useState } from "react";
 //----assets
 import "./ProfileFriends.scss";
 //----components
-import ProfileNoTopics from "../../ProfileNoTopics";
 import FriendCard from "./FriendCard";
 import Search from "common/components/UI/Search";
+import EmptyList from "common/components/empties/EmptyList";
 
 const ProfileFriends = () => {
 	const [data, setData] = useState();
@@ -32,7 +32,7 @@ const ProfileFriends = () => {
 			</div>
 		</div>
 	) : (
-		<ProfileNoTopics />
+		<EmptyList type="PROFILE_TOPIC" />
 	);
 };
 
