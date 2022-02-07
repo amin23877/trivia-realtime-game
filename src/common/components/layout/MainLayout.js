@@ -43,7 +43,7 @@ const MainLayout = ({ footer = false }) => {
 					<Footer />
 				</footer>
 			)}
-
+			
 			{openGameTypes && (
 				<SelectGameType
 					open={openGameTypes}
