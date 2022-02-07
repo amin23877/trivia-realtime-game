@@ -26,7 +26,9 @@
         width: 100%;
         padding: 0 24px;
         border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
-
+        @media (min-width: 1366px) {
+            padding-left:120px;
+        }
         & > p {
             font-size: 14px;
         }
@@ -36,6 +38,9 @@
             align-items: center;
             justify-content: space-between;
             margin-bottom: 44px;
+            @media (min-width: 1366px) {
+                justify-content: flex-start;
+            }
             & > input,
             & > button {
                 width: 150px !important;
@@ -43,6 +48,9 @@
                 border: none !important;
                 outline: none !important;
                 border-radius: 8px !important;
+                @media (min-width: 1366px) {
+                    border-radius: 8px 0 0 8px !important;
+                }
             }
             & > button {
                 background-color: #6d6be6 !important;
@@ -50,6 +58,9 @@
                 box-shadow: 0px 2px 2px 0px #ffffff40 inset;
                 color: #fff !important;
                 text-transform: capitalize !important;
+                @media (min-width: 1366px) {
+                    border-radius: 0 8px 8px 0 !important;
+                }
             }
             &--disabled {
                 background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
@@ -64,6 +75,10 @@
         flex-direction: column;
         align-items: center;
         margin-top: 44px;
+        @media (min-width: 1366px) {
+            align-items: flex-start;
+            padding-left:120px;
+        }
         & > p {
             font-size: 14px;
         }

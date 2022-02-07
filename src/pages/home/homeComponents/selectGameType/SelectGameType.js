@@ -36,8 +36,10 @@ const SelectGameType = ({ handleOpenGameTypes, open }) => {
     }
     const handleClickItem = (item, index) => {
         setClickedIndex(index)
+
         setTimeout(() => {
             navigate(item.link)
+            handleOpenGameTypes(false)
         }, 50)
     }
 

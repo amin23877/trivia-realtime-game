@@ -6,6 +6,13 @@
     padding-top:57px;
     background-position: center;
     background-size:cover;
+    @media (min-width: 1366px) {
+        min-width: 100vw;
+        min-height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
     &__title {
         height:38px;
         background-color:rgba(255,255,255,0.2);

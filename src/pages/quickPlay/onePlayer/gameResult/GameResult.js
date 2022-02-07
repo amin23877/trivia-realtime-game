@@ -15,7 +15,7 @@ const GameResult = ({ myInfo, gameResultData }) => {
                
                 <div className={`game-result__avatar--image flex-center`}>
                    
-                    <div className={`game-result__avatar--image--inner`}>
+                    <div className={`game-result__avatar--image--inner game-result__avatar--image--winner-ring`}>
                         <img src={userIcon} />
                     </div>
                     <p className={`game-result__avatar--image--name`}>{gameResultData?.message}</p>
