@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 // Material - lab
 // Styles, Icons, Images
 import "./LeaderboardTabPanel.scss";
+import Avatar from "common/components/UI/Avatar";
 
 const LeaderboardTabPanelBody = ({ dataLeaderboard }) => {
 	const stateGeneral = useSelector((state) => state.stateGeneral);
@@ -28,7 +29,10 @@ const LeaderboardTabPanelBody = ({ dataLeaderboard }) => {
 								stateGeneral.typeLeaderboardComponent === TYPE_LEADERBOARD_COMPONENT.INNER_LEAGUE ? (
 									<div key={index} className="d-flex align-items-center _br-bottom user">
 										<span className="index">{`${index + indexStart}.`}</span>
-										<img className="avatar" src={`${IMAGE_URL}${el?.UserId?.avatar}`} alt="" />
+										<Avatar
+											size={{ mobile: 22, desktop: 44 }}
+											src={`${IMAGE_URL}${el?.UserId?.avatar}`}
+										/>
 										<p className="username">{el?.UserId?.username}</p>
 										<p className="reward">{`$ ${el?.reward}`}</p>
 										<p className="points">{`${el?.point}`}</p>
@@ -37,7 +41,10 @@ const LeaderboardTabPanelBody = ({ dataLeaderboard }) => {
 								) : (
 									<div key={index} className="d-flex align-items-center _br-bottom user">
 										<span className="index">{`${index + indexStart}.`}</span>
-										<img className="avatar" src={`${IMAGE_URL}${el?.UserId?.avatar}`} alt="" />
+										<Avatar
+											size={{ mobile: 22, desktop: 44 }}
+											src={`${IMAGE_URL}${el?.UserId?.avatar}`}
+										/>
 										<p className="username">{el?.UserId?.username}</p>
 										<p className="points">{`${el?.xp} points`}</p>
 									</div>

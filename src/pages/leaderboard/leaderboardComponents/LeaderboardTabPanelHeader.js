@@ -6,11 +6,14 @@ import _ from "lodash";
 // Components, Services, Functions
 import { IMAGE_URL } from "common/values/CORE";
 import { TYPE_LEADERBOARD_COMPONENT } from "common/values/TYPES";
+import Avatar from "common/components/UI/Avatar";
+
 // Redux
 import { useSelector } from "react-redux";
 // Material - lab
 // Styles, Icons, Images
 import "./LeaderboardTabPanel.scss";
+import bestPlayersLevel from "assets/images/pics/best-players-stage.svg";
 
 const LeaderboardTabPanelHeader = ({ dataLeaderboard }) => {
 	const stateGeneral = useSelector((state) => state.stateGeneral);
@@ -27,10 +30,10 @@ const LeaderboardTabPanelHeader = ({ dataLeaderboard }) => {
 										stateGeneral.typeLeaderboardComponent ===
 										TYPE_LEADERBOARD_COMPONENT.INNER_LEAGUE ? (
 											<>
-												<img
-													className="avatar"
+												<Avatar
+													className="leaderboard-avatar"
+													size={{ mobile: 32, desktop: 54 }}
 													src={`${IMAGE_URL}${el?.UserId?.avatar}`}
-													alt=""
 												/>
 												<p className="username">{el?.UserId?.username}</p>
 												<p className="points">{`${el?.point} points`}</p>
@@ -38,10 +41,10 @@ const LeaderboardTabPanelHeader = ({ dataLeaderboard }) => {
 											</>
 										) : (
 											<>
-												<img
-													className="avatar"
+												<Avatar
+													className="leaderboard-avatar"
+													size={{ mobile: 32, desktop: 54 }}
 													src={`${IMAGE_URL}${el?.UserId?.avatar}`}
-													alt=""
 												/>
 												<p className="username">{el?.UserId?.username}</p>
 												<p className="points">{`${el?.xp} points`}</p>
@@ -54,10 +57,8 @@ const LeaderboardTabPanelHeader = ({ dataLeaderboard }) => {
 							))}
 						</div>
 
-						<div className="d-flex align-items-center levels">
-							<div className="level level-2">2</div>
-							<div className="level level-1">1</div>
-							<div className="level level-3">3</div>
+						<div className="w-100 mt-3">
+							<img width="100%" alt="" src={bestPlayersLevel} />
 						</div>
 					</div>
 				</>
