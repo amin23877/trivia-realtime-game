@@ -59,6 +59,9 @@ const RouterConfig = () => {
 				{/* routes with main layout without footer */}
 				<Route exact path="/" element={<MainLayout />}>
 					<Route exact path="/topics/:id" element={<HomeTopicsInner />} />
+					<Route exact path="/topics/:id/onePlayer" element={<OnePlayer type={'topic'} />} />
+					<Route exact path="/topics/:id/twoPlayers" element={<TwoPlayers type={'topic'} />} />
+					<Route exact path="/topics/:id/withFriends" element={<WithFriends type={'topic'} />} />
 					<Route exact path="/topics/all/:type" element={<HomeTopicsSeeAll />} />
 
 					<Route exact path="/leaderboard" element={<Leaderboard />} />

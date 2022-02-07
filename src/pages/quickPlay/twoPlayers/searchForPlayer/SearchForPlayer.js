@@ -3,7 +3,7 @@ import searchForUserCenter from 'assets/images/icons/searchForUserCenter.svg';
 import searchForUserRing from 'assets/images/icons/searchForUserRing.svg';
 import { Button } from '@material-ui/core';
 
-const SearchForPlayer = ({ selectedCategory, handleClose }) => {
+const SearchForPlayer = ({ handleClose }) => {
     return (
         <div className="search-for-player">
             <p className="search-for-player__title">Search for rival players</p>

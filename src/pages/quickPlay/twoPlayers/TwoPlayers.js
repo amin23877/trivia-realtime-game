@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./TwoPlayers.scss";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { GET_CATEGORIES_LIST } from "redux/actions/mainActions/generalActions";
 import SearchForPlayer from "./searchForPlayer/SearchForPlayer";
 import { SOCKET_BASE_URL } from "common/values/CORE";
@@ -12,15 +12,16 @@ import CategoriesList from "../components/categories/CategoriesList";
 import GameResult from "./gameResult/GameResult";
 import ViewAnswers from "../components/viewAnswers/ViewAnswers";
 
-const TwoPlayers = () => {
+const TwoPlayers = ({ type = 'quickPlay' }) => {
 	const Dispatch = useDispatch();
 	const navigate = useNavigate();
+	let { id } = useParams();
 
 	const categories = useSelector((state) => state.stateGeneral.categoriesList);
 	const [selectedCategory, setSelectedCategory] = useState();
 	const [doubleGameReady, setDoubleGameReady] = useState();
 	const [doubleGameQuestion, setDoubleGameQuestion] = useState();
-	const [gameState, setGameState] = useState("showCategories");
+	const [gameState, setGameState] = useState(type === 'quickPlay' ? "showCategories" : 'showSearchForPlayer');
 	const [socket, setSocket] = useState();
 	const [socketId, setSocketId] = useState();
 	const [myInfo, setMyInfo] = useState({ player: "player1", score: 0 });
@@ -52,6 +53,10 @@ const TwoPlayers = () => {
 
 		socketp.on("authentication", (e) => {
 			setSocketId(e.socketid);
+			if (type == 'topic') {
+				console.log('id is', id)
+				setSelectedCategory({ _id: id })
+			}
 		});
 		socketp.on("doubleGameReady", handleDoubleGameReady);
 		socketp.on("doubleGame", (e) => {
@@ -78,7 +83,14 @@ const TwoPlayers = () => {
 	useEffect(() => {
 		if (selectedCategory) {
 			if (socketId) {
-				socket.emit("doubleGame", { CategoryId: selectedCategory._id });
+				switch (type) {
+					case 'quickPlay':
+						socket.emit("doubleGame", { CategoryId: selectedCategory._id });
+						break;
+					case 'topic':
+						socket.emit("doubleGame", { TopicId: id });
+						break;
+				}
 			}
 		}
 	}, [selectedCategory]);
@@ -122,7 +134,15 @@ const TwoPlayers = () => {
 	};
 
 	const handleGotoBack = () => {
-		navigate("/");
+		switch (type) {
+			case 'quickPlay':
+				navigate('/');
+
+				break;
+			case 'topic':
+				navigate("/topics/" + id);
+				break;
+		}
 	};
 
 	const handleSelectCategory = (category) => {
@@ -130,8 +150,16 @@ const TwoPlayers = () => {
 		setSelectedCategory(category);
 	};
 	const handleCloseSearch = () => {
-		setSelectedCategory(null);
-		setGameState("showCategories");
+		switch (type) {
+			case 'quickPlay':
+				setSelectedCategory(null);
+				setGameState("showCategories");
+				break;
+			case 'topic':
+				navigate("/topics/" + id);
+				break;
+		}
+
 		// socket.io.disconnect();
 		// socket.io.open();
 	};
@@ -158,7 +186,7 @@ const TwoPlayers = () => {
 				/>
 			)}
 			{gameState == "showSearchForPlayer" && (
-				<SearchForPlayer handleClose={handleCloseSearch} selectedCategory={selectedCategory} />
+				<SearchForPlayer handleClose={handleCloseSearch} />
 			)}
 			{gameState == "showWaitForStart" && <WaitForStart doubleGameReady={doubleGameReady} />}
 			{gameState == "showQuestions" && (

@@ -19,6 +19,7 @@ import iconHomeActive from "assets/images/icons/footer-home-active.svg";
 import iconLeagueActive from "assets/images/icons/footer-league-active.svg";
 import iconSearchActive from "assets/images/icons/footer-search-active.svg";
 import iconProfileActive from "assets/images/icons/footer-profile-active.svg";
+import { SET_GAME_SELECTION_TYPE } from "redux/actions/mainActions/generalActions";
 
 const Footer = ({ handleOpenGameTypes }) => {
 	const location = useLocation();
@@ -101,6 +102,7 @@ const Footer = ({ handleOpenGameTypes }) => {
 		// console.log(item);
 		switch (item.type) {
 			case "PLAY":
+				dispatch(SET_GAME_SELECTION_TYPE({ type: 'quickPlay', id: null }));
 				dispatch(SET_OPEN_GAME_TYPES(true));
 				break;
 			default:

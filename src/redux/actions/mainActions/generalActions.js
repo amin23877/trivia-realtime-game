@@ -46,6 +46,12 @@ export const SET_OPEN_GAME_TYPES = (payload) => {
 		payload,
 	};
 };
+export const SET_GAME_SELECTION_TYPE = (payload) => {
+	return {
+		type: actionsTypeGeneral.SET_GAME_SELECTION_TYPE,
+		payload,
+	};
+};
 
 export const TOGGLE_NOTIF_DRAWER = () => {
 	return {
