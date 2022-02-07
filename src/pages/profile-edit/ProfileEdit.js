@@ -5,6 +5,8 @@ import ChangeUsername from "pages/profile-edit/profileEditComponents/ChangeUsern
 import ChangeAvatar from "pages/profile-edit/profileEditComponents/ChangeAvatar";
 import ChangeCover from "pages/profile-edit/profileEditComponents/ChangeCover";
 
+import "./ProfileEdit.scss";
+
 /*
  * 	cover and avatar are changed when user upload new image
  * 	but username need to "save changes" button clicked
@@ -20,7 +22,7 @@ const EditProfile = () => {
 	};
 
 	return (
-		<div className="h-100 d-flex flex-column">
+		<div className="profile-edit-root">
 			<ProfileEditHeader newUsername={newUsername} />
 
 			<ChangeCover />

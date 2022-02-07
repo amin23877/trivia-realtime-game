@@ -10,6 +10,12 @@
   }
 }
 
+@mixin limitContent {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
 @mixin btnMain() {
   width: 100%;
 }
@@ -58,6 +64,11 @@
   display: inline-block;
   border-radius: $radius;
   background-color: $color;
+
+  @include desktop {
+    width: calc(2 * #{$size});
+    height: calc(2 * #{$size});
+  }
 }
 
 @mixin avatarShape($size, $color: white) {
@@ -69,7 +80,8 @@
 }
 
 @mixin pageTitle() {
-  @include fsL;
+  @include fontSize($fs-l,$fs-xxl);
+
   font-family: RobotoBlack;
   color: colorBlack(80);
 }
