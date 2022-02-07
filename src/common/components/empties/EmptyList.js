@@ -8,9 +8,9 @@ const EmptyList = ({ type }) => {
 	return (
 		<div className="_wh-100 d-flex justify-content-center align-items-center emptyList">
 			{type === "PROFILE_TOPIC" ? (
-				<div className="_wh-100 profile-topics">
+				<div className="_wh-100 d-flex justify-content-center align-items-center profile-topics">
 					<img src={imgEmptyListProfileTopic} alt="" />
-					<p className="message">No Topics added to favorites</p>
+					{/* <p className="message">There is nothing . . .</p> */}
 				</div>
 			) : (
 				<>

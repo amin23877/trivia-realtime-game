@@ -34,11 +34,17 @@ const ProfileFavoriteTopics = () => {
 	};
 
 	useEffect(() => {
-		getData();
+		let isMounted = true;
+		if (isMounted) {
+			getData();
+		}
+		return () => {
+			isMounted = false;
+		};
 	}, []);
 
 	return (
-		<div className="w-100 h-100 d-flex justify-content-center align-items-center homeTopics">
+		<div className="_wh-100 d-flex justify-content-center align-items-center favoriteTopics">
 			{favoriteTopics?.length > 0 ? (
 				<div className="favorite-topics-grid">
 					{favoriteTopics.map((el, index) => (
