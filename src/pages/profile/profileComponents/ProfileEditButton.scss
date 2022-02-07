@@ -13,6 +13,7 @@ $profile-edit-button-width: 32px;
   height: $profile-edit-button-width;
   border-radius: 4px;
   backdrop-filter: blur(4px);
+
   &__icon {
     @include centerInBox;
     width: $profile-edit-icon-width;

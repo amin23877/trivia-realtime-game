@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 
@@ -9,11 +9,17 @@ import SelectGameType from "pages/home/homeComponents/selectGameType/SelectGameT
 
 import "./MainLayout.scss";
 import NotificationWidget from "common/components/NotificationWidget/NotificationWidget";
+import { fetchUser } from "redux/actions/userActions/userActions";
 import { SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
 
 const MainLayout = ({ footer = false }) => {
-	const { openGameTypes, openNotifDrawer } = useSelector((state) => state.stateGeneral);
 	const dispatch = useDispatch();
+	const { openGameTypes, openNotifDrawer } = useSelector((state) => state.stateGeneral);
+
+	useEffect(() => {
+		dispatch(fetchUser());
+	}, [dispatch]);
+
 	return (
 		<div className="main-layout">
 			<aside className={`main-layout__notif-drawer ${openNotifDrawer ? "main-layout__notif-drawer_open" : ""}`}>
@@ -41,7 +47,6 @@ const MainLayout = ({ footer = false }) => {
 			{openGameTypes && (
 				<SelectGameType
 					open={openGameTypes}
-					// handleOpenGameTypes={() => {}}
 					handleOpenGameTypes={() => {
 						dispatch(SET_OPEN_GAME_TYPES(false));
 					}}

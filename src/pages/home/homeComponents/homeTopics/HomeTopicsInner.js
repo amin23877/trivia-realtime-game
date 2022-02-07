@@ -159,20 +159,22 @@ const HomeTopicsInner = () => {
 
 	return (
 		<div className="w-100 h-100 topicsInner">
+			<p className="title d-none d-xl-block mb-3">{dataInnerTopic?.name}</p>
+
 			<div className="topicsInner-header">
 				<div className="d-flex justify-content-between align-items-center sec-img" style={styleBgImg}>
-					<p className="d-flex justify-content-center align-items-center" onClick={handleGoBack}>
+					<p className="d-flex d-xl-none justify-content-center align-items-center" onClick={handleGoBack}>
 						<ArrowBackIcon />
 					</p>
-					<p className="d-flex justify-content-center align-items-center">
+					<p className="d-flex d-xl-none justify-content-center align-items-center">
 						<ShareOutlinedIcon />
 					</p>
 				</div>
 
 				<div className="sec-info">
-					<p className="title">{dataInnerTopic?.name}</p>
+					<p className="title d-xl-none">{dataInnerTopic?.name}</p>
 					<p className="subtitle">{dataInnerTopic?.categoryName}</p>
-					<div className="pt-2 d-flex justify-content-between align-items-center">
+					<div className="icons-container">
 						<p className="grey">
 							<PlayArrowIcon />
 							<span className="mx-1">{dataInnerTopic?.singlePlays + dataInnerTopic?.doublePlays}</span>
@@ -188,17 +190,24 @@ const HomeTopicsInner = () => {
 						</p>
 					</div>
 
-					<hr />
+					<hr className="d-xl-none" />
 
-					{!dataInnerTopic?.status ? (
-						<p className="text-center add" onClick={handleAddToFavorites}>
-							<AddIcon /> Add to favorites
-						</p>
-					) : (
-						<p className="text-center remove" onClick={handleRemoveFavorites}>
-							<RemoveIcon /> Remove from Favorites
-						</p>
-					)}
+					<div className="actions-btn-container">
+						<button className="btn-play d-none d-xl-block" onClick={handlePlay}>
+							<span className="mx-1">Play</span>
+							<PlayArrowIcon className="mx-1" />
+						</button>
+
+						{!dataInnerTopic?.status ? (
+							<p className="text-center add" onClick={handleAddToFavorites}>
+								<AddIcon /> Add to favorites
+							</p>
+						) : (
+							<p className="text-center remove" onClick={handleRemoveFavorites}>
+								<RemoveIcon /> Remove from Favorites
+							</p>
+						)}
+					</div>
 				</div>
 			</div>
 
@@ -228,7 +237,7 @@ const HomeTopicsInner = () => {
 				</div>
 			</div>
 
-			<div className="d-flex justify-content-center align-items-center topicsInner-footer">
+			<div className="d-flex d-xl-none justify-content-center align-items-center topicsInner-footer">
 				<button className="btn-play" onClick={handlePlay}>
 					<span className="mx-1">Play</span>
 					<PlayArrowIcon className="mx-1" />

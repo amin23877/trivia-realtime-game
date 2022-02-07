@@ -1,0 +1,72 @@
+@import 'assets/scss/styles.scss';
+
+$details-font-size : 8px;
+$star-icons-size: 10px;
+$ft-card-image-height: 94px;
+$ft-card-height: 141px;
+
+.favorite-card-2--item {
+  --card-height: 141px;
+  --card-img-height: 94px;
+
+  @include desktop {
+    --card-height: 280px;
+    --card-img-height: 196px;
+  }
+
+  @include box;
+  height: var(--card-height);
+
+  &__image {
+    img {
+      width: 100%;
+      height: var(--card-img-height);
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+  }
+
+  &__content {
+    text-align: left;
+    padding: 4px 5px;
+
+    @include desktop {
+      padding: .75rem;
+    }
+
+    &__title {
+      @include fontSize($fs-normal, $fs-l);
+
+      line-height: 14px;
+      color: $text-dark;
+    }
+
+    &__details {
+      @include fontSize($details-font-size, $fs-m);
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @include desktop {
+        padding-top: 2rem;
+      }
+
+      &__quesplays {
+        color: $text-footer;
+      }
+
+      &__rating {
+        display: flex;
+        align-items: center;
+        color: $gold;
+
+        img {
+          width: $star-icons-size;
+          height: $star-icons-size;
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+}

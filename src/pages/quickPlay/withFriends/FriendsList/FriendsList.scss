@@ -1,6 +1,12 @@
 @import "assets/scss/styles.scss";
 
 .friends-list {
+    @media (min-width: 1366px) {
+        padding-left:120px;
+        max-width:620px;
+        position: relative;
+        padding-top:100px;
+    }
     &__header {
         position: sticky;
         top: 0;
@@ -91,6 +97,14 @@
         align-items: center;
         justify-content: space-between;
         padding: 0 24px;
+        @media (min-width: 1366px) {
+            top:21px;
+            left:120px;
+            max-width:362px;
+            position: absolute;
+            box-shadow: none;
+            flex-direction: row-reverse;
+        }
         & .disabled-btn {
             pointer-events: none;
             background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),

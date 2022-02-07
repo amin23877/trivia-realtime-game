@@ -1,0 +1,16 @@
+@import '../../../assets/scss/styles';
+
+.save-changes-btn {
+  @include fontSize($fs-normal ,$fs-m);
+
+  cursor: pointer;
+  background-color: #F24973;
+  padding: 7px 16px;
+  border-radius: 8px;
+  color: #fff;
+  box-shadow: 0 3px 4px rgba(248, 63, 95, 0.3);
+
+  @include desktop {
+    padding: 14px 54px;
+  }
+}

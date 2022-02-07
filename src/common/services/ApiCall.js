@@ -17,6 +17,13 @@ class ApiCall {
 			headers: { Authorization: token },
 		});
 	}
+
+	patch(url, body) {
+		const token = localStorage.getItem("token") ? localStorage.getItem("token") : null;
+		return axios.patch(baseUrl + url, body, {
+			headers: { Authorization: token },
+		});
+	}
 }
 
 export default ApiCall;

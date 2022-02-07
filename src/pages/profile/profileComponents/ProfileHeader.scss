@@ -1,4 +1,4 @@
-@import "../../../assets/scss/styles.scss";
+@import "assets/scss/styles.scss";
 
 $profile-header-image-height: 135px;
 $profile-header-height: 225px;
@@ -19,37 +19,90 @@ $tab-bar-height: 2.5px;
   @return -(($profile-header-avatar / 2) + $profile-info-padding-top)
 }
 
-.profile--header {
+.profile-header {
+  --cover-height: 135px;
+  --info-height: 84px;
+  --header-height: 225px;
+  --avatar-height: 54px;
+  --avatar-margin-left: 1.5rem;
+
+  @include desktop {
+    --cover-height: 260px;
+    --info-height: 78px;
+    --header-height: 335px;
+    --avatar-height: 100px;
+    --avatar-margin-left: 3.375rem;
+  }
+
   width: 100%;
-  height: $profile-header-height;
+  flex-shrink: 0;
   position: relative;
+
+  @include desktop {
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);;
+  }
+
   &__image {
     width: 100%;
     object-fit: cover;
     object-position: top;
-    height: $profile-header-image-height;
+    height: var(--cover-height);
   }
+
+  &__pic {
+    transform: translateY(-50%);
+    margin-right: 4px;
+  }
+
+  &__name {
+    @include fontSize($fs-m ,$fs-xl);
+  }
+
+  &__level {
+    @include fontSize($fs-normal, $fs-l);
+    color: $grey-1;
+  }
+
+  &__edit {
+    cursor: pointer;
+
+    &_mobile {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      background-color: #00000040;
+      border-radius: 4px;
+      position: absolute;
+      top: 30px;
+      right: 24px;
+
+      @include desktop {
+        display: none;
+      }
+    }
+
+    &_desktop {
+      color: $red-2;
+      display: none;
+
+      &:hover {
+        color: $red-2;
+      }
+
+      @include desktop {
+        display: inline;
+      }
+    }
+  }
+
   &__info {
-    padding: $profile-info-padding-top 25px 0 25px;
+    padding: 0 var(--avatar-margin-left);
+    max-height: var(--info-height);
     display: flex;
-    // height: $profile-header-info-height;
-    border-radius: 0px;
-    &__pic {
-      @include avatarShape($profile-header-avatar);
-      border: none;
-      transform: translateY(calculateAvatarTranslate());
-      margin-right: 4px;
-    }
-    &__name {
-      @include fsM;
-      color: $profile-name-font-color;
-      font-weight: $profile-name-font-weight;
-    }
-    &__level {
-      @include fsNormal;
-      color: $grey-1;
-      font-weight: $profile-level-font-weight;
-    }
   }
 }
+
 

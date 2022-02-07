@@ -3,12 +3,10 @@ import React, { useEffect, useState } from "react";
 // Hooks
 import { useNavigate, useParams } from "react-router-dom";
 // Packages
-import _ from "lodash";
 // Components, Services, Functions
-import { LIST_PAGESIZE } from "common/values/CORE";
-import { TYPE_TOPIC_SORTKEY } from "common/values/TYPES";
+import { IMAGE_URL, LIST_PAGESIZE } from "common/values/CORE";
+import { TYPE_TOPIC_SORTKEY, TYPE_TOPIC_SORTKEY_LIST } from "common/values/TYPES";
 import EmptyList from "common/components/empties/EmptyList";
-import { TYPE_TOPIC_SORTKEY_LIST } from "common/values/TYPES";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTopicsSort } from "redux/actions/topicActions/topicsActions";
@@ -18,7 +16,6 @@ import Pagination from "@material-ui/lab/Pagination"; // #pagination step0
 import "./HomeTopicsSeeAll.scss";
 import iconRate from "assets/images/icons/rate-mini.svg";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import { IMAGE_URL } from "common/values/CORE";
 
 const HomeTopicsSeeAll = (props) => {
 	let { type } = useParams();
@@ -94,28 +91,30 @@ const HomeTopicsSeeAll = (props) => {
 			<div className="topicsSeeAll-body">
 				{stateTopic[TYPE_TOPIC_SORTKEY_LIST[type]]?.total ? (
 					<>
-						<div className="d-flex flex-wrap justify-content-around">
+						<div className="d-flex flex-wrap">
 							{stateTopic[TYPE_TOPIC_SORTKEY_LIST[type]]?.list.map((el, index) => (
-								<div
-									key={index}
-									className="_topic-card"
-									onClick={(e) => handleNavigate(e, "/topics/5")}
-								>
-									<div className="card-img">
-										<img src={`${IMAGE_URL}${el?.logo}`} alt="" />
-									</div>
-									<div className="d-flex flex-column justify-content-between card-info">
-										<p className="title">{el.name}</p>
-										<div className="d-flex justify-content-between align-items-center">
-											<p className="subtitle">
-												<span>{`${el.questions} questions /`}</span>
+								<div className="topicsSeeAll-item">
+									<div
+										key={index}
+										className="_topic-card"
+										onClick={(e) => handleNavigate(e, "/topics/5")}
+									>
+										<div className="card-img">
+											<img src={`${IMAGE_URL}${el?.logo}`} alt="" />
+										</div>
+										<div className="d-flex flex-column justify-content-between card-info">
+											<p className="title">{el.name}</p>
+											<div className="d-flex justify-content-between align-items-center">
+												<p className="subtitle">
+													<span>{`${el.questions} questions /`}</span>
 
-												<span>{`${el?.singlePlays + el?.doublePlays} plays`}</span>
-											</p>
-											<p className="rate">
-												<img className="mx-1" src={iconRate} alt="" />
-												<span>{el.rate}</span>
-											</p>
+													<span>{`${el?.singlePlays + el?.doublePlays} plays`}</span>
+												</p>
+												<p className="rate">
+													<img className="mx-1" src={iconRate} alt="" />
+													<span>{el.rate}</span>
+												</p>
+											</div>
 										</div>
 									</div>
 								</div>

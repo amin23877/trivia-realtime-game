@@ -1,12 +1,11 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { SET_MODALS } from "redux/actions/mainActions/generalActions";
 import { MODALS } from "common/values/MODALS";
 
 import "./Sidebar.scss";
 
 // image
-import userImage from "assets/images/test/profile-pic-2.jpg";
 import { ReactComponent as HomeIcon } from "assets/images/icons/home.svg";
 import { ReactComponent as LeagueIcon } from "assets/images/icons/league.svg";
 import { ReactComponent as UserIcon } from "assets/images/icons/user-icon.svg";
@@ -16,8 +15,11 @@ import { ReactComponent as ContactIcon } from "assets/images/icons/contact-us.sv
 import { ReactComponent as LogoutIcon } from "assets/images/icons/logout.svg";
 import { ReactComponent as DeactivateIcon } from "assets/images/icons/deactivation.svg";
 import { ReactComponent as WalletIcon } from "assets/images/icons/wallet-icon.svg";
+import { IMAGE_URL } from "common/values/CORE";
+import Avatar from "common/components/UI/Avatar";
 
 const Sidebar = () => {
+	const user = useSelector((state) => state.stateUser.userInfo);
 	const dispatch = useDispatch();
 
 	const openDeactivateModal = () => {
@@ -27,10 +29,11 @@ const Sidebar = () => {
 	return (
 		<div className="sidebar">
 			<div className="sidebar-header">
-				<img className="sidebar-header__avatar" width={36} height={36} alt="user" src={userImage} />
+				<Avatar src={IMAGE_URL + encodeURI(user.avatar)} size={36} />
+
 				<p className="sidebar-header__info">
-					<span className="sidebar-header__user-name">Ali_Reza</span>
-					<span className="sidebar-header__phone">+93 788 502 257</span>
+					<span className="sidebar-header__user-name">{user.username}</span>
+					<span className="sidebar-header__phone">{user.phone}</span>
 				</p>
 			</div>
 

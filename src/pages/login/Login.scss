@@ -7,7 +7,7 @@
   max-width: 480px;
   padding: 1.5rem 1rem;
 
-  @include xl {
+  @include desktop {
     @include borderedBox(2.25rem 5rem 4rem);
     height: auto;
   }
@@ -56,7 +56,7 @@
   width: 100%;
   max-width: 250px;
 
-  @include xl {
+  @include desktop {
     max-width: 100%;
   }
 
@@ -70,7 +70,7 @@
     font-family: RobotoBlack;
     color: colorBlack(85);
 
-    @include xl {
+    @include desktop {
       flex-direction: column-reverse;
     }
   }
@@ -97,7 +97,7 @@
       box-shadow: none;
     }
 
-    @include xl() {
+    @include desktop() {
       @include fsL;
       height: 56px;
     }

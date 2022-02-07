@@ -1,0 +1,60 @@
+@import 'assets/scss/styles.scss';
+
+.countdownTimer {
+    .colon,
+    .box {
+        @include fontSize($fs-m ,$fs-xxxl);
+
+        font-weight: 500;
+        text-align: center;
+        color: white;
+        margin: 2px !important;
+    }
+
+    .box {
+        min-width: 20px;
+        min-height: 20px;
+        background-color: $red-1;
+        border-radius: 4px;
+
+        box-shadow: 0 1px 2px rgba(118, 112, 112, 0.25), inset 0 1px 2px #f092aa, inset 0px -1px 2px #ab1f42;
+
+        @include desktop {
+            min-width: 44px;
+            min-height: 44px;
+        }
+    }
+
+    @include desktop {
+        .colon,.box {
+            line-height: 44px;
+        }
+    }
+}
+
+#primaryWhiteBlack {
+    .countdownTimer {
+        .box {
+            color: white;
+        }
+        .colon {
+            color: black;
+        }
+        .box {
+            background-color: $primary;
+            border-radius: 4px;
+        }
+    }
+}
+
+// DELETE // for test
+@media screen and (max-width: 370px) {
+    .countdownTimer {
+        .box {
+            min-width: 12px;
+        }
+    }
+}
+
+.countdownTimerSecond {
+}

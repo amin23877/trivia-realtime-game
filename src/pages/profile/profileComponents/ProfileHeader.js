@@ -1,45 +1,51 @@
-import React from "react"
-import PropTypes from "prop-types"
-import {useNavigate} from "react-router-dom"
-// --- components
-import ProfileEditButton from "./ProfileEditButton"
-import ProfileTabs from "./ProfileTabs"
+import React from "react";
+import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 // --- assets
-import "./ProfileHeader.scss"
-import ProfileImg from "assets/images/test/profile-header.jpg"
-import UserPicImg from "assets/images/test/profile-pic.jpg"
+import "./ProfileHeader.scss";
+import profileCover from "assets/images/test/profile-header.jpg";
+import { ReactComponent as EditIcon } from "assets/images/icons/edit.svg";
+import Avatar from "common/components/UI/Avatar";
+import { IMAGE_URL } from "common/values/CORE";
 
+const ProfileHeader = () => {
+	const user = useSelector((state) => state.stateUser.userInfo);
 
-const ProfileHeader = ({activeTab}) => {
-  const navigate = useNavigate();
-  return (
-    <header className="profile--header">
-      <img
-        src={ProfileImg}
-        className="profile--header__image"
-        alt="Profile header image"
-      />
-      <div className="profile--header__info">
-        <img
-          src={UserPicImg}
-          className="profile--header__info__pic"
-          alt="User picture"
-        />
-        <ProfileEditButton onClick={() => navigate("/profile/edit")} />
-        <div className="d-flex flex-column text-left text-capitalize">
-          <div className="profile--header__info__name">Alex Green</div>
-          <div className="profile--header__info__level">Level 6</div>
-        </div>
-      </div>
-      <ProfileTabs activeTab={activeTab} />
-    </header>
-  );
-}
+	return (
+		<header className="profile-header">
+			<img src={profileCover} alt="cover" className="profile-header__image" />
+
+			<div className="profile-header__info">
+				<Avatar
+					size={{ mobile: 54, desktop: 100 }}
+					src={IMAGE_URL + encodeURI(user.avatar)}
+					className="profile-header__pic"
+				/>
+
+				<div className="d-flex justify-content-between align-items-center flex-grow-1">
+					<div className="d-flex flex-column ">
+						<div className="profile-header__name">{user.username}</div>
+						<div className="profile-header__level">Level {user.level}</div>
+					</div>
+
+					<Link className="profile-header__edit profile-header__edit_mobile" to="/profile/edit">
+						<EditIcon />
+					</Link>
+
+					<Link className="profile-header__edit profile-header__edit_desktop" to="/profile/edit">
+						Edit Profile
+					</Link>
+				</div>
+			</div>
+		</header>
+	);
+};
 
 ProfileHeader.propTypes = {
-  tabHandler: PropTypes.func,
-  activeTab: PropTypes.string
-}
+	tabHandler: PropTypes.func,
+	activeTab: PropTypes.string,
+};
 
 export default ProfileHeader;

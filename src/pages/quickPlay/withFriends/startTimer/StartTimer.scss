@@ -10,6 +10,13 @@
     background: radial-gradient(86.81% 86.81% at 50% 50%, rgba(40, 38, 128, 0.5) 0%, #282680 79.67%);
     padding: 24px 40px;
     text-align: center;
+    @media (min-width: 1366px) {
+        min-width: 100vw;
+        min-height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }   
     & > img {
         margin-bottom: 80px;
     }
@@ -26,7 +33,10 @@
         animation-duration: 1000ms;
         animation-iteration-count: infinite;
         animation-fill-mode: forwards;
-
+        @media (min-width: 1366px) {
+            width: 70%;
+            margin: 0 auto;
+        }   
         &:after {
             content: "";
             position: absolute;
@@ -34,7 +44,7 @@
             width: 90%;
             height: 90%;
             border-radius: 50%;
-            
+          
         }
         &:before {
             content: "";
@@ -52,6 +62,10 @@
         &--dummy {
             margin-top: 100%;
             /* 4:3 aspect ratio */
+            @media (min-width: 1366px) {
+                margin-top:  100%;
+
+            }   
         }
 
         &--data {

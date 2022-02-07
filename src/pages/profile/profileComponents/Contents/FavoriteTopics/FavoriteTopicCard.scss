@@ -27,12 +27,13 @@ $p-ftopic-rates-line-height: 9px;
 
 .p-favorite-topic--card {
   background-color: #ffffff;
-  display:flex;
+  display: flex;
   width: auto;
   height: $p-ftpoic-card-height;
   margin: 0 24px 8px 24px;
   border-radius: $p-ftopic-border-radius;
   box-shadow: $p-ftopic-box-shadow;
+
   &__img {
     @include imageFit;
     width: $p-ftopic-image-width;
@@ -40,15 +41,18 @@ $p-ftopic-rates-line-height: 9px;
     border-top-left-radius: $p-ftopic-border-radius;
     border-bottom-left-radius: $p-ftopic-border-radius;
   }
+
   &__content {
-    display:flex;
+    display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
     justify-content: space-between;
     padding: 10px;
+
     &__header {
       text-align: left;
+
       &__title {
         color: $p-ftopic-title-color;
         font-size: $p-ftopic-title-size;
@@ -56,6 +60,7 @@ $p-ftopic-rates-line-height: 9px;
         line-height: $p-ftopic-title-line-height;
         margin-bottom: 8.5px;
       }
+
       &__details {
         color: $p-ftopic-details-color;
         font-size: $p-ftopic-details-size;
@@ -63,28 +68,34 @@ $p-ftopic-rates-line-height: 9px;
         line-height: $p-ftopic-details-line-height;
       }
     }
+
     &__footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       &__category {
         color: $p-ftopic-details-color;
         font-size: $p-ftopic-details-size;
         font-weight: $p-ftopic-details-weight;
         line-height: $p-ftopic-details-line-height;
       }
+
       &__rating {
         display: flex;
         align-items: center;
+
         &__stars {
           span {
             margin-left: 4px;
           }
+
           color: $p-ftopic-stars-color;
           font-size: $p-ftopic-stars-size;
           font-weight: $p-ftopic-stars-weight;
           line-height: $p-ftopic-stars-line-height;
         }
+
         &__rates {
           margin-left: 10px;
           color: $p-ftopic-rates-color;

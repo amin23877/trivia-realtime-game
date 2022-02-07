@@ -1,0 +1,17 @@
+@import "assets/scss/styles.scss";
+
+.profile-performance {
+  margin: 0 24px;
+
+  @include desktop {
+    margin-right: 20rem;
+  }
+
+  &--title {
+    @include fontSize($fs-m, $fs-xxl);
+
+    margin: 20px 0;
+    text-align: left;
+    color: #2C2C2C;
+  }
+}

@@ -1,11 +1,14 @@
 @import "assets/scss/styles.scss";
 
 .profile--contents {
-  flex-grow: 1;
+  flex: 1 1 auto;
   background-color: $bg-profile;
   width: 100%;
-  height: auto;
   overflow-y: auto;
   padding: 20px 0;
   text-align: center;
+
+  @include desktop {
+    flex-shrink: 0;
+  }
 }

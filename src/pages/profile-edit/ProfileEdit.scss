@@ -1,0 +1,10 @@
+@import "assets/scss/styles.scss";
+
+.profile-edit-root {
+  @include limitContent;
+
+  padding-top: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}

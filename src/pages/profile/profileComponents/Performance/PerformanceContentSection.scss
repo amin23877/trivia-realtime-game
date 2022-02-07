@@ -1,0 +1,35 @@
+@import "assets/scss/styles.scss";
+
+$see-more-color: $primary;
+$see-more-size: 10px;
+$see-more-weight: 500;
+
+.performance-content-section {
+  &--contents {
+    @include box;
+    margin-top: 12px;
+    padding-top: 15px;
+
+    @include desktop {
+      padding-top: 0;
+    }
+
+    &__footer {
+      @include fontSize($fs-xs ,$fs-l);
+
+      text-align: center;
+      padding: 12px 0;
+
+      @include desktop {
+        padding: 16px 0;
+      }
+
+      a {
+        width: 100%;
+        color: $see-more-color;
+        font-weight: $see-more-weight;
+        text-decoration: underline !important;
+      }
+    }
+  }
+}

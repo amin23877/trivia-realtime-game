@@ -6,6 +6,7 @@ import "./SearchExplore.scss";
 import searchIcon from "assets/images/icons/search-primary-icon.svg";
 import rateIcon from "assets/images/icons/rate-mini.svg";
 import profilePic from "assets/images/test/profile-pic.jpg";
+import Avatar from "common/components/UI/Avatar";
 
 /*
  *  fake data
@@ -64,7 +65,7 @@ const Search = (props) => {
 const ResultItem = ({ logo, name, description, rate }) => {
 	return (
 		<div className="explore-result-item">
-			<div style={{ backgroundImage: `url("${logo}")` }} className="explore-result-item__avatar" />
+			<Avatar src={logo} size={{ mobile: 40, desktop: 44 }} />
 
 			<div>
 				<p className="explore-result-item__title">{name}</p>
@@ -83,7 +84,7 @@ const ResultItem = ({ logo, name, description, rate }) => {
  * This component show previous viewed results if search box is empty
  * and show result for typed text in search box
  * */
-const SearchResult = ({ searchText }) => {
+const SearchResult = ({ searchText, inputIsActive }) => {
 	const response = useSearch(searchText);
 
 	const renderResult = (results) =>
@@ -98,7 +99,7 @@ const SearchResult = ({ searchText }) => {
 		));
 
 	return (
-		<div className="explore-result-wrapper">
+		<div className={`explore-result-wrapper ${inputIsActive ? "explore-result-wrapper_open" : ""}`}>
 			<div className="explore-result-header">
 				<p>Recent searches</p>
 				<p className="explore-result-remove">Remove</p>
@@ -112,6 +113,31 @@ const SearchResult = ({ searchText }) => {
 	);
 };
 
+export const SearchExploreBox = () => {
+	const [searchText, setSearchText] = useState("");
+	const [inputIsActive, setInputIsActive] = useState(false);
+
+	const handleSearchInput = (e) => setSearchText(e.target.value);
+
+	const handleActivate = () => setInputIsActive(true);
+	const handleDeactivate = () => setInputIsActive(false);
+
+	return (
+		<div className="explore-root explore-root_box">
+			<Search
+				value={searchText}
+				onChange={handleSearchInput}
+				onFocus={handleActivate}
+				onBlur={handleDeactivate}
+			/>
+
+			<SearchResult inputIsActive={inputIsActive} searchText={searchText} />
+
+			<div className={`explore-root__overlay ${inputIsActive ? "explore-root__overlay_open" : ""}`} />
+		</div>
+	);
+};
+
 const SearchExplore = () => {
 	const [searchText, setSearchText] = useState("");
 
@@ -120,6 +146,7 @@ const SearchExplore = () => {
 	return (
 		<div className="explore-root">
 			<Search value={searchText} onChange={handleSearchInput} />
+
 			<SearchResult searchText={searchText} />
 		</div>
 	);
