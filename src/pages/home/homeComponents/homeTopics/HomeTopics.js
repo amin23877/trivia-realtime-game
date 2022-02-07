@@ -34,7 +34,7 @@ const HomeTopics = ({ type }) => {
 			{topics?.map((el, index) => (
 				<div
 					key={index}
-					className="topic-card"
+					className="_topic-card"
 					onClick={(e) => {
 						handleShowTopicInner(e, el);
 					}}
