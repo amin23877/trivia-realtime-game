@@ -3,19 +3,20 @@ import PropTypes from "prop-types";
 
 //---assets
 import "./PlayedHistoryCard.scss";
+import { IMAGE_URL } from "common/values/CORE";
 
 const PlayedHistoryCard = ({ data }) => {
 	return (
 		<div className="played-history-card">
 			<div className="played-history-card--image">
-				<img src={data.image} alt={data.title} />
+				<img src={`${IMAGE_URL}${encodeURI(data?.TopicId?.logo)}`} alt="" />
 			</div>
 			<div className="played-history-card--content">
 				<div>
-					<div className="played-history-card--content__title">{data.title}</div>
-					<div className="played-history-card--content__category">{data.category}</div>
+					<div className="played-history-card--content__title">{data?.TopicId?.name}</div>
+					<div className="played-history-card--content__category">{data?.TopicId?.categoryName}</div>
 				</div>
-				<div className="played-history-card--content__position">Your Position:&nbsp; {data.yourPosition}</div>
+				<div className="played-history-card--content__position">Your Position:&nbsp; {data?.place}</div>
 			</div>
 		</div>
 	);
