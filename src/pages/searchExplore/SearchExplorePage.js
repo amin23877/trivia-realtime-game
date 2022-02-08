@@ -42,6 +42,7 @@ const useSearch = (word) => {
 		api.get(`/topic?containstag=${word}`)
 			.then(({ data }) => {
 				cache.current[word] = data.result;
+				console.log(data.result);
 				setResponse(data.result);
 			})
 			.catch((e) => console.log(e));
@@ -99,10 +100,12 @@ const SearchResult = ({ searchText, inputIsActive }) => {
 
 	return (
 		<div className={`explore-result-wrapper ${inputIsActive ? "explore-result-wrapper_open" : ""}`}>
-			<div className="explore-result-header">
-				<p>Recent searches</p>
-				<p className="explore-result-remove">Remove</p>
-			</div>
+			{!searchText && (
+				<div className="explore-result-header">
+					<p>Recent searches</p>
+					<p className="explore-result-remove">Remove</p>
+				</div>
+			)}
 
 			<div className="explore-result-list">
 				{!searchText && renderResult(previousViewedSearches)}
