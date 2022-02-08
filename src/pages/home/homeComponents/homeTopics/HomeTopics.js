@@ -12,6 +12,8 @@ import { useSelector } from "react-redux";
 import "./HomeTopics.scss";
 import imgMain from "assets/images/test/1.png";
 import iconRate from "assets/images/icons/rate-mini.svg";
+import CardTopic from "common/components/cardTopic/CardTopic";
+import { TYPE_TOPIC } from "common/values/TYPES";
 
 const HomeTopics = ({ type }) => {
 	const navigate = useNavigate();
@@ -20,7 +22,6 @@ const HomeTopics = ({ type }) => {
 	const topics = stateTopic.topics.filter((el) => el.type === type)[0]?.topicList;
 
 	const handleShowTopicInner = (event, info) => {
-		// console.log(info);
 		handleNavigate(event, `/topics/${info._id}`);
 	};
 
@@ -30,29 +31,16 @@ const HomeTopics = ({ type }) => {
 	};
 
 	return (
-		<div className="w-100 h-100 d-flex justify-content-between align-items-stretch homeTopics">
+		<div className="_wh-100 d-flex justify-content-between align-items-stretch homeTopics">
 			{topics?.map((el, index) => (
 				<div
 					key={index}
-					className="topic-card"
+					className="_topic-card-container"
 					onClick={(e) => {
 						handleShowTopicInner(e, el);
 					}}
 				>
-					<div className="card-img">
-						<img src={`${IMAGE_URL}${el?.logo}`} alt="" />
-						{/* <img src={imgMain} alt="" /> */}
-					</div>
-					<div className="d-flex flex-column justify-content-between card-info">
-						<p className="title">{el?.name}</p>
-						<div className="d-flex justify-content-between align-items-center">
-							<p className="subtitle">{`${el?.singlePlays} plays`}</p>
-							<p className="rate">
-								<img className="mx-1" src={iconRate} alt="" />
-								<span>{el?.rate}</span>
-							</p>
-						</div>
-					</div>
+					<CardTopic data={type !== TYPE_TOPIC.FAVORITE ? el : el?.TopicId} />
 				</div>
 			))}
 		</div>

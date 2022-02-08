@@ -21,15 +21,15 @@ import LeaguesResult from "pages/leagues/leaguesComponents/LeaguesResult";
 import LeaguesHistory from "pages/leagues/leaguesComponents/LeaguesHistory";
 import HomeTopicsInner from "pages/home/homeComponents/homeTopics/HomeTopicsInner";
 import HomeTopicsSeeAll from "pages/home/homeComponents/homeTopics/HomeTopicsSeeAll";
-import ProfileFavoriteTopics from "pages/profile/profileComponents/Contents/FavoriteTopics/ProfileFavoriteTopics";
-import ProfilePerformance from "pages/profile/profileComponents/Contents/Performance/ProfilePerformance";
-import ProfileFriends from "pages/profile/profileComponents/Contents/Friends/ProfileFriends";
+import ProfilePerformance from "pages/profile/profileComponents/Performance/ProfilePerformance";
+import ProfileFriends from "pages/profile/profileComponents/Friends/ProfileFriends";
 import TwoPlayers from "pages/quickPlay/twoPlayers/TwoPlayers";
 import OnePlayer from "pages/quickPlay/onePlayer/OnePlayer";
 import MainLayout from "common/components/layout/MainLayout";
 import SuperCenterLayout from "common/components/layout/SuperCenterLayout";
 import Subscribe from "pages/subscripe/Subscribe";
 import WithFriends from "pages/quickPlay/withFriends/WithFriends";
+import ProfileFavoriteTopics from "pages/profile/profileComponents/favorite/ProfileFavoriteTopics";
 
 const RouterConfig = () => {
 	return (

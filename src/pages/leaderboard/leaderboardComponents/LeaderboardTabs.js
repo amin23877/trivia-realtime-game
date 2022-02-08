@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import LeaderboardTabPanel from "./LeaderboardTabPanel";
-import { TYPE_LEADERBOARD } from "common/values/TYPES";
-import ApiCall from "common/services/ApiCall";
-import { useDispatch, useSelector } from "react-redux";
-import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
-import _ from "lodash";
-import LeaderboardTabPanelHeader from "./LeaderboardTabPanelHeader";
-import { useParams } from "react-router-dom";
-import { TYPE_LEADERBOARD_COMPONENT } from "common/values/TYPES";
+import { TYPE_LEADERBOARD, TYPE_LEADERBOARD_COMPONENT } from "common/values/TYPES";
+import { useSelector } from "react-redux";
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
@@ -27,11 +20,7 @@ function TabPanel(props) {
 			aria-labelledby={`simple-tab-${index}`}
 			{...other}
 		>
-			{value === index && (
-				<Box p={3}>
-					<Typography>{children ? children : null}</Typography>
-				</Box>
-			)}
+			{value === index && <Box p={3}>{children ? children : null}</Box>}
 		</div>
 	);
 }
@@ -53,6 +42,12 @@ const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
 		backgroundColor: theme.palette.background.paper,
+	},
+	tab: {
+		fontSize: 14,
+		"@media (min-width: 1366px)": {
+			fontSize: 16,
+		},
 	},
 }));
 
@@ -88,7 +83,7 @@ const LeaderboardTabs = () => {
 							TabIndicatorProps={{ style: { backgroundColor: "white" } }}
 						>
 							{tabs.map((el, index) => (
-								<Tab key={index} label={el.name} {...a11yProps(index)} />
+								<Tab className={classes.tab} key={index} label={el.name} {...a11yProps(index)} />
 							))}
 						</Tabs>
 					</AppBar>

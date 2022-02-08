@@ -120,8 +120,20 @@ $size-avatar: 30px;
 
     .best {
         margin: 30px 0 20px;
+
+        @include desktop {
+            margin-top: 85px;
+        }
+
         .best-users {
             .user {
+                .leaderboard-avatar {
+                    margin: 0 auto;
+                    @include desktop {
+                        margin-top: -25%;
+                    }
+                }
+
                 margin: auto;
                 padding: 10px;
                 width: 100px;
@@ -131,15 +143,24 @@ $size-avatar: 30px;
                 background-color: white;
                 box-shadow: 0px 3px 5px rgba(39, 39, 40, 0.1);
 
+                @include desktop {
+                    width: 171px;
+                    height: 105px;
+                }
+
                 .username {
-                    @include fsS;
+                    @include fontSize($fs-xs ,$fs-l);
                     padding: 5px 0;
                 }
 
                 .points {
-                    @include fsS;
+                    @include fontSize($fs-xs ,$fs-m);
                     color: $primary;
                     margin-left: auto !important;
+
+                    @include desktop {
+                        padding-top: 1.4em;
+                    }
                 }
 
                 .reward {
@@ -153,66 +174,39 @@ $size-avatar: 30px;
             }
         }
 
-        .levels {
-            margin: 10px 0 0;
-
-            .level {
-                width: 35%;
-                color: white;
-                font-size: 20px;
-                font-weight: 900;
-                border-radius: 3px;
-                text-align: center;
-                box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.1);
-            }
-            .level-1 {
-                z-index: 1;
-                height: 40px;
-                font-size: 25px;
-                background-color: $orange-3;
-            }
-
-            .level-2 {
-                height: 28px;
-                margin-right: -5px;
-                background-color: $grey-2;
-            }
-
-            .level-3 {
-                height: 28px;
-                background-color: $orange-4;
-                margin-left: -5px;
-            }
+        .best-players-level {
+            width: 100%;
         }
     }
 
     .results {
         background-color: white;
         border-radius: 16px;
+        box-shadow: 0 3px 5px rgba(39, 39, 40, 0.1);
 
         .user {
             padding: 15px;
 
             .index {
-                @include fsNormal;
+                @include fontSize(8px ,$fs-l);
                 min-width: 25px;
                 color: $primary;
             }
 
             .username {
-                @include fsM;
+                @include fontSize($fs-xs, $fs-l);
                 padding-left: 10px;
             }
 
             .points {
-                @include fsNormal;
+                @include fontSize(8px ,$fs-l);
                 color: $primary;
                 margin-left: auto !important;
             }
         }
 
         .seemore {
-            @include fsNormal;
+            @include fontSize($fs-xs ,$fs-m);
             padding: 15px;
             color: $primary;
             text-align: center;

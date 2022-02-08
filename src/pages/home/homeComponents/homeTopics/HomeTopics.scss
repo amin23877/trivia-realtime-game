@@ -3,49 +3,6 @@
 .homeTopics {
     width: 100%;
     overflow-x: auto;
-    .topic-card {
-        // min-height: 160px;
-        min-width: calc(clamp(100px, 40%, 200px));
-        margin: 5px !important;
-        background-color: white;
-        border-radius: 15px;
-        // --bs-aspect-ratio: 90%; // #ratio
-        box-shadow: 0px 3px 5px rgba(39, 39, 40, 0.1);
-
-        .card-img {
-            height: 60%;
-            width: 100%;
-            overflow: hidden;
-            border-radius: 15px 15px 0 0;
-
-            img {
-                width: 100%;
-                height: auto;
-            }
-        }
-
-        .card-info {
-            padding: 2px 5px;
-            height: 40%; // TEMP
-            // min-height: 30%;
-            .title {
-                @include fsNormal;
-                color: colorBlack(85);
-                // font-weight: 600;
-                font-family: RobotoBold;
-            }
-            .subtitle {
-                @include fsNormal;
-                color: colorBlack(65);
-                font-weight: 500;
-            }
-            .rate {
-                @include fsNormal;
-                color: $orange-2;
-                font-weight: 500;
-            }
-        }
-    }
 }
 
 @media screen and (max-width: $breakpoint-s) {

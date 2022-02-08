@@ -1,1 +1,17 @@
 @import 'assets/scss/styles.scss';
+
+.emptyList {
+    .profile-topics {
+        img {
+            max-width: 50%;
+            height: auto;
+        }
+
+        .message {
+            padding: 20px;
+            @include fsM;
+            font-weight: 500;
+            color: $red-2;
+        }
+    }
+}
