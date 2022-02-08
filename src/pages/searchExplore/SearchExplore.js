@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import Avatar from "common/components/UI/Avatar";
 
 import "./SearchExplore.scss";
 
@@ -6,7 +7,8 @@ import "./SearchExplore.scss";
 import searchIcon from "assets/images/icons/search-primary-icon.svg";
 import rateIcon from "assets/images/icons/rate-mini.svg";
 import profilePic from "assets/images/test/profile-pic.jpg";
-import Avatar from "common/components/UI/Avatar";
+import ApiCall from "common/services/ApiCall";
+import { IMAGE_URL } from "common/values/CORE";
 
 /*
  *  fake data
@@ -22,6 +24,8 @@ const previousViewedSearches = [
 /*
  *  this hook fetch results from api
  * */
+const api = new ApiCall();
+
 const useSearch = (word) => {
 	const [response, setResponse] = useState(null);
 
@@ -35,15 +39,10 @@ const useSearch = (word) => {
 			return;
 		}
 
-		const Authorization = localStorage.getItem("token") ? `Bearer ${localStorage.getItem("token")}` : null;
-
-		fetch(`https://quizup.site/api/topic?containstag=${word}`, {
-			headers: { Authorization },
-		})
-			.then((r) => r.json())
-			.then((r) => {
-				cache.current[word] = r.result;
-				setResponse(r.result);
+		api.get(`/topic?containstag=${word}`)
+			.then(({ data }) => {
+				cache.current[word] = data.result;
+				setResponse(data.result);
 			})
 			.catch((e) => console.log(e));
 	}, [word]);
@@ -65,7 +64,7 @@ const Search = (props) => {
 const ResultItem = ({ logo, name, description, rate }) => {
 	return (
 		<div className="explore-result-item">
-			<Avatar src={logo} size={{ mobile: 40, desktop: 44 }} />
+			<Avatar src={IMAGE_URL + encodeURI(logo)} size={{ mobile: 40, desktop: 44 }} />
 
 			<div>
 				<p className="explore-result-item__title">{name}</p>
