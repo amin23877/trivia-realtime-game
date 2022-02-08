@@ -14,7 +14,7 @@ import Wallet from "pages/menuPages/wallet/Wallet";
 import ProfileEdit from "pages/profile-edit/ProfileEdit";
 import Leaderboard from "pages/leaderboard/Leaderboard";
 import VerificationCode from "pages/login/VerificationCode";
-import SearchExplore from "pages/searchExplore/SearchExplore";
+import SearchExplorePage from "pages/searchExplore/SearchExplorePage";
 import Notification from "pages/menuPages/notification/Notification";
 import LeaguesInner from "pages/leagues/leaguesComponents/LeaguesInner";
 import LeaguesResult from "pages/leagues/leaguesComponents/LeaguesResult";
@@ -40,7 +40,7 @@ const RouterConfig = () => {
 					<Route exact path="/" element={<MainLayout footer />}>
 						<Route exact path="/" element={<Home />} />
 						<Route exact path="/leagues" element={<Leagues />} />
-						<Route exact path="/search" element={<SearchExplore />} />
+						<Route exact path="/search" element={<SearchExplorePage />} />
 
 						<Route exact path="/profile" element={<Profile />}>
 							<Route exact path="/profile/favorite-topics" element={<ProfileFavoriteTopics />} />
@@ -53,9 +53,9 @@ const RouterConfig = () => {
 				{/* routes with main layout without footer */}
 				<Route exact path="/" element={<MainLayout />}>
 					<Route exact path="/topics/:id" element={<HomeTopicsInner />} />
-					<Route exact path="/topics/:id/onePlayer" element={<OnePlayer type={'topic'} />} />
-					<Route exact path="/topics/:id/twoPlayers" element={<TwoPlayers type={'topic'} />} />
-					<Route exact path="/topics/:id/withFriends" element={<WithFriends type={'topic'} />} />
+					<Route exact path="/topics/:id/onePlayer" element={<OnePlayer type={"topic"} />} />
+					<Route exact path="/topics/:id/twoPlayers" element={<TwoPlayers type={"topic"} />} />
+					<Route exact path="/topics/:id/withFriends" element={<WithFriends type={"topic"} />} />
 					<Route exact path="/topics/all/:type" element={<HomeTopicsSeeAll />} />
 
 					<Route exact path="/leaderboard" element={<Leaderboard />} />

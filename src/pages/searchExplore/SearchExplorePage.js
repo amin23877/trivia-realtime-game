@@ -137,7 +137,7 @@ export const SearchExploreBox = () => {
 	);
 };
 
-const SearchExplore = () => {
+const SearchExplorePage = () => {
 	const [searchText, setSearchText] = useState("");
 
 	const handleSearchInput = (e) => setSearchText(e.target.value);
@@ -151,4 +151,4 @@ const SearchExplore = () => {
 	);
 };
 
-export default SearchExplore;
+export default SearchExplorePage;
