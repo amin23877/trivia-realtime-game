@@ -1,36 +1,50 @@
 @import 'assets/scss/styles.scss';
 
 .cardTopic {
+    cursor: pointer;
+    min-width: calc(clamp(100px, 40%, 200px));
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: .5rem;
+    overflow: hidden;
+    box-shadow: 0 3px 5px rgba(39, 39, 40, 0.1);
+
     .card-img {
-        height: 60%;
-        min-height: 60%;
+        flex-grow: 1;
         width: 100%;
-        overflow: hidden;
-        border-radius: 15px 15px 0 0;
+        height: 70%;
 
         img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
         }
     }
 
     .card-info {
-        padding: 2px 5px;
-        height: 40%; // TEMP
-        // min-height: 30%;
+        height: 30%;
+        @include fontSize($fs-normal ,$fs-m);
+        padding: 2px 8px;
+
+        @include desktop {
+            padding: 6px 8px 10px;
+        }
+
         .title {
-            @include fsNormal;
+            padding-bottom: .25rem;
             color: colorBlack(85);
-            // font-weight: 600;
             font-family: RobotoBold;
+
+            @include desktop {
+                padding-bottom: .5rem;
+            }
         }
         .subtitle {
-            @include fsNormal;
+            @include fontSize(8px ,$fs-m);
             color: colorBlack(65);
-            font-weight: 500;
         }
         .rate {
-            @include fsNormal;
             color: $orange-2;
             font-weight: 500;
         }
