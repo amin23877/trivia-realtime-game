@@ -8,7 +8,7 @@ import userIcon from 'assets/images/icons/footer-profile.svg';
 import { IMAGE_URL } from "common/values/CORE";
 import PlayArrowRoundedIcon from '@material-ui/icons/PlayArrowRounded';
 
-const FriendsList = ({ joinCode, users, mpGamesId, handleLeaveGame, handleStartGame }) => {
+const FriendsList = ({ joinCode, users, mpGamesId, handleLeaveGame, handleStartGame ,type}) => {
     const navigate = useNavigate();
 
     return (
@@ -35,7 +35,7 @@ const FriendsList = ({ joinCode, users, mpGamesId, handleLeaveGame, handleStartG
                                 <p>{user.username || user.name}</p>
                             </div>
                             <div>
-                                {joinCode == mpGamesId.categoryGameId &&
+                                {joinCode == (type === 'quickPlay' ? mpGamesId.categoryGameId : mpGamesId.topicGameId) &&
                                     <p>Remove</p>
                                 }
                             </div>
@@ -44,9 +44,9 @@ const FriendsList = ({ joinCode, users, mpGamesId, handleLeaveGame, handleStartG
                 </div>
             </div>
             <div className="friends-list__footer">
-                <Button onClick={handleLeaveGame}>{joinCode == mpGamesId.categoryGameId ? 'Cancel' : 'Leave'}</Button>
-                <Button onClick={handleStartGame} className={joinCode !== mpGamesId.categoryGameId && 'disabled-btn'}>
-                    {joinCode == mpGamesId.categoryGameId ? 'Start Game' : 'Wait To Start '}
+                <Button onClick={handleLeaveGame}>{joinCode == (type === 'quickPlay' ? mpGamesId.categoryGameId : mpGamesId.topicGameId) ? 'Cancel' : 'Leave'}</Button>
+                <Button onClick={handleStartGame} className={joinCode !== (type === 'quickPlay' ? mpGamesId.categoryGameId : mpGamesId.topicGameId) && 'disabled-btn'}>
+                    {joinCode == (type === 'quickPlay' ? mpGamesId.categoryGameId : mpGamesId.topicGameId) ? 'Start Game' : 'Wait To Start '}
                     <PlayArrowRoundedIcon />
                 </Button>
             </div>
