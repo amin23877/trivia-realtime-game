@@ -47,6 +47,7 @@ const HomeTopicsInner = () => {
 		backgroundImage: `url(${IMAGE_URL}${encodeURI(dataInnerTopic?.logo)})`,
 	};
 
+	
 	const handleGoBack = () => {
 		navigate(-1);
 	};

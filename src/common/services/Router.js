@@ -62,6 +62,9 @@ const RouterConfig = () => {
 
 					<Route exact path="/leagues/history" element={<LeaguesHistory />} />
 					<Route exact path="/leagues/:id" element={<LeaguesInner />} />
+					<Route exact path="/leagues/:id/onePlayer" element={<OnePlayer type={"league"} />} />
+					<Route exact path="/leagues/:id/twoPlayers" element={<TwoPlayers type={"league"} />} />
+					<Route exact path="/leagues/:id/withFriends" element={<WithFriends type={"league"} />} />
 					<Route exact path="/leagues/result" element={<LeaguesResult />} />
 
 					<Route exact path="/" element={<ProtectedRoute />}>

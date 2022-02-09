@@ -62,7 +62,7 @@
                 animation-delay: 150ms;
                 margin: 0 8px;
             }
-            &:nth-child(3) {
+            &:last-child {
                 animation-name: onePlayerAnimation;
                 animation-delay: 300ms;
             }

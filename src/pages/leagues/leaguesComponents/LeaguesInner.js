@@ -11,6 +11,7 @@ import CountdownTimer from "common/components/countdownTimer/CountDownTimer";
 // Redux
 // Material - lab
 // Styles, Icons, Images
+
 import "./LeaguesInner.scss";
 import Countdown from "react-countdown";
 import CloseIcon from "@material-ui/icons/Close";
@@ -27,6 +28,8 @@ import { TYPE_LEADERBOARD_COMPONENT } from "common/values/TYPES";
 import { SET_TYPE_LEADERBOARD_COMPONENT } from "redux/actions/mainActions/generalActions";
 import { SET_SNACKBAR } from "redux/actions/mainActions/generalActions";
 import { TYPE_SNAKBAR } from "common/values/TYPES";
+import { SET_GAME_SELECTION_TYPE } from "redux/actions/mainActions/generalActions";
+import { SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
 
 const LeaguesInner = () => {
 	let { id } = useParams();
@@ -63,9 +66,9 @@ const LeaguesInner = () => {
 	};
 
 	const handlePlay = () => {
-		console.log("TODO handlePlay");
+		dispatch(SET_GAME_SELECTION_TYPE({ type: "league", id: id }));
+		dispatch(SET_OPEN_GAME_TYPES(true));
 	};
-
 	const getDataInnerLeague = () => {
 		dispatch(SET_SPINNER(true));
 		apiCall
@@ -100,6 +103,8 @@ const LeaguesInner = () => {
 			isMounted = false;
 		};
 	}, []);
+
+
 
 	// console.log(dataInnerLeague);
 
