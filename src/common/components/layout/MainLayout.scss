@@ -58,7 +58,7 @@ $notif-drawer-width: 500px;
   width: $notif-drawer-width;
   height: 100%;
   background-color: white;
-  z-index: 1;
+  z-index: 998;
   box-shadow: 0 3px 5px rgba(39, 39, 40, 0.1);
   padding: 1.25rem 6rem 1.25rem 1.25rem;
   overflow: auto;
