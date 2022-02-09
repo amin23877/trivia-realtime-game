@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 
 import "./App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "swiper/css/bundle";
 
 export default function App() {
 	const stateGeneral = useSelector((state) => state.stateGeneral);
