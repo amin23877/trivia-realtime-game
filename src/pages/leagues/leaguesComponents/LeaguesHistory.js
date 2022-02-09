@@ -58,7 +58,7 @@ const LeaguesHistory = () => {
 
 	return (
 		<div className="w-100 h-100 history">
-			<div className="d-flex align-items-center _header _header-shadow history-header">
+			<div className="d-flex d-xl-none align-items-center _header _header-shadow history-header">
 				<ArrowBackIcon className="color-primary" onClick={handleGoBack} />
 				<div className="_header-title color-primary mx-2">League History</div>
 			</div>

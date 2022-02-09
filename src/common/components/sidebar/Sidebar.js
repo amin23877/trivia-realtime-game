@@ -1,4 +1,6 @@
 import React from "react";
+import Avatar from "common/components/UI/Avatar";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_MODALS } from "redux/actions/mainActions/generalActions";
 import { MODALS } from "common/values/MODALS";
@@ -16,7 +18,6 @@ import { ReactComponent as LogoutIcon } from "assets/images/icons/logout.svg";
 import { ReactComponent as DeactivateIcon } from "assets/images/icons/deactivation.svg";
 import { ReactComponent as WalletIcon } from "assets/images/icons/wallet-icon.svg";
 import { IMAGE_URL } from "common/values/CORE";
-import Avatar from "common/components/UI/Avatar";
 
 const Sidebar = () => {
 	const user = useSelector((state) => state.stateUser.userInfo);
@@ -40,38 +41,54 @@ const Sidebar = () => {
 			<div className="quick-play-btn">Quick Play</div>
 
 			<ul className="sidebar-menu">
-				<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
-					<HomeIcon />
-					Home
-				</li>
-				<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
-					<LeagueIcon />
-					League
-				</li>
-				<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
-					<UserIcon />
-					Profile
-				</li>
+				<Link to="/">
+					<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
+						<HomeIcon />
+						Home
+					</li>
+				</Link>
+
+				<Link to="/leagues">
+					<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
+						<LeagueIcon />
+						League
+					</li>
+				</Link>
+
+				<Link to="/profile">
+					<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
+						<UserIcon />
+						Profile
+					</li>
+				</Link>
+
 				<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
 					<LeaderBoardIcon />
 					Leaderboard
 				</li>
-				<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
-					<WalletIcon />
-					Wallet
-				</li>
+
+				<Link to="/menu/wallet">
+					<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
+						<WalletIcon />
+						Wallet
+					</li>
+				</Link>
+
 				<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
 					<SettingsIcon />
 					Settings
 				</li>
+
 				<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
 					<ContactIcon />
 					Contact us
 				</li>
+
 				<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
 					<LogoutIcon />
 					Logout
 				</li>
+
 				<li
 					onClick={openDeactivateModal}
 					className="sidebar-menu-item sidebar-menu-item_red sidebar-menu-item_hover-effect-red"

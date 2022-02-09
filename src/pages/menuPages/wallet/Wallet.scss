@@ -25,6 +25,7 @@ $gradient: linear-gradient(to right,
   @include desktop {
     width: $wallet-content-width;
     margin: 0 auto;
+    padding-top: 2rem;
   }
 }
 

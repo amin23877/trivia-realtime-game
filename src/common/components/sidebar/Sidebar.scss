@@ -63,6 +63,7 @@ $menu-item-h : 54px;
 }
 
 .sidebar-menu-item {
+  color : $grey-1;
   position: relative;
   padding-left: $space-x;
   height: $menu-item-h;

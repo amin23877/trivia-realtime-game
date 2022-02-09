@@ -7,7 +7,7 @@ import kingImage from 'assets/images/icons/king.svg';
 
 import { useNavigate } from "react-router-dom";
 import { IMAGE_URL } from "common/values/CORE";
-const MpGameResult = ({ myInfo, gameResultData, authData, handleStartGame,joinCode ,mpGamesId }) => {
+const MpGameResult = ({ myInfo, gameResultData, authData, handleStartGame,joinCode ,mpGamesId ,type}) => {
     const navigate = useNavigate();
     console.log('gameResultData', gameResultData)
     return (
@@ -45,7 +45,7 @@ const MpGameResult = ({ myInfo, gameResultData, authData, handleStartGame,joinCo
                 </div>
             </div>
             <div className="mp-game-result__actions">
-                <Button onClick={handleStartGame} className={`mp-game-result__actions--play-again ${mpGamesId.categoryGameId !==joinCode ?'mp-game-result__actions--disabled':''}`}>Start Again</Button>
+                <Button onClick={handleStartGame} className={`mp-game-result__actions--play-again ${(type === 'quickPlay' ? mpGamesId.categoryGameId : mpGamesId.topicGameId) !==joinCode ?'mp-game-result__actions--disabled':''}`}>Start Again</Button>
                 <Button onClick={() => navigate('/')} className="mp-game-result__actions--back-home">
                     <ArrowBackIcon />
                     Back To Home

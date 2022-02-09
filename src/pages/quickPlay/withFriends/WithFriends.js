@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./WithFriends.scss";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { GET_CATEGORIES_LIST } from "redux/actions/mainActions/generalActions";
 import { SOCKET_BASE_URL } from "common/values/CORE";
 import { io } from "socket.io-client";
@@ -11,9 +11,10 @@ import EnterGameCode from "./EnterGameCode/EnterGameCode";
 import FriendsList from "./FriendsList/FriendsList";
 import StartTimer from "./startTimer/StartTimer";
 import MpGameResult from "./gameResult/MpGameResult";
-const WithFriends = () => {
+const WithFriends = ({ type = 'quickPlay' }) => {
 	const Dispatch = useDispatch();
 	const navigate = useNavigate();
+	let { id } = useParams();
 
 	const categories = useSelector((state) => state.stateGeneral.categoriesList);
 	const [selectedCategory, setSelectedCategory] = useState();
@@ -88,8 +89,19 @@ const WithFriends = () => {
 	useEffect(() => {
 		if (selectedCategory) {
 			if (authData.socketid) {
-				socket.emit("setidmp", { CategoryId: selectedCategory._id, id: mpGamesId.categoryGameId });
-				socket.emit("preparemp", { id: mpGamesId.categoryGameId });
+				switch (type) {
+					case 'quickPlay':
+						socket.emit("setidmp", { CategoryId: selectedCategory._id, id: mpGamesId.categoryGameId });
+						socket.emit("preparemp", { id: mpGamesId.categoryGameId });
+
+						break;
+					case 'topic':
+						socket.emit("setidmp", { TopicId: id, id: mpGamesId.topicGameId });
+						socket.emit("preparemp", { id: mpGamesId.topicGameId });
+
+						break;
+				}
+
 				setGameState('friendsList')
 			}
 		}
@@ -133,13 +145,20 @@ const WithFriends = () => {
 	};
 	const handleOpenCategories = () => {
 		if (joinCode == '') {
-			setJoinCode(mpGamesId.categoryGameId)
+			setJoinCode(type === 'quickPlay' ? mpGamesId.categoryGameId : mpGamesId.topicGameId)
 		}
-		setGameState("showCategories");
+		switch (type) {
+			case 'quickPlay':
+				setGameState("showCategories");
+				break;
+			case 'topic':
+				setSelectedCategory({ _id: id });
+				break;
+		}
 	}
 	const handleLeaveGame = () => {
 		if (joinCode !== '') {
-			if (joinCode === mpGamesId.categoryGameId) {
+			if (joinCode === (type === 'quickPlay' ? mpGamesId.categoryGameId : mpGamesId.topicGameId)) {
 				socket.emit("cancelmp", { id: joinCode });
 
 			} else {
@@ -151,7 +170,7 @@ const WithFriends = () => {
 	}
 	const handleStartGame = () => {
 		if (joinCode !== '') {
-			if (joinCode === mpGamesId.categoryGameId) {
+			if (joinCode === (type==='quickPlay'?mpGamesId.categoryGameId:mpGamesId.topicGameId)) {
 				socket.emit("startmp", { id: joinCode });
 			}
 		}
@@ -163,9 +182,6 @@ const WithFriends = () => {
 			{gameState == "EnterGameCode" && (
 				<EnterGameCode
 					handleOpenCategories={handleOpenCategories}
-					categories={categories}
-					handleGotoBack={handleGotoBack}
-					handleSelectCategory={handleSelectCategory}
 					joinCode={joinCode}
 					setJoinCode={setJoinCode}
 					handleJoinWithCode={handleJoinWithCode}
@@ -188,6 +204,7 @@ const WithFriends = () => {
 					mpGamesId={mpGamesId}
 					handleLeaveGame={handleLeaveGame}
 					handleStartGame={handleStartGame}
+					type={type}
 				/>
 			)}
 			{gameState == "startTimer" && (
@@ -216,6 +233,8 @@ const WithFriends = () => {
 					handleStartGame={handleStartGame}
 					mpGamesId={mpGamesId}
 					joinCode={joinCode}
+					type={type}
+
 				/>
 			}
 
