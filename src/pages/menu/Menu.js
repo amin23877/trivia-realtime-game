@@ -102,15 +102,15 @@ const Menu = ({ onDrawerClose }) => {
 					<p>notification</p>
 				</div>
 
-				<div className="d-flex align-items-center menu-item _br-bottom">
+				{/* <div className="d-flex align-items-center menu-item _br-bottom">
 					<SettingsOutlinedIcon className="icon" />
 					<p>Settings</p>
-				</div>
+				</div> */}
 
-				<div className="d-flex align-items-center menu-item _br-bottom">
+				{/* <div className="d-flex align-items-center menu-item _br-bottom">
 					<ShareOutlinedIcon className="icon" />
 					<p>introduce to friends</p>
-				</div>
+				</div> */}
 
 				<div className="d-flex align-items-center menu-item _br-bottom">
 					<HeadsetMicOutlinedIcon className="icon" />

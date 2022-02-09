@@ -1,7 +1,6 @@
 @import 'assets/scss/styles.scss';
 
 .countdownTimer {
-    margin: auto !important;
     .colon,
     .box {
         @include fontSize($fs-m, $fs-xxxl);
