@@ -1,45 +1,36 @@
 // Reacts
 import React from "react";
-// Hooks
-import { useNavigate } from "react-router-dom";
-// Packages
-// Components, Services, Functions
+import CardTopic from "common/components/cardTopic/CardTopic";
+import { Swiper, SwiperSlide } from "swiper/react";
+
 // Redux
 import { useSelector } from "react-redux";
-// Material - lab
-// Styles, Icons, Images
-import "./HomeTopics.scss";
-import CardTopic from "common/components/cardTopic/CardTopic";
 import { TYPE_TOPIC } from "common/values/TYPES";
 
-const HomeTopics = ({ type }) => {
-	const navigate = useNavigate();
+// Styles, Icons, Images
+import "swiper/css";
+import "./HomeTopics.scss";
 
+const HomeTopics = ({ type }) => {
 	const stateTopic = useSelector((state) => state.stateTopic);
 	const topics = stateTopic.topics.filter((el) => el.type === type)[0]?.topicList;
 
-	const handleShowTopicInner = (event, info) => {
-		handleNavigate(event, `/topics/${info._id}`);
-	};
-
-	const handleNavigate = (event, path) => {
-		event.stopPropagation();
-		navigate(path);
-	};
-
 	return (
 		<div className="homeTopics">
-			{topics?.map((el, index) => (
-				<div
-					key={index}
-					className="_topic-card-container"
-					onClick={(e) => {
-						handleShowTopicInner(e, type !== TYPE_TOPIC.FAVORITE ? el : el?.TopicId);
-					}}
-				>
-					<CardTopic data={type !== TYPE_TOPIC.FAVORITE ? el : el?.TopicId} />
-				</div>
-			))}
+			<Swiper
+				breakpoints={{
+					360: { slidesPerView: 2 },
+					640: { slidesPerView: 3 },
+					1200: { slidesPerView: 5 },
+				}}
+				spaceBetween={14}
+			>
+				{topics?.map((el, index) => (
+					<SwiperSlide>
+						<CardTopic key={index} data={type !== TYPE_TOPIC.FAVORITE ? el : el?.TopicId} />
+					</SwiperSlide>
+				))}
+			</Swiper>
 		</div>
 	);
 };
