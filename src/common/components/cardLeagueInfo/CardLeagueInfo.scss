@@ -15,7 +15,7 @@ $radius-card: 15px;
     }
 
     .btn-enter {
-        @include fontSize($fs-xs ,$fs-m);
+        @include fontSize($fs-xs, $fs-m);
 
         width: 20%;
         max-width: 130px;
@@ -77,16 +77,21 @@ $radius-card: 15px;
         }
 
         .title {
-            @include fontSize($fs-normal ,$fs-xxl);
+            @include fontSize($fs-normal, $fs-xxl);
             color: white;
             font-weight: 500;
         }
 
         .timer {
+            .tostart {
+                font-size: $fs-m;
+                color: white;
+                text-align: left;
+            }
         }
 
         .price {
-            @include fontSize($fs-m,$fs-xxxl);
+            @include fontSize($fs-m, $fs-xxxl);
 
             width: fit-content;
             color: $orange-1;

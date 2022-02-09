@@ -13,7 +13,7 @@ import iconRate from "assets/images/icons/rate-mini.svg";
 const CardTopic = ({ data }) => {
 	return (
 		<div className="_wh-100 cardTopic">
-			<div className="_wh-100 card-img">
+			<div className="card-img">
 				<img src={`${IMAGE_URL}${data?.logo}`} alt="" />
 			</div>
 			<div className="d-flex flex-column justify-content-between card-info">

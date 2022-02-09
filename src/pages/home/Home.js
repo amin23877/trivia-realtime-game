@@ -100,7 +100,10 @@ const Home = () => {
 			<div className="home__body">
 				<div className="card-league">
 					{!_.isEmpty(dataLeague) ? (
-						<div className="ratio _dish-cardLeagueInfo">
+						<div
+							className="ratio _dish-cardLeagueInfo"
+							onClick={(e) => handleNavigate(e, `/leagues/${dataLeague?._id}`)}
+						>
 							{/* #ratio */}
 							<CardLeagueInfo info={dataLeague} />
 						</div>

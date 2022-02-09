@@ -1,20 +1,15 @@
 @import 'assets/scss/styles.scss';
 
+$desktop-slider-height: 210px;
+$mobile-slider-height: 145px;
+
 .homeTopics {
     width: 100%;
     overflow-x: auto;
-}
+    display: flex;
+    height: $mobile-slider-height;
 
-@media screen and (max-width: $breakpoint-s) {
-    .homeTopics {
-        // .title {
-        //     @include fsXS;
-        // }
-        // .subtitle {
-        //     @include fsXS;
-        // }
-        // .rate {
-        //     @include fsS;
-        // }
+    @include desktop {
+        height: $desktop-slider-height;
     }
 }

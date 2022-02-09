@@ -52,7 +52,7 @@ const HomeTopicsInner = () => {
 	};
 
 	const handlePlay = () => {
-		dispatch(SET_GAME_SELECTION_TYPE({ type: 'topic', id: id }));
+		dispatch(SET_GAME_SELECTION_TYPE({ type: "topic", id: id }));
 		dispatch(SET_OPEN_GAME_TYPES(true));
 		console.log("TODO handlePlay & id: ", id);
 	};
@@ -128,6 +128,16 @@ const HomeTopicsInner = () => {
 			})
 			.catch((err) => {
 				dispatch(SET_SPINNER(false));
+				dispatch(
+					SET_SNACKBAR({
+						show: true,
+						type: TYPE_SNAKBAR.ERROR,
+						message: err.message,
+					})
+				);
+
+				handleGoBack();
+
 				// console.log(err);
 			});
 	};
@@ -177,7 +187,9 @@ const HomeTopicsInner = () => {
 					<div className="icons-container">
 						<p className="grey">
 							<PlayArrowIcon />
-							<span className="mx-1">{dataInnerTopic?.singlePlays + dataInnerTopic?.doublePlays}</span>
+							<span className="mx-1">
+								{dataInnerTopic?.singlePlays + dataInnerTopic?.doublePlays || 0}
+							</span>
 						</p>
 						<p className="grey">
 							<HelpIcon />

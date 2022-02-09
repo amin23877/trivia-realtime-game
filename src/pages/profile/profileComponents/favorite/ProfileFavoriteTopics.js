@@ -25,7 +25,7 @@ const ProfileFavoriteTopics = () => {
 			.get("/user/me/membership")
 			.then((res) => {
 				dispatch(SET_SPINNER(false));
-				console.log(res);
+				// console.log(res);
 				setFavoriteTopics(res.data.result);
 			})
 			.catch((err) => {

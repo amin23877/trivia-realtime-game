@@ -33,7 +33,7 @@ const ProfilePerformance = () => {
 				dispatch(SET_SPINNER(false));
 				setPerformanceTopic(res.data?.topicPerformance);
 				setPerformanceLeague(res.data?.leaguePerformance);
-				console.log(">>> ", res);
+				// console.log(">>> ", res);
 			})
 			.catch((err) => {
 				dispatch(SET_SPINNER(false));

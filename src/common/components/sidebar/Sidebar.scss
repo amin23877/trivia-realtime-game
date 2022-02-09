@@ -80,7 +80,7 @@ $menu-item-h : 54px;
     color: $red-2;
   }
 
-  &_hover-effect-red, &_hover-effect-purple {
+  &_hover-effect-red, &_hover-effect-purple ,&_active {
     &:after {
       content: '';
       position: absolute;
@@ -99,7 +99,7 @@ $menu-item-h : 54px;
     }
   }
 
-  &_hover-effect-purple:hover {
+  &_hover-effect-purple:hover ,&_active {
     background-color: $bg-seachbox;
     color: $primary;
 

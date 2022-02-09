@@ -20,6 +20,9 @@ import { useDispatch } from "react-redux";
 import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
 import { TYPE_LEAGUE_HOME } from "common/values/TYPES";
 import EmptyList from "common/components/empties/EmptyList";
+import { SET_SNACKBAR } from "redux/actions/mainActions/generalActions";
+import { TYPE_SNAKBAR } from "common/values/TYPES";
+import { TYPE_LEAGUE_CARD } from "common/values/TYPES";
 
 const Leagues = () => {
 	const navigate = useNavigate();
@@ -49,6 +52,15 @@ const Leagues = () => {
 			})
 			.catch((err) => {
 				dispatch(SET_SPINNER(false));
+				dispatch(
+					SET_SNACKBAR({
+						show: true,
+						type: TYPE_SNAKBAR.ERROR,
+						message: err.message,
+					})
+				);
+
+				navigate("/");
 				// console.log(err);
 			});
 	};
@@ -108,7 +120,11 @@ const Leagues = () => {
 							className="ratio _dish-cardLeagueInfo"
 							onClick={(e) => handleNavigate(e, `/leagues/${dataLeagueHome[TYPE_LEAGUE_HOME.GRAND]._id}`)}
 						>
-							<CardLeagueInfo info={dataLeagueHome[TYPE_LEAGUE_HOME.GRAND]} hasEnterBtn={false} />
+							<CardLeagueInfo
+								info={dataLeagueHome[TYPE_LEAGUE_HOME.GRAND]}
+								hasEnterBtn={false}
+								type={TYPE_LEAGUE_HOME.GRAND}
+							/>
 						</div>
 					</div>
 				) : (
@@ -131,7 +147,7 @@ const Leagues = () => {
 									className="ratio _dish-cardLeagueInfo"
 									onClick={(e) => handleNavigate(e, `/leagues/${el._id}`)}
 								>
-									<CardLeagueInfo info={el} expired={true} />
+									<CardLeagueInfo info={el} type={TYPE_LEAGUE_HOME.HISTORY} />
 								</div>
 							</div>
 						))

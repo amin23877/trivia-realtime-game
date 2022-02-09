@@ -23,7 +23,7 @@ const ProfileFriends = () => {
 			.get("/user/me/friends")
 			.then((res) => {
 				dispatch(SET_SPINNER(false));
-				console.log(res);
+				// console.log(res);
 				setFriends(res.data);
 			})
 			.catch((err) => {

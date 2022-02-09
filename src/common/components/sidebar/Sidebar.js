@@ -1,6 +1,6 @@
 import React from "react";
 import Avatar from "common/components/UI/Avatar";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_MODALS } from "redux/actions/mainActions/generalActions";
 import { MODALS } from "common/values/MODALS";
@@ -19,7 +19,18 @@ import { ReactComponent as DeactivateIcon } from "assets/images/icons/deactivati
 import { ReactComponent as WalletIcon } from "assets/images/icons/wallet-icon.svg";
 import { IMAGE_URL } from "common/values/CORE";
 
+const menuItems = [
+	{ name: "Home", route: "/", icon: <HomeIcon /> },
+	{ name: "League", route: "/leagues", icon: <LeagueIcon /> },
+	{ name: "Profile", route: "/profile", icon: <UserIcon /> },
+	{ name: "Leaderboard", route: "/leaderboard", icon: <LeaderBoardIcon /> },
+	{ name: "Wallet", route: "/menu/wallet", icon: <WalletIcon /> },
+	{ name: "Settings", route: false, icon: <SettingsIcon /> },
+	{ name: "Contact us", route: false, icon: <ContactIcon /> },
+];
+
 const Sidebar = () => {
+	const location = useLocation();
 	const user = useSelector((state) => state.stateUser.userInfo);
 	const dispatch = useDispatch();
 
@@ -41,48 +52,24 @@ const Sidebar = () => {
 			<div className="quick-play-btn">Quick Play</div>
 
 			<ul className="sidebar-menu">
-				<Link to="/">
-					<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
-						<HomeIcon />
-						Home
-					</li>
-				</Link>
+				{menuItems.map((item, index) => {
+					let { name, route, icon } = item;
 
-				<Link to="/leagues">
-					<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
-						<LeagueIcon />
-						League
-					</li>
-				</Link>
+					// add active class to item if current location match item route
+					let itemClasses = `
+						sidebar-menu-item sidebar-menu-item_hover-effect-purple 
+						${location.pathname === route ? "sidebar-menu-item_active" : ""}
+					`;
 
-				<Link to="/profile">
-					<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
-						<UserIcon />
-						Profile
-					</li>
-				</Link>
-
-				<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
-					<LeaderBoardIcon />
-					Leaderboard
-				</li>
-
-				<Link to="/menu/wallet">
-					<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
-						<WalletIcon />
-						Wallet
-					</li>
-				</Link>
-
-				<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
-					<SettingsIcon />
-					Settings
-				</li>
-
-				<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
-					<ContactIcon />
-					Contact us
-				</li>
+					return (
+						<Link key={index} to={route ?? ""}>
+							<li className={itemClasses}>
+								{icon}
+								{name}
+							</li>
+						</Link>
+					);
+				})}
 
 				<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
 					<LogoutIcon />
