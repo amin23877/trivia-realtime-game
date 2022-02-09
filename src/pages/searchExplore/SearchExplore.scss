@@ -90,6 +90,8 @@ $input-border-radius : 1rem;
 
     &_open {
       display: block;
+      max-height: 40vh;
+      overflow: auto;
     }
   }
 }

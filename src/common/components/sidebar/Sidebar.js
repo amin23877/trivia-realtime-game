@@ -80,10 +80,12 @@ const Sidebar = () => {
 					);
 				})}
 
-				<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
-					<LogoutIcon />
-					Logout
-				</li>
+				<Link to="/login">
+					<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
+						<LogoutIcon />
+						Logout
+					</li>
+				</Link>
 
 				<li
 					onClick={openDeactivateModal}

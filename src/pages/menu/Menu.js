@@ -122,7 +122,7 @@ const Menu = ({ onDrawerClose }) => {
 					<p>Update</p>
 				</div>
 
-				<div className="d-flex align-items-center menu-item">
+				<div onClick={() => navigate("/login")} className="d-flex align-items-center menu-item">
 					<ExitToAppOutlinedIcon className="icon" />
 					<p>Logout</p>
 				</div>
