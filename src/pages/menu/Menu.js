@@ -89,38 +89,41 @@ const Menu = ({ onDrawerClose }) => {
 				</div>
 			</div>
 			<div className="menu-body">
-				<div className="d-flex align-items-center menu-item _br-bottom" onClick={() => navigate("wallet")}>
+				<div
+					className="d-flex align-items-center menu-item _br-bottom"
+					onClick={() => navigate("/menu/wallet")}
+				>
 					<AccountBalanceWalletOutlinedIcon className="icon" />
 					<p>Wallet</p>
 				</div>
 
-				<div
+				{/* <div
 					className="d-flex align-items-center menu-item _br-bottom"
 					onClick={() => navigate("notification")}
 				>
 					<NotificationsOutlinedIcon className="icon" />
 					<p>notification</p>
-				</div>
+				</div> */}
 
-				<div className="d-flex align-items-center menu-item _br-bottom">
+				{/* <div className="d-flex align-items-center menu-item _br-bottom">
 					<SettingsOutlinedIcon className="icon" />
 					<p>Settings</p>
-				</div>
+				</div> */}
 
-				<div className="d-flex align-items-center menu-item _br-bottom">
+				{/* <div className="d-flex align-items-center menu-item _br-bottom">
 					<ShareOutlinedIcon className="icon" />
 					<p>introduce to friends</p>
-				</div>
+				</div> */}
 
-				<div className="d-flex align-items-center menu-item _br-bottom">
+				{/* <div className="d-flex align-items-center menu-item _br-bottom">
 					<HeadsetMicOutlinedIcon className="icon" />
 					<p>Contact us</p>
-				</div>
+				</div> */}
 
-				<div className="d-flex align-items-center menu-item _br-bottom">
+				{/* <div className="d-flex align-items-center menu-item _br-bottom">
 					<CachedOutlinedIcon className="icon" />
 					<p>Update</p>
-				</div>
+				</div> */}
 
 				<div onClick={() => navigate("/login")} className="d-flex align-items-center menu-item">
 					<ExitToAppOutlinedIcon className="icon" />

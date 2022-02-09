@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 // Styles, Icons, Images
 import "./LeaderboardTabPanel.scss";
 import bestPlayersLevel from "assets/images/pics/best-players-stage.svg";
+import iconGift from "assets/images/icons/icon-gift.svg";
 
 const LeaderboardTabPanelHeader = ({ dataLeaderboard }) => {
 	const stateGeneral = useSelector((state) => state.stateGeneral);
@@ -33,7 +34,7 @@ const LeaderboardTabPanelHeader = ({ dataLeaderboard }) => {
 												<Avatar
 													className="leaderboard-avatar"
 													size={{ mobile: 32, desktop: 54 }}
-													src={`${IMAGE_URL}${el?.UserId?.avatar}`}
+													src={`${IMAGE_URL}${encodeURI(el?.UserId?.avatar)}`}
 												/>
 												<p className="username">{el?.UserId?.username}</p>
 												<p className="points">{`${el?.point} points`}</p>
@@ -44,7 +45,7 @@ const LeaderboardTabPanelHeader = ({ dataLeaderboard }) => {
 												<Avatar
 													className="leaderboard-avatar"
 													size={{ mobile: 32, desktop: 54 }}
-													src={`${IMAGE_URL}${el?.UserId?.avatar}`}
+													src={`${IMAGE_URL}${encodeURI(el?.UserId?.avatar)}`}
 												/>
 												<p className="username">{el?.UserId?.username}</p>
 												<p className="points">{`${el?.xp} points`}</p>
@@ -67,14 +68,19 @@ const LeaderboardTabPanelHeader = ({ dataLeaderboard }) => {
 					<div className="d-flex align-items-center _br-bottom user-first">
 						<div className="d-flex align-items-center info">
 							<span className="index">{"1."}</span>
-							<div className="avatar"></div>
+
+							<Avatar
+								size={{ mobile: 22, desktop: 44 }}
+								src={`${IMAGE_URL}${encodeURI(dataLeaderboard[0]?.avatar)}`}
+							/>
+
 							<div>
-								<p className="username">{dataLeaderboard[0].UserId?.username}</p>
+								<p className="username">{dataLeaderboard[0]?.username}</p>
 								<p className="points">{`${dataLeaderboard[0]?.xp} points`}</p>
 							</div>
 						</div>
 						<div className="d-flex align-items-center bundle">
-							<img src={`${IMAGE_URL}${dataLeaderboard[0]?.UserId?.avatar}`} />1 GB Data bundle
+							<img className="icon-gift" src={iconGift} />1 GB Data bundle
 						</div>
 					</div>
 					<p className="subtitle">Your position: 12</p>

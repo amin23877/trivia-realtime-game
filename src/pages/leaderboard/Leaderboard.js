@@ -3,15 +3,15 @@ import React, { useEffect } from "react";
 // Hooks
 // Packages
 // Components, Services, Functions
+import { TYPE_LEADERBOARD_COMPONENT } from "common/values/TYPES";
 import LeaderboardTabs from "./leaderboardComponents/LeaderboardTabs";
 import HeaderGoBack from "common/components/headerGoBack/HeaderGoBack";
 // Redux
+import { useDispatch } from "react-redux";
+import { SET_TYPE_LEADERBOARD_COMPONENT } from "redux/actions/mainActions/generalActions";
 // Material - lab
 // Styles, Icons, Images
 import "./Leaderboard.scss";
-import { TYPE_LEADERBOARD_COMPONENT } from "common/values/TYPES";
-import { SET_TYPE_LEADERBOARD_COMPONENT } from "redux/actions/mainActions/generalActions";
-import { useDispatch } from "react-redux";
 
 const Leaderboard = () => {
 	const dispatch = useDispatch();

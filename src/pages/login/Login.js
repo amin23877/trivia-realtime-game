@@ -79,7 +79,7 @@ const Login = () => {
 		<div className="fadeInFast d-flex flex-column align-items-center login">
 			<Logo />
 
-			<div className="login-body">
+			<div className="my-auto login-body">
 				<div className="login-body__title">
 					<p className="title">Log in</p>
 					<img className="login-body__image" src={imgMain} alt="" />
@@ -103,7 +103,7 @@ const Login = () => {
 					</div>
 				</form>
 
-				<button className="login-body__submit" disabled={!isValidPhone} onClick={handleGetOtp}>
+				<button className="my-4 login-body__submit" disabled={!isValidPhone} onClick={handleGetOtp}>
 					Login
 				</button>
 			</div>

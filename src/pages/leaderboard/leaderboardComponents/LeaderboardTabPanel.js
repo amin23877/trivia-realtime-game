@@ -38,7 +38,8 @@ const LeaderboardTabPanel = ({ type }) => {
 				break;
 
 			default:
-				url = `leaderboard/${type}`;
+				// url = `leaderboard/${type}`;
+				url = "/leaderboard/all"; // TEST
 				break;
 		}
 
@@ -53,10 +54,15 @@ const LeaderboardTabPanel = ({ type }) => {
 			.get(url)
 			.then((res) => {
 				dispatch(SET_SPINNER(false));
-				let response =
-					stateGeneral.typeLeaderboardComponent === TYPE_LEADERBOARD_COMPONENT.INNER_LEAGUE
-						? res.data
-						: res.data.result;
+				// console.log("res > \n", res);
+
+				let response = res.data; // TEST
+				// let response =
+				// 	stateGeneral.typeLeaderboardComponent === TYPE_LEADERBOARD_COMPONENT.INNER_LEAGUE
+				// 		? res.data
+				// 		: res.data.result;
+				// console.log("response > \n", res.data);
+
 				let LeaderboardSorted = _.orderBy(response, ["xp"], ["desc"]);
 
 				// console.log("type ", stateGeneral.typeLeaderboardComponent, response);

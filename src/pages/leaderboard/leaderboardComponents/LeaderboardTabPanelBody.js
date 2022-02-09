@@ -19,6 +19,7 @@ const LeaderboardTabPanelBody = ({ dataLeaderboard }) => {
 
 	const indexStart = stateGeneral.typeLeaderboardComponent !== TYPE_LEADERBOARD_COMPONENT.GENERAL ? 4 : 2;
 
+	// console.log(dataLeaderboard);
 	return (
 		<div className="w-100 h-100 tabPanelBody">
 			{dataLeaderboard?.length > 0 ? (
@@ -31,7 +32,8 @@ const LeaderboardTabPanelBody = ({ dataLeaderboard }) => {
 										<span className="index">{`${index + indexStart}.`}</span>
 										<Avatar
 											size={{ mobile: 22, desktop: 44 }}
-											src={`${IMAGE_URL}${el?.UserId?.avatar}`}
+											// src={`${IMAGE_URL}${encodeURI(el?.avatar)}`} // TEST
+											src={`${IMAGE_URL}${encodeURI(el?.UserId?.avatar)}`}
 										/>
 										<p className="username">{el?.UserId?.username}</p>
 										<p className="reward">{`$ ${el?.reward}`}</p>
@@ -43,10 +45,11 @@ const LeaderboardTabPanelBody = ({ dataLeaderboard }) => {
 										<span className="index">{`${index + indexStart}.`}</span>
 										<Avatar
 											size={{ mobile: 22, desktop: 44 }}
-											src={`${IMAGE_URL}${el?.UserId?.avatar}`}
+											// src={`${IMAGE_URL}${el?.UserId?.avatar}`}
+											src={`${IMAGE_URL}${encodeURI(el?.UserId?.avatar || el?.avatar)}`}
 										/>
-										<p className="username">{el?.UserId?.username}</p>
-										<p className="points">{`${el?.xp} points`}</p>
+										<p className="username">{el?.UserId?.username || el?.username}</p>
+										<p className="points">{`${el?.UserId?.xp || el?.xp || 0} points`}</p>
 									</div>
 								)
 							)}
