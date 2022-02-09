@@ -1,15 +1,19 @@
 @import 'assets/scss/styles.scss';
 
 $desktop-slider-height: 210px;
-$mobile-slider-height: 145px;
+$mobile-slider-height: 155px;
 
 .homeTopics {
     width: 100%;
-    overflow-x: auto;
     display: flex;
     height: $mobile-slider-height;
 
     @include desktop {
         height: $desktop-slider-height;
+    }
+
+    .swiper {
+        padding: 10px;
+        margin-left: -10px;
     }
 }
