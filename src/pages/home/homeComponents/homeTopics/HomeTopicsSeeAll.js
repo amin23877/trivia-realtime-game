@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 // Packages
 // Components, Services, Functions
 import { IMAGE_URL, LIST_PAGESIZE } from "common/values/CORE";
-import { TYPE_TOPIC_SORTKEY, TYPE_TOPIC_SORTKEY_LIST } from "common/values/TYPES";
+import { TYPE_TOPIC, TYPE_TOPIC_SORTKEY, TYPE_TOPIC_SORTKEY_LIST } from "common/values/TYPES";
 import EmptyList from "common/components/empties/EmptyList";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -16,6 +16,7 @@ import Pagination from "@material-ui/lab/Pagination"; // #pagination step0
 import "./HomeTopicsSeeAll.scss";
 import iconRate from "assets/images/icons/rate-mini.svg";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import CardTopic from "common/components/cardTopic/CardTopic";
 
 const HomeTopicsSeeAll = (props) => {
 	let { type } = useParams();
@@ -71,8 +72,8 @@ const HomeTopicsSeeAll = (props) => {
 	}, []);
 
 	return (
-		<div className="w-100 h-100 topicsSeeAll">
-			<div className="d-flex align-items-center _header-path">
+		<div className="w-100 topicsSeeAll">
+			<div className="header-breadcrumb _header-path">
 				{paths.map((el, index) => (
 					<p
 						key={index}
@@ -94,29 +95,7 @@ const HomeTopicsSeeAll = (props) => {
 						<div className="d-flex flex-wrap">
 							{stateTopic[TYPE_TOPIC_SORTKEY_LIST[type]]?.list.map((el, index) => (
 								<div className="topicsSeeAll-item">
-									<div
-										key={index}
-										className="_topic-card"
-										onClick={(e) => handleNavigate(e, "/topics/5")}
-									>
-										<div className="card-img">
-											<img src={`${IMAGE_URL}${el?.logo}`} alt="" />
-										</div>
-										<div className="d-flex flex-column justify-content-between card-info">
-											<p className="title">{el.name}</p>
-											<div className="d-flex justify-content-between align-items-center">
-												<p className="subtitle">
-													<span>{`${el.questions} questions /`}</span>
-
-													<span>{`${el?.singlePlays + el?.doublePlays} plays`}</span>
-												</p>
-												<p className="rate">
-													<img className="mx-1" src={iconRate} alt="" />
-													<span>{el.rate}</span>
-												</p>
-											</div>
-										</div>
-									</div>
+									<CardTopic data={type !== TYPE_TOPIC.FAVORITE ? el : el?.TopicId} />
 								</div>
 							))}
 						</div>
