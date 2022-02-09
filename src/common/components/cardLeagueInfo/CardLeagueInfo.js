@@ -10,19 +10,22 @@ import _ from "lodash";
 import "./CardLeagueInfo.scss";
 import PersonIcon from "@material-ui/icons/Person";
 import imgExpired from "assets/images/icons/expired.svg";
-import imgMain from "assets/images/pics/home-card-main.svg";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
 // #countdownTimer step2
 import Countdown from "react-countdown";
-import CountdownTimer from "common/components/countdownTimer/CountDownTimer"; // FIX
 import { IMAGE_URL } from "common/values/CORE";
 import { useNavigate } from "react-router-dom";
+import { TYPE_LEAGUE_HOME } from "common/values/TYPES";
+import CountdownTimer from "common/components/countdownTimer/CountDownTimer"; // FIX
+import CountDownTimerGrand from "common/components/countdownTimer/CountDownTimerGrand";
+import CountDownTimerHistory from "common/components/countdownTimer/CountDownTimerHistory";
 
-const CardLeagueInfo = ({ info, expired = false, hasEnterBtn = true }) => {
+const CardLeagueInfo = ({ info, hasEnterBtn = true, type = TYPE_LEAGUE_HOME.GENERAL }) => {
 	const navigate = useNavigate();
 
+	const expired = type?.includes(TYPE_LEAGUE_HOME.HISTORY) ? true : false;
 	const handleNavigate = (event, path) => {
 		event.stopPropagation();
 		navigate(path);
@@ -81,15 +84,35 @@ const CardLeagueInfo = ({ info, expired = false, hasEnterBtn = true }) => {
 					<p className="title"> {_.truncate(info?.name, { length: 25, separator: " " })}</p>
 				</div>
 
-				<div className="d-flex timer">
-					{/* #countdownTimer step3 */}
-					<Countdown
-						// date={Date.now() + timeRemain * 1000}
-						date={info?.endTime}
-						renderer={CountdownTimer}
-						onComplete={(e) => handleStop(e)}
-					/>
-				</div>
+				{type?.includes(TYPE_LEAGUE_HOME.GRAND) ? (
+					<div className="timer">
+						<p className="tostart ">to start</p>
+						<Countdown
+							date={info?.endTime}
+							renderer={CountDownTimerGrand}
+							onComplete={(e) => handleStop(e)}
+						/>
+					</div>
+				) : expired ? (
+					<div className="timer">
+						<Countdown
+							date={info?.endTime}
+							renderer={CountDownTimerHistory}
+							onComplete={(e) => handleStop(e)}
+						/>
+					</div>
+				) : (
+					<div className="d-flex timer">
+						{/* #countdownTimer step3 */}
+						<Countdown
+							// date={Date.now() + timeRemain * 1000}
+							date={info?.endTime}
+							renderer={CountdownTimer}
+							onComplete={(e) => handleStop(e)}
+						/>
+					</div>
+				)}
+
 				<p className="price">{`$${rewards}`}</p>
 
 				{!expired ? (

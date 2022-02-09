@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import "./LeaguesHistory.scss";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
+import { TYPE_LEAGUE_HOME } from "common/values/TYPES";
 
 const LeaguesHistory = () => {
 	const navigate = useNavigate();
@@ -68,7 +69,7 @@ const LeaguesHistory = () => {
 					dataLeagueHistory?.map((el, index) => (
 						<div key={index} className="card-league">
 							<div className="ratio _dish-cardLeagueInfo">
-								<CardLeagueInfo info={el} expired={true} />
+								<CardLeagueInfo info={el} type={TYPE_LEAGUE_HOME.HISTORY} />
 							</div>
 						</div>
 					))

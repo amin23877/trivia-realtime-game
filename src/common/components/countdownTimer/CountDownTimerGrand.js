@@ -1,9 +1,9 @@
-// #countdownTimer step1
 import React from "react";
 
 import "./CountdownTimer.scss";
+import iconBomb from "assets/images/icons/icon-bomb.svg";
 
-const CountdownTimer = (props) => {
+const CountDownTimerGrand = (props) => {
 	const { hours, minutes, seconds } = props;
 	const rt = {
 		h: hours < 10 ? `0${hours}` : `${hours}`,
@@ -12,7 +12,8 @@ const CountdownTimer = (props) => {
 	};
 
 	return (
-		<div className="d-flex countdownTimer">
+		<div className="d-flex countDownTimerGrand">
+			<img className="icon-bomb" src={iconBomb} />
 			<p className="box">{rt.h.substring(0, 1)}</p>
 			<p className="box">{rt.h.substring(1, 2)}</p>
 			<p className="colon">{":"}</p>
@@ -25,4 +26,4 @@ const CountdownTimer = (props) => {
 	);
 };
 
-export default CountdownTimer;
+export default CountDownTimerGrand;
