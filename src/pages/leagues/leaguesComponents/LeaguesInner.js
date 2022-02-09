@@ -71,7 +71,7 @@ const LeaguesInner = () => {
 		apiCall
 			.get(`league/${id}`)
 			.then((res) => {
-				console.log(res);
+				// console.log(res);
 				dispatch(SET_SPINNER(false));
 				setDataInnerLeague(res.data);
 			})
