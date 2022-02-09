@@ -94,7 +94,7 @@ const HomeTopicsSeeAll = (props) => {
 					<>
 						<div className="d-flex flex-wrap">
 							{stateTopic[TYPE_TOPIC_SORTKEY_LIST[type]]?.list.map((el, index) => (
-								<div className="topicsSeeAll-item">
+								<div key={index} className="topicsSeeAll-item">
 									<CardTopic data={type !== TYPE_TOPIC.FAVORITE ? el : el?.TopicId} />
 								</div>
 							))}
