@@ -25,8 +25,9 @@ import NotificationsOutlinedIcon from "@material-ui/icons/NotificationsOutlined"
 import PowerSettingsNewOutlinedIcon from "@material-ui/icons/PowerSettingsNewOutlined";
 import AccountBalanceWalletOutlinedIcon from "@material-ui/icons/AccountBalanceWalletOutlined";
 
-import avatar from "assets/images/logo/logo.svg";
 import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
+import { IMAGE_URL } from "common/values/CORE";
+import Avatar from "common/components/UI/Avatar";
 
 const Menu = ({ onDrawerClose }) => {
 	const navigate = useNavigate();
@@ -35,6 +36,7 @@ const Menu = ({ onDrawerClose }) => {
 
 	const dispatch = useDispatch();
 	const stateGeneral = useSelector((state) => state.stateGeneral);
+	const user = useSelector((state) => state.stateUser.userInfo);
 
 	const [userInfo, setUserInfo] = useState(stateGeneral.userInfo);
 
@@ -78,10 +80,10 @@ const Menu = ({ onDrawerClose }) => {
 		<div className="d-flex flex-column w-100 h-100 menu">
 			<div className="d-flex justify-content-between align-items-stretch menu-header">
 				<div className="">
-					<div className="avatar">{/* <img src={avatar} alt='' /> */}</div>
+					<Avatar src={IMAGE_URL + encodeURI(user.avatar)} size={40} />
 
-					<p className="name">Asma Tanavar</p>
-					<p className="level">Level 7</p>
+					<p className="name">{user.username}</p>
+					<p className="level">Level {user.level}</p>
 				</div>
 
 				<div className="close">
