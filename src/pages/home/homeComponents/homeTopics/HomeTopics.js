@@ -37,7 +37,7 @@ const HomeTopics = ({ type }) => {
 					key={index}
 					className="_topic-card-container"
 					onClick={(e) => {
-						handleShowTopicInner(e, el);
+						handleShowTopicInner(e, type !== TYPE_TOPIC.FAVORITE ? el : el?.TopicId);
 					}}
 				>
 					<CardTopic data={type !== TYPE_TOPIC.FAVORITE ? el : el?.TopicId} />
