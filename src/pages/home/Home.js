@@ -9,9 +9,7 @@ import Menu from "pages/menu/Menu";
 import MobileHeader from "common/components/header/MobileHeader";
 import HomeTopics from "./homeComponents/homeTopics/HomeTopics";
 import CardLeagueInfo from "common/components/cardLeagueInfo/CardLeagueInfo";
-import ModalConfirmDeactivation from "pages/modals/ModalConfirmDeactivation";
 // Redux
-import { MODALS } from "common/values/MODALS";
 import { fetchTopics } from "redux/actions/topicActions/topicsActions";
 // Material - lab
 import { Drawer } from "@material-ui/core";
@@ -26,7 +24,6 @@ const Home = () => {
 	const dispatch = useDispatch();
 	const apiCall = new ApiCall();
 
-	const stateGeneral = useSelector((state) => state.stateGeneral);
 	const stateTopic = useSelector((state) => state.stateTopic);
 
 	const [dataLeague, setDataLeague] = useState();
@@ -126,9 +123,6 @@ const Home = () => {
 					</div>
 				))}
 			</div>
-
-			{/* #modalUse step0 */}
-			{stateGeneral.modals[MODALS.deactivation] ? <ModalConfirmDeactivation /> : null}
 		</div>
 	);
 };
