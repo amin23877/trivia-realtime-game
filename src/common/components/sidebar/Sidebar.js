@@ -18,6 +18,8 @@ import { ReactComponent as LogoutIcon } from "assets/images/icons/logout.svg";
 import { ReactComponent as DeactivateIcon } from "assets/images/icons/deactivation.svg";
 import { ReactComponent as WalletIcon } from "assets/images/icons/wallet-icon.svg";
 import { IMAGE_URL } from "common/values/CORE";
+import { SET_GAME_SELECTION_TYPE } from "redux/actions/mainActions/generalActions";
+import { SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
 
 const menuItems = [
 	{ name: "Home", route: "/", icon: <HomeIcon /> },
@@ -38,6 +40,11 @@ const Sidebar = () => {
 		dispatch(SET_MODALS({ [MODALS.deactivation]: true }));
 	};
 
+	const handleQuickPlay = () => {
+		dispatch(SET_GAME_SELECTION_TYPE({ type: "quickPlay", id: null }));
+		dispatch(SET_OPEN_GAME_TYPES(true));
+	};
+
 	return (
 		<div className="sidebar">
 			<div className="sidebar-header">
@@ -49,7 +56,9 @@ const Sidebar = () => {
 				</p>
 			</div>
 
-			<div className="quick-play-btn">Quick Play</div>
+			<div className="quick-play-btn" onClick={handleQuickPlay}>
+				Quick Play
+			</div>
 
 			<ul className="sidebar-menu">
 				{menuItems.map((item, index) => {
