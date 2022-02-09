@@ -105,34 +105,46 @@ const LeaguesInner = () => {
 
 	return (
 		<div className="w-100 h-100 leaguesInner">
+			<p className="title d-none d-xl-block pb-xl-3">
+				{_.truncate(dataInnerLeague?.name, { length: 35, separator: " " })}
+			</p>
+
 			<div className="leaguesInner-header">
 				<div className="d-flex justify-content-between align-items-center sec-img" style={styleBgImg}>
-					<p className="d-flex justify-content-center align-items-center" onClick={handleGoBack}>
+					<p className="d-flex d-xl-none justify-content-center align-items-center" onClick={handleGoBack}>
 						<CloseIcon />
 					</p>
-					<p className="d-flex justify-content-center align-items-center">
+					<p className="d-flex d-xl-none justify-content-center align-items-center">
 						<ShareOutlinedIcon />
 					</p>
 				</div>
 
 				<div className="sec-info">
-					<p className="title">{_.truncate(dataInnerLeague?.name, { length: 35, separator: " " })}</p>
+					<p className="title d-xl-none">
+						{_.truncate(dataInnerLeague?.name, { length: 35, separator: " " })}
+					</p>
 					<p className="subtitle">
 						{_.truncate(dataInnerLeague?.TopicId?.name, { length: 40, separator: " " })}
 					</p>
-					<div className="pt-2 d-flex justify-content-between align-items-center">
-						<div id="primaryWhiteBlack" className="d-flex timer">
-							<Countdown
-								date={Date.now() + timeRemain * 1000}
-								renderer={CountdownTimer}
-								onComplete={(e) => handleStop(e)}
-							/>
+					<div className="pt-2 d-flex flex-xl-column justify-content-between align-items-center">
+						<div id="primaryWhiteBlack" className="d-flex py-xl-2 timer">
+							<div className="mx-xl-auto">
+								<Countdown
+									date={Date.now() + timeRemain * 1000}
+									renderer={CountdownTimer}
+									onComplete={(e) => handleStop(e)}
+								/>
+							</div>
 						</div>
 
 						<p className="grey players-num">
 							{dataInnerLeague?.players > 1 ? <SupervisorAccountIcon /> : <PersonIcon />}
 							<span className="mx-1">{`${dataInnerLeague?.players} player`}</span>
 						</p>
+
+						<button className="btn-play d-none d-xl-inline" onClick={handlePlay}>
+							<span className="mx-1">Play Now</span>
+						</button>
 					</div>
 				</div>
 			</div>
@@ -167,7 +179,7 @@ const LeaguesInner = () => {
 				</div>
 			</div>
 
-			<div className="d-flex justify-content-center align-items-center leaguesInner-footer">
+			<div className="d-flex d-xl-none justify-content-center align-items-center leaguesInner-footer">
 				<button className="btn-play" onClick={handlePlay}>
 					<span className="mx-1">Play Now</span>
 				</button>
