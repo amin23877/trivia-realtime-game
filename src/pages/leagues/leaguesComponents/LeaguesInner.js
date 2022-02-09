@@ -25,6 +25,8 @@ import { TYPE_LEADERBOARD } from "common/values/TYPES";
 import LeaderboardTabs from "pages/leaderboard/leaderboardComponents/LeaderboardTabs";
 import { TYPE_LEADERBOARD_COMPONENT } from "common/values/TYPES";
 import { SET_TYPE_LEADERBOARD_COMPONENT } from "redux/actions/mainActions/generalActions";
+import { SET_SNACKBAR } from "redux/actions/mainActions/generalActions";
+import { TYPE_SNAKBAR } from "common/values/TYPES";
 
 const LeaguesInner = () => {
 	let { id } = useParams();
@@ -69,12 +71,21 @@ const LeaguesInner = () => {
 		apiCall
 			.get(`league/${id}`)
 			.then((res) => {
-				// console.log(res.data);
+				console.log(res);
 				dispatch(SET_SPINNER(false));
 				setDataInnerLeague(res.data);
 			})
 			.catch((err) => {
 				dispatch(SET_SPINNER(false));
+				dispatch(
+					SET_SNACKBAR({
+						show: true,
+						type: TYPE_SNAKBAR.ERROR,
+						message: err.message,
+					})
+				);
+
+				handleGoBack();
 				// console.log(err);
 			});
 	};
