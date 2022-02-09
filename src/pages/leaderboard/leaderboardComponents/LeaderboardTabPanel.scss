@@ -97,6 +97,11 @@ $size-avatar: 30px;
         @include avatarShape($size-avatar);
     }
 
+    .icon-gift {
+        max-height: 15px;
+        width: auto;
+    }
+
     ///////////////////////////////////////
 
     .board {
@@ -149,12 +154,12 @@ $size-avatar: 30px;
                 }
 
                 .username {
-                    @include fontSize($fs-xs ,$fs-l);
+                    @include fontSize($fs-xs, $fs-l);
                     padding: 5px 0;
                 }
 
                 .points {
-                    @include fontSize($fs-xs ,$fs-m);
+                    @include fontSize($fs-xs, $fs-m);
                     color: $primary;
                     margin-left: auto !important;
 
@@ -188,7 +193,7 @@ $size-avatar: 30px;
             padding: 15px;
 
             .index {
-                @include fontSize(8px ,$fs-l);
+                @include fontSize(8px, $fs-l);
                 min-width: 25px;
                 color: $primary;
             }
@@ -199,14 +204,14 @@ $size-avatar: 30px;
             }
 
             .points {
-                @include fontSize(8px ,$fs-l);
+                @include fontSize(8px, $fs-l);
                 color: $primary;
                 margin-left: auto !important;
             }
         }
 
         .seemore {
-            @include fontSize($fs-xs ,$fs-m);
+            @include fontSize($fs-xs, $fs-m);
             padding: 15px;
             color: $primary;
             text-align: center;
