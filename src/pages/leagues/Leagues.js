@@ -20,6 +20,8 @@ import { useDispatch } from "react-redux";
 import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
 import { TYPE_LEAGUE_HOME } from "common/values/TYPES";
 import EmptyList from "common/components/empties/EmptyList";
+import { SET_SNACKBAR } from "redux/actions/mainActions/generalActions";
+import { TYPE_SNAKBAR } from "common/values/TYPES";
 
 const Leagues = () => {
 	const navigate = useNavigate();
@@ -49,6 +51,15 @@ const Leagues = () => {
 			})
 			.catch((err) => {
 				dispatch(SET_SPINNER(false));
+				dispatch(
+					SET_SNACKBAR({
+						show: true,
+						type: TYPE_SNAKBAR.ERROR,
+						message: err.message,
+					})
+				);
+
+				navigate("/");
 				// console.log(err);
 			});
 	};
