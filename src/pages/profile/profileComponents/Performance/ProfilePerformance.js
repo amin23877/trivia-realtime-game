@@ -12,12 +12,13 @@ import EmptyList from "common/components/empties/EmptyList";
 import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
 import ApiCall from "common/services/ApiCall";
 import { useDispatch } from "react-redux";
+import { logDOM } from "@testing-library/react";
 
 const ProfilePerformance = () => {
 	//----data states
 	const [performanceData, setPerformanceData] = useState();
 	const [participatingHistoryData, setParticipatingHistoryData] = useState();
-	const [playedTopicsData, setPlayedTopics] = useState();
+	const [playedTopicsData, setPlayedTopics] = useState([]);
 
 	const apiCall = new ApiCall();
 	const dispatch = useDispatch();
@@ -44,9 +45,9 @@ const ProfilePerformance = () => {
 		let isMounted = true;
 		if (isMounted) {
 			getData();
-			setPerformanceData(MOCK_PERFORMANCE_LEVEL);
-			setParticipatingHistoryData(MOCK_HISTORY_OF_PARTICIPATING);
-			setPlayedTopics(MOCK_HISTORY_OF_PARTICIPATING);
+			// setPerformanceData(MOCK_PERFORMANCE_LEVEL);
+			// setParticipatingHistoryData(MOCK_HISTORY_OF_PARTICIPATING);
+			// setPlayedTopics(MOCK_HISTORY_OF_PARTICIPATING);
 
 			// fetch favorite topics
 			// set loading status
@@ -56,6 +57,9 @@ const ProfilePerformance = () => {
 		};
 	}, []);
 
+	// console.log("1 > ", performanceTopic);
+	// console.log("2 > ", performanceLeague);
+
 	return (
 		<div className="profile-performance">
 			<PerformanceLevelCard data={performanceData} />
@@ -64,8 +68,8 @@ const ProfilePerformance = () => {
 				<>
 					{performanceLeague?.length > 0 ? (
 						<PerformanceContentSection title="History Of Participating Leagues" seeMoreLink="/">
-							{participatingHistoryData?.map((p, i) => (
-								<ParticipatingHistoryCard key={i} data={p} />
+							{performanceLeague?.map((el, index) => (
+								<ParticipatingHistoryCard key={index} data={el} />
 							))}
 						</PerformanceContentSection>
 					) : (
@@ -74,8 +78,8 @@ const ProfilePerformance = () => {
 
 					{performanceTopic?.length > 0 ? (
 						<PerformanceContentSection title="Played Topics History" seeMoreLink="/">
-							{playedTopicsData.map((p, i) => (
-								<PlayedHistoryCard key={i} data={p} />
+							{performanceTopic.map((el, index) => (
+								<PlayedHistoryCard key={index} data={el} />
 							))}
 						</PerformanceContentSection>
 					) : (
