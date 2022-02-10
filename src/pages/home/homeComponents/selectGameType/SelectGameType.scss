@@ -5,6 +5,7 @@
     }
     100% {
         transform: translateY(0);
+        opacity:1;
     }
 }
 @keyframes twoPlayersAnimation {
@@ -34,6 +35,18 @@
         justify-content: center;
         padding-bottom: 24px;
         overflow: hidden;
+
+        @include desktop {
+            height: calc(100vh - 224px);
+            width: 172px;
+            overflow:auto;
+            top: 224px;
+            bottom:unset;
+            left:96px;
+            flex-direction: column;
+            justify-content: flex-start;    
+
+        }
         &__game-type-item {
             width: 84px;
             height: 90px;
@@ -46,19 +59,39 @@
             transform: translateY(114px);
             animation-fill-mode: forwards;
             animation-duration: 150ms;
-
+            @include desktop {
+                width:100%;
+                transform: translateY(-30px);
+                height: 151px;
+                border-radius: 0;
+                opacity:0;
+                border:0.5px solid #2f2f2f;
+            }
             &:nth-child(1) {
                 animation-name: onePlayerAnimation;
                 animation-delay: 0;
+                @include desktop {
+                    border-radius: 20px 20px 0 0;
+
+                }
             }
             &:nth-child(2) {
                 animation-name: twoPlayersAnimation;
                 animation-delay: 150ms;
                 margin: 0 8px;
+                @include desktop {
+                    margin: 0;
+                    animation-name: onePlayerAnimation;
+
+                }
             }
             &:last-child {
                 animation-name: onePlayerAnimation;
                 animation-delay: 300ms;
+                @include desktop {
+                    border-radius: 0 0 20px 20px;
+
+                }
             }
             & > img {
                 margin-bottom: 10px;
