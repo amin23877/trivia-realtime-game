@@ -1,6 +1,7 @@
 @import 'assets/scss/styles.scss';
 
-$radius-card: 15px;
+$radius-card: 20px;
+$radius-card-desktop: 55px;
 
 .cardLeagueInfo {
     // background-color: $bg-home-card;
@@ -12,6 +13,7 @@ $radius-card: 15px;
 
     @include desktop {
         background-size: cover;
+        border-radius: $radius-card-desktop;
     }
 
     .btn-enter {
