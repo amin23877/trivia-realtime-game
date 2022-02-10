@@ -4,12 +4,16 @@
   background-color: $bg-home;
 
   &__body {
-    padding: 1.5rem 0 4rem 1.5rem;
+    padding: 1.5rem 0 2.25rem 1.5rem;
     overflow-y: auto;
     height: 100%;
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
+
+    @include desktop {
+      padding-bottom: 3rem;
+    }
   }
 
   &__header {
