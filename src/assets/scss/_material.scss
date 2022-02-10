@@ -10,6 +10,8 @@
 }
 
 #tabs {
+    max-width: 1000px;
+    margin: auto;
     .MuiAppBar-root {
         background-color: $bg-home;
         color: $grey-1;
