@@ -52,7 +52,7 @@ const TwoPlayers = ({ type = 'quickPlay' }) => {
 		});
 
 		socketp.on("authentication", (e) => {
-			setSocketId(e.socketid);
+			setSocketId(e?.socketid);
 			if (type == 'topic' || type == 'league') {
 				console.log('id is', id)
 				setSelectedCategory({ _id: id })
@@ -94,6 +94,9 @@ const TwoPlayers = ({ type = 'quickPlay' }) => {
 						socket.emit("doubleGame", { TwoPlayerLeagueId: id });
 						break;
 				}
+			} else {
+				console.log('socketId Not Found', socketId);
+				alert('socket id not detected')
 			}
 		}
 	}, [selectedCategory]);

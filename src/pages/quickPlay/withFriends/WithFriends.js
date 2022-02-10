@@ -88,7 +88,7 @@ const WithFriends = ({ type = 'quickPlay' }) => {
 
 	useEffect(() => {
 		if (selectedCategory) {
-			if (authData.socketid) {
+			if (authData?.socketid) {
 				switch (type) {
 					case 'quickPlay':
 						socket.emit("setidmp", { CategoryId: selectedCategory._id, id: mpGamesId.categoryGameId });
@@ -103,6 +103,9 @@ const WithFriends = ({ type = 'quickPlay' }) => {
 				}
 
 				setGameState('friendsList')
+			}else{
+				console.log('socketId Not Found',authData);
+				alert('socket id not detected')
 			}
 		}
 	}, [selectedCategory]);

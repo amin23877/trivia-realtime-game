@@ -48,6 +48,7 @@ const OnePlayer = ({ type = 'quickPlay' }) => {
 		});
 
 		socketp.on("authentication", (e) => {
+			console.log('authDataOnFetch',e)
 			setAuthData(e)
 			if (type == 'topic' || type == 'league') {
 				console.log('id is', id)
@@ -74,7 +75,7 @@ const OnePlayer = ({ type = 'quickPlay' }) => {
 
 	useEffect(() => {
 		if (selectedCategory) {
-			if (authData.socketid) {
+			if (authData?.socketid) {
 				switch (type) {
 					case 'quickPlay':
 						socket.emit("singleGame", { CategoryId: selectedCategory._id });
@@ -86,6 +87,9 @@ const OnePlayer = ({ type = 'quickPlay' }) => {
 						socket.emit("singleGame", { OnePlayerLeagueId: id });
 						break;
 				}
+			}else{
+				console.log('socketId Not Found',authData);
+				alert('socket id not detected')
 			}
 		}
 	}, [selectedCategory]);
