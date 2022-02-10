@@ -77,8 +77,8 @@ const Leagues = () => {
 
 	return (
 		<div className="fadeInFast w-100 h-100 leagues">
-			<div className="d-flex d-xl-none justify-content-center align-items-center _header _header-shadow">
-				<img src={logo} alt="" />
+			<div className="leagues-header">
+				<img src={logo} alt="logo" />
 			</div>
 
 			<div className="_body-height-H leagues-body">
