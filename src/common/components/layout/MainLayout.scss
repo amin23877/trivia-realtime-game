@@ -46,7 +46,7 @@ $notif-drawer-width: 500px;
     height: $height-footer;
     position: fixed;
     bottom: 0;
-    z-index: 99;
+    z-index: 1000;
     width: 100%;
 
     @media (min-width: $breakpoint-xl) {
