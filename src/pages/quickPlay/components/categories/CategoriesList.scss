@@ -45,8 +45,11 @@
         grid-template-columns: repeat(3 , calc((100% - 36px)/3));
         column-gap:18px;
         row-gap:18px;
+        max-height: calc(100vh - 85px);
+        overflow:scroll;
         @media (min-width: 1366px) {
             grid-template-columns: repeat(4 , calc((100% - 54px)/4));
+
 
         }
     }
