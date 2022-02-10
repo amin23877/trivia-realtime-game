@@ -1,9 +1,9 @@
-@import "assets/scss/styles.scss";
+@import 'assets/scss/styles.scss';
 
 //---card-image
 $p-h-card-image-width: 55px;
 $p-h-card-image-height: 28.5px;
-$p-h-card-image-border-radius: 4px;
+$p-h-card-image-border-radius: 8px;
 //---card-title
 $p-h-card-title-color: $text-dark;
 $p-h-card-title-size: 10px;
@@ -23,14 +23,24 @@ $p-h-card-position-color: $red-1;
 //---card-reward
 $p-h-card-reward-color: $gold;
 
+// .participating-history-img {
+//   img {
+//     max-width: 55;
+//     max-height: 30;
+//     width: auto;
+//     height: auto;
+//     border-radius: $p-h-card-image-border-radius;
+//   }
+// }
+
 .participating-history-card {
   display: flex;
   align-items: start;
-  padding: 8px 4px;
+  // padding: 0;
   border-bottom: 1px solid $bg-seachbox;
 
   @include desktop {
-    padding: 1rem;
+    // padding: 5px 0;
   }
 
   &--image {

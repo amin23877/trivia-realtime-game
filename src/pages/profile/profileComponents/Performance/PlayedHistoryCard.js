@@ -6,17 +6,20 @@ import "./PlayedHistoryCard.scss";
 import { IMAGE_URL } from "common/values/CORE";
 
 const PlayedHistoryCard = ({ data }) => {
+	console.log(">>> ", data);
 	return (
 		<div className="played-history-card">
 			<div className="played-history-card--image">
-				<img src={`${IMAGE_URL}${encodeURI(data?.TopicId?.logo)}`} alt="" />
+				<img src={`${IMAGE_URL}${encodeURI(data?.image)}`} alt="" />
 			</div>
 			<div className="played-history-card--content">
 				<div>
-					<div className="played-history-card--content__title">{data?.TopicId?.name}</div>
-					<div className="played-history-card--content__category">{data?.TopicId?.categoryName}</div>
+					<div className="played-history-card--content__title">{data?.title}</div>
+					<div className="played-history-card--content__category">{data?.category}</div>
 				</div>
-				<div className="played-history-card--content__position">Your Position:&nbsp; {data?.place}</div>
+				<div className="played-history-card--content__position">
+					Your Position:&nbsp; {data?.yourPosition || 0}
+				</div>
 			</div>
 		</div>
 	);

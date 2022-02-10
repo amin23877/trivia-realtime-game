@@ -101,7 +101,7 @@
 }
 
 ._topic-card {
-    --image-h : 100px;
+    --image-h: 100px;
 
     @include desktop {
         --image-h: 135px;
@@ -132,15 +132,15 @@
     }
 
     .card-info {
-        @include fontSize($fs-normal ,$fs-m);
+        @include fontSize($fs-normal, $fs-m);
         padding: 2px 5px;
 
         @include desktop {
-            padding: .5rem;
+            padding: 0.5rem;
         }
 
         .title {
-            padding-bottom: .5rem;
+            padding-bottom: 0.5rem;
             color: colorBlack(85);
             font-family: RobotoBold;
 
@@ -149,7 +149,7 @@
             }
         }
         .subtitle {
-            @include fontSize(8px ,$fs-m);
+            @include fontSize(8px, $fs-m);
             color: colorBlack(65);
         }
         .rate {
@@ -168,12 +168,14 @@
     cursor: pointer;
 }
 
+// ._text-left
+
 ._topic-card-container {
     width: calc(clamp(100px, 40%, 200px));
     min-width: calc(clamp(100px, 40%, 200px));
     margin: 5px !important;
     background-color: white;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     // --bs-aspect-ratio: 90%; // #ratio
 }
 
