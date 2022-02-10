@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useMediaQuery } from "@material-ui/core";
+import { DESKTOP_BREAKPOINT } from "common/values/CORE";
 
 import "./Avatar.scss";
 
 const Avatar = ({ src, size, className, ...rest }) => {
 	const [style, setStyle] = useState({});
 
-	const isDesktop = useMediaQuery("(min-width : 1366px");
+	const isDesktop = useMediaQuery(`(min-width : ${DESKTOP_BREAKPOINT}`);
 
 	useEffect(() => {
 		const generateStyle = (value) => ({

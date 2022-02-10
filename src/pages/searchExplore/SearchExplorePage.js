@@ -10,7 +10,7 @@ import searchIcon from "assets/images/icons/search-primary-icon.svg";
 import rateIcon from "assets/images/icons/rate-mini.svg";
 import profilePic from "assets/images/test/profile-pic.jpg";
 import ApiCall from "common/services/ApiCall";
-import { IMAGE_URL } from "common/values/CORE";
+import { DESKTOP_BREAKPOINT, IMAGE_URL } from "common/values/CORE";
 
 /*
  *  fake data
@@ -145,7 +145,7 @@ export const SearchExploreBox = () => {
 
 // used on mobile ( '/search' route )
 const SearchExplorePage = () => {
-	const isDesktop = useMediaQuery("(min-width: 1366px)");
+	const isDesktop = useMediaQuery(`(min-width: ${DESKTOP_BREAKPOINT})`);
 
 	const [searchText, setSearchText] = useState("");
 
