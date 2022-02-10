@@ -3,10 +3,19 @@ import React from "react";
 import "./FavoriteTopicCard.scss";
 import iconRate from "assets/images/icons/rate-mini.svg";
 import { IMAGE_URL } from "common/values/CORE";
+import { useNavigate } from "react-router-dom";
 
 const FavoriteTopicCard = ({ data }) => {
+	// console.log(">> ", data);
+	const navigate = useNavigate();
+
+	const handleNavigate = (event, path) => {
+		event.stopPropagation();
+		// console.log(path);
+		navigate(path);
+	};
 	return (
-		<div className="favorite-card-2--item">
+		<div className="favorite-card-2--item br3" onClick={(e) => handleNavigate(e, `/topics/${data?.TopicId?._id}`)}>
 			<div className="favorite-card-2--item__image">
 				<img src={`${IMAGE_URL}${encodeURI(data?.TopicId?.logo)}`} alt="" />
 			</div>

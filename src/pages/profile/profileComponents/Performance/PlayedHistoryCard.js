@@ -6,7 +6,7 @@ import "./PlayedHistoryCard.scss";
 import { IMAGE_URL } from "common/values/CORE";
 
 const PlayedHistoryCard = ({ data }) => {
-	console.log(">>> ", data);
+	// console.log(">>> ", data);
 	return (
 		<div className="played-history-card">
 			<div className="played-history-card--image">
