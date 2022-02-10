@@ -10,10 +10,11 @@ $radius-card-desktop: 55px;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     position: relative;
+    cursor: pointer;
 
     @include desktop {
         background-size: cover;
-        border-radius: $radius-card-desktop;
+        border-radius: $radius-card-desktop !important;
     }
 
     .btn-enter {
@@ -82,6 +83,7 @@ $radius-card-desktop: 55px;
             @include fontSize($fs-normal, $fs-xxl);
             color: white;
             font-weight: 500;
+            width: 100%;
         }
 
         .timer {
@@ -143,6 +145,10 @@ $radius-card-desktop: 55px;
         position: absolute;
         border-radius: $radius-card;
         background-color: colorBlack(50);
+
+        @include desktop {
+            border-radius: $radius-card-desktop !important;
+        }
 
         .img-expired {
             max-width: 22%;

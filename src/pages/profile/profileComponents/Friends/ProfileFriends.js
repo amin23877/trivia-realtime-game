@@ -21,9 +21,10 @@ const ProfileFriends = () => {
 		dispatch(SET_SPINNER(true));
 		apiCall
 			.get("/user/me/friends")
+			// .get("/user/614c26b0b1e4a4815030b691")
 			.then((res) => {
 				dispatch(SET_SPINNER(false));
-				// console.log(res);
+				// console.log("????????????????", res);
 				setFriends(res.data);
 			})
 			.catch((err) => {
