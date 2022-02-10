@@ -19,6 +19,8 @@ const SelectGameType = ({ handleOpenGameTypes, open }) => {
                 return '/quickPlay';
             case 'topic':
                 return '/topics/' + gameSelectionType.id;
+            case 'league':
+                return '/leagues/' + gameSelectionType.id;
             default:
                 return '/quickPlay'
         }
@@ -38,7 +40,8 @@ const SelectGameType = ({ handleOpenGameTypes, open }) => {
         {
             title: 'With Friends',
             icon: withFriendsIcon,
-            link: baseUrl() + '/withFriends'
+            link: baseUrl() + '/withFriends',
+            exclude: 'league'
 
         },
     ]
@@ -64,12 +67,18 @@ const SelectGameType = ({ handleOpenGameTypes, open }) => {
             >
 
                 <div className="select-game-type__game-types-container">
-                    {gameTypes.map((type, index) => (
-                        <div key={index} className={`select-game-type__game-types-container__game-type-item ${clickedIndex == index && `select-game-type__game-types-container__game-type-item--clicked`}`} onClick={() => handleClickItem(type, index)}>
-                            <img src={type.icon} />
-                            <p>{type.title}</p>
-                        </div>
-                    ))}
+                    {gameTypes.map((type, index) => {
+                        return (
+                            type.exclude == gameSelectionType.type ?
+                                <></>
+                                :
+                                <div key={index} className={`select-game-type__game-types-container__game-type-item ${clickedIndex == index && `select-game-type__game-types-container__game-type-item--clicked`}`} onClick={() => handleClickItem(type, index)}>
+                                    <img src={type.icon} />
+                                    <p>{type.title}</p>
+                                </div>
+
+                        )
+                    })}
                 </div>
             </ClickAwayListener>
 

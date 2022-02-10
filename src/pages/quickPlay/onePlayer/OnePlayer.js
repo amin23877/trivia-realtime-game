@@ -48,8 +48,9 @@ const OnePlayer = ({ type = 'quickPlay' }) => {
 		});
 
 		socketp.on("authentication", (e) => {
+			console.log('authDataOnFetch',e)
 			setAuthData(e)
-			if (type == 'topic') {
+			if (type == 'topic' || type == 'league') {
 				console.log('id is', id)
 				setSelectedCategory({ _id: id })
 			}
@@ -61,7 +62,7 @@ const OnePlayer = ({ type = 'quickPlay' }) => {
 			setTimeout(() => {
 				setGameState("gameResult");
 				setGameResult(e);
-				socketp.close();
+				// socketp.close();
 			}, 1000);
 		});
 	}, []);
@@ -74,7 +75,7 @@ const OnePlayer = ({ type = 'quickPlay' }) => {
 
 	useEffect(() => {
 		if (selectedCategory) {
-			if (authData.socketid) {
+			if (authData?.socketid) {
 				switch (type) {
 					case 'quickPlay':
 						socket.emit("singleGame", { CategoryId: selectedCategory._id });
@@ -82,7 +83,13 @@ const OnePlayer = ({ type = 'quickPlay' }) => {
 					case 'topic':
 						socket.emit("singleGame", { TopicId: id });
 						break;
+					case 'league':
+						socket.emit("singleGame", { OnePlayerLeagueId: id });
+						break;
 				}
+			}else{
+				console.log('socketId Not Found',authData);
+				alert('socket id not detected')
 			}
 		}
 	}, [selectedCategory]);
@@ -116,6 +123,9 @@ const OnePlayer = ({ type = 'quickPlay' }) => {
 			case 'topic':
 				navigate("/topics/" + id);
 				break;
+			case 'league':
+				navigate("/leagues/" + id);
+				break;
 		}
 	};
 
@@ -127,6 +137,22 @@ const OnePlayer = ({ type = 'quickPlay' }) => {
 		socket.emit("singleGameAnswer", { gameToken: localStorage.getItem("quickPlay-token"), answer: opt });
 		setMyOption(opt);
 	};
+	const handlePlayAgain = () => {
+		if (type == 'quickPlay') {
+			setSelectedCategory(null)
+			setGameState("showCategories");
+		} else {
+			setSelectedCategory({ _id: id })
+			setGameState("showWaitForStart");
+		}
+		setSingleGameQuestion(null)
+		setMyInfo({ player: "player1", score: 0 })
+		setTime(20)
+		setQuestionNumber(0)
+		setCorrectAnswer(null)
+		setMyOption(null)
+		setGameResult(null)
+	}
 
 	return (
 		<>
@@ -153,7 +179,7 @@ const OnePlayer = ({ type = 'quickPlay' }) => {
 					authData={authData}
 				/>
 			)}
-			{gameState == "gameResult" && <GameResult myInfo={myInfo} gameResultData={gameResultData} />}
+			{gameState == "gameResult" && <GameResult handlePlayAgain={handlePlayAgain} myInfo={myInfo} gameResultData={gameResultData} />}
 		</>
 	);
 };

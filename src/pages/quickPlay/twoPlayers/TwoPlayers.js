@@ -52,8 +52,8 @@ const TwoPlayers = ({ type = 'quickPlay' }) => {
 		});
 
 		socketp.on("authentication", (e) => {
-			setSocketId(e.socketid);
-			if (type == 'topic') {
+			setSocketId(e?.socketid);
+			if (type == 'topic' || type == 'league') {
 				console.log('id is', id)
 				setSelectedCategory({ _id: id })
 			}
@@ -67,7 +67,7 @@ const TwoPlayers = ({ type = 'quickPlay' }) => {
 		socketp.on("doubleGameFinish", (e) => {
 			setGameState("gameResult");
 			setGameResult(e);
-			socketp.close();
+			// socketp.close();
 		});
 	}, []);
 
@@ -90,7 +90,13 @@ const TwoPlayers = ({ type = 'quickPlay' }) => {
 					case 'topic':
 						socket.emit("doubleGame", { TopicId: id });
 						break;
+					case 'league':
+						socket.emit("doubleGame", { TwoPlayerLeagueId: id });
+						break;
 				}
+			} else {
+				console.log('socketId Not Found', socketId);
+				alert('socket id not detected')
 			}
 		}
 	}, [selectedCategory]);
@@ -142,6 +148,9 @@ const TwoPlayers = ({ type = 'quickPlay' }) => {
 			case 'topic':
 				navigate("/topics/" + id);
 				break;
+			case 'league':
+				navigate("/leagues/" + id);
+				break;
 		}
 	};
 
@@ -157,6 +166,9 @@ const TwoPlayers = ({ type = 'quickPlay' }) => {
 				break;
 			case 'topic':
 				navigate("/topics/" + id);
+				break;
+			case 'league':
+				navigate("/leagues/" + id);
 				break;
 		}
 
@@ -176,6 +188,25 @@ const TwoPlayers = ({ type = 'quickPlay' }) => {
 	const handleBackAnswers = () => {
 		setGameState("gameResult");
 	};
+
+	const handleNewRival = () => {
+		if (type == 'quickPlay') {
+			setSelectedCategory(null)
+			setGameState("showCategories");
+		} else {
+			setSelectedCategory({ _id: id })
+			setGameState("showSearchForPlayer");
+		}
+		setDoubleGameQuestion(null)
+		setMyInfo({ player: "player1", score: 0 })
+		setRivalInfo({ player: "player2", score: 0 })
+		setTime(20)
+		setQuestionNumber(0)
+		setCorrectAnswer(null)
+		setMyOption(null)
+		setGameResult(null)
+		setRivalAnswer(null)
+	}
 	return (
 		<>
 			{(gameState == "showCategories" || gameState == "showSearchForPlayer") && (
@@ -212,6 +243,7 @@ const TwoPlayers = ({ type = 'quickPlay' }) => {
 					gameResultData={gameResultData}
 					doubleGameReady={doubleGameReady}
 					handleShowAnswers={handleShowAnswers}
+					handleNewRival={handleNewRival}
 				/>
 			)}
 			{gameState == "showAnswers" && (
