@@ -33,6 +33,13 @@ $p-h-card-reward-color: $gold;
 //   }
 // }
 
+.participating-title {
+  @include fsNormal;
+  @include desktop {
+    @include fsM;
+  }
+}
+
 .participating-history-card {
   display: flex;
   align-items: start;
