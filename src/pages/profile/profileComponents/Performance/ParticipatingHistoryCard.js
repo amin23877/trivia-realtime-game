@@ -6,7 +6,7 @@ import { IMAGE_URL } from "common/values/CORE";
 import { useNavigate } from "react-router-dom";
 
 const ParticipatingHistoryCard = ({ data }) => {
-	console.log("1>>> ", data);
+	// console.log("1>>> ", data);
 	const navigate = useNavigate();
 
 	const handleNavigate = (event, path) => {
