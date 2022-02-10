@@ -12,6 +12,7 @@ import sendToIcon from "assets/images/icons/wallet-sendto.svg";
 import transactionLAIcon from "assets/images/icons/transaction-la.svg";
 import transactionIncreaseIcon from "assets/images/icons/transaction-increase.svg";
 import transactionCOIcon from "assets/images/icons/transaction-cashout.svg";
+import { useNavigate } from "react-router-dom";
 
 /*
  * 	fake transaction
@@ -47,11 +48,17 @@ const Transaction = ({ icon, type, date, amount }) => {
 };
 
 const Wallet = () => {
+	const navigate = useNavigate();
+
+	const handleGoBack = () => {
+		navigate(-1);
+	};
+
 	return (
 		<div className="wallet-root">
 			<div className="wallet-header">
 				<div className="wallet-header__logo">
-					<img alt="" src={backIcon} className="wallet-header__back" />
+					<img onClick={handleGoBack} alt="" src={backIcon} className="wallet-header__back" />
 					<img alt="logo" src={afghanWirelessLogo} />
 					<p>Wallet</p>
 				</div>

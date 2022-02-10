@@ -8,14 +8,6 @@ $padding-left: 40px;
         padding: 50px $padding-left 30px;
         background-color: $primary;
 
-        .avatar {
-            width: $size-avatar;
-            height: $size-avatar;
-            border-radius: 100%;
-            background: wheat;
-            border: 1px solid white;
-        }
-
         .name {
             @include fsM;
 

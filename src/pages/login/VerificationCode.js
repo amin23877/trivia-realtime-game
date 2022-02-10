@@ -135,7 +135,7 @@ const VerificationCode = () => {
 				</div>
 			</div>
 
-			<div className="login-body">
+			<div className="my-auto login-body">
 				<p className="login-body__title">Enter Auth Code</p>
 
 				<div className="text-center mt-3">
@@ -160,7 +160,7 @@ const VerificationCode = () => {
 					</div>
 				</form>
 
-				<button className="login-body__submit" onClick={handleRegister}>
+				<button className="my-4 login-body__submit" onClick={handleRegister}>
 					Continue
 				</button>
 
@@ -171,11 +171,13 @@ const VerificationCode = () => {
 				) : (
 					<div className="timer">
 						<p className="timer">Resend verification code until another</p>
-						<Countdown
-							date={Date.now() + timeRemain * 1000}
-							renderer={CountDownTimerSecond}
-							onComplete={(e) => handleStopTimer(e)}
-						/>
+						<div className="timer-tag text-center">
+							<Countdown
+								date={Date.now() + timeRemain * 1000}
+								renderer={CountDownTimerSecond}
+								onComplete={(e) => handleStopTimer(e)}
+							/>
+						</div>
 					</div>
 				)}
 			</div>

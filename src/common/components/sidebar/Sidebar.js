@@ -27,8 +27,8 @@ const menuItems = [
 	{ name: "Profile", route: "/profile", icon: <UserIcon /> },
 	{ name: "Leaderboard", route: "/leaderboard", icon: <LeaderBoardIcon /> },
 	{ name: "Wallet", route: "/menu/wallet", icon: <WalletIcon /> },
-	{ name: "Settings", route: false, icon: <SettingsIcon /> },
-	{ name: "Contact us", route: false, icon: <ContactIcon /> },
+	// { name: "Settings", route: false, icon: <SettingsIcon /> },
+	// { name: "Contact us", route: false, icon: <ContactIcon /> },
 ];
 
 const Sidebar = () => {

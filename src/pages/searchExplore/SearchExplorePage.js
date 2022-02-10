@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Navigate } from "react-router-dom";
+import { useMediaQuery } from "@material-ui/core";
 import Avatar from "common/components/UI/Avatar";
 
 import "./SearchExplore.scss";
@@ -115,6 +117,7 @@ const SearchResult = ({ searchText, inputIsActive }) => {
 	);
 };
 
+// used in desktop header
 export const SearchExploreBox = () => {
 	const [searchText, setSearchText] = useState("");
 	const [inputIsActive, setInputIsActive] = useState(false);
@@ -140,10 +143,21 @@ export const SearchExploreBox = () => {
 	);
 };
 
+// used on mobile ( '/search' route )
 const SearchExplorePage = () => {
+	const isDesktop = useMediaQuery("(min-width: 1366px)");
+
 	const [searchText, setSearchText] = useState("");
 
 	const handleSearchInput = (e) => setSearchText(e.target.value);
+
+	/*
+	 * 	because there is no search page on desktop
+	 * 	if in desktop user navigate to '/search' address ,return it to home page
+	 * */
+	if (isDesktop) {
+		return <Navigate to="/" />;
+	}
 
 	return (
 		<div className="explore-root">
