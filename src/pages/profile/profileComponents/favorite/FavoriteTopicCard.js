@@ -15,7 +15,7 @@ const FavoriteTopicCard = ({ data }) => {
 		navigate(path);
 	};
 	return (
-		<div className="favorite-card-2--item br3" onClick={(e) => handleNavigate(e, `/topics/${data?.TopicId?._id}`)}>
+		<div className="favorite-card-2--item" onClick={(e) => handleNavigate(e, `/topics/${data?.TopicId?._id}`)}>
 			<div className="favorite-card-2--item__image">
 				<img src={`${IMAGE_URL}${encodeURI(data?.TopicId?.logo)}`} alt="" />
 			</div>
