@@ -4,13 +4,12 @@ import { useMediaQuery } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { TOGGLE_NOTIF_DRAWER } from "redux/actions/mainActions/generalActions";
 import NotificationWidget from "common/components/NotificationWidget/NotificationWidget";
+import { DESKTOP_BREAKPOINT } from "common/values/CORE";
 
 import "./Notification.scss";
 
 //images
 import backIcon from "assets/images/icons/arrow-back.svg";
-
-const DESKTOP_BREAKPOINT = "1366px";
 
 const Notification = () => {
 	const isDesktop = useMediaQuery(`(min-width : ${DESKTOP_BREAKPOINT})`);

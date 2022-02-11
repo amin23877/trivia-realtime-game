@@ -3,6 +3,9 @@ export const BASE_URL = "https://quizup.site/api/";
 export const SOCKET_BASE_URL = "http://quizup.site/";
 export const IMAGE_URL = "http://quizup.site";
 
+// desktop breakpoint
+export const DESKTOP_BREAKPOINT = "1199px";
+
 export const LIST_PAGESIZE = 20;
 
 export const CORE = {

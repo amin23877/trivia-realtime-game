@@ -39,6 +39,7 @@ $notif-drawer-width: 500px;
     @include desktop {
       height: calc(100% - #{$desktop-header-height}) !important;
       flex: 0 1 calc(100% - #{$sidebar-width});
+      padding: 0 2rem;
     }
   }
 
@@ -46,7 +47,7 @@ $notif-drawer-width: 500px;
     height: $height-footer;
     position: fixed;
     bottom: 0;
-    z-index: 99;
+    z-index: 1000;
     width: 100%;
 
     @media (min-width: $breakpoint-xl) {
