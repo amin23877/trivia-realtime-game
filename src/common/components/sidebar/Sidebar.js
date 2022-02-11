@@ -2,7 +2,7 @@ import React from "react";
 import Avatar from "common/components/UI/Avatar";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { SET_MODALS } from "redux/actions/mainActions/generalActions";
+import { SET_GAME_SELECTION_TYPE, SET_MODALS, SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
 import { MODALS } from "common/values/MODALS";
 
 import "./Sidebar.scss";
@@ -12,17 +12,13 @@ import { ReactComponent as HomeIcon } from "assets/images/icons/home.svg";
 import { ReactComponent as LeagueIcon } from "assets/images/icons/league.svg";
 import { ReactComponent as UserIcon } from "assets/images/icons/user-icon.svg";
 import { ReactComponent as LeaderBoardIcon } from "assets/images/icons/leaderboard.svg";
-import { ReactComponent as SettingsIcon } from "assets/images/icons/settings-icon.svg";
-import { ReactComponent as ContactIcon } from "assets/images/icons/contact-us.svg";
 import { ReactComponent as LogoutIcon } from "assets/images/icons/logout.svg";
 import { ReactComponent as DeactivateIcon } from "assets/images/icons/deactivation.svg";
 import { ReactComponent as WalletIcon } from "assets/images/icons/wallet-icon.svg";
 import { IMAGE_URL } from "common/values/CORE";
-import { SET_GAME_SELECTION_TYPE } from "redux/actions/mainActions/generalActions";
-import { SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
 
 const menuItems = [
-	{ name: "Home", route: "/", icon: <HomeIcon /> },
+	{ name: "Home", route: "index", icon: <HomeIcon /> },
 	{ name: "League", route: "/leagues", icon: <LeagueIcon /> },
 	{ name: "Profile", route: "/profile", icon: <UserIcon /> },
 	{ name: "Leaderboard", route: "/leaderboard", icon: <LeaderBoardIcon /> },
@@ -63,15 +59,16 @@ const Sidebar = () => {
 			<ul className="sidebar-menu">
 				{menuItems.map((item, index) => {
 					let { name, route, icon } = item;
+					let path = location.pathname;
 
 					// add active class to item if current location match item route
 					let itemClasses = `
 						sidebar-menu-item sidebar-menu-item_hover-effect-purple 
-						${location.pathname === route ? "sidebar-menu-item_active" : ""}
+						${(route === "index" && path === "/") || path.startsWith(route) ? "sidebar-menu-item_active" : ""}
 					`;
 
 					return (
-						<Link key={index} to={route ?? ""}>
+						<Link key={index} to={route === "index" ? "/" : route}>
 							<li className={itemClasses}>
 								{icon}
 								{name}
