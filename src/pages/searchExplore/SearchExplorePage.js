@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useMediaQuery } from "@material-ui/core";
 import Avatar from "common/components/UI/Avatar";
@@ -22,6 +22,33 @@ const previousViewedSearches = [
 	{ name: "Ali Dall", description: "5k players", logo: profilePic },
 	{ name: "Ali Dall", description: "5k players", logo: profilePic },
 ];
+
+/*
+ * 	this hook get an array of refs that applied to nodes
+ * 	and invoked callback when click outside these nodes
+ * */
+const useWhenClickOutside = (refs, callback) => {
+	useEffect(() => {
+		const handleEvent = (e) => {
+			for (const ref of refs) {
+				// Do nothing if clicking ref's element or descendent elements
+				if (!ref.current || ref.current.contains(e.target)) {
+					return;
+				}
+			}
+
+			callback();
+		};
+
+		document.addEventListener("mouseup", handleEvent);
+		document.addEventListener("touchend", handleEvent);
+
+		return () => {
+			document.removeEventListener("mouseup", handleEvent);
+			document.removeEventListener("touchend", handleEvent);
+		};
+	}, [callback, refs]);
+};
 
 /*
  *  this hook fetch results from api
@@ -53,16 +80,19 @@ const useSearch = (word) => {
 	return response;
 };
 
-const Search = (props) => {
+const Search = forwardRef(({ inputProps }, ref) => {
+	// apply main input style to className prop
+	inputProps.className = inputProps.className.concat(" explore-search-input");
+
 	return (
-		<div className="position-relative">
-			<input {...props} className="explore-search-input" type="text" placeholder="Search" />
+		<div ref={ref} className="position-relative">
+			<input {...inputProps} type="text" placeholder="Search" />
 			<span className="explore-search-button">
 				<img alt="search" src={searchIcon} />
 			</span>
 		</div>
 	);
-};
+});
 
 const ResultItem = ({ logo, name, description, rate }) => {
 	return (
@@ -86,7 +116,7 @@ const ResultItem = ({ logo, name, description, rate }) => {
  * This component show previous viewed results if search box is empty
  * and show result for typed text in search box
  * */
-const SearchResult = ({ searchText, inputIsActive }) => {
+const SearchResult = forwardRef(({ searchText, className }, ref) => {
 	const response = useSearch(searchText);
 
 	const renderResult = (results) =>
@@ -101,7 +131,7 @@ const SearchResult = ({ searchText, inputIsActive }) => {
 		));
 
 	return (
-		<div className={`explore-result-wrapper ${inputIsActive ? "explore-result-wrapper_open" : ""}`}>
+		<div ref={ref} className={`explore-result-wrapper ${className}`}>
 			{!searchText && (
 				<div className="explore-result-header">
 					<p>Recent searches</p>
@@ -115,28 +145,42 @@ const SearchResult = ({ searchText, inputIsActive }) => {
 			</div>
 		</div>
 	);
-};
+});
 
 // used in desktop header
 export const SearchExploreBox = () => {
+	const list = useRef();
+	const input = useRef();
+
 	const [searchText, setSearchText] = useState("");
 	const [inputIsActive, setInputIsActive] = useState(false);
 
 	const handleSearchInput = (e) => setSearchText(e.target.value);
 
 	const handleActivate = () => setInputIsActive(true);
-	const handleDeactivate = () => setInputIsActive(false);
+
+	// close box when click outside it
+	useWhenClickOutside([list, input], () => {
+		setInputIsActive(false);
+	});
 
 	return (
 		<div className="explore-root explore-root_box">
 			<Search
-				value={searchText}
-				onChange={handleSearchInput}
-				onFocus={handleActivate}
-				onBlur={handleDeactivate}
+				ref={input}
+				inputProps={{
+					value: searchText,
+					onChange: handleSearchInput,
+					onFocus: handleActivate,
+					className: inputIsActive ? "explore-search-input_active" : "",
+				}}
 			/>
 
-			<SearchResult inputIsActive={inputIsActive} searchText={searchText} />
+			<SearchResult
+				ref={list}
+				searchText={searchText}
+				className={inputIsActive ? "explore-result-wrapper_open" : ""}
+			/>
 
 			<div className={`explore-root__overlay ${inputIsActive ? "explore-root__overlay_open" : ""}`} />
 		</div>
@@ -161,7 +205,12 @@ const SearchExplorePage = () => {
 
 	return (
 		<div className="explore-root">
-			<Search value={searchText} onChange={handleSearchInput} />
+			<Search
+				inputProps={{
+					value: searchText,
+					onChange: handleSearchInput,
+				}}
+			/>
 
 			<SearchResult searchText={searchText} />
 		</div>
