@@ -19,7 +19,8 @@ $radius-card-desktop: 55px;
   // background-color: $bg-home-card;
   border-radius: $radius-card;
   // background: url('../../../assets/images/test/2.png');
-  background-size: 100% 100%;
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   position: relative;
   cursor: pointer;
@@ -27,6 +28,7 @@ $radius-card-desktop: 55px;
 
   @include desktop {
     background-size: cover;
+    background-position: unset;
   }
 
   .btn-enter {
