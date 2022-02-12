@@ -132,7 +132,7 @@ const VerificationCode = () => {
 
 					<input
 						id="validate-number"
-						className={`login-form__input`}
+						className={`login-form__input ${!isValidOtp && "login-form__input_error"}`}
 						autoFocus={true}
 						type="tel"
 						maxLength={4}
