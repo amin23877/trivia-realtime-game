@@ -1,0 +1,94 @@
+@import "assets/scss/styles.scss";
+
+$mobile-height-header-inner: 280px;
+$desktop-height-header-inner: 220px;
+
+$size-square: 40px;
+$size-avatar: 30px;
+
+.card-inner {
+  &__desktop-title {
+    display: none;
+    font-size: $fs-xxxl;
+    margin-bottom: 20px !important;
+
+    @include desktop {
+      display: block;
+    }
+  }
+
+  &__mobile-title {
+    display: block;
+    font-size: $fs-m;
+    margin-bottom: .75rem !important;
+
+    @include desktop {
+      display: none;
+    }
+  }
+
+  &__subtitle {
+    @include fontSize($fs-normal, $fs-l);
+    color: $grey-1;
+  }
+
+  &__share {
+    cursor: pointer;
+    display: none;
+
+    @include desktop {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+
+  &__card {
+    background-color: white;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 3px 5px rgba(94, 92, 106, 0.1);
+
+    @include desktop {
+      height: $desktop-height-header-inner;
+      border-radius: 16px;
+      display: flex;
+      overflow: hidden;
+    }
+  }
+
+  &__banner {
+    width: 100%;
+    min-height: 110px;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+
+    @include desktop {
+      width: 50%;
+    }
+
+    p {
+      color: white;
+      border-radius: 4px;
+      width: $size-square;
+      height: $size-square;
+      background-color: colorBlack(30);
+    }
+  }
+
+  &__info {
+    flex-grow: 1;
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include desktop {
+      padding: 13px 21px;
+    }
+  }
+}
