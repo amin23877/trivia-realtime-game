@@ -16,7 +16,7 @@ import imgMain from "assets/images/pics/login-otp.svg";
 import arrowBack from "assets/images/icons/arrow-back.svg";
 
 const VerificationCode = () => {
-	const timeRemain = 900;
+	const timeRemain = 90;
 	const handleStopTimer = (e) => {
 		// console.log(e);
 		setHasTime(true);
