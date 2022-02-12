@@ -1,11 +1,9 @@
 // Reacts
 import React, { useEffect, useState } from "react";
-// Hooks
-// Packages
-import _ from "lodash";
-// Components, Services, Functions
-// Redux
-// Material - lab
+import CountdownTimer from "common/components/countdownTimer/CountDownTimer";
+import CountDownTimerGrand from "common/components/countdownTimer/CountDownTimerGrand";
+import CountDownTimerHistory from "common/components/countdownTimer/CountDownTimerHistory";
+
 // Styles, Icons, Images
 import "./CardLeagueInfo.scss";
 import PersonIcon from "@material-ui/icons/Person";
@@ -18,14 +16,11 @@ import Countdown from "react-countdown";
 import { IMAGE_URL } from "common/values/CORE";
 import { useNavigate } from "react-router-dom";
 import { TYPE_LEAGUE_HOME } from "common/values/TYPES";
-import CountdownTimer from "common/components/countdownTimer/CountDownTimer"; // FIX
-import CountDownTimerGrand from "common/components/countdownTimer/CountDownTimerGrand";
-import CountDownTimerHistory from "common/components/countdownTimer/CountDownTimerHistory";
 
 const CardLeagueInfo = ({ info, hasEnterBtn = true, type = TYPE_LEAGUE_HOME.GENERAL }) => {
 	const navigate = useNavigate();
 
-	const expired = type?.includes(TYPE_LEAGUE_HOME.HISTORY) ? true : false;
+	const expired = !!type?.includes(TYPE_LEAGUE_HOME.HISTORY);
 	const handleNavigate = (event, path) => {
 		event.stopPropagation();
 		navigate(path);
@@ -34,7 +29,6 @@ const CardLeagueInfo = ({ info, hasEnterBtn = true, type = TYPE_LEAGUE_HOME.GENE
 	// console.log(info);
 	// const timeRemain = localStorage.getItem('remainingTime');
 	// #countdownTimer step4
-	const timeRemain = info?.endTime - Date.now();
 	const handleStop = (e) => {
 		// console.log(e);
 	};
@@ -66,21 +60,21 @@ const CardLeagueInfo = ({ info, hasEnterBtn = true, type = TYPE_LEAGUE_HOME.GENE
 
 	return (
 		<div className={`w-100 h-100 d-flex cardLeagueInfo ${expired ? "expired" : ""}`} style={styleBgImg}>
-			{expired ? (
+			{expired && (
 				<div className="expired-empty">
 					<img className="img-expired" src={imgExpired} alt="" />
 				</div>
-			) : null}
+			)}
 
-			{!expired && hasEnterBtn ? (
+			{!expired && hasEnterBtn && (
 				<button className="btn-enter" onClick={(e) => handleNavigate(e, `/leagues/${info?._id}`)}>
 					Enter <ArrowForwardIosIcon className="icon" />
 				</button>
-			) : null}
+			)}
 
 			<div className="d-flex flex-column justify-content-between  w-100 cardLeagueInfo-info">
 				<div className="d-flex justify-content-start align-items-center">
-					<div className={`bullet ${expired ? "bullet-red" : ""}`}></div>
+					<div className={`bullet ${expired ? "bullet-red" : ""}`} />
 					<p className="title"> {info?.name}</p>
 					{/* <p className="title"> {_.truncate(info?.name, { length: 25, separator: " " })}</p> */}
 				</div>
