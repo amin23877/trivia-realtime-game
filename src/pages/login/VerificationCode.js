@@ -3,23 +3,20 @@ import React, { useEffect, useState } from "react";
 import Countdown from "react-countdown";
 // Hooks
 import { useNavigate } from "react-router-dom";
-// Packages
 // Components, Services, Functions
+import Logo from "common/components/UI/Logo";
 import ApiCall from "common/services/ApiCall";
 import CountDownTimerSecond from "common/components/countdownTimer/CountDownTimerSecond";
 // Redux
 import { useDispatch } from "react-redux";
 import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
-// Material - lab
-import { TextField } from "@material-ui/core";
 // Styles, Icons, Images
 import "./Login.scss";
 import imgMain from "assets/images/pics/login-otp.svg";
 import arrowBack from "assets/images/icons/arrow-back.svg";
-import Logo from "common/components/UI/Logo";
 
 const VerificationCode = () => {
-	const timeRemain = 90;
+	const timeRemain = 900;
 	const handleStopTimer = (e) => {
 		// console.log(e);
 		setHasTime(true);
@@ -35,26 +32,18 @@ const VerificationCode = () => {
 	const [otp, setOtp] = useState("");
 	const [isValidOtp, setIsValidOtp] = useState(true);
 
-	const messageErrorDefault = "The code entered is incorrect";
-	const [messageError, setMessageError] = useState(messageErrorDefault);
 	const [hasTime, setHasTime] = useState(false);
 
-	const handlSetOtp = (e) => {
+	const handleSetOtp = (e) => {
 		if (!isValidOtp && e.target.value.length) {
 			setIsValidOtp(true);
-			setMessageError(messageErrorDefault);
 		}
 		setOtp(e.target.value);
 	};
 
-	const handleEnterKeyOtp = (e) => {
-		if (e.code === "Enter" || e.code === "NumpadEnter") {
-			e.preventDefault();
-			handleRegister();
-		}
-	};
+	const handleRegister = (e) => {
+		e.preventDefault();
 
-	const handleRegister = () => {
 		if (phone && otp) {
 			dispatch(SET_SPINNER(true));
 
@@ -72,18 +61,12 @@ const VerificationCode = () => {
 
 					navigate("/");
 				})
-				.catch((err) => {
+				.catch(() => {
 					dispatch(SET_SPINNER(false));
 
 					localStorage.removeItem("token");
 
 					setIsValidOtp(false);
-
-					if (err.error) {
-						setMessageError(err.error);
-					} else {
-						setMessageError(messageErrorDefault);
-					}
 				});
 		} else if (!phone) {
 			navigate("/login");
@@ -135,34 +118,33 @@ const VerificationCode = () => {
 				</div>
 			</div>
 
-			<div className="my-auto login-body">
-				<p className="login-body__title">Enter Auth Code</p>
+			<div className="login-body">
+				<p className="login-body__title">Enter the verification code</p>
 
 				<div className="text-center mt-3">
 					<img src={imgMain} alt="" />
 				</div>
 
-				<form noValidate autoComplete="off" className="_dish-textField">
-					<div className="">
-						<p className="label">{`Confirmation code sent to ${phone}`}</p>
-						<TextField
-							autoFocus={true}
-							type="tel"
-							placeholder="Enter your phone number"
-							className=""
-							helperText={!isValidOtp ? messageError : ""}
-							variant="outlined"
-							inputProps={{ maxLength: 4 }}
-							error={!isValidOtp}
-							onChange={(e) => handlSetOtp(e)}
-							onKeyPress={(e) => handleEnterKeyOtp(e)}
-						/>
-					</div>
-				</form>
+				<form onSubmit={handleRegister} noValidate autoComplete="off" className="login-form">
+					<label htmlFor="validate-number" className="login-form__label login-form__label_small">
+						{`Confirmation code sent to ${phone}`}
+					</label>
 
-				<button className="my-4 login-body__submit" onClick={handleRegister}>
-					Continue
-				</button>
+					<input
+						id="validate-number"
+						className={`login-form__input`}
+						autoFocus={true}
+						type="tel"
+						maxLength={4}
+						onChange={handleSetOtp}
+					/>
+
+					<p className="login-form__error-message">{!isValidOtp && "The code entered is incorrect"}</p>
+
+					<button type="submit" className="login-form__submit">
+						Continue
+					</button>
+				</form>
 
 				{hasTime ? (
 					<p className="timer timer-resend" onClick={handleReGetOtp}>
