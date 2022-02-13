@@ -124,23 +124,26 @@ const LeaguesInner = () => {
 				<div className="awards">
 					<p className="title">Winners Awards:</p>
 
-					{dataInnerLeague?.rewards?.map((el, index) => (
-						<p key={index}>
-							{el.place ? (
-								<span className="key">{`${ordinal(el?.place)} one:`}</span>
-							) : (
-								<span className="key">{`${ordinal(el?.startPlace)} to ${ordinal(
-									el?.endPlace
-								)} one:`}</span>
-							)}
+					<div className="awards__container">
+						{dataInnerLeague?.rewards?.map((el, index) => (
+							<p key={index}>
+								{el.place ? (
+									<span className="key">{`${ordinal(el?.place)} one:`}</span>
+								) : (
+									<span className="key">{`${ordinal(el?.startPlace)} to ${ordinal(
+										el?.endPlace
+									)} one:`}</span>
+								)}
 
-							<span className="mx-2 value">{`$ ${el.reward}`}</span>
-						</p>
-					))}
+								<span className="mx-2 value">{`$ ${el.reward}`}</span>
+							</p>
+						))}
+					</div>
 				</div>
 
 				<div className="board">
 					<p className="title">Latest results:</p>
+					<p className="your-position">Your position : 0</p>
 					{stateGeneral.typeLeaderboardComponent ? <LeaderboardTabs /> : null}
 				</div>
 			</div>
