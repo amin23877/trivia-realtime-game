@@ -26,8 +26,8 @@ const HomeTopics = ({ type }) => {
 				spaceBetween={14}
 			>
 				{topics?.map((el, index) => (
-					<SwiperSlide>
-						<CardTopic key={index} data={type !== TYPE_TOPIC.FAVORITE ? el : el?.TopicId} />
+					<SwiperSlide key={index}>
+						<CardTopic data={type !== TYPE_TOPIC.FAVORITE ? el : el?.TopicId} />
 					</SwiperSlide>
 				))}
 			</Swiper>

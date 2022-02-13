@@ -39,15 +39,14 @@
 
 #primaryWhiteBlack {
     .countdownTimer {
-        .box {
-            color: white;
-        }
         .colon {
             color: black;
         }
         .box {
+            color: white;
             background-color: $primary;
             border-radius: 4px;
+            box-shadow: 0 1px 2px rgba(118, 112, 112, 0.25), inset 2px 2px 4px #9A98F3, inset -2px -2px 4px #5B59BD;
         }
     }
 }

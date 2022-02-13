@@ -36,9 +36,8 @@
     padding-bottom: .5rem;
     padding-right: 1.5rem;
 
-
-    .title {
-      @include pageTitle;
+    &__title {
+      @include fontSize($fs-l, $fs-xxl);
     }
 
     .subtitle {

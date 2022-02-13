@@ -1,160 +1,169 @@
 @import 'assets/scss/styles.scss';
 
-$radius-card: 20px;
+$radius-card: 1rem;
 $radius-card-desktop: 55px;
 
+@keyframes blink-animation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .cardLeagueInfo {
-    // background-color: $bg-home-card;
-    border-radius: $radius-card;
-    // background: url('../../../assets/images/test/2.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    position: relative;
+  // background-color: $bg-home-card;
+  border-radius: $radius-card;
+  // background: url('../../../assets/images/test/2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+
+  @include desktop {
+    background-size: cover;
+    background-position: unset;
+  }
+
+  .btn-enter {
+    @include fontSize($fs-xs, $fs-m);
+
+    width: 20%;
+    max-width: 130px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    background-color: $green-1;
     cursor: pointer;
 
     @include desktop {
-        background-size: cover;
-        border-radius: $radius-card-desktop !important;
+      padding: 10px;
+      bottom: 36px;
     }
 
-    .btn-enter {
-        @include fontSize($fs-xs, $fs-m);
+    .icon {
+      @include fsS;
+      margin: 0 5px;
+    }
+  }
 
-        width: 20%;
-        max-width: 130px;
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
+  img {
+    min-height: 100%;
+    width: auto;
+    border-radius: 0 $radius-card $radius-card 0;
+  }
+
+  .card-logo {
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .cardLeagueInfo-info {
+    padding: 10px;
+
+    @include desktop {
+      padding: 36px 51px;
+    }
+
+    .bullet {
+      will-change: opacity;
+      @include bullet(8px, $green-1);
+      margin-right: 10px;
+      animation: blink-animation 1.3s infinite;
+    }
+
+    .bullet-red {
+      @include bullet(8px, $red-1);
+      animation: none;
+    }
+
+    .title {
+      @include fontSize($fs-normal, $fs-xxl);
+      color: white;
+      font-weight: 500;
+      width: 100%;
+    }
+
+    .timer {
+      .tostart {
+        font-size: $fs-m;
         color: white;
-        padding: 5px;
-        border-radius: 4px;
-        background-color: $green-1;
-        cursor: pointer;
-
-        @include desktop {
-            padding: 10px;
-            bottom: 36px;
-        }
-
-        .icon {
-            @include fsS;
-            margin: 0 5px;
-        }
+        text-align: left;
+      }
     }
 
-    // .enter {
-    //     position: relative;
+    .price {
+      @include fontSize($fs-m, $fs-xxxl);
 
-    //     width: 100%;
-    //     height: 100%;
-    //     z-index: 1;
-    //     text-align: center;
-    //     }
+      width: fit-content;
+      color: $orange-1;
+      background-color: white;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin: 5px 0 !important;
+      font-weight: 500;
 
-    img {
-        min-height: 100%;
-        width: auto;
-        border-radius: 0 $radius-card $radius-card 0;
+      @include desktop {
+        padding: 9px 21px;
+      }
     }
 
-    .card-logo {
-        max-width: 100%;
-        overflow: hidden;
+    .players {
+      @include fontSize($fs-s, $fs-l);
+      @include fsS;
+      font-weight: 500;
+
+      color: $grey-1;
+
+      p {
+        margin: 0 5px;
+      }
     }
 
-    .cardLeagueInfo-info {
-        padding: 10px;
-
-        @include desktop {
-            padding: 36px 51px;
-        }
-
-        .bullet {
-            @include bullet(8px, $green-1);
-            margin-right: 10px;
-        }
-
-        .bullet-red {
-            @include bullet(8px, $red-1);
-        }
-
-        .title {
-            @include fontSize($fs-normal, $fs-xxl);
-            color: white;
-            font-weight: 500;
-            width: 100%;
-        }
-
-        .timer {
-            .tostart {
-                font-size: $fs-m;
-                color: white;
-                text-align: left;
-            }
-        }
-
-        .price {
-            @include fontSize($fs-m, $fs-xxxl);
-
-            width: fit-content;
-            color: $orange-1;
-            background-color: white;
-            padding: 3px 8px;
-            border-radius: 4px;
-            margin: 5px 0 !important;
-            font-weight: 500;
-
-            @include desktop {
-                padding: 9px 21px;
-            }
-        }
-
-        .players {
-            @include fontSize($fs-s, $fs-l);
-            @include fsS;
-            font-weight: 500;
-
-            color: $grey-1;
-            p {
-                margin: 0 5px;
-            }
-        }
-
-        .date {
-            @include fsM;
-            color: $grey-1;
-        }
+    .date {
+      @include fsM;
+      color: $grey-1;
     }
+  }
 
-    .ratio::before {
-        display: unset !important;
-    }
+  .ratio::before {
+    display: unset !important;
+  }
 }
 
 .expired {
-    position: relative;
+  position: relative;
 
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+
+  .expired-empty {
     width: 100%;
     height: 100%;
-    z-index: 1;
+    position: absolute;
+    border-radius: $radius-card;
+    background-color: colorBlack(50);
 
-    .expired-empty {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        border-radius: $radius-card;
-        background-color: colorBlack(50);
-
-        @include desktop {
-            border-radius: $radius-card-desktop !important;
-        }
-
-        .img-expired {
-            max-width: 22%;
-            height: auto;
-            right: 20px;
-            position: absolute;
-        }
+    @include desktop {
+      border-radius: $radius-card-desktop !important;
     }
+
+    .img-expired {
+      max-width: 22%;
+      height: auto;
+      right: 20px;
+      position: absolute;
+    }
+  }
 }

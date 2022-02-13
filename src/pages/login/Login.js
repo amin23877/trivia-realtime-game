@@ -40,11 +40,11 @@ const Login = () => {
 			dispatch(SET_SPINNER(true));
 			apiCall
 				.post("user/register", { phone })
-				.then((res) => {
+				.then(() => {
 					dispatch(SET_SPINNER(false));
 					navigate("/otp");
 				})
-				.catch((err) => {
+				.catch(() => {
 					dispatch(SET_SPINNER(false));
 					// navigate("/login");
 				});
@@ -87,7 +87,7 @@ const Login = () => {
 						type="tel"
 						placeholder="Enter your phone number"
 						maxLength={11}
-						onChange={(e) => handleChangePhone(e)}
+						onChange={handleChangePhone}
 					/>
 
 					<p className="login-form__error-message">{error && "Please enter a valid phone number"}</p>
