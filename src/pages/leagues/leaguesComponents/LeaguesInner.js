@@ -2,60 +2,42 @@
 import React, { useEffect, useState } from "react";
 // Hooks
 import { useNavigate, useParams } from "react-router-dom";
-// Packages
-import _ from "lodash";
 // Components, Services, Functions
-import { MOCK_LEADERS } from "common/mocks/MOCK";
-import { MOCK_CARDINFO } from "common/mocks/MOCK";
 import CountdownTimer from "common/components/countdownTimer/CountDownTimer";
 // Redux
 // Material - lab
 // Styles, Icons, Images
-
 import "./LeaguesInner.scss";
 import Countdown from "react-countdown";
-import CloseIcon from "@material-ui/icons/Close";
 import PersonIcon from "@material-ui/icons/Person";
-import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import { useDispatch, useSelector } from "react-redux";
 import ApiCall from "common/services/ApiCall";
-import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
-import { IMAGE_URL } from "common/values/CORE";
-import { TYPE_LEADERBOARD } from "common/values/TYPES";
+import {
+	SET_GAME_SELECTION_TYPE,
+	SET_OPEN_GAME_TYPES,
+	SET_SNACKBAR,
+	SET_SPINNER,
+	SET_TYPE_LEADERBOARD_COMPONENT,
+} from "redux/actions/mainActions/generalActions";
 import LeaderboardTabs from "pages/leaderboard/leaderboardComponents/LeaderboardTabs";
-import { TYPE_LEADERBOARD_COMPONENT } from "common/values/TYPES";
-import { SET_TYPE_LEADERBOARD_COMPONENT } from "redux/actions/mainActions/generalActions";
-import { SET_SNACKBAR } from "redux/actions/mainActions/generalActions";
-import { TYPE_SNAKBAR } from "common/values/TYPES";
-import { SET_GAME_SELECTION_TYPE } from "redux/actions/mainActions/generalActions";
-import { SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
+import { TYPE_LEADERBOARD_COMPONENT, TYPE_SNAKBAR } from "common/values/TYPES";
+import CardInner from "common/components/cardInner/CardInner";
 
 const LeaguesInner = () => {
 	let { id } = useParams();
 
 	var ordinal = require("ordinal");
 
-	const playerNum = 2;
 	const timeRemain = 45050;
 	const apiCall = new ApiCall();
 	const dispatch = useDispatch();
 
 	const stateGeneral = useSelector((state) => state.stateGeneral);
 
-	const [activatedTab, setActivatedTab] = useState(0);
-
 	const [dataInnerLeague, setDataInnerLeague] = useState();
 
-	const mockLeaders = MOCK_LEADERS;
-	const mockLeadersBest = [mockLeaders[0], mockLeaders[1], mockLeaders[2]];
-	const mockLeadersOther = mockLeaders;
-
 	const navigate = useNavigate();
-
-	const styleBgImg = {
-		backgroundImage: `url(${IMAGE_URL}${encodeURI(dataInnerLeague?.logo)})`,
-	};
 
 	const handleGoBack = () => {
 		navigate(-1);
@@ -104,56 +86,34 @@ const LeaguesInner = () => {
 		};
 	}, []);
 
-	// console.log(dataInnerLeague);
-
 	return (
 		<div className="w-100 h-100 leaguesInner">
-			<p className="title d-none d-xl-block pb-xl-3">
-				{dataInnerLeague?.name}
-				{/* {_.truncate(dataInnerLeague?.name, { length: 35, separator: " " })} */}
-			</p>
-
-			<div className="leaguesInner-header">
-				<div className="d-flex justify-content-between align-items-center sec-img" style={styleBgImg}>
-					<p className="d-flex d-xl-none justify-content-center align-items-center" onClick={handleGoBack}>
-						<CloseIcon />
-					</p>
-					<p className="d-flex d-xl-none justify-content-center align-items-center">
-						<ShareOutlinedIcon />
-					</p>
-				</div>
-
-				<div className="sec-info">
-					<p className="title d-xl-none">
-						{/* {_.truncate(dataInnerLeague?.name, { length: 35, separator: " " })} */}
-						{dataInnerLeague?.name}
-					</p>
-					<p className="subtitle">
-						{/* {_.truncate(dataInnerLeague?.TopicId?.name, { length: 40, separator: " " })} */}
-						{dataInnerLeague?.TopicId?.name}
-					</p>
-					<div className="pt-2 d-flex flex-xl-column justify-content-between align-items-center">
-						<div id="primaryWhiteBlack" className="d-flex py-xl-2 timer">
-							<div className="mx-xl-auto">
-								<Countdown
-									date={Date.now() + timeRemain * 1000}
-									renderer={CountdownTimer}
-									onComplete={(e) => handleStop(e)}
-								/>
-							</div>
+			<CardInner
+				subtitle={dataInnerLeague?.TopicId?.name}
+				title={dataInnerLeague?.name}
+				banner={encodeURI(dataInnerLeague?.logo)}
+			>
+				<div className="league-card-inner-content">
+					<div id="primaryWhiteBlack" className="d-flex py-xl-2">
+						<div className="mx-xl-auto">
+							<Countdown
+								date={Date.now() + timeRemain * 1000}
+								renderer={CountdownTimer}
+								onComplete={(e) => handleStop(e)}
+							/>
 						</div>
-
-						<p className="grey players-num">
-							{dataInnerLeague?.players > 1 ? <SupervisorAccountIcon /> : <PersonIcon />}
-							<span className="mx-1">{`${dataInnerLeague?.players} player`}</span>
-						</p>
-
-						<button className="btn-play d-none d-xl-inline" onClick={handlePlay}>
-							<span className="mx-1">Play Now</span>
-						</button>
 					</div>
+
+					<p className="league-card-inner-content__player-num">
+						{dataInnerLeague?.players > 1 ? <SupervisorAccountIcon /> : <PersonIcon />}
+						<span className="mx-1">{`${dataInnerLeague?.players} player`}</span>
+					</p>
+
+					<button className="btn-play d-none d-xl-inline" onClick={handlePlay}>
+						<span className="mx-1">Play Now</span>
+					</button>
 				</div>
-			</div>
+			</CardInner>
 
 			<div className="leaguesInner-body">
 				<div className="description">
