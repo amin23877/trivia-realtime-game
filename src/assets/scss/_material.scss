@@ -26,13 +26,6 @@
         box-shadow: unset;
     }
 
-    .MuiBox-root {
-        // background-color: aquamarine !important;
-        // max-height: calc(100vh - 200px);
-        max-height: 80vh;
-        overflow-y: auto;
-    }
-
     .Mui-selected {
         background-color: $primary;
         color: white;
