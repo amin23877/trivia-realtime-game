@@ -66,8 +66,15 @@ const LeaguesInner = () => {
 	};
 
 	const handlePlay = () => {
+
 		dispatch(SET_GAME_SELECTION_TYPE({ type: "league", id: id }));
-		dispatch(SET_OPEN_GAME_TYPES(true));
+		if(dataInnerLeague?.players==1){
+			navigate(`/leagues/${id}/onePlayer`)
+		}else{
+			navigate(`/leagues/${id}/twoPlayers`)
+
+		}
+		// dispatch(SET_OPEN_GAME_TYPES(true));
 	};
 	const getDataInnerLeague = () => {
 		dispatch(SET_SPINNER(true));
