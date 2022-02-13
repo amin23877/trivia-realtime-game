@@ -159,7 +159,7 @@ const HomeTopicsInner = () => {
 	}, []);
 
 	return (
-		<div className="w-100 h-100 topicsInner">
+		<div className="w-100 topicsInner">
 			<CardInner
 				banner={encodeURI(dataInnerTopic?.logo)}
 				title={dataInnerTopic?.name}

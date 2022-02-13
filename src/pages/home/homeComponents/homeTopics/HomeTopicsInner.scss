@@ -7,7 +7,7 @@ $size-avatar: 30px;
 
 .topicsInner {
   @include limitContent;
-
+  padding-bottom: calc(#{$height-footer} + 1rem);
   background-color: $bg-home;
 
   @include desktop {
