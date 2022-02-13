@@ -125,7 +125,7 @@ const LeaderboardTabPanel = ({ type }) => {
 	return (
 		<div className="w-100 h-100 tabPanel">
 			{dataLeaderboard.length > 0 ? <LeaderboardTabPanelHeader dataLeaderboard={dataLeaderboard} /> : <></>}
-			<div className="mt-5">
+			<div className="mt-3">
 				<LeaderboardTabPanelBody dataLeaderboard={dataLeaderboard} />
 			</div>
 		</div>
