@@ -93,7 +93,9 @@ $tab-bar-height: 2.5px;
       }
 
       @include desktop {
-        display: inline;
+        display: flex;
+        align-items: center;
+        gap: .5rem;
       }
     }
   }
