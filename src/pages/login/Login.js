@@ -4,8 +4,6 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Logo from "common/components/UI/Logo";
 
-import { TextField } from "@material-ui/core";
-
 import ApiCall from "common/services/ApiCall";
 
 import "./Login.scss";
@@ -19,34 +17,26 @@ const Login = () => {
 	const apiCall = new ApiCall();
 
 	const [phone, setPhone] = useState("");
-	const [isValidPhone, setIsValidPhone] = useState(false);
-	const [messageError, setMessageError] = useState("Please enter a valid phone number");
+	const [error, setError] = useState(false);
 
-	const handleEnterKeyMobile = (e) => {
-		if (e.code === "Enter" || e.code === "NumpadEnter") {
-			e.preventDefault();
-			if (isValidPhone) {
-				handleGetOtp();
-			}
-		}
+	const handleChangePhone = ({ target: { value } }) => {
+		setPhone(value);
+
+		if (isValidPhone(value)) setError(false);
 	};
 
-	const handleChangePhone = (e) => {
-		setPhone(e.target.value);
+	const isValidPhone = (value) => {
+		const phoneRegex = /^0\d{10}$/;
 
-		const phoneno = /^0\d{10}$/;
-		// if (phone.match(phoneno) && e.target.value.length >= 10) {
-		if (e.target.value.length >= 10) {
-			setIsValidPhone(true);
-		} else {
-			setIsValidPhone(false);
-		}
+		return value.match(phoneRegex) && value.length >= 10;
 	};
 
-	const handleGetOtp = () => {
+	const handleGetOtp = (e) => {
+		e.preventDefault();
+
 		localStorage.setItem("phone", phone);
 
-		if (phone && isValidPhone) {
+		if (phone && isValidPhone(phone)) {
 			dispatch(SET_SPINNER(true));
 			apiCall
 				.post("user/register", { phone })
@@ -59,7 +49,7 @@ const Login = () => {
 					// navigate("/login");
 				});
 		} else {
-			// TODO
+			setError(true);
 		}
 	};
 
@@ -79,33 +69,33 @@ const Login = () => {
 		<div className="fadeInFast d-flex flex-column align-items-center login">
 			<Logo />
 
-			<div className="my-auto login-body">
+			<div className="login-body">
 				<div className="login-body__title">
-					<p className="title">Log in</p>
+					<p>Log in</p>
 					<img className="login-body__image" src={imgMain} alt="" />
 				</div>
 
-				<form noValidate autoComplete="off" className="_dish-textField">
-					<div className="">
-						<p className="label">Phone Number</p>
-						<TextField
-							autoFocus={true}
-							type="tel"
-							placeholder="Enter your phone number"
-							helperText={phone.length > 10 && !isValidPhone ? messageError : ""}
-							variant="outlined"
-							inputProps={{ maxLength: 11 }}
-							// value={phone}
-							error={phone !== "" && !isValidPhone}
-							onChange={(e) => handleChangePhone(e)}
-							onKeyPress={(e) => handleEnterKeyMobile(e)}
-						/>
-					</div>
-				</form>
+				<form onSubmit={handleGetOtp} noValidate autoComplete="off" className="login-form">
+					<label htmlFor="phone-number" className="login-form__label">
+						Phone Number
+					</label>
 
-				<button className="my-4 login-body__submit" disabled={!isValidPhone} onClick={handleGetOtp}>
-					Login
-				</button>
+					<input
+						id="phone-number"
+						className={`login-form__input ${error ? "login-form__input_error" : ""}`}
+						autoFocus={true}
+						type="tel"
+						placeholder="Enter your phone number"
+						maxLength={11}
+						onChange={(e) => handleChangePhone(e)}
+					/>
+
+					<p className="login-form__error-message">{error && "Please enter a valid phone number"}</p>
+
+					<button type="submit" className="login-form__submit">
+						Login
+					</button>
+				</form>
 			</div>
 		</div>
 	);

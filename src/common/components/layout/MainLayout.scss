@@ -34,16 +34,21 @@ $notif-drawer-width: 500px;
     width: 100%;
     flex: 1 1 100%;
     overflow-y: auto;
+    height: 100%;
 
     @include desktop {
       height: calc(100% - #{$desktop-header-height}) !important;
       flex: 0 1 calc(100% - #{$sidebar-width});
+      padding: 0 2rem;
     }
   }
 
   &__footer { // show only on mobile
-    flex: 1 1 100%;
     height: $height-footer;
+    position: fixed;
+    bottom: 0;
+    z-index: 1000;
+    width: 100%;
 
     @media (min-width: $breakpoint-xl) {
       display: none;

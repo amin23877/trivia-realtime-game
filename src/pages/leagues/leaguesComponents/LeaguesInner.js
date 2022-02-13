@@ -111,14 +111,13 @@ const LeaguesInner = () => {
 		};
 	}, []);
 
-
-
 	// console.log(dataInnerLeague);
 
 	return (
 		<div className="w-100 h-100 leaguesInner">
 			<p className="title d-none d-xl-block pb-xl-3">
-				{_.truncate(dataInnerLeague?.name, { length: 35, separator: " " })}
+				{dataInnerLeague?.name}
+				{/* {_.truncate(dataInnerLeague?.name, { length: 35, separator: " " })} */}
 			</p>
 
 			<div className="leaguesInner-header">
@@ -133,10 +132,12 @@ const LeaguesInner = () => {
 
 				<div className="sec-info">
 					<p className="title d-xl-none">
-						{_.truncate(dataInnerLeague?.name, { length: 35, separator: " " })}
+						{/* {_.truncate(dataInnerLeague?.name, { length: 35, separator: " " })} */}
+						{dataInnerLeague?.name}
 					</p>
 					<p className="subtitle">
-						{_.truncate(dataInnerLeague?.TopicId?.name, { length: 40, separator: " " })}
+						{/* {_.truncate(dataInnerLeague?.TopicId?.name, { length: 40, separator: " " })} */}
+						{dataInnerLeague?.TopicId?.name}
 					</p>
 					<div className="pt-2 d-flex flex-xl-column justify-content-between align-items-center">
 						<div id="primaryWhiteBlack" className="d-flex py-xl-2 timer">

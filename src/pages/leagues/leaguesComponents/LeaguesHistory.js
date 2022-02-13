@@ -59,18 +59,16 @@ const LeaguesHistory = () => {
 
 	return (
 		<div className="w-100 h-100 history">
-			<div className="d-flex d-xl-none align-items-center _header _header-shadow history-header">
+			<div className="history-header">
 				<ArrowBackIcon className="color-primary" onClick={handleGoBack} />
 				<div className="_header-title color-primary mx-2">League History</div>
 			</div>
 
-			<div className="_body-height-H history-body ">
+			<div className="history-body ">
 				{dataLeagueHistory.length > 0 ? (
 					dataLeagueHistory?.map((el, index) => (
-						<div key={index} className="card-league">
-							<div className="ratio _dish-cardLeagueInfo">
-								<CardLeagueInfo info={el} type={TYPE_LEAGUE_HOME.HISTORY} />
-							</div>
+						<div key={index} className="ratio _dish-cardLeagueInfo mb-2 mb-xl-3">
+							<CardLeagueInfo info={el} type={TYPE_LEAGUE_HOME.HISTORY} />
 						</div>
 					))
 				) : (

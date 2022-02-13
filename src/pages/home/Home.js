@@ -88,14 +88,16 @@ const Home = () => {
 
 	return (
 		<div className="fadeInFast home">
-			<MobileHeader onDrawerOpen={handleDrawerOpen} />
+			<div className="home__header">
+				<MobileHeader onDrawerOpen={handleDrawerOpen} />
+			</div>
 
 			<Drawer className="d-xl-none" variant="persistent" anchor="left" open={openDrawerMenu}>
 				<Menu onDrawerClose={handleDrawerClose} />
 			</Drawer>
 
 			<div className="home__body">
-				<div className="card-league">
+				<div className="home-card-league">
 					{!_.isEmpty(dataLeague) ? (
 						<div
 							className="ratio _dish-cardLeagueInfo"

@@ -54,12 +54,12 @@ $input-border-radius : 1rem;
     height: $explore-input-height-desktop;
     border-radius: $input-border-radius;
     padding-left: 1rem;
+  }
 
-    &:focus {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      border-bottom : 1px solid var(--border-bottom-color);
-    }
+  &_active {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom : 1px solid var(--border-bottom-color);
   }
 }
 

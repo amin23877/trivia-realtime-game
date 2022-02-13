@@ -16,10 +16,10 @@ export default function App() {
 
 	// #routerConfig step2
 	return (
-		<div className="dish">
+		<>
 			<RouterConfig />
 			{stateGeneral.spinner ? <Spinner /> : null}
 			{stateGeneral.snackbar?.show ? <SnackbarShow /> : null}
-		</div>
+		</>
 	);
 }

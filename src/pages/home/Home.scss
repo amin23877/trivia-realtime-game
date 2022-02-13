@@ -2,20 +2,26 @@
 
 .home {
   background-color: $bg-home;
-  height: 100%;
-  overflow: hidden;
 
   &__body {
-    padding: 1.5rem 0 1.5rem 1.5rem;
+    padding: 1.5rem 0 2.25rem 1.5rem;
     overflow-y: auto;
     height: 100%;
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
+
+    @include desktop {
+      padding-bottom: 3rem;
+    }
+  }
+
+  &__header {
+    @include stickyHeader;
   }
 }
 
-.card-league {
+.home-card-league {
   padding-right: 1.5rem ;
 
   @include desktop {

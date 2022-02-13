@@ -81,7 +81,8 @@ const CardLeagueInfo = ({ info, hasEnterBtn = true, type = TYPE_LEAGUE_HOME.GENE
 			<div className="d-flex flex-column justify-content-between  w-100 cardLeagueInfo-info">
 				<div className="d-flex justify-content-start align-items-center">
 					<div className={`bullet ${expired ? "bullet-red" : ""}`}></div>
-					<p className="title"> {_.truncate(info?.name, { length: 25, separator: " " })}</p>
+					<p className="title"> {info?.name}</p>
+					{/* <p className="title"> {_.truncate(info?.name, { length: 25, separator: " " })}</p> */}
 				</div>
 
 				{type?.includes(TYPE_LEAGUE_HOME.GRAND) ? (

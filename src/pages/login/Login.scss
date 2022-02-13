@@ -5,7 +5,7 @@
   height: 100%;
   width: 100%;
   max-width: 480px;
-  padding: 1.5rem 1rem;
+  padding: .75rem 1rem 1.5rem;
 
   @include desktop {
     @include borderedBox(2.25rem 5rem 4rem);
@@ -35,15 +35,6 @@
   cursor: pointer;
 }
 
-.label {
-  @include fsM;
-
-  width: 100%;
-  margin: 1rem 0 14px !important;
-  color: colorBlack(80);
-  font-weight: 500;
-}
-
 .login-header {
   position: relative;
   width: 100%;
@@ -67,13 +58,14 @@
   }
 
   &__title {
+    @include fontSize($fs-l ,$fs-xxl);
+
     @include fsL;
     margin: 1.25rem 0;
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
     width: 100%;
-    font-family: RobotoBlack;
     color: colorBlack(85);
 
     @include desktop {
@@ -85,6 +77,61 @@
     width: 163px;
     align-self: center;
   }
+}
+
+.login-form {
+  width: 100%;
+
+  &__label {
+    @include fontSize($fs-m ,$fs-l);
+
+    width: 100%;
+    margin: 1rem 0 14px;
+    color: colorBlack(80);
+    font-weight: 500;
+
+    @include desktop {
+      margin-top: .5rem;
+    }
+  }
+
+  &__input {
+    @include fontSize($fs-normal ,$fs-l);
+
+    font-family: RobotoThin ,serif;
+    font-weight: 600;
+    color: $grey-1;
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0 1.125rem;
+    margin-bottom: .5rem;
+    background-color: white;
+    border: none;
+    border-radius: .5rem;
+    box-shadow: 0 2px 4px rgba(43, 36, 100, 0.15);
+
+    &:focus {
+      outline: 0;
+    }
+
+    @include desktop {
+      box-shadow: none;
+      border: 1px solid $grey-1;
+      min-height: 54px;
+    }
+
+    &_error {
+      border: 1px solid $red-2;
+    }
+  }
+
+  &__error-message {
+    @include fontSize($fs-normal ,$fs-l);
+
+    display: inline-block;
+    height: 20px;
+    color: $red-2;
+  }
 
   &__submit {
     display: block;
@@ -93,7 +140,7 @@
     border-radius: 8px;
     height: 44px;
     width: 100%;
-    margin: 2.5rem auto;
+    margin-top: 1rem;
     background-color: $primary;
     box-shadow: 0 3px 6px rgba(109, 107, 230, 0.35), inset 0 2px 2px rgba(255, 255, 255, 0.25);
     color: #fff;
