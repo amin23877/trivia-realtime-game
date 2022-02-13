@@ -20,7 +20,7 @@ function TabPanel(props) {
 			aria-labelledby={`simple-tab-${index}`}
 			{...other}
 		>
-			{value === index && <Box p={3}>{children ? children : null}</Box>}
+			{value === index && <Box>{children ? children : null}</Box>}
 		</div>
 	);
 }
@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	tab: {
 		fontSize: 14,
+		textTransform: "none",
 		"@media (min-width: 1366px)": {
 			fontSize: 16,
 		},

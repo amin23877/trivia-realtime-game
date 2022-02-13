@@ -24,7 +24,7 @@ const LeaderboardTabPanelHeader = ({ dataLeaderboard }) => {
 			{stateGeneral.typeLeaderboardComponent !== TYPE_LEADERBOARD_COMPONENT.GENERAL ? (
 				<>
 					<div className="best">
-						<div className="d-flex best-users">
+						<div className="best-users">
 							{_.slice(dataLeaderboard, 0, 3).map((el, index) => (
 								<div key={index} className={`user ${index === 1 ? "best-user" : ""}`}>
 									{!_.isEmpty(el) ? (
@@ -37,8 +37,10 @@ const LeaderboardTabPanelHeader = ({ dataLeaderboard }) => {
 													src={`${IMAGE_URL}${encodeURI(el?.UserId?.avatar)}`}
 												/>
 												<p className="username">{el?.UserId?.username}</p>
-												<p className="points">{`${el?.point} points`}</p>
-												<p className="reward">{`$ ${el?.reward}`}</p>
+												<div className="d-flex flex-column flex-xl-row align-items-center justify-content-between">
+													<p className="points">{`${el?.point} points`}</p>
+													<p className="reward">{`$ ${el?.reward}`}</p>
+												</div>
 											</>
 										) : (
 											<>
