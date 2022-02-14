@@ -16,9 +16,7 @@ $radius-card-desktop: 55px;
 }
 
 .cardLeagueInfo {
-  // background-color: $bg-home-card;
   border-radius: $radius-card;
-  // background: url('../../../assets/images/test/2.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -154,10 +152,6 @@ $radius-card-desktop: 55px;
     position: absolute;
     border-radius: $radius-card;
     background-color: colorBlack(50);
-
-    @include desktop {
-      border-radius: $radius-card-desktop !important;
-    }
 
     .img-expired {
       max-width: 22%;
