@@ -1,51 +1,50 @@
 @import 'assets/scss/styles.scss';
 
 .leagues {
-    @include limitContent;
+  @include limitContent;
+
+  .leagues-header {
+    @include stickyHeader;
+    height: $mobile-header-height;
+    display: grid;
+    place-items: center;
+    background-color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 
     @include desktop {
-        padding-top: .5rem;
+      display: none;
+    }
+  }
+
+  .leagues-body {
+    padding: 0 1.5rem 1.5rem;
+
+    @include desktop {
+      height: 100% !important;
     }
 
-    .leagues-header {
-        @include stickyHeader;
-        height: $mobile-header-height;
-        display: grid;
-        place-items: center;
-        background-color: white;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    .leagues-title, .leagues-subtitle {
+      padding: 1rem 0 .5rem;
 
-        @include desktop {
-            display: none;
-        }
+      @include desktop {
+        padding: 2rem 0 1rem;
+      }
     }
 
-    .leagues-body {
-        padding: 1.5rem;
-
-        @include desktop {
-            height: 100% !important;
-        }
-
-        .leagues-title {
-            @include pageTitle;
-        }
-        .leagues-subtitle {
-            @include pageSubTitle;
-        }
-
-        .card-league {
-            padding: 20px 0 !important;
-        }
-
-        .history {
-        }
-
-        .empty-list {
-            @include fsNormal;
-            padding: 30px;
-            color: colorBlack(50);
-            text-align: center;
-        }
+    .leagues-title {
+      @include fontSize($fs-m, $fs-xxl);
     }
+
+    .leagues-subtitle {
+      @include fontSize($fs-normal, $fs-m);
+      color: $grey-1;
+    }
+
+    .empty-list {
+      @include fsNormal;
+      padding: 30px;
+      color: colorBlack(50);
+      text-align: center;
+    }
+  }
 }

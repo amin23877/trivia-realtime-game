@@ -1,28 +1,42 @@
 // Reacts
 import React, { useEffect, useState } from "react";
 // Hooks
-import { useNavigate } from "react-router-dom";
-// Packages
-import _ from "lodash";
+import { Link, useNavigate } from "react-router-dom";
+
 // Components, Services, Functions
-import { MOCK_CARDINFO } from "common/mocks/MOCK";
-import Footer from "common/components/footer/Footer";
+import ApiCall from "common/services/ApiCall";
 import CardLeagueInfo from "common/components/cardLeagueInfo/CardLeagueInfo";
+import { Swiper, SwiperSlide } from "swiper/react";
+
 // Redux
-// Material - lab
+import { useDispatch } from "react-redux";
+import { SET_SNACKBAR, SET_SPINNER } from "redux/actions/mainActions/generalActions";
+import { TYPE_LEAGUE_HOME, TYPE_SNAKBAR } from "common/values/TYPES";
+
 // Styles, Icons, Images
+import "swiper/css";
 import "./Leagues.scss";
 import arrowForwardMini from "assets/images/icons/arrow-forward-mini.svg";
-
 import logo from "assets/images/icons/header-logo.svg";
-import ApiCall from "common/services/ApiCall";
-import { useDispatch } from "react-redux";
-import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
-import { TYPE_LEAGUE_HOME } from "common/values/TYPES";
-import EmptyList from "common/components/empties/EmptyList";
-import { SET_SNACKBAR } from "redux/actions/mainActions/generalActions";
-import { TYPE_SNAKBAR } from "common/values/TYPES";
-import { TYPE_LEAGUE_CARD } from "common/values/TYPES";
+
+const LeaguesCategory = ({ data, title, seeAllPageLink, children }) => {
+	return (
+		<>
+			<div className="d-flex justify-content-between align-items-center">
+				<p className="leagues-title flex-grow-1">{title}</p>
+
+				{seeAllPageLink && (
+					<Link className="leagues-subtitle" to={seeAllPageLink}>
+						see all
+						<img className="mx-2" src={arrowForwardMini} alt="" />
+					</Link>
+				)}
+			</div>
+
+			{data ? children : <p className="empty-list">There is nothing ... </p>}
+		</>
+	);
+};
 
 const Leagues = () => {
 	const navigate = useNavigate();
@@ -30,10 +44,6 @@ const Leagues = () => {
 	const dispatch = useDispatch();
 
 	const [dataLeagueHome, setDataLeagueHome] = useState([]);
-
-	const cardInfo = MOCK_CARDINFO;
-
-	const mockHistory = [MOCK_CARDINFO, MOCK_CARDINFO, MOCK_CARDINFO];
 
 	const handleNavigate = (event, path) => {
 		event.stopPropagation();
@@ -76,15 +86,13 @@ const Leagues = () => {
 	}, []);
 
 	return (
-		<div className="fadeInFast w-100 h-100 leagues">
+		<div className="fadeInFast w-100 leagues">
 			<div className="leagues-header">
 				<img src={logo} alt="logo" />
 			</div>
 
-			<div className="_body-height-H leagues-body">
-				<p className="leagues-title">Daily League</p>
-
-				{dataLeagueHome[TYPE_LEAGUE_HOME.DAILY] ? (
+			<div className="leagues-body">
+				<LeaguesCategory title="Daily League" data={dataLeagueHome[TYPE_LEAGUE_HOME.DAILY]}>
 					<div className="card-league">
 						<div
 							className="ratio _dish-cardLeagueInfo"
@@ -93,12 +101,9 @@ const Leagues = () => {
 							<CardLeagueInfo info={dataLeagueHome[TYPE_LEAGUE_HOME.DAILY]} />
 						</div>
 					</div>
-				) : (
-					<p className="empty-list">There is nothing ... </p>
-				)}
+				</LeaguesCategory>
 
-				<p className="leagues-title">Weekly League</p>
-				{dataLeagueHome[TYPE_LEAGUE_HOME.WEEKLY] ? (
+				<LeaguesCategory title="Weekly League" data={dataLeagueHome[TYPE_LEAGUE_HOME.WEEKLY]}>
 					<div className="card-league">
 						<div
 							className="ratio _dish-cardLeagueInfo"
@@ -109,12 +114,9 @@ const Leagues = () => {
 							<CardLeagueInfo info={dataLeagueHome[TYPE_LEAGUE_HOME.WEEKLY]} />
 						</div>
 					</div>
-				) : (
-					<p className="empty-list">There is nothing ... </p>
-				)}
+				</LeaguesCategory>
 
-				<p className="leagues-title">Grand League</p>
-				{dataLeagueHome[TYPE_LEAGUE_HOME.GRAND] ? (
+				<LeaguesCategory title="Grand League" data={dataLeagueHome[TYPE_LEAGUE_HOME.GRAND]}>
 					<div className="card-league">
 						<div
 							className="ratio _dish-cardLeagueInfo"
@@ -127,34 +129,28 @@ const Leagues = () => {
 							/>
 						</div>
 					</div>
-				) : (
-					<p className="empty-list">There is nothing ... </p>
-				)}
+				</LeaguesCategory>
 
-				<div className="d-flex justify-content-between align-items-center">
-					<p className="leagues-title">League History</p>
-					<p className="leagues-subtitle" onClick={(e) => handleNavigate(e, "/leagues/history")}>
-						see all
-						<img className="mx-2" src={arrowForwardMini} alt="" />
-					</p>
-				</div>
-
-				<div className=" history">
-					{dataLeagueHome[TYPE_LEAGUE_HOME.HISTORY] ? (
-						dataLeagueHome[TYPE_LEAGUE_HOME.HISTORY]?.map((el, index) => (
-							<div key={index} className="card-league">
-								<div
-									className="ratio _dish-cardLeagueInfo"
-									onClick={(e) => handleNavigate(e, `/leagues/${el._id}`)}
-								>
-									<CardLeagueInfo info={el} type={TYPE_LEAGUE_HOME.HISTORY} />
+				<LeaguesCategory
+					seeAllPageLink="/leagues/history"
+					title="League History"
+					data={dataLeagueHome[TYPE_LEAGUE_HOME.HISTORY]}
+				>
+					<Swiper slidesPerView={1} spaceBetween={16}>
+						{dataLeagueHome[TYPE_LEAGUE_HOME.HISTORY]?.map((el, index) => (
+							<SwiperSlide key={index}>
+								<div className="card-league">
+									<div
+										className="ratio _dish-cardLeagueInfo"
+										onClick={(e) => handleNavigate(e, `/leagues/${el._id}`)}
+									>
+										<CardLeagueInfo info={el} type={TYPE_LEAGUE_HOME.HISTORY} />
+									</div>
 								</div>
-							</div>
-						))
-					) : (
-						<p className="empty-list">There is nothing ... </p>
-					)}
-				</div>
+							</SwiperSlide>
+						))}
+					</Swiper>
+				</LeaguesCategory>
 			</div>
 		</div>
 	);
