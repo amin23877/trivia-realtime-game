@@ -67,7 +67,7 @@ const LeaguesHistory = () => {
 			<div className="history-body ">
 				{dataLeagueHistory.length > 0 ? (
 					dataLeagueHistory?.map((el, index) => (
-						<div key={index} className="ratio _dish-cardLeagueInfo mb-2 mb-xl-3">
+						<div key={index} className="ratio mb-3 mb-xl-3 _dish-cardLeagueInfo">
 							<CardLeagueInfo info={el} type={TYPE_LEAGUE_HOME.HISTORY} />
 						</div>
 					))
