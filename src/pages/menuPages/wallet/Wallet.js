@@ -67,8 +67,8 @@ const Wallet = () => {
 					<div className="wallet-own-info__avatar">
 						<img width={32} alt="user-profile" src={profilePic} />
 					</div>
-					<div className="wallet-own-info__name">alireza pouyanfar</div>
-					<div className="wallet-own-info__phone">+93 788 502 257</div>
+					<div className="wallet-own-info__name">sarah milani</div>
+					<div className="wallet-own-info__phone">+93 700 502257</div>
 				</div>
 			</div>
 
