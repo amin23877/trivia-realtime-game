@@ -33,8 +33,8 @@ const LeaderboardTabPanelBody = ({ dataLeaderboard }) => {
 							isInnerLeague={isInnerLeague}
 							key={index}
 							index={index + indexStart}
-							username={el?.UserId?.username}
-							avatar={el?.UserId?.avatar}
+							username={el?.UserId?.username || el?.username}
+							avatar={el?.UserId?.avatar || el?.avatar}
 							reward={el?.reward}
 							point={el?.point}
 							score={el?.score}

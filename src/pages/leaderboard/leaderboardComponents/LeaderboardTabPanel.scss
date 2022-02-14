@@ -2,6 +2,7 @@
 
 $size-avatar: 30px;
 $tabs-max-width: 722px;
+$card-radius : .5rem;
 
 .tabPanel {
   width: 100%;
@@ -10,21 +11,29 @@ $tabs-max-width: 722px;
 
   .user-first {
     background-color: white;
-    border-radius: 16px;
+    box-shadow: 0 3px 5px rgba(39, 39, 40, 0.1);
+    border-radius: $card-radius;
+    overflow: hidden;
     height: 60px;
+    margin-top: 1rem;
+
+    @include desktop {
+      height: 108px;
+      margin-top: 3.25rem;
+    }
 
     .index {
-      @include fsM;
+      @include fontSize($fs-normal, $fs-xl);
       min-width: 25px;
     }
 
     .username {
-      @include fsL;
+      @include fontSize($fs-xs ,$fs-xl);
       padding-left: 10px;
     }
 
     .points {
-      @include fsNormal;
+      @include fontSize($fs-xs, $fs-l);
       color: $primary;
       font-weight: 500;
       padding-left: 10px;
@@ -35,37 +44,47 @@ $tabs-max-width: 722px;
     }
 
     .bundle {
-      @include fsL;
+      @include fontSize($fs-xs, $fs-xxxl);
 
       height: 100%;
-      padding: 20px;
+      padding: 18px 36px 18px 20px;
       color: white;
       margin-left: auto;
       background-color: $red-1;
-      border-radius: 58px 8px 8px 58px;
-
+      border-radius: 58px $card-radius $card-radius 58px;
       position: relative;
 
+      @include desktop {
+        padding: 40px 100px 40px 75px;
+      }
+
       img {
+        width: 14px;
+        height: 16px;
         position: absolute;
         top: 5px;
         right: 5px;
+
+        @include desktop {
+          width: 35px;
+          height: 30px;
+        }
       }
     }
   }
 
   .subtitle {
+    @include fontSize($fs-normal ,$fs-l);
     color: $primary;
-    padding: 20px 0;
+    padding: .75rem 0 .5rem;
+
+    @include desktop {
+      padding: 1.75rem 0 1rem;
+    }
   }
 
   .avatar {
     @include avatarShape($size-avatar);
-  }
-
-  .icon-gift {
-    max-height: 15px;
-    width: auto;
   }
 
   ///////////////////////////////////////

@@ -67,12 +67,12 @@ const LeaderboardTabPanelHeader = ({ dataLeaderboard }) => {
 				</>
 			) : (
 				<>
-					<div className="d-flex align-items-center _br-bottom user-first">
+					<div className="d-flex align-items-center user-first">
 						<div className="d-flex align-items-center info">
 							<span className="index">{"1."}</span>
 
 							<Avatar
-								size={{ mobile: 22, desktop: 44 }}
+								size={{ mobile: 34, desktop: 56 }}
 								src={`${IMAGE_URL}${encodeURI(dataLeaderboard[0]?.avatar)}`}
 							/>
 
@@ -82,7 +82,7 @@ const LeaderboardTabPanelHeader = ({ dataLeaderboard }) => {
 							</div>
 						</div>
 						<div className="d-flex align-items-center bundle">
-							<img className="icon-gift" src={iconGift} />1 GB Data bundle
+							<img alt="" className="icon-gift" src={iconGift} />1 GB Data bundle
 						</div>
 					</div>
 					<p className="subtitle">Your position: 12</p>

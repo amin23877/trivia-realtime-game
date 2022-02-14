@@ -4,6 +4,10 @@
     background-color: $bg-home;
 
     .leaderboard-body {
-        padding: 20px;
+        padding: 20px 24px;
+
+        @include desktop {
+            padding-bottom: 2.875rem;
+        }
     }
 }
