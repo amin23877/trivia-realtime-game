@@ -10,15 +10,15 @@ import ShowQuestion from "../components/showQuestion/ShowQuestion";
 import CategoriesList from "../components/categories/CategoriesList";
 import GameResult from "./gameResult/GameResult";
 
-const OnePlayer = ({ type = 'quickPlay' }) => {
+const OnePlayer = ({ type = "quickPlay" }) => {
 	const Dispatch = useDispatch();
 	const navigate = useNavigate();
 	let { id } = useParams();
-	console.log('type', type)
+	console.log("type", type);
 	const categories = useSelector((state) => state.stateGeneral.categoriesList);
 	const [selectedCategory, setSelectedCategory] = useState();
 	const [singleGameQuestion, setSingleGameQuestion] = useState();
-	const [gameState, setGameState] = useState(type === 'quickPlay' ? "showCategories" : 'showWaitForStart');
+	const [gameState, setGameState] = useState(type === "quickPlay" ? "showCategories" : "showWaitForStart");
 	const [socket, setSocket] = useState();
 	const [authData, setAuthData] = useState();
 	const [myInfo, setMyInfo] = useState({ player: "player1", score: 0 });
@@ -29,7 +29,7 @@ const OnePlayer = ({ type = 'quickPlay' }) => {
 	const [gameResultData, setGameResult] = useState();
 
 	const socketUrl = SOCKET_BASE_URL;
-	const token = localStorage.getItem("token") ? `${localStorage.getItem("token").replace('Bearer ', '')}` : null;
+	const token = localStorage.getItem("token") ? `${localStorage.getItem("token").replace("Bearer ", "")}` : null;
 
 	const myRef = useRef(myInfo);
 	const socketRef = useRef(socket);
@@ -48,11 +48,11 @@ const OnePlayer = ({ type = 'quickPlay' }) => {
 		});
 
 		socketp.on("authentication", (e) => {
-			console.log('authDataOnFetch',e)
-			setAuthData(e)
-			if (type == 'topic' || type == 'league') {
-				console.log('id is', id)
-				setSelectedCategory({ _id: id })
+			console.log("authDataOnFetch", e);
+			setAuthData(e);
+			if (type == "topic" || type == "league") {
+				console.log("id is", id);
+				setSelectedCategory({ _id: id });
 			}
 		});
 		socketp.on("singleGameToken", handleSingleGameToken);
@@ -77,22 +77,24 @@ const OnePlayer = ({ type = 'quickPlay' }) => {
 		if (selectedCategory) {
 			if (authData?.socketid) {
 				switch (type) {
-					case 'quickPlay':
+					case "quickPlay":
 						socket.emit("singleGame", { CategoryId: selectedCategory._id });
 						break;
-					case 'topic':
+					case "topic":
 						socket.emit("singleGame", { TopicId: id });
 						break;
-					case 'league':
+					case "league":
 						socket.emit("singleGame", { OnePlayerLeagueId: id });
 						break;
+					default:
+						break;
 				}
-			}else{
-				console.log('socketId Not Found',authData);
-				alert('socket id not detected')
+			} else {
+				console.log("socketId Not Found", authData);
+				alert("socket id not detected");
 			}
 		}
-	}, [selectedCategory]);
+	}, [authData, id, selectedCategory, socket, type]);
 
 	const handleSingleGameToken = (e) => {
 		console.log("eee", e);
@@ -116,14 +118,14 @@ const OnePlayer = ({ type = 'quickPlay' }) => {
 
 	const handleGotoBack = () => {
 		switch (type) {
-			case 'quickPlay':
-				navigate('/');
+			case "quickPlay":
+				navigate("/");
 
 				break;
-			case 'topic':
+			case "topic":
 				navigate("/topics/" + id);
 				break;
-			case 'league':
+			case "league":
 				navigate("/leagues/" + id);
 				break;
 		}
@@ -138,21 +140,21 @@ const OnePlayer = ({ type = 'quickPlay' }) => {
 		setMyOption(opt);
 	};
 	const handlePlayAgain = () => {
-		if (type == 'quickPlay') {
-			setSelectedCategory(null)
+		if (type == "quickPlay") {
+			setSelectedCategory(null);
 			setGameState("showCategories");
 		} else {
-			setSelectedCategory({ _id: id })
+			setSelectedCategory({ _id: id });
 			setGameState("showWaitForStart");
 		}
-		setSingleGameQuestion(null)
-		setMyInfo({ player: "player1", score: 0 })
-		setTime(20)
-		setQuestionNumber(0)
-		setCorrectAnswer(null)
-		setMyOption(null)
-		setGameResult(null)
-	}
+		setSingleGameQuestion(null);
+		setMyInfo({ player: "player1", score: 0 });
+		setTime(20);
+		setQuestionNumber(0);
+		setCorrectAnswer(null);
+		setMyOption(null);
+		setGameResult(null);
+	};
 
 	return (
 		<>
@@ -179,7 +181,9 @@ const OnePlayer = ({ type = 'quickPlay' }) => {
 					authData={authData}
 				/>
 			)}
-			{gameState == "gameResult" && <GameResult handlePlayAgain={handlePlayAgain} myInfo={myInfo} gameResultData={gameResultData} />}
+			{gameState == "gameResult" && (
+				<GameResult handlePlayAgain={handlePlayAgain} myInfo={myInfo} gameResultData={gameResultData} />
+			)}
 		</>
 	);
 };
