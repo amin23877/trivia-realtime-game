@@ -40,7 +40,7 @@ const OnePlayer = ({ type = "quickPlay" }) => {
 	}, [myInfo, socket]);
 
 	useEffect(() => {
-		const socketp = io(socketUrl);
+		const socketp = io(socketUrl, { transports: ["websocket"] });
 		setSocket(socketp);
 		socketp.on("connect", () => {
 			console.log("connected");
