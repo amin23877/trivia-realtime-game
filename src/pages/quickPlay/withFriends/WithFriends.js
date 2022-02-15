@@ -43,7 +43,7 @@ const WithFriends = ({ type = 'quickPlay' }) => {
 		socketRef.current = socket;
 	}, [myInfo, socket]);
 	useEffect(() => {
-		const socketp = io(socketUrl, { transports: ["websocket"] });
+		const socketp = io(socketUrl);
 		setSocket(socketp);
 		socketp.on("connect", () => {
 			console.log("connected");

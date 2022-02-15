@@ -44,7 +44,7 @@ const TwoPlayers = ({ type = 'quickPlay' }) => {
 		rivalRef.current = rivalInfo;
 	}, [myInfo, rivalInfo]);
 	useEffect(() => {
-		const socketp = io(socketUrl, { transports: ["websocket"] });
+		const socketp = io(socketUrl);
 		setSocket(socketp);
 		socketp.on("connect", () => {
 			console.log("connected");
