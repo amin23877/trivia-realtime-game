@@ -82,7 +82,7 @@ const useSearch = (word) => {
 
 const Search = forwardRef(({ inputProps }, ref) => {
 	// apply main input style to className prop
-	inputProps.className = inputProps.className.concat(" explore-search-input");
+	inputProps.className = (inputProps.className || "") + " explore-search-input";
 
 	return (
 		<div ref={ref} className="position-relative">
