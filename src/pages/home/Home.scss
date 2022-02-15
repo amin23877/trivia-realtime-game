@@ -4,12 +4,11 @@
   background-color: $bg-home;
 
   &__body {
+    @include limitContent;
+
     padding: 1.5rem 0 2.25rem 1.5rem;
     overflow-y: auto;
     height: 100%;
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
 
     @include desktop {
       padding-bottom: 3rem;
@@ -36,9 +35,8 @@
     padding-bottom: .5rem;
     padding-right: 1.5rem;
 
-
-    .title {
-      @include pageTitle;
+    &__title {
+      @include fontSize($fs-l, $fs-xxl);
     }
 
     .subtitle {

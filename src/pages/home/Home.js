@@ -112,7 +112,7 @@ const Home = () => {
 				{stateTopic.topics?.map((item, index) => (
 					<div key={index} className="topics">
 						<div className="d-flex justify-content-between align-items-center topics-header">
-							<p className="title">{item.topic}</p>
+							<p className="topics-header__title">{item.topic}</p>
 							<p className="subtitle" onClick={(e) => handleNavigate(e, `/topics/all/${item.type}`)}>
 								see all
 								<img className="mx-2" src={arrowForwardMini} alt="" />

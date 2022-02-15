@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Avatar from "common/components/UI/Avatar";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -7,7 +8,7 @@ import { Link } from "react-router-dom";
 import "./ProfileHeader.scss";
 import profileCover from "assets/images/test/profile-header.jpg";
 import { ReactComponent as EditIcon } from "assets/images/icons/edit.svg";
-import Avatar from "common/components/UI/Avatar";
+import { ReactComponent as RedEditIcon } from "assets/images/icons/edit-icon-red.svg";
 import { IMAGE_URL } from "common/values/CORE";
 
 const ProfileHeader = () => {
@@ -35,6 +36,7 @@ const ProfileHeader = () => {
 					</Link>
 
 					<Link className="profile-header__edit profile-header__edit_desktop" to="/profile/edit">
+						<RedEditIcon />
 						Edit Profile
 					</Link>
 				</div>

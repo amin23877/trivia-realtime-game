@@ -1,256 +1,172 @@
 @import 'assets/scss/styles.scss';
 
 $size-avatar: 30px;
+$tabs-max-width: 722px;
+$card-radius : .5rem;
 
 .tabPanel {
-    .user-first {
-        background-color: white;
-        border-radius: 16px;
-        height: 60px;
+  width: 100%;
+  max-width: $tabs-max-width;
+  margin: 0 auto;
 
-        .index {
-            @include fsM;
-            min-width: 25px;
+  .user-first {
+    background-color: white;
+    box-shadow: 0 3px 5px rgba(39, 39, 40, 0.1);
+    border-radius: $card-radius;
+    overflow: hidden;
+    height: 60px;
+    margin-top: 1rem;
+
+    @include desktop {
+      height: 108px;
+      margin-top: 3.25rem;
+    }
+
+    .index {
+      @include fontSize($fs-normal, $fs-xl);
+      min-width: 25px;
+    }
+
+    .username {
+      @include fontSize($fs-xs ,$fs-xl);
+      padding-left: 10px;
+    }
+
+    .points {
+      @include fontSize($fs-xs, $fs-l);
+      color: $primary;
+      font-weight: 500;
+      padding-left: 10px;
+    }
+
+    .info {
+      padding: 15px;
+    }
+
+    .bundle {
+      @include fontSize($fs-xs, $fs-xxxl);
+
+      height: 100%;
+      padding: 18px 36px 18px 20px;
+      color: white;
+      margin-left: auto;
+      background-color: $red-1;
+      border-radius: 58px $card-radius $card-radius 58px;
+      position: relative;
+
+      @include desktop {
+        padding: 40px 100px 40px 75px;
+      }
+
+      img {
+        width: 14px;
+        height: 16px;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+
+        @include desktop {
+          width: 35px;
+          height: 30px;
+        }
+      }
+    }
+  }
+
+  .subtitle {
+    @include fontSize($fs-normal ,$fs-l);
+    color: $primary;
+    padding: .75rem 0 .5rem;
+
+    @include desktop {
+      padding: 1.75rem 0 1rem;
+    }
+  }
+
+  .avatar {
+    @include avatarShape($size-avatar);
+  }
+
+  ///////////////////////////////////////
+
+  .board {
+    padding-top: 20px;
+
+    .subtitle {
+      @include fsM;
+      color: $red-1;
+    }
+
+    .title {
+      padding: 20px 0;
+      @include fsL;
+      font-family: RobotoBold;
+    }
+  }
+
+  .avatar {
+    @include avatarShape($size-avatar);
+  }
+
+  .best {
+    margin: 30px 0 20px;
+
+    @include desktop {
+      margin-top: 85px;
+    }
+
+    .best-users {
+      display: flex;
+      gap: 1rem;
+      padding: 0 .75rem;
+
+      @include desktop {
+        padding: 0 3rem;
+      }
+
+      .user {
+        .leaderboard-avatar {
+          margin: 0 auto;
+        }
+
+        flex-shrink: 1;
+        margin: auto;
+        padding: 10px;
+        width: 88px;
+        text-align: center;
+        border-radius: 16px;
+        background-color: white;
+        box-shadow: 0 3px 5px rgba(39, 39, 40, 0.1);
+
+        @include desktop {
+          width: 171px;
         }
 
         .username {
-            @include fsL;
-            padding-left: 10px;
+          @include fontSize($fs-xs, $fs-l);
+          padding: 5px 0;
         }
+
         .points {
-            @include fsNormal;
-            color: $primary;
-            font-weight: 500;
-            padding-left: 10px;
+          @include fontSize($fs-xs, $fs-m);
+          color: $primary;
         }
 
-        .info {
-            padding: 15px;
+        .reward {
+          @include fontSize($fs-s, $fs-l);
+          color: $red-1;
         }
+      }
 
-        .bundle {
-            @include fsL;
-
-            height: 100%;
-            padding: 20px;
-            color: white;
-            margin-left: auto;
-            background-color: $red-1;
-            border-radius: 58px 8px 8px 58px;
-
-            position: relative;
-            img {
-                position: absolute;
-                top: 5px;
-                right: 5px;
-            }
-        }
-    }
-    .subtitle {
-        color: $primary;
-        padding: 20px 0;
+      .best-user {
+        margin-top: -10px;
+      }
     }
 
-    .results {
-        background-color: white;
-        border-radius: 16px;
-
-        .user {
-            padding: 15px;
-
-            .index {
-                @include fsNormal;
-                min-width: 25px;
-            }
-
-            .username {
-                @include fsM;
-                padding-left: 10px;
-            }
-            .reward {
-                @include fsS;
-                color: $orange-2;
-                margin-left: auto !important;
-            }
-
-            .points {
-                @include fsS;
-                color: $primary;
-                margin-left: auto !important;
-            }
-
-            .score {
-                @include fsS;
-                color: $red-1;
-                margin-left: auto !important;
-            }
-        }
-
-        .seemore {
-            @include fsNormal;
-            padding: 15px;
-            color: $primary;
-            text-align: center;
-        }
+    .best-players-level {
+      width: 100%;
     }
-    .avatar {
-        @include avatarShape($size-avatar);
-    }
-
-    .icon-gift {
-        max-height: 15px;
-        width: auto;
-    }
-
-    ///////////////////////////////////////
-
-    .board {
-        padding-top: 20px;
-
-        .subtitle {
-            @include fsM;
-            color: $red-1;
-        }
-
-        .title {
-            padding: 20px 0;
-            @include fsL;
-            font-family: RobotoBold;
-        }
-    }
-
-    .avatar {
-        @include avatarShape($size-avatar);
-    }
-
-    .best {
-        margin: 30px 0 20px;
-
-        @include desktop {
-            margin-top: 85px;
-        }
-
-        .best-users {
-            .user {
-                .leaderboard-avatar {
-                    margin: 0 auto;
-                    @include desktop {
-                        margin-top: -25%;
-                    }
-                }
-
-                margin: auto;
-                padding: 10px;
-                width: 100px;
-                height: 100px;
-                text-align: center;
-                border-radius: 16px;
-                background-color: white;
-                box-shadow: 0px 3px 5px rgba(39, 39, 40, 0.1);
-
-                @include desktop {
-                    width: 171px;
-                    height: 105px;
-                }
-
-                .username {
-                    @include fontSize($fs-xs, $fs-l);
-                    padding: 5px 0;
-                }
-
-                .points {
-                    @include fontSize($fs-xs, $fs-m);
-                    color: $primary;
-                    margin-left: auto !important;
-
-                    @include desktop {
-                        padding-top: 1.4em;
-                    }
-                }
-
-                .reward {
-                    @include fsS;
-                    color: $red-1;
-                }
-            }
-
-            .best-user {
-                margin-top: -10px;
-            }
-        }
-
-        .best-players-level {
-            width: 100%;
-        }
-    }
-
-    .results {
-        background-color: white;
-        border-radius: 16px;
-        box-shadow: 0 3px 5px rgba(39, 39, 40, 0.1);
-
-        .user {
-            padding: 15px;
-
-            .index {
-                @include fontSize(8px, $fs-l);
-                min-width: 25px;
-                color: $primary;
-            }
-
-            .username {
-                @include fontSize($fs-xs, $fs-l);
-                padding-left: 10px;
-            }
-
-            .points {
-                @include fontSize(8px, $fs-l);
-                color: $primary;
-                margin-left: auto !important;
-            }
-        }
-
-        .seemore {
-            @include fontSize($fs-xs, $fs-m);
-            padding: 15px;
-            color: $primary;
-            text-align: center;
-            cursor: pointer;
-        }
-    }
+  }
 }
 
-@media screen and (max-width: $breakpoint-s) {
-    .tabPanel {
-        .user-first {
-            .index {
-                @include fsM;
-                min-width: 25px;
-            }
 
-            .username {
-                @include fsM;
-                padding-left: 5px;
-            }
-            .points {
-                @include fsS;
-                padding-left: 5px;
-            }
-
-            .info {
-                padding: 10px;
-            }
-
-            .bundle {
-                @include fsM;
-
-                padding: 10px;
-
-                img {
-                    top: 3px;
-                    right: 3px;
-                }
-            }
-        }
-    }
-}

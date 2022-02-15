@@ -24,7 +24,7 @@ const LeaderboardTabPanelHeader = ({ dataLeaderboard }) => {
 			{stateGeneral.typeLeaderboardComponent !== TYPE_LEADERBOARD_COMPONENT.GENERAL ? (
 				<>
 					<div className="best">
-						<div className="d-flex best-users">
+						<div className="best-users">
 							{_.slice(dataLeaderboard, 0, 3).map((el, index) => (
 								<div key={index} className={`user ${index === 1 ? "best-user" : ""}`}>
 									{!_.isEmpty(el) ? (
@@ -37,8 +37,10 @@ const LeaderboardTabPanelHeader = ({ dataLeaderboard }) => {
 													src={`${IMAGE_URL}${encodeURI(el?.UserId?.avatar)}`}
 												/>
 												<p className="username">{el?.UserId?.username}</p>
-												<p className="points">{`${el?.point} points`}</p>
-												<p className="reward">{`$ ${el?.reward}`}</p>
+												<div className="d-flex flex-column flex-xl-row align-items-center justify-content-between">
+													<p className="points">{`${el?.point} points`}</p>
+													<p className="reward">{`$ ${el?.reward}`}</p>
+												</div>
 											</>
 										) : (
 											<>
@@ -65,12 +67,12 @@ const LeaderboardTabPanelHeader = ({ dataLeaderboard }) => {
 				</>
 			) : (
 				<>
-					<div className="d-flex align-items-center _br-bottom user-first">
+					<div className="d-flex align-items-center user-first">
 						<div className="d-flex align-items-center info">
 							<span className="index">{"1."}</span>
 
 							<Avatar
-								size={{ mobile: 22, desktop: 44 }}
+								size={{ mobile: 34, desktop: 56 }}
 								src={`${IMAGE_URL}${encodeURI(dataLeaderboard[0]?.avatar)}`}
 							/>
 
@@ -80,7 +82,7 @@ const LeaderboardTabPanelHeader = ({ dataLeaderboard }) => {
 							</div>
 						</div>
 						<div className="d-flex align-items-center bundle">
-							<img className="icon-gift" src={iconGift} />1 GB Data bundle
+							<img alt="" className="icon-gift" src={iconGift} />1 GB Data bundle
 						</div>
 					</div>
 					<p className="subtitle">Your position: 12</p>

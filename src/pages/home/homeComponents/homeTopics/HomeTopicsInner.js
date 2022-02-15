@@ -5,33 +5,28 @@ import { useNavigate, useParams } from "react-router-dom";
 // Packages
 import _ from "lodash";
 // Components, Services, Functions
-import { CORE } from "common/values/CORE";
 import ApiCall from "common/services/ApiCall";
-import { IMAGE_URL } from "common/values/CORE";
-import { TYPE_SNAKBAR } from "common/values/TYPES";
-import { TYPE_LEADERBOARD } from "common/values/TYPES";
-import EmptyList from "common/components/empties/EmptyList";
+import { TYPE_LEADERBOARD_COMPONENT, TYPE_SNAKBAR } from "common/values/TYPES";
 import CardLeagueInfo from "common/components/cardLeagueInfo/CardLeagueInfo";
+import LeaderboardTabs from "pages/leaderboard/leaderboardComponents/LeaderboardTabs";
+import CardInner from "common/components/cardInner/CardInner";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
-import { SET_SNACKBAR } from "redux/actions/mainActions/generalActions";
+import {
+	SET_GAME_SELECTION_TYPE,
+	SET_OPEN_GAME_TYPES,
+	SET_SNACKBAR,
+	SET_SPINNER,
+	SET_TYPE_LEADERBOARD_COMPONENT,
+} from "redux/actions/mainActions/generalActions";
 // Material - lab
 // Styles, Icons, Images
 import "./HomeTopicsInner.scss";
 import AddIcon from "@material-ui/icons/Add";
-import HelpIcon from "@material-ui/icons/Help";
 import RemoveIcon from "@material-ui/icons/Remove";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
-import StarRateOutlinedIcon from "@material-ui/icons/StarRateOutlined";
-import { SET_TYPE_LEADERBOARD_COMPONENT } from "redux/actions/mainActions/generalActions";
-import { TYPE_LEADERBOARD_COMPONENT } from "common/values/TYPES";
-import LeaderboardTabs from "pages/leaderboard/leaderboardComponents/LeaderboardTabs";
-import SelectGameType from "../selectGameType/SelectGameType";
-import { SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
-import { SET_GAME_SELECTION_TYPE } from "redux/actions/mainActions/generalActions";
+import { ReactComponent as PlayIcon } from "assets/images/icons/gray-play-icon.svg";
+import { ReactComponent as HelpIcon } from "assets/images/icons/help-icon.svg";
+import { ReactComponent as RateIcon } from "assets/images/icons/rate-mini.svg";
 
 const HomeTopicsInner = () => {
 	let { id } = useParams();
@@ -43,11 +38,6 @@ const HomeTopicsInner = () => {
 	const [dataLeague, setDataLeague] = useState();
 	const stateGeneral = useSelector((state) => state.stateGeneral);
 
-	const styleBgImg = {
-		backgroundImage: `url(${IMAGE_URL}${encodeURI(dataInnerTopic?.logo)})`,
-	};
-
-	
 	const handleGoBack = () => {
 		navigate(-1);
 	};
@@ -169,60 +159,46 @@ const HomeTopicsInner = () => {
 	}, []);
 
 	return (
-		<div className="w-100 h-100 topicsInner">
-			<p className="title d-none d-xl-block mb-3">{dataInnerTopic?.name}</p>
-
-			<div className="topicsInner-header">
-				<div className="d-flex justify-content-between align-items-center sec-img" style={styleBgImg}>
-					<p className="d-flex d-xl-none justify-content-center align-items-center" onClick={handleGoBack}>
-						<ArrowBackIcon />
+		<div className="w-100 topicsInner">
+			<CardInner
+				banner={encodeURI(dataInnerTopic?.logo)}
+				title={dataInnerTopic?.name}
+				subtitle={dataInnerTopic?.categoryName}
+			>
+				<div className="card-inner-icons">
+					<p className="grey">
+						<PlayIcon className="icon" />
+						<span className="mx-1">{dataInnerTopic?.singlePlays + dataInnerTopic?.doublePlays || 0}</span>
 					</p>
-					<p className="d-flex d-xl-none justify-content-center align-items-center">
-						<ShareOutlinedIcon />
+					<p className="grey flex-grow-1">
+						<HelpIcon className="icon" />
+						<span className="mx-1">{dataInnerTopic?.questions}</span>
+					</p>
+					<p className="gold">
+						<RateIcon className="icon" />
+						<span className="mx-1">{dataInnerTopic?.rate}</span>
+						<span className="mx-1 grey">{`(${dataInnerTopic?.raters})`}</span>
 					</p>
 				</div>
 
-				<div className="sec-info">
-					<p className="title d-xl-none">{dataInnerTopic?.name}</p>
-					<p className="subtitle">{dataInnerTopic?.categoryName}</p>
-					<div className="icons-container">
-						<p className="grey">
-							<PlayArrowIcon />
-							<span className="mx-1">
-								{dataInnerTopic?.singlePlays + dataInnerTopic?.doublePlays || 0}
-							</span>
-						</p>
-						<p className="grey">
-							<HelpIcon />
-							<span className="mx-1">{dataInnerTopic?.questions}</span>
-						</p>
-						<p className="gold">
-							<StarRateOutlinedIcon />
-							<span className="mx-1">{dataInnerTopic?.rate}</span>
-							<span className="mx-1 grey">{`(${dataInnerTopic?.raters})`}</span>
-						</p>
-					</div>
+				<hr className="d-xl-none my-0" />
 
-					<hr className="d-xl-none" />
+				<div className="card-inner-actions-buttons">
+					<button className="btn-play d-none d-xl-block" onClick={handlePlay}>
+						<span className="mx-1">Play</span>
+					</button>
 
-					<div className="actions-btn-container">
-						<button className="btn-play d-none d-xl-block" onClick={handlePlay}>
-							<span className="mx-1">Play</span>
-							<PlayArrowIcon className="mx-1" />
-						</button>
-
-						{!dataInnerTopic?.status ? (
-							<p className="text-center add" onClick={handleAddToFavorites}>
-								<AddIcon /> Add to favorites
-							</p>
-						) : (
-							<p className="text-center remove" onClick={handleRemoveFavorites}>
-								<RemoveIcon /> Remove from Favorites
-							</p>
-						)}
-					</div>
+					{!dataInnerTopic?.status ? (
+						<p className="text-center add" onClick={handleAddToFavorites}>
+							<AddIcon /> Add to favorites
+						</p>
+					) : (
+						<p className="text-center remove" onClick={handleRemoveFavorites}>
+							<RemoveIcon /> Remove from Favorites
+						</p>
+					)}
 				</div>
-			</div>
+			</CardInner>
 
 			<div className="topicsInner-body">
 				{!_.isEmpty(dataLeague) ? (
@@ -253,7 +229,7 @@ const HomeTopicsInner = () => {
 			<div className="d-flex d-xl-none justify-content-center align-items-center topicsInner-footer">
 				<button className="btn-play" onClick={handlePlay}>
 					<span className="mx-1">Play</span>
-					<PlayArrowIcon className="mx-1" />
+					<PlayIcon className="mx-1 icon" />
 				</button>
 			</div>
 		</div>

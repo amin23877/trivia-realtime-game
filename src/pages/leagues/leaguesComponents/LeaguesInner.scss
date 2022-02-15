@@ -22,79 +22,9 @@ $size-avatar: 30px;
         font-family: RobotoBold;
     }
 
-    .leaguesInner-header {
-        background-color: white;
-        height: $mobile-height-header-inner;
-        border-radius: 0 0 16px 16px;
-        box-shadow: 0 3px 5px rgba(94, 92, 106, 0.1);
-
-        @include desktop {
-            height: $desktop-height-header-inner;
-            border-radius: 16px;
-            display: flex;
-            overflow: hidden;
-        }
-
-        .sec-img {
-            width: 100%;
-            height: 60%;
-            padding: 20px;
-            // background: url('../../../assets/images/test/4.png');
-
-            background-size: 100% auto;
-            background-repeat: no-repeat;
-            position: relative;
-
-            @include desktop {
-                width: 50%;
-                height: 100%;
-                background-size: cover;
-            }
-
-            p {
-                color: white;
-                border-radius: 4px;
-                width: $size-square;
-                height: $size-square;
-                background-color: colorBlack(30);
-            }
-        }
-
-        .sec-info {
-            flex-grow: 1;
-            padding: 5px 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-
-            @include desktop {
-                padding: 13px 21px;
-            }
-
-            .subtitle {
-                @include fsM;
-                padding-top: 10px;
-                color: colorBlack(55);
-            }
-
-            .grey {
-                color: colorBlack(50);
-            }
-
-            .players-num {
-                min-width: 100px;
-                align-self: start;
-
-                @include desktop {
-                    order: -1;
-                }
-            }
-        }
-    }
     .leaguesInner-body {
-        padding: 0 20px 20px;
-        overflow-y: auto;
-        height: $height-body-inner;
+        padding: 0 20px;
+        padding-bottom: calc(#{$height-footer} + 1.5rem);
 
         @include desktop {
             padding: 32px 0;
@@ -104,13 +34,12 @@ $size-avatar: 30px;
 
         .description {
             .title {
-                @include fsL;
+                @include fontSize($fs-l ,$fs-xxl);
                 padding-top: 20px;
-                font-family: RobotoBold;
             }
 
             .text {
-                @include fsM;
+                @include fontSize($fs-normal ,$fs-l);
                 padding-top: 10px;
                 line-height: 22px;
                 color: colorBlack(50);
@@ -118,30 +47,55 @@ $size-avatar: 30px;
         }
 
         .awards {
+            &__container {
+                display: flex;
+                flex-direction: column;
+                gap: 3px;
+
+                @include desktop {
+                    flex-direction: row;
+                    gap: 1.75rem;
+                }
+            }
+
             .title {
-                @include fsL;
+                @include fontSize($fs-m, $fs-xxl);
                 padding-top: 20px;
-                font-family: RobotoBold;
+                padding-bottom: .5rem;
+
+                @include desktop {
+                    padding-top: 32px;
+                    padding-bottom: 20px;
+                }
+            }
+
+            .key ,.value {
+                @include fontSize($fs-normal, $fs-l);
             }
 
             .key {
-                @include fsM;
                 color: $primary;
-                font-family: RobotoBold;
             }
             .value {
-                @include fsM;
                 color: colorBlack(50);
             }
         }
 
         .board {
+            @include fontSize($fs-m, $fs-xxl);
             padding-top: 20px;
 
             .title {
-                padding: 20px 0;
-                @include fsL;
-                font-family: RobotoBold;
+                padding: .5rem 0;
+
+                @include desktop {
+                    padding: 1rem 0;
+                }
+            }
+
+            .your-position {
+                @include fontSize($fs-normal, $fs-l);
+                color: $red-2;
             }
         }
     }
@@ -156,12 +110,33 @@ $size-avatar: 30px;
     }
 }
 
+.league-card-inner-content {
+    padding-top: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include desktop {
+        flex-direction: column;
+    }
+
+    &__player-num {
+        @include fontSize($fs-normal, $fs-l);
+        color: colorBlack(50);
+        min-width: 100px;
+
+        @include desktop {
+            align-self: start;
+            order: -1;
+        }
+    }
+}
+
 .btn-play {
     @include fsL;
     color: white;
     padding: 10px;
     border-radius: 10px;
-    font-family: RobotoBold;
     width: calc(min(50%, 200px));
     background-color: $bg-btn-play;
     border: 1px solid $bg-btn-play;

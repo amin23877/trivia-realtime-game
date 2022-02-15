@@ -93,6 +93,10 @@
     @include desktop {
       margin-top: .5rem;
     }
+
+    &_small {
+      @include fontSize($fs-normal ,$fs-l);
+    }
   }
 
   &__input {
