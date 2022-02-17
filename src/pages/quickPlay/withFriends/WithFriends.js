@@ -11,7 +11,7 @@ import EnterGameCode from "./EnterGameCode/EnterGameCode";
 import FriendsList from "./FriendsList/FriendsList";
 import StartTimer from "./startTimer/StartTimer";
 import MpGameResult from "./gameResult/MpGameResult";
-const WithFriends = ({ type = 'quickPlay' }) => {
+const WithFriends = ({ type = "quickPlay" }) => {
 	const Dispatch = useDispatch();
 	const navigate = useNavigate();
 	let { id } = useParams();
@@ -29,11 +29,11 @@ const WithFriends = ({ type = 'quickPlay' }) => {
 	const [myOption, setMyOption] = useState();
 	const [gameResultData, setGameResult] = useState();
 	const [mpGamesId, setMpGamesId] = useState();
-	const [joinCode, setJoinCode] = useState('')
-	const [users, setUsers] = useState([])
+	const [joinCode, setJoinCode] = useState("");
+	const [users, setUsers] = useState([]);
 
 	const socketUrl = SOCKET_BASE_URL;
-	const token = localStorage.getItem("token") ? `${localStorage.getItem("token").replace('Bearer ', '')}` : null;
+	const token = localStorage.getItem("token") ? `${localStorage.getItem("token").replace("Bearer ", "")}` : null;
 
 	const myRef = useRef(myInfo);
 	const socketRef = useRef(socket);
@@ -52,17 +52,17 @@ const WithFriends = ({ type = 'quickPlay' }) => {
 
 		socketp.on("authentication", (e) => {
 			setAuthData(e);
-			setUsers([e])
+			setUsers([e]);
 		});
 		socketp.on("mpPlayerList", (e) => {
-			setUsers([...e])
+			setUsers([...e]);
 		});
 		socketp.on("mpGamesId", (e) => {
 			setMpGamesId(e);
 			// setJoinCode(e.categoryGameId);
 		});
 		socketp.on("entermp", (e) => {
-			setGameState('friendsList')
+			setGameState("friendsList");
 		});
 		socketp.on("mpready", () => {
 			setGameState("startTimer");
@@ -77,7 +77,6 @@ const WithFriends = ({ type = 'quickPlay' }) => {
 				// socketp.close();
 			}, 1000);
 		});
-
 	}, []);
 
 	useEffect(() => {
@@ -90,26 +89,25 @@ const WithFriends = ({ type = 'quickPlay' }) => {
 		if (selectedCategory) {
 			if (authData?.socketid) {
 				switch (type) {
-					case 'quickPlay':
+					case "quickPlay":
 						socket.emit("setidmp", { CategoryId: selectedCategory._id, id: mpGamesId.categoryGameId });
 						socket.emit("preparemp", { id: mpGamesId.categoryGameId });
 
 						break;
-					case 'topic':
+					case "topic":
 						socket.emit("setidmp", { TopicId: id, id: mpGamesId.topicGameId });
 						socket.emit("preparemp", { id: mpGamesId.topicGameId });
 
 						break;
 				}
 
-				setGameState('friendsList')
-			}else{
-				console.log('socketId Not Found',authData);
-				alert('socket id not detected')
+				setGameState("friendsList");
+			} else {
+				console.log("socketId Not Found", authData);
+				alert("socket id not detected");
 			}
 		}
 	}, [selectedCategory]);
-
 
 	const handleMpQuestion = (e) => {
 		setTimeout(() => {
@@ -141,44 +139,40 @@ const WithFriends = ({ type = 'quickPlay' }) => {
 		setMyOption(opt);
 	};
 	const handleJoinWithCode = (opt) => {
-		if (joinCode !== '') {
+		if (joinCode !== "") {
 			socket.emit("entermp", { id: joinCode });
-
 		}
 	};
 	const handleOpenCategories = () => {
-		if (joinCode == '') {
-			setJoinCode(type === 'quickPlay' ? mpGamesId.categoryGameId : mpGamesId.topicGameId)
+		if (joinCode == "") {
+			setJoinCode(type === "quickPlay" ? mpGamesId.categoryGameId : mpGamesId.topicGameId);
 		}
 		switch (type) {
-			case 'quickPlay':
+			case "quickPlay":
 				setGameState("showCategories");
 				break;
-			case 'topic':
+			case "topic":
 				setSelectedCategory({ _id: id });
 				break;
 		}
-	}
+	};
 	const handleLeaveGame = () => {
-		if (joinCode !== '') {
-			if (joinCode === (type === 'quickPlay' ? mpGamesId.categoryGameId : mpGamesId.topicGameId)) {
+		if (joinCode !== "") {
+			if (joinCode === (type === "quickPlay" ? mpGamesId.categoryGameId : mpGamesId.topicGameId)) {
 				socket.emit("cancelmp", { id: joinCode });
-
 			} else {
 				socket.emit("exitmp", { id: joinCode });
 			}
-			navigate('/')
+			navigate("/");
 		}
-
-	}
+	};
 	const handleStartGame = () => {
-		if (joinCode !== '') {
-			if (joinCode === (type==='quickPlay'?mpGamesId.categoryGameId:mpGamesId.topicGameId)) {
+		if (joinCode !== "") {
+			if (joinCode === (type === "quickPlay" ? mpGamesId.categoryGameId : mpGamesId.topicGameId)) {
 				socket.emit("startmp", { id: joinCode });
 			}
 		}
-
-	}
+	};
 
 	return (
 		<>
@@ -210,9 +204,7 @@ const WithFriends = ({ type = 'quickPlay' }) => {
 					type={type}
 				/>
 			)}
-			{gameState == "startTimer" && (
-				<StartTimer />
-			)}
+			{gameState == "startTimer" && <StartTimer />}
 			{gameState == "showQuestions" && (
 				<ShowQuestion
 					singleGameQuestion={mpQuestion}
@@ -228,7 +220,7 @@ const WithFriends = ({ type = 'quickPlay' }) => {
 					myOption={myOption}
 				/>
 			)}
-			{gameState == "gameResult" &&
+			{gameState == "gameResult" && (
 				<MpGameResult
 					authData={authData}
 					myInfo={myInfo}
@@ -237,10 +229,8 @@ const WithFriends = ({ type = 'quickPlay' }) => {
 					mpGamesId={mpGamesId}
 					joinCode={joinCode}
 					type={type}
-
 				/>
-			}
-
+			)}
 		</>
 	);
 };

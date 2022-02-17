@@ -1,6 +1,6 @@
 // export const BASE_URL = 'http://quizupp.ir/api/';
 export const BASE_URL = "https://quizup.site/api/";
-export const SOCKET_BASE_URL = "http://quizup.site/";
+export const SOCKET_BASE_URL = "https://quizup.site/";
 export const IMAGE_URL = "http://quizup.site";
 
 // desktop breakpoint
