@@ -1,0 +1,50 @@
+@import "assets/scss/styles";
+
+.bestPlayers {
+  display: flex;
+
+  @include desktop {
+    padding: 0 2rem;
+  }
+}
+
+.player {
+  flex-shrink: 1;
+  margin: auto;
+  padding: 10px;
+  width: 88px;
+  text-align: center;
+  border-radius: 16px;
+  background-color: white;
+  box-shadow: 0 3px 5px rgba(39, 39, 40, 0.1);
+
+  @include desktop {
+    width: 171px;
+  }
+}
+
+.best {
+  margin-top: -20px;
+}
+
+.avatar {
+  margin: 0 auto;
+}
+
+.username {
+  @include fontSize($fs-xs, $fs-l);
+  padding: 5px 0;
+}
+
+.points {
+  @include fontSize($fs-xs, $fs-m);
+  color: $primary;
+  flex-grow: 1;
+}
+
+.rewards {
+  @include fontSize($fs-s, $fs-l);
+  color: $red-1;
+  flex-grow: 1;
+}
+
