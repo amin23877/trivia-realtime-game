@@ -33,7 +33,11 @@
 
 .username {
   @include fontSize($fs-xs, $fs-l);
-  padding: 5px 0;
+  padding-top: 5px;
+
+  @include desktop {
+    padding: 5px 0;
+  }
 }
 
 .points {
@@ -46,5 +50,10 @@
   @include fontSize($fs-s, $fs-l);
   color: $red-1;
   flex-grow: 1;
+  margin-top: 5px;
+
+  @include desktop {
+    margin-top: 0;
+  }
 }
 
