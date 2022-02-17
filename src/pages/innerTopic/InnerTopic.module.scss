@@ -111,6 +111,11 @@ $leaderboard-max-width : 722px;
 
 .pointText {
   color: $primary;
+  margin-right: 1rem;
+
+  @include desktop {
+    margin-right: 1.5rem;
+  }
 }
 
 .pointNumber {
