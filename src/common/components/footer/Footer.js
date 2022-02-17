@@ -1,15 +1,15 @@
 // Reacts
 import React from "react";
 // Hooks
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 // Packages
 // Components, Services, Functions
 // Redux
 import { useDispatch } from "react-redux";
-import { SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
+import { SET_GAME_SELECTION_TYPE, SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
 // Material - lab
 // Styles, Icons, Images
-import "./Footer.scss";
+import s from "./Footer.module.scss";
 import iconHome from "assets/images/icons/footer-home.svg";
 import iconLeague from "assets/images/icons/footer-league.svg";
 import iconPlay from "assets/images/icons/footer-play.svg";
@@ -19,7 +19,6 @@ import iconHomeActive from "assets/images/icons/footer-home-active.svg";
 import iconLeagueActive from "assets/images/icons/footer-league-active.svg";
 import iconSearchActive from "assets/images/icons/footer-search-active.svg";
 import iconProfileActive from "assets/images/icons/footer-profile-active.svg";
-import { SET_GAME_SELECTION_TYPE } from "redux/actions/mainActions/generalActions";
 
 const Footer = ({ handleOpenGameTypes }) => {
 	const location = useLocation();
@@ -102,7 +101,7 @@ const Footer = ({ handleOpenGameTypes }) => {
 		// console.log(item);
 		switch (item.type) {
 			case "PLAY":
-				dispatch(SET_GAME_SELECTION_TYPE({ type: 'quickPlay', id: null }));
+				dispatch(SET_GAME_SELECTION_TYPE({ type: "quickPlay", id: null }));
 				dispatch(SET_OPEN_GAME_TYPES(true));
 				break;
 			default:
@@ -113,13 +112,11 @@ const Footer = ({ handleOpenGameTypes }) => {
 	};
 
 	return (
-		<div className="d-flex justify-content-between align-items-center footer">
+		<div className={s.footer}>
 			{menu.map((el, index) => (
 				<div
 					key={index}
-					className={`d-flex flex-column justify-content-between align-items-center icons ${
-						el.isCenter ? "icon-center" : ""
-					}`}
+					className={`${s.icons} ${el.isCenter ? s.iconCenter : ""}`}
 					// onClick={() => handleNavigate(el.path)}
 					onClick={(e) => handleOnClickFooter(el)}
 				>
