@@ -6,8 +6,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
 import LeaderboardTabPanel from "./LeaderboardTabPanel";
-import { TYPE_LEADERBOARD, TYPE_LEADERBOARD_COMPONENT } from "common/values/TYPES";
-import { useSelector } from "react-redux";
+import { TYPE_LEADERBOARD } from "common/values/TYPES";
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
@@ -53,8 +52,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LeaderboardTabs = () => {
-	const stateGeneral = useSelector((state) => state.stateGeneral);
-
 	const classes = useStyles();
 	const [type, setType] = useState(TYPE_LEADERBOARD.ALL);
 	const [value, setValue] = React.useState(0);
@@ -71,35 +68,25 @@ const LeaderboardTabs = () => {
 		setType(tabs[index].type);
 	};
 
-	const propsPanel = {};
-
 	return (
 		<div id="tabs">
-			{stateGeneral.typeLeaderboardComponent !== TYPE_LEADERBOARD_COMPONENT.INNER_LEAGUE ? (
-				<>
-					<AppBar position="static">
-						<Tabs
-							value={value}
-							onChange={handleChangeTab}
-							TabIndicatorProps={{ style: { backgroundColor: "white" } }}
-						>
-							{tabs.map((el, index) => (
-								<Tab className={classes.tab} key={index} label={el.name} {...a11yProps(index)} />
-							))}
-						</Tabs>
-					</AppBar>
-
+			<AppBar position="static">
+				<Tabs
+					value={value}
+					onChange={handleChangeTab}
+					TabIndicatorProps={{ style: { backgroundColor: "white" } }}
+				>
 					{tabs.map((el, index) => (
-						<TabPanel key={index} value={value} index={index}>
-							<LeaderboardTabPanel type={type} />
-						</TabPanel>
+						<Tab className={classes.tab} key={index} label={el.name} {...a11yProps(index)} />
 					))}
-				</>
-			) : (
-				<>
-					<LeaderboardTabPanel type={""} />
-				</>
-			)}
+				</Tabs>
+			</AppBar>
+
+			{tabs.map((el, index) => (
+				<TabPanel key={index} value={value} index={index}>
+					<LeaderboardTabPanel type={type} />
+				</TabPanel>
+			))}
 		</div>
 	);
 };
