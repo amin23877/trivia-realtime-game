@@ -12,12 +12,12 @@ $radius: 1rem;
 .listHeader {
   @include fontSize($fs-xs, $fs-l);
   background-color: $bg-seachbox;
-  padding: 3px 1.5rem;
+  padding: 3px .5rem;
   display: flex;
   justify-content: end;
 
   @include desktop {
-    padding: 10px 3.375rem;
+    padding: 10px 2rem;
   }
 }
 
