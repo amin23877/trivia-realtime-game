@@ -19,7 +19,6 @@ import Notification from "pages/menuPages/notification/Notification";
 import LeaguesInner from "pages/leagues/leaguesComponents/LeaguesInner";
 import LeaguesResult from "pages/leagues/leaguesComponents/LeaguesResult";
 import LeaguesHistory from "pages/leagues/leaguesComponents/LeaguesHistory";
-import HomeTopicsInner from "pages/home/homeComponents/homeTopics/HomeTopicsInner";
 import HomeTopicsSeeAll from "pages/home/homeComponents/homeTopics/HomeTopicsSeeAll";
 import ProfilePerformance from "pages/profile/profileComponents/Performance/ProfilePerformance";
 import ProfileFriends from "pages/profile/profileComponents/Friends/ProfileFriends";
@@ -30,6 +29,7 @@ import SuperCenterLayout from "common/components/layout/SuperCenterLayout";
 import Subscribe from "pages/subscripe/Subscribe";
 import WithFriends from "pages/quickPlay/withFriends/WithFriends";
 import ProfileFavoriteTopics from "pages/profile/profileComponents/favorite/ProfileFavoriteTopics";
+import InnerTopic from "pages/innerTopic/InnerTopic";
 
 const RouterConfig = () => {
 	return (
@@ -52,7 +52,7 @@ const RouterConfig = () => {
 
 				{/* routes with main layout without footer */}
 				<Route exact path="/" element={<MainLayout />}>
-					<Route exact path="/topics/:id" element={<HomeTopicsInner />} />
+					<Route exact path="/topics/:id" element={<InnerTopic />} />
 					<Route exact path="/topics/:id/onePlayer" element={<OnePlayer type={"topic"} />} />
 					<Route exact path="/topics/:id/twoPlayers" element={<TwoPlayers type={"topic"} />} />
 					<Route exact path="/topics/:id/withFriends" element={<WithFriends type={"topic"} />} />
