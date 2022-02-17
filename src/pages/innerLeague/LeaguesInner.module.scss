@@ -1,0 +1,125 @@
+@import 'assets/scss/styles';
+
+$mobile-height-header-inner: 280px;
+$desktop-height-header-inner: 220px;
+$height-footer-inner: 70px;
+$height-body-inner: calc(100vh - #{$mobile-height-header-inner} - #{$height-footer-inner});
+
+$size-square: 40px;
+$size-avatar: 30px;
+
+.leaguesInner {
+    @include limitContent;
+
+    background-color: $bg-home;
+
+    @include desktop {
+        padding-top: 2rem;
+    }
+}
+
+.cardInnerContent {
+    padding-top: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include desktop {
+        flex-direction: column;
+    }
+}
+
+.playersNumber {
+    @include fontSize($fs-normal, $fs-l);
+    color: colorBlack(50);
+    min-width: 100px;
+
+    @include desktop {
+        align-self: start;
+        order: -1;
+    }
+}
+
+.innerLeagueBody {
+    padding: 20px 24px calc(#{$height-footer} + 1.5rem);
+
+    @include desktop {
+        padding: 32px 0 60px;
+        overflow-y: visible;
+        height: auto;
+    }
+}
+
+.awards {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: .5rem;
+
+    @include desktop {
+        flex-direction: row;
+        gap: 1.75rem;
+        margin-top: 1.75rem;
+    }
+}
+
+.board {
+    @include fontSize($fs-m, $fs-xxl);
+    margin-top: 1.5rem;
+
+    @include desktop {
+        margin-top: 2rem;
+    }
+}
+
+.yourPosition {
+    @include fontSize($fs-normal, $fs-l);
+    color: $red-2;
+}
+
+.key ,.award {
+    @include fontSize($fs-normal, $fs-l);
+}
+
+.key {
+    color: $primary;
+}
+
+.award {
+    color: colorBlack(50);
+}
+
+.title {
+    @include fontSize($fs-l ,$fs-xxl);
+}
+
+.text {
+    @include fontSize($fs-normal ,$fs-l);
+    padding-top: 10px;
+    line-height: 22px;
+    color: colorBlack(50);
+}
+
+.cell {
+    width: 45px;
+    text-align: center;
+
+    @include desktop {
+        width: 110px;
+    }
+}
+
+.reward {
+    composes: cell;
+    color: $gold;
+}
+
+.point {
+    composes: cell;
+    color: $primary;
+}
+
+.score {
+    composes: cell;
+    color: $red-2;
+}

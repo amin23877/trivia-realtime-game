@@ -16,7 +16,7 @@ import Leaderboard from "pages/leaderboard/Leaderboard";
 import VerificationCode from "pages/login/VerificationCode";
 import SearchExplorePage from "pages/searchExplore/SearchExplorePage";
 import Notification from "pages/menuPages/notification/Notification";
-import LeaguesInner from "pages/leagues/leaguesComponents/LeaguesInner";
+import LeaguesInner from "pages/innerLeague/LeaguesInner";
 import LeaguesResult from "pages/leagues/leaguesComponents/LeaguesResult";
 import LeaguesHistory from "pages/leagues/leaguesComponents/LeaguesHistory";
 import HomeTopicsSeeAll from "pages/home/homeComponents/homeTopics/HomeTopicsSeeAll";
