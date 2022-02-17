@@ -25,7 +25,7 @@ const TopicLeaderboard = ({ id }) => {
 					Your position : <span>16</span>
 				</p>
 
-				<div className={s.leaderboardContainer}>
+				<div className="_leaderboardContainer">
 					<BestPlayers className="mt-5" theBest={_.slice(response.result, 0, 3)} />
 
 					<List className="mt-3 mt-xl-4">
