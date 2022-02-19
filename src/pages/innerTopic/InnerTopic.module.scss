@@ -1,0 +1,168 @@
+@import 'assets/scss/styles.scss';
+
+$leaderboard-max-width : 722px;
+
+.container {
+  @include limitContent;
+  padding-bottom: calc(#{$height-footer} + 1rem);
+
+  @include desktop {
+    margin-top: 2rem;
+  }
+}
+
+.contentSection {
+  padding: 1.25rem 1.5rem;
+
+  @include desktop {
+    padding: 2rem 0;
+  }
+}
+
+.leaderboardContainer {
+  width: 100%;
+  max-width: $leaderboard-max-width;
+  margin: 0 auto;
+}
+
+.actionButtons {
+  @include desktop {
+    display: flex;
+    gap: 1.75rem;
+    padding-top: 16px;
+  }
+}
+
+.info {
+  @include fontSize($fs-xs, $fs-l);
+
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  padding: .5rem 0;
+
+  @include desktop {
+    padding: 0;
+    max-width: 130px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .grey {
+    color: colorBlack(50);
+  }
+
+  .gold {
+    color: $orange-2;
+  }
+}
+
+.removeFromFavorite, .addToFavorite {
+  @include fsM;
+  cursor: pointer;
+  flex-grow: 1;
+  text-align: center;
+  padding-top: .75rem;
+
+  @include desktop {
+    box-shadow: 0 3px 6px rgba(149, 66, 87, 0.15), inset -1px -1px 2px rgba(111, 92, 97, 0.3),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.4);
+    padding: 10px;
+    border-radius: 10px;
+    width: calc(min(50%, 220px));
+  }
+}
+
+.addToFavorite {
+  color: $red-1;
+}
+
+.removeFromFavorite {
+  color: $grey-1;
+  white-space: nowrap;
+}
+
+.title {
+  @include fontSize($fs-m, $fs-xxl);
+  padding-top: 1.5em;
+}
+
+.text {
+  @include fsM;
+  padding-top: 10px;
+  line-height: 22px;
+  color: colorBlack(50);
+}
+
+.badges {
+  margin: 20px 0;
+}
+
+.badge {
+  @include fsNormal;
+  padding: 5px;
+  cursor: pointer;
+  margin: 8px 3px;
+  border-radius: 8px;
+  color: colorBlack(50);
+  border: 1px solid $grey-1;
+}
+
+.pointText {
+  color: $primary;
+  margin-right: 1rem;
+
+  @include desktop {
+    margin-right: 1.5rem;
+  }
+}
+
+.pointNumber {
+  color: $primary;
+  width: 2.2em;
+  text-align: center;
+  margin-right: 1rem;
+
+  @include desktop {
+    margin-right: 1.5rem;
+  }
+}
+
+.rate {
+  color: $gold;
+  background-color: rgba(238, 178, 23, .05);
+  padding: 3px 6px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 3px;
+}
+
+.gray {
+  color: colorBlack(50);
+}
+
+.icon {
+  width: 13px;
+  height: 13px;
+
+  @include desktop {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.yourPosition {
+  display: none;
+  color: $red-1;
+  margin-top: .75rem;
+
+  @include desktop {
+    display: block;
+  }
+
+  span {
+    text-decoration: underline;
+  }
+}
+

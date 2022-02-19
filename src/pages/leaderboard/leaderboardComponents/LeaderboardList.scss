@@ -24,6 +24,11 @@
     text-align: center;
     color: $primary;
     text-decoration: underline;
+    cursor: pointer;
+
+    @include desktop {
+      padding: 1.25rem 0;
+    }
   }
 
   &__reward, &__point, &__score {
@@ -56,7 +61,7 @@
   border-bottom: 1px solid #EEEDF7;
 
   @include desktop {
-    padding-right: 4rem;
+    padding: 1rem 20px 1rem 2rem;
   }
 
   &__index {

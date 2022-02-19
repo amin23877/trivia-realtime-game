@@ -1,0 +1,64 @@
+@import "assets/scss/styles";
+
+$radius: 1rem;
+
+.list {
+  background-color: white;
+  border-radius: $radius;
+  overflow: hidden;
+  box-shadow: 0 3px 5px rgba(39, 39, 40, 0.1);
+}
+
+.listHeader {
+  @include fontSize($fs-xs, $fs-l);
+  background-color: $bg-seachbox;
+  padding: 3px .5rem;
+  display: flex;
+  justify-content: end;
+
+  @include desktop {
+    padding: 10px 2rem;
+  }
+}
+
+.listFooter {
+  @include fontSize($fs-xs, $fs-l);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .75rem;
+  cursor: pointer;
+  color: $primary;
+  text-decoration: underline;
+
+  @include desktop {
+    padding: 1.5rem;
+  }
+}
+
+.listItemContainer {
+  @include fontSize($fs-xs, $fs-l);
+  padding: .5rem;
+  border-bottom: 1px solid #EEEDF7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include desktop {
+    padding: .75rem 2rem;
+  }
+}
+
+.listItemInfo {
+  display: flex;
+  align-items: center;
+}
+
+.index {
+  color: $primary;
+  width: 20px;
+
+  @include desktop {
+    margin-right: 1rem;
+  }
+}

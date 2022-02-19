@@ -1,0 +1,46 @@
+@import 'assets/scss/styles.scss';
+
+$height-icon-center: 60px;
+
+.footer , .playFooter{
+    width: 100%;
+    height: $height-footer;
+    padding: 0 1.5rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+.footer {
+    justify-content: space-between;
+}
+
+.playFooter {
+    position: fixed;
+    justify-content: center;
+    bottom: 0;
+    box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.1);
+    @include desktop {
+        display: none;
+    }
+}
+
+.icons {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    p {
+        @include fsXS;
+        color: $text-footer;
+    }
+    .p-active {
+        color: $primary;
+    }
+}
+
+.iconCenter {
+    z-index: 1;
+    margin-top: calc(-1 * #{$height-icon-center} / 2);
+}

@@ -1,11 +1,9 @@
 // Reacts
 import React from "react";
+
 // Hooks
 import { useNavigate } from "react-router-dom";
-// Packages
-// Components, Services, Functions
-// Redux
-// Material - lab
+
 // Styles, Icons, Images
 import "./HeaderGoBack.scss";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
@@ -19,7 +17,7 @@ const HeaderGoBack = ({ title }) => {
 
 	return (
 		<div className="headerGoBack d-xl-none">
-			<div className="d-flex align-items-center _header _header-shadow padding">
+			<div className="h-100 d-flex align-items-center _header _header-shadow padding">
 				<ArrowBackIcon className="color-primary" onClick={handleGoBack} />
 				<div className="_header-title color-primary mx-2">{title}</div>
 			</div>
