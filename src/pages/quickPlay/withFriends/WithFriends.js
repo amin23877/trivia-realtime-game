@@ -105,6 +105,8 @@ const WithFriends = ({ type = "quickPlay" }) => {
 			} else {
 				console.log("socketId Not Found", authData);
 				alert("socket id not detected");
+				document.location.reload();
+
 			}
 		}
 	}, [selectedCategory]);

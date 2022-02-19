@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 	tab: {
 		fontSize: 14,
 		textTransform: "none",
-		"@media (min-width: 1366px)": {
+		"@media (min-width: 1200px)": {
 			fontSize: 16,
 		},
 	},

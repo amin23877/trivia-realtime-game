@@ -10,7 +10,7 @@
     background: radial-gradient(86.81% 86.81% at 50% 50%, rgba(40, 38, 128, 0.5) 0%, #282680 79.67%);
     padding: 24px 40px;
     text-align: center;
-    @media (min-width: 1366px) {
+    @media (min-width: 1200px) {
         min-width: 100vw;
         min-height: 100vh;
         position: absolute;
@@ -35,7 +35,7 @@
         animation-duration: 1000ms;
         animation-iteration-count: infinite;
         animation-fill-mode: forwards;
-        @media (min-width: 1366px) {
+        @media (min-width: 1200px) {
             width: 70%;
             margin: 0 auto;
         }   
@@ -64,7 +64,7 @@
         &--dummy {
             margin-top: 100%;
             /* 4:3 aspect ratio */
-            @media (min-width: 1366px) {
+            @media (min-width: 1200px) {
                 margin-top:  100%;
 
             }   

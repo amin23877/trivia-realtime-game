@@ -109,7 +109,8 @@ const ShowQuestion = ({
             </div>
             <div className="show-question__question">
                 <div className="show-question__question--number">
-                    {questionNumber}/7
+                    {questionNumber}
+                    {!single&&'/7'}
                 </div>
                 <p className="show-question__question--text">{(single ? singleGameQuestion : doubleGameQuestion).title}</p>
             </div>

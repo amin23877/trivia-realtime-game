@@ -2,7 +2,7 @@
     background-color: #6d6be6;
     padding: 19px 24px 0;
 
-    @media (min-width: 1366px) {
+    @media (min-width: 1200px) {
         min-width: 100vw;
         min-height: 100vh;
         position: absolute;
@@ -10,16 +10,20 @@
         left: 0;
         padding-top: 200px;
         z-index: 3;
-
+        padding-top: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
     &__title {
         text-align: center;
         color: #fff;
         font-size: 18px;
         margin-bottom: 45px !important;
-        @media (min-width: 1366px) {
+        @media (min-width: 1200px) {
             max-width: 406px;
-            margin:0 auto;
+            margin: 0 auto;
         }
     }
     &__avatar {
@@ -29,7 +33,7 @@
         align-items: center;
         justify-content: space-between;
         margin-bottom: 18px;
-        @media (min-width: 1366px) {
+        @media (min-width: 1200px) {
             max-width: 406px;
             margin: 0 auto 18px;
         }
@@ -67,7 +71,7 @@
         justify-content: center;
         flex-direction: column;
         margin-bottom: 12px;
-        @media (min-width: 1366px) {
+        @media (min-width: 1200px) {
             max-width: 406px;
             margin: 0 auto 12px;
         }
@@ -78,7 +82,7 @@
             box-shadow: 0px 3px 5px 0px #2727281a;
             border-radius: 16px;
             overflow: hidden;
-            @media (min-width: 1366px) {
+            @media (min-width: 1200px) {
                 max-width: 406px;
             }
             &--tr {
@@ -90,7 +94,7 @@
                 justify-content: space-between;
                 & > p {
                     font-size: 14px;
-                    @media (min-width: 1366px) {
+                    @media (min-width: 1200px) {
                         font-size: 18px;
                     }
                 }
@@ -116,7 +120,7 @@
         border-radius: 15px;
         box-shadow: 0px 3px 5px 0px #27272826;
         margin-bottom: 16px;
-        @media (min-width: 1366px) {
+        @media (min-width: 1200px) {
             max-width: 406px;
             border-radius: 18px;
             height: 36px;
@@ -134,7 +138,7 @@
             & > p {
                 word-wrap: nowrap;
                 white-space: nowrap;
-                @media (min-width: 1366px) {
+                @media (min-width: 1200px) {
                     font-size: 16px;
                 }
             }
@@ -146,7 +150,7 @@
         height: 40px !important;
         display: block !important;
         font-size: 14px !important;
-        text-transform: capitalize !important;  
+        text-transform: capitalize !important;
     }
     &__play-again {
         background-color: #f83f5f !important;
@@ -178,10 +182,13 @@
         color: #fff !important;
         font-size: 8px !important;
         text-transform: capitalize !important;
-        @media (min-width: 1366px) {
+        @media (min-width: 1200px) {
             width: 130px !important;
             height: 32px !important;
             font-size: 14px !important;
+            position: absolute;
+            bottom: -80px;
+            left: calc(-50% + 137px);
         }
         & svg {
             font-size: 8px;

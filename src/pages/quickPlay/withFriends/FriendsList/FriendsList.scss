@@ -1,7 +1,7 @@
 @import "assets/scss/styles.scss";
 
 .friends-list {
-    @media (min-width: 1366px) {
+    @media (min-width: 1200px) {
         padding-left:120px;
         max-width:620px;
         position: relative;
@@ -97,7 +97,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 0 24px;
-        @media (min-width: 1366px) {
+        @media (min-width: 1200px) {
             top:21px;
             left:120px;
             max-width:362px;
