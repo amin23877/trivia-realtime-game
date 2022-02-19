@@ -12,8 +12,12 @@ export const ListHeader = ({ children }) => {
 	return <div className={s.listHeader}>{children}</div>;
 };
 
-export const ListFooter = ({ children }) => {
-	return <div className={s.listFooter}>{children}</div>;
+export const ListFooter = ({ children, ...rest }) => {
+	return (
+		<div {...rest} className={s.listFooter}>
+			{children}
+		</div>
+	);
 };
 
 export const ListItem = ({ children, index, avatar, username = "", info }) => {
