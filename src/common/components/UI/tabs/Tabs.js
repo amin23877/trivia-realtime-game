@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Tab as MuiTab, Tabs as MuiTabs } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import { DESKTOP_BREAKPOINT } from "common/values/CORE";
@@ -37,10 +38,29 @@ const Tabs = ({ activeTab, onChange, tabs = [] }) => {
 	return (
 		<StyledTabs value={activeTab} onChange={onChange}>
 			{tabs.map((tab, index) => (
-				<StyledTab key={index} label={tab} />
+				<StyledTab key={index} label={tab.label ?? tab} value={tab.value ?? index} />
 			))}
 		</StyledTabs>
 	);
+};
+
+Tabs.propTypes = {
+	activeTab: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.number.isRequired]),
+	onChange: PropTypes.func.isRequired,
+	/*
+	 *  there are two-way for define tabs :
+	 *  1 - an array of strings that used index for tab value
+	 *  2 - an array of objects with specific value for each tab
+	 * */
+	tabs: PropTypes.oneOfType([
+		PropTypes.arrayOf(
+			PropTypes.shape({
+				label: PropTypes.string.isRequired,
+				value: PropTypes.string.isRequired,
+			})
+		),
+		PropTypes.arrayOf(PropTypes.string),
+	]),
 };
 
 export default Tabs;
