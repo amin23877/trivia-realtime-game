@@ -7,22 +7,25 @@ import { List, ListFooter, ListHeader, ListItem } from "common/components/UI/lis
 
 import s from "../InnerTopic.module.scss";
 
-const TopicLeaderboard = ({ id }) => {
-	const [activeTab, setActiveTab] = useState(0);
+const tabs = [
+	{ label: "All points", value: "all" },
+	{ label: "Daily", value: "day" },
+	{ label: "Weekly", value: "week" },
+	{ label: "Monthly", value: "month" },
+];
 
-	const { response, success } = useRequest(`topicleaderboard/${id}/all`);
+const TopicLeaderboard = ({ id }) => {
+	const [timespan, setTimespan] = useState("all");
+
+	const { response, success } = useRequest(`topicleaderboard/${id}/${timespan}`);
 
 	return (
 		success && (
 			<div className="mt-4">
-				<Tabs
-					activeTab={activeTab}
-					onChange={(event, newValue) => setActiveTab(newValue)}
-					tabs={["All points", "Daily", "Weekly", "Monthly"]}
-				/>
+				<Tabs activeTab={timespan} onChange={(event, newValue) => setTimespan(newValue)} tabs={tabs} />
 
 				<p className={s.yourPosition}>
-					Your position : <span>16</span>
+					Your position : <span>should fixed</span>
 				</p>
 
 				<div className="_leaderboardContainer">
