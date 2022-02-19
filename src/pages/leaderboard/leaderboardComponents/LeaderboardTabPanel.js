@@ -11,7 +11,7 @@ import LeaderboardTabPanelBody from "./LeaderboardTabPanelBody";
 import "./LeaderboardTabPanel.scss";
 
 const LeaderboardTabPanel = ({ type }) => {
-	const { response, success, endOfList, fetchMore } = useListLoad("/leaderboard/all", 16);
+	const { response, success, endOfList, fetchMore } = useListLoad(`/leaderboard/all`, 16);
 
 	return (
 		success && (
