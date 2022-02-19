@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import _ from "lodash";
 import Tabs from "common/components/UI/tabs/Tabs";
 import BestPlayers from "common/components/bestPlayers/BestPlayers";
-import { useRequest } from "common/hooks/useRequest";
 import { List, ListFooter, ListHeader, ListItem } from "common/components/UI/list/List";
+import { useListLoad } from "common/hooks/useListLoad";
 
 import s from "../InnerTopic.module.scss";
 
@@ -17,12 +17,16 @@ const tabs = [
 const TopicLeaderboard = ({ id }) => {
 	const [timespan, setTimespan] = useState("all");
 
-	const { response, success } = useRequest(`topicleaderboard/${id}/${timespan}`);
+	const { response, success, endOfList, fetchMore } = useListLoad(`topicleaderboard/${id}/${timespan}`, 10);
+
+	const handleTimespan = (event, newValue) => {
+		setTimespan(newValue);
+	};
 
 	return (
 		success && (
 			<div className="mt-4">
-				<Tabs activeTab={timespan} onChange={(event, newValue) => setTimespan(newValue)} tabs={tabs} />
+				<Tabs activeTab={timespan} onChange={handleTimespan} tabs={tabs} />
 
 				<p className={s.yourPosition}>
 					Your position : <span>should fixed</span>
@@ -36,7 +40,7 @@ const TopicLeaderboard = ({ id }) => {
 							<p className={s.pointText}>point</p>
 						</ListHeader>
 
-						{_.slice(response.result, 3, response.result?.length).map((player, index) => (
+						{_.slice(response.result, 3, response.result.length).map((player, index) => (
 							<ListItem
 								key={index}
 								index={index + 4}
@@ -47,7 +51,7 @@ const TopicLeaderboard = ({ id }) => {
 							</ListItem>
 						))}
 
-						{response.result.length > 10 && <ListFooter>see more</ListFooter>}
+						{!endOfList && <ListFooter onClick={fetchMore}>see more</ListFooter>}
 					</List>
 				</div>
 			</div>
