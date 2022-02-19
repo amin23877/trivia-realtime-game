@@ -47,7 +47,7 @@ const TopicLeaderboard = ({ id }) => {
 							</ListItem>
 						))}
 
-						<ListFooter>see more</ListFooter>
+						{response.result.length > 10 && <ListFooter>see more</ListFooter>}
 					</List>
 				</div>
 			</div>
