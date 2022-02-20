@@ -49,7 +49,7 @@ $size-avatar: 30px;
 
     @include desktop {
       height: $desktop-height-header-inner;
-      border-radius: 16px;
+      border-radius: 16px !important;
       display: flex;
       overflow: hidden;
     }
