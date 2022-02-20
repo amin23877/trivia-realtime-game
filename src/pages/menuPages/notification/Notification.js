@@ -1,4 +1,5 @@
 import React from "react";
+import HeaderGoBack from "common/components/headerGoBack/HeaderGoBack";
 import { Navigate } from "react-router-dom";
 import { useMediaQuery } from "@material-ui/core";
 import { useDispatch } from "react-redux";
@@ -7,9 +8,6 @@ import NotificationWidget from "common/components/NotificationWidget/Notificatio
 import { DESKTOP_BREAKPOINT } from "common/values/CORE";
 
 import "./Notification.scss";
-
-//images
-import backIcon from "assets/images/icons/arrow-back.svg";
 
 const Notification = () => {
 	const isDesktop = useMediaQuery(`(min-width : ${DESKTOP_BREAKPOINT})`);
@@ -27,12 +25,7 @@ const Notification = () => {
 
 	return (
 		<div className="notif-root">
-			<div className="notif-header">
-				<span>
-					<img alt="back" width={14} height={10} src={backIcon} />
-				</span>
-				<p>Notification</p>
-			</div>
+			<HeaderGoBack title="Notification" />
 
 			<NotificationWidget />
 		</div>

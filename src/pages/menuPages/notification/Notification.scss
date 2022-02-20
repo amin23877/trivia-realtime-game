@@ -1,19 +1,6 @@
 @import 'assets/scss/styles.scss';
 
 .notif-root {
-  --space-x: 1.5rem;
-
   background-color: $bg-profile;
   height: 100%;
-}
-
-.notif-header {
-  @include fsM();
-
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  padding: .625rem var(--space-x);
-  color: $primary;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
