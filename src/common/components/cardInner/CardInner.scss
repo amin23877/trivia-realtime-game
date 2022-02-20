@@ -45,7 +45,6 @@ $size-avatar: 30px;
 
   &__card {
     background-color: white;
-    border-radius: 0 0 16px 16px;
     box-shadow: 0 3px 5px rgba(94, 92, 106, 0.1);
 
     @include desktop {
@@ -54,11 +53,14 @@ $size-avatar: 30px;
       display: flex;
       overflow: hidden;
     }
+
+    &_rounded {
+      border-radius: 0 0 16px 16px;
+    }
   }
 
   &__banner {
     width: 100%;
-    min-height: 110px;
     height: 100%;
     padding: 20px;
     display: flex;
@@ -82,7 +84,7 @@ $size-avatar: 30px;
 
   &__info {
     flex-grow: 1;
-    padding: 1rem 1.5rem;
+    padding: .5rem 1.5rem 1.25rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

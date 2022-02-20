@@ -9,6 +9,8 @@ import Countdown from "react-countdown";
 import CountdownTimer from "common/components/countdownTimer/CountDownTimer";
 import CardInner from "common/components/cardInner/CardInner";
 import PlayFooter from "common/components/footer/PlayFooter";
+import PlayButton from "common/components/UI/PlayButton";
+import LeagueLeaderboard from "pages/innerLeague/innerLeagueComponents/LeagueLeaderboard";
 
 // Redux
 import { useDispatch } from "react-redux";
@@ -18,8 +20,6 @@ import { SET_GAME_SELECTION_TYPE } from "redux/actions/mainActions/generalAction
 import s from "./LeaguesInner.module.scss";
 import PersonIcon from "@material-ui/icons/Person";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
-import PlayButton from "common/components/UI/PlayButton";
-import LeagueLeaderboard from "pages/innerLeague/innerLeagueComponents/LeagueLeaderboard";
 
 const LeaguesInner = () => {
 	let { id } = useParams();
@@ -49,6 +49,8 @@ const LeaguesInner = () => {
 					subtitle={dataInnerLeague?.TopicId?.name}
 					title={dataInnerLeague?.name}
 					banner={encodeURI(dataInnerLeague?.logo)}
+					bannerSize={132}
+					rounded={false}
 				>
 					<div className={s.cardInnerContent}>
 						<div id="primaryWhiteBlack" className="d-flex py-xl-2">
