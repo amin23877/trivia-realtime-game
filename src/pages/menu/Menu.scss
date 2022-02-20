@@ -1,29 +1,28 @@
 @import 'assets/scss/styles.scss';
 
 $size-avatar: 60px;
-$padding-left: 40px;
+$padding-left: 28px;
+$drawer-menu-width: 220px;
 
 .menu {
+    width: $drawer-menu-width;
+
     .menu-header {
         padding: 50px $padding-left 30px;
         background-color: $primary;
 
-        .name {
-            @include fsM;
-
-            padding: 15px 0 5px;
+        .name, .level {
+            @include fsXS;
+            padding-left: 3px;
             color: white;
-            font-family: RobotoBold;
         }
 
         .level {
-            @include fsNormal;
-
-            color: white;
+            font-family: RobotoThin, serif;
+            font-weight: 600;
         }
 
         .close {
-            margin-top: 0 !important;
             margin-top: 0 !important;
 
             .icon {
@@ -36,16 +35,16 @@ $padding-left: 40px;
     }
 
     .menu-item {
-        padding: 20px $padding-left;
+        padding: 1rem $padding-left;
 
         .icon {
-            // min-width: 40px;
+            min-width: 28px;
             color: colorBlack(70);
             cursor: pointer;
         }
 
         p {
-            @include fsXL;
+            @include fsM;
 
             margin-left: 10px;
             color: colorBlack(70);
