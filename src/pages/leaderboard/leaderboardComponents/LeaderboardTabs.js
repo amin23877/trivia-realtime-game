@@ -20,7 +20,7 @@ const LeaderboardTabs = () => {
 
 	return (
 		<div id="tabs">
-			<Tabs tabs={tabs} activeTab={type} onChange={handleChangeTab} />
+			<Tabs tabs={tabs} value={type} onChange={handleChangeTab} />
 
 			{tabs.map((el, index) => (
 				<TabPanel key={index} activeTab={type} value={el.value}>

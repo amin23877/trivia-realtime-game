@@ -26,7 +26,7 @@ const TopicLeaderboard = ({ id }) => {
 	return (
 		success && (
 			<div className="mt-4">
-				<Tabs activeTab={timespan} onChange={handleTimespan} tabs={tabs} />
+				<Tabs value={timespan} onChange={handleTimespan} tabs={tabs} />
 
 				<p className={s.yourPosition}>
 					Your position : <span>should fixed</span>
