@@ -1,0 +1,29 @@
+@import "../../../../assets/scss/styles";
+
+.profile-friend {
+  @include desktop {
+    margin-right: 20rem;
+  }
+
+  &__list {
+    @include desktop {
+      @include box;
+    }
+  }
+
+  &__list-item {
+    @include fontSize($fs-normal, $fs-l);
+    padding: .5rem 1.5rem;
+
+    @include desktop {
+      padding: 1rem 28px;
+    }
+  }
+
+  &__remove {
+    cursor: pointer;
+    color: colorBlack(50);
+  }
+}
+
+
