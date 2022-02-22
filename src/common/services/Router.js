@@ -10,7 +10,7 @@ import Login from "pages/login/Login";
 import Leagues from "pages/leagues/Leagues";
 import Profile from "pages/profile/Profile";
 import QuickPlay from "pages/quickPlay/QuickPlay";
-import Wallet from "pages/menuPages/wallet/Wallet";
+import Rewards from "pages/menuPages/rewards/Rewards";
 import ProfileEdit from "pages/profile-edit/ProfileEdit";
 import Leaderboard from "pages/leaderboard/Leaderboard";
 import VerificationCode from "pages/login/VerificationCode";
@@ -63,7 +63,7 @@ const RouterConfig = () => {
 					<Route exact path="/leagues/result" element={<LeaguesResult />} />
 
 					<Route exact path="/" element={<ProtectedRoute />}>
-						<Route exact path="/menu/wallet" element={<Wallet />} />
+						<Route exact path="/menu/rewards" element={<Rewards />} />
 						<Route exact path="/profile/edit" element={<ProfileEdit />} />
 					</Route>
 				</Route>
