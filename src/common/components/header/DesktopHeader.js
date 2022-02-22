@@ -1,5 +1,5 @@
 import React from "react";
-import { SearchExploreBox } from "pages/searchExplore/SearchExplorePage";
+import { SearchExploreBox } from "pages/searchExplore/SearchExploreBox";
 import { useDispatch } from "react-redux";
 import { TOGGLE_NOTIF_DRAWER } from "redux/actions/mainActions/generalActions";
 
