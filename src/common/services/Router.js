@@ -1,6 +1,6 @@
 // #routerConfig step1
 import React from "react";
-import { Routes, Route, BrowserRouter as Router, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 
 import ProtectedRoute from "./ProtectedRouter";
 
@@ -20,15 +20,12 @@ import LeaguesInner from "pages/innerLeague/LeaguesInner";
 import LeaguesResult from "pages/leagues/leaguesComponents/LeaguesResult";
 import LeaguesHistory from "pages/leagues/leaguesComponents/LeaguesHistory";
 import HomeTopicsSeeAll from "pages/home/homeComponents/homeTopics/HomeTopicsSeeAll";
-import ProfilePerformance from "pages/profile/profileComponents/Performance/ProfilePerformance";
-import ProfileFriends from "pages/profile/profileComponents/Friends/ProfileFriends";
 import TwoPlayers from "pages/quickPlay/twoPlayers/TwoPlayers";
 import OnePlayer from "pages/quickPlay/onePlayer/OnePlayer";
 import MainLayout from "common/components/layout/MainLayout";
 import SuperCenterLayout from "common/components/layout/SuperCenterLayout";
 import Subscribe from "pages/subscripe/Subscribe";
 import WithFriends from "pages/quickPlay/withFriends/WithFriends";
-import ProfileFavoriteTopics from "pages/profile/profileComponents/favorite/ProfileFavoriteTopics";
 import InnerTopic from "pages/innerTopic/InnerTopic";
 
 const RouterConfig = () => {
@@ -43,9 +40,7 @@ const RouterConfig = () => {
 						<Route exact path="/search" element={<SearchExplorePage />} />
 
 						<Route exact path="/profile" element={<Profile />}>
-							<Route exact path="/profile/favorite-topics" element={<ProfileFavoriteTopics />} />
-							<Route exact path="/profile/performance" element={<ProfilePerformance />} />
-							<Route exact path="/profile/friends" element={<ProfileFriends />} />
+							<Route path=":id" element={<Profile />} />
 						</Route>
 					</Route>
 				</Route>
