@@ -12,7 +12,7 @@ import FriendCard from "pages/profile/profileTabs/Friends/FriendCard";
 const ProfileFriends = ({ id }) => {
 	const { response: friends, success } = useRequest(`/user/${id}/friends`);
 
-	if (success && !friends) return <EmptyFriendsList />;
+	if (success && !friends.length) return <EmptyFriendsList />;
 
 	return (
 		success && (
