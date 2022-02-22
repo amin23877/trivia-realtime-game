@@ -1,52 +1,64 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Tab as MuiTab, Tabs as MuiTabs } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { DESKTOP_BREAKPOINT } from "common/values/CORE";
 
-const StyledTabs = withStyles({
+const useStyles = makeStyles({
 	root: {
-		borderBottom: "1px solid #0000001f",
 		minHeight: "auto",
-		paddingBottom: 6,
+		overflowX: "auto",
 	},
-	indicator: {
-		display: "none",
-	},
-})(MuiTabs);
 
-const StyledTab = withStyles({
-	root: {
+	indicator: {
+		backgroundColor: "#6D6BE6",
+		display: ({ variant }) => (variant === "button" ? "none" : "block"),
+	},
+
+	tab: {
 		textTransform: "none",
 		fontSize: 12,
 		borderRadius: 6,
-		padding: "5px 10px",
 		minHeight: "auto",
+		minWidth: "auto",
+		flexGrow: ({ variant }) => (variant === "button" ? 0 : 1),
+		padding: ({ variant }) => (variant === "button" ? "5px 10px" : "12px 24px"),
+
 		["@media (min-width :" + DESKTOP_BREAKPOINT + ")"]: {
 			fontSize: 16,
 			padding: ".5rem 1rem",
 			borderRadius: 12,
+			flexGrow: "0 !important",
 		},
 	},
-	selected: {
-		backgroundColor: "#6D6BE6",
-		color: "white",
-	},
-})(MuiTab);
 
-const Tabs = ({ activeTab, onChange, tabs = [] }) => {
+	selectedTab: {
+		backgroundColor: ({ variant }) => (variant === "button" ? "#6D6BE6" : "transparent"),
+		color: ({ variant }) => (variant === "button" ? "white" : "#6D6BE6"),
+	},
+});
+
+const Tabs = ({ variant = "button", tabs = [], ...rest }) => {
+	const s = useStyles({ variant });
+
 	return (
-		<StyledTabs value={activeTab} onChange={onChange}>
+		<MuiTabs variant="scrollable" classes={{ root: s.root, indicator: s.indicator }} {...rest}>
 			{tabs.map((tab, index) => (
-				<StyledTab key={index} label={tab.label ?? tab} value={tab.value ?? index} />
+				<MuiTab
+					classes={{ root: s.tab, selected: s.selectedTab }}
+					key={index}
+					label={tab.label ?? tab}
+					value={tab.value ?? index}
+				/>
 			))}
-		</StyledTabs>
+		</MuiTabs>
 	);
 };
 
 Tabs.propTypes = {
-	activeTab: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.number.isRequired]),
+	value: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.number.isRequired]),
 	onChange: PropTypes.func.isRequired,
+	variant: PropTypes.oneOf(["button", "indicator"]),
 	/*
 	 *  there are two-way for define tabs :
 	 *  1 - an array of strings that used index for tab value
