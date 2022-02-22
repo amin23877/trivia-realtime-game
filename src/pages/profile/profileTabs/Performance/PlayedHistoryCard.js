@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 //---assets
-import "./PlayedHistoryCard.scss";
+import "pages/profile/profileTabs/Performance/PlayedHistoryCard.scss";
 import { IMAGE_URL } from "common/values/CORE";
 import { useNavigate } from "react-router-dom";
 

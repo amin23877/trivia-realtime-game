@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import ProgressBar from "common/components/UI/ProgressBar";
 //----assets
-import "./PerformanceLevelCard.scss";
+import "pages/profile/profileTabs/Performance/PerformanceLevelCard.scss";
 import PerformanceLevelIcon from "assets/images/icons/performance-level-icon.svg";
 
 export const PerformanceLevelCard = ({ data }) => {

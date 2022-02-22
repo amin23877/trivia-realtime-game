@@ -1,8 +1,6 @@
-@import "assets/scss/styles.scss";
+@import "../../../../assets/scss/styles";
 
 .profile-performance {
-  margin: 0 24px;
-
   @include desktop {
     margin-right: 20rem;
   }

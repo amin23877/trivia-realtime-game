@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 //----assets
-import "./PerformanceContentSection.scss";
+import "pages/profile/profileTabs/Performance/PerformanceContentSection.scss";
 //----components
 import { Link } from "react-router-dom";
 

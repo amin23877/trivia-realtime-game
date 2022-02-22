@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 //---assets
-import "./ParticipatingHistoryCard.scss";
+import "pages/profile/profileTabs/Performance/ParticipatingHistoryCard.scss";
 import { IMAGE_URL } from "common/values/CORE";
 import { useNavigate } from "react-router-dom";
 
