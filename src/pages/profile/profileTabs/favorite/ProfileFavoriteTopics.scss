@@ -1,0 +1,26 @@
+@import '../../../../assets/scss/styles';
+
+$mobile-gap: 0.75rem;
+$desktop-gap: 1rem;
+
+@function itemWidth($item-count, $gap) {
+    @return calc((100% / #{$item-count}) - (#{$item-count - 1} * #{$gap} / #{$item-count}));
+};
+
+.favoriteTopics {
+  .favorite-topics-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $mobile-gap;
+
+    &__item {
+      width: itemWidth(2, $mobile-gap);
+      height: 140px;
+
+      @include desktop {
+        width: itemWidth(3, $desktop-gap);
+        height: 280px;
+      }
+    }
+  }
+}
