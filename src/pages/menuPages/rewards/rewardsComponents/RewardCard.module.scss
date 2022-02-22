@@ -1,0 +1,96 @@
+@import "assets/scss/styles";
+
+$yellow-bg: rgba(238, 178, 23, 0.2);
+$green-bg: rgba(18, 174, 37, 0.2);
+
+.container {
+  position: relative;
+}
+
+.reward {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0 13px;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(83, 77, 77, 0.1);
+  margin-bottom: .5rem;
+}
+
+.receiveReward {
+  composes: reward;
+  background-color: $green-bg;
+}
+
+.processReward {
+  composes: reward;
+  background-color: $yellow-bg;
+}
+
+
+.timeRemain {
+  @include fontSize($fs-xs);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.timeRemainNumber {
+  @include fontSize($fs-normal);
+  background-color: #EBEDF5;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(148, 111, 49, 0.15), inset 1px 1px 2px #FDFCFF, inset -1px 0px 2px rgba(0, 0, 0, 0.15);;
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+}
+
+.title {
+  color: $primary;
+}
+
+.desc, .date {
+  @include fontSize($fs-xs);
+  color: $grey-1;
+  margin-left: .5rem;
+}
+
+.giftInfo {
+  @include fontSize($fs-normal);
+  margin-top: .5rem;
+  color: white;
+  width: 150px;
+  padding: 2px 0;
+  text-align: center;
+}
+
+.processGiftInfo {
+  composes: giftInfo;
+  background-color: $gold;
+}
+
+.receiveGiftInfo {
+  composes: giftInfo;
+  background-color: $green-1;
+}
+
+.receivedGiftInfo {
+  composes: giftInfo;
+  background-color: #00000033;
+}
+
+.receiveButton {
+  cursor: pointer;
+  background: #12AE25;
+  color: white;
+  box-shadow: 2px 4px 10px rgba(12, 105, 37, 0.2), inset -1px -1px 2px rgba(28, 115, 37, 0.4), inset 1px 1px 2px rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  padding: 4px 8px;
+  position: absolute;
+  right: 28px;
+  bottom: 13px;
+}

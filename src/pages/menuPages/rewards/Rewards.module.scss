@@ -1,0 +1,154 @@
+@import 'assets/scss/styles.scss';
+
+$yellow-bg: rgba(238, 178, 23, 0.2);
+$green-bg:  rgba(18, 174, 37, 0.2);
+
+$box-shadow: 0 3px 5px rgba(39, 39, 40, 0.1);
+$avatar-border: rgba(0, 0, 0, 0.2);
+$avatar-size: 32px;
+$space-x: 1.5rem;
+$header-h: 118px;
+$rounded: 1rem;
+$wallet-content-width: 620px;
+$gradient: linear-gradient(to right,
+        rgba(238, 178, 23, 1),
+        rgba(255, 218, 123, 0.8),
+        rgba(238, 178, 23, 1),
+        rgba(238, 178, 23, 1)
+);
+
+.rewardsContainer {
+  @include fontSize($fs-m, $fs-l);
+  background-color: $bg-profile;
+  display: flex;
+  flex-direction: column;
+
+  @include desktop {
+    width: $wallet-content-width;
+    margin: 0 auto;
+    padding-top: 2rem;
+  }
+}
+
+.mobileHeader {
+  background-color: $primary;
+  background-image: url("/assets/images/backgrounds/wallet-header-shape.png");
+  background-size: cover;
+  color: white;
+  padding: 1rem $space-x 0;
+  height: $header-h;
+  border-bottom-left-radius: $rounded;
+  border-bottom-right-radius: $rounded;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+
+  @include desktop() {
+    display: none;
+  }
+}
+
+.userInfoContainer {
+  display: flex;
+}
+
+.details {
+  position: relative;
+  background-color: white;
+  margin: -2.75rem $space-x 0;
+  border-radius: $rounded;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+
+  @include desktop() {
+    width: 620px;
+    margin: 0 auto;
+    display: flex;
+  }
+}
+
+.detailsRightSide {
+  padding: 5px 39px 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.totalRewards {
+  position: relative;
+  padding: 16px 26px 18px;
+  display: flex;
+  gap: .5rem;
+}
+
+.line {
+  position: absolute;
+  left: 1rem;
+  bottom: 0;
+  height: 1px;
+  background-image: $gradient;
+  width: calc(100% - 2rem);
+}
+
+.rewardsList {
+  margin: 0;
+  background-color: white;
+  padding: 14px 24px;
+  flex-grow: 1;
+  border-radius: 1rem 1rem 0 0;
+}
+
+
+.title {
+  padding: 2rem 1.5rem 1.25rem;
+
+  @include desktop() {
+    @include fsXXL;
+    padding-left: 0;
+  }
+}
+
+.username, .phone {
+  font-size: $fs-xs;
+  opacity: .8;
+}
+
+.phone {
+  font-family: RobotoThin, serif;
+  font-weight: 600;
+}
+
+.detailsBox {
+  @include fontSize($fs-normal);
+  display: flex;
+  gap: 6px;
+}
+
+.received {
+  composes: detailsBox;
+  color: $green-1;
+}
+
+.inProgress {
+  composes: detailsBox;
+  color: $gold;
+}
+
+.circle {
+  color: #000;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.receiveCircle {
+  composes: circle;
+  background-color: $green-bg;
+}
+
+.progressCircle {
+  composes: circle;
+  background-color: $yellow-bg;
+}
