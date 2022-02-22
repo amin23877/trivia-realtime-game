@@ -20,13 +20,21 @@ export const ListFooter = ({ children, ...rest }) => {
 	);
 };
 
-export const ListItem = ({ children, index, avatar, username = "", info }) => {
+export const ListItem = ({
+	children,
+	className,
+	index,
+	avatar,
+	username = "",
+	info,
+	avatarSize = { mobile: 22, desktop: 46 },
+}) => {
 	return (
-		<div className={s.listItemContainer}>
+		<div className={`${s.listItemContainer} ${className}`}>
 			<div className={s.listItemInfo}>
-				<span className={s.index}>{index}.</span>
+				{index && <span className={s.index}>{index}.</span>}
 
-				<Avatar src={IMAGE_URL + encodeURI(avatar)} size={{ mobile: 22, desktop: 46 }} />
+				<Avatar src={IMAGE_URL + encodeURI(avatar)} size={avatarSize} />
 
 				<div className="d-flex flex-column align-items-center ms-3">
 					<p>{username}</p>
