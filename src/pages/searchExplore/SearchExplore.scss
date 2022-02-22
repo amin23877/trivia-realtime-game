@@ -1,13 +1,13 @@
 @import '../../assets/scss/styles.scss';
 
-$explore-input-height-mobile : 55px;
-$explore-input-height-desktop : 48px;
-$input-border-radius : 1rem;
+$explore-input-height-mobile: 55px;
+$explore-input-height-desktop: 48px;
+$input-border-radius: 1rem;
 
 .explore-root {
-  --filter-bg : #fff;
+  --filter-bg: #fff;
   --border-bottom-color: #00000020;
-  --space-x : 2rem;
+  --space-x: 2rem;
 
   position: relative;
   display: flex;
@@ -37,13 +37,13 @@ $input-border-radius : 1rem;
 }
 
 .explore-search-input {
-  @include fontSize($fs-m ,$fs-l);
+  @include fontSize($fs-m, $fs-l);
 
   appearance: none;
   border: none;
   height: $explore-input-height-mobile;
   width: 100%;
-  padding : 0 var(--space-x);
+  padding: 0 var(--space-x);
   box-shadow: 0 3px 5px rgba(94, 92, 106, 0.1);;
 
   &:focus {
@@ -59,14 +59,14 @@ $input-border-radius : 1rem;
   &_active {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-bottom : 1px solid var(--border-bottom-color);
+    border-bottom: 1px solid var(--border-bottom-color);
   }
 }
 
 .explore-search-button {
   position: absolute;
   right: var(--space-x);
-  top : 50%;
+  top: 50%;
   transform: translateY(-50%);
 }
 
@@ -109,7 +109,7 @@ $input-border-radius : 1rem;
 .explore-result-remove {
   @include fontSize($fs-m);
 
-  color : $grey-1;
+  color: $grey-1;
   cursor: pointer;
 }
 
@@ -119,15 +119,19 @@ $input-border-radius : 1rem;
 }
 
 .explore-result-item {
-  @include fontSize($fs-xs , $fs-m);
+  @include fontSize($fs-xs, $fs-m);
 
+  color: inherit;
   display: flex;
   gap: .5rem;
   padding: .5rem 2rem;
-  border-bottom: 1px solid var(--border-bottom-color);
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid var(--border-bottom-color);
+  }
 
   @include desktop {
-    border-bottom : none;
+    border-bottom: none;
   }
 
   &__title {
@@ -135,7 +139,7 @@ $input-border-radius : 1rem;
   }
 
   &__desc {
-    color : $grey-1;
+    color: $grey-1;
 
     @include desktop {
       @include fsNormal
@@ -143,7 +147,7 @@ $input-border-radius : 1rem;
   }
 
   &__rate {
-    color : $gold;
+    color: $gold;
     display: inline-flex;
     align-items: center;
     gap: 5px;
@@ -152,7 +156,7 @@ $input-border-radius : 1rem;
   &__hashtag {
     position: relative;
     width: var(--avatar-size);
-    height:  var(--avatar-size);
+    height: var(--avatar-size);
     border-radius: 50%;
     border: 1px solid $grey-1;
     display: grid;
