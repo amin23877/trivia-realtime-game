@@ -14,7 +14,7 @@ import { ReactComponent as UserIcon } from "assets/images/icons/user-icon.svg";
 import { ReactComponent as LeaderBoardIcon } from "assets/images/icons/leaderboard.svg";
 import { ReactComponent as LogoutIcon } from "assets/images/icons/logout.svg";
 import { ReactComponent as DeactivateIcon } from "assets/images/icons/deactivation.svg";
-import { ReactComponent as WalletIcon } from "assets/images/icons/wallet-icon.svg";
+import { ReactComponent as RewardsIcon } from "assets/images/icons/Gift.svg";
 import { IMAGE_URL } from "common/values/CORE";
 
 const menuItems = [
@@ -22,7 +22,7 @@ const menuItems = [
 	{ name: "League", route: "/leagues", icon: <LeagueIcon /> },
 	{ name: "Profile", route: "/profile", icon: <UserIcon /> },
 	{ name: "Leaderboard", route: "/leaderboard", icon: <LeaderBoardIcon /> },
-	{ name: "Wallet", route: "/menu/wallet", icon: <WalletIcon /> },
+	{ name: "Rewards", route: "/menu/rewards", icon: <RewardsIcon /> },
 	// { name: "Settings", route: false, icon: <SettingsIcon /> },
 	// { name: "Contact us", route: false, icon: <ContactIcon /> },
 ];

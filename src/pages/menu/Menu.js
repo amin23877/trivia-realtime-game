@@ -16,7 +16,7 @@ import { SET_MODALS } from "redux/actions/mainActions/generalActions";
 
 // Styles, Icons, Images
 import "./Menu.scss";
-import { ReactComponent as WalletIcon } from "assets/images/icons/wallet-icon-mobile.svg";
+import { ReactComponent as RewardsIcon } from "assets/images/icons/Gift.svg";
 import { ReactComponent as LogoutIcon } from "assets/images/icons/logout-icon-mobile.svg";
 import { ReactComponent as NotifIcon } from "assets/images/icons/notif-icon-mobile.svg";
 import { ReactComponent as DeactivateIcon } from "assets/images/icons/deactivation-icon-mobile.svg";
@@ -52,10 +52,10 @@ const Menu = ({ onDrawerClose }) => {
 			<div className="menu-body">
 				<div
 					className="d-flex align-items-center menu-item _br-bottom"
-					onClick={() => navigate("/menu/wallet")}
+					onClick={() => navigate("/menu/rewards")}
 				>
-					<WalletIcon className="icon" />
-					<p>Wallet</p>
+					<RewardsIcon className="icon" />
+					<p>Rewards</p>
 				</div>
 
 				<div
