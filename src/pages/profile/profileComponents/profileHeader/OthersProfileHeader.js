@@ -8,6 +8,37 @@ import s from "./ProfileHeader.module.scss";
 // images
 import { ReactComponent as BackIcon } from "assets/images/icons/arrow-back-friend-profile.svg";
 
+// this component handle variants of friend status
+const FriendActionButton = ({ isFriend, id }) => {
+	const { fetcher: addRequest, success: addSuccess } = useRequest(`user/${id}/add`, { method: "post" });
+
+	const { fetcher: removeFriend, success: removeSuccess } = useRequest(`user/${id}/remove`, { method: "post" });
+
+	const sendAddRequest = () => {
+		addRequest();
+	};
+
+	const handleRemoveFriend = () => {
+		removeFriend();
+	};
+
+	if (isFriend && !removeSuccess)
+		return (
+			<div onClick={handleRemoveFriend} className={s.removeFriendButton}>
+				Remove
+			</div>
+		);
+
+	if (!isFriend && !addSuccess)
+		return (
+			<div onClick={sendAddRequest} className={s.addFriendsButton}>
+				Add Friend
+			</div>
+		);
+
+	return <div className={s.requestedFriendsButton}>Requested</div>;
+};
+
 const OthersProfileHeader = ({ id }) => {
 	const navigate = useNavigate();
 
@@ -25,7 +56,7 @@ const OthersProfileHeader = ({ id }) => {
 					<BackIcon />
 				</div>
 
-				<div className={s.addFriendsButton}>Add Friend</div>
+				<FriendActionButton isFriend={response.friend} id={id} />
 			</ProfileHeaderCard>
 		)
 	);
