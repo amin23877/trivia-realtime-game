@@ -3,13 +3,8 @@
 $yellow-bg: rgba(238, 178, 23, 0.2);
 $green-bg: rgba(18, 174, 37, 0.2);
 
-.container {
-  position: relative;
-}
-
 .reward {
   position: relative;
-  overflow: hidden;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,6 +12,12 @@ $green-bg: rgba(18, 174, 37, 0.2);
   border-radius: 8px;
   box-shadow: 0 3px 6px rgba(83, 77, 77, 0.1);
   margin-bottom: .5rem;
+
+  @include desktop {
+    max-width: 82%;
+    margin-bottom: 12px;
+    border-radius: 20px;
+  }
 }
 
 .receiveReward {
@@ -31,11 +32,10 @@ $green-bg: rgba(18, 174, 37, 0.2);
 
 
 .timeRemain {
-  @include fontSize($fs-xs);
+  @include fontSize($fs-xs, $fs-normal);
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .timeRemainNumber {
@@ -47,25 +47,36 @@ $green-bg: rgba(18, 174, 37, 0.2);
   height: 20px;
   display: grid;
   place-items: center;
+
+  @include desktop {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .title {
+  @include fontSize($fs-m, $fs-xxl);
   color: $primary;
 }
 
 .desc, .date {
-  @include fontSize($fs-xs);
+  @include fontSize($fs-xs ,$fs-normal);
   color: $grey-1;
   margin-left: .5rem;
 }
 
 .giftInfo {
-  @include fontSize($fs-normal);
+  @include fontSize($fs-normal, $fs-l);
   margin-top: .5rem;
   color: white;
   width: 150px;
   padding: 2px 0;
   text-align: center;
+
+  @include desktop {
+    width: 220px;
+    padding: 8px 0;
+  }
 }
 
 .processGiftInfo {
@@ -83,14 +94,63 @@ $green-bg: rgba(18, 174, 37, 0.2);
   background-color: #00000033;
 }
 
+.float {
+  position: absolute;
+  right: 28px;
+  bottom: 13px;
+
+  @include desktop {
+    bottom: 50%;
+    transform: translateY(50%);
+    left: 103%;
+    width: 85px;
+  }
+}
+
+.processFloatText, .receivedFloatText {
+  composes: float;
+  display: none;
+
+  @include desktop {
+    display: block;
+  }
+}
+
+.processFloatText {
+  color: $gold;
+}
+
+.receivedFloatText {
+  color: $grey-1;
+}
+
 .receiveButton {
+  composes: float;
   cursor: pointer;
   background: #12AE25;
   color: white;
   box-shadow: 2px 4px 10px rgba(12, 105, 37, 0.2), inset -1px -1px 2px rgba(28, 115, 37, 0.4), inset 1px 1px 2px rgba(255, 255, 255, 0.4);
   border-radius: 4px;
   padding: 4px 8px;
-  position: absolute;
-  right: 28px;
-  bottom: 13px;
+
+  @include desktop {
+    padding: 8px 16px;
+    border-radius: 8px;
+  }
+}
+
+.image {
+  width: 113px;
+  height: 86px;
+  margin-right: .5rem;
+
+  @include desktop {
+    width: 190px;
+    height: 145px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
 }

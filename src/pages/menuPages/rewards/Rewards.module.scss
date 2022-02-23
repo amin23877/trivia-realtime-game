@@ -25,6 +25,7 @@ $gradient: linear-gradient(to right,
 
   @include desktop {
     width: $wallet-content-width;
+    min-height: 100%;
     margin: 0 auto;
     padding-top: 2rem;
   }
@@ -72,13 +73,39 @@ $gradient: linear-gradient(to right,
   padding: 5px 39px 16px;
   display: flex;
   justify-content: space-between;
+
+  @include desktop {
+    padding: 20px 24px;
+    flex-grow: 1;
+  }
 }
 
 .totalRewards {
+  @include fontSize($fs-l, $fs-xxl);
   position: relative;
   padding: 16px 26px 18px;
   display: flex;
   gap: .5rem;
+  font-family: RobotoThin, serif;
+  font-weight: 600;
+
+  @include desktop {
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    background-color: $primary;
+    color: white;
+  }
+}
+
+.logo {
+  width: 36px;
+  height: 36px;
+
+  @include desktop {
+    width: 42px;
+    height: 42px;
+  }
 }
 
 .line {
@@ -88,6 +115,10 @@ $gradient: linear-gradient(to right,
   height: 1px;
   background-image: $gradient;
   width: calc(100% - 2rem);
+
+  @include desktop {
+    display: none;
+  }
 }
 
 .rewardsList {
@@ -97,7 +128,6 @@ $gradient: linear-gradient(to right,
   flex-grow: 1;
   border-radius: 1rem 1rem 0 0;
 }
-
 
 .title {
   padding: 2rem 1.5rem 1.25rem;
@@ -119,8 +149,9 @@ $gradient: linear-gradient(to right,
 }
 
 .detailsBox {
-  @include fontSize($fs-normal);
+  @include fontSize($fs-normal ,$fs-l);
   display: flex;
+  align-items: center;
   gap: 6px;
 }
 
@@ -141,6 +172,11 @@ $gradient: linear-gradient(to right,
   border-radius: 50%;
   display: grid;
   place-items: center;
+
+  @include desktop {
+    width: 60px;
+    height: 60px;
+  }
 }
 
 .receiveCircle {

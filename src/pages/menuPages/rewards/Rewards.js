@@ -36,6 +36,13 @@ const rewards = [
 		date: "Wednesday, December 22, 2021",
 		gift: "500 MB monthly internet",
 	},
+	{
+		type: "in-process",
+		desc: "4th place in the Grand league",
+		date: "Wednesday, December 22, 2021",
+		gift: "2 GB weekly internet",
+		timeRemain: 7,
+	},
 ];
 
 const RewardMobileHeader = () => {
@@ -69,13 +76,11 @@ const RewardsDetails = () => {
 	return (
 		<div className={s.details}>
 			<div className={s.totalRewards}>
-				<img width={36} height={36} className="d-none d-xl-inline" alt="logo" src={afghanWirelessLogo} />
-
-				<p>All Gift Vouchers:</p>
+				<img className={`${s.logo} d-none d-xl-inline`} alt="logo" src={afghanWirelessLogo} />
 
 				<span className={s.line} />
 
-				<p className="wallet-balance__amount">26</p>
+				<p>All Gift Vouchers: 26</p>
 			</div>
 
 			<div className={s.detailsRightSide}>
