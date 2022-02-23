@@ -50,8 +50,13 @@ $radius: 1rem;
 }
 
 .listItemInfo {
+  color: inherit;
   display: flex;
   align-items: center;
+
+  &:hover {
+    color: inherit;
+  }
 }
 
 .index {

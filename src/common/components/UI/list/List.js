@@ -3,6 +3,7 @@ import Avatar from "common/components/UI/Avatar";
 import { IMAGE_URL } from "common/values/CORE";
 
 import s from "./List.module.scss";
+import { Link } from "react-router-dom";
 
 export const List = ({ children, className }) => {
 	return <div className={`${s.list} ${className}`}>{children}</div>;
@@ -27,11 +28,12 @@ export const ListItem = ({
 	avatar,
 	username = "",
 	info,
+	link = false,
 	avatarSize = { mobile: 22, desktop: 46 },
 }) => {
 	return (
 		<div className={`${s.listItemContainer} ${className}`}>
-			<div className={s.listItemInfo}>
+			<Link to={link} className={s.listItemInfo}>
 				{index && <span className={s.index}>{index}.</span>}
 
 				<Avatar src={IMAGE_URL + encodeURI(avatar)} size={avatarSize} />
@@ -40,7 +42,7 @@ export const ListItem = ({
 					<p>{username}</p>
 					<p>{info}</p>
 				</div>
-			</div>
+			</Link>
 
 			{/*
 			 *	Children will be to the right of the list item
