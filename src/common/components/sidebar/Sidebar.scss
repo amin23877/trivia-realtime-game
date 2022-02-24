@@ -28,7 +28,7 @@ $menu-item-h : 54px;
   cursor: pointer;
   margin: 2.25rem 1.1rem 2.25rem $space-x;
   padding: 0 2rem;
-  background-color: $bg-btn-play;
+  background-color: $secondary;
   color: #fff;
   height: 2.75rem;
   z-index: 2;
@@ -73,10 +73,6 @@ $menu-item-h : 54px;
   align-items: center;
   cursor: pointer;
 
-  svg {
-    flex-basis: 30px;
-  }
-
   &_red {
     color: $red-2;
   }
@@ -104,8 +100,8 @@ $menu-item-h : 54px;
     background-color: $bg-seachbox;
     color: $primary;
 
-    path {
-      stroke: $primary;
+    .icon {
+      @include svg-icon-color($primary);
     }
 
     &:after {
@@ -113,4 +109,43 @@ $menu-item-h : 54px;
       background-color: $primary;
     }
   }
+}
+
+.icon {
+  @include svg-icon-color($grey-1);
+}
+
+.home-icon {
+  @extend .icon;
+  @include svg-icon('/assets/images/icons/home.svg' ,20px ,20px);
+}
+
+.league-icon {
+  @extend .icon;
+  @include svg-icon('/assets/images/icons/league.svg',20px ,20px);
+}
+
+.profile-icon {
+  @extend .icon;
+  @include svg-icon('/assets/images/icons/user-icon.svg',20px ,20px);
+}
+
+.leaderboard-icon {
+  @extend .icon;
+  @include svg-icon('/assets/images/icons/leaderboard.svg',20px ,20px);
+}
+
+.gift-icon {
+  @extend .icon;
+  @include svg-icon('/assets/images/icons/Gift.svg',20px ,20px);
+}
+
+.logout-icon {
+  @extend .icon;
+  @include svg-icon('/assets/images/icons/logout.svg' ,20px ,20px);
+}
+
+.deactivation-icon {
+  @include svg-icon('/assets/images/icons/deactivation.svg' ,20px ,20px);
+  @include svg-icon-color($red-2);
 }

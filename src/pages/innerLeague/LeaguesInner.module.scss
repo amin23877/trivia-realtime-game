@@ -73,7 +73,7 @@ $size-avatar: 30px;
 
 .yourPosition {
     @include fontSize($fs-normal, $fs-l);
-    color: $red-1;
+    color: $secondary;
 }
 
 .key ,.award {
@@ -120,5 +120,5 @@ $size-avatar: 30px;
 
 .score {
     composes: cell;
-    color: $red-2;
+    color: $secondary;
 }

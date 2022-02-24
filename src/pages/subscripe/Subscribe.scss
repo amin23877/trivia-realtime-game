@@ -87,7 +87,7 @@
 
   &__price {
     @include fontSize($fs-normal,$fs-xl);
-    color: $red-1;
+    color: $secondary;
     padding-right: 2.25rem;
   }
 
@@ -118,7 +118,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    background-color: $red-1;
+    background-color: $secondary;
     color: white;
     padding: 0 5px;
     border-bottom-left-radius: 8px;

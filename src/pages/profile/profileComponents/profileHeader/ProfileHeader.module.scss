@@ -71,11 +71,11 @@
 
 .editButtonDesktop {
   cursor: pointer;
-  color: $red-2;
+  color: $secondary;
   display: none;
 
   &:hover {
-    color: $red-2;
+    color: $secondary;
   }
 
   @include desktop {
@@ -100,7 +100,7 @@
 
 .addFriendsButton {
   composes: friendActionButton;
-  background-color: $red-1;
+  background-color: $secondary;
   color: white;
 
   @include desktop {
@@ -110,8 +110,8 @@
 
 .requestedFriendsButton {
   composes: friendActionButton;
-  border: 1px solid $red-1;
-  color: $red-1;
+  border: 1px solid $secondary;
+  color: $secondary;
 }
 
 .removeFriendButton {

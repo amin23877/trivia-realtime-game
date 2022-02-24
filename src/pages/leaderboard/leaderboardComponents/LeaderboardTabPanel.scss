@@ -50,7 +50,7 @@ $card-radius : .5rem;
       padding: 18px 36px 18px 20px;
       color: white;
       margin-left: auto;
-      background-color: $red-1;
+      background-color: $secondary;
       border-radius: 58px $card-radius $card-radius 58px;
       position: relative;
 
@@ -94,7 +94,7 @@ $card-radius : .5rem;
 
     .subtitle {
       @include fsM;
-      color: $red-1;
+      color: $secondary;
     }
 
     .title {
@@ -154,7 +154,7 @@ $card-radius : .5rem;
 
         .reward {
           @include fontSize($fs-s, $fs-l);
-          color: $red-1;
+          color: $secondary;
         }
       }
 
