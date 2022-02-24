@@ -3,7 +3,7 @@ import { SearchExploreBox } from "pages/searchExplore/SearchExploreBox";
 import { useDispatch } from "react-redux";
 import { TOGGLE_NOTIF_DRAWER } from "redux/actions/mainActions/generalActions";
 
-import "./Header.scss";
+import s from "./Header.module.scss";
 
 // images
 import desktopLogo from "assets/images/logo/logo-white.svg";
@@ -17,7 +17,7 @@ const DesktopHeader = () => {
 	};
 
 	return (
-		<div className="_header-shadow desktop-header">
+		<div className={`_header-shadow ${s.desktopHeader}`}>
 			<img src={desktopLogo} alt="logo" />
 
 			<SearchExploreBox />
