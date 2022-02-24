@@ -2,45 +2,131 @@
 
 $height-icon-center: 60px;
 
-.footer , .playFooter{
-    width: 100%;
-    height: $height-footer;
-    padding: 0 1.5rem;
-    background-color: white;
-    display: flex;
-    align-items: center;
+.footerBase {
+  width: 100%;
+  height: $height-footer;
+  background-color: white;
+  display: flex;
+  position: fixed;
+  bottom: 0;
 }
 
 .footer {
-    justify-content: space-between;
+  composes: footerBase;
+  justify-content: space-between;
+  padding: 10px 1.5rem;
 }
 
 .playFooter {
-    position: fixed;
-    justify-content: center;
-    bottom: 0;
-    box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.1);
-    @include desktop {
-        display: none;
-    }
+  composes: footerBase;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.1);
+
+  @include desktop {
+    display: none;
+  }
 }
 
-.icons {
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    p {
-        @include fsXS;
-        color: $text-footer;
-    }
-    .p-active {
-        color: $primary;
-    }
+.footerText {
+  font-size: $fs-xs;
+  color: $grey-1;
 }
 
-.iconCenter {
-    z-index: 1;
-    margin-top: calc(-1 * #{$height-icon-center} / 2);
+.baseLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
 }
+
+.normalLink {
+  composes: baseLink footerText;
+}
+
+.activeLink {
+  composes: baseLink footerText;
+  color: $primary;
+}
+
+.playButtonCircle {
+  width: 60px;
+  height: 60px;
+  background-color: $secondary;
+  display: grid;
+  place-items: center right;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 2px 6px rgba(242, 73, 115, 0.3);
+  margin-top: -2.3rem;
+  margin-bottom: 3px;
+  padding: 0 1rem;
+}
+
+
+// icons
+
+.homeIcon {
+  @include svg-icon('/assets/images/icons/home.svg' ,18px ,18px);
+}
+
+.homeIconNormal {
+  composes: homeIcon;
+  @include svg-icon-color($grey-1);
+}
+
+.homeIconActive {
+  composes: homeIcon;
+  @include svg-icon-color($primary);
+}
+
+.leagueIcon {
+  @include svg-icon('/assets/images/icons/league.svg' ,18px ,18px);
+}
+
+.leagueIconNormal {
+  composes: leagueIcon;
+  @include svg-icon-color($grey-1);
+}
+
+.leagueIconActive {
+  composes: leagueIcon;
+  @include svg-icon-color($primary);
+}
+
+.searchIcon {
+  @include svg-icon('/assets/images/icons/search-primary-icon.svg' ,18px ,18px);
+}
+
+.searchIconNormal {
+  composes: searchIcon;
+  @include svg-icon-color($grey-1);
+}
+
+.searchIconActive {
+  composes: searchIcon;
+  @include svg-icon-color($primary);
+}
+
+
+.profileIcon {
+  @include svg-icon('/assets/images/icons/user-icon.svg' ,18px ,18px);
+}
+
+.profileIconNormal {
+  composes: profileIcon;
+  @include svg-icon-color($grey-1);
+}
+
+.profileIconActive {
+  composes: profileIcon;
+  @include svg-icon-color($primary);
+}
+
+.playIconOutlined {
+  @include svg-icon('/assets/images/icons/play-icon-outlined.svg' ,18px ,18px);
+  @include svg-icon-color(#fff);
+}
+
+
