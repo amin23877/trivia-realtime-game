@@ -1,63 +1,27 @@
 // Reacts
-import React, { useEffect, useState } from "react";
-// Hooks
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-// Packages
-import _ from "lodash";
-// Components, Services, Functions
-import ApiCall from "common/services/ApiCall";
-// Redux
-import { useDispatch } from "react-redux";
-import { MODALS } from "common/values/MODALS";
-import { SET_MODALS } from "redux/actions/mainActions/generalActions";
-import { SET_USER_INFO } from "redux/actions/mainActions/generalActions";
-// Material - lab
-// Styles, Icons, Images
-import "./Menu.scss";
-import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
-import CachedOutlinedIcon from "@material-ui/icons/CachedOutlined";
-import CancelOutlinedIcon from "@material-ui/icons/CancelOutlined";
-import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
-import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
-import HeadsetMicOutlinedIcon from "@material-ui/icons/HeadsetMicOutlined";
-import NotificationsOutlinedIcon from "@material-ui/icons/NotificationsOutlined";
-import PowerSettingsNewOutlinedIcon from "@material-ui/icons/PowerSettingsNewOutlined";
-import AccountBalanceWalletOutlinedIcon from "@material-ui/icons/AccountBalanceWalletOutlined";
+import React from "react";
 
-import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
+// Hooks
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+// Components, Services, Functions
 import { IMAGE_URL } from "common/values/CORE";
 import Avatar from "common/components/UI/Avatar";
+import { MODALS } from "common/values/MODALS";
+import { SET_MODALS } from "redux/actions/mainActions/generalActions";
+
+// Styles, Icons, Images
+import s from "./Menu.module.scss";
+import { ReactComponent as CloseIcon } from "assets/images/icons/close-drawer-icon.svg";
 
 const Menu = ({ onDrawerClose }) => {
 	const navigate = useNavigate();
 
-	const apiCall = new ApiCall();
-
 	const dispatch = useDispatch();
-	const stateGeneral = useSelector((state) => state.stateGeneral);
+
 	const user = useSelector((state) => state.stateUser.userInfo);
-
-	const [userInfo, setUserInfo] = useState(stateGeneral.userInfo);
-
-	// const handleGoBack = () => {
-	//   navigate(-1);
-	// };
-
-	const getUserInfo = () => {
-		// console.log("TODO");
-		dispatch(SET_SPINNER(true));
-
-		apiCall
-			.get("user/me")
-			.then((res) => {
-				dispatch(SET_SPINNER(false));
-				dispatch(SET_USER_INFO(res.data.user));
-			})
-			.catch((err) => {
-				dispatch(SET_SPINNER(false));
-			});
-	};
 
 	const handleOpenModal = (value) => {
 		// #modalUse step1
@@ -65,76 +29,48 @@ const Menu = ({ onDrawerClose }) => {
 		dispatch(SET_MODALS({ [MODALS[value]]: true }));
 	};
 
-	useEffect(() => {
-		let isMounted = true;
-		if (isMounted) {
-			if (_.isEmpty(userInfo)) getUserInfo();
-			// console.log(stateGeneral);
-		}
-		return () => {
-			isMounted = false;
-		};
-	}, []);
-
 	return (
-		<div className="d-flex flex-column w-100 h-100 menu">
-			<div className="d-flex justify-content-between align-items-stretch menu-header">
-				<div className="">
-					<Avatar src={IMAGE_URL + encodeURI(user.avatar)} size={40} />
+		<div className={s.menu}>
+			<div className={s.menuHeader}>
+				<div className="d-flex justify-content-between align-items-center mb-1">
+					<Avatar src={IMAGE_URL + encodeURI(user.avatar)} size={38} />
 
-					<p className="name">{user.username}</p>
-					<p className="level">Level {user.level}</p>
+					<CloseIcon onClick={onDrawerClose} />
 				</div>
 
-				<div className="close">
-					<CancelOutlinedIcon className="icon" onClick={onDrawerClose} />
-				</div>
-			</div>
-			<div className="menu-body">
-				<div
-					className="d-flex align-items-center menu-item _br-bottom"
-					onClick={() => navigate("/menu/wallet")}
-				>
-					<AccountBalanceWalletOutlinedIcon className="icon" />
-					<p>Wallet</p>
-				</div>
-
-				{/* <div
-					className="d-flex align-items-center menu-item _br-bottom"
-					onClick={() => navigate("notification")}
-				>
-					<NotificationsOutlinedIcon className="icon" />
-					<p>notification</p>
-				</div> */}
-
-				{/* <div className="d-flex align-items-center menu-item _br-bottom">
-					<SettingsOutlinedIcon className="icon" />
-					<p>Settings</p>
-				</div> */}
-
-				{/* <div className="d-flex align-items-center menu-item _br-bottom">
-					<ShareOutlinedIcon className="icon" />
-					<p>introduce to friends</p>
-				</div> */}
-
-				{/* <div className="d-flex align-items-center menu-item _br-bottom">
-					<HeadsetMicOutlinedIcon className="icon" />
-					<p>Contact us</p>
-				</div> */}
-
-				{/* <div className="d-flex align-items-center menu-item _br-bottom">
-					<CachedOutlinedIcon className="icon" />
-					<p>Update</p>
-				</div> */}
-
-				<div onClick={() => navigate("/login")} className="d-flex align-items-center menu-item">
-					<ExitToAppOutlinedIcon className="icon" />
-					<p>Logout</p>
-				</div>
+				<p className={s.name}>{user.username}</p>
+				<p className={s.level}>Level {user.level}</p>
 			</div>
 
-			<div className="d-flex align-items-center menu-item deactivation mt-auto mb-0">
-				<PowerSettingsNewOutlinedIcon className="icon" onClick={() => handleOpenModal("deactivation")} />
+			<div className={s.menuItem} onClick={() => navigate("/menu/rewards")}>
+				<div className={s.iconContainer}>
+					<div className={s.giftIcon} />
+				</div>
+
+				<p>Rewards</p>
+			</div>
+
+			<div className={s.menuItem} onClick={() => navigate("/menu/notification")}>
+				<div className={s.iconContainer}>
+					<div className={s.notifIcon} />
+				</div>
+
+				<p>notification</p>
+			</div>
+
+			<div onClick={() => navigate("/login")} className={s.menuItem}>
+				<div className={s.iconContainer}>
+					<div className={s.logoutIcon} />
+				</div>
+
+				<p>Logout</p>
+			</div>
+
+			<div className={s.deactivation}>
+				<div className={s.iconContainer}>
+					<div className={s.deactivationIcon} onClick={() => handleOpenModal("deactivation")} />
+				</div>
+
 				<p onClick={() => handleOpenModal("deactivation")}>deactivation</p>
 			</div>
 		</div>

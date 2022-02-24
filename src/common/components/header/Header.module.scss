@@ -1,0 +1,41 @@
+@import 'assets/scss/styles.scss';
+
+.mobileHeader {
+  width: 100%;
+  height: $mobile-header-height;
+  background-color: white;
+  padding: 0 1.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (min-width: $breakpoint-xl) {
+    display: none;
+  }
+}
+
+.desktopHeader {
+  width: 100%;
+  height: $desktop-header-height;
+  background-color: $primary;
+  padding: 0 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menuIcon {
+  @include svg-icon('/assets/images/icons/header-menu.svg' ,100% ,24px);
+  @include svg-icon-color($primary);
+}
+
+.logo {
+  @include svg-icon('/assets/images/icons/header-logo.svg' ,24px ,62px);
+  @include svg-icon-color($primary);
+}
+
+.leaderboardIcon {
+  @include svg-icon('/assets/images/icons/icon-leaderboard.svg' ,20px ,35px);
+  @include svg-icon-color($primary);
+}

@@ -41,7 +41,7 @@
             }
         }
         .subtitle {
-            @include fontSize(8px ,$fs-m);
+            @include fontSize($fs-xs ,$fs-m);
             color: colorBlack(65);
         }
         .rate {

@@ -28,14 +28,6 @@ const Home = () => {
 
 	const [dataLeague, setDataLeague] = useState();
 
-	const cardInfo = {
-		title: "Chemical Compounds",
-		remainingTime: 8407,
-		price: 5000,
-		players: 2,
-		img: "",
-	};
-
 	const handleNavigate = (event, path) => {
 		event.stopPropagation();
 		// console.log(path);
@@ -109,21 +101,25 @@ const Home = () => {
 					) : null}
 				</div>
 
-				{stateTopic.topics?.map((item, index) => (
-					<div key={index} className="topics">
-						<div className="d-flex justify-content-between align-items-center topics-header">
-							<p className="topics-header__title">{item.topic}</p>
-							<p className="subtitle" onClick={(e) => handleNavigate(e, `/topics/all/${item.type}`)}>
-								see all
-								<img className="mx-2" src={arrowForwardMini} alt="" />
-							</p>
-						</div>
+				{stateTopic.topics?.map((item, index) => {
+					const topics = stateTopic.topics.filter((el) => el.type === item.type)[0]?.topicList;
 
-						<div>
-							<HomeTopics type={item.type} />
+					if (!topics.length) return null;
+
+					return (
+						<div key={index} className="topics">
+							<div className="d-flex justify-content-between align-items-center topics-header">
+								<p className="topics-header__title">{item.topic}</p>
+								<p className="subtitle" onClick={(e) => handleNavigate(e, `/topics/all/${item.type}`)}>
+									see all
+									<img className="mx-2" src={arrowForwardMini} alt="" />
+								</p>
+							</div>
+
+							<HomeTopics topics={topics} type={item.type} />
 						</div>
-					</div>
-				))}
+					);
+				})}
 			</div>
 		</div>
 	);

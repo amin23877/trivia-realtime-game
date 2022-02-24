@@ -1,0 +1,156 @@
+@import "assets/scss/styles";
+
+$yellow-bg: rgba(238, 178, 23, 0.2);
+$green-bg: rgba(18, 174, 37, 0.2);
+
+.reward {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0 13px;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(83, 77, 77, 0.1);
+  margin-bottom: .5rem;
+
+  @include desktop {
+    max-width: 82%;
+    margin-bottom: 12px;
+    border-radius: 20px;
+  }
+}
+
+.receiveReward {
+  composes: reward;
+  background-color: $green-bg;
+}
+
+.processReward {
+  composes: reward;
+  background-color: $yellow-bg;
+}
+
+
+.timeRemain {
+  @include fontSize($fs-xs, $fs-normal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timeRemainNumber {
+  @include fontSize($fs-normal);
+  background-color: #EBEDF5;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(148, 111, 49, 0.15), inset 1px 1px 2px #FDFCFF, inset -1px 0px 2px rgba(0, 0, 0, 0.15);;
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+
+  @include desktop {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.title {
+  @include fontSize($fs-m, $fs-xxl);
+  color: $primary;
+}
+
+.desc, .date {
+  @include fontSize($fs-xs ,$fs-normal);
+  color: $grey-1;
+  margin-left: .5rem;
+}
+
+.giftInfo {
+  @include fontSize($fs-normal, $fs-l);
+  margin-top: .5rem;
+  color: white;
+  width: 150px;
+  padding: 2px 0;
+  text-align: center;
+
+  @include desktop {
+    width: 220px;
+    padding: 8px 0;
+  }
+}
+
+.processGiftInfo {
+  composes: giftInfo;
+  background-color: $gold;
+}
+
+.receiveGiftInfo {
+  composes: giftInfo;
+  background-color: $green-1;
+}
+
+.receivedGiftInfo {
+  composes: giftInfo;
+  background-color: #00000033;
+}
+
+.float {
+  position: absolute;
+  right: 28px;
+  bottom: 13px;
+
+  @include desktop {
+    bottom: 50%;
+    transform: translateY(50%);
+    left: 103%;
+    width: 85px;
+  }
+}
+
+.processFloatText, .receivedFloatText {
+  composes: float;
+  display: none;
+
+  @include desktop {
+    display: block;
+  }
+}
+
+.processFloatText {
+  color: $gold;
+}
+
+.receivedFloatText {
+  color: $grey-1;
+}
+
+.receiveButton {
+  composes: float;
+  cursor: pointer;
+  background: #12AE25;
+  color: white;
+  box-shadow: 2px 4px 10px rgba(12, 105, 37, 0.2), inset -1px -1px 2px rgba(28, 115, 37, 0.4), inset 1px 1px 2px rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  padding: 4px 8px;
+
+  @include desktop {
+    padding: 8px 16px;
+    border-radius: 8px;
+  }
+}
+
+.image {
+  width: 113px;
+  height: 86px;
+  margin-right: .5rem;
+
+  @include desktop {
+    width: 190px;
+    height: 145px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}

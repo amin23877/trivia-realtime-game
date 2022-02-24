@@ -75,7 +75,7 @@ $leaderboard-max-width : 722px;
 }
 
 .addToFavorite {
-  color: $red-1;
+  color: $secondary;
 }
 
 .removeFromFavorite {
@@ -154,7 +154,7 @@ $leaderboard-max-width : 722px;
 
 .yourPosition {
   display: none;
-  color: $red-1;
+  color: $secondary;
   margin-top: .75rem;
 
   @include desktop {

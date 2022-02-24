@@ -81,7 +81,7 @@ $radius-card-desktop: 55px;
     }
 
     .bullet-red {
-      @include bullet(8px, $red-1);
+      @include bullet(8px, $secondary);
       animation: none;
     }
 

@@ -32,7 +32,6 @@ $size-avatar: 30px;
 .playersNumber {
     @include fontSize($fs-normal, $fs-l);
     color: colorBlack(50);
-    min-width: 100px;
 
     @include desktop {
         align-self: start;
@@ -74,7 +73,7 @@ $size-avatar: 30px;
 
 .yourPosition {
     @include fontSize($fs-normal, $fs-l);
-    color: $red-2;
+    color: $secondary;
 }
 
 .key ,.award {
@@ -90,7 +89,7 @@ $size-avatar: 30px;
 }
 
 .title {
-    @include fontSize($fs-l ,$fs-xxl);
+    @include fontSize($fs-m ,$fs-xxl);
 }
 
 .text {
@@ -121,5 +120,5 @@ $size-avatar: 30px;
 
 .score {
     composes: cell;
-    color: $red-2;
+    color: $secondary;
 }

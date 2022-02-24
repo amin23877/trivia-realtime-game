@@ -36,7 +36,7 @@
     padding-right: 1.5rem;
 
     &__title {
-      @include fontSize($fs-l, $fs-xxl);
+      @include fontSize($fs-m, $fs-xxl);
     }
 
     .subtitle {

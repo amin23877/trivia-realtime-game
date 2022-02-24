@@ -12,7 +12,7 @@ import { ReactComponent as ShareIcon } from "assets/images/icons/share-black.svg
 /*
  * 	this component show topic (league) info on inner-topic (inner-league) page
  * */
-const CardInner = ({ banner, title, subtitle, shareLink, children }) => {
+const CardInner = ({ banner, title, subtitle, shareLink, children, bannerSize = 110, rounded = true }) => {
 	const navigate = useNavigate();
 
 	const handleGoBack = () => {
@@ -25,17 +25,25 @@ const CardInner = ({ banner, title, subtitle, shareLink, children }) => {
 		<div className="card-inner">
 			<p className="card-inner__desktop-title">{title}</p>
 
-			<div className="card-inner__card">
+			<div className={`card-inner__card ${rounded ? "card-inner__card_rounded" : ""}`}>
 				<div
 					className="card-inner__banner"
 					style={{
 						backgroundImage: `url("${IMAGE_URL}${banner}")`,
+						minHeight: bannerSize,
 					}}
 				>
-					<p className="d-flex d-xl-none justify-content-center align-items-center" onClick={handleGoBack}>
+					<p
+						className="d-flex d-xl-none justify-content-center align-items-center _backdrop-filter"
+						onClick={handleGoBack}
+					>
 						<ArrowBackIcon />
 					</p>
-					<p onClick={handleShare} className="d-flex d-xl-none justify-content-center align-items-center">
+
+					<p
+						onClick={handleShare}
+						className="d-flex d-xl-none justify-content-center align-items-center _backdrop-filter"
+					>
 						<ShareOutlinedIcon />
 					</p>
 				</div>
@@ -43,7 +51,9 @@ const CardInner = ({ banner, title, subtitle, shareLink, children }) => {
 				<div className="card-inner__info">
 					<div className="d-flex flex-column flex-xl-row justify-content-between">
 						<p className="card-inner__mobile-title">{title}</p>
+
 						<p className="card-inner__subtitle">{subtitle}</p>
+
 						<p onClick={handleShare} className="card-inner__share">
 							<ShareIcon />
 							Share

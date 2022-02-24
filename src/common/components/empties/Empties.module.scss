@@ -1,0 +1,61 @@
+@import 'assets/scss/styles.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.imgContainer {
+  margin: 0 auto;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.normal {
+  composes: imgContainer;
+
+  max-width: 50%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.friends {
+  composes: imgContainer;
+
+  width: 322px;
+  height: 183px;
+
+  @include desktop {
+    width: 555px;
+    height: 316px;
+  }
+}
+
+.favorites {
+  composes: imgContainer;
+
+  width: 306px;
+  height: 200px;
+
+  @include desktop {
+    width: 452px;
+    height: 300px;
+  }
+}
+
+
+.message {
+  @include fontSize($fs-m, $fs-l);
+  color: $red-2;
+  margin-top: 14px;
+  text-align: center;
+
+  @include desktop {
+    margin-top: 20px;
+  }
+}
+

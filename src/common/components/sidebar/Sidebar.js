@@ -8,23 +8,14 @@ import { MODALS } from "common/values/MODALS";
 import "./Sidebar.scss";
 
 // image
-import { ReactComponent as HomeIcon } from "assets/images/icons/home.svg";
-import { ReactComponent as LeagueIcon } from "assets/images/icons/league.svg";
-import { ReactComponent as UserIcon } from "assets/images/icons/user-icon.svg";
-import { ReactComponent as LeaderBoardIcon } from "assets/images/icons/leaderboard.svg";
-import { ReactComponent as LogoutIcon } from "assets/images/icons/logout.svg";
-import { ReactComponent as DeactivateIcon } from "assets/images/icons/deactivation.svg";
-import { ReactComponent as WalletIcon } from "assets/images/icons/wallet-icon.svg";
 import { IMAGE_URL } from "common/values/CORE";
 
 const menuItems = [
-	{ name: "Home", route: "index", icon: <HomeIcon /> },
-	{ name: "League", route: "/leagues", icon: <LeagueIcon /> },
-	{ name: "Profile", route: "/profile", icon: <UserIcon /> },
-	{ name: "Leaderboard", route: "/leaderboard", icon: <LeaderBoardIcon /> },
-	{ name: "Wallet", route: "/menu/wallet", icon: <WalletIcon /> },
-	// { name: "Settings", route: false, icon: <SettingsIcon /> },
-	// { name: "Contact us", route: false, icon: <ContactIcon /> },
+	{ name: "Home", route: "index", icon: "home-icon" },
+	{ name: "League", route: "/leagues", icon: "league-icon" },
+	{ name: "Profile", route: "/profile", icon: "profile-icon" },
+	{ name: "Leaderboard", route: "/leaderboard", icon: "leaderboard-icon" },
+	{ name: "Rewards", route: "/menu/rewards", icon: "gift-icon" },
 ];
 
 const Sidebar = () => {
@@ -70,7 +61,7 @@ const Sidebar = () => {
 					return (
 						<Link key={index} to={route === "index" ? "/" : route}>
 							<li className={itemClasses}>
-								{icon}
+								<div className={icon} />
 								{name}
 							</li>
 						</Link>
@@ -79,7 +70,7 @@ const Sidebar = () => {
 
 				<Link to="/login">
 					<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
-						<LogoutIcon />
+						<div className="logout-icon" />
 						Logout
 					</li>
 				</Link>
@@ -88,7 +79,7 @@ const Sidebar = () => {
 					onClick={openDeactivateModal}
 					className="sidebar-menu-item sidebar-menu-item_red sidebar-menu-item_hover-effect-red"
 				>
-					<DeactivateIcon />
+					<div className="deactivation-icon" />
 					deactivation
 				</li>
 			</ul>

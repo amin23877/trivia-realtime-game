@@ -1,14 +1,14 @@
 import React from "react";
 import _ from "lodash";
-import { useRequest } from "common/hooks/useRequest";
+import { useListLoad } from "common/hooks/useListLoad";
 import BestPlayers from "common/components/bestPlayers/BestPlayers";
 import { List, ListFooter, ListHeader, ListItem } from "common/components/UI/list/List";
 
 import s from "../LeaguesInner.module.scss";
 
 const LeagueLeaderboard = ({ id }) => {
-	const { response, success } = useRequest(`league/leaderboard/${id}`);
-	console.log(response);
+	const { response, success, endOfList, fetchMore } = useListLoad(`league/leaderboard/${id}`, 10);
+
 	return (
 		success && (
 			<div className="_leaderboardContainer mt-4">
@@ -35,7 +35,7 @@ const LeagueLeaderboard = ({ id }) => {
 						);
 					})}
 
-					<ListFooter>See more</ListFooter>
+					{!endOfList && <ListFooter onClick={fetchMore}>See more</ListFooter>}
 				</List>
 			</div>
 		)

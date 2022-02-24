@@ -23,7 +23,6 @@ $size-avatar: 80px;
 
     .leaguesResult-body {
         text-align: center;
-        padding: auto;
         .box-result {
             background-color: white;
             width: 80%;
@@ -37,7 +36,7 @@ $size-avatar: 80px;
 
             .score {
                 border-radius: 16px 16px 0 0;
-                color: $red-1;
+                color: $secondary;
             }
 
             .reward {
@@ -74,7 +73,7 @@ $size-avatar: 80px;
             }
 
             .btn-play {
-                background-color: $red-1;
+                background-color: $secondary;
             }
 
             .btn-back {

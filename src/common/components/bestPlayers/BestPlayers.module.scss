@@ -48,7 +48,7 @@
 
 .rewards {
   @include fontSize($fs-s, $fs-l);
-  color: $red-1;
+  color: $secondary;
   flex-grow: 1;
   margin-top: 5px;
 

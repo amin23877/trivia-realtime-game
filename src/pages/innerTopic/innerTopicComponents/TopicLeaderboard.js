@@ -2,27 +2,34 @@ import React, { useState } from "react";
 import _ from "lodash";
 import Tabs from "common/components/UI/tabs/Tabs";
 import BestPlayers from "common/components/bestPlayers/BestPlayers";
-import { useRequest } from "common/hooks/useRequest";
 import { List, ListFooter, ListHeader, ListItem } from "common/components/UI/list/List";
+import { useListLoad } from "common/hooks/useListLoad";
 
 import s from "../InnerTopic.module.scss";
 
-const TopicLeaderboard = ({ id }) => {
-	const [activeTab, setActiveTab] = useState(0);
+const tabs = [
+	{ label: "All points", value: "all" },
+	{ label: "Daily", value: "day" },
+	{ label: "Weekly", value: "week" },
+	{ label: "Monthly", value: "month" },
+];
 
-	const { response, success } = useRequest(`topicleaderboard/${id}/all`);
+const TopicLeaderboard = ({ id }) => {
+	const [timespan, setTimespan] = useState("all");
+
+	const { response, success, endOfList, fetchMore } = useListLoad(`topicleaderboard/${id}/${timespan}`, 10);
+
+	const handleTimespan = (event, newValue) => {
+		setTimespan(newValue);
+	};
 
 	return (
 		success && (
 			<div className="mt-4">
-				<Tabs
-					activeTab={activeTab}
-					onChange={(event, newValue) => setActiveTab(newValue)}
-					tabs={["All points", "Daily", "Weekly", "Monthly"]}
-				/>
+				<Tabs value={timespan} onChange={handleTimespan} tabs={tabs} />
 
 				<p className={s.yourPosition}>
-					Your position : <span>16</span>
+					Your position : <span>should fixed</span>
 				</p>
 
 				<div className="_leaderboardContainer">
@@ -33,7 +40,7 @@ const TopicLeaderboard = ({ id }) => {
 							<p className={s.pointText}>point</p>
 						</ListHeader>
 
-						{_.slice(response.result, 3, response.result?.length).map((player, index) => (
+						{_.slice(response.result, 3, response.result.length).map((player, index) => (
 							<ListItem
 								key={index}
 								index={index + 4}
@@ -44,7 +51,7 @@ const TopicLeaderboard = ({ id }) => {
 							</ListItem>
 						))}
 
-						<ListFooter>see more</ListFooter>
+						{!endOfList && <ListFooter onClick={fetchMore}>see more</ListFooter>}
 					</List>
 				</div>
 			</div>

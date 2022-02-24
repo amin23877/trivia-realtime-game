@@ -1,0 +1,140 @@
+@import "assets/scss/styles";
+
+.card {
+  --cover-height: 135px;
+  --info-height: 84px;
+  --header-height: 225px;
+  --avatar-margin-left: 1.5rem;
+
+  @include desktop {
+    --cover-height: 260px;
+    --info-height: 78px;
+    --header-height: 335px;
+    --avatar-margin-left: 3.375rem;
+  }
+
+  width: 100%;
+  flex-shrink: 0;
+  position: relative;
+  background-color: white;
+
+  @include desktop {
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);;
+  }
+}
+
+.profileCover {
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  height: var(--cover-height);
+}
+
+.infoContainer {
+  padding: 0 var(--avatar-margin-left);
+  max-height: var(--info-height);
+  display: flex;
+}
+
+.avatar {
+  transform: translateY(-50%);
+  margin-right: 4px;
+}
+
+.username {
+  @include fontSize($fs-m, $fs-xl);
+}
+
+.level {
+  @include fontSize($fs-normal, $fs-l);
+  color: $grey-1;
+}
+
+.editButtonMobile {
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  background-color: #00000040;
+  border-radius: 4px;
+  position: absolute;
+  top: 30px;
+  right: 24px;
+
+  @include desktop {
+    display: none;
+  }
+}
+
+.editButtonDesktop {
+  cursor: pointer;
+  color: $secondary;
+  display: none;
+
+  &:hover {
+    color: $secondary;
+  }
+
+  @include desktop {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+}
+
+.friendActionButton {
+  @include fontSize($fs-m);
+  padding: 6px 10px;
+  box-shadow: 0 3px 4px rgba(248, 63, 95, 0.3);
+  border-radius: .25rem;
+
+  @include desktop {
+    cursor: pointer;
+    padding: 14px 54px;
+    border-radius: .5rem;
+  }
+}
+
+.addFriendsButton {
+  composes: friendActionButton;
+  background-color: $secondary;
+  color: white;
+
+  @include desktop {
+    box-shadow: 0 4px 8px rgba(242, 73, 115, 0.35), inset -1px -1px 2px rgba(115, 28, 50, 0.4), inset 1px 1px 2px rgba(255, 255, 255, 0.4);
+  }
+}
+
+.requestedFriendsButton {
+  composes: friendActionButton;
+  border: 1px solid $secondary;
+  color: $secondary;
+}
+
+.removeFriendButton {
+  composes: friendActionButton;
+  box-shadow: none;
+  border: 1px solid $grey-1;
+  color: $grey-1;
+}
+
+.backButton {
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+  border-radius: 4px;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: 20px;
+  left: 1.5rem;
+
+  @include desktop {
+    display: none;
+  }
+}
+

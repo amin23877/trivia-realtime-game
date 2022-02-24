@@ -2,11 +2,38 @@
 
 .profile-root {
   @include limitContent;
-
   display: flex;
   flex-direction: column;
 
   @include desktop {
     padding-top: 2rem;
   }
+
+  &__tabs-container {
+    background-color: white;
+    z-index: 1;
+    box-shadow: 0 3px 5px rgba(94, 92, 106, 0.1);
+
+    @include desktop {
+      background-color: transparent;
+      border-bottom: 1px solid #0000001f;
+      box-shadow: none;
+      margin-top: 1rem;
+    }
+  }
 }
+
+.profile--contents {
+  background-color: $bg-profile;
+  width: 100%;
+  padding: 20px 1.5rem 2rem;
+
+  @include desktop {
+    padding: 28px 0 48px;
+  }
+
+  &_friend {
+    padding: 20px 0 2rem;
+  }
+}
+
