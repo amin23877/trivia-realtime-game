@@ -20,6 +20,20 @@
   width: 100%;
 }
 
+@mixin svg-icon($path, $height, $width ) {
+  height: $height;
+  width: $width;
+  mask-image: url($path);
+  background-size: cover;
+  mask-size: contain;
+  mask-position: center;
+  mask-repeat: no-repeat;
+}
+
+@mixin svg-icon-color($color) {
+  background-color: $color;
+}
+
 @mixin fsXS() {
   font-size: 10px;
 }
