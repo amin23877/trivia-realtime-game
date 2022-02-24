@@ -24,6 +24,13 @@ class ApiCall {
 			headers: { Authorization: token },
 		});
 	}
+
+	DELETE(url) {
+		const token = localStorage.getItem("token") ? localStorage.getItem("token") : null;
+		return axios.delete(baseUrl + url, {
+			headers: { Authorization: token },
+		});
+	}
 }
 
 export default ApiCall;
