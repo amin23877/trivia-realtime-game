@@ -20,9 +20,9 @@ const ProfileFriends = ({ id }) => {
 				<Search cb={(value) => console.log(value)} />
 
 				<div className="profile-friend__list">
-					{/*{friends?.map((el, index) => (*/}
-					{/*	<FriendCard key={index} index={index} data={el.users[0]} />*/}
-					{/*))}*/}
+					{friends?.map((el, index) => (
+						<FriendCard key={index} index={index} data={el} />
+					))}
 				</div>
 			</div>
 		)
