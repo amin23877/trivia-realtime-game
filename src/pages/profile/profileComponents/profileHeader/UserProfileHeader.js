@@ -5,8 +5,8 @@ import ProfileHeaderCard from "./ProfileHeaderCard";
 
 // --- assets
 import s from "./ProfileHeader.module.scss";
-import { ReactComponent as RedEditIcon } from "assets/images/icons/edit-icon-red.svg";
-import { ReactComponent as EditIcon } from "assets/images/icons/edit.svg";
+import { ReactComponent as EditIcon } from "assets/images/icons/edit-icon.svg";
+import { ReactComponent as WhiteEditIcon } from "assets/images/icons/edit.svg";
 
 const UserProfileHeader = () => {
 	const user = useSelector((state) => state.stateUser.userInfo);
@@ -14,11 +14,11 @@ const UserProfileHeader = () => {
 	return (
 		<ProfileHeaderCard data={user}>
 			<Link className={s.editButtonMobile} to="/profile/edit">
-				<EditIcon />
+				<WhiteEditIcon />
 			</Link>
 
 			<Link className={s.editButtonDesktop} to="/profile/edit">
-				<RedEditIcon />
+				<EditIcon />
 				Edit Profile
 			</Link>
 		</ProfileHeaderCard>
