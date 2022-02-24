@@ -11,7 +11,7 @@ const useStyles = makeStyles({
 	},
 
 	indicator: {
-		backgroundColor: "#6D6BE6",
+		backgroundColor: "#0064A2",
 		display: ({ variant }) => (variant === "button" ? "none" : "block"),
 	},
 
@@ -33,8 +33,8 @@ const useStyles = makeStyles({
 	},
 
 	selectedTab: {
-		backgroundColor: ({ variant }) => (variant === "button" ? "#6D6BE6" : "transparent"),
-		color: ({ variant }) => (variant === "button" ? "white" : "#6D6BE6"),
+		backgroundColor: ({ variant }) => (variant === "button" ? "#0064A2" : "transparent"),
+		color: ({ variant }) => (variant === "button" ? "white" : "#0064A2"),
 	},
 });
 
