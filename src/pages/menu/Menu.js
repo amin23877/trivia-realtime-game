@@ -2,24 +2,18 @@
 import React from "react";
 
 // Hooks
-import { useSelector } from "react-redux";
+// Redux
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 // Components, Services, Functions
 import { IMAGE_URL } from "common/values/CORE";
 import Avatar from "common/components/UI/Avatar";
-
-// Redux
-import { useDispatch } from "react-redux";
 import { MODALS } from "common/values/MODALS";
 import { SET_MODALS } from "redux/actions/mainActions/generalActions";
 
 // Styles, Icons, Images
-import "./Menu.scss";
-import { ReactComponent as RewardsIcon } from "assets/images/icons/Gift.svg";
-import { ReactComponent as LogoutIcon } from "assets/images/icons/logout-icon-mobile.svg";
-import { ReactComponent as NotifIcon } from "assets/images/icons/notif-icon-mobile.svg";
-import { ReactComponent as DeactivateIcon } from "assets/images/icons/deactivation-icon-mobile.svg";
+import s from "./Menu.module.scss";
 import { ReactComponent as CloseIcon } from "assets/images/icons/close-drawer-icon.svg";
 
 const Menu = ({ onDrawerClose }) => {
@@ -36,64 +30,47 @@ const Menu = ({ onDrawerClose }) => {
 	};
 
 	return (
-		<div className="d-flex flex-column h-100 menu">
-			<div className="menu-header">
+		<div className={s.menu}>
+			<div className={s.menuHeader}>
 				<div className="d-flex justify-content-between align-items-center mb-1">
 					<Avatar src={IMAGE_URL + encodeURI(user.avatar)} size={38} />
 
-					<div className="close">
-						<CloseIcon onClick={onDrawerClose} />
-					</div>
+					<CloseIcon onClick={onDrawerClose} />
 				</div>
 
-				<p className="name">{user.username}</p>
-				<p className="level">Level {user.level}</p>
-			</div>
-			<div className="menu-body">
-				<div
-					className="d-flex align-items-center menu-item _br-bottom"
-					onClick={() => navigate("/menu/rewards")}
-				>
-					<RewardsIcon className="icon" />
-					<p>Rewards</p>
-				</div>
-
-				<div
-					className="d-flex align-items-center menu-item _br-bottom"
-					onClick={() => navigate("/menu/notification")}
-				>
-					<NotifIcon className="icon" />
-					<p>notification</p>
-				</div>
-
-				{/* <div className="d-flex align-items-center menu-item _br-bottom">
-					<SettingsOutlinedIcon className="icon" />
-					<p>Settings</p>
-				</div> */}
-
-				{/* <div className="d-flex align-items-center menu-item _br-bottom">
-					<ShareOutlinedIcon className="icon" />
-					<p>introduce to friends</p>
-				</div> */}
-
-				{/* <div className="d-flex align-items-center menu-item _br-bottom">
-					<HeadsetMicOutlinedIcon className="icon" />
-					<p>Contact us</p>
-				</div> */}
-
-				{/* <div className="d-flex align-items-center menu-item _br-bottom">
-					<CachedOutlinedIcon className="icon" />
-					<p>Update</p>
-				</div> */}
-
-				<div onClick={() => navigate("/login")} className="d-flex align-items-center menu-item">
-					<LogoutIcon className="icon" />
-					<p>Logout</p>
-				</div>
+				<p className={s.name}>{user.username}</p>
+				<p className={s.level}>Level {user.level}</p>
 			</div>
 
-			<div className="d-flex align-items-center menu-item deactivation mt-auto mb-0">
-				<DeactivateIcon onClick={() => handleOpenModal("deactivation")} />
+			<div className={s.menuItem} onClick={() => navigate("/menu/rewards")}>
+				<div className={s.iconContainer}>
+					<div className={s.giftIcon} />
+				</div>
+
+				<p>Rewards</p>
+			</div>
+
+			<div className={s.menuItem} onClick={() => navigate("/menu/notification")}>
+				<div className={s.iconContainer}>
+					<div className={s.notifIcon} />
+				</div>
+
+				<p>notification</p>
+			</div>
+
+			<div onClick={() => navigate("/login")} className={s.menuItem}>
+				<div className={s.iconContainer}>
+					<div className={s.logoutIcon} />
+				</div>
+
+				<p>Logout</p>
+			</div>
+
+			<div className={s.deactivation}>
+				<div className={s.iconContainer}>
+					<div className={s.deactivationIcon} onClick={() => handleOpenModal("deactivation")} />
+				</div>
+
 				<p onClick={() => handleOpenModal("deactivation")}>deactivation</p>
 			</div>
 		</div>

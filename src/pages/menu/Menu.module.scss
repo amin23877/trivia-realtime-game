@@ -1,0 +1,85 @@
+@import 'assets/scss/styles.scss';
+
+$size-avatar: 60px;
+$padding-left: 28px;
+$drawer-menu-width: 220px;
+
+.menu {
+  width: $drawer-menu-width;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.menuHeader {
+  padding: 50px $padding-left 30px;
+  background-color: $primary;
+}
+
+.name, .level {
+  @include fsXS;
+  padding-left: 3px;
+  color: white;
+}
+
+.level {
+  font-family: RobotoThin, serif;
+  font-weight: 600;
+}
+
+.menuItem {
+  padding: 1rem $padding-left;
+  display: flex;
+  align-items: center;
+
+  p {
+    @include fsM;
+
+    margin-left: 10px;
+    color: colorBlack(70);
+    cursor: pointer;
+  }
+}
+
+.deactivation {
+  composes: menuItem;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: 0;
+
+  p {
+    color: $red-2;
+  }
+}
+
+.iconContainer {
+  min-width: 1.5rem;
+}
+
+// icons
+
+.icon {
+  @include svg-icon-color(#000);
+}
+
+.giftIcon {
+  composes: icon;
+  @include svg-icon('/assets/images/icons/Gift.svg', 22px, 22px);
+}
+
+.notifIcon {
+  composes: icon;
+  @include svg-icon('/assets/images/icons/notifications.svg', 16px, 14px);
+}
+
+.logoutIcon {
+  composes: icon;
+  @include svg-icon('/assets/images/icons/logout.svg', 21px, 21px);
+}
+
+.deactivationIcon {
+  @include svg-icon('/assets/images/icons/deactivation.svg', 16px, 16px);
+  @include svg-icon-color($red-2);
+}
