@@ -11,8 +11,8 @@ export const useSearch = (query) => {
 	const [totalResult, setTotalResult] = useState(null);
 
 	// search on users and topics
-	const { response: topics, success: fetchTopicsSuccess } = useRequest(`/topic?containstag=${debouncedQuery}`);
-	const { response: users, success: fetchUsersSuccess } = useRequest(`/user?containsname=${debouncedQuery}`);
+	const { response: topics, success: fetchTopicsSuccess } = useRequest(`/topic?containname=${debouncedQuery}`);
+	const { response: users, success: fetchUsersSuccess } = useRequest(`/user?containusername=${debouncedQuery}`);
 
 	useEffect(() => {
 		if (fetchUsersSuccess && fetchTopicsSuccess) {
