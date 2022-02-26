@@ -30,7 +30,6 @@
 }
 
 .timer-resend {
-  font-family: RobotoBlack;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -40,6 +39,8 @@
   width: 100%;
 
   &__back-btn {
+    @include svg-icon('/assets/images/icons/arrow-back.svg' ,12px ,16px);
+    @include svg-icon-color($primary);
     cursor: pointer;
     position: absolute;
     left: 0;

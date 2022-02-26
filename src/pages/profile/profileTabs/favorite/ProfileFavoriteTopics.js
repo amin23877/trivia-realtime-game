@@ -17,7 +17,7 @@ const ProfileFavoriteTopics = ({ id }) => {
 				{response.result?.length > 0 ? (
 					<div className="favorite-topics-grid">
 						{response.result.map((el, index) => (
-							<div className="favorite-topics-grid__item">
+							<div key={index} className="favorite-topics-grid__item">
 								<CardTopic key={index} data={el.TopicId} />
 							</div>
 						))}

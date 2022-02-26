@@ -7,6 +7,11 @@ $search-icon-height: 22px;
   position: relative;
   width: auto;
   margin: 0 24px;
+
+  @include desktop {
+    margin: 0;
+  }
+
   &__input {
     width: 100%;
     background-color: $bg-seachbox;
@@ -16,14 +21,13 @@ $search-icon-height: 22px;
     outline: none;
     border-radius: 12px;
   }
-  &__button {
-    img {
-      position: absolute;
-      top: 50%;
-      right: 10px;
-      width: $search-icon-width;
-      height: $search-icon-height;
-      transform: translateY(-100%);
-    }
+
+  &__icon {
+    @include svg-icon('/assets/images/icons/search-primary-icon.svg' ,20px ,20px);
+    @include svg-icon-color($primary);
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-110%);
   }
 }

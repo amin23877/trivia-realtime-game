@@ -13,10 +13,10 @@
 
   &__list-item {
     @include fontSize($fs-normal, $fs-l);
-    padding: .5rem 1.5rem;
+    padding: .5rem 1.5rem !important;
 
     @include desktop {
-      padding: 1rem 28px;
+      padding: 1rem 28px !important;
     }
   }
 

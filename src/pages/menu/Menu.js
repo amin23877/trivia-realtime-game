@@ -15,6 +15,7 @@ import { SET_MODALS } from "redux/actions/mainActions/generalActions";
 // Styles, Icons, Images
 import s from "./Menu.module.scss";
 import { ReactComponent as CloseIcon } from "assets/images/icons/close-drawer-icon.svg";
+import GeneralModal from "pages/modals/GeneralModal";
 
 const Menu = ({ onDrawerClose }) => {
 	const navigate = useNavigate();
@@ -22,11 +23,16 @@ const Menu = ({ onDrawerClose }) => {
 	const dispatch = useDispatch();
 
 	const user = useSelector((state) => state.stateUser.userInfo);
+	const modals = useSelector((state) => state.stateGeneral.modals);
 
 	const handleOpenModal = (value) => {
 		// #modalUse step1
 		onDrawerClose();
 		dispatch(SET_MODALS({ [MODALS[value]]: true }));
+	};
+
+	const openConfirmLogoutModal = () => {
+		dispatch(SET_MODALS({ [MODALS.generalModal]: true }));
 	};
 
 	return (
@@ -58,7 +64,7 @@ const Menu = ({ onDrawerClose }) => {
 				<p>notification</p>
 			</div>
 
-			<div onClick={() => navigate("/login")} className={s.menuItem}>
+			<div onClick={openConfirmLogoutModal} className={s.menuItem}>
 				<div className={s.iconContainer}>
 					<div className={s.logoutIcon} />
 				</div>
@@ -73,6 +79,14 @@ const Menu = ({ onDrawerClose }) => {
 
 				<p onClick={() => handleOpenModal("deactivation")}>deactivation</p>
 			</div>
+
+			{modals[MODALS.generalModal] && (
+				<GeneralModal
+					cb={() => navigate("/login")}
+					actionText="Logout"
+					question="Do you want to Log out of your account?"
+				/>
+			)}
 		</div>
 	);
 };
