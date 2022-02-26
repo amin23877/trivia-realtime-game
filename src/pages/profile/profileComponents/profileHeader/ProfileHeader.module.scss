@@ -71,11 +71,11 @@
 
 .editButtonDesktop {
   cursor: pointer;
-  color: $secondary;
+  color: $secondary !important;
   display: none;
 
   &:hover {
-    color: $secondary;
+    color: $secondary !important;
   }
 
   @include desktop {
