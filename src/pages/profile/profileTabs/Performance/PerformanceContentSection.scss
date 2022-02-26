@@ -8,11 +8,6 @@ $see-more-weight: 500;
   &--contents {
     @include box;
     margin-top: 12px;
-    padding-top: 15px;
-
-    @include desktop {
-      padding-top: 0;
-    }
 
     &__footer {
       @include fontSize($fs-xs ,$fs-l);

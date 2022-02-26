@@ -16,7 +16,7 @@ export const PerformanceLevelCard = ({ data }) => {
 				</div>
 			</div>
 			<div className="level-card--level">
-				<img src={PerformanceLevelIcon} alt="performance level icon" />
+				<img className="level-card--image" src={PerformanceLevelIcon} alt="performance level icon" />
 				<span>{data?.level}</span>
 			</div>
 		</div>
