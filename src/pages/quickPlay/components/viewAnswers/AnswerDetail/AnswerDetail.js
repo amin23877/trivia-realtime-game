@@ -11,6 +11,7 @@ const AnswerDetail = ({
     myInfo,
     rivalInfo,
     index,
+    single,
     handleSetSelectedAnswer,
     setOpenReport
 }) => {
@@ -46,7 +47,7 @@ const AnswerDetail = ({
                         question[myInfo.player]?.answer == question.option1 && <p className="answer-detail__options--selected-answer">You</p>
                     }
                     {
-                        question[rivalInfo.player].answer == question.option1 && <p className="answer-detail__options--selected-answer">{doubleGameReady[rivalInfo.player].username}</p>
+                        (!single && question[rivalInfo?.player].answer == question.option1) && <p className="answer-detail__options--selected-answer">{doubleGameReady[rivalInfo.player].username}</p>
                     }
                     {question.option1}
                 </Button>
@@ -58,7 +59,7 @@ const AnswerDetail = ({
                         question[myInfo.player]?.answer == question.option2 && <p className="answer-detail__options--selected-answer">You</p>
                     }
                     {
-                        question[rivalInfo.player].answer == question.option2 && <p className="answer-detail__options--selected-answer">{doubleGameReady[rivalInfo.player].username}</p>
+                        (!single && question[rivalInfo?.player].answer == question.option2) && <p className="answer-detail__options--selected-answer">{doubleGameReady[rivalInfo.player].username}</p>
                     }
                 </Button>
                 <Button
@@ -69,7 +70,7 @@ const AnswerDetail = ({
                         question[myInfo.player]?.answer == question.option3 && <p className="answer-detail__options--selected-answer">You</p>
                     }
                     {
-                        question[rivalInfo.player].answer == question.option3 && <p className="answer-detail__options--selected-answer">{doubleGameReady[rivalInfo.player].username}</p>
+                        (!single && question[rivalInfo?.player].answer == question.option3) && <p className="answer-detail__options--selected-answer">{doubleGameReady[rivalInfo.player].username}</p>
                     }
                 </Button>
                 <Button
@@ -80,7 +81,7 @@ const AnswerDetail = ({
                         question[myInfo.player]?.answer == question.option4 && <p className="answer-detail__options--selected-answer">You</p>
                     }
                     {
-                        question[rivalInfo.player].answer == question.option4 && <p className="answer-detail__options--selected-answer">{doubleGameReady[rivalInfo.player].username}</p>
+                        (!single && question[rivalInfo?.player].answer == question.option4) && <p className="answer-detail__options--selected-answer">{doubleGameReady[rivalInfo.player].username}</p>
                     }
                 </Button>
             </div>
