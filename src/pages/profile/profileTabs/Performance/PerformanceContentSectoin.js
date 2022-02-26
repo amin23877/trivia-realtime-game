@@ -10,11 +10,15 @@ const PerformanceContentSection = ({ title, seeMoreLink, children }) => {
 	return (
 		<div className="performance-content-section">
 			<p className="profile-performance--title">{title}</p>
+
 			<div className="performance-content-section--contents">
-				{children ? children : null}
-				<div className="performance-content-section--contents__footer">
-					<Link to={seeMoreLink}>See more</Link>
-				</div>
+				{children}
+
+				{children.length > 5 && (
+					<div className="performance-content-section--contents__footer">
+						<Link to={seeMoreLink}>See more</Link>
+					</div>
+				)}
 			</div>
 		</div>
 	);
