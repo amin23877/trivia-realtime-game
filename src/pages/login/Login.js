@@ -8,7 +8,7 @@ import ApiCall from "common/services/ApiCall";
 
 import "./Login.scss";
 
-import imgMain from "assets/images/pics/login-login.svg";
+import imgMain from "assets/images/pics/login.svg";
 
 const Login = () => {
 	const navigate = useNavigate();
