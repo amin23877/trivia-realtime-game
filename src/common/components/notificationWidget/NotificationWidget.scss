@@ -1,59 +1,96 @@
 @import "assets/scss/styles.scss";
 
-.notif-widget {
-  @include fsNormal;
-  padding: 1.4rem var(--space-x) 0;
+$mobile-circle-avatar-size: 32px;
+$desktop-circle-avatar-size: 42px;
 
-  @include desktop {
-    @include fsM;
-  }
+$mobile-square-avatar-width: 35px;
+$desktop-square-avatar-width: 45px;
+$mobile-square-avatar-height: 32px;
+$desktop-square-avatar-height: 42px;
+
+.notif-widget {
+	@include fsNormal;
+	padding: 1.4rem var(--space-x) 0;
+
+	@include desktop {
+		@include fsM;
+	}
 }
 
 .notif-widget-item {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-  margin-bottom: 1rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-bottom: 1rem;
 
-  &__info-wrapper {
-    flex-basis: 150px;
+	&__avatar {
+		width: $mobile-circle-avatar-size;
+		height: $mobile-circle-avatar-size;
+		border-radius: 50%;
 
-    @include desktop {
-      flex-basis: 165px;
-    }
-  }
+		@include desktop {
+			width: $desktop-circle-avatar-size;
+			height: $desktop-circle-avatar-size;
+		}
 
-  &__accept ,&__see-details ,&__reject {
-    cursor: pointer;
-    @include desktop {
-      @include fsL;
-    }
-  }
+		&_square {
+			border-radius: 4px;
+			width: $mobile-square-avatar-width;
+			height: $mobile-square-avatar-height;
 
-  &__desc ,&__accepted ,&__reject {
-    color: $grey-1;
-    font-family: RobotoThin ,'serif';
-    font-weight: 600;
-  }
+			@include desktop {
+				width: $desktop-square-avatar-width;
+				height: $desktop-square-avatar-height;
+			}
+		}
+	}
 
-  &__see-details ,&__accept {
-    color: $primary;
-  }
+	&__info-wrapper {
+		flex-basis: 150px;
 
-  &__see-details ,&__controls ,&__accepted {
-    margin-left: auto;
-  }
+		@include desktop {
+			flex-basis: 165px;
+		}
+	}
 
-  &__controls {
-    display: inline-flex;
-    gap: 1.25rem;
-  }
+	&__accept,
+	&__see-details,
+	&__reject {
+		cursor: pointer;
+		@include desktop {
+			@include fsL;
+		}
+	}
 
-  &__desc {
-    line-height: 1rem;
+	&__desc,
+	&__accepted,
+	&__reject {
+		color: $grey-1;
+		font-family: RobotoThin, "serif";
+		font-weight: 600;
+	}
 
-    @include desktop {
-      line-height: 1.25rem;
-    }
-  }
+	&__see-details,
+	&__accept {
+		color: $primary;
+	}
+
+	&__see-details,
+	&__controls,
+	&__accepted {
+		margin-left: auto;
+	}
+
+	&__controls {
+		display: inline-flex;
+		gap: 1.25rem;
+	}
+
+	&__desc {
+		line-height: 1rem;
+
+		@include desktop {
+			line-height: 1.25rem;
+		}
+	}
 }

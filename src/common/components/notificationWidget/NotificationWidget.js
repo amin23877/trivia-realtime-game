@@ -1,46 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import EmptyList from "common/components/empties/EmptyList";
-import Avatar from "@material-ui/core/Avatar";
-import { useRequest } from "common/hooks/useRequest";
 
 import "./NotificationWidget.scss";
 
 // images
-import { IMAGE_URL } from "common/values/CORE";
-import { Link } from "react-router-dom";
+import userImg from "assets/images/test/profile-pic-2.jpg";
+import notifBanner from "assets/images/test/notification-banner.jpg";
 
-function UserNotif({ name, image, id }) {
-	const [accepted, setAccepted] = useState(false);
+/*
+ *   fake data
+ * */
+const notifications = [
+	{ type: "user", image: userImg, name: "tanaz-MRD", accepted: false },
+	{ type: "user", image: userImg, name: "tanaz-MRD", accepted: true },
+	{ type: "league", image: notifBanner, name: "Chemistry League started on your favorite topic" },
+];
 
-	const { fetcher: acceptRequest, success: acceptSuccess } = useRequest(`user/${id}/accept`, { method: "post" });
-	const { fetcher: rejectRequest } = useRequest(`user/${id}/reject`, { method: "DELETE" });
-
-	const accept = () => acceptRequest();
-	const reject = () => rejectRequest();
-
-	useEffect(() => {
-		setAccepted(acceptSuccess);
-	}, [acceptSuccess]);
-
+function UserNotif({ name, image, accepted }) {
 	return (
 		<div className="notif-widget-item">
-			<Link className="d-flex gap-2" to={"/profile/" + id}>
-				<Avatar src={IMAGE_URL + encodeURI(image)} size={{ mobile: 34, desktop: 44 }} />
-
-				<div className="notif-widget-item__info-wrapper">
-					<p>{name}</p>
-					<p className="notif-widget-item__desc">{!accepted && "Wants to be your friend"}</p>
-				</div>
-			</Link>
-
+			<img className="notif-widget-item__avatar" alt="notif-img" src={image} />
+			<div className="notif-widget-item__info-wrapper">
+				<p>{name}</p>
+				<p className="notif-widget-item__desc">{!accepted && "Wants to be your friend"}</p>
+			</div>
 			{!accepted ? (
 				<div className="notif-widget-item__controls">
-					<span onClick={accept} className="notif-widget-item__accept">
-						Accept
-					</span>
-					<span onClick={reject} className="notif-widget-item__reject">
-						Reject
-					</span>
+					<span className="notif-widget-item__accept">Accept</span>
+					<span className="notif-widget-item__reject">Reject</span>
 				</div>
 			) : (
 				<p className="notif-widget-item__accepted">is your friend Now!</p>
@@ -72,13 +59,15 @@ function LeagueNotif({ name, image }) {
  * 	this component get notifications from server and render notifications list
  * */
 const NotificationWidget = () => {
-	const { response, success } = useRequest("user/me/requests");
-
-	return success ? (
+	return notifications ? (
 		<ul className="notif-widget">
-			{response.map((notif, index) => (
-				<UserNotif name={notif.username} image={notif.avatar} id={notif._id} key={index} />
-			))}
+			{notifications.map((notif, index) =>
+				notif.type === "user" ? (
+					<UserNotif name={notif.name} image={notif.image} accepted={notif.accepted} key={index} />
+				) : (
+					<LeagueNotif key={index} name={notif.name} image={notif.image} />
+				)
+			)}
 		</ul>
 	) : (
 		<EmptyList />
