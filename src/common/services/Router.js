@@ -8,7 +8,8 @@ import Menu from "pages/menu/Menu";
 import Home from "pages/home/Home";
 import Login from "pages/login/Login";
 import Leagues from "pages/leagues/Leagues";
-import Profile from "pages/profile/Profile";
+import UserProfile from "pages/profile/UserProfile";
+import OthersProfile from "pages/profile/OthersProfile";
 import QuickPlay from "pages/quickPlay/QuickPlay";
 import Rewards from "pages/menuPages/rewards/Rewards";
 import ProfileEdit from "pages/profile-edit/ProfileEdit";
@@ -39,9 +40,8 @@ const RouterConfig = () => {
 						<Route exact path="/leagues" element={<Leagues />} />
 						<Route exact path="/search" element={<SearchExplorePage />} />
 
-						<Route exact path="/profile" element={<Profile />}>
-							<Route path=":id" element={<Profile />} />
-						</Route>
+						<Route exact path="/profile" element={<UserProfile />} />
+						<Route exact path="/profile/:id" element={<OthersProfile />} />
 					</Route>
 				</Route>
 
