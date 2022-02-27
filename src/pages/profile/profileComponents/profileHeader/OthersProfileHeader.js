@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ProfileHeaderCard from "./ProfileHeaderCard";
 import { useRequest } from "common/hooks/useRequest";
@@ -10,33 +10,64 @@ import { ReactComponent as BackIcon } from "assets/images/icons/arrow-back-frien
 
 // this component handle variants of friend status
 const FriendActionButton = ({ isFriend, id }) => {
-	const { fetcher: addRequest, success: addSuccess } = useRequest(`user/${id}/add`, { method: "post" });
+	const [buttonStatus, setButtonStatus] = useState();
 
-	const { fetcher: removeFriend, success: removeSuccess } = useRequest(`user/${id}/remove`, { method: "post" });
+	const { fetcher: makeRequest, status: makeRequestStatus } = useRequest(`user/${id}/request`, { method: "post" });
 
-	const sendAddRequest = () => {
-		addRequest();
+	const { fetcher: removeRequest, status: removeRequestStatus } = useRequest(`user/${id}/request`, {
+		method: "DELETE",
+	});
+
+	const { fetcher: removeFriend, status: removeFriendStatus } = useRequest(`user/${id}/friend`, {
+		method: "DELETE",
+	});
+
+	const handleMakeRequest = () => {
+		makeRequest();
+	};
+
+	const handleRemoveRequest = () => {
+		removeRequest();
 	};
 
 	const handleRemoveFriend = () => {
 		removeFriend();
 	};
 
-	if (isFriend && !removeSuccess)
+	useEffect(() => {
+		if (isFriend) {
+			setButtonStatus("remove");
+		} else {
+			setButtonStatus("add");
+		}
+
+		if (removeFriendStatus === "success") return setButtonStatus("add");
+		if (removeRequestStatus === "success") return setButtonStatus("add");
+		if (makeRequestStatus === "success") return setButtonStatus("requested");
+	}, [isFriend, makeRequestStatus, removeFriendStatus, removeRequestStatus]);
+
+	if (buttonStatus === "remove")
 		return (
 			<div onClick={handleRemoveFriend} className={s.removeFriendButton}>
 				Remove
 			</div>
 		);
 
-	if (!isFriend && !addSuccess)
+	if (buttonStatus === "requested")
 		return (
-			<div onClick={sendAddRequest} className={s.addFriendsButton}>
+			<div onClick={handleRemoveRequest} className={s.requestedFriendsButton}>
+				Requested
+			</div>
+		);
+
+	if (buttonStatus === "add")
+		return (
+			<div onClick={handleMakeRequest} className={s.addFriendsButton}>
 				Add Friend
 			</div>
 		);
 
-	return <div className={s.requestedFriendsButton}>Requested</div>;
+	return null;
 };
 
 const OthersProfileHeader = ({ id }) => {
@@ -56,7 +87,7 @@ const OthersProfileHeader = ({ id }) => {
 					<BackIcon />
 				</div>
 
-				<FriendActionButton isFriend={response.friend} id={id} />
+				{/*<FriendActionButton isFriend={response.friend} id={id} />*/}
 			</ProfileHeaderCard>
 		)
 	);

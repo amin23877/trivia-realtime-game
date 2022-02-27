@@ -1,15 +1,15 @@
 import React from "react";
 import Avatar from "common/components/UI/Avatar";
-import { NavLink, useNavigate } from "react-router-dom";
+import ModalConfirmDeactivation from "common/components/modals/ModalConfirmDeactivation";
+import ModalLogoutConfirm from "common/components/modals/ModalLogoutConfirm";
+import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { SET_GAME_SELECTION_TYPE, SET_MODALS, SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
-import { MODALS } from "common/values/MODALS";
+import { SET_GAME_SELECTION_TYPE, SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
 
 import "./Sidebar.scss";
 
 // image
 import { IMAGE_URL } from "common/values/CORE";
-import GeneralModal from "pages/modals/GeneralModal";
 
 const menuItems = [
 	{ name: "Home", route: "/", icon: "home-icon" },
@@ -21,17 +21,7 @@ const menuItems = [
 
 const Sidebar = () => {
 	const user = useSelector((state) => state.stateUser.userInfo);
-	const modals = useSelector((state) => state.stateGeneral.modals);
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
-
-	const openDeactivateModal = () => {
-		dispatch(SET_MODALS({ [MODALS.deactivation]: true }));
-	};
-
-	const openConfirmLogoutModal = () => {
-		dispatch(SET_MODALS({ [MODALS.generalModal]: true }));
-	};
 
 	const handleQuickPlay = () => {
 		dispatch(SET_GAME_SELECTION_TYPE({ type: "quickPlay", id: null }));
@@ -70,30 +60,27 @@ const Sidebar = () => {
 					</NavLink>
 				))}
 
-				<li
-					onClick={openConfirmLogoutModal}
-					className="sidebar-menu-item sidebar-menu-item_hover-effect-purple"
-				>
-					<div className="logout-icon" />
-					Logout
-				</li>
-
-				<li
-					onClick={openDeactivateModal}
-					className="sidebar-menu-item sidebar-menu-item_red sidebar-menu-item_hover-effect-red"
-				>
-					<div className="deactivation-icon" />
-					deactivation
-				</li>
-			</ul>
-
-			{modals[MODALS.generalModal] && (
-				<GeneralModal
-					cb={() => navigate("/login")}
-					actionText="Logout"
-					question="Do you want to Log out of your account?"
+				<ModalLogoutConfirm
+					renderButton={(handleOpen) => (
+						<li onClick={handleOpen} className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
+							<div className="logout-icon" />
+							Logout
+						</li>
+					)}
 				/>
-			)}
+
+				<ModalConfirmDeactivation
+					renderButton={(handleOpen) => (
+						<li
+							onClick={handleOpen}
+							className="sidebar-menu-item sidebar-menu-item_red sidebar-menu-item_hover-effect-red"
+						>
+							<div className="deactivation-icon" />
+							deactivation
+						</li>
+					)}
+				/>
+			</ul>
 		</div>
 	);
 };

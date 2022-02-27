@@ -13,6 +13,10 @@ import ProfileFriends from "pages/profile/profileTabs/Friends/ProfileFriends";
 // --- assets
 import "./Profile.scss";
 
+// 'friends' tabs only shows in own user profile
+const userTabs = ["Favorite Topics", "Performance", "Friends"];
+const othersTabs = ["Favorite Topics", "Performance"];
+
 /*
  * 	this component show user profile if there is no 'id'
  * 	and show others profile if user id exist
@@ -32,7 +36,7 @@ const Profile = () => {
 
 			<div className="profile-root__tabs-container">
 				<Tabs
-					tabs={["Favorite Topics", "Performance", "Friends"]}
+					tabs={id ? othersTabs : userTabs}
 					value={activeTab}
 					onChange={handleChangeTab}
 					variant="indicator"
@@ -47,9 +51,11 @@ const Profile = () => {
 				<ProfilePerformance id={id ?? "me"} />
 			</TabPanel>
 
-			<TabPanel className="profile--contents profile--contents_friend" activeTab={activeTab} value={2}>
-				<ProfileFriends id={id ?? "me"} />
-			</TabPanel>
+			{!id && (
+				<TabPanel className="profile--contents profile--contents_friend" activeTab={activeTab} value={2}>
+					<ProfileFriends />
+				</TabPanel>
+			)}
 		</div>
 	);
 };

@@ -13,27 +13,22 @@ const ProfilePerformance = ({ id }) => {
 
 	const { response, success } = useRequest(`user/${id}/performance`);
 
-	console.log(response);
 	return (
 		success && (
 			<div className="profile-performance">
 				<PerformanceLevelCard data={performanceData} />
 
-				{response.performanceLeague?.length > 0 && (
-					<PerformanceContentSection title="History Of Participating Leagues" seeMoreLink="/">
-						{response.performanceLeague?.map((el, index) => (
-							<ParticipatingHistoryCard key={index} data={el} />
-						))}
-					</PerformanceContentSection>
-				)}
+				<PerformanceContentSection title="History Of Participating Leagues" seeMoreLink="/">
+					{response.leaguePerformance?.map((el, index) => (
+						<ParticipatingHistoryCard key={index} data={el} />
+					))}
+				</PerformanceContentSection>
 
-				{response.performanceTopic?.length > 0 && (
-					<PerformanceContentSection title="Played Topics History" seeMoreLink="/">
-						{response.performanceTopic.map((el, index) => (
-							<PlayedHistoryCard key={index} data={el} />
-						))}
-					</PerformanceContentSection>
-				)}
+				<PerformanceContentSection title="Played Topics History" seeMoreLink="/">
+					{response.topicPerformance.map((el, index) => (
+						<PlayedHistoryCard key={index} data={el} />
+					))}
+				</PerformanceContentSection>
 			</div>
 		)
 	);

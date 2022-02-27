@@ -9,9 +9,10 @@ import s from "./Rewards.module.scss";
 //images
 import { ReactComponent as ReceivedIcon } from "assets/images/icons/Circle_Check.svg";
 import { ReactComponent as InProgressIcon } from "assets/images/icons/Arrow_Reload_02.svg";
-import profilePic from "assets/images/test/profile-pic-2.jpg";
 import afghanWirelessLogo from "assets/images/logo/afghan-wireless-logo.png";
 import backIcon from "assets/images/icons/arrow-back-friend-profile.svg";
+import { useSelector } from "react-redux";
+import { IMAGE_URL } from "common/values/CORE";
 
 /*
  * 	fake transaction
@@ -46,12 +47,14 @@ const rewards = [
 ];
 
 const RewardMobileHeader = () => {
+	const user = useSelector((state) => state.stateUser.userInfo);
+
 	const navigate = useNavigate();
 
 	const handleGoBack = () => {
 		navigate(-1);
 	};
-
+	console.log(user);
 	return (
 		<div className={s.mobileHeader}>
 			<div className="d-flex align-items-center">
@@ -62,11 +65,11 @@ const RewardMobileHeader = () => {
 
 			<div className="d-flex gap-2">
 				<div>
-					<div className={s.username}>sarah milani</div>
-					<div className={s.phone}>+93 700 502257</div>
+					<div className={s.username}>{user.username}</div>
+					<div className={s.phone}>{user.phone}</div>
 				</div>
 
-				<Avatar src={profilePic} size={34} />
+				<Avatar src={IMAGE_URL + encodeURI(user.avatar)} size={34} />
 			</div>
 		</div>
 	);

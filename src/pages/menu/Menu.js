@@ -1,39 +1,24 @@
-// Reacts
 import React from "react";
 
 // Hooks
 // Redux
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 // Components, Services, Functions
 import { IMAGE_URL } from "common/values/CORE";
 import Avatar from "common/components/UI/Avatar";
-import { MODALS } from "common/values/MODALS";
-import { SET_MODALS } from "redux/actions/mainActions/generalActions";
+import ModalConfirmDeactivation from "common/components/modals/ModalConfirmDeactivation";
+import ModalLogoutConfirm from "common/components/modals/ModalLogoutConfirm";
 
 // Styles, Icons, Images
 import s from "./Menu.module.scss";
 import { ReactComponent as CloseIcon } from "assets/images/icons/close-drawer-icon.svg";
-import GeneralModal from "pages/modals/GeneralModal";
 
 const Menu = ({ onDrawerClose }) => {
 	const navigate = useNavigate();
 
-	const dispatch = useDispatch();
-
 	const user = useSelector((state) => state.stateUser.userInfo);
-	const modals = useSelector((state) => state.stateGeneral.modals);
-
-	const handleOpenModal = (value) => {
-		// #modalUse step1
-		onDrawerClose();
-		dispatch(SET_MODALS({ [MODALS[value]]: true }));
-	};
-
-	const openConfirmLogoutModal = () => {
-		dispatch(SET_MODALS({ [MODALS.generalModal]: true }));
-	};
 
 	return (
 		<div className={s.menu}>
@@ -64,29 +49,29 @@ const Menu = ({ onDrawerClose }) => {
 				<p>notification</p>
 			</div>
 
-			<div onClick={openConfirmLogoutModal} className={s.menuItem}>
-				<div className={s.iconContainer}>
-					<div className={s.logoutIcon} />
-				</div>
+			<ModalLogoutConfirm
+				renderButton={(handleOpen) => (
+					<div onClick={handleOpen} className={s.menuItem}>
+						<div className={s.iconContainer}>
+							<div className={s.logoutIcon} />
+						</div>
 
-				<p>Logout</p>
-			</div>
+						<p>Logout</p>
+					</div>
+				)}
+			/>
 
-			<div className={s.deactivation}>
-				<div className={s.iconContainer}>
-					<div className={s.deactivationIcon} onClick={() => handleOpenModal("deactivation")} />
-				</div>
+			<ModalConfirmDeactivation
+				renderButton={(handleOpen) => (
+					<div onClick={handleOpen} className={s.deactivation}>
+						<div className={s.iconContainer}>
+							<div className={s.deactivationIcon} />
+						</div>
 
-				<p onClick={() => handleOpenModal("deactivation")}>deactivation</p>
-			</div>
-
-			{modals[MODALS.generalModal] && (
-				<GeneralModal
-					cb={() => navigate("/login")}
-					actionText="Logout"
-					question="Do you want to Log out of your account?"
-				/>
-			)}
+						<p>deactivation</p>
+					</div>
+				)}
+			/>
 		</div>
 	);
 };
