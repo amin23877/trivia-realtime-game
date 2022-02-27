@@ -12,26 +12,28 @@ const ChangeUsername = ({ value, onChange }) => {
 	const username = useSelector((state) => state.stateUser.userInfo.username);
 
 	return (
-		<form className="change-info-form">
-			<label className="change-info-form__label" htmlFor="username">
-				User Name
-			</label>
+		<div className="change-info-form-container">
+			<form className="change-info-form">
+				<label className="change-info-form__label" htmlFor="username">
+					User Name
+				</label>
 
-			<input
-				id="username"
-				className="change-info-form__input"
-				value={value}
-				onChange={onChange}
-				placeholder="User name"
-				defaultValue={username}
-			/>
+				<input
+					id="username"
+					className="change-info-form__input"
+					value={value}
+					onChange={onChange}
+					placeholder="User name"
+					defaultValue={username}
+				/>
 
-			<p className="change-info-form__details">
-				At least 4 characters including uppercase and lowercase letters, numbers, dots, and line.
-			</p>
+				<p className="change-info-form__details">
+					At least 4 characters including uppercase and lowercase letters, numbers, dots, and line.
+				</p>
 
-			<SaveChangeBtn newUsername={value} className="d-none d-xl-inline mt-4" />
-		</form>
+				<SaveChangeBtn newUsername={value} className="d-none d-xl-inline mt-4" />
+			</form>
+		</div>
 	);
 };
 

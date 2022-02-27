@@ -6,6 +6,8 @@ import "./ChangeAvatar.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { IMAGE_URL } from "common/values/CORE";
 import { updateUser } from "redux/actions/userActions/userActions";
+import { ReactComponent as EditIcon } from "assets/images/icons/edit.svg";
+import { ReactComponent as TrashIcon } from "assets/images/icons/delete-icon.svg";
 
 /*
  * 	this component handle user avatar change
@@ -24,19 +26,22 @@ const ChangeAvatar = () => {
 	};
 
 	return (
-		<div className="ml-5">
+		<div className="change-avatar-container">
+			<Avatar src={IMAGE_URL + encodeURI(avatar)} size={{ mobile: 72, desktop: 156 }} />
+
 			<ChangeProfilePicModal
 				onRemove={removeAvatar}
 				onChange={changeAvatar}
 				renderButton={(handleOpen) => (
-					<Avatar
-						onClick={handleOpen}
-						src={IMAGE_URL + encodeURI(avatar)}
-						size={{ mobile: 72, desktop: 100 }}
-						className="change-avatar-btn"
-					/>
+					<span onClick={handleOpen} className="change-avatar-btn">
+						<EditIcon />
+					</span>
 				)}
 			/>
+
+			<span className="change-avatar-btn">
+				<TrashIcon />
+			</span>
 		</div>
 	);
 };

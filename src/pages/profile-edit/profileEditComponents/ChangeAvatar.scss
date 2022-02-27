@@ -1,21 +1,30 @@
 @import '../../../assets/scss/styles';
 
-.change-avatar-btn {
-  cursor: pointer;
-  position: relative;
-  width: max-content;
-  margin-left: 28px;
-  transform: translateY(-50%);
+.change-avatar-container {
+  @include limitContent;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 
   @include desktop {
-    margin-left: 54px;
+    padding: 30px 0;
   }
+}
 
-  &:after {
-    content: url("/assets/images/icons/camera-icon.svg");
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50% ,-50%);
+.change-avatar-btn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00000040;
+  backdrop-filter: blur(4px);
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+
+  @include desktop {
+    width: 40px;
+    height: 40px;
   }
 }
