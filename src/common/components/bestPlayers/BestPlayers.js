@@ -24,7 +24,7 @@ const BestPlayers = ({ theBest = [], className }) => {
 						<div className="d-flex flex-column flex-xl-row align-items-center justify-content-center">
 							<p className={s.points}>{`${el?.point ?? el?.xp} points`}</p>
 
-							{el?.reward && <p className={s.rewards}>$ {el?.reward}</p>}
+							{el?.reward && <p className={s.rewards}>{el?.reward} AFN</p>}
 						</div>
 					</div>
 				))}

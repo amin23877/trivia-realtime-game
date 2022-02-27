@@ -92,7 +92,7 @@ const LeaguesInner = () => {
 									)} one:`}</span>
 								)}
 
-								<span className={s.award}>$ {el.reward}</span>
+								<span className={s.award}>{el.reward} AFN</span>
 							</p>
 						))}
 					</div>

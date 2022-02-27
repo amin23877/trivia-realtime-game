@@ -108,7 +108,7 @@ const CardLeagueInfo = ({ info, hasEnterBtn = true, type = TYPE_LEAGUE_HOME.GENE
 					</div>
 				)}
 
-				<p className="price">{`$${rewards}`}</p>
+				<p className="price">{`${rewards} AFN`}</p>
 
 				{!expired ? (
 					<div className="d-flex justify-content-start align-items-center players">
