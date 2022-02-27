@@ -1,6 +1,8 @@
+@import 'assets/scss/color';
+
 @keyframes borderColor {
     50% {
-        border-color: #f24973;
+        border-color: $secondary;
     }
     100% {
         border-color: #fff;
@@ -17,6 +19,9 @@
         top: 0;
         left: 0;
         z-index: 3;
+        background: radial-gradient(86.81% 86.81% at 50% 50%, #1E98E3 0%, #004BA2 79.67%);
+
+
 
     }   
     & > img {
@@ -36,7 +41,7 @@
         animation-iteration-count: infinite;
         animation-fill-mode: forwards;
         @media (min-width: 1200px) {
-            width: 70%;
+            width: 45%;
             margin: 0 auto;
         }   
         &:after {

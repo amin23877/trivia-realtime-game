@@ -1,3 +1,5 @@
+@import '../../../../assets/scss/color';
+
 .view-answers {
     background-color: #e5e5e5;
     overflow-y: auto;
@@ -16,7 +18,7 @@
             margin-right: 20px;
         }
         p {
-            color: #6d6be6;
+            color: $primary;
             font-size: 14px;
         }
     }

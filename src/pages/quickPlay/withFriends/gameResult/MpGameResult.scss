@@ -1,5 +1,7 @@
+@import 'assets/scss/color';
+
 .mp-game-result {
-    background-color: #6d6be6;
+    background-color: $primary;
     padding: 19px 24px 0;
     & .mt-38px {
         margin-top: 38px !important;
@@ -116,7 +118,7 @@
                 & > p {
                     font-size: 10px;
                     &:nth-child(2) {
-                        color: #6d6be6;
+                        color: $primary;
                     }
                     &:nth-child(3) {
                         color: #f24973;
@@ -131,11 +133,11 @@
                     & > p {
                         font-size: 10px;
                         &:nth-child(2) {
-                            color: #6d6be6;
+                            color: $primary;
                             margin-right: 10px;
                         }
                         &:nth-child(3) {
-                            color: #f83f5f;
+                            color: $secondary;
                         }
                     }
                 }
@@ -157,8 +159,8 @@
             border-radius: 8px !important;
         }
         &--play-again {
-            background-color: #f83f5f;
-            box-shadow: 0px 3px 6px 0px #f83f5f4d;
+            background-color: $secondary !important;
+            box-shadow: 0px 3px 6px 0px $secondary4d;
             display: block !important;
             color: #fff !important;
         }

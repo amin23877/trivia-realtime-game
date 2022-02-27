@@ -2,7 +2,7 @@ import { useState } from "react";
 import './WaitForStart.scss'
 import explosion from 'assets/images/icons/explosion.svg';
 import { IMAGE_URL } from "common/values/CORE";
-
+import personsIcon from 'assets/images/icons/twoWaitPerson.svg'
 const WaitForStart = ({ doubleGameReady }) => {
     console.log('doubleGameReady', doubleGameReady)
     const [rivalInfo, setRivalInfo] = useState(doubleGameReady.player1.phone == localStorage.getItem('phone') ? doubleGameReady.player2 : doubleGameReady.player1)
@@ -18,7 +18,7 @@ const WaitForStart = ({ doubleGameReady }) => {
                     <img src={IMAGE_URL + doubleGameReady.player1.avatar} />
                 </div>
                 <div className="wait-for-start__user-info--name">
-                    <p>You - {myInfo.phone}</p>
+                    <p>You</p>
                     <p>Level {myInfo.level}</p>
                 </div>
             </div>
@@ -32,12 +32,12 @@ const WaitForStart = ({ doubleGameReady }) => {
                     <img src={IMAGE_URL + myInfo.avatar} />
                 </div>
                 <div className="wait-for-start__user-info--name">
-                    <p>{rivalInfo.username} - {rivalInfo.phone}</p>
+                    <p>{rivalInfo.username}</p>
                     <p>Level {rivalInfo.level}</p>
                 </div>
             </div>
-
-            {/* <p style={{color:'#fff'}}>{localStorage.getItem('quickPlay-token')}</p> */}
+            <img src={personsIcon}/>
+            <p style={{color:'#fff'}}>{localStorage.getItem('quickPlay-token')}</p>
         </div>
     )
 }

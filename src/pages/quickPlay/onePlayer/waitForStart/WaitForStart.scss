@@ -1,7 +1,8 @@
 
+@import '../../../../assets/scss/color';
 
 .wait-for-start-single {
-    background-color: #282680;
+    background-color: $waitBg;
     // background-image: url('../../../../assets/images/backgrounds/singleGameBg.svg');
     padding-top:117px;
     background-position: center;

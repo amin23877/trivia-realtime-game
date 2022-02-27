@@ -1,5 +1,7 @@
+@import '../../../../assets/scss/color';
+
 .categories-list {
-    background-color: #6d6be6;
+    background-color: $primary;
     background-image: url("../../../../assets/images/backgrounds/categoriesPattern.svg");
     padding: 24px;
     margin:0 auto;

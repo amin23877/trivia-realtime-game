@@ -1,5 +1,7 @@
+@import 'assets/scss/color';
+
 .game-result {
-    background-color: #6d6be6;
+    background-color: $primary;
     padding: 19px 24px 0;
        background-image: url('../../../../assets/images/backgrounds/resultBg.svg');
         background-position: center center;
@@ -111,13 +113,13 @@
                 &:nth-child(1) {
                     background-color: #fff;
                     & > p {
-                        color: #f83f5f;
+                        color: $secondary;
                     }
                 }
                 &:nth-child(2) {
                     background-color: #eeedf7;
                     & > p {
-                        color: #6d6be6;
+                        color: $primary;
                     }
                 }
             }
@@ -164,14 +166,14 @@
         text-transform: capitalize !important;
     }
     &__play-again {
-        background-color: #f83f5f !important;
-        box-shadow: 0px 3px 6px 0px #f83f5f4d;
+        background-color: $secondary !important;
+        box-shadow: 0px 3px 6px 0px $secondary4d;
         margin: 0 auto 8px !important;
         display: block !important;
         color: #fff !important;
     }
     &__new-opponent {
-        color: #f83f5f !important;
+        color: $secondary !important;
         background-color: #fff !important;
         box-shadow: 0px 3px 6px 0px #6761624d;
         margin: 0 auto 15px !important;
