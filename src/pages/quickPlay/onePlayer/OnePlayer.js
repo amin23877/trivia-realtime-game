@@ -92,6 +92,7 @@ const OnePlayer = ({ type = "quickPlay" }) => {
 			} else {
 				console.log("socketId Not Found", authData);
 				alert("socket id not detected");
+				document.location.reload();
 			}
 		}
 	}, [authData, id, selectedCategory, socket, type]);
@@ -141,8 +142,8 @@ const OnePlayer = ({ type = "quickPlay" }) => {
 	};
 	const handlePlayAgain = () => {
 		if (type == "quickPlay") {
-			setSelectedCategory(null);
-			setGameState("showCategories");
+			setSelectedCategory({...selectedCategory});
+			setGameState("showWaitForStart");
 		} else {
 			setSelectedCategory({ _id: id });
 			setGameState("showWaitForStart");
@@ -182,7 +183,13 @@ const OnePlayer = ({ type = "quickPlay" }) => {
 				/>
 			)}
 			{gameState == "gameResult" && (
-				<GameResult handlePlayAgain={handlePlayAgain} myInfo={myInfo} gameResultData={gameResultData} />
+				<GameResult
+					handlePlayAgain={handlePlayAgain}
+					myInfo={myInfo}
+					gameResultData={gameResultData}
+					authData={authData}
+
+				/>
 			)}
 		</>
 	);

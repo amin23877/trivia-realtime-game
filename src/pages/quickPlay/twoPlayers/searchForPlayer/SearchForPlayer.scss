@@ -23,7 +23,7 @@
         font-size: 16px;
         font-weight: 500;
         margin-bottom: 30px !important;
-        @media (min-width: 1366px) {
+        @media (min-width: 1200px) {
             font-size: 20px;
         }
     }
@@ -34,14 +34,14 @@
         justify-content: center;
         height: 200px;
         width: 100%;
-        @media (min-width: 1366px) {
+        @media (min-width: 1200px) {
             height: 400px;
         }
         &--ring {
             position: absolute;
             z-index: 1;
             animation: rotateRingAnimation 6s linear infinite;
-            @media (min-width: 1366px) {
+            @media (min-width: 1200px) {
                 height: 100%;
             }
         }
@@ -49,7 +49,7 @@
             position: absolute;
             z-index: 0;
             bottom: 7px;
-            @media (min-width: 1366px) {
+            @media (min-width: 1200px) {
                 height: 100%;
             }
         }
@@ -63,7 +63,7 @@
         color: #fff !important;
         text-transform: capitalize !important;
         font-size: 14px !important;
-        @media (min-width: 1366px) {
+        @media (min-width: 1200px) {
             width: 195px !important;
             height: 44px !important;
             font-size: 16px !important;

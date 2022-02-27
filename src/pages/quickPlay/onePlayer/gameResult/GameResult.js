@@ -4,19 +4,20 @@ import { Button } from "@material-ui/core";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import userIcon from 'assets/images/icons/footer-profile.svg';
 
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { IMAGE_URL } from "common/values/CORE";
 
-const GameResult = ({ myInfo, gameResultData,handlePlayAgain }) => {
+const GameResult = ({ myInfo, authData, gameResultData, handlePlayAgain }) => {
     const navigate = useNavigate();
 
     return (
         <div className="game-result w-100 h-100">
             <div className="game-result__avatar game-result__avatar-center mt-38px mb-56px">
-               
+
                 <div className={`game-result__avatar--image flex-center`}>
-                   
+
                     <div className={`game-result__avatar--image--inner game-result__avatar--image--winner-ring`}>
-                        <img src={userIcon} />
+                        <img src={IMAGE_URL + authData.avatar} />
                     </div>
                     <p className={`game-result__avatar--image--name`}>{gameResultData?.message}</p>
 

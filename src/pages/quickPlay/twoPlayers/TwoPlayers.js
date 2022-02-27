@@ -97,6 +97,8 @@ const TwoPlayers = ({ type = "quickPlay" }) => {
 			} else {
 				console.log("socketId Not Found", socketId);
 				alert("socket id not detected");
+				document.location.reload();
+
 			}
 		}
 	}, [selectedCategory]);
