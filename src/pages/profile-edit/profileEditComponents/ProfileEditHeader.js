@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 //----assets
 import "pages/profile-edit/profileEditComponents/ProfileEditHeader.scss";
@@ -13,7 +12,7 @@ const ProfileEditHeader = ({ newUsername }) => {
 	return (
 		<header className="edit-header">
 			<div className="edit-header__left-side">
-				<span onClick={() => navigate("/profile/favorite-topics")} className="edit-header__back">
+				<span onClick={() => navigate(-1)} className="edit-header__back">
 					<img src={ArrowLeft} alt="go back" />
 				</span>
 
@@ -23,13 +22,6 @@ const ProfileEditHeader = ({ newUsername }) => {
 			<SaveChangeBtn newUsername={newUsername} />
 		</header>
 	);
-};
-
-ProfileEditHeader.propTypes = {
-	data: PropTypes.object,
-	photoCallBack: PropTypes.func,
-	onSaveChanges: PropTypes.func,
-	onDelete: PropTypes.func,
 };
 
 export default ProfileEditHeader;
