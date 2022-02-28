@@ -1,3 +1,5 @@
+@import '../../../../assets/scss/color';
+
 .show-question {
     background-color: #f9f9f9;
     @media (min-width: 1200px) {
@@ -14,7 +16,7 @@
     &__header {
         height: 40px;
         width: 100%;
-        background-color: #6d6be6;
+        background-color: $primary;
         padding: 0 24px;
         display: flex;
         align-items: center;
@@ -59,6 +61,7 @@
             direction: rtl;
         }
     }
+    
     &__question {
         width: calc(100% - 48px);
         margin: 36px auto 18px;
@@ -68,10 +71,11 @@
         padding: 0 12px;
         @media (min-width: 1200px) {
             max-width: 826px;
-            height: 349px;
+            height: 220px;
             padding: 0 24px 24px;
         }
         &--text {
+            text-align: center;
             @media (min-width: 1200px) {
                 font-size: 18px;
                 text-align: center;
@@ -81,7 +85,7 @@
             width: 78px;
             height: 20px;
             margin: 0 auto 24px;
-            background-color: #6d6be6;
+            background-color: $primary;
             border-radius: 0 0 8px 8px;
             color: #fff;
             text-align: center;
@@ -122,7 +126,7 @@
             }
         }
         &--progressbar {
-            box-shadow: 0px 2px 4px 0px #6d6be626;
+            box-shadow: 0px 2px 4px 0px $primary26;
             width: 100%;
             height: 18px;
             background: #eeedf7;
@@ -165,7 +169,7 @@
             font-size: 12px !important;
             box-shadow: 0px 2px 4px 0px #00000026;
             @media (min-width: 1200px) {
-                height: 190px !important;
+                height: 150px !important;
                 border-radius: 16px !important;
                 font-size: 18px !important;
             }
@@ -188,7 +192,7 @@
             position: absolute;
             top: 5px;
             left: 5px;
-            color: #6d6be6;
+            color: $primary;
             font-size: 8px;
         }
     }

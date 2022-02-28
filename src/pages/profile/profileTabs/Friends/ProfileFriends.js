@@ -9,8 +9,8 @@ import Search from "common/components/UI/Search";
 import EmptyFriendsList from "common/components/empties/EmptyFriendsList";
 import FriendCard from "pages/profile/profileTabs/Friends/FriendCard";
 
-const ProfileFriends = ({ id }) => {
-	const { response: friends, success } = useRequest(`/user/${id}/friends`);
+const ProfileFriends = () => {
+	const { response: friends, success } = useRequest(`/user/me/friends`);
 
 	if (success && !friends.length) return <EmptyFriendsList />;
 
@@ -20,9 +20,9 @@ const ProfileFriends = ({ id }) => {
 				<Search cb={(value) => console.log(value)} />
 
 				<div className="profile-friend__list">
-					{/*{friends?.map((el, index) => (*/}
-					{/*	<FriendCard key={index} index={index} data={el.users[0]} />*/}
-					{/*))}*/}
+					{friends?.map((el, index) => (
+						<FriendCard key={index} index={index} data={el} />
+					))}
 				</div>
 			</div>
 		)

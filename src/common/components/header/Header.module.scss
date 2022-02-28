@@ -26,16 +26,21 @@
 }
 
 .menuIcon {
-  @include svg-icon('/assets/images/icons/header-menu.svg' ,100% ,24px);
+  @include svg-icon('/assets/images/icons/header-menu.svg', 100%, 24px);
   @include svg-icon-color($primary);
 }
 
 .logo {
-  @include svg-icon('/assets/images/icons/header-logo.svg' ,24px ,62px);
-  @include svg-icon-color($primary);
+  height: 24px;
+}
+
+.desktopLogo {
+  width: 104px;
+  height: 40px;
+  margin: 0 !important;
 }
 
 .leaderboardIcon {
-  @include svg-icon('/assets/images/icons/icon-leaderboard.svg' ,20px ,35px);
+  @include svg-icon('/assets/images/icons/icon-leaderboard.svg', 20px, 35px);
   @include svg-icon-color($primary);
 }

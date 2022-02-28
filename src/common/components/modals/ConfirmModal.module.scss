@@ -1,0 +1,61 @@
+@import '../../../assets/scss/styles';
+
+.questionSection {
+  @include fontSize($fs-xs, $fs-xxl);
+  padding: 7px 24px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11px;
+  border-bottom: $divider;
+
+  @include desktop {
+    padding: 23px 30px 36px;
+    gap: 30px;
+  }
+}
+
+.actionSection {
+  display: flex;
+  flex-direction: column;
+
+  @include desktop {
+    flex-direction: row;
+  }
+}
+
+.action {
+  @include fontSize($fs-xs, $fs-l);
+  width: 100%;
+  text-align: center;
+  color: $grey-1;
+  padding: 8px 0;
+  cursor: pointer;
+
+  &:first-of-type {
+    border-bottom: $divider;
+  }
+
+  @include desktop {
+    width: 50%;
+    padding: 20px 0;
+
+    &:first-of-type {
+      border-right: $divider;
+    }
+  }
+}
+
+.actionRed {
+  composes: action;
+  color: $red-2;
+}
+
+.alertIcon {
+  @include svg-icon('/assets/images/icons/alert-icon.svg', 28px, 28px);
+  @include svg-icon-color($red-2);
+
+  @include desktop {
+    @include svg-icon('/assets/images/icons/alert-icon.svg', 49px, 49px);
+  }
+}

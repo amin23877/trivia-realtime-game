@@ -1,4 +1,5 @@
 import React from "react";
+import Logo from "common/components/UI/Logo";
 
 import { useNavigate } from "react-router-dom";
 
@@ -11,7 +12,7 @@ const MobileHeader = ({ onDrawerOpen }) => {
 		<div className={`_header-shadow ${s.mobileHeader}`}>
 			<div className={s.menuIcon} onClick={onDrawerOpen} />
 
-			<div className={s.logo} />
+			<Logo className={s.logo} />
 
 			<div className={s.leaderboardIcon} onClick={() => navigate("/leaderboard")} />
 		</div>

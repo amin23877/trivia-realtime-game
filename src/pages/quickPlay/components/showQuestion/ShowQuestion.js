@@ -22,7 +22,8 @@ const ShowQuestion = ({
     myOption,
     single,
     singleGameQuestion,
-    authData
+    authData,
+    withFriends
 }) => {
     const [pauseTimer, setPauseTimer] = useState(false)
     // let timeT = 20;
@@ -110,7 +111,7 @@ const ShowQuestion = ({
             <div className="show-question__question">
                 <div className="show-question__question--number">
                     {questionNumber}
-                    {!single&&'/7'}
+                    {(!single || withFriends)&&'/7'}
                 </div>
                 <p className="show-question__question--text">{(single ? singleGameQuestion : doubleGameQuestion).title}</p>
             </div>

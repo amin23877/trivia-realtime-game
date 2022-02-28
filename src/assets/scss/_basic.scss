@@ -4,14 +4,19 @@ body,
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  font-family: Roboto;
+  font-family: Roboto, serif;
 }
 
 p {
-  margin-bottom: 0px !important;
+  margin-bottom: 0 !important;
 }
 a {
+  color: inherit !important;
   text-decoration: none !important;
+
+  &:hover {
+    color: inherit !important;
+  }
 }
 ul {
   padding: 0;

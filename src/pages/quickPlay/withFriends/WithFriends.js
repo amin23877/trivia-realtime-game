@@ -213,6 +213,7 @@ const WithFriends = ({ type = "quickPlay" }) => {
 					handleSelectOption={handleSelectOption}
 					myInfo={myInfo}
 					single={true}
+					withFriends={true}
 					time={time}
 					authData={authData}
 					setTime={setTime}

@@ -1,34 +1,40 @@
-import React from 'react';
+import React from "react";
 import PropTypes from "prop-types";
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import LinearProgress from '@material-ui/core/LinearProgress';
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import LinearProgress from "@material-ui/core/LinearProgress";
+import { DESKTOP_BREAKPOINT } from "common/values/CORE";
 
-function ProgressBar({ 
-  value, 
-  barColor = "#6D6BE6", 
-  height = "14px", 
-  backgroundColor = "rgba(121, 124, 133, 0.1)", 
-  borderRadius = "20px" 
-}) {
-	const BorderLinearProgress = withStyles(() => ({
-		root: {
-			height,
-			borderRadius,
-		},
-		colorPrimary: {
-			backgroundColor,
-		},
-		bar: {
-			borderRadius: borderRadius,
-			backgroundColor: barColor,
-		},
-	}))(LinearProgress);
+const BorderLinearProgress = withStyles(() => ({
+	root: {
+		height: 14,
+		borderRadius: 20,
+		boxShadow: "0 1px 1.5px rgba(121, 124, 133, 0.15)",
 
-	const useStyles = makeStyles({
-		root: {
-			flexGrow: 1,
+		[`@media (min-width: ${DESKTOP_BREAKPOINT})`]: {
+			height: 28,
 		},
-	});
+	},
+	colorPrimary: {
+		backgroundColor: "#EEEDF7",
+
+		[`@media (min-width: ${DESKTOP_BREAKPOINT})`]: {
+			backgroundColor: "#fff",
+		},
+	},
+	bar: {
+		borderRadius: 20,
+		backgroundColor: "#0064A2",
+		boxShadow: "0 1px 1.5px rgba(121, 124, 133, 0.15)",
+	},
+}))(LinearProgress);
+
+const useStyles = makeStyles({
+	root: {
+		flexGrow: 1,
+	},
+});
+
+function ProgressBar({ value }) {
 	const classes = useStyles();
 
 	return (
@@ -37,11 +43,9 @@ function ProgressBar({
 		</div>
 	);
 }
+
 ProgressBar.propTypes = {
-  value: PropTypes.number, 
-  barColor: PropTypes.string, 
-  height: PropTypes.string, 
-  backgroundColor: PropTypes.string, 
-  borderRadius: PropTypes.string, 
-}
-export default React.memo(ProgressBar)
+	value: PropTypes.number,
+};
+
+export default React.memo(ProgressBar);

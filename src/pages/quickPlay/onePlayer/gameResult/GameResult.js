@@ -3,15 +3,33 @@ import './GameResult.scss'
 import { Button } from "@material-ui/core";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import userIcon from 'assets/images/icons/footer-profile.svg';
+import bgSvg from 'assets/images/backgrounds/resultBg.svg';
 
 import { useNavigate } from "react-router-dom";
 import { IMAGE_URL } from "common/values/CORE";
-
-const GameResult = ({ myInfo, authData, gameResultData, handlePlayAgain }) => {
+import Lottie from 'react-lottie';
+import * as animationData from 'assets/gif/resultConfetti.json'
+const GameResult = ({ myInfo, authData, gameResultData, handlePlayAgain , handleNewCat , handleShowAnswers }) => {
     const navigate = useNavigate();
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: animationData,
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice'
+        },
 
+    };
     return (
         <div className="game-result w-100 h-100">
+            <Lottie options={defaultOptions}
+                height={'100%'}
+                onClick={() => console.log('ok!')}
+                width={'100%'}
+                style={{ position: 'absolute', zIndex: 0, top: 0, left: 0 }}
+                isStopped={false}
+                isPaused={false}
+            />
             <div className="game-result__avatar game-result__avatar-center mt-38px mb-56px">
 
                 <div className={`game-result__avatar--image flex-center`}>
@@ -41,8 +59,8 @@ const GameResult = ({ myInfo, authData, gameResultData, handlePlayAgain }) => {
                 </div>
             </div>
             <Button className="game-result__play-again" onClick={handlePlayAgain}>Play Again</Button>
-            {/* <Button className="game-result__new-opponent">New Opponent</Button> */}
-            {/* <a className="game-result__view-answer" href="#">View Answers</a> */}
+            <Button className="game-result__new-opponent" onClick={handleNewCat}>New Category</Button>
+            <Button className="game-result__view-answer" onClick={handleShowAnswers}>View Answers</Button>
             <Button onClick={() => navigate('/')} className="game-result__back-to-home"><ArrowBackIcon />Back To Home</Button>
 
         </div>

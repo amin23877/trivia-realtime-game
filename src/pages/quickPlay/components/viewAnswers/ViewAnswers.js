@@ -6,7 +6,7 @@ import AnswerListItem from "./AnswerListItem/AnswerListItem";
 import AnswerReport from "./AnswerReport/AnswerReport";
 import './ViewAnswers.scss'
 
-const ViewAnswers = ({ gameResultData, myInfo, rivalInfo, doubleGameReady ,handleBackAnswers}) => {
+const ViewAnswers = ({ gameResultData, myInfo, rivalInfo,single , doubleGameReady ,handleBackAnswers}) => {
     console.log('gameResultData', gameResultData)
     const [selectedAnswer, setSelectedAnswer] = useState();
     const [selectedAnswerIndex, setSelectedAnswerIndex] = useState();
@@ -23,6 +23,7 @@ const ViewAnswers = ({ gameResultData, myInfo, rivalInfo, doubleGameReady ,handl
                     <AnswerDetail
                         myInfo={myInfo}
                         rivalInfo={rivalInfo}
+                        single={single}
                         index={selectedAnswerIndex}
                         question={selectedAnswer}
                         doubleGameReady={doubleGameReady}

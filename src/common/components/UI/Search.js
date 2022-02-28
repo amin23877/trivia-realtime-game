@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 //---assets
 import "./Search.scss";
-import SearchIcon from "assets/images/icons/search-primary-icon.svg";
 
 const Search = ({
 	/**
@@ -33,7 +32,7 @@ const Search = ({
 				autoComplete="off"
 			/>
 			<button className="search--box__button">
-				<img src={SearchIcon} alt="search icon" />
+				<div className="search--box__icon" />
 			</button>
 		</form>
 	);
