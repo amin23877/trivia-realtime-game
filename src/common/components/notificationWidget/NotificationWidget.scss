@@ -1,5 +1,13 @@
 @import "assets/scss/styles.scss";
 
+$mobile-circle-avatar-size : 32px;
+$desktop-circle-avatar-size : 42px;
+
+$mobile-square-avatar-width : 35px;
+$desktop-square-avatar-width : 45px;
+$mobile-square-avatar-height : 32px;
+$desktop-square-avatar-height : 42px;
+
 .notif-widget {
   @include fsNormal;
   padding: 1.4rem var(--space-x) 0;
@@ -10,14 +18,31 @@
 }
 
 .notif-widget-item {
-  color: inherit;
   display: flex;
   align-items: center;
   gap: .5rem;
   margin-bottom: 1rem;
 
-  &:hover {
-    color: inherit;
+  &__avatar {
+    width: $mobile-circle-avatar-size;
+    height: $mobile-circle-avatar-size;
+    border-radius: 50%;
+
+    @include desktop {
+      width: $desktop-circle-avatar-size;
+      height: $desktop-circle-avatar-size;
+    }
+
+    &_square {
+      border-radius: 4px;
+      width: $mobile-square-avatar-width;
+      height: $mobile-square-avatar-height;
+
+      @include desktop {
+        width: $desktop-square-avatar-width;
+        height: $desktop-square-avatar-height;
+      }
+    }
   }
 
   &__info-wrapper {
