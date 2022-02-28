@@ -20,15 +20,11 @@ const ProfilePerformance = ({ id }) => {
 			<div className={s.container}>
 				<PerformanceLevelCard data={performanceData} />
 
-				<p className={s.title}>Played Topics History</p>
-
-				<PerformanceList data={response.topicPerformance}>
+				<PerformanceList title="Played Topics History" data={response.topicPerformance}>
 					{(data) => data.map((el, index) => <PlayedHistoryCard key={index} data={el} />)}
 				</PerformanceList>
 
-				<p className={s.title}>History Of Participating Leagues</p>
-
-				<PerformanceList data={response.leaguePerformance}>
+				<PerformanceList title="History Of Participating Leagues" data={response.leaguePerformance}>
 					{(data) => data.map((el, index) => <ParticipatingHistoryCard key={index} data={el} />)}
 				</PerformanceList>
 			</div>
