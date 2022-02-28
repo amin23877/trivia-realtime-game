@@ -1,0 +1,29 @@
+@import "assets/scss/styles";
+
+.container {
+  @include fontSize($fs-m, $fs-xxl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+}
+
+.button {
+  font-size: $fs-m;
+  color: white !important;
+  background-color: $secondary;
+  box-shadow: 0 3px 6px rgba(248, 63, 95, 0.3);
+  border-radius: 8px;
+  padding: 12px 28px;
+
+  &:hover {
+    color: white !important;
+  }
+}
+
+.image {
+  @include desktop {
+    width: 825px;
+    height: 325px;
+  }
+}
