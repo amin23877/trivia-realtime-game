@@ -13,7 +13,7 @@ import { SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
 
 import "./MainLayout.scss";
 
-const MainLayout = ({ footer = false }) => {
+const MainLayout = ({ footer = false, sidebar = true }) => {
 	const dispatch = useDispatch();
 	const { openGameTypes, openNotifDrawer } = useSelector((state) => state.stateGeneral);
 
@@ -31,11 +31,17 @@ const MainLayout = ({ footer = false }) => {
 				<DesktopHeader />
 			</header>
 
-			<aside className="main-layout__sidebar">
-				<Sidebar />
-			</aside>
+			{sidebar && (
+				<aside className="main-layout__sidebar">
+					<Sidebar />
+				</aside>
+			)}
 
-			<main className={`main-layout__content ${footer ? "_body-height-F" : ""}`}>
+			<main
+				className={`main-layout__content 
+				${footer ? "_body-height-F" : ""} 
+				${sidebar ? "main-layout__content_with-sidebar" : ""}`}
+			>
 				<Outlet />
 			</main>
 
