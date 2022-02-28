@@ -1,6 +1,6 @@
 // #routerConfig step1
 import React from "react";
-import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import ProtectedRoute from "./ProtectedRouter";
 
@@ -28,6 +28,7 @@ import SuperCenterLayout from "common/components/layout/SuperCenterLayout";
 import Subscribe from "pages/subscripe/Subscribe";
 import WithFriends from "pages/quickPlay/withFriends/WithFriends";
 import InnerTopic from "pages/innerTopic/InnerTopic";
+import Page404 from "pages/404/Page404";
 
 const RouterConfig = () => {
 	return (
@@ -75,6 +76,11 @@ const RouterConfig = () => {
 					<Route path="/purchase" element={<Subscribe />} />
 				</Route>
 
+				{/* 404 page layout */}
+				<Route path="/" element={<MainLayout sidebar={false} />}>
+					<Route path="*" element={<Page404 />} />
+				</Route>
+
 				{/* this routes not have specific layout */}
 				<Route exact path="/" element={<ProtectedRoute />}>
 					<Route exact path="/" element={<MainLayout />}>
@@ -89,8 +95,6 @@ const RouterConfig = () => {
 					<Route exact path="/menu" element={<Menu />} />
 					<Route exact path="/menu/notification" element={<Notification />} />
 				</Route>
-
-				<Route path="*" element={<Navigate to="/" />} />
 			</Routes>
 		</Router>
 	);
