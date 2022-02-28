@@ -74,6 +74,11 @@ $drawer-menu-width: 220px;
   @include svg-icon('/assets/images/icons/notifications.svg', 16px, 14px);
 }
 
+.inviteIcon {
+  composes: icon;
+  @include svg-icon('/assets/images/icons/invite-icon.svg', 18px, 18px);
+}
+
 .logoutIcon {
   composes: icon;
   @include svg-icon('/assets/images/icons/logout.svg', 21px, 21px);

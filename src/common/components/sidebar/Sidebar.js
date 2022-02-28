@@ -17,6 +17,7 @@ const menuItems = [
 	{ name: "Profile", route: "/profile", icon: "profile-icon" },
 	{ name: "Leaderboard", route: "/leaderboard", icon: "leaderboard-icon" },
 	{ name: "Rewards", route: "/menu/rewards", icon: "gift-icon" },
+	{ name: "Invite friends", route: "/invite", icon: "invite-icon" },
 ];
 
 const Sidebar = () => {
