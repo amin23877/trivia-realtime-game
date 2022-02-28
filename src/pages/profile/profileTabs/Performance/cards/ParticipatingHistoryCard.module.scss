@@ -1,4 +1,4 @@
-@import 'assets/scss/styles';
+@import '../../../../../assets/scss/styles';
 
 //---card-image
 $p-h-card-image-width: 55px;
@@ -23,17 +23,7 @@ $p-h-card-position-color: $secondary;
 //---card-reward
 $p-h-card-reward-color: $gold;
 
-// .participating-history-img {
-//   img {
-//     max-width: 55;
-//     max-height: 30;
-//     width: auto;
-//     height: auto;
-//     border-radius: $p-h-card-image-border-radius;
-//   }
-// }
-
-.participating-history-card--container {
+.container {
   display: flex;
   padding: 8px 4px;
 
@@ -42,30 +32,14 @@ $p-h-card-reward-color: $gold;
   }
 }
 
-.participating-title {
+.title {
   @include fontSize($fs-xs, $fs-l);
 }
 
-.participating-history-card {
+.card {
   display: flex;
   align-items: start;
 
-  &--image {
-    img {
-      @include imageFit;
-      width: $p-h-card-image-width;
-      height: $p-h-card-image-height;
-      margin-right: 4px;
-      border-radius: $p-h-card-image-border-radius;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-
-      @include desktop {
-        width: 102px;
-        height: 53px;
-        margin-right: 1.2rem;
-      }
-    }
-  }
 
   &--content {
     @include fontSize($fs-xs, $fs-l);
@@ -110,3 +84,61 @@ $p-h-card-reward-color: $gold;
     }
   }
 }
+
+.cardImage {
+  img {
+    @include imageFit;
+    width: $p-h-card-image-width;
+    height: $p-h-card-image-height;
+    margin-right: 4px;
+    border-radius: $p-h-card-image-border-radius;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+
+    @include desktop {
+      width: 102px;
+      height: 53px;
+      margin-right: 1.2rem;
+    }
+  }
+}
+
+.content {
+  @include fontSize($fs-xs, $fs-l);
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.date {
+  @include fontSize(8px, $fs-l);
+  color: $p-h-card-date-color;
+  margin-top: 4px;
+}
+
+.details {
+  display: flex;
+  margin-top: 11px;
+  align-items: center;
+  gap: $p-h-card-details-gap;
+}
+
+.score {
+  color: $p-h-card-score-color;
+}
+
+.position {
+  color: $p-h-card-position-color;
+}
+
+.voucher {
+  color: $p-h-card-reward-color;
+  display: flex;
+  gap: 5px;
+}
+
+.giftIcon {
+  @include svg-icon('/assets/images/icons/Gift.svg', 16px, 16px);
+  @include svg-icon-color($gold);
+}
+

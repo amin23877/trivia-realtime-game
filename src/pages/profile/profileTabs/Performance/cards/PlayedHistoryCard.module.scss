@@ -1,0 +1,117 @@
+@import '../../../../../assets/scss/styles';
+
+//----card-image
+$played-history-image-width: 71px;
+$played-history-image-height: 36px;
+$played-history-image-border-radius: 4px;
+//----card-title
+$played-history-title-color: $text-dark;
+$played-history-weight: normal;
+//----card-category
+$played-history-category-color: $text-footer;
+//----card-title
+$played-history-position-color: $primary;
+
+.card {
+  @include fsXS;
+
+  display: flex;
+  padding: 15px 12px;
+  align-items: start;
+  border-bottom: 1px solid $bg-seachbox;
+}
+
+.image {
+  img {
+    @include imageFit;
+    width: $played-history-image-width;
+    height: $played-history-image-height;
+    margin-right: 7px;
+    border-radius: $played-history-image-border-radius;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+
+    @include desktop {
+      width: 118px;
+      height: 60px;
+    }
+  }
+}
+
+.content {
+  text-align: left;
+  flex-grow: 1;
+
+  @include desktop {
+    @include fsL;
+
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-right: 1.5rem;
+  }
+}
+
+.title {
+  color: $played-history-title-color;
+  font-weight: $played-history-weight;
+
+  @include desktop {
+    @include fsXL;
+  }
+}
+
+.category {
+  color: $played-history-category-color;
+  font-size: 8px;
+  font-weight: $played-history-weight;
+  margin-bottom: 3.5px;
+
+  @include desktop {
+    font-size: inherit;
+  }
+}
+
+.position {
+  color: $played-history-position-color;
+  font-weight: $played-history-weight;
+}
+
+.circleProgress {
+  --secondary : #F47A20;
+  --bg-secondary: #FFEDE0;
+
+  @include fontSize($fs-normal, $fs-l);
+
+  flex-shrink: 0;
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: $bg-secondary;
+  box-shadow: 0 1px 2px rgba(65, 29, 9, 0.15);
+
+  @include desktop {
+    width: 65px;
+    height: 65px;
+  }
+
+  &:after {
+    content: attr(data-value);
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: $bg-secondary;
+    color: $secondary;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    place-items: center;
+
+    @include desktop {
+      width: 45px;
+      height: 45px;
+    }
+  }
+}
