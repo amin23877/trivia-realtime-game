@@ -6,7 +6,7 @@ import DesktopHeader from "common/components/header/DesktopHeader";
 import Sidebar from "common/components/sidebar/Sidebar";
 import Footer from "common/components/footer/Footer";
 import SelectGameType from "pages/home/homeComponents/selectGameType/SelectGameType";
-import NotificationWidget from "common/components/NotificationWidget/NotificationWidget";
+import NotificationWidget from "common/components/notificationWidget/NotificationWidget";
 
 import { fetchUser } from "redux/actions/userActions/userActions";
 import { SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
