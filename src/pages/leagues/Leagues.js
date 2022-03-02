@@ -19,20 +19,22 @@ import { useRequest } from "common/hooks/useRequest";
 
 const LeaguesCategory = ({ data, title, seeAllPageLink, children }) => {
 	return (
-		<>
-			<div className="d-flex justify-content-between align-items-center">
-				<p className="leagues-title flex-grow-1">{title}</p>
+		data && (
+			<>
+				<div className="d-flex justify-content-between align-items-center">
+					<p className="leagues-title flex-grow-1">{title}</p>
 
-				{seeAllPageLink && (
-					<Link className="leagues-subtitle" to={seeAllPageLink}>
-						see all
-						<img className="mx-2" src={arrowForwardMini} alt="" />
-					</Link>
-				)}
-			</div>
+					{seeAllPageLink && (
+						<Link className="leagues-subtitle" to={seeAllPageLink}>
+							see all
+							<img className="mx-2" src={arrowForwardMini} alt="" />
+						</Link>
+					)}
+				</div>
 
-			{data ? children : <p className="empty-list">There is nothing ... </p>}
-		</>
+				{children}
+			</>
+		)
 	);
 };
 
