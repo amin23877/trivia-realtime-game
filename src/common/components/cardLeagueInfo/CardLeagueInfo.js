@@ -23,7 +23,7 @@ function calcLeagueType(start, end) {
 	}
 }
 
-const CardLeagueInfo = ({ info, hasEnterBtn = true }) => {
+const CardLeagueInfo = ({ info }) => {
 	const date = new Date(info.endTime);
 
 	const [type, setType] = useState(calcLeagueType(info.startTime, info.endTime));
@@ -58,7 +58,7 @@ const CardLeagueInfo = ({ info, hasEnterBtn = true }) => {
 		<div className={`w-100 h-100 d-flex cardLeagueInfo ${type === "expired" ? "expired" : ""}`} style={styleBgImg}>
 			{type === "expired" && <img className="img-expired" src={imgExpired} alt="" />}
 
-			{type !== "expired" && hasEnterBtn && (
+			{type === "started" && (
 				<button className="btn-enter" onClick={(e) => handleNavigate(e, `/leagues/${info?._id}`)}>
 					Enter <div className="btn-enter-icon" />
 				</button>
