@@ -17,6 +17,7 @@ export const useRequest = (url, config = defaultConfig) => {
 	const [response, setResponse] = useState(null);
 	const [error, setError] = useState(false);
 	const [success, setSuccess] = useState(false);
+	const [status, setStatus] = useState("idle");
 
 	const dispatch = useDispatch();
 
@@ -28,12 +29,14 @@ export const useRequest = (url, config = defaultConfig) => {
 
 	const fetcher = useCallback(() => {
 		dispatch(SET_SPINNER(true));
+		setStatus("loading");
 
 		request(url, body)
 			.then((res) => {
 				dispatch(SET_SPINNER(false));
 				setResponse(res.data);
 				setSuccess(true);
+				setStatus("success");
 
 				if (showSuccessMessage) {
 					dispatch(
@@ -48,6 +51,7 @@ export const useRequest = (url, config = defaultConfig) => {
 			.catch((err) => {
 				dispatch(SET_SPINNER(false));
 				setError(true);
+				setStatus("error");
 
 				if (showErrorMessage) {
 					dispatch(
@@ -68,5 +72,5 @@ export const useRequest = (url, config = defaultConfig) => {
 		if (method === "get") fetcher();
 	}, [method, fetcher]);
 
-	return { response, error, success, fetcher };
+	return { response, error, success, status, fetcher };
 };

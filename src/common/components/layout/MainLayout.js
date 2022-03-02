@@ -7,17 +7,15 @@ import Sidebar from "common/components/sidebar/Sidebar";
 import Footer from "common/components/footer/Footer";
 import SelectGameType from "pages/home/homeComponents/selectGameType/SelectGameType";
 import NotificationWidget from "common/components/NotificationWidget/NotificationWidget";
-import ModalConfirmDeactivation from "pages/modals/ModalConfirmDeactivation";
 
 import { fetchUser } from "redux/actions/userActions/userActions";
 import { SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
-import { MODALS } from "common/values/MODALS";
 
 import "./MainLayout.scss";
 
 const MainLayout = ({ footer = false }) => {
 	const dispatch = useDispatch();
-	const { openGameTypes, openNotifDrawer, modals } = useSelector((state) => state.stateGeneral);
+	const { openGameTypes, openNotifDrawer } = useSelector((state) => state.stateGeneral);
 
 	useEffect(() => {
 		dispatch(fetchUser());
@@ -55,9 +53,6 @@ const MainLayout = ({ footer = false }) => {
 					}}
 				/>
 			)}
-
-			{/* #modalUse step0 */}
-			{modals[MODALS.deactivation] && <ModalConfirmDeactivation />}
 		</div>
 	);
 };

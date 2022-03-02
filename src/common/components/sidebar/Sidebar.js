@@ -1,9 +1,10 @@
 import React from "react";
 import Avatar from "common/components/UI/Avatar";
-import { Link, useLocation } from "react-router-dom";
+import ModalConfirmDeactivation from "common/components/modals/ModalConfirmDeactivation";
+import ModalLogoutConfirm from "common/components/modals/ModalLogoutConfirm";
+import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { SET_GAME_SELECTION_TYPE, SET_MODALS, SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
-import { MODALS } from "common/values/MODALS";
+import { SET_GAME_SELECTION_TYPE, SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
 
 import "./Sidebar.scss";
 
@@ -11,7 +12,7 @@ import "./Sidebar.scss";
 import { IMAGE_URL } from "common/values/CORE";
 
 const menuItems = [
-	{ name: "Home", route: "index", icon: "home-icon" },
+	{ name: "Home", route: "/", icon: "home-icon" },
 	{ name: "League", route: "/leagues", icon: "league-icon" },
 	{ name: "Profile", route: "/profile", icon: "profile-icon" },
 	{ name: "Leaderboard", route: "/leaderboard", icon: "leaderboard-icon" },
@@ -19,13 +20,8 @@ const menuItems = [
 ];
 
 const Sidebar = () => {
-	const location = useLocation();
 	const user = useSelector((state) => state.stateUser.userInfo);
 	const dispatch = useDispatch();
-
-	const openDeactivateModal = () => {
-		dispatch(SET_MODALS({ [MODALS.deactivation]: true }));
-	};
 
 	const handleQuickPlay = () => {
 		dispatch(SET_GAME_SELECTION_TYPE({ type: "quickPlay", id: null }));
@@ -48,40 +44,42 @@ const Sidebar = () => {
 			</div>
 
 			<ul className="sidebar-menu">
-				{menuItems.map((item, index) => {
-					let { name, route, icon } = item;
-					let path = location.pathname;
-
-					// add active class to item if current location match item route
-					let itemClasses = `
-						sidebar-menu-item sidebar-menu-item_hover-effect-purple 
-						${(route === "index" && path === "/") || path.startsWith(route) ? "sidebar-menu-item_active" : ""}
-					`;
-
-					return (
-						<Link key={index} to={route === "index" ? "/" : route}>
-							<li className={itemClasses}>
-								<div className={icon} />
-								{name}
+				{menuItems.map((item, index) => (
+					<NavLink key={index} to={item.route}>
+						{({ isActive }) => (
+							<li
+								className={`
+									sidebar-menu-item sidebar-menu-item_hover-effect-purple 
+									${isActive ? "sidebar-menu-item_active" : ""}
+								`}
+							>
+								<div className={item.icon} />
+								{item.name}
 							</li>
-						</Link>
-					);
-				})}
+						)}
+					</NavLink>
+				))}
 
-				<Link to="/login">
-					<li className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
-						<div className="logout-icon" />
-						Logout
-					</li>
-				</Link>
+				<ModalLogoutConfirm
+					renderButton={(handleOpen) => (
+						<li onClick={handleOpen} className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
+							<div className="logout-icon" />
+							Logout
+						</li>
+					)}
+				/>
 
-				<li
-					onClick={openDeactivateModal}
-					className="sidebar-menu-item sidebar-menu-item_red sidebar-menu-item_hover-effect-red"
-				>
-					<div className="deactivation-icon" />
-					deactivation
-				</li>
+				<ModalConfirmDeactivation
+					renderButton={(handleOpen) => (
+						<li
+							onClick={handleOpen}
+							className="sidebar-menu-item sidebar-menu-item_red sidebar-menu-item_hover-effect-red"
+						>
+							<div className="deactivation-icon" />
+							deactivation
+						</li>
+					)}
+				/>
 			</ul>
 		</div>
 	);

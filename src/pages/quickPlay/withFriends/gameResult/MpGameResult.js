@@ -5,13 +5,34 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import userIcon from 'assets/images/icons/footer-profile.svg';
 import kingImage from 'assets/images/icons/king.svg';
 
+
 import { useNavigate } from "react-router-dom";
 import { IMAGE_URL } from "common/values/CORE";
+import * as animationData from 'assets/gif/resultConfetti.json'
+import Lottie from 'react-lottie';
+
 const MpGameResult = ({ myInfo, gameResultData, authData, handleStartGame,joinCode ,mpGamesId ,type}) => {
     const navigate = useNavigate();
     console.log('gameResultData', gameResultData)
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: animationData,
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice'
+        },
+
+    };
     return (
         <div className="mp-game-result w-100 h-100">
+            <Lottie options={defaultOptions}
+                height={'100%'}
+                onClick={() => console.log('ok!')}
+                width={'100%'}
+                style={{ position: 'absolute', zIndex: 0, top: 0, left: 0 }}
+                isStopped={false}
+                isPaused={false}
+            />
             <div className="mp-game-result__avatar mp-game-result__avatar-center mt-38px mb-56px">
 
                 <div className={`mp-game-result__avatar--image flex-center`}>

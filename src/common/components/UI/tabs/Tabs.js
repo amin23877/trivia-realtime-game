@@ -43,14 +43,17 @@ const Tabs = ({ variant = "button", tabs = [], ...rest }) => {
 
 	return (
 		<MuiTabs variant="scrollable" classes={{ root: s.root, indicator: s.indicator }} {...rest}>
-			{tabs.map((tab, index) => (
-				<MuiTab
-					classes={{ root: s.tab, selected: s.selectedTab }}
-					key={index}
-					label={tab.label ?? tab}
-					value={tab.value ?? index}
-				/>
-			))}
+			{tabs.map(
+				(tab, index) =>
+					tab && (
+						<MuiTab
+							classes={{ root: s.tab, selected: s.selectedTab }}
+							key={index}
+							label={tab.label ?? tab}
+							value={tab.value ?? index}
+						/>
+					)
+			)}
 		</MuiTabs>
 	);
 };

@@ -3,7 +3,7 @@
 //---card-image
 $p-h-card-image-width: 55px;
 $p-h-card-image-height: 28.5px;
-$p-h-card-image-border-radius: 8px;
+$p-h-card-image-border-radius: 4px;
 //---card-title
 $p-h-card-title-color: $text-dark;
 $p-h-card-title-size: 10px;
@@ -15,7 +15,7 @@ $p-h-card-date-weight: normal;
 //---card-details
 $p-h-card-details-size: 10px;
 $p-h-card-details-weight: normal;
-$p-h-card-details-gap: 14px;
+$p-h-card-details-gap: 20px;
 //---card-score
 $p-h-card-score-color: $primary;
 //---card-position
@@ -33,22 +33,22 @@ $p-h-card-reward-color: $gold;
 //   }
 // }
 
-.participating-title {
-  @include fsNormal;
-  @include desktop {
-    @include fsM;
+.participating-history-card--container {
+  display: flex;
+  padding: 8px 4px;
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid #EEEDF7;
   }
+}
+
+.participating-title {
+  @include fontSize($fs-xs, $fs-l);
 }
 
 .participating-history-card {
   display: flex;
   align-items: start;
-  // padding: 0;
-  border-bottom: 1px solid $bg-seachbox;
-
-  @include desktop {
-    // padding: 5px 0;
-  }
 
   &--image {
     img {
@@ -57,6 +57,7 @@ $p-h-card-reward-color: $gold;
       height: $p-h-card-image-height;
       margin-right: 4px;
       border-radius: $p-h-card-image-border-radius;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 
       @include desktop {
         width: 102px;
@@ -74,6 +75,7 @@ $p-h-card-reward-color: $gold;
     align-items: start;
 
     &__title {
+      @include fontSize($fs-xs, $fs-l);
       color: $p-h-card-title-color;
       font-weight: $p-h-card-title-weight;
 
@@ -83,19 +85,13 @@ $p-h-card-reward-color: $gold;
     }
 
     &__date {
+      @include fontSize(8px, $fs-l);
       color: $p-h-card-date-color;
-      font-size: $p-h-card-date-size;
-      font-weight: $p-h-card-date-weight;
       margin-top: 4px;
-
-      @include desktop {
-        font-size: inherit;
-      }
     }
 
     &__details {
       display: flex;
-      font-weight: $p-h-card-details-weight;
       margin-top: 11px;
       align-items: center;
       gap: $p-h-card-details-gap;

@@ -1,4 +1,5 @@
 @import "assets/scss/styles.scss";
+@import 'assets/scss/color';
 
 .enter-game-code {
     background-color: #e5e5e5;
@@ -18,7 +19,7 @@
             margin-right: 20px;
         }
         p {
-            color: #6d6be6;
+            color: $primary;
             font-size: 14px;
         }
     }
@@ -52,9 +53,13 @@
                     border-radius: 8px 0 0 8px !important;
                 }
             }
+            &>input {
+                padding-left: 12px;
+                width:165px !important;
+            }
             & > button {
-                background-color: #6d6be6 !important;
-                box-shadow: 0px 3px 6px 0px #6d6be659;
+                background-color: $primary !important;
+                box-shadow: 0px 3px 6px 0px $primary59;
                 box-shadow: 0px 2px 2px 0px #ffffff40 inset;
                 color: #fff !important;
                 text-transform: capitalize !important;
@@ -88,9 +93,9 @@
                 width: 150px !important;
                 height: 44px !important;
                 border-radius: 8px !important;
-                background-color: #f83f5f !important;
-                color: #f83f5f !important;
-                box-shadow: 0px 4px 8px 0px #f83f5f66;
+                background-color: $secondary !important;
+                color: $secondary !important;
+                box-shadow: 0px 4px 8px 0px $secondary66;
                 span {
                     color: #fff;
                 }

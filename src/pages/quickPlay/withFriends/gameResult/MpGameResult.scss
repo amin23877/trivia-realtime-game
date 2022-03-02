@@ -1,5 +1,11 @@
+@import 'assets/scss/color';
+
 .mp-game-result {
-    background-color: #6d6be6;
+    background-color: $primary;
+    background-image: url('../../../../assets/images/backgrounds/resultBg.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     padding: 19px 24px 0;
     & .mt-38px {
         margin-top: 38px !important;
@@ -74,6 +80,10 @@
         justify-content: center;
         flex-direction: column;
         margin-bottom: 16px;
+        @media (min-width:1200px){
+            max-width: 722px;
+            margin:0 auto 16px;
+        }
         &--cup {
         }
         &--table {
@@ -116,7 +126,7 @@
                 & > p {
                     font-size: 10px;
                     &:nth-child(2) {
-                        color: #6d6be6;
+                        color: $primary;
                     }
                     &:nth-child(3) {
                         color: #f24973;
@@ -131,11 +141,11 @@
                     & > p {
                         font-size: 10px;
                         &:nth-child(2) {
-                            color: #6d6be6;
+                            color: $primary;
                             margin-right: 10px;
                         }
                         &:nth-child(3) {
-                            color: #f83f5f;
+                            color: $secondary;
                         }
                     }
                 }
@@ -147,6 +157,10 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        @media (min-width:1200px){
+            max-width: 404px;
+            margin:0 auto;
+        }
         &--play-again,
         &--back-home {
             width: 150px !important;
@@ -155,10 +169,13 @@
             font-size: 14px !important;
             text-transform: capitalize !important;
             border-radius: 8px !important;
+            @media (min-width:1200px){
+                width: 194px;
+            }
         }
         &--play-again {
-            background-color: #f83f5f;
-            box-shadow: 0px 3px 6px 0px #f83f5f4d;
+            background-color: $secondary !important;
+            box-shadow: 0px 3px 6px 0px $secondary4d;
             display: block !important;
             color: #fff !important;
         }

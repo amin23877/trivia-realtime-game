@@ -13,7 +13,6 @@ import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
 // Styles, Icons, Images
 import "./Login.scss";
 import imgMain from "assets/images/pics/login-otp.svg";
-import arrowBack from "assets/images/icons/arrow-back.svg";
 
 const VerificationCode = () => {
 	const timeRemain = 90;
@@ -113,9 +112,7 @@ const VerificationCode = () => {
 			<div className="login-header">
 				<Logo />
 
-				<div className="login-header__back-btn">
-					<img src={arrowBack} onClick={() => navigate("/login")} alt="" />
-				</div>
+				<div className="login-header__back-btn" onClick={() => navigate("/login")} />
 			</div>
 
 			<div className="login-body">
@@ -146,22 +143,24 @@ const VerificationCode = () => {
 					</button>
 				</form>
 
-				{hasTime ? (
-					<p className="timer timer-resend" onClick={handleReGetOtp}>
-						Resend verification code
-					</p>
-				) : (
-					<div className="timer">
-						<p className="timer">Resend verification code until another</p>
-						<div className="timer-tag text-center">
-							<Countdown
-								date={Date.now() + timeRemain * 1000}
-								renderer={CountDownTimerSecond}
-								onComplete={(e) => handleStopTimer(e)}
-							/>
+				<div className="mt-3">
+					{hasTime ? (
+						<p className="timer timer-resend" onClick={handleReGetOtp}>
+							Resend verification code
+						</p>
+					) : (
+						<div className="timer">
+							<p className="timer">Resend verification code until another</p>
+							<div className="timer-tag text-center">
+								<Countdown
+									date={Date.now() + timeRemain * 1000}
+									renderer={CountDownTimerSecond}
+									onComplete={(e) => handleStopTimer(e)}
+								/>
+							</div>
 						</div>
-					</div>
-				)}
+					)}
+				</div>
 			</div>
 		</div>
 	);

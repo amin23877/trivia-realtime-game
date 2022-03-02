@@ -3,7 +3,7 @@
 //----card-image
 $played-history-image-width: 71px;
 $played-history-image-height: 36px;
-$played-history-image-border-radius: 8px;
+$played-history-image-border-radius: 4px;
 //----card-title
 $played-history-title-color: $text-dark;
 $played-history-weight: normal;
@@ -27,6 +27,7 @@ $played-history-position-color: $primary;
       height: $played-history-image-height;
       margin-right: 7px;
       border-radius: $played-history-image-border-radius;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 
       @include desktop {
         width: 118px;

@@ -1,3 +1,5 @@
+@import 'assets/scss/color';
+
 .answer-list-item {
     display: flex;
     width: 100%;
@@ -14,7 +16,7 @@
             display: flex;
             margin-bottom: 7px;
             &--number {
-                color: #6d6be6;
+                color: $primary;
                 margin-right: 5px;
                 font-size: 10px;
             }

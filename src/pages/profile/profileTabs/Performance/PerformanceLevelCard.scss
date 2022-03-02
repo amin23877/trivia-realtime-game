@@ -60,7 +60,6 @@ $performance-level-weight: bold;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50px;
     height: 50px;
     transform: translateY(10px);
 
@@ -69,6 +68,16 @@ $performance-level-weight: bold;
       font-size: $performance-level-size;
       font-weight: $performance-level-weight;
       transform: translateY(-10px);
+    }
+  }
+
+  &--image {
+    width: 48px;
+    height: 38px;
+
+    @include desktop {
+      height: 63px;
+      width: 80px;
     }
   }
 }

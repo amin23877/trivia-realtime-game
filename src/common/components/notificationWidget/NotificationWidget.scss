@@ -1,12 +1,20 @@
 @import "assets/scss/styles.scss";
 
-.notif-widget {
-  @include fsNormal;
-  padding: 1.4rem var(--space-x) 0;
+$mobile-circle-avatar-size: 32px;
+$desktop-circle-avatar-size: 42px;
 
-  @include desktop {
-    @include fsM;
-  }
+$mobile-square-avatar-width: 35px;
+$desktop-square-avatar-width: 45px;
+$mobile-square-avatar-height: 32px;
+$desktop-square-avatar-height: 42px;
+
+.notif-widget {
+	@include fsNormal;
+	padding: 1.4rem var(--space-x) 0;
+
+	@include desktop {
+		@include fsM;
+	}
 }
 
 .notif-widget-item {
