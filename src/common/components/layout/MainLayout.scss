@@ -7,7 +7,6 @@ $notif-drawer-width: 500px;
   display: flex;
   flex-flow: row wrap;
   position: relative;
-  // overflow-y:auto !important;
 
   &__desktop-header {
     display: none;
@@ -36,10 +35,11 @@ $notif-drawer-width: 500px;
     overflow-y: auto;
     height: 100%;
 
-    @include desktop {
-      height: calc(100% - #{$desktop-header-height}) !important;
-      flex: 0 1 calc(100% - #{$sidebar-width});
-      padding: 0 2rem;
+    &_with-sidebar {
+      @include desktop {
+        height: calc(100% - #{$desktop-header-height}) !important;
+        flex: 0 1 calc(100% - #{$sidebar-width});
+      }
     }
   }
 

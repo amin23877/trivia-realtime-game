@@ -1,0 +1,55 @@
+@import "assets/scss/styles";
+
+.container {
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include desktop {
+    padding: 58px 0;
+  }
+}
+
+.title {
+  @include fontSize($fs-xl, $fs-xxl);
+  color: $primary;
+}
+
+.subtitle {
+  @include fontSize($fs-l, $fs-xxl);
+  font-family: RobotoThin, serif;
+  font-weight: bold;
+}
+
+.image {
+  display: inline-block;
+  margin: 40px 0;
+
+  @include desktop {
+    margin: 40px 0 48px;
+    width: 410px;
+    height: 400px;
+  }
+}
+
+.button {
+  font-size: $fs-m;
+  color: white;
+  padding: 12px 30px;
+  background: $secondary;
+  box-shadow: 0 4px 8px rgba(242, 164, 73, 0.35), inset -1px -1px 2px rgba(115, 65, 28, 0.4), inset 1px 1px 2px rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  @include desktop {
+    padding: 14px 44px;
+  }
+}
+
+.linkIcon {
+  @include svg-icon('/assets/images/icons/link.svg' ,14px ,14px);
+  @include svg-icon-color(#fff);
+}

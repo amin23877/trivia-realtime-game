@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useRequest } from "common/hooks/useRequest";
+
 //---assets
-import "./ProfilePerformance.scss";
+import s from "./ProfilePerformance.module.scss";
+
 //----components
 import PerformanceLevelCard from "pages/profile/profileTabs/Performance/PerformanceLevelCard";
-import ParticipatingHistoryCard from "pages/profile/profileTabs/Performance/ParticipatingHistoryCard";
-import PlayedHistoryCard from "pages/profile/profileTabs/Performance/PlayedHistoryCard";
-import PerformanceContentSection from "pages/profile/profileTabs/Performance/PerformanceContentSectoin";
+import ParticipatingHistoryCard from "pages/profile/profileTabs/Performance/cards/ParticipatingHistoryCard";
+import PlayedHistoryCard from "pages/profile/profileTabs/Performance/cards/PlayedHistoryCard";
+import PerformanceList from "pages/profile/profileTabs/Performance/PerformanceList";
 
 const ProfilePerformance = ({ id }) => {
 	const [performanceData, setPerformanceData] = useState();
@@ -15,20 +17,16 @@ const ProfilePerformance = ({ id }) => {
 
 	return (
 		success && (
-			<div className="profile-performance">
+			<div className={s.container}>
 				<PerformanceLevelCard data={performanceData} />
 
-				<PerformanceContentSection title="History Of Participating Leagues" seeMoreLink="/">
-					{response.leaguePerformance?.map((el, index) => (
-						<ParticipatingHistoryCard key={index} data={el} />
-					))}
-				</PerformanceContentSection>
+				<PerformanceList title="Played Topics History" data={response.topicPerformance}>
+					{(data) => data.map((el, index) => <PlayedHistoryCard key={index} data={el} />)}
+				</PerformanceList>
 
-				<PerformanceContentSection title="Played Topics History" seeMoreLink="/">
-					{response.topicPerformance.map((el, index) => (
-						<PlayedHistoryCard key={index} data={el} />
-					))}
-				</PerformanceContentSection>
+				<PerformanceList title="History Of Participating Leagues" data={response.leaguePerformance}>
+					{(data) => data.map((el, index) => <ParticipatingHistoryCard key={index} data={el} />)}
+				</PerformanceList>
 			</div>
 		)
 	);

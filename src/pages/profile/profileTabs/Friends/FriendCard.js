@@ -21,7 +21,8 @@ const FriendCard = ({ data, index }) => {
 			avatarSize={{ mobile: 38, desktop: 50 }}
 		>
 			<ConfirmModal
-				icon={data.avatar}
+				avatar={data.avatar}
+				alertIcon={false}
 				action={() => removeFriendHandler()}
 				actionText="Remove"
 				question={`Remove ${data?.username} from Friends ?`}

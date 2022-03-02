@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import ProfileEditHeader from "pages/profile-edit/profileEditComponents/ProfileEditHeader";
 import ChangeUsername from "pages/profile-edit/profileEditComponents/ChangeUsername";
 import ChangeAvatar from "pages/profile-edit/profileEditComponents/ChangeAvatar";
-import ChangeCover from "pages/profile-edit/profileEditComponents/ChangeCover";
 
 import "./ProfileEdit.scss";
 
@@ -23,11 +22,11 @@ const EditProfile = () => {
 
 	return (
 		<div className="profile-edit-root">
-			<ProfileEditHeader newUsername={newUsername} />
+			<div className="_profile-background">
+				<ProfileEditHeader newUsername={newUsername} />
 
-			<ChangeCover />
-
-			<ChangeAvatar />
+				<ChangeAvatar />
+			</div>
 
 			<ChangeUsername value={newUsername} onChange={handleUsernameChanges} />
 		</div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 //---assets
-import "pages/profile/profileTabs/Performance/ParticipatingHistoryCard.scss";
+import s from "pages/profile/profileTabs/Performance/cards/ParticipatingHistoryCard.module.scss";
 import { IMAGE_URL } from "common/values/CORE";
 import { useNavigate } from "react-router-dom";
 
@@ -37,31 +37,28 @@ const ParticipatingHistoryCard = ({ data }) => {
 
 	return (
 		<div
-			className="participating-history-card--container"
+			className={s.container}
 			onClick={(e) => handleNavigate(e, `/leagues/${data?.leagueLeaderboard?.LeagueId?._id}`)}
 		>
-			<div className="participating-history-card--image">
+			<div className={s.cardImage}>
 				<img src={`${IMAGE_URL}${encodeURI(data?.leagueLeaderboard?.LeagueId?.logo)}`} alt="" />
 			</div>
 
 			<div>
-				<p className="text-start participating-title">{data?.leagueLeaderboard?.LeagueId?.name}</p>
+				<p className={s.title}>{data?.leagueLeaderboard?.LeagueId?.name}</p>
 
-				<div className="participating-history-card">
-					<div className="participating-history-card--content">
-						<p className="participating-history-card--content__date">{date.toDateString()}</p>
+				<div className={s.card}>
+					<div className={s.content}>
+						<p className={s.date}>{date.toDateString()}</p>
 
-						<div className="participating-history-card--content__details">
-							<div className="participating-history-card--content__details__score">
-								Score:&nbsp; {data?.leagueLeaderboard?.score || 0}
-							</div>
+						<div className={s.details}>
+							<div className={s.score}>Score:&nbsp; {data?.leagueLeaderboard?.score || 0}</div>
 
-							<div className="participating-history-card--content__details__position">
-								Your Position:&nbsp; {data?.place || 0}
-							</div>
+							<div className={s.position}>Your Position:&nbsp; {data?.place || 0}</div>
 
-							<div className="participating-history-card--content__details__reward">
-								Reward:&nbsp; {rewards || 0}
+							<div className={s.voucher}>
+								<div className={s.giftIcon} />
+								Gift Voucher
 							</div>
 						</div>
 					</div>

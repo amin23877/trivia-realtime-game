@@ -8,8 +8,12 @@ const RewardCard = ({ data }) => {
 	const cardStyle =
 		data.type === "in-process" ? s.processReward : data.type === "receive" ? s.receiveReward : s.reward;
 
+	const barStyle = data.type === "in-process" ? s.processBar : data.type === "receive" ? s.receiveBar : s.receivedBar;
+
 	return (
 		<li className={cardStyle}>
+			<div className={barStyle} />
+
 			<div className="d-flex flex-column">
 				<div className="d-flex gap-2 mb-2 ms-2">
 					{data.type === "in-process" && (

@@ -49,6 +49,14 @@ const Menu = ({ onDrawerClose }) => {
 				<p>notification</p>
 			</div>
 
+			<div className={s.menuItem} onClick={() => navigate("/invite")}>
+				<div className={s.iconContainer}>
+					<div className={s.inviteIcon} />
+				</div>
+
+				<p>Invite friends</p>
+			</div>
+
 			<ModalLogoutConfirm
 				renderButton={(handleOpen) => (
 					<div onClick={handleOpen} className={s.menuItem}>

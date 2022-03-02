@@ -208,6 +208,18 @@
     margin: auto;
 }
 
+._profile-background {
+    background-color: white;
+    background-image: url("/assets/images/backgrounds/profile-background.png");
+    background-size: cover;
+    box-shadow: 0 3px 5px rgba(94, 92, 106, 0.1);
+    z-index: 1;
+
+    @include desktop {
+        box-shadow: none;
+    }
+}
+
 // #pagination step2: end -------------------------------------
 
 // ------------------------------------------- Test

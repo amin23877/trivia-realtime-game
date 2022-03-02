@@ -1,0 +1,52 @@
+@import "assets/scss/styles";
+
+.profileRoot {
+  display: flex;
+  flex-direction: column;
+};
+
+.profileContents {
+  @include limitContent;
+  background-color: $bg-profile;
+  width: 100%;
+  padding: 20px 1.5rem 2rem;
+
+  @include desktop {
+    padding: 28px 0 48px;
+  }
+}
+
+.profileContentsFriend {
+  composes: profileContents;
+  padding: 20px 0 2rem;
+}
+
+.editButton {
+  @include fontSize($fs-m, $fs-l);
+  cursor: pointer;
+  color: $secondary !important;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid $secondary;
+
+  &:hover {
+    color: $secondary !important;
+  }
+
+  @include desktop {
+    padding: 12px 35px 12px 30px;
+    border-radius: 8px;
+  }
+}
+
+.editIcon {
+  @include svg-icon('/assets/images/icons/edit.svg', 12px, 12px);
+  @include svg-icon-color($secondary);
+
+  @include desktop {
+    @include svg-icon('/assets/images/icons/edit.svg', 18px, 18px);
+  }
+}

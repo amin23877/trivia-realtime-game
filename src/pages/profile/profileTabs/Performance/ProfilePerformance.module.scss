@@ -1,0 +1,93 @@
+@import "assets/scss/styles";
+
+.container {
+  @include desktop {
+    margin-right: 20rem;
+  }
+}
+
+.title {
+  @include fontSize($fs-m, $fs-xxl);
+  padding-top: 20px;
+  padding-bottom: 12px;
+}
+
+.list {
+  background: #FFFFFF;
+  box-shadow: 0 3px 5px rgba(39, 39, 40, 0.1);
+  border-radius: 12px;
+}
+
+.listFooter {
+  @include fontSize($fs-xs);
+  color: $primary;
+  text-decoration: underline;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.levelCard {
+  @include box();
+
+  display: flex;
+  padding: 13px 20px;
+  justify-content: space-between;
+  align-items: center;
+
+  @include desktop {
+    box-shadow: none;
+    background-color: transparent;
+    padding: 2rem 0;
+  }
+}
+
+.xp {
+  margin-right: 15px;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.xpValue {
+  @include fontSize($fs-m, $fs-l);
+}
+
+.xpProgress {
+  position: relative;
+  margin-top: 13px;
+  width: 100%;
+
+  span {
+    @include fontSize($fs-m);
+
+    position: absolute;
+    top: -18px !important;
+    right: 0;
+    color: $primary;
+    font-weight: 500;
+    line-height: 16px;
+  }
+}
+
+.level {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    color: $primary;
+    transform: translateY(-10px);
+  }
+}
+
+.stars {
+  width: 48px;
+  height: 38px;
+
+  @include desktop {
+    height: 63px;
+    width: 80px;
+  }
+}
