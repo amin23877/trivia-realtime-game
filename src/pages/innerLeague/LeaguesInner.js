@@ -26,7 +26,6 @@ const LeaguesInner = () => {
 
 	var ordinal = require("ordinal");
 
-	const timeRemain = 45050;
 	const dispatch = useDispatch();
 
 	const navigate = useNavigate();
@@ -55,11 +54,7 @@ const LeaguesInner = () => {
 					<div className={s.cardInnerContent}>
 						<div id="primaryWhiteBlack" className="d-flex py-xl-2">
 							<div className="mx-xl-auto">
-								<Countdown
-									date={Date.now() + timeRemain * 1000}
-									renderer={CountdownTimer}
-									onComplete={(e) => {}}
-								/>
+								<Countdown date={dataInnerLeague.endTime} renderer={CountdownTimer} />
 							</div>
 						</div>
 
