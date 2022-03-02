@@ -1,10 +1,13 @@
 // Reacts
 import React from "react";
+
 // Hooks
 import { Link, useNavigate } from "react-router-dom";
+import { useRequest } from "common/hooks/useRequest";
 
 // Components, Services, Functions
 import CardLeagueInfo from "common/components/cardLeagueInfo/CardLeagueInfo";
+import Logo from "common/components/UI/Logo";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Redux
@@ -14,8 +17,6 @@ import { TYPE_LEAGUE_HOME } from "common/values/TYPES";
 import "swiper/css";
 import "./Leagues.scss";
 import arrowForwardMini from "assets/images/icons/arrow-forward-mini.svg";
-import logo from "assets/images/icons/header-logo.svg";
-import { useRequest } from "common/hooks/useRequest";
 
 const LeaguesCategory = ({ data, title, seeAllPageLink, children }) => {
 	return (
@@ -52,7 +53,7 @@ const Leagues = () => {
 		status === "success" && (
 			<div className="fadeInFast w-100 leagues">
 				<div className="leagues-header">
-					<img src={logo} alt="logo" />
+					<Logo className="leagues-header-logo" />
 				</div>
 
 				<div className="leagues-body">
