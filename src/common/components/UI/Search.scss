@@ -4,6 +4,7 @@ $search-icon-width: 22px;
 $search-icon-height: 22px;
 
 .search--box {
+  @include fontSize($fs-normal, $fs-l);
   position: relative;
   width: auto;
   margin: 0 24px;
@@ -15,11 +16,16 @@ $search-icon-height: 22px;
   &__input {
     width: 100%;
     background-color: $bg-seachbox;
-    padding: 5px 10px;
-    color: $text-dark;
+    color: $grey-1;
+    padding: 5px 15px;
     border: none;
     outline: none;
     border-radius: 12px;
+
+    @include desktop {
+      padding: 10px 15px;
+      border-radius: 16px;
+    }
   }
 
   &__icon {
@@ -28,6 +34,6 @@ $search-icon-height: 22px;
     position: absolute;
     top: 50%;
     right: 10px;
-    transform: translateY(-110%);
+    transform: translateY(-50%);
   }
 }

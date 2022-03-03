@@ -8,6 +8,7 @@
   &__list {
     @include desktop {
       @include box;
+      margin-top: 16px;
     }
   }
 
