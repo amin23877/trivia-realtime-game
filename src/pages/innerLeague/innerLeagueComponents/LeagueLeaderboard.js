@@ -25,7 +25,13 @@ const LeagueLeaderboard = ({ id }) => {
 						const { UserId, point, score, reward } = player;
 
 						return (
-							<ListItem key={index} index={index + 4} username={UserId.username} avatar={UserId.avatar}>
+							<ListItem
+								userId={player.UserId._id}
+								key={index}
+								index={index + 4}
+								username={UserId.username}
+								avatar={UserId.avatar}
+							>
 								<div className="d-flex">
 									<p className={s.reward}>$ {reward}</p>
 									<p className={s.point}>{point}</p>

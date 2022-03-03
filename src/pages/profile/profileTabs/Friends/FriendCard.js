@@ -15,7 +15,7 @@ const FriendCard = ({ data, index }) => {
 		<ListItem
 			index={index + 1}
 			className="profile-friend__list-item"
-			link={"/profile/" + data._id}
+			userId={data._id}
 			avatar={data.avatar}
 			username={data.username}
 			avatarSize={{ mobile: 38, desktop: 50 }}

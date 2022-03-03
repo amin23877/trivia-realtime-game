@@ -23,6 +23,7 @@ const LeaderboardTabPanelBody = ({ dataLeaderboard, endOfList, fetchMore }) => {
 							key={index}
 							index={index + 2}
 							username={el?.UserId?.username || el?.username}
+							userId={el?._id}
 							avatar={el?.UserId?.avatar || el?.avatar}
 						>
 							<p className="list-point-number">{el?.xp} points</p>

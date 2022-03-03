@@ -44,6 +44,7 @@ const TopicLeaderboard = ({ id }) => {
 							<ListItem
 								key={index}
 								index={index + 4}
+								userId={player.UserId._id}
 								username={player.UserId.username || player.username}
 								avatar={player.UserId.avatar || player.avatar}
 							>
