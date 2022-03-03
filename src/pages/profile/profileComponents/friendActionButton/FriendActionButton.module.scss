@@ -3,35 +3,8 @@
 .friendActionButton {
   @include fontSize($fs-m);
   padding: 6px 10px;
-  box-shadow: 0 3px 4px rgba(248, 63, 95, 0.3);
-  border-radius: .25rem;
 
   @include desktop {
-    cursor: pointer;
     padding: 14px 54px;
-    border-radius: .5rem;
   }
-}
-
-.addFriendsButton {
-  composes: friendActionButton;
-  background-color: $secondary;
-  color: white;
-
-  @include desktop {
-    box-shadow: 0 4px 8px rgba(242, 73, 115, 0.35), inset -1px -1px 2px rgba(115, 28, 50, 0.4), inset 1px 1px 2px rgba(255, 255, 255, 0.4);
-  }
-}
-
-.requestedFriendsButton {
-  composes: friendActionButton;
-  border: 1px solid $secondary;
-  color: $secondary;
-}
-
-.removeFriendButton {
-  composes: friendActionButton;
-  box-shadow: none;
-  border: 1px solid $grey-1;
-  color: $grey-1;
 }

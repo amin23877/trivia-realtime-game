@@ -33,6 +33,17 @@ $leaderboard-max-width : 722px;
   }
 }
 
+.playBtn {
+  display: none;
+
+  @include desktop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+  }
+}
+
 .info {
   @include fontSize($fs-xs, $fs-l);
 

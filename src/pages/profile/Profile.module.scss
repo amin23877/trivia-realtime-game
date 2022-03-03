@@ -23,22 +23,13 @@
 
 .editButton {
   @include fontSize($fs-m, $fs-l);
-  cursor: pointer;
-  color: $secondary !important;
   display: flex;
   align-items: center;
   gap: .5rem;
-  padding: 6px 10px;
-  border-radius: 4px;
-  border: 1px solid $secondary;
-
-  &:hover {
-    color: $secondary !important;
-  }
+  padding: 6px 10px !important;
 
   @include desktop {
-    padding: 12px 35px 12px 30px;
-    border-radius: 8px;
+    padding: 12px 35px 12px 30px !important;
   }
 }
 

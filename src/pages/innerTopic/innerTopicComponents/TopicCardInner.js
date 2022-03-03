@@ -1,5 +1,4 @@
 import React from "react";
-import PlayButton from "common/components/UI/PlayButton";
 import HandleFavoriteButton from "pages/innerTopic/innerTopicComponents/HandleFavoriteButton";
 import CardInner from "common/components/cardInner/CardInner";
 import { SET_GAME_SELECTION_TYPE, SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
@@ -11,6 +10,7 @@ import s from "pages/innerTopic/InnerTopic.module.scss";
 import { ReactComponent as PlayIcon } from "assets/images/icons/gray-play-icon.svg";
 import { ReactComponent as HelpIcon } from "assets/images/icons/help-icon.svg";
 import { ReactComponent as RateIcon } from "assets/images/icons/rate-mini.svg";
+import FilledButton from "common/components/UI/button/FilledButton";
 
 const TopicCardInner = ({ data, id }) => {
 	const dispatch = useDispatch();
@@ -46,9 +46,9 @@ const TopicCardInner = ({ data, id }) => {
 			<hr className="d-xl-none my-0" />
 
 			<div className={s.actionButtons}>
-				<PlayButton onClick={handlePlay} className="d-none d-xl-block">
+				<FilledButton variant="secondary" onClick={handlePlay} className={s.playBtn}>
 					Play
-				</PlayButton>
+				</FilledButton>
 
 				<HandleFavoriteButton initialStatus={data.status} id={id} />
 			</div>

@@ -1,12 +1,15 @@
 import React from "react";
-import PlayButton from "common/components/UI/PlayButton";
+import FilledButton from "common/components/UI/button/FilledButton";
 
 import s from "./Footer.module.scss";
 
 const PlayFooter = () => {
 	return (
 		<div className={s.playFooter}>
-			<PlayButton>Play</PlayButton>
+			<FilledButton variant="secondary" className={s.playFooterBtn}>
+				Play
+				<div className={s.playIconFilled} />
+			</FilledButton>
 		</div>
 	);
 };

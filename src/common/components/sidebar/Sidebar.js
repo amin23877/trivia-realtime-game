@@ -1,6 +1,7 @@
 import React from "react";
 import ModalConfirmDeactivation from "common/components/modals/ModalConfirmDeactivation";
 import ModalLogoutConfirm from "common/components/modals/ModalLogoutConfirm";
+import FilledButton from "common/components/UI/button/FilledButton";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_GAME_SELECTION_TYPE, SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
@@ -40,9 +41,9 @@ const Sidebar = () => {
 				/>
 			</div>
 
-			<div className="quick-play-btn" onClick={handleQuickPlay}>
+			<FilledButton variant="secondary" className="quick-play-btn" onClick={handleQuickPlay}>
 				Quick Play
-			</div>
+			</FilledButton>
 
 			<ul className="sidebar-menu">
 				{menuItems.map((item, index) => (

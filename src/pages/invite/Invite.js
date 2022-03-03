@@ -3,6 +3,7 @@ import HeaderGoBack from "common/components/headerGoBack/HeaderGoBack";
 
 import s from "./Invite.module.scss";
 import image from "assets/images/pics/invite-image.svg";
+import FilledButton from "common/components/UI/button/FilledButton";
 
 const Invite = () => {
 	return (
@@ -16,9 +17,9 @@ const Invite = () => {
 
 				<img alt="invite friends" src={image} className={s.image} />
 
-				<div className={s.button}>
+				<FilledButton variant="secondary" className={s.button}>
 					Copy Link <div className={s.linkIcon} />
-				</div>
+				</FilledButton>
 			</div>
 		</>
 	);

@@ -28,6 +28,13 @@ $height-icon-center: 60px;
   }
 }
 
+.playFooterBtn {
+  padding: 14px 48px !important;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .footerText {
   font-size: $fs-xs;
   color: $grey-1;
@@ -126,6 +133,11 @@ $height-icon-center: 60px;
 
 .playIconOutlined {
   @include svg-icon('/assets/images/icons/play-icon-outlined.svg' ,18px ,18px);
+  @include svg-icon-color(#fff);
+}
+
+.playIconFilled {
+  @include svg-icon('/assets/images/icons/gray-play-icon.svg', 14px, 16px);
   @include svg-icon-color(#fff);
 }
 

@@ -8,6 +8,7 @@ import ProfileFriends from "pages/profile/profileTabs/Friends/ProfileFriends";
 import { useSelector } from "react-redux";
 
 import s from "./Profile.module.scss";
+import OutlinedButton from "common/components/UI/button/OutlinedButton";
 
 const UserProfile = () => {
 	const [activeTab, setActiveTab] = useState(0);
@@ -19,9 +20,11 @@ const UserProfile = () => {
 	};
 
 	const editProfileBtn = (
-		<Link className={s.editButton} to="/profile/edit">
-			<div className={s.editIcon} />
-			Edit Profile
+		<Link to="/profile/edit">
+			<OutlinedButton className={s.editButton} variant="secondary">
+				<div className={s.editIcon} />
+				Edit Profile
+			</OutlinedButton>
 		</Link>
 	);
 

@@ -1,4 +1,5 @@
 import React from "react";
+import FilledButton from "common/components/UI/button/FilledButton";
 import { useDispatch } from "react-redux";
 import { updateUser } from "redux/actions/userActions/userActions";
 import { useNavigate } from "react-router-dom";
@@ -28,9 +29,14 @@ const SaveChangeBtn = ({ className, onError, newUsername, ...rest }) => {
 	};
 
 	return (
-		<span {...rest} onClick={handleChangeUsername} className={`save-changes-btn ${className}`}>
+		<FilledButton
+			{...rest}
+			variant="secondary"
+			onClick={handleChangeUsername}
+			className={`save-changes-btn ${className}`}
+		>
 			Save Changes
-		</span>
+		</FilledButton>
 	);
 };
 

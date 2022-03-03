@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useRequest } from "common/hooks/useRequest";
 
 import s from "./FriendActionButton.module.scss";
+import OutlinedButton from "common/components/UI/button/OutlinedButton";
+import FilledButton from "common/components/UI/button/FilledButton";
 
 // this component handle variants of friend status
 const FriendActionButton = ({ isFriend, id }) => {
@@ -43,23 +45,23 @@ const FriendActionButton = ({ isFriend, id }) => {
 
 	if (buttonStatus === "remove")
 		return (
-			<div onClick={handleRemoveFriend} className={s.removeFriendButton}>
+			<OutlinedButton variant="gray" onClick={handleRemoveFriend} className={s.friendActionButton}>
 				Remove
-			</div>
+			</OutlinedButton>
 		);
 
 	if (buttonStatus === "requested")
 		return (
-			<div onClick={handleRemoveRequest} className={s.requestedFriendsButton}>
+			<OutlinedButton variant="secondary" onClick={handleRemoveRequest} className={s.friendActionButton}>
 				Requested
-			</div>
+			</OutlinedButton>
 		);
 
 	if (buttonStatus === "add")
 		return (
-			<div onClick={handleMakeRequest} className={s.addFriendsButton}>
+			<FilledButton variant="secondary" onClick={handleMakeRequest} className={s.friendActionButton}>
 				Add Friend
-			</div>
+			</FilledButton>
 		);
 
 	return null;

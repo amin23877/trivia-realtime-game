@@ -9,8 +9,8 @@ import Countdown from "react-countdown";
 import CountdownTimer from "common/components/countdownTimer/CountDownTimer";
 import CardInner from "common/components/cardInner/CardInner";
 import PlayFooter from "common/components/footer/PlayFooter";
-import PlayButton from "common/components/UI/PlayButton";
 import LeagueLeaderboard from "pages/innerLeague/innerLeagueComponents/LeagueLeaderboard";
+import FilledButton from "common/components/UI/button/FilledButton";
 
 // Redux
 import { useDispatch } from "react-redux";
@@ -63,9 +63,13 @@ const LeaguesInner = () => {
 							<span className="mx-1">{`${dataInnerLeague?.players} player`}</span>
 						</p>
 
-						<PlayButton className="d-none d-xl-block" onClick={handlePlay}>
+						<FilledButton
+							variant="secondary"
+							className={`${s.playBtn} d-none d-xl-block`}
+							onClick={handlePlay}
+						>
 							Play Now
-						</PlayButton>
+						</FilledButton>
 					</div>
 				</CardInner>
 

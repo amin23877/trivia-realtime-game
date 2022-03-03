@@ -29,6 +29,11 @@ $size-avatar: 30px;
     }
 }
 
+.playBtn {
+    padding-left: 58px !important;
+    padding-right: 58px !important;
+}
+
 .playersNumber {
     @include fontSize($fs-normal, $fs-l);
     color: colorBlack(50);
