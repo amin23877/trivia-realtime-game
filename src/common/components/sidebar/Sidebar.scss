@@ -25,7 +25,7 @@ $menu-item-h : 54px;
 
 .quick-play-btn {
   position: relative;
-  cursor: pointer;
+  z-index: 1000;
   margin: 2.25rem 1.1rem 2.25rem $space-x;
   padding-left: 2.25rem !important;
 
