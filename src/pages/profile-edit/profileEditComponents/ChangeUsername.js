@@ -4,6 +4,7 @@ import SaveChangeBtn from "pages/profile-edit/profileEditComponents/SaveChangeBt
 //---assets
 import "./ChangeUsername.scss";
 import { useSelector } from "react-redux";
+import { USERNAME_MIN_LENGTH } from "pages/profile-edit/ProfileEdit";
 
 /*
  * 	this component render form for allow user change its username
@@ -28,7 +29,7 @@ const ChangeUsername = ({ value, onChange, error, onError }) => {
 				/>
 
 				<p className={`change-info-form__details ${error ? "change-info-form__details_error" : ""}`}>
-					At least 4 characters including uppercase and lowercase letters, numbers, dots, and line.
+					At least {USERNAME_MIN_LENGTH} characters
 				</p>
 
 				<SaveChangeBtn onError={onError} newUsername={value} className="d-none d-xl-inline mt-4" />

@@ -6,8 +6,9 @@ import ChangeAvatar from "pages/profile-edit/profileEditComponents/ChangeAvatar"
 
 import "./ProfileEdit.scss";
 
-const validUsername = new RegExp(/^(?=(.*[a-z])+)(?=(.*[A-Z])+)(?=(.*[0-9]|[_])+).{4,}$/);
-export const isValidUsername = (username) => validUsername.test(username);
+export const USERNAME_MIN_LENGTH = 3;
+
+export const isValidUsername = (username) => username.length >= USERNAME_MIN_LENGTH;
 
 const EditProfile = () => {
 	const [error, setError] = useState(false);
