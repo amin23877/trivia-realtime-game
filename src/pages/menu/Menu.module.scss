@@ -12,8 +12,26 @@ $drawer-menu-width: 220px;
 }
 
 .menuHeader {
+  position: relative;
   padding: 50px $padding-left 30px;
   background-color: $primary;
+}
+
+.closeButton {
+  position: absolute;
+  z-index: 1;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-100%);
+  @include svg-icon('/assets/images/icons/close-drawer-icon.svg', 20px, 20px);
+  @include svg-icon-color(#fff);
+}
+
+.cardUser {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: start;
 }
 
 .name, .level {

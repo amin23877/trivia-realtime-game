@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import EmptyList from "common/components/empties/EmptyList";
-import Avatar from "@material-ui/core/Avatar";
 import { useRequest } from "common/hooks/useRequest";
 
 import "./NotificationWidget.scss";
 
 // images
-import { IMAGE_URL } from "common/values/CORE";
+import CardUser from "common/components/cardUser/CardUser";
 
 function UserNotif({ name, image, id }) {
 	const [accepted, setAccepted] = useState(false);
@@ -24,14 +22,13 @@ function UserNotif({ name, image, id }) {
 
 	return (
 		<div className="notif-widget-item">
-			<Link className="d-flex gap-2" to={"/profile/" + id}>
-				<Avatar src={IMAGE_URL + encodeURI(image)} size={{ mobile: 34, desktop: 44 }} />
-
-				<div className="notif-widget-item__info-wrapper">
-					<p>{name}</p>
-					<p className="notif-widget-item__desc">{!accepted && "Wants to be your friend"}</p>
-				</div>
-			</Link>
+			<CardUser
+				id={id}
+				avatar={image}
+				avatarSize={{ mobile: 34, desktop: 44 }}
+				username={name}
+				info={!accepted && "Wants to be your friend"}
+			/>
 
 			{!accepted ? (
 				<div className="notif-widget-item__controls">

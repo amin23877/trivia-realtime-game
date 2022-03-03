@@ -1,5 +1,4 @@
 import React from "react";
-import Avatar from "common/components/UI/Avatar";
 import ModalConfirmDeactivation from "common/components/modals/ModalConfirmDeactivation";
 import ModalLogoutConfirm from "common/components/modals/ModalLogoutConfirm";
 import { NavLink } from "react-router-dom";
@@ -9,7 +8,7 @@ import { SET_GAME_SELECTION_TYPE, SET_OPEN_GAME_TYPES } from "redux/actions/main
 import "./Sidebar.scss";
 
 // image
-import { IMAGE_URL } from "common/values/CORE";
+import CardUser from "common/components/cardUser/CardUser";
 
 const menuItems = [
 	{ name: "Home", route: "/", icon: "home-icon" },
@@ -32,12 +31,13 @@ const Sidebar = () => {
 	return (
 		<div className="sidebar">
 			<div className="sidebar-header">
-				<Avatar src={IMAGE_URL + encodeURI(user.avatar)} size={36} />
-
-				<p className="sidebar-header__info">
-					<span className="sidebar-header__user-name">{user.username}</span>
-					<span className="sidebar-header__phone">{user.phone}</span>
-				</p>
+				<CardUser
+					id={user._id}
+					avatar={user.avatar}
+					info={user.phone}
+					username={user.username}
+					avatarSize={38}
+				/>
 			</div>
 
 			<div className="quick-play-btn" onClick={handleQuickPlay}>

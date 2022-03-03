@@ -6,14 +6,12 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 // Components, Services, Functions
-import { IMAGE_URL } from "common/values/CORE";
-import Avatar from "common/components/UI/Avatar";
+import CardUser from "common/components/cardUser/CardUser";
 import ModalConfirmDeactivation from "common/components/modals/ModalConfirmDeactivation";
 import ModalLogoutConfirm from "common/components/modals/ModalLogoutConfirm";
 
 // Styles, Icons, Images
 import s from "./Menu.module.scss";
-import { ReactComponent as CloseIcon } from "assets/images/icons/close-drawer-icon.svg";
 
 const Menu = ({ onDrawerClose }) => {
 	const navigate = useNavigate();
@@ -23,14 +21,20 @@ const Menu = ({ onDrawerClose }) => {
 	return (
 		<div className={s.menu}>
 			<div className={s.menuHeader}>
-				<div className="d-flex justify-content-between align-items-center mb-1">
-					<Avatar src={IMAGE_URL + encodeURI(user.avatar)} size={38} />
+				<CardUser
+					id={user._id}
+					avatar={user.avatar}
+					avatarSize={36}
+					info={`Level ${user.level}`}
+					username={user.username}
+					classes={{
+						container: s.cardUser,
+						username: s.name,
+						info: s.level,
+					}}
+				/>
 
-					<CloseIcon onClick={onDrawerClose} />
-				</div>
-
-				<p className={s.name}>{user.username}</p>
-				<p className={s.level}>Level {user.level}</p>
+				<div onClick={onDrawerClose} className={s.closeButton} />
 			</div>
 
 			<div className={s.menuItem} onClick={() => navigate("/menu/rewards")}>
