@@ -15,7 +15,7 @@ const menuItems = [
 	{ name: "Home", route: "/", icon: "home-icon" },
 	{ name: "League", route: "/leagues", icon: "league-icon" },
 	{ name: "Profile", route: "/profile", icon: "profile-icon" },
-	{ name: "Leaderboard", route: "/leaderboard", icon: "leaderboard-icon" },
+	{ name: "Top players", route: "/leaderboard", icon: "leaderboard-icon" },
 	{ name: "Rewards", route: "/menu/rewards", icon: "gift-icon" },
 	{ name: "Invite friends", route: "/invite", icon: "invite-icon" },
 ];
