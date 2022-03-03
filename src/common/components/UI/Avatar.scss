@@ -4,10 +4,10 @@
   border-radius: 50%;
   overflow: hidden;
   background-color: white;
+  border: 1px solid $bg-home;
 
   img {
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid $bg-home;
   }
 }
