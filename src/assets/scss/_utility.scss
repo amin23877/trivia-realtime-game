@@ -96,7 +96,6 @@
 @mixin pageTitle() {
   @include fontSize($fs-l, $fs-xxl);
 
-  font-family: RobotoBlack;
   color: colorBlack(80);
 }
 

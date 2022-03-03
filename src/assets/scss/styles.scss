@@ -74,11 +74,10 @@
 ._header-goback {
     padding: 0 20px;
     height: $height-header-goback;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     ._header-title {
         @include fsM;
         color: $primary;
-        font-family: RobotoBold;
     }
 }
 
@@ -91,7 +90,6 @@
     }
     ._lastPath {
         color: $primary;
-        font-family: RobotoBold;
     }
 
     ._arrow {
@@ -101,7 +99,7 @@
 }
 
 ._header-shadow {
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 ._br-bottom {
@@ -157,7 +155,6 @@
         .title {
             padding-bottom: 0.5rem;
             color: colorBlack(85);
-            font-family: RobotoBold;
 
             @include desktop {
                 padding-bottom: 1.25rem;
