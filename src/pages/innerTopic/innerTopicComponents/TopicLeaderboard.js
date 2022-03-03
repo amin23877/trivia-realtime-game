@@ -37,7 +37,7 @@ const TopicLeaderboard = ({ id }) => {
 
 					<List className="mt-3 mt-xl-4">
 						<ListHeader>
-							<p className={s.pointText}>point</p>
+							<p className={s.scoreText}>score</p>
 						</ListHeader>
 
 						{_.slice(response.result, 3, response.result.length).map((player, index) => (
@@ -48,7 +48,7 @@ const TopicLeaderboard = ({ id }) => {
 								username={player.UserId.username || player.username}
 								avatar={player.UserId.avatar || player.avatar}
 							>
-								<p className={s.pointNumber}>{player.xp}</p>
+								<p className={s.scoreNumber}>{player.xp}</p>
 							</ListItem>
 						))}
 

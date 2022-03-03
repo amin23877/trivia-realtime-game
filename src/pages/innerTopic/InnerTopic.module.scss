@@ -108,8 +108,8 @@ $leaderboard-max-width : 722px;
   border: 1px solid $grey-1;
 }
 
-.pointText {
-  color: $primary;
+.scoreText {
+  color: $secondary;
   margin-right: 1rem;
 
   @include desktop {
@@ -117,8 +117,8 @@ $leaderboard-max-width : 722px;
   }
 }
 
-.pointNumber {
-  color: $primary;
+.scoreNumber {
+  color: $secondary;
   width: 2.2em;
   text-align: center;
   margin-right: 1rem;
