@@ -23,7 +23,7 @@ export const fetchUser = () => {
 	return (dispatch) => {
 		dispatch(SET_SPINNER(true));
 		apiCall
-			.get("/user/me")
+			.get("user/me")
 			.then((response) => {
 				dispatch(SET_SPINNER(false));
 				dispatch(FETCH_SUCCESS_USER(response.data));
@@ -54,11 +54,9 @@ export const updateUser = (field, data, callback) => {
 				throw new Error("unhandled update user type");
 		}
 
-		let apiCall = new ApiCall();
-
 		dispatch(SET_SPINNER(true));
 		apiCall
-			.patch("/user/me", body)
+			.patch("user/me", body)
 			.then((res) => {
 				dispatch(SET_SPINNER(false));
 
@@ -74,4 +72,23 @@ export const updateUser = (field, data, callback) => {
 				dispatch(FETCH_ERROR_USER(err));
 			});
 	};
+};
+
+export const deleteAvatar = () => (dispatch) => {
+	dispatch(SET_SPINNER(true));
+	apiCall
+		// To delete the avatar, we must update the avatar to default
+		.patch("user/me", { avatar: "/photo/avatar/avatar.png" })
+		.then((res) => {
+			dispatch(SET_SPINNER(false));
+
+			dispatch(UPDATE_AVATAR(res.data.avatar));
+		})
+		.catch((err) => {
+			dispatch(SET_SPINNER(false));
+
+			handleCatchErrorFunc(err);
+
+			dispatch(FETCH_ERROR_USER(err));
+		});
 };
