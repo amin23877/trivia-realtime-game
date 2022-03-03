@@ -4,15 +4,21 @@ import { updateUser } from "redux/actions/userActions/userActions";
 import { useNavigate } from "react-router-dom";
 
 import "pages/profile-edit/profileEditComponents/SaveChangesBtn.scss";
+import { isValidUsername } from "pages/profile-edit/ProfileEdit";
 
 /*
  *  this component get new username and save it
  *  */
-const SaveChangeBtn = ({ className, newUsername, ...rest }) => {
+const SaveChangeBtn = ({ className, onError, newUsername, ...rest }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	const handleChangeUsername = () => {
+		if (!isValidUsername(newUsername)) {
+			onError();
+			return;
+		}
+
 		dispatch(
 			updateUser("username", newUsername, () => {
 				// navigate to user profile when update is successful

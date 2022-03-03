@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 /*
  * 	this component render form for allow user change its username
  * */
-const ChangeUsername = ({ value, onChange }) => {
+const ChangeUsername = ({ value, onChange, error, onError }) => {
 	const username = useSelector((state) => state.stateUser.userInfo.username);
 
 	return (
@@ -27,11 +27,11 @@ const ChangeUsername = ({ value, onChange }) => {
 					defaultValue={username}
 				/>
 
-				<p className="change-info-form__details">
+				<p className={`change-info-form__details ${error ? "change-info-form__details_error" : ""}`}>
 					At least 4 characters including uppercase and lowercase letters, numbers, dots, and line.
 				</p>
 
-				<SaveChangeBtn newUsername={value} className="d-none d-xl-inline mt-4" />
+				<SaveChangeBtn onError={onError} newUsername={value} className="d-none d-xl-inline mt-4" />
 			</form>
 		</div>
 	);

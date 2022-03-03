@@ -6,7 +6,7 @@ import ArrowLeft from "assets/images/icons/arrow-left.svg";
 //----component
 import SaveChangeBtn from "pages/profile-edit/profileEditComponents/SaveChangeBtn";
 
-const ProfileEditHeader = ({ newUsername }) => {
+const ProfileEditHeader = ({ newUsername, onError }) => {
 	const navigate = useNavigate();
 
 	return (
@@ -19,7 +19,7 @@ const ProfileEditHeader = ({ newUsername }) => {
 				<p>Edit Profile</p>
 			</div>
 
-			<SaveChangeBtn newUsername={newUsername} />
+			<SaveChangeBtn onError={onError} newUsername={newUsername} />
 		</header>
 	);
 };
