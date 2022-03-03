@@ -49,6 +49,10 @@ $radius: 1rem;
   }
 }
 
+.currentUser {
+  background-color: $bg-seachbox;
+}
+
 .listItemInfo {
   color: inherit;
   display: flex;
@@ -66,4 +70,8 @@ $radius: 1rem;
   @include desktop {
     margin-right: 1rem;
   }
+}
+
+.currentUserIndex {
+  color: $secondary;
 }
