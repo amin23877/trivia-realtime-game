@@ -18,8 +18,7 @@
 
 .subtitle {
   @include fontSize($fs-l, $fs-xxl);
-  font-family: RobotoThin, serif;
-  font-weight: bold;
+  font-weight: 300;
 }
 
 .image {

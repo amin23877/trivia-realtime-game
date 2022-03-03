@@ -103,8 +103,7 @@
   &__input {
     @include fontSize($fs-normal ,$fs-l);
 
-    font-family: RobotoThin ,serif;
-    font-weight: 600;
+    font-weight: 300;
     color: $grey-1;
     width: 100%;
     min-height: 2.75rem;
