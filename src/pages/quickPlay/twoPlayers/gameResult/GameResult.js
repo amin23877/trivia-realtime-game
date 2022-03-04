@@ -12,6 +12,7 @@ const GameResult = ({ myInfo, rivalInfo, gameResultData, doubleGameReady ,handle
     const [winState, setWinState] = useState(1);
     const navigate = useNavigate();
 
+    
     useEffect(() => {
         if (gameResultData) {
             if (gameResultData[`${myInfo.player}Score`] > gameResultData[`${rivalInfo.player}Score`]) {

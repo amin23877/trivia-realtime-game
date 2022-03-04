@@ -85,7 +85,7 @@ const CardLeagueInfo = ({ info }) => {
 					</div>
 				)}
 
-				<p className="price">{`$${rewards}`}</p>
+				<p className="price">{`${rewards} AFN`}</p>
 
 				{type === "expired" && <p className="date">{date.toDateString()}</p>}
 			</div>

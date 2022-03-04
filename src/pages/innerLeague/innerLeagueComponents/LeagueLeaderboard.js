@@ -33,7 +33,7 @@ const LeagueLeaderboard = ({ id }) => {
 								avatar={UserId.avatar}
 							>
 								<div className="d-flex">
-									<p className={s.reward}>$ {reward}</p>
+									<p className={s.reward}>{reward} ‌ ‌ ‌ AFN</p>
 									<p className={s.point}>{point}</p>
 									<p className={s.score}>{score}</p>
 								</div>

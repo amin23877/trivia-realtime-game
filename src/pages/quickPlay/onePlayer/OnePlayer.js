@@ -9,6 +9,7 @@ import WaitForStart from "./waitForStart/WaitForStart";
 import ShowQuestion from "../components/showQuestion/ShowQuestion";
 import CategoriesList from "../components/categories/CategoriesList";
 import GameResult from "./gameResult/GameResult";
+import ViewAnswers from "../components/viewAnswers/ViewAnswers";
 
 const OnePlayer = ({ type = "quickPlay" }) => {
 	const Dispatch = useDispatch();
@@ -39,6 +40,7 @@ const OnePlayer = ({ type = "quickPlay" }) => {
 		socketRef.current = socket;
 	}, [myInfo, socket]);
 
+	
 	useEffect(() => {
 		const socketp = io(socketUrl, { transports: ["websocket"] });
 		setSocket(socketp);
@@ -142,7 +144,7 @@ const OnePlayer = ({ type = "quickPlay" }) => {
 	};
 	const handlePlayAgain = () => {
 		if (type == "quickPlay") {
-			setSelectedCategory({...selectedCategory});
+			setSelectedCategory({ ...selectedCategory });
 			setGameState("showWaitForStart");
 		} else {
 			setSelectedCategory({ _id: id });
@@ -157,6 +159,30 @@ const OnePlayer = ({ type = "quickPlay" }) => {
 		setGameResult(null);
 	};
 
+	const handleNewCat = () => {
+		if (type == "quickPlay") {
+			setSelectedCategory(null);
+			setGameState("showCategories");
+		} else {
+			setSelectedCategory({ _id: id });
+			setGameState("showWaitForStart");
+		}
+		setSingleGameQuestion(null);
+		setMyInfo({ player: "player1", score: 0 });
+		setTime(20);
+		setQuestionNumber(0);
+		setCorrectAnswer(null);
+		setMyOption(null);
+		setGameResult(null);
+	}
+
+	const handleShowAnswers = () => {
+		setGameState("showAnswers");
+
+	}
+	const handleBackAnswers = () => {
+		setGameState("gameResult");
+	};
 	return (
 		<>
 			{gameState == "showCategories" && (
@@ -188,7 +214,19 @@ const OnePlayer = ({ type = "quickPlay" }) => {
 					myInfo={myInfo}
 					gameResultData={gameResultData}
 					authData={authData}
+					handleNewCat={handleNewCat}
+					handleShowAnswers={handleShowAnswers}
 
+				/>
+			)}
+			{gameState == "showAnswers" && (
+				<ViewAnswers
+					gameResultData={gameResultData}
+					myInfo={myInfo}
+					// rivalInfo={rivalInfo}
+					single
+					// doubleGameReady={doubleGameReady}
+					handleBackAnswers={handleBackAnswers}
 				/>
 			)}
 		</>
