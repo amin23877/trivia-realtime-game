@@ -32,6 +32,7 @@ const TwoPlayers = ({ type = "quickPlay" }) => {
 	const [rivalAnswer, setRivalAnswer] = useState();
 	const [myOption, setMyOption] = useState();
 	const [gameResultData, setGameResult] = useState();
+	const [gotRematchReq, setGotRematchReq] = useState(false);
 
 	const socketUrl = SOCKET_BASE_URL;
 	const token = localStorage.getItem("token") ? `${localStorage.getItem("token").replace("Bearer ", "")}` : null;
@@ -64,6 +65,7 @@ const TwoPlayers = ({ type = "quickPlay" }) => {
 		});
 		socketp.on("doubleGameQuestion", handleDoubleGameQuestion);
 		socketp.on("doubleGameScore", handleDoubleGameScore);
+		socketp.on("rematchRequest", handleGotRematchRequest);
 		socketp.on("doubleGameFinish", (e) => {
 			setGameState("gameResult");
 			setGameResult(e);
@@ -187,6 +189,18 @@ const TwoPlayers = ({ type = "quickPlay" }) => {
 		setCorrectAnswer(null);
 		setMyOption(opt);
 	};
+	const handleGotRematchRequest = () => {
+		setGotRematchReq(true)
+	}
+	const handleRematchRequest = (opt) => {
+		if (gotRematchReq) {
+			socket.emit("rematchResponse", {});
+		} else {
+			socket.emit("rematchRequest", {});
+		}
+		// setCorrectAnswer(null);
+		// setMyOption(opt);
+	};
 	const handleBackAnswers = () => {
 		setGameState("gameResult");
 	};
@@ -208,6 +222,23 @@ const TwoPlayers = ({ type = "quickPlay" }) => {
 		setMyOption(null);
 		setGameResult(null);
 		setRivalAnswer(null);
+		setGotRematchReq(false)
+	};
+	const handleNewRivalTwoPlayer = () => {
+		// setSelectedCategory({ _id: id });
+		let selectedCat = selectedCategory;
+		setSelectedCategory({ _id: selectedCat });
+		setGameState("showSearchForPlayer");
+		setDoubleGameQuestion(null);
+		setMyInfo({ player: "player1", score: 0 });
+		setRivalInfo({ player: "player2", score: 0 });
+		setTime(20);
+		setQuestionNumber(0);
+		setCorrectAnswer(null);
+		setMyOption(null);
+		setGameResult(null);
+		setRivalAnswer(null);
+		setGotRematchReq(false)
 	};
 	return (
 		<>
@@ -243,7 +274,9 @@ const TwoPlayers = ({ type = "quickPlay" }) => {
 					gameResultData={gameResultData}
 					doubleGameReady={doubleGameReady}
 					handleShowAnswers={handleShowAnswers}
-					handleNewRival={handleNewRival}
+					handleNewRival={handleNewRivalTwoPlayer}
+					handleRematchRequest={handleRematchRequest}
+					gotRematchReq={gotRematchReq}
 				/>
 			)}
 			{gameState == "showAnswers" && (

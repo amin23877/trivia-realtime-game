@@ -3,6 +3,8 @@ import './WaitForStart.scss'
 import explosion from 'assets/images/icons/explosion.svg';
 import { IMAGE_URL } from "common/values/CORE";
 import personsIcon from 'assets/images/icons/twoWaitPerson.svg'
+import circlesIcon from 'assets/images/icons/circles.svg'
+import circleIcon from 'assets/images/icons/circle.svg'
 const WaitForStart = ({ doubleGameReady }) => {
     console.log('doubleGameReady', doubleGameReady)
     const [rivalInfo, setRivalInfo] = useState(doubleGameReady.player1.phone == localStorage.getItem('phone') ? doubleGameReady.player2 : doubleGameReady.player1)
@@ -36,8 +38,9 @@ const WaitForStart = ({ doubleGameReady }) => {
                     <p>Level {rivalInfo.level}</p>
                 </div>
             </div>
-            <img src={personsIcon}/>
-            <p style={{color:'#fff'}}>{localStorage.getItem('quickPlay-token')}</p>
+            <img className="wait-for-start__personsIcon" src={personsIcon}/>
+            <img className="wait-for-start__circlesIcon" src={circlesIcon}/>
+            <img className="wait-for-start__circleIcon" src={circleIcon}/>
         </div>
     )
 }
