@@ -6,7 +6,7 @@ import s from "./BestPlayers.module.scss";
 // images
 import bestPlayersLevel from "assets/images/pics/best-players-stage.svg";
 
-const BestPlayers = ({ theBest = [], className }) => {
+const BestPlayers = ({ theBest = [], renderAchievements, className }) => {
 	return (
 		<>
 			<div className={s.bestPlayers + " " + className}>
@@ -23,13 +23,7 @@ const BestPlayers = ({ theBest = [], className }) => {
 							info: "d-flex flex-column flex-xl-row align-items-center justify-content-center gap-2",
 							username: s.username,
 						}}
-						info={
-							<>
-								<span className={s.scores}>{`${el?.score ?? el?.xp} score`}</span>
-
-								{el?.reward && <span className={s.rewards}>{el?.reward} AFN</span>}
-							</>
-						}
+						info={renderAchievements(el)}
 					/>
 				))}
 			</div>
