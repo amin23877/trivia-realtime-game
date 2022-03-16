@@ -26,10 +26,6 @@
   }
 }
 
-.content {
-
-}
-
 .best {
   margin-top: -20px;
 }
@@ -51,21 +47,3 @@
     padding: 5px 0;
   }
 }
-
-.scores {
-  @include fontSize($fs-xs, $fs-m);
-  color: $secondary;
-  flex-grow: 1;
-}
-
-.rewards {
-  @include fontSize($fs-s, $fs-l);
-  color: $gold;
-  flex-grow: 1;
-  margin-top: 5px;
-
-  @include desktop {
-    margin-top: 0;
-  }
-}
-

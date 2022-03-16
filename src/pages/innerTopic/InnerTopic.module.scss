@@ -139,6 +139,11 @@ $leaderboard-max-width : 722px;
   }
 }
 
+.bestPlayersScore {
+  @include fontSize($fs-xs, $fs-m);
+  color: $secondary;
+}
+
 .rate {
   color: $gold;
   background-color: rgba(238, 178, 23, .05);
