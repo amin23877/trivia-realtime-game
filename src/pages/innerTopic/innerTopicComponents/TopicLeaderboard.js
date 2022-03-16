@@ -33,7 +33,11 @@ const TopicLeaderboard = ({ id }) => {
 				</p>
 
 				<div className="_leaderboardContainer">
-					<BestPlayers className="mt-5" theBest={_.slice(response.result, 0, 3)} />
+					<BestPlayers
+						className="mt-5"
+						theBest={_.slice(response.result, 0, 3)}
+						renderAchievements={(data) => <span className={s.bestPlayersScore}>{data.score} score</span>}
+					/>
 
 					<List className="mt-3 mt-xl-4">
 						<ListHeader>
@@ -48,7 +52,7 @@ const TopicLeaderboard = ({ id }) => {
 								username={player.UserId.username || player.username}
 								avatar={player.UserId.avatar || player.avatar}
 							>
-								<p className={s.scoreNumber}>{player.xp}</p>
+								<p className={s.scoreNumber}>{player.score}</p>
 							</ListItem>
 						))}
 
