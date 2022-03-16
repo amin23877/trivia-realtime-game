@@ -114,7 +114,7 @@ const LeaguesInner = () => {
 						<p className={s.title}>Latest results:</p>
 						<p className={s.yourPosition}>Your position : 0</p>
 
-						<LeagueLeaderboard id={id} />
+						<LeagueLeaderboard id={id} isOnePlayerLeague={dataInnerLeague.players === 1} />
 					</div>
 				</div>
 
