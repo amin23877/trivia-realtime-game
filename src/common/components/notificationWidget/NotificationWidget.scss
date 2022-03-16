@@ -18,54 +18,61 @@ $desktop-square-avatar-height: 42px;
 }
 
 .notif-widget-item {
-  color: inherit;
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-  margin-bottom: 1rem;
+	color: inherit;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-bottom: 1rem;
 
-  &:hover {
-    color: inherit;
-  }
+	&:hover {
+		color: inherit;
+	}
 
-  &__info-wrapper {
-    flex-basis: 150px;
+	&__info-wrapper {
+		flex-basis: 150px;
 
-    @include desktop {
-      flex-basis: 165px;
-    }
-  }
+		@include desktop {
+			flex-basis: 165px;
+		}
+	}
 
-  &__accept ,&__see-details ,&__reject {
-    cursor: pointer;
-    @include desktop {
-      @include fsL;
-    }
-  }
+	&__accept,
+	&__see-details,
+	&__reject {
+		cursor: pointer;
+		@include desktop {
+			@include fsL;
+		}
+	}
 
-  &__desc ,&__accepted ,&__reject {
-    color: $grey-1;
-    font-weight: 300;
-  }
+	&__desc,
+	&__accepted,
+	&__reject {
+		color: $grey-1;
+		font-weight: 300;
+	}
 
-  &__see-details ,&__accept {
-    color: $primary;
-  }
+	&__see-details,
+	&__accept {
+		color: $primary;
+	}
 
-  &__see-details ,&__controls ,&__accepted {
-    margin-left: auto;
-  }
+	&__see-details,
+	&__controls,
+	&__accepted {
+		margin-left: auto;
+	}
 
-  &__controls {
-    display: inline-flex;
-    gap: 1.25rem;
-  }
+	&__controls {
+		display: inline-flex;
+		gap: 1.25rem;
+	}
 
-  &__desc {
-    line-height: 1rem;
+	&__desc {
+		line-height: 1rem;
 
-    @include desktop {
-      line-height: 1.25rem;
-    }
-  }
+		@include desktop {
+			line-height: 1.25rem;
+		}
+	}
 }
