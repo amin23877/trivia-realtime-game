@@ -6,7 +6,7 @@ import { useState } from 'react';
 import './SelectGameType.scss';
 import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
-
+import clsx from 'clsx'
 
 const SelectGameType = ({ handleOpenGameTypes, open }) => {
     const [clickedIndex, setClickedIndex] = useState()
@@ -58,10 +58,10 @@ const SelectGameType = ({ handleOpenGameTypes, open }) => {
             handleOpenGameTypes(false)
         }, 50)
     }
-
+console.log(gameSelectionType.type)
     return (
 
-        <div className="select-game-type">
+        <div className={clsx("select-game-type" , gameSelectionType.type=='topic' && "select-game-type-topic")}>
             <ClickAwayListener
                 onClickAway={() => closeGameTypes()}
             >

@@ -20,7 +20,17 @@ import { SET_GAME_SELECTION_TYPE } from "redux/actions/mainActions/generalAction
 import s from "./LeaguesInner.module.scss";
 import PersonIcon from "@material-ui/icons/Person";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
+function calcLeagueType(start, end) {
+	const now = Date.now();
 
+	if (now >= end) {
+		return "expired";
+	} else if (now >= start) {
+		return "started";
+	} else {
+		return "not-started";
+	}
+}
 const LeaguesInner = () => {
 	let { id } = useParams();
 
@@ -62,14 +72,14 @@ const LeaguesInner = () => {
 							{dataInnerLeague?.players > 1 ? <SupervisorAccountIcon /> : <PersonIcon />}
 							<span className="mx-1">{`${dataInnerLeague?.players} player`}</span>
 						</p>
-
-						<FilledButton
-							variant="secondary"
-							className={`${s.playBtn} d-none d-xl-block`}
-							onClick={handlePlay}
-						>
-							Play Now
-						</FilledButton>
+						{calcLeagueType(dataInnerLeague?.startTime, dataInnerLeague?.endTime) !== 'expired' &&
+							<FilledButton
+								variant="secondary"
+								className={`${s.playBtn} d-none d-xl-block`}
+								onClick={handlePlay}
+							>
+								Play Now
+							</FilledButton>}
 					</div>
 				</CardInner>
 
@@ -103,8 +113,11 @@ const LeaguesInner = () => {
 						<LeagueLeaderboard id={id} />
 					</div>
 				</div>
+				{calcLeagueType(dataInnerLeague?.startTime, dataInnerLeague?.endTime) !== 'expired' &&
 
-				<PlayFooter />
+					<PlayFooter />
+				}
+
 			</div>
 		)
 	);

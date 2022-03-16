@@ -3,7 +3,7 @@ import imagePlaceholder from "assets/images/icons/imagePlaceholder.svg";
 import './AnswerListItem.scss'
 
 const AnswerListItem = ({ index, question, myInfo, rivalInfo , handleSetSelectedAnswer}) => {
-
+console.log('q,est',question)
  
     return (
         <div onClick={()=>handleSetSelectedAnswer(question , index)} className="answer-list-item" key={question._id}>
@@ -18,7 +18,7 @@ const AnswerListItem = ({ index, question, myInfo, rivalInfo , handleSetSelected
                     <p>{question.answer}</p>
                 </div>
             </div>
-            <div style={{ backgroundColor: `${question[myInfo.player]?.answer == question.answer ? "#12AE25" : "#F53636"}` }} className="answer-list-item__answer-stat"></div>
+            <div style={{ backgroundColor: `${(question[myInfo.player]?.answer == question.answer || question.playerAnswer == question.answer) ? "#12AE25" : "#F53636"}` }} className="answer-list-item__answer-stat"></div>
         </div>
 
     )

@@ -10,7 +10,7 @@
         left: 0;
         overflow: auto;
         padding-bottom: 50px;
-        z-index: 3;
+        z-index: 1500;
 
     }
     &__header {
@@ -113,7 +113,7 @@
             height: 30px;
             @media (min-width: 1200px) {
                 margin-right: 16px;
-                height: 80px;
+                height: 65px;
             }
         }
         &--text {
@@ -133,7 +133,7 @@
             border-radius: 9px;
             position: relative;
             @media (min-width: 1200px) {
-                height: 36px;
+                height: 30px;
                 border-radius: 20px;
             }
             &--inside {
@@ -156,6 +156,7 @@
         margin: 40px auto 0;
         width: calc(100% - 48px);
         @media (min-width: 1200px) {
+            margin: 30px auto 0;
             max-width: 826px;
             column-gap: 16px;
             row-gap: 16px;
@@ -169,7 +170,7 @@
             font-size: 12px !important;
             box-shadow: 0px 2px 4px 0px #00000026;
             @media (min-width: 1200px) {
-                height: 150px !important;
+                height: 130px !important;
                 border-radius: 16px !important;
                 font-size: 18px !important;
             }

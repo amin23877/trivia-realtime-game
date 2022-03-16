@@ -1,12 +1,12 @@
-@import 'assets/scss/color';
+@import "assets/scss/color";
 
 .game-result {
     background-color: $primary;
     padding: 19px 24px 0;
-       background-image: url('../../../../assets/images/backgrounds/resultBg.svg');
-        background-position: center center;
-        background-size: cover;
-        background-repeat: no-repeat;
+    background-image: url("../../../../assets/images/backgrounds/resultBg.svg");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
     @media (min-width: 1200px) {
         min-width: 100vw;
         min-height: 100vh;
@@ -14,7 +14,7 @@
         top: 0;
         left: 0;
         padding-top: 200px;
-        z-index: 3;
+        z-index: 1500;
         padding-top: 0;
         display: flex;
         flex-direction: column;
@@ -28,6 +28,40 @@
     //     width:100vw;
     //     z-index: 4 !important;
     // }
+    &__play-again-msg {
+
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        opacity: 0;
+        border-radius: 6px 6px 6px 0;
+        background-color: #fff;
+        color: $secondary;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        left: 75px;
+        position: absolute;
+        top: -30px;
+        transition: all 250ms ease;
+        @media (min-width: 1200px) {
+            left: -109px;
+            top: -48px;
+            border-radius: 6px 6px 0 6px;
+        }
+    }
+    &__play-again-msg-show {
+        width: 90px;
+        height: 40px;
+        opacity: 1;
+        font-size: 12px;
+        @media (min-width: 1200px) {
+            width: 109px;
+            height: 56px;
+            font-size: 16px;
+
+        }
+    }
     &__title {
         text-align: center;
         color: #fff;

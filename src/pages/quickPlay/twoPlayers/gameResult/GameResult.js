@@ -8,11 +8,11 @@ import winnerCup from 'assets/images/icons/winner.svg';
 import { Button } from "@material-ui/core";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { useNavigate } from "react-router-dom";
-const GameResult = ({ myInfo, rivalInfo, gameResultData, doubleGameReady ,handleShowAnswers,handleNewRival }) => {
+const GameResult = ({ myInfo, rivalInfo, gameResultData, doubleGameReady, handleShowAnswers, handleNewRival, gotRematchReq, handleRematchRequest }) => {
     const [winState, setWinState] = useState(1);
     const navigate = useNavigate();
 
-    
+
     useEffect(() => {
         if (gameResultData) {
             if (gameResultData[`${myInfo.player}Score`] > gameResultData[`${rivalInfo.player}Score`]) {
@@ -45,7 +45,10 @@ const GameResult = ({ myInfo, rivalInfo, gameResultData, doubleGameReady ,handle
                         winState == 0 &&
                         <img className={`game-result__avatar--image--king`} src={kingImage} />
                     }
-                    <div className={`game-result__avatar--image--inner ${winState != 2 ? 'game-result__avatar--image--winner-ring' : ''}`}>
+
+                    <div className={`game-result__play-again-msg ${gotRematchReq && "game-result__play-again-msg-show"}`}>Play Again</div>
+
+                    <div className={`game-result__avatar--image--inner game-result__avatar--image--winner-ring`}>
                         <img src={IMAGE_URL + doubleGameReady[rivalInfo.player].avatar} />
                     </div>
                     <p className={`game-result__avatar--image--name`}>{doubleGameReady[rivalInfo.player].username}</p>
@@ -55,7 +58,7 @@ const GameResult = ({ myInfo, rivalInfo, gameResultData, doubleGameReady ,handle
                         winState == 2 &&
                         <img className={`game-result__avatar--image--king`} src={kingImage} />
                     }
-                    <div className={`game-result__avatar--image--inner ${winState != 0 ? 'game-result__avatar--image--winner-ring' : ''}`}>
+                    <div className={`game-result__avatar--image--inner game-result__avatar--image--winner-ring`}>
                         <img src={IMAGE_URL + doubleGameReady[myInfo.player].avatar} />
                     </div>
                     <p className={`game-result__avatar--image--name`}>You</p>
@@ -82,8 +85,8 @@ const GameResult = ({ myInfo, rivalInfo, gameResultData, doubleGameReady ,handle
                     <p>Level {doubleGameReady[myInfo.player].level}</p>
                 </div>
             </div>
-            {/* <Button className="game-result__play-again">Play Again</Button> */}
-            {/* <Button className="game-result__new-opponent" onClick={handleNewRival}>New Opponent</Button> */}
+            <Button className="game-result__play-again" onClick={handleRematchRequest}>Play Again</Button>
+            <Button className="game-result__new-opponent" onClick={handleNewRival}>New Opponent</Button>
             <Button className="game-result__view-answer" onClick={handleShowAnswers}>View Answers</Button>
             <Button onClick={() => navigate('/')} className="game-result__back-to-home"><ArrowBackIcon />Back To Home</Button>
 
