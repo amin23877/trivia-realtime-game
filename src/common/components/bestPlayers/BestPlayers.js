@@ -9,7 +9,13 @@ import bestPlayersLevel from "assets/images/pics/best-players-stage.svg";
 const BestPlayers = ({ theBest = [], renderAchievements, className }) => {
 	return (
 		<>
-			<div className={s.bestPlayers + " " + className}>
+			<div
+				className={`
+				${s.bestPlayers} 
+				${className} 		
+				${theBest.length === 1 ? s.center : "" /* if there is only one player move it to center */}
+				`}
+			>
 				{theBest.map((el, index) => (
 					<CardUser
 						key={el._id}
@@ -17,13 +23,17 @@ const BestPlayers = ({ theBest = [], renderAchievements, className }) => {
 						avatar={el?.UserId?.avatar}
 						avatarSize={{ mobile: 32, desktop: 54 }}
 						username={el?.UserId?.username}
+						info={renderAchievements(el)}
 						classes={{
-							container: `${s.player} ${index === 0 ? s.best : ""} ${index === 1 ? s.secondPlace : ""}`,
 							content: "",
 							info: "d-flex flex-column flex-xl-row align-items-center justify-content-center gap-2",
 							username: s.username,
+							container: `
+								${s.player}
+							  	${index === 0 ? s.best : ""} 
+								${index === 1 ? s.secondPlace : ""}
+							 	`,
 						}}
-						info={renderAchievements(el)}
 					/>
 				))}
 			</div>
