@@ -1,26 +1,40 @@
 import React from "react";
 import _ from "lodash";
 import { useListLoad } from "common/hooks/useListLoad";
-import BestPlayers from "common/components/bestPlayers/BestPlayers";
 import { List, ListFooter, ListHeader, ListItem } from "common/components/UI/list/List";
 
 import s from "../LeaguesInner.module.scss";
+import BestPlayers from "common/components/bestPlayers/BestPlayers";
 
 const PAGE_SIZE = 10;
 
-const LeagueLeaderboard = ({ id }) => {
+const LeagueLeaderboard = ({ id, isOnePlayerLeague }) => {
 	const { response, success, endOfList, fetchMore } = useListLoad(`league/leaderboard/${id}`, PAGE_SIZE);
 
 	return (
 		success && (
 			<div className="_leaderboardContainer mt-4">
-				<BestPlayers theBest={_.slice(response.result, 0, 3)} />
+				<BestPlayers
+					theBest={_.slice(response.result, 0, 3)}
+					renderAchievements={(data) =>
+						isOnePlayerLeague ? (
+							<>
+								<span className={s.bestPlayersScores}>{`${data?.score ?? data?.xp} score`}</span>
+
+								{data?.reward && <span className={s.bestPlayersRewards}>{data?.reward} AFN</span>}
+							</>
+						) : (
+							<span className={s.bestPlayersPoint}>{`${data?.point ?? data?.xp} point`}</span>
+						)
+					}
+				/>
 
 				<List className="mt-4">
+					{/* reward and score only shown in one-player league */}
 					<ListHeader>
-						<p className={s.reward}>Reward</p>
+						{isOnePlayerLeague && <p className={s.reward}>Reward</p>}
 						<p className={s.point}>Point</p>
-						<p className={s.score}>Score</p>
+						{isOnePlayerLeague && <p className={s.score}>Score</p>}
 					</ListHeader>
 
 					{_.slice(response.result, 3, response.result.length).map((player = {}, index) => {
@@ -35,9 +49,9 @@ const LeagueLeaderboard = ({ id }) => {
 								avatar={UserId.avatar}
 							>
 								<div className="d-flex">
-									<p className={s.reward}>{reward} ‌ ‌ ‌ AFN</p>
+									{isOnePlayerLeague && <p className={s.reward}>{reward} ‌ ‌ ‌ AFN</p>}
 									<p className={s.point}>{point}</p>
-									<p className={s.score}>{score}</p>
+									{isOnePlayerLeague && <p className={s.score}>{score}</p>}
 								</div>
 							</ListItem>
 						);
