@@ -25,7 +25,7 @@ const BestPlayers = ({ theBest = [], className }) => {
 						<p className={s.username}>{el?.UserId?.username}</p>
 
 						<div className="d-flex flex-column flex-xl-row align-items-center justify-content-center">
-							<p className={s.points}>{`${el?.score ?? el?.xp} score`}</p>
+							<p className={s.scores}>{`${el?.score ?? el?.xp} score`}</p>
 
 							{el?.reward && <p className={s.rewards}>{el?.reward} AFN</p>}
 						</div>

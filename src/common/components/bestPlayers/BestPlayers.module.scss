@@ -44,15 +44,15 @@
   }
 }
 
-.points {
+.scores {
   @include fontSize($fs-xs, $fs-m);
-  color: $primary;
+  color: $secondary;
   flex-grow: 1;
 }
 
 .rewards {
   @include fontSize($fs-s, $fs-l);
-  color: $secondary;
+  color: $gold;
   flex-grow: 1;
   margin-top: 5px;
 
