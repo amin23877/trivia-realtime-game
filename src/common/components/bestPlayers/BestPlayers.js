@@ -1,35 +1,36 @@
 import React from "react";
-import Avatar from "common/components/UI/Avatar";
+import CardUser from "common/components/cardUser/CardUser";
 
 import s from "./BestPlayers.module.scss";
 
 // images
 import bestPlayersLevel from "assets/images/pics/best-players-stage.svg";
-import { IMAGE_URL } from "common/values/CORE";
 
 const BestPlayers = ({ theBest = [], className }) => {
 	return (
 		<>
 			<div className={s.bestPlayers + " " + className}>
 				{theBest.map((el, index) => (
-					<div
-						key={index}
-						className={`${s.player} ${index === 0 ? s.best : ""} ${index === 1 ? s.secondPlace : ""}`}
-					>
-						<Avatar
-							className={s.avatar}
-							size={{ mobile: 32, desktop: 54 }}
-							src={`${IMAGE_URL}${encodeURI(el?.UserId?.avatar)}`}
-						/>
+					<CardUser
+						key={el._id}
+						id={el?.UserId?._id}
+						avatar={el?.UserId?.avatar}
+						avatarSize={{ mobile: 32, desktop: 54 }}
+						username={el?.UserId?.username}
+						classes={{
+							container: `${s.player} ${index === 0 ? s.best : ""} ${index === 1 ? s.secondPlace : ""}`,
+							content: "",
+							info: "d-flex flex-column flex-xl-row align-items-center justify-content-center gap-2",
+							username: s.username,
+						}}
+						info={
+							<>
+								<span className={s.scores}>{`${el?.score ?? el?.xp} score`}</span>
 
-						<p className={s.username}>{el?.UserId?.username}</p>
-
-						<div className="d-flex flex-column flex-xl-row align-items-center justify-content-center">
-							<p className={s.scores}>{`${el?.score ?? el?.xp} score`}</p>
-
-							{el?.reward && <p className={s.rewards}>{el?.reward} AFN</p>}
-						</div>
-					</div>
+								{el?.reward && <span className={s.rewards}>{el?.reward} AFN</span>}
+							</>
+						}
+					/>
 				))}
 			</div>
 

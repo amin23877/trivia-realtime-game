@@ -9,6 +9,9 @@
 }
 
 .player {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
   flex-shrink: 1;
   margin: auto;
   padding: 10px;
@@ -21,6 +24,10 @@
   @include desktop {
     width: 171px;
   }
+}
+
+.content {
+
 }
 
 .best {
@@ -38,6 +45,7 @@
 .username {
   @include fontSize($fs-xs, $fs-l);
   padding-top: 5px;
+  text-align: center;
 
   @include desktop {
     padding: 5px 0;
