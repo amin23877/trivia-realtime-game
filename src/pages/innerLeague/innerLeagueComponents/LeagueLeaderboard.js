@@ -6,13 +6,15 @@ import { List, ListFooter, ListHeader, ListItem } from "common/components/UI/lis
 
 import s from "../LeaguesInner.module.scss";
 
+const PAGE_SIZE = 10;
+
 const LeagueLeaderboard = ({ id }) => {
-	const { response, success, endOfList, fetchMore } = useListLoad(`league/leaderboard/${id}`, 10);
+	const { response, success, endOfList, fetchMore } = useListLoad(`league/leaderboard/${id}`, PAGE_SIZE);
 
 	return (
 		success && (
 			<div className="_leaderboardContainer mt-4">
-				<BestPlayers theBest={_.slice(response, 0, 3)} />
+				<BestPlayers theBest={_.slice(response.result, 0, 3)} />
 
 				<List className="mt-4">
 					<ListHeader>
@@ -21,7 +23,7 @@ const LeagueLeaderboard = ({ id }) => {
 						<p className={s.score}>Score</p>
 					</ListHeader>
 
-					{_.slice(response, 3, response.length).map((player = {}, index) => {
+					{_.slice(response.result, 3, response.result.length).map((player = {}, index) => {
 						const { UserId, point, score, reward } = player;
 
 						return (
