@@ -12,7 +12,7 @@ build:
         - ssh-add <(echo "$SSH_PRIVATE_KEY")
         - mkdir -p ~/.ssh
         - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-        - ssh root@$server "cd quizbaba.web; git reset --hard;"
-        - ssh root@$server "cd quizbaba.web; git pull;"
-        - ssh root@$server "cd quizbaba.web; npm ci;"
-        - ssh root@$server "cd quizbaba.web; npm run build;"
+        - ssh sammy@$server "cd quizbaba.web; git reset --hard;"
+        - ssh sammy@$server "cd quizbaba.web; git pull;"
+        - ssh sammy@$server "cd quizbaba.web; npm ci;"
+        - ssh sammy@$server "cd quizbaba.web; npm run build;"
