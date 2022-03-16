@@ -12,7 +12,10 @@ const BestPlayers = ({ theBest = [], className }) => {
 		<>
 			<div className={s.bestPlayers + " " + className}>
 				{theBest.map((el, index) => (
-					<div key={index} className={`${s.player} ${index === 1 ? s.best : ""}`}>
+					<div
+						key={index}
+						className={`${s.player} ${index === 0 ? s.best : ""} ${index === 1 ? s.secondPlace : ""}`}
+					>
 						<Avatar
 							className={s.avatar}
 							size={{ mobile: 32, desktop: 54 }}
@@ -22,7 +25,7 @@ const BestPlayers = ({ theBest = [], className }) => {
 						<p className={s.username}>{el?.UserId?.username}</p>
 
 						<div className="d-flex flex-column flex-xl-row align-items-center justify-content-center">
-							<p className={s.points}>{`${el?.point ?? el?.xp} points`}</p>
+							<p className={s.points}>{`${el?.score ?? el?.xp} score`}</p>
 
 							{el?.reward && <p className={s.rewards}>{el?.reward} AFN</p>}
 						</div>
