@@ -9,7 +9,7 @@ export const useListLoad = (baseEndpoint, sizeCount) => {
 
 	const [endOfList, setEndOfList] = useState(false);
 
-	const { response, success } = useRequest(`${baseEndpoint}?pageSize=${pageSize}&page=1`);
+	const { response, ...requestStates } = useRequest(`${baseEndpoint}?pageSize=${pageSize}&page=1`);
 
 	const fetchMore = () => setPageSize((p) => p + sizeCount);
 
@@ -17,5 +17,5 @@ export const useListLoad = (baseEndpoint, sizeCount) => {
 		if (response && response.total && response.total === response.result.length) setEndOfList(true);
 	}, [response]);
 
-	return { response, success, endOfList, fetchMore };
+	return { response, endOfList, fetchMore, ...requestStates };
 };
