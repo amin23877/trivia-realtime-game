@@ -9,13 +9,13 @@ import BestPlayers from "common/components/bestPlayers/BestPlayers";
 const PAGE_SIZE = 10;
 
 const LeagueLeaderboard = ({ id, isOnePlayerLeague }) => {
-	const { response, success, endOfList, fetchMore } = useListLoad(`league/leaderboard/${id}`, PAGE_SIZE);
+	const { data, success, endOfList, fetchMore } = useListLoad(`league/leaderboard/${id}`, PAGE_SIZE);
 
 	return (
 		success && (
 			<div className="_leaderboardContainer mt-4">
 				<BestPlayers
-					theBest={_.slice(response.result, 0, 3)}
+					theBest={_.slice(data, 0, 3)}
 					renderAchievements={(data) =>
 						isOnePlayerLeague ? (
 							<>
@@ -37,7 +37,7 @@ const LeagueLeaderboard = ({ id, isOnePlayerLeague }) => {
 						{isOnePlayerLeague && <p className={s.score}>Score</p>}
 					</ListHeader>
 
-					{_.slice(response.result, 3, response.result.length).map((player = {}, index) => {
+					{_.slice(data, 3, data.length).map((player = {}, index) => {
 						const { UserId, point, score, reward } = player;
 
 						return (

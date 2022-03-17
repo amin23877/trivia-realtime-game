@@ -17,7 +17,7 @@ const tabs = [
 const TopicLeaderboard = ({ id }) => {
 	const [timespan, setTimespan] = useState("all");
 
-	const { response, success, endOfList, fetchMore } = useListLoad(`topicleaderboard/${id}/${timespan}`, 10);
+	const { data, success, endOfList, fetchMore } = useListLoad(`topicleaderboard/${id}/${timespan}`, 10);
 
 	const handleTimespan = (event, newValue) => {
 		setTimespan(newValue);
@@ -35,7 +35,7 @@ const TopicLeaderboard = ({ id }) => {
 				<div className="_leaderboardContainer">
 					<BestPlayers
 						className="mt-5"
-						theBest={_.slice(response.result, 0, 3)}
+						theBest={_.slice(data, 0, 3)}
 						renderAchievements={(data) => <span className={s.bestPlayersScore}>{data.score} score</span>}
 					/>
 
@@ -44,7 +44,7 @@ const TopicLeaderboard = ({ id }) => {
 							<p className={s.scoreText}>score</p>
 						</ListHeader>
 
-						{_.slice(response.result, 3, response.result.length).map((player, index) => (
+						{_.slice(data, 3, data.length).map((player, index) => (
 							<ListItem
 								key={index}
 								index={index + 4}
