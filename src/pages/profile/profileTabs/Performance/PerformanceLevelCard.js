@@ -6,7 +6,6 @@ import s from "./ProfilePerformance.module.scss";
 import PerformanceLevelIcon from "assets/images/icons/performance-level-icon.svg";
 
 export const PerformanceLevelCard = ({ xp, levelXP, level }) => {
-	console.log(xp);
 	return (
 		<div className={s.levelCard}>
 			<div className={s.xp}>
