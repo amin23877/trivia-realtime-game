@@ -9,7 +9,6 @@ import s from "pages/innerTopic/InnerTopic.module.scss";
 // images
 import { ReactComponent as PlayIcon } from "assets/images/icons/gray-play-icon.svg";
 import { ReactComponent as HelpIcon } from "assets/images/icons/help-icon.svg";
-import { ReactComponent as RateIcon } from "assets/images/icons/rate-mini.svg";
 import FilledButton from "common/components/UI/button/FilledButton";
 
 const TopicCardInner = ({ data, id }) => {
@@ -31,15 +30,6 @@ const TopicCardInner = ({ data, id }) => {
 				<p className={`${s.grey} flex-grow-1`}>
 					<HelpIcon className={s.icon} />
 					<span className="mx-1">{data.questions}</span>
-				</p>
-
-				<p className="d-flex align-items-center gap-1">
-					<span className={s.rate}>
-						<RateIcon className={s.icon} />
-						<span className="mx-1">{data.rate}</span>
-					</span>
-
-					<span className={s.grey}>({data.raters})</span>
 				</p>
 			</div>
 

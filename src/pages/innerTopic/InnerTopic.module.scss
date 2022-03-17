@@ -52,11 +52,10 @@ $leaderboard-max-width : 722px;
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  align-items: center;
+  flex-grow: 1;
   padding: .5rem 0;
 
   @include desktop {
-    padding: 0;
     max-width: 130px;
     flex-wrap: wrap;
     gap: 24px;
@@ -64,10 +63,6 @@ $leaderboard-max-width : 722px;
 
   .grey {
     color: colorBlack(50);
-  }
-
-  .gold {
-    color: $orange-2;
   }
 }
 
@@ -146,15 +141,6 @@ $leaderboard-max-width : 722px;
 .bestPlayersScore {
   @include fontSize($fs-xs, $fs-m);
   color: $secondary;
-}
-
-.rate {
-  color: $gold;
-  background-color: rgba(238, 178, 23, .05);
-  padding: 3px 6px;
-  display: inline-flex;
-  align-items: center;
-  border-radius: 3px;
 }
 
 .gray {
