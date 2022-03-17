@@ -6,6 +6,7 @@ import { List, ListFooter, ListHeader, ListItem } from "common/components/UI/lis
 import { useListLoad } from "common/hooks/useListLoad";
 
 import s from "../InnerTopic.module.scss";
+import EmptyLeaderboard from "common/components/empties/EmptyLeaderboard";
 
 const tabs = [
 	{ label: "All points", value: "all" },
@@ -32,33 +33,39 @@ const TopicLeaderboard = ({ id }) => {
 					Your position : <span>should fixed</span>
 				</p>
 
-				<div className="_leaderboardContainer">
-					<BestPlayers
-						className="mt-5"
-						theBest={_.slice(data, 0, 3)}
-						renderAchievements={(data) => <span className={s.bestPlayersScore}>{data.score} score</span>}
-					/>
+				{data.length === 0 ? (
+					<EmptyLeaderboard />
+				) : (
+					<div className="_leaderboardContainer">
+						<BestPlayers
+							className="mt-5"
+							theBest={_.slice(data, 0, 3)}
+							renderAchievements={(data) => (
+								<span className={s.bestPlayersScore}>{data.score} score</span>
+							)}
+						/>
 
-					<List className="mt-3 mt-xl-4">
-						<ListHeader>
-							<p className={s.scoreText}>score</p>
-						</ListHeader>
+						<List className="mt-3 mt-xl-4">
+							<ListHeader>
+								<p className={s.scoreText}>score</p>
+							</ListHeader>
 
-						{_.slice(data, 3, data.length).map((player, index) => (
-							<ListItem
-								key={index}
-								index={index + 4}
-								userId={player.UserId._id}
-								username={player.UserId.username || player.username}
-								avatar={player.UserId.avatar || player.avatar}
-							>
-								<p className={s.scoreNumber}>{player.score}</p>
-							</ListItem>
-						))}
+							{_.slice(data, 3, data.length).map((player, index) => (
+								<ListItem
+									key={index}
+									index={index + 4}
+									userId={player.UserId._id}
+									username={player.UserId.username || player.username}
+									avatar={player.UserId.avatar || player.avatar}
+								>
+									<p className={s.scoreNumber}>{player.score}</p>
+								</ListItem>
+							))}
 
-						{!endOfList && <ListFooter onClick={fetchMore}>see more</ListFooter>}
-					</List>
-				</div>
+							{!endOfList && <ListFooter onClick={fetchMore}>see more</ListFooter>}
+						</List>
+					</div>
+				)}
 			</div>
 		)
 	);
