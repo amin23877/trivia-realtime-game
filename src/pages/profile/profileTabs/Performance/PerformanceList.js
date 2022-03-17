@@ -5,22 +5,22 @@ import s from "./ProfilePerformance.module.scss";
 
 const PAGE_SIZE = 5;
 
-const PerformanceList = ({ apiEndpoint, title, children }) => {
-	const { response, status, endOfList, fetchMore } = useListLoad(apiEndpoint, PAGE_SIZE);
+const PerformanceList = ({ apiEndpoint, title, children, dataFieldName }) => {
+	const { data, status, endOfList, fetchMore } = useListLoad(apiEndpoint, PAGE_SIZE, dataFieldName);
 
 	if (status !== "success") return null;
 
 	// show nothing if response is not valid
-	if (typeof response !== "object") return null;
+	if (!Array.isArray(data)) return null;
 
 	return (
 		<>
 			<p className={s.title}>{title}</p>
 
 			<div className={s.list}>
-				{children(response)}
+				{children(data)}
 
-				{response.length >= PAGE_SIZE && !endOfList && (
+				{!endOfList && (
 					<div onClick={fetchMore} className={s.listFooter}>
 						See more
 					</div>
