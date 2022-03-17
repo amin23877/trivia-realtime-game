@@ -1,18 +1,27 @@
 import React from "react";
+import { useListLoad } from "common/hooks/useListLoad";
 
 import s from "./ProfilePerformance.module.scss";
 
-const PerformanceList = ({ data, title, children }) => {
-	if (!data) return null;
+const PAGE_SIZE = 5;
+
+const PerformanceList = ({ apiEndpoint, title, children }) => {
+	const { response, status, endOfList, fetchMore } = useListLoad(apiEndpoint, PAGE_SIZE);
+
+	if (status !== "success") return null;
 
 	return (
 		<>
 			<p className={s.title}>{title}</p>
 
 			<div className={s.list}>
-				{children(data)}
+				{children(response)}
 
-				{data.length >= 5 && <div className={s.listFooter}>See more</div>}
+				{response.length >= PAGE_SIZE && !endOfList && (
+					<div onClick={fetchMore} className={s.listFooter}>
+						See more
+					</div>
+				)}
 			</div>
 		</>
 	);
