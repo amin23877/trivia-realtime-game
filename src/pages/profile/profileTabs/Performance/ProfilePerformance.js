@@ -14,13 +14,21 @@ const ProfilePerformance = ({ id, progressProps }) => {
 		<div className={s.container}>
 			<PerformanceLevelCard {...progressProps} />
 
-			<PerformanceList title="Played Topics History" apiEndpoint={`user/${id}/performance/topic`}>
+			<PerformanceList
+				title="Played Topics History"
+				apiEndpoint={`user/${id}/performance/topic`}
+				dataFieldName="topicPerformance"
+			>
 				{(data) => data.map((el, index) => <PlayedHistoryCard key={index} data={el} />)}
 			</PerformanceList>
 
-			{/*<PerformanceList title="History Of Participating Leagues" apiEndpoint={`user/${id}/performance/league`}>*/}
-			{/*	{(data) => data.map((el, index) => <ParticipatingHistoryCard key={index} data={el} />)}*/}
-			{/*</PerformanceList>*/}
+			<PerformanceList
+				title="History Of Participating Leagues"
+				apiEndpoint={`user/${id}/performance/league`}
+				dataFieldName="leaguePerformance"
+			>
+				{(data) => data.map((el, index) => <ParticipatingHistoryCard key={index} data={el} />)}
+			</PerformanceList>
 		</div>
 	);
 };
