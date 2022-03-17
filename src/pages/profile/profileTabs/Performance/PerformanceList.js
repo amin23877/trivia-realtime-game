@@ -10,6 +10,9 @@ const PerformanceList = ({ apiEndpoint, title, children }) => {
 
 	if (status !== "success") return null;
 
+	// show nothing if response is not valid
+	if (typeof response !== "object") return null;
+
 	return (
 		<>
 			<p className={s.title}>{title}</p>
