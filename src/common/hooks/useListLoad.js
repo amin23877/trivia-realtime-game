@@ -14,7 +14,9 @@ export const useListLoad = (baseEndpoint, sizeCount, dataFieldName = "result") =
 	const fetchMore = () => setPageSize((p) => p + sizeCount);
 
 	useEffect(() => {
-		if (response && response.total && response.total === response[dataFieldName].length) setEndOfList(true);
+		if (response && typeof response.total === "number" && response.total === response[dataFieldName].length) {
+			setEndOfList(true);
+		}
 	}, [dataFieldName, response]);
 
 	return {
