@@ -36,7 +36,6 @@ $card-radius : .5rem;
       @include fontSize($fs-xs, $fs-l);
       color: $primary;
       font-weight: 500;
-      padding-left: 10px;
     }
 
     .info {

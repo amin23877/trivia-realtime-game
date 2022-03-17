@@ -9,16 +9,21 @@ import LeaderboardTabPanelBody from "./LeaderboardTabPanelBody";
 
 // Styles, Icons, Images
 import "./LeaderboardTabPanel.scss";
+import { useRequest } from "common/hooks/useRequest";
 
 const LeaderboardTabPanel = ({ type }) => {
-	const { response, success, endOfList, fetchMore } = useListLoad(`/leaderboard/all`, 16);
+	const { response: myPosition } = useRequest(`/generalleaderboard/${type}/me`);
+
+	const { data, success, endOfList, fetchMore } = useListLoad(`/generalleaderboard/${type}`, 16);
+
+	if (data && data.length === 0) return null;
 
 	return (
 		success && (
 			<div className="w-100 h-100 tabPanel">
-				{response.length > 0 && <LeaderboardTabPanelHeader dataLeaderboard={response} />}
+				<LeaderboardTabPanelHeader myPosition={myPosition} numberOne={data[0]} />
 
-				<LeaderboardTabPanelBody endOfList={endOfList} fetchMore={fetchMore} dataLeaderboard={response} />
+				<LeaderboardTabPanelBody endOfList={endOfList} fetchMore={fetchMore} dataLeaderboard={data} />
 			</div>
 		)
 	);
