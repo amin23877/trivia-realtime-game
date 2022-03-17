@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useRequest } from "common/hooks/useRequest";
+import React from "react";
 
 //---assets
 import s from "./ProfilePerformance.module.scss";
@@ -10,25 +9,19 @@ import ParticipatingHistoryCard from "pages/profile/profileTabs/Performance/card
 import PlayedHistoryCard from "pages/profile/profileTabs/Performance/cards/PlayedHistoryCard";
 import PerformanceList from "pages/profile/profileTabs/Performance/PerformanceList";
 
-const ProfilePerformance = ({ id }) => {
-	const [performanceData, setPerformanceData] = useState();
-
-	const { response, success } = useRequest(`user/${id}/performance`);
-
+const ProfilePerformance = ({ id, progressProps }) => {
 	return (
-		success && (
-			<div className={s.container}>
-				<PerformanceLevelCard data={performanceData} />
+		<div className={s.container}>
+			<PerformanceLevelCard {...progressProps} />
 
-				<PerformanceList title="Played Topics History" data={response.topicPerformance}>
-					{(data) => data.map((el, index) => <PlayedHistoryCard key={index} data={el} />)}
-				</PerformanceList>
+			<PerformanceList title="Played Topics History" apiEndpoint={`user/${id}/performance/topic`}>
+				{(data) => data.map((el, index) => <PlayedHistoryCard key={index} data={el} />)}
+			</PerformanceList>
 
-				<PerformanceList title="History Of Participating Leagues" data={response.leaguePerformance}>
-					{(data) => data.map((el, index) => <ParticipatingHistoryCard key={index} data={el} />)}
-				</PerformanceList>
-			</div>
-		)
+			{/*<PerformanceList title="History Of Participating Leagues" apiEndpoint={`user/${id}/performance/league`}>*/}
+			{/*	{(data) => data.map((el, index) => <ParticipatingHistoryCard key={index} data={el} />)}*/}
+			{/*</PerformanceList>*/}
+		</div>
 	);
 };
 
