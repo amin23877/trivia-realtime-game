@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 /*
  *  this hook load data leaderboard and handle list pagination
  * */
-export const useListLoad = (baseEndpoint, sizeCount) => {
+export const useListLoad = (baseEndpoint, sizeCount, dataFieldName = "result") => {
 	const [pageSize, setPageSize] = useState(sizeCount);
 
 	const [endOfList, setEndOfList] = useState(false);
@@ -14,8 +14,13 @@ export const useListLoad = (baseEndpoint, sizeCount) => {
 	const fetchMore = () => setPageSize((p) => p + sizeCount);
 
 	useEffect(() => {
-		if (response && response.total && response.total === response.result.length) setEndOfList(true);
-	}, [response]);
+		if (response && response.total && response.total === response[dataFieldName].length) setEndOfList(true);
+	}, [dataFieldName, response]);
 
-	return { response, endOfList, fetchMore, ...requestStates };
+	return {
+		data: response ? response[dataFieldName] : null,
+		endOfList,
+		fetchMore,
+		...requestStates,
+	};
 };
