@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import ProfileHeader from "pages/profile/profileComponents/profileHeader/ProfileHeader";
 import { Link } from "react-router-dom";
 import TabPanel from "common/components/UI/tabs/TabPanel";
+import OutlinedButton from "common/components/UI/button/OutlinedButton";
 import ProfileFavoriteTopics from "pages/profile/profileTabs/favorite/ProfileFavoriteTopics";
 import ProfilePerformance from "pages/profile/profileTabs/Performance/ProfilePerformance";
 import ProfileFriends from "pages/profile/profileTabs/Friends/ProfileFriends";
 import { useSelector } from "react-redux";
 
 import s from "./Profile.module.scss";
-import OutlinedButton from "common/components/UI/button/OutlinedButton";
 
 const UserProfile = () => {
 	const [activeTab, setActiveTab] = useState(0);
@@ -45,7 +45,14 @@ const UserProfile = () => {
 			</TabPanel>
 
 			<TabPanel className={s.profileContents} activeTab={activeTab} value={1}>
-				<ProfilePerformance id={"me"} />
+				<ProfilePerformance
+					id={"me"}
+					progressProps={{
+						level: user.level,
+						xp: user.xp,
+						levelXP: user.xp + user.requiredXP,
+					}}
+				/>
 			</TabPanel>
 
 			<TabPanel className={s.profileContentsFriend} activeTab={activeTab} value={2}>
