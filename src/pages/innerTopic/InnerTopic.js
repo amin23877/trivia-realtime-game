@@ -32,9 +32,9 @@ const InnerTopic = () => {
 
 					<div className={s.badges}>
 						{dataInnerTopic?.tags?.map((el, index) => (
-							<p key={index} className={s.badge}>
+							<span key={index} className={s.badge}>
 								{el}
-							</p>
+							</span>
 						))}
 					</div>
 
