@@ -45,25 +45,27 @@ const TopicLeaderboard = ({ id }) => {
 							)}
 						/>
 
-						<List className="mt-3 mt-xl-4">
-							<ListHeader>
-								<p className={s.scoreText}>score</p>
-							</ListHeader>
+						{data.length > 3 && (
+							<List className="mt-3 mt-xl-4">
+								<ListHeader>
+									<p className={s.scoreText}>score</p>
+								</ListHeader>
 
-							{_.slice(data, 3, data.length).map((player, index) => (
-								<ListItem
-									key={index}
-									index={index + 4}
-									userId={player.UserId._id}
-									username={player.UserId.username || player.username}
-									avatar={player.UserId.avatar || player.avatar}
-								>
-									<p className={s.scoreNumber}>{player.score}</p>
-								</ListItem>
-							))}
+								{_.slice(data, 3, data.length).map((player, index) => (
+									<ListItem
+										key={index}
+										index={index + 4}
+										userId={player.UserId._id}
+										username={player.UserId.username || player.username}
+										avatar={player.UserId.avatar || player.avatar}
+									>
+										<p className={s.scoreNumber}>{player.score}</p>
+									</ListItem>
+								))}
 
-							{!endOfList && <ListFooter onClick={fetchMore}>see more</ListFooter>}
-						</List>
+								{!endOfList && <ListFooter onClick={fetchMore}>see more</ListFooter>}
+							</List>
+						)}
 					</div>
 				)}
 			</div>

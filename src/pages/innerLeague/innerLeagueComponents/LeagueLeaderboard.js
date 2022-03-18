@@ -33,36 +33,38 @@ const LeagueLeaderboard = ({ id, isOnePlayerLeague }) => {
 				}
 			/>
 
-			<List className="mt-4">
-				{/* reward and score only shown in one-player league */}
-				<ListHeader>
-					{isOnePlayerLeague && <p className={s.reward}>Reward</p>}
-					<p className={s.point}>Point</p>
-					{isOnePlayerLeague && <p className={s.score}>Score</p>}
-				</ListHeader>
+			{data.length > 3 && (
+				<List className="mt-4">
+					{/* reward and score only shown in one-player league */}
+					<ListHeader>
+						{isOnePlayerLeague && <p className={s.reward}>Reward</p>}
+						<p className={s.point}>Point</p>
+						{isOnePlayerLeague && <p className={s.score}>Score</p>}
+					</ListHeader>
 
-				{_.slice(data, 3, data.length).map((player = {}, index) => {
-					const { UserId, point, score, reward } = player;
+					{_.slice(data, 3, data.length).map((player = {}, index) => {
+						const { UserId, point, score, reward } = player;
 
-					return (
-						<ListItem
-							userId={player.UserId._id}
-							key={index}
-							index={index + 4}
-							username={UserId.username}
-							avatar={UserId.avatar}
-						>
-							<div className="d-flex">
-								{isOnePlayerLeague && <p className={s.reward}>{reward} ‌ ‌ ‌ AFN</p>}
-								<p className={s.point}>{point}</p>
-								{isOnePlayerLeague && <p className={s.score}>{score}</p>}
-							</div>
-						</ListItem>
-					);
-				})}
+						return (
+							<ListItem
+								userId={player.UserId._id}
+								key={index}
+								index={index + 4}
+								username={UserId.username}
+								avatar={UserId.avatar}
+							>
+								<div className="d-flex">
+									{isOnePlayerLeague && <p className={s.reward}>{reward} ‌ ‌ ‌ AFN</p>}
+									<p className={s.point}>{point}</p>
+									{isOnePlayerLeague && <p className={s.score}>{score}</p>}
+								</div>
+							</ListItem>
+						);
+					})}
 
-				{!endOfList && <ListFooter onClick={fetchMore}>See more</ListFooter>}
-			</List>
+					{!endOfList && <ListFooter onClick={fetchMore}>See more</ListFooter>}
+				</List>
+			)}
 		</div>
 	);
 };
