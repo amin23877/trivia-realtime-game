@@ -1,9 +1,10 @@
 import React from "react";
+import CardUser from "common/components/cardUser/CardUser";
 
 // Styles, Icons, Images
 import "./LeaderboardTabPanel.scss";
 import iconGift from "assets/images/icons/icon-gift.svg";
-import CardUser from "common/components/cardUser/CardUser";
+import runnerImage from "assets/images/pics/runner.svg";
 
 const LeaderboardTabPanelHeader = ({ numberOne, myPosition }) => {
 	return (
@@ -12,13 +13,20 @@ const LeaderboardTabPanelHeader = ({ numberOne, myPosition }) => {
 				<div className="d-flex align-items-center info">
 					<span className="index">{"1."}</span>
 
-					<CardUser
-						id={numberOne.UserId._id}
-						username={numberOne.UserId.username}
-						avatar={numberOne.UserId.avatar}
-						info={<p className="points">{numberOne.score} score</p>}
-						avatarSize={{ mobile: 34, desktop: 56 }}
-					/>
+					{numberOne ? (
+						<CardUser
+							id={numberOne.UserId._id}
+							username={numberOne.UserId.username}
+							avatar={numberOne.UserId.avatar}
+							info={<p className="points">{numberOne.score} score</p>}
+							avatarSize={{ mobile: 34, desktop: 56 }}
+						/>
+					) : (
+						<div className="empty-number-one">
+							<p>Be the first</p>
+							<img src={runnerImage} alt="runner" />
+						</div>
+					)}
 				</div>
 
 				<div className="d-flex align-items-center bundle">
@@ -26,7 +34,7 @@ const LeaderboardTabPanelHeader = ({ numberOne, myPosition }) => {
 				</div>
 			</div>
 
-			<p className="subtitle">Your position: {myPosition && myPosition.place}</p>
+			<p className="subtitle">Your position: {myPosition?.place ?? 0}</p>
 		</div>
 	);
 };

@@ -5,7 +5,7 @@ import React from "react";
 import _ from "lodash";
 
 // Components, Services, Functions
-import EmptyList from "common/components/empties/EmptyList";
+import EmptyLeaderboard from "common/components/empties/EmptyLeaderboard";
 import { List, ListFooter, ListItem } from "common/components/UI/list/List";
 
 // Styles, Icons, Images
@@ -14,7 +14,7 @@ import "./LeaderboardTabPanel.scss";
 const LeaderboardTabPanelBody = ({ dataLeaderboard, endOfList, fetchMore }) => {
 	return (
 		<div className="w-100 h-100 tabPanelBody">
-			{dataLeaderboard?.length === 0 && <EmptyList />}
+			{dataLeaderboard?.length === 0 && <EmptyLeaderboard />}
 
 			{dataLeaderboard?.length > 1 && (
 				<List>

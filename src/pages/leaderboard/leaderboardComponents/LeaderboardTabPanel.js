@@ -16,8 +16,6 @@ const LeaderboardTabPanel = ({ type }) => {
 
 	const { data, success, endOfList, fetchMore } = useListLoad(`/generalleaderboard/${type}`, 16);
 
-	if (data && data.length === 0) return null;
-
 	return (
 		success && (
 			<div className="w-100 h-100 tabPanel">
