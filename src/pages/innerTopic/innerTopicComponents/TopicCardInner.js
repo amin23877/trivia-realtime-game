@@ -20,7 +20,7 @@ const TopicCardInner = ({ data, id }) => {
 	};
 
 	return (
-		<CardInner banner={encodeURI(data.logo)} title={data.name} subtitle={data.categoryName}>
+		<CardInner type="topic" banner={encodeURI(data.logo)} title={data.name} subtitle={data.categoryName}>
 			<div className={s.info}>
 				<p className={s.gray}>
 					<PlayIcon className={s.icon} />

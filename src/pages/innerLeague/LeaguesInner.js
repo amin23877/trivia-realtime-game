@@ -57,6 +57,7 @@ const LeaguesInner = () => {
 		success && (
 			<div className={s.leaguesInner}>
 				<CardInner
+					type="league"
 					subtitle={dataInnerLeague?.TopicId?.name}
 					title={dataInnerLeague?.name}
 					banner={encodeURI(dataInnerLeague?.logo)}
