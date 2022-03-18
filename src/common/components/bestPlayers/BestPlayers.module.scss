@@ -16,9 +16,8 @@
 }
 
 .player {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  place-items: center;
   flex-shrink: 1;
   padding: 10px;
   width: 88px;
@@ -32,12 +31,15 @@
   }
 }
 
-.best {
-  transform: translateY(-20px);
+.image {
+  @include desktop {
+    width: 88px;
+    height: 100px;
+  }
 }
 
-.secondPlace {
-  order: -1;
+.best {
+  transform: translateY(-20px);
 }
 
 .avatar {
