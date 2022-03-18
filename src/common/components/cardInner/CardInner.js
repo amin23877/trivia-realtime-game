@@ -1,4 +1,5 @@
 import React from "react";
+import ShareModal from "common/components/modals/ShareModal";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
 import { useNavigate } from "react-router-dom";
@@ -12,14 +13,12 @@ import { ReactComponent as ShareIcon } from "assets/images/icons/share-black.svg
 /*
  * 	this component show topic (league) info on inner-topic (inner-league) page
  * */
-const CardInner = ({ banner, title, subtitle, shareLink, children, bannerSize = 110, rounded = true }) => {
+const CardInner = ({ banner, title, type, subtitle, children, bannerSize = 110, rounded = true }) => {
 	const navigate = useNavigate();
 
 	const handleGoBack = () => {
 		navigate(-1);
 	};
-
-	const handleShare = () => {};
 
 	return (
 		<div className="card-inner">
@@ -40,12 +39,17 @@ const CardInner = ({ banner, title, subtitle, shareLink, children, bannerSize = 
 						<ArrowBackIcon />
 					</p>
 
-					<p
-						onClick={handleShare}
-						className="d-flex d-xl-none justify-content-center align-items-center _backdrop-filter"
-					>
-						<ShareOutlinedIcon />
-					</p>
+					<ShareModal
+						title={type}
+						renderButton={(handleOpen) => (
+							<p
+								onClick={handleOpen}
+								className="d-flex d-xl-none justify-content-center align-items-center _backdrop-filter"
+							>
+								<ShareOutlinedIcon />
+							</p>
+						)}
+					/>
 				</div>
 
 				<div className="card-inner__info">
@@ -54,10 +58,15 @@ const CardInner = ({ banner, title, subtitle, shareLink, children, bannerSize = 
 
 						<p className="card-inner__subtitle">{subtitle}</p>
 
-						<p onClick={handleShare} className="card-inner__share">
-							<ShareIcon />
-							Share
-						</p>
+						<ShareModal
+							title={type}
+							renderButton={(handleOpen) => (
+								<p onClick={handleOpen} className="card-inner__share">
+									<ShareIcon />
+									Share
+								</p>
+							)}
+						/>
 					</div>
 
 					{children}
