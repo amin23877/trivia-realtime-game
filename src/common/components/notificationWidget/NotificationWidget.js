@@ -1,24 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import EmptyList from "common/components/empties/EmptyList";
-import { useRequest } from "common/hooks/useRequest";
+import CardUser from "common/components/cardUser/CardUser";
+import { useSelector, useDispatch } from "react-redux";
+import { CircularProgress } from "@material-ui/core";
+import { useFriendRequestHandlers } from "common/hooks/useFriendRequestHandlers";
+
+// redux
+import { ACCEPT_REQUEST_NOTIF, DELETE_NOTIF } from "redux/actions/notifActions/notifActions";
+import { SET_STATUS } from "redux/actions/friendStatusActions/friendStatusActions";
+import { friendStatusTypes } from "redux/actions/friendStatusActions/actionsType";
 
 import "./NotificationWidget.scss";
 
-// images
-import CardUser from "common/components/cardUser/CardUser";
+function UserNotif({ name, image, id, accepted, loading }) {
+	const dispatch = useDispatch();
 
-function UserNotif({ name, image, id }) {
-	const [accepted, setAccepted] = useState(false);
+	const { accept, reject, acceptStatus, rejectStatus } = useFriendRequestHandlers(id);
 
-	const { fetcher: acceptRequest, success: acceptSuccess } = useRequest(`user/${id}/accept`, { method: "post" });
-	const { fetcher: rejectRequest } = useRequest(`user/${id}/reject`, { method: "DELETE" });
-
-	const accept = () => acceptRequest();
-	const reject = () => rejectRequest();
+	/* update notifications state based on request response */
+	useEffect(() => {
+		if (acceptStatus === "success") {
+			dispatch(ACCEPT_REQUEST_NOTIF(id));
+			dispatch(SET_STATUS(friendStatusTypes.IS_FRIEND));
+		}
+	}, [acceptStatus, dispatch, id]);
 
 	useEffect(() => {
-		setAccepted(acceptSuccess);
-	}, [acceptSuccess]);
+		if (rejectStatus === "success") {
+			dispatch(DELETE_NOTIF(id));
+			dispatch(SET_STATUS(friendStatusTypes.IS_NOT_FRIEND));
+		}
+	}, [dispatch, id, rejectStatus]);
 
 	return (
 		<div className="notif-widget-item">
@@ -32,12 +44,18 @@ function UserNotif({ name, image, id }) {
 
 			{!accepted ? (
 				<div className="notif-widget-item__controls">
-					<span onClick={accept} className="notif-widget-item__accept">
-						Accept
-					</span>
-					<span onClick={reject} className="notif-widget-item__reject">
-						Reject
-					</span>
+					{loading ? (
+						<CircularProgress size={25} />
+					) : (
+						<>
+							<span onClick={accept} className="notif-widget-item__accept">
+								Accept
+							</span>
+							<span onClick={reject} className="notif-widget-item__reject">
+								Reject
+							</span>
+						</>
+					)}
 				</div>
 			) : (
 				<p className="notif-widget-item__accepted">is your friend Now!</p>
@@ -69,16 +87,30 @@ function LeagueNotif({ name, image }) {
  * 	this component get notifications from server and render notifications list
  * */
 const NotificationWidget = () => {
-	const { response, success } = useRequest("user/me/requests");
+	const { status, notifications } = useSelector((state) => state.stateNotif);
 
-	return success ? (
+	if (status === "error") return null;
+
+	if (notifications.length === 0)
+		return (
+			<div>
+				<EmptyList />
+			</div>
+		);
+
+	return (
 		<ul className="notif-widget">
-			{response.map((notif, index) => (
-				<UserNotif name={notif.username} image={notif.avatar} id={notif._id} key={index} />
+			{notifications.map((notif) => (
+				<UserNotif
+					loading={notif.loading}
+					accepted={notif.accepted}
+					name={notif.username}
+					image={notif.avatar}
+					id={notif._id}
+					key={notif._id}
+				/>
 			))}
 		</ul>
-	) : (
-		<EmptyList />
 	);
 };
 
