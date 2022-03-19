@@ -1,13 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRequest } from "common/hooks/useRequest";
-
-import s from "./FriendActionButton.module.scss";
+import { useFriendRequestHandlers } from "common/hooks/useFriendRequestHandlers";
 import OutlinedButton from "common/components/UI/button/OutlinedButton";
 import FilledButton from "common/components/UI/button/FilledButton";
 
+// redux
+import { ACCEPT_REQUEST_NOTIF, DELETE_NOTIF } from "redux/actions/notifActions/notifActions";
+import { useDispatch, useSelector } from "react-redux";
+import { friendStatusTypes } from "redux/actions/friendStatusActions/actionsType";
+import { INIT_STATUS, SET_STATUS } from "redux/actions/friendStatusActions/friendStatusActions";
+
+import s from "./FriendActionButton.module.scss";
+
 // this component handle variants of friend status
-const FriendActionButton = ({ isFriend, id }) => {
-	const [buttonStatus, setButtonStatus] = useState();
+const FriendActionButton = ({ initialStatus, id }) => {
+	const dispatch = useDispatch();
+
+	const status = useSelector((state) => state.stateFriendStatus);
+
+	const { accept, reject, acceptStatus, rejectStatus } = useFriendRequestHandlers(id);
 
 	const { fetcher: makeRequest, status: makeRequestStatus } = useRequest(`user/${id}/request`, { method: "post" });
 
@@ -19,49 +30,73 @@ const FriendActionButton = ({ isFriend, id }) => {
 		method: "DELETE",
 	});
 
-	const handleMakeRequest = () => {
-		makeRequest();
-	};
-
-	const handleRemoveRequest = () => {
-		removeRequest();
-	};
-
-	const handleRemoveFriend = () => {
-		removeFriend();
-	};
+	const handleMakeRequest = () => makeRequest();
+	const handleRemoveRequest = () => removeRequest();
+	const handleRemoveFriend = () => removeFriend();
 
 	useEffect(() => {
-		if (isFriend) {
-			setButtonStatus("remove");
-		} else {
-			setButtonStatus("add");
+		if (makeRequestStatus === "success") dispatch(SET_STATUS(friendStatusTypes.IS_REQUESTED));
+	}, [dispatch, makeRequestStatus]);
+
+	useEffect(() => {
+		if (removeFriendStatus === "success") dispatch(SET_STATUS(friendStatusTypes.IS_NOT_FRIEND));
+	}, [dispatch, removeFriendStatus]);
+
+	useEffect(() => {
+		if (removeRequestStatus === "success") dispatch(SET_STATUS(friendStatusTypes.IS_NOT_FRIEND));
+	}, [dispatch, removeRequestStatus]);
+
+	useEffect(() => {
+		if (acceptStatus === "success") {
+			dispatch(SET_STATUS(friendStatusTypes.IS_FRIEND));
+			dispatch(ACCEPT_REQUEST_NOTIF(id));
 		}
+	}, [acceptStatus, dispatch, id]);
 
-		if (removeFriendStatus === "success") return setButtonStatus("add");
-		if (removeRequestStatus === "success") return setButtonStatus("add");
-		if (makeRequestStatus === "success") return setButtonStatus("requested");
-	}, [isFriend, makeRequestStatus, removeFriendStatus, removeRequestStatus]);
+	useEffect(() => {
+		if (rejectStatus === "success") {
+			dispatch(SET_STATUS(friendStatusTypes.IS_NOT_FRIEND));
+			dispatch(DELETE_NOTIF(id));
+		}
+	}, [dispatch, id, rejectStatus]);
 
-	if (buttonStatus === "remove")
+	/* reset state when id changes */
+	useEffect(() => {
+		dispatch(INIT_STATUS(initialStatus));
+	}, [dispatch, id, initialStatus]);
+
+	if (status === 1)
 		return (
 			<OutlinedButton variant="gray" onClick={handleRemoveFriend} className={s.friendActionButton}>
 				Remove
 			</OutlinedButton>
 		);
 
-	if (buttonStatus === "requested")
+	if (status === 0)
+		return (
+			<FilledButton variant="secondary" onClick={handleMakeRequest} className={s.friendActionButton}>
+				Add Friend
+			</FilledButton>
+		);
+
+	if (status === 2)
 		return (
 			<OutlinedButton variant="secondary" onClick={handleRemoveRequest} className={s.friendActionButton}>
 				Requested
 			</OutlinedButton>
 		);
 
-	if (buttonStatus === "add")
+	if (status === 3)
 		return (
-			<FilledButton variant="secondary" onClick={handleMakeRequest} className={s.friendActionButton}>
-				Add Friend
-			</FilledButton>
+			<div className="d-flex gap-2">
+				<FilledButton variant="secondary" onClick={accept} className={s.friendActionButton}>
+					Accept
+				</FilledButton>
+
+				<OutlinedButton variant="gray" onClick={reject} className={s.friendActionButton}>
+					Reject
+				</OutlinedButton>
+			</div>
 		);
 
 	return null;
