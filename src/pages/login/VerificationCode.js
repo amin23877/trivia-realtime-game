@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 // Components, Services, Functions
 import Logo from "common/components/UI/Logo";
 import ApiCall from "common/services/ApiCall";
-import CountDownTimerSecond from "common/components/countdownTimer/CountDownTimerSecond";
 // Redux
 import { useDispatch } from "react-redux";
 import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
@@ -154,7 +153,11 @@ const VerificationCode = () => {
 							<div className="timer-tag text-center">
 								<Countdown
 									date={Date.now() + timeRemain * 1000}
-									renderer={CountDownTimerSecond}
+									renderer={({ minutes, seconds }) => (
+										<>
+											<span>{minutes}</span>:<span>{seconds}</span>
+										</>
+									)}
 									onComplete={(e) => handleStopTimer(e)}
 								/>
 							</div>
