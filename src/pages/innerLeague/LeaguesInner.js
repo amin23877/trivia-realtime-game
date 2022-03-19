@@ -6,7 +6,6 @@ import { useRequest } from "common/hooks/useRequest";
 
 // Components, Services, Functions
 import Countdown from "react-countdown";
-import CountdownTimer from "common/components/countdownTimer/CountDownTimer";
 import CardInner from "common/components/cardInner/CardInner";
 import PlayFooter from "common/components/footer/PlayFooter";
 import LeagueLeaderboard from "pages/innerLeague/innerLeagueComponents/LeagueLeaderboard";
@@ -20,6 +19,7 @@ import { SET_GAME_SELECTION_TYPE } from "redux/actions/mainActions/generalAction
 import s from "./LeaguesInner.module.scss";
 import PersonIcon from "@material-ui/icons/Person";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
+import CountDownTimerNormal from "common/components/countdownTimer/CountDownTimerNormal";
 
 const ordinal = require("ordinal");
 
@@ -67,7 +67,10 @@ const LeaguesInner = () => {
 					<div className={s.cardInnerContent}>
 						<div id="primaryWhiteBlack" className="d-flex py-xl-2">
 							<div className="mx-xl-auto">
-								<Countdown date={dataInnerLeague.endTime} renderer={CountdownTimer} />
+								<Countdown
+									date={dataInnerLeague.endTime}
+									renderer={(props) => <CountDownTimerNormal timerProps={props} color="primary" />}
+								/>
 							</div>
 						</div>
 
