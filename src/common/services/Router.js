@@ -30,6 +30,7 @@ import WithFriends from "pages/quickPlay/withFriends/WithFriends";
 import InnerTopic from "pages/innerTopic/InnerTopic";
 import Page404 from "pages/404/Page404";
 import Invite from "pages/invite/Invite";
+import Settings from "pages/settings/Settings";
 
 const RouterConfig = () => {
 	return (
@@ -65,6 +66,8 @@ const RouterConfig = () => {
 					<Route exact path="/leagues/result" element={<LeaguesResult />} />
 
 					<Route exact path="/invite" element={<Invite />} />
+
+					<Route exact path="/settings" element={<Settings />} />
 
 					<Route exact path="/" element={<ProtectedRoute />}>
 						<Route exact path="/menu/rewards" element={<Rewards />} />
