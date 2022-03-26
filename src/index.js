@@ -1,13 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import store from 'redux/store'; // #redux step1
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import store from "redux/store"; // #redux step1
+import App from "./App";
+import "common/services/i18n";
 
 ReactDOM.render(
-  // #redux step2
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
+	// #redux step2
+	<React.Suspense fallback={null}>
+		<Provider store={store}>
+			<App />
+		</Provider>
+	</React.Suspense>,
+	document.getElementById("root")
 );
