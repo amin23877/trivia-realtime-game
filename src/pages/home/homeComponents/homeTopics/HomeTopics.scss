@@ -3,6 +3,26 @@
 $desktop-slider-height: 210px;
 $mobile-slider-height: 155px;
 
+.topicsContainer {
+    padding-top: 1.75rem;
+
+    .topics-header {
+        padding-bottom: .5rem;
+        padding-right: 1.5rem;
+
+        &__title {
+            @include fontSize($fs-m, $fs-xxl);
+        }
+
+        .subtitle {
+            @include fontSize($fs-normal ,$fs-m);
+
+            color: colorBlack(50) !important;
+            cursor: pointer;
+        }
+    }
+}
+
 .homeTopics {
     width: 100%;
     display: flex;

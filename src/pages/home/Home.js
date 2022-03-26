@@ -15,7 +15,6 @@ import { fetchTopics } from "redux/actions/topicActions/topicsActions";
 import { Drawer } from "@material-ui/core";
 // Styles, Icons, Images
 import "./Home.scss";
-import arrowForwardMini from "assets/images/icons/arrow-forward-mini.svg";
 import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
 import ApiCall from "common/services/ApiCall";
 
@@ -24,9 +23,10 @@ const Home = () => {
 	const dispatch = useDispatch();
 	const apiCall = new ApiCall();
 
-	const stateTopic = useSelector((state) => state.stateTopic);
+	const topics = useSelector((state) => state.stateTopic.topics);
 
 	const [dataLeague, setDataLeague] = useState();
+	const [openDrawerMenu, setOpenDrawerMenu] = useState(false);
 
 	const handleNavigate = (event, path) => {
 		event.stopPropagation();
@@ -34,15 +34,13 @@ const Home = () => {
 		navigate(path);
 	};
 
-	// Drawer Menu --------------------------------------
-	const [openDrawerMenu, setOpenDrawerMenu] = React.useState(false);
 	const handleDrawerOpen = () => {
 		setOpenDrawerMenu(true);
 	};
+
 	const handleDrawerClose = () => {
 		setOpenDrawerMenu(false);
 	};
-	// -------------------------------------- Drawer Menu
 
 	const getDataLeague = () => {
 		dispatch(SET_SPINNER(true));
@@ -64,12 +62,6 @@ const Home = () => {
 	useEffect(() => {
 		let isMounted = true;
 		if (isMounted) {
-			// localStorage.setItem('remainingTime', cardInfo.remainingTime);
-			// let remainingTime = localStorage.getItem('remainingTime');
-			// remainingTime
-			//   ? localStorage.setItem('remainingTime', remainingTime)
-			//   : localStorage.setItem('remainingTime', cardInfo.remainingTime);
-
 			dispatch(fetchTopics());
 			getDataLeague();
 		}
@@ -79,49 +71,36 @@ const Home = () => {
 	}, []);
 
 	return (
-		<div className="fadeInFast home">
-			<div className="home__header">
-				<MobileHeader onDrawerOpen={handleDrawerOpen} />
-			</div>
-
-			<Drawer className="d-xl-none" variant="persistent" anchor="left" open={openDrawerMenu}>
-				<Menu onDrawerClose={handleDrawerClose} />
-			</Drawer>
-
-			<div className="home__body">
-				<div className="home-card-league">
-					{!_.isEmpty(dataLeague) ? (
-						<div
-							className="ratio _dish-cardLeagueInfo"
-							onClick={(e) => handleNavigate(e, `/leagues/${dataLeague?._id}`)}
-						>
-							{/* #ratio */}
-							<CardLeagueInfo info={dataLeague} />
-						</div>
-					) : null}
+		topics && (
+			<div className="fadeInFast home">
+				<div className="home__header">
+					<MobileHeader onDrawerOpen={handleDrawerOpen} />
 				</div>
 
-				{stateTopic.topics?.map((item, index) => {
-					const topics = stateTopic.topics.filter((el) => el.type === item.type)[0]?.topicList;
+				<Drawer className="d-xl-none" variant="persistent" anchor="left" open={openDrawerMenu}>
+					<Menu onDrawerClose={handleDrawerClose} />
+				</Drawer>
 
-					if (!topics.length) return null;
-
-					return (
-						<div key={index} className="topics">
-							<div className="d-flex justify-content-between align-items-center topics-header">
-								<p className="topics-header__title">{item.topic}</p>
-								<p className="subtitle" onClick={(e) => handleNavigate(e, `/topics/all/${item.type}`)}>
-									see all
-									<img className="mx-2" src={arrowForwardMini} alt="" />
-								</p>
+				<div className="home__body">
+					<div className="home-card-league">
+						{!_.isEmpty(dataLeague) ? (
+							<div
+								className="ratio _dish-cardLeagueInfo"
+								onClick={(e) => handleNavigate(e, `/leagues/${dataLeague?._id}`)}
+							>
+								<CardLeagueInfo info={dataLeague} />
 							</div>
+						) : null}
+					</div>
 
-							<HomeTopics topics={topics} type={item.type} />
-						</div>
-					);
-				})}
+					<HomeTopics topics={topics[0]?.topicList} type={topics[0]?.type} titleNs="home.top-topics" />
+
+					<HomeTopics topics={topics[1]?.topicList} type={topics[1]?.type} titleNs="home.latest-topics" />
+
+					<HomeTopics topics={topics[2]?.topicList} type={topics[2]?.type} titleNs="home.favorite-topics" />
+				</div>
 			</div>
-		</div>
+		)
 	);
 };
 export default Home;
