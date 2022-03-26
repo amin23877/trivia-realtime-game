@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { ListItem } from "common/components/UI/list/List";
 import { useRequest } from "common/hooks/useRequest";
 import ConfirmModal from "common/components/modals/ConfirmModal";
+import Text from "common/components/UI/text/Text";
 
 const FriendCard = ({ data, index }) => {
 	const { fetcher: removeFriend } = useRequest(`user/${data._id}/friend`, { method: "DELETE" });
@@ -27,9 +28,7 @@ const FriendCard = ({ data, index }) => {
 				actionText="Remove"
 				question={`Remove ${data?.username} from Friends ?`}
 				renderButton={(handleOpen) => (
-					<span onClick={handleOpen} className="profile-friend__remove">
-						Remove
-					</span>
+					<Text as="span" ns="remove" onClick={handleOpen} className="profile-friend__remove" />
 				)}
 			/>
 		</ListItem>

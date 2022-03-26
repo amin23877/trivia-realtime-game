@@ -21,11 +21,25 @@
     "grand": "Grand league",
     "history": "League history"
   },
+  "profile": {
+    "tabs": {
+      "favorites": "Favorite topics",
+      "performance": "performance",
+      "friends": "friends"
+    },
+    "performance": {
+      "played-topics": "Played Topics History",
+      "played-leagues": "History Of Participating Leagues"
+    }
+  },
   "btn" : {
-    "quick-play": "Quick play"
+    "quick-play": "Quick play",
+    "edit-profile": "Edit profile"
   },
   "search" : "Search",
   "remove": "Remove",
   "recent-search": "Recent search",
-  "see-all" : "see all"
+  "see-all" : "See all",
+  "see-more": "See more",
+  "your-pos": "Your position"
 }

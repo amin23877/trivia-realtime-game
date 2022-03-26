@@ -2,10 +2,11 @@ import React from "react";
 import { useListLoad } from "common/hooks/useListLoad";
 
 import s from "./ProfilePerformance.module.scss";
+import Text from "common/components/UI/text/Text";
 
 const PAGE_SIZE = 5;
 
-const PerformanceList = ({ apiEndpoint, title, children, dataFieldName }) => {
+const PerformanceList = ({ apiEndpoint, titleNs, children, dataFieldName }) => {
 	const { data, status, endOfList, fetchMore } = useListLoad(apiEndpoint, PAGE_SIZE, dataFieldName);
 
 	if (status !== "success") return null;
@@ -15,14 +16,14 @@ const PerformanceList = ({ apiEndpoint, title, children, dataFieldName }) => {
 
 	return (
 		<>
-			<p className={s.title}>{title}</p>
+			<Text className={s.title} ns={titleNs} />
 
 			<div className={s.list}>
 				{children(data)}
 
 				{!endOfList && (
 					<div onClick={fetchMore} className={s.listFooter}>
-						See more
+						<Text ns="see-more" />
 					</div>
 				)}
 			</div>

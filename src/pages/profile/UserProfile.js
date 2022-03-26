@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ProfileHeader from "pages/profile/profileComponents/profileHeader/ProfileHeader";
+import Text from "common/components/UI/text/Text";
 import { Link } from "react-router-dom";
 import TabPanel from "common/components/UI/tabs/TabPanel";
 import OutlinedButton from "common/components/UI/button/OutlinedButton";
@@ -23,7 +24,8 @@ const UserProfile = () => {
 		<Link to="/profile/edit">
 			<OutlinedButton className={s.editButton} variant="secondary">
 				<div className={s.editIcon} />
-				Edit Profile
+
+				<Text ns="btn.edit-profile" />
 			</OutlinedButton>
 		</Link>
 	);
@@ -34,7 +36,7 @@ const UserProfile = () => {
 				tabsProps={{
 					value: activeTab,
 					onChange: handleChangeTab,
-					tabs: ["Favorite Topics", "Performance", "Friend"],
+					tabs: ["profile.tabs.favorites", "profile.tabs.performance", "profile.tabs.friends"],
 				}}
 				actionButton={editProfileBtn}
 				data={user}

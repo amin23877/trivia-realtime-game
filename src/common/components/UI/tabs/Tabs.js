@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Tab as MuiTab, Tabs as MuiTabs } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { DESKTOP_BREAKPOINT } from "common/values/CORE";
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles({
 	root: {
@@ -39,6 +40,8 @@ const useStyles = makeStyles({
 });
 
 const Tabs = ({ variant = "button", tabs = [], ...rest }) => {
+	const { t } = useTranslation();
+
 	const s = useStyles({ variant });
 
 	return (
@@ -49,7 +52,7 @@ const Tabs = ({ variant = "button", tabs = [], ...rest }) => {
 						<MuiTab
 							classes={{ root: s.tab, selected: s.selectedTab }}
 							key={index}
-							label={tab.label ?? tab}
+							label={t(tab.label ?? tab)}
 							value={tab.value ?? index}
 						/>
 					)

@@ -15,7 +15,7 @@ const ProfilePerformance = ({ id, progressProps }) => {
 			<PerformanceLevelCard {...progressProps} />
 
 			<PerformanceList
-				title="Played Topics History"
+				titleNs="profile.performance.played-topics"
 				apiEndpoint={`user/${id}/performance/topic`}
 				dataFieldName="topicPerformance"
 			>
@@ -23,7 +23,7 @@ const ProfilePerformance = ({ id, progressProps }) => {
 			</PerformanceList>
 
 			<PerformanceList
-				title="History Of Participating Leagues"
+				titleNs="profile.performance.played-leagues"
 				apiEndpoint={`user/${id}/performance/league`}
 				dataFieldName="leaguePerformance"
 			>

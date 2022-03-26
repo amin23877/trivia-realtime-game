@@ -21,11 +21,25 @@
     "grand": "گرند لیگ",
     "history": "تاریخچه لیگ ها"
   },
+  "profile": {
+    "tabs": {
+      "favorites": "تاپیک های مورد علاقه",
+      "performance": "پرفورمنس",
+      "friends": "دوستان"
+    },
+    "performance": {
+      "played-topics": "تاریخچه تاپیک هایی که بازی کرده اید",
+      "played-leagues": "تاریخچه لیگ هایی که بازی کرده اید"
+    }
+  },
   "btn" : {
-    "quick-play": "بازی سریع"
+    "quick-play": "بازی سریع",
+    "edit-profile": "ویرایش پروفایل"
   },
   "search" : "جستجو",
   "remove": "حذف",
   "recent-search": "جستجو های اخیر",
-  "see-all" : "دیدن همه"
+  "see-all" : "دیدن همه",
+  "see-more": "بیشتر",
+  "your-pos": "رتبه شما"
 }
