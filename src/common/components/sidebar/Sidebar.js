@@ -10,14 +10,15 @@ import "./Sidebar.scss";
 
 // image
 import CardUser from "common/components/cardUser/CardUser";
+import Text from "common/components/UI/text/Text";
 
 const menuItems = [
-	{ name: "Home", route: "/", icon: "home-icon" },
-	{ name: "League", route: "/leagues", icon: "league-icon" },
-	{ name: "Profile", route: "/profile", icon: "profile-icon" },
-	{ name: "Top players", route: "/leaderboard", icon: "leaderboard-icon" },
-	{ name: "Rewards", route: "/menu/rewards", icon: "gift-icon" },
-	{ name: "Invite friends", route: "/invite", icon: "invite-icon" },
+	{ ns: "menu.home", route: "/", icon: "home-icon" },
+	{ ns: "menu.leagues", route: "/leagues", icon: "league-icon" },
+	{ ns: "menu.profile", route: "/profile", icon: "profile-icon" },
+	{ ns: "menu.top-players", route: "/leaderboard", icon: "leaderboard-icon" },
+	{ ns: "menu.rewards", route: "/menu/rewards", icon: "gift-icon" },
+	{ ns: "menu.invite-friends", route: "/invite", icon: "invite-icon" },
 ];
 
 const Sidebar = () => {
@@ -56,7 +57,7 @@ const Sidebar = () => {
 								`}
 							>
 								<div className={item.icon} />
-								{item.name}
+								<Text ns={item.ns} />
 							</li>
 						)}
 					</NavLink>
