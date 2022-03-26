@@ -15,6 +15,12 @@
     "latest-topics": "Latest topics",
     "favorite-topics": "Favorite topics"
   },
+  "leagues" : {
+    "daily": "Daily league",
+    "weekly": "Weekly league",
+    "grand": "Grand league",
+    "history": "League history"
+  },
   "btn" : {
     "quick-play": "Quick play"
   },

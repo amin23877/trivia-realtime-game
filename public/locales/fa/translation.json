@@ -15,6 +15,12 @@
     "latest-topics": "آخرین تاپیک ها",
     "favorite-topics": "تاپیک های مورد علاقه"
   },
+  "leagues" : {
+    "daily": "لیگ روزانه",
+    "weekly": "لیگ هفتگی",
+    "grand": "گرند لیگ",
+    "history": "تاریخچه لیگ ها"
+  },
   "btn" : {
     "quick-play": "بازی سریع"
   },
