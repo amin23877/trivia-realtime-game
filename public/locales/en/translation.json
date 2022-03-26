@@ -1,21 +1,21 @@
 {
-  "menu" : {
+  "menu": {
     "home": "Home",
     "leagues": "Leagues",
-    "profile":  "Profile",
+    "profile": "Profile",
     "top-players": "Top players",
-    "rewards":  "Rewards",
+    "rewards": "Rewards",
     "invite-friends": "Invite friends",
     "settings": "Settings",
     "logout": "Logout",
-    "deactivate" : "deactivation"
+    "deactivate": "deactivation"
   },
   "home": {
     "top-topics": "Top topics",
     "latest-topics": "Latest topics",
     "favorite-topics": "Favorite topics"
   },
-  "leagues" : {
+  "leagues": {
     "daily": "Daily league",
     "weekly": "Weekly league",
     "grand": "Grand league",
@@ -32,14 +32,19 @@
       "played-leagues": "History Of Participating Leagues"
     }
   },
-  "btn" : {
-    "quick-play": "Quick play",
-    "edit-profile": "Edit profile"
+  "profile-edit": {
+    "username": "Username",
+    "validationMsg": "The username should be between 8 and 20 characters long and no underline ( _ ) should be used"
   },
-  "search" : "Search",
+  "btn": {
+    "quick-play": "Quick play",
+    "edit-profile": "Edit profile",
+    "save": "Save changes"
+  },
+  "search": "Search",
   "remove": "Remove",
   "recent-search": "Recent search",
-  "see-all" : "See all",
+  "see-all": "See all",
   "see-more": "See more",
   "your-pos": "Your position"
 }

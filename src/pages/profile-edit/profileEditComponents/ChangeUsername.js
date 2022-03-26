@@ -3,8 +3,8 @@ import SaveChangeBtn from "pages/profile-edit/profileEditComponents/SaveChangeBt
 
 //---assets
 import "./ChangeUsername.scss";
-import { validationDescription } from "pages/profile-edit/ProfileEdit";
 import { useSelector } from "react-redux";
+import Text from "common/components/UI/text/Text";
 
 /*
  * 	this component render form for allow user change its username
@@ -16,9 +16,7 @@ const ChangeUsername = ({ value, onChange, error, onError }) => {
 	return (
 		<div className="change-info-form-container">
 			<form className="change-info-form">
-				<label className="change-info-form__label" htmlFor="username">
-					User Name
-				</label>
+				<Text as="label" ns="profile-edit.username" className="change-info-form__label" htmlFor="username" />
 
 				<input
 					id="username"
@@ -28,14 +26,13 @@ const ChangeUsername = ({ value, onChange, error, onError }) => {
 					placeholder="User name"
 				/>
 
-				<p
+				{/* show error message if update user is failed otherwise show validation description */}
+				<Text
+					ns={updateFailed ? updateFailed.response.data.error : "profile-edit.validationMsg"}
 					className={`change-info-form__details ${
 						error || updateFailed ? "change-info-form__details_error" : ""
 					}`}
-				>
-					{/* show error message if update user is failed otherwise show validation description */}
-					{updateFailed ? updateFailed.response.data.error : validationDescription}
-				</p>
+				/>
 
 				<SaveChangeBtn onError={onError} newUsername={value} className="d-none d-xl-inline mt-4" />
 			</form>

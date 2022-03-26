@@ -5,6 +5,7 @@ import "pages/profile-edit/profileEditComponents/ProfileEditHeader.scss";
 import ArrowLeft from "assets/images/icons/arrow-left.svg";
 //----component
 import SaveChangeBtn from "pages/profile-edit/profileEditComponents/SaveChangeBtn";
+import Text from "common/components/UI/text/Text";
 
 const ProfileEditHeader = ({ newUsername, onError }) => {
 	const navigate = useNavigate();
@@ -16,7 +17,7 @@ const ProfileEditHeader = ({ newUsername, onError }) => {
 					<img src={ArrowLeft} alt="go back" />
 				</span>
 
-				<p>Edit Profile</p>
+				<Text ns="btn.edit-profile" />
 			</div>
 
 			<SaveChangeBtn onError={onError} newUsername={newUsername} />
