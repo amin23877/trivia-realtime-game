@@ -28,7 +28,7 @@ const LeaderboardTabPanelHeader = ({ numberOne, myPosition }) => {
 						/>
 					) : (
 						<div className="empty-number-one">
-							<p>Be the first</p>
+							<Text ns="leaderboard.be-first" />
 							<img src={runnerImage} alt="runner" />
 						</div>
 					)}
