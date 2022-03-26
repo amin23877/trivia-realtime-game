@@ -43,9 +43,12 @@ const Sidebar = () => {
 				/>
 			</div>
 
-			<FilledButton variant="secondary" className="quick-play-btn" onClick={handleQuickPlay}>
-				Quick Play
-			</FilledButton>
+			<FilledButton
+				ns="btn.quick-play"
+				variant="secondary"
+				className="quick-play-btn"
+				onClick={handleQuickPlay}
+			/>
 
 			<ul className="sidebar-menu">
 				{menuItems.map((item, index) => (
@@ -68,7 +71,7 @@ const Sidebar = () => {
 					renderButton={(handleOpen) => (
 						<li onClick={handleOpen} className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
 							<div className="logout-icon" />
-							Logout
+							<Text ns="menu.logout" />
 						</li>
 					)}
 				/>
@@ -80,7 +83,7 @@ const Sidebar = () => {
 							className="sidebar-menu-item sidebar-menu-item_red sidebar-menu-item_hover-effect-red"
 						>
 							<div className="deactivation-icon" />
-							deactivation
+							<Text ns="menu.deactivate" />
 						</li>
 					)}
 				/>
