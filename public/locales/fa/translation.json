@@ -5,6 +5,21 @@
     "profile":  "پروفایل",
     "top-players": "بهترین بازیکنان",
     "rewards":  "جوایز",
-    "invite-friends": "دعوت از دوستان"
-  }
+    "invite-friends": "دعوت از دوستان",
+    "settings": "تنظیمات",
+    "logout": "خروج",
+    "deactivate" : "غیرفعال کردن"
+  },
+  "home": {
+    "top-topics": "بهترین تاپیک ها",
+    "latest-topics": "آخرین تاپیک ها",
+    "favorite-topics": "تاپیک های مورد علاقه"
+  },
+  "btn" : {
+    "quick-play": "بازی سریع"
+  },
+  "search" : "جستجو",
+  "remove": "حذف",
+  "recent-search": "جستجو های اخیر",
+  "see-all" : "دیدن همه"
 }

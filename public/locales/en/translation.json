@@ -5,6 +5,21 @@
     "profile":  "Profile",
     "top-players": "Top players",
     "rewards":  "Rewards",
-    "invite-friends": "Invite friends"
-  }
+    "invite-friends": "Invite friends",
+    "settings": "Settings",
+    "logout": "Logout",
+    "deactivate" : "deactivation"
+  },
+  "home": {
+    "top-topics": "Top topics",
+    "latest-topics": "Latest topics",
+    "favorite-topics": "Favorite topics"
+  },
+  "btn" : {
+    "quick-play": "Quick play"
+  },
+  "search" : "Search",
+  "remove": "Remove",
+  "recent-search": "Recent search",
+  "see-all" : "see all"
 }
