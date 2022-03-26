@@ -45,10 +45,15 @@
   "leaderboard": {
     "be-first": "Be the first"
   },
+  "invite": {
+    "share": "Share with friends",
+    "invite": "Invite your friends to join us"
+  },
   "btn": {
     "quick-play": "Quick play",
     "edit-profile": "Edit profile",
-    "save": "Save changes"
+    "save": "Save changes",
+    "copy-link": "Copy link"
   },
   "search": "Search",
   "remove": "Remove",
