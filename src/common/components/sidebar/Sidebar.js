@@ -18,6 +18,7 @@ const menuItems = [
 	{ ns: "menu.profile", route: "/profile", icon: "profile-icon" },
 	{ ns: "menu.top-players", route: "/leaderboard", icon: "leaderboard-icon" },
 	{ ns: "menu.rewards", route: "/menu/rewards", icon: "gift-icon" },
+	{ ns: "menu.settings", route: "/settings", icon: "settings-icon" },
 	{ ns: "menu.invite-friends", route: "/invite", icon: "invite-icon" },
 ];
 
