@@ -5,10 +5,10 @@ import Tabs from "common/components/UI/tabs/Tabs";
 import TabPanel from "common/components/UI/tabs/TabPanel";
 
 const tabs = [
-	{ label: "All", value: TYPE_LEADERBOARD.ALL },
-	{ label: "Daily", value: TYPE_LEADERBOARD.DAY },
-	{ label: "Weekly", value: TYPE_LEADERBOARD.WEEK },
-	{ label: "Monthly", value: TYPE_LEADERBOARD.MONTH },
+	{ label: "filterTabs.all", value: TYPE_LEADERBOARD.ALL },
+	{ label: "filterTabs.daily", value: TYPE_LEADERBOARD.DAY },
+	{ label: "filterTabs.weekly", value: TYPE_LEADERBOARD.WEEK },
+	{ label: "filterTabs.monthly", value: TYPE_LEADERBOARD.MONTH },
 ];
 
 const LeaderboardTabs = () => {

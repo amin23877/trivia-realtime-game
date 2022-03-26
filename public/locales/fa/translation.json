@@ -10,6 +10,12 @@
     "logout": "خروج",
     "deactivate" : "غیرفعال کردن"
   },
+  "filterTabs": {
+    "all": "همه",
+    "daily": "روزانه",
+    "weekly": "هفتگی",
+    "monthly": "ماهانه"
+  },
   "home": {
     "top-topics": "بهترین تاپیک ها",
     "latest-topics": "آخرین تاپیک ها",
@@ -46,5 +52,6 @@
   "recent-search": "جستجو های اخیر",
   "see-all" : "دیدن همه",
   "see-more": "بیشتر",
-  "your-pos": "رتبه شما"
+  "your-pos": "رتبه شما",
+  "score": "امتیاز"
 }

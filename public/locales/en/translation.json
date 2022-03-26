@@ -10,6 +10,12 @@
     "logout": "Logout",
     "deactivate": "deactivation"
   },
+  "filterTabs": {
+    "all": "All",
+    "daily": "Daily",
+    "weekly": "Weekly",
+    "monthly": "Monthly"
+  },
   "home": {
     "top-topics": "Top topics",
     "latest-topics": "Latest topics",
@@ -46,5 +52,6 @@
   "recent-search": "Recent search",
   "see-all": "See all",
   "see-more": "See more",
-  "your-pos": "Your position"
+  "your-pos": "Your position",
+  "score": "score"
 }
