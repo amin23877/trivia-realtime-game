@@ -1,0 +1,10 @@
+{
+  "menu" : {
+    "home": "Home",
+    "leagues": "Leagues",
+    "profile":  "Profile",
+    "top-players": "Top players",
+    "rewards":  "Rewards",
+    "invite-friends": "Invite friends"
+  }
+}
