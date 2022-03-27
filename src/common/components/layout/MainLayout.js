@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
+
 import { Outlet } from "react-router-dom";
 
 import DesktopHeader from "common/components/header/DesktopHeader";
 import Sidebar from "common/components/sidebar/Sidebar";
 import Footer from "common/components/footer/Footer";
+import Loading from "common/components/loading/Loading";
 import SelectGameType from "pages/home/homeComponents/selectGameType/SelectGameType";
 import NotificationWidget from "common/components/notificationWidget/NotificationWidget";
 
@@ -15,13 +18,30 @@ import { SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
 import "./MainLayout.scss";
 
 const MainLayout = ({ footer = false, sidebar = true }) => {
+	const { i18n } = useTranslation();
 	const dispatch = useDispatch();
+
 	const { openGameTypes, openNotifDrawer } = useSelector((state) => state.stateGeneral);
+	const loadUserStatus = useSelector((state) => state.stateUser.status);
+	const userInfo = useSelector((state) => state.stateUser.userInfo);
 
 	useEffect(() => {
-		dispatch(fetchUser());
+		// get user data only in first load
+		if (loadUserStatus === "idle") dispatch(fetchUser());
+
 		dispatch(fetchNotif());
-	}, [dispatch]);
+	}, [dispatch, loadUserStatus]);
+
+	/* initialize user language */
+	useEffect(() => {
+		if (loadUserStatus === "success") {
+			i18n.changeLanguage(userInfo.language);
+		}
+	}, [i18n, loadUserStatus, userInfo.language]);
+
+	if (loadUserStatus === "loading" || loadUserStatus === "idle") {
+		return <Loading variant="full-page" />;
+	}
 
 	return (
 		<div className="main-layout">
