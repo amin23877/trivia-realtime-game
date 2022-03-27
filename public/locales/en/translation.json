@@ -13,7 +13,8 @@
   "modal": {
     "confirm": "Do you want to Log out of your account?",
     "deactivate": "Do you want to deactivate your account?",
-    "removeFriend": "Remove {{user}} from friends?"
+    "removeFriend": "Remove {{user}} from friends?",
+    "removeAvatar": "Remove profile photo"
   },
   "filterTabs": {
     "all": "All",
@@ -64,6 +65,12 @@
     "in-process": "In process",
     "gift": "Gift Voucher",
     "title": "Rewards"
+  },
+  "friends": {
+    "add": "Add friend",
+    "requested": "Requested",
+    "accept": "Accept",
+    "reject": "Reject"
   },
   "btn": {
     "quick-play": "Quick play",

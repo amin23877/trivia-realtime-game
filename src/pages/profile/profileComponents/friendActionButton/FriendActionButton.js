@@ -67,35 +67,40 @@ const FriendActionButton = ({ initialStatus, id }) => {
 
 	if (status === 1)
 		return (
-			<OutlinedButton variant="gray" onClick={handleRemoveFriend} className={s.friendActionButton}>
-				Remove
-			</OutlinedButton>
+			<OutlinedButton ns="remove" variant="gray" onClick={handleRemoveFriend} className={s.friendActionButton} />
 		);
 
 	if (status === 0)
 		return (
-			<FilledButton variant="secondary" onClick={handleMakeRequest} className={s.friendActionButton}>
-				Add Friend
-			</FilledButton>
+			<FilledButton
+				ns="friends.add"
+				variant="secondary"
+				onClick={handleMakeRequest}
+				className={s.friendActionButton}
+			/>
 		);
 
 	if (status === 2)
 		return (
-			<OutlinedButton variant="secondary" onClick={handleRemoveRequest} className={s.friendActionButton}>
-				Requested
-			</OutlinedButton>
+			<OutlinedButton
+				ns="friends.requested"
+				variant="secondary"
+				onClick={handleRemoveRequest}
+				className={s.friendActionButton}
+			/>
 		);
 
 	if (status === 3)
 		return (
 			<div className="d-flex gap-2">
-				<FilledButton variant="secondary" onClick={accept} className={s.friendActionButton}>
-					Accept
-				</FilledButton>
+				<FilledButton
+					ns="friends.accept"
+					variant="secondary"
+					onClick={accept}
+					className={s.friendActionButton}
+				/>
 
-				<OutlinedButton variant="gray" onClick={reject} className={s.friendActionButton}>
-					Reject
-				</OutlinedButton>
+				<OutlinedButton ns="friends.reject" variant="gray" onClick={reject} className={s.friendActionButton} />
 			</div>
 		);
 
