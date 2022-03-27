@@ -12,7 +12,8 @@
   },
   "modal": {
     "confirm": "Do you want to Log out of your account?",
-    "deactivate": "Do you want to deactivate your account?"
+    "deactivate": "Do you want to deactivate your account?",
+    "removeFriend": "Remove {{user}} from friends?"
   },
   "filterTabs": {
     "all": "All",

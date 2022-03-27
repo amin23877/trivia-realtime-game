@@ -25,8 +25,9 @@ const FriendCard = ({ data, index }) => {
 				avatar={data.avatar}
 				alertIcon={false}
 				action={() => removeFriendHandler()}
-				actionText="Remove"
-				question={`Remove ${data?.username} from Friends ?`}
+				actionText="remove"
+				question="modal.removeFriend"
+				questionParams={{ user: data.username }}
 				renderButton={(handleOpen) => (
 					<Text as="span" ns="remove" onClick={handleOpen} className="profile-friend__remove" />
 				)}

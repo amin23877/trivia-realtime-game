@@ -6,7 +6,7 @@ import Text from "common/components/UI/text/Text";
 import s from "common/components/modals/ConfirmModal.module.scss";
 import { IMAGE_URL } from "common/values/CORE";
 
-const ConfirmModal = ({ alertIcon = true, avatar, question, actionText, renderButton, action }) => {
+const ConfirmModal = ({ alertIcon = true, avatar, question, questionParams, actionText, renderButton, action }) => {
 	return (
 		<ModalBase renderButton={renderButton} closeAfterAction>
 			{(handlers) => (
@@ -16,7 +16,7 @@ const ConfirmModal = ({ alertIcon = true, avatar, question, actionText, renderBu
 
 						{avatar && <Avatar src={IMAGE_URL + encodeURI(avatar)} size={{ mobile: 50, desktop: 66 }} />}
 
-						<Text ns={question} />
+						<Text ns={question} params={questionParams} />
 					</div>
 
 					<div className={s.actionSection}>
