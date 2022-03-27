@@ -57,6 +57,14 @@
   "settings" : {
     "preferred": "Select your preferred language"
   },
+  "rewards": {
+    "all": "All Gift Vouchers",
+    "received": "Received",
+    "receive": "Receive",
+    "in-process": "In process",
+    "gift": "Gift Voucher",
+    "title": "Rewards"
+  },
   "btn": {
     "quick-play": "Quick play",
     "edit-profile": "Edit profile",

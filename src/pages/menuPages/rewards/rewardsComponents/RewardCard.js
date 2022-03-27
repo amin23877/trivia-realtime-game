@@ -1,4 +1,5 @@
 import React from "react";
+import Text from "common/components/UI/text/Text";
 
 import s from "./RewardCard.module.scss";
 
@@ -23,7 +24,7 @@ const RewardCard = ({ data }) => {
 						</div>
 					)}
 
-					<p className={s.title}>Gift Voucher</p>
+					<Text ns="rewards.gift" className={s.title} />
 				</div>
 
 				<p className={s.desc}>{data.desc}</p>
@@ -39,9 +40,9 @@ const RewardCard = ({ data }) => {
 				<img src={giftImage} alt="gift" />
 			</div>
 
-			{data.type === "receive" && <div className={s.receiveButton}>Receive</div>}
-			{data.type === "in-process" && <div className={s.processFloatText}>In process</div>}
-			{data.type === "received" && <div className={s.receivedFloatText}>Received</div>}
+			{data.type === "receive" && <Text ns="rewards.receive" className={s.receiveButton} />}
+			{data.type === "in-process" && <Text ns="rewards.in-process" className={s.processFloatText} />}
+			{data.type === "received" && <Text ns="rewards.received" className={s.receivedFloatText} />}
 		</li>
 	);
 };
