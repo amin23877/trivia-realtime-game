@@ -3,4 +3,21 @@
 .container {
   @include limitContent;
 
+  @include desktop {
+    padding-top: 2rem;
+  }
+}
+
+.selectContainer {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+
+.select {
+  max-width: 400px;
+  padding: 10px;
+  border: none;
+  border-radius: .5rem;
 }
