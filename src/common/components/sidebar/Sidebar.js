@@ -1,4 +1,6 @@
 import React from "react";
+import CardUser from "common/components/cardUser/CardUser";
+import Text from "common/components/UI/text/Text";
 import ModalConfirmDeactivation from "common/components/modals/ModalConfirmDeactivation";
 import ModalLogoutConfirm from "common/components/modals/ModalLogoutConfirm";
 import FilledButton from "common/components/UI/button/FilledButton";
@@ -7,10 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { SET_GAME_SELECTION_TYPE, SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
 
 import "./Sidebar.scss";
-
-// image
-import CardUser from "common/components/cardUser/CardUser";
-import Text from "common/components/UI/text/Text";
 
 const menuItems = [
 	{ ns: "menu.home", route: "/", icon: "home-icon" },
