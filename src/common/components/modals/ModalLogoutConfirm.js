@@ -8,8 +8,8 @@ const ModalLogoutConfirm = ({ renderButton }) => {
 	return (
 		<ConfirmModal
 			action={() => navigate("/login")}
-			actionText="Logout"
-			question="Do you want to Log out of your account?"
+			actionText="menu.logout"
+			question="modal.confirm"
 			renderButton={renderButton}
 		/>
 	);

@@ -10,6 +10,10 @@
     "logout": "Logout",
     "deactivate": "deactivation"
   },
+  "modal": {
+    "confirm": "Do you want to Log out of your account?",
+    "deactivate": "Do you want to deactivate your account?"
+  },
   "filterTabs": {
     "all": "All",
     "daily": "Daily",
@@ -49,6 +53,9 @@
     "share": "Share with friends",
     "invite": "Invite your friends to join us"
   },
+  "settings" : {
+    "preferred": "Select your preferred language"
+  },
   "btn": {
     "quick-play": "Quick play",
     "edit-profile": "Edit profile",
@@ -61,5 +68,6 @@
   "see-all": "See all",
   "see-more": "See more",
   "your-pos": "Your position",
-  "score": "score"
+  "score": "score",
+  "cancel": "Cancel"
 }
