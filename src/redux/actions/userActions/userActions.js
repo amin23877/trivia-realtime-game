@@ -12,6 +12,9 @@ export const FETCH_ERROR_USER = (error) => {
 export const FETCH_SUCCESS_USER = (response) => {
 	return { type: actionsTypeUser.FETCH_SUCCESS_USER, payload: response };
 };
+export const FETCH_LOADING_USER = () => {
+	return { type: actionsTypeUser.FETCH_LOADING_USER };
+};
 export const UPDATE_AVATAR = (response) => {
 	return { type: actionsTypeUser.UPDATE_AVATAR, payload: response };
 };
@@ -21,15 +24,13 @@ export const UPDATE_USERNAME = (response) => {
 
 export const fetchUser = () => {
 	return (dispatch) => {
-		dispatch(SET_SPINNER(true));
+		dispatch(FETCH_LOADING_USER());
 		apiCall
 			.get("user/me")
 			.then((response) => {
-				dispatch(SET_SPINNER(false));
 				dispatch(FETCH_SUCCESS_USER(response.data));
 			})
 			.catch((error) => {
-				dispatch(SET_SPINNER(false));
 				handleCatchErrorFunc(error);
 				dispatch(FETCH_ERROR_USER(error));
 			});
