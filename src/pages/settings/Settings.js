@@ -5,6 +5,7 @@ import FilledButton from "common/components/UI/button/FilledButton";
 import s from "./Settings.module.scss";
 import { useDispatch } from "react-redux";
 import { updateUser } from "redux/actions/userActions/userActions";
+import Text from "common/components/UI/text/Text";
 
 const Settings = () => {
 	const { i18n } = useTranslation();
@@ -33,16 +34,15 @@ const Settings = () => {
 		<div className={s.container}>
 			<form onSubmit={handleChangeLanguage}>
 				<div className={s.selectContainer}>
-					<label>Select your preferred language</label>
+					<Text ns="settings.preferred" as="label" />
+
 					<select className={s.select} value={selectedLang} onChange={handleSelectLang}>
 						<option value="en">English</option>
 						<option value="fa">Persian</option>
 					</select>
 				</div>
 
-				<FilledButton ns="btn.save" variant="secondary" as="button" type="submit">
-					Save Changes
-				</FilledButton>
+				<FilledButton ns="btn.save" variant="secondary" as="button" type="submit" />
 			</form>
 		</div>
 	);
