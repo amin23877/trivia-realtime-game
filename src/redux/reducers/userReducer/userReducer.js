@@ -23,6 +23,9 @@ export const userReducer = (state = initialState, action) => {
 		case actionsTypeUser.UPDATE_USERNAME:
 			return { ...state, userInfo: { ...state.userInfo, username: action.payload } };
 
+		case actionsTypeUser.UPDATE_LANGUAGE:
+			return { ...state, userInfo: { ...state.userInfo, language: action.payload } };
+
 		default:
 			return state;
 	}

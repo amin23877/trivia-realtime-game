@@ -21,6 +21,9 @@ export const UPDATE_AVATAR = (response) => {
 export const UPDATE_USERNAME = (response) => {
 	return { type: actionsTypeUser.UPDATE_USERNAME, payload: response };
 };
+export const UPDATE_LANGUAGE = (response) => {
+	return { type: actionsTypeUser.UPDATE_LANGUAGE, payload: response };
+};
 
 export const fetchUser = () => {
 	return (dispatch) => {
@@ -50,6 +53,10 @@ export const updateUser = (field, data, onSuccess) => {
 			case "username":
 				action = UPDATE_USERNAME;
 				body.append("username", data);
+				break;
+			case "language":
+				action = UPDATE_LANGUAGE;
+				body.append("language", data);
 				break;
 			default:
 				throw new Error("unhandled update user type");
