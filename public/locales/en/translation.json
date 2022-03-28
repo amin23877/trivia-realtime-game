@@ -13,7 +13,10 @@
   "code-sent": "Confirmation code sent to {{phone}}",
   "continue": "Continue",
   "correct-answer": "Correct answers",
+  "create-game": "Create a game",
+  "create-game-msg": "Create a new game to play with friends",
   "description": "Description",
+  "enter-join-code": "Enter a join code",
   "filterTabs": {
     "all": "All",
     "daily": "Daily",
@@ -32,10 +35,10 @@
     "latest-topics": "Latest topics",
     "top-topics": "Top topics"
   },
-  "invite": {
-    "invite": "Invite your friends to join us",
-    "share": "Share with friends"
-  },
+  "invite": "Invite",
+  "join": "Join",
+  "join-code": "Join Code",
+  "joined-friends": "People who have joined",
   "latest-results": "Latest results",
   "leaderboard": {
     "be-first": "Be the first"
@@ -46,6 +49,7 @@
     "history": "League history",
     "weekly": "Weekly league"
   },
+  "leave": "Leave",
   "level": "Level",
   "login": "Log in",
   "menu": {
@@ -73,6 +77,7 @@
   "phone-number-placeholder": "Enter your phone number",
   "play": "Play",
   "play-again": "Play Again",
+  "play-with-friend": "Play with friend",
   "player": "Player",
   "point": "Point",
   "profile": {
@@ -115,6 +120,8 @@
     "preferred": "Select your preferred language"
   },
   "share": "Share",
+  "start-again": "Start again",
+  "start-game": "Start game",
   "telegram": "Telegram",
   "timer": {
     "days": "days",
@@ -128,7 +135,7 @@
   "two-player": "2 Player",
   "verify-header": "Enter the verification code",
   "view-answers": "View Answers",
-  "wait-to-start": "Waiting for the match to start",
+  "wait-to-start": "Wait to start",
   "whatsapp": "Whatsapp",
   "winner-awards": "Winner awards",
   "you": "You",

@@ -13,7 +13,10 @@
   "code-sent": "کد تایید به {{phone}} ارسال شد",
   "continue": "ادامه",
   "correct-answer": "جواب های درست",
+  "create-game": "ساخت بازی",
+  "create-game-msg": "یک بازی جدید برای بازی با دوستان بسازید",
   "description": "توضیحات",
+  "enter-join-code": "کد ورود را وارد کنید",
   "filterTabs": {
     "all": "همه",
     "daily": "روزانه",
@@ -32,10 +35,10 @@
     "latest-topics": "آخرین تاپیک ها",
     "top-topics": "بهترین تاپیک ها"
   },
-  "invite": {
-    "invite": "دوستان خود را به عضویت ما درآورید",
-    "share": "اشتراک گذاری با دوستان"
-  },
+  "invite": "دعوت",
+  "join": "پیوستن",
+  "join-code": "کد پیوستن",
+  "joined-friends": "دوستانی که عضو شده اند",
   "latest-results": "آخرین نتایج",
   "leaderboard": {
     "be-first": "اول شو"
@@ -46,6 +49,7 @@
     "history": "تاریخچه لیگ ها",
     "weekly": "لیگ هفتگی"
   },
+  "leave": "خروج",
   "level": "سطح",
   "login": "وارد شوید",
   "menu": {
@@ -73,6 +77,7 @@
   "phone-number-placeholder": "شماره تلفن خود را وارد کنید",
   "play": "بازی",
   "play-again": "بازی دوباره",
+  "play-with-friend": "بازی با دوستان",
   "player": "بازیکن",
   "point": "پوینت",
   "profile": {
@@ -115,6 +120,8 @@
     "preferred": "زبان مورد علاقه خود را انتخاب کنید"
   },
   "share": "اشتراک گذاری",
+  "start-again": "شروع دوباره",
+  "start-game": "شروع بازی",
   "telegram": "تلگرام",
   "timer": {
     "days": "روز",
@@ -128,7 +135,7 @@
   "two-player": "دو نفره",
   "verify-header": "کد ارسال شده را وارد نمایید",
   "view-answers": "دیدن جواب ها",
-  "wait-to-start": "برای شروع بازی صبر کنید",
+  "wait-to-start": "تا شروع صبر کنید",
   "whatsapp": "واتساپ",
   "winner-awards": "جوایز برندگان",
   "you": "شما",
