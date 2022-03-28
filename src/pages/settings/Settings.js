@@ -6,6 +6,7 @@ import s from "./Settings.module.scss";
 import { useDispatch } from "react-redux";
 import { updateUser } from "redux/actions/userActions/userActions";
 import Text from "common/components/UI/text/Text";
+import HeaderGoBack from "common/components/headerGoBack/HeaderGoBack";
 
 const Settings = () => {
 	const { i18n } = useTranslation();
@@ -31,8 +32,13 @@ const Settings = () => {
 	};
 
 	return (
-		<div className={s.container}>
-			<form onSubmit={handleChangeLanguage}>
+		<form className={s.form} onSubmit={handleChangeLanguage}>
+			<HeaderGoBack
+				title="menu.settings"
+				renderOtherSide={() => <FilledButton ns="btn.save" variant="secondary" as="button" type="submit" />}
+			/>
+
+			<div className={s.container}>
 				<div className={s.selectContainer}>
 					<Text ns="settings.preferred" as="label" />
 
@@ -42,9 +48,15 @@ const Settings = () => {
 					</select>
 				</div>
 
-				<FilledButton ns="btn.save" variant="secondary" as="button" type="submit" />
-			</form>
-		</div>
+				<FilledButton
+					className="d-none d-xl-inline"
+					ns="btn.save"
+					variant="secondary"
+					as="button"
+					type="submit"
+				/>
+			</div>
+		</form>
 	);
 };
 

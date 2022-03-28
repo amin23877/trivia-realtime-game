@@ -1,6 +1,10 @@
 @import "assets/scss/styles";
 
 .container {
+  padding: 1rem;
+}
+
+.form {
   @include limitContent;
 
   @include desktop {
