@@ -1,5 +1,7 @@
 {
   "add-to-favorites": "افزودن به علاقه مندی ها",
+  "answer": "جواب",
+  "back-to-home": "برگشت به خانه",
   "btn": {
     "copied-to-cb": "لینک کپی شد",
     "copy-link": "کپی لینک",
@@ -10,6 +12,7 @@
   "cancel": "لغو",
   "code-sent": "کد تایید به {{phone}} ارسال شد",
   "continue": "ادامه",
+  "correct-answer": "جواب های درست",
   "description": "توضیحات",
   "filterTabs": {
     "all": "همه",
@@ -42,6 +45,7 @@
     "history": "تاریخچه لیگ ها",
     "weekly": "لیگ هفتگی"
   },
+  "level": "سطح",
   "login": "وارد شوید",
   "menu": {
     "deactivate": "غیرفعال کردن",
@@ -61,9 +65,13 @@
     "removeFriend": "حذف {{user}} از لیست دوستان؟",
     "share": "اشتراک گذاری {{type}}"
   },
+  "multi-player": "با دوستان",
+  "new-cat": "دسته بندی جدید",
+  "one-player": "یک نفره",
   "phone-number": "شماره تلفن",
   "phone-number-placeholder": "شماره تلفن خود را وارد کنید",
   "play": "بازی",
+  "play-again": "بازی دوباره",
   "player": "بازیکن",
   "point": "پوینت",
   "profile": {
@@ -81,6 +89,8 @@
     "username": "نام کاربری",
     "validationMsg": "نام کاربری باید بین 8 تا 20 کاراکتر باشد و شامل اندرلاین ( _ ) نباشد"
   },
+  "question": "سوال",
+  "questions": "سوالات",
   "recent-search": "جستجو های اخیر",
   "remove": "حذف",
   "remove-favorites": "حذف از علاقه مندی ها",
@@ -99,6 +109,7 @@
   "search": "جستجو",
   "see-all": "دیدن همه",
   "see-more": "بیشتر",
+  "select-cat": "دسته بندی مورد نظر را انتخاب کنید",
   "settings": {
     "preferred": "زبان مورد علاقه خود را انتخاب کنید"
   },
@@ -111,9 +122,15 @@
     "seconds": "ثانیه"
   },
   "topic-leaderboard": "تابلوی امتیازات",
+  "total-score": "مجموع امتیازات",
   "twitter": "توییتر",
+  "two-player": "دو نفره",
   "verify-header": "کد ارسال شده را وارد نمایید",
+  "view-answers": "دیدن جواب ها",
+  "wait-to-start": "برای شروع بازی صبر کنید",
   "whatsapp": "واتساپ",
   "winner-awards": "جوایز برندگان",
-  "your-pos": "رتبه شما"
+  "you": "شما",
+  "your-pos": "رتبه شما",
+  "your-score": "امتیاز شما"
 }
