@@ -36,6 +36,7 @@
     "top-topics": "بهترین تاپیک ها"
   },
   "invite": "دعوت",
+  "is-friend-now": "این کاربر هم اکنون دوست شماست",
   "join": "پیوستن",
   "join-code": "کد پیوستن",
   "joined-friends": "دوستانی که عضو شده اند",
@@ -139,6 +140,7 @@
   "verify-header": "کد ارسال شده را وارد نمایید",
   "view-answers": "دیدن جواب ها",
   "wait-to-start": "تا شروع صبر کنید",
+  "wants-tobe-friend": "میخواهد که دوست شما باشد",
   "whatsapp": "واتساپ",
   "winner-awards": "جوایز برندگان",
   "you": "شما",
