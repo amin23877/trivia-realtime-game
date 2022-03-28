@@ -12,6 +12,8 @@ import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
 // Styles, Icons, Images
 import "./Login.scss";
 import imgMain from "assets/images/pics/login-otp.svg";
+import Text from "common/components/UI/text/Text";
+import FilledButton from "common/components/UI/button/FilledButton";
 
 /* memoize countdown for prevent reset timer when input filled */
 const RemainTimeCountdown = memo(({ setHasTime }) => {
@@ -130,16 +132,20 @@ const VerificationCode = () => {
 			</div>
 
 			<div className="login-body">
-				<p className="login-body__title">Enter the verification code</p>
+				<Text ns="verify-header" className="login-body__title" />
 
 				<div className="text-center mt-3">
 					<img src={imgMain} alt="" />
 				</div>
 
 				<form onSubmit={handleRegister} noValidate autoComplete="off" className="login-form">
-					<label htmlFor="validate-number" className="login-form__label login-form__label_small">
-						{`Confirmation code sent to ${phone}`}
-					</label>
+					<Text
+						as="label"
+						ns="code-sent"
+						params={{ phone }}
+						htmlFor="validate-number"
+						className="login-form__label login-form__label_small"
+					/>
 
 					<input
 						id="validate-number"
@@ -152,19 +158,15 @@ const VerificationCode = () => {
 
 					<p className="login-form__error-message">{!isValidOtp && "The code entered is incorrect"}</p>
 
-					<button type="submit" className="login-form__submit">
-						Continue
-					</button>
+					<FilledButton as="button" ns="continue" type="submit" className="login-form__submit" />
 				</form>
 
 				<div className="mt-3">
 					{hasTime ? (
-						<p className="timer timer-resend" onClick={handleReGetOtp}>
-							Resend verification code
-						</p>
+						<Text ns="resend" className="timer timer-resend" onClick={handleReGetOtp} />
 					) : (
 						<div className="timer">
-							<p className="timer">Resend verification code until another</p>
+							<Text ns="resend-time" className="timer" />
 							<div className="timer-tag text-center">
 								<RemainTimeCountdown setHasTime={setHasTime} />
 							</div>

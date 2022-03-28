@@ -1,111 +1,119 @@
 {
-  "menu" : {
+  "add-to-favorites": "افزودن به علاقه مندی ها",
+  "btn": {
+    "copied-to-cb": "لینک کپی شد",
+    "copy-link": "کپی لینک",
+    "edit-profile": "ویرایش پروفایل",
+    "quick-play": "بازی سریع",
+    "save": "ذخیره تغییرات"
+  },
+  "cancel": "لغو",
+  "code-sent": "کد تایید به {{phone}} ارسال شد",
+  "continue": "ادامه",
+  "description": "توضیحات",
+  "filterTabs": {
+    "all": "همه",
+    "daily": "روزانه",
+    "monthly": "ماهانه",
+    "weekly": "هفتگی"
+  },
+  "friends": {
+    "accept": "قبول",
+    "add": "اضافه کردن به دوستان",
+    "reject": "رد",
+    "requested": "درخواست شده"
+  },
+  "home": {
+    "favorite-topics": "تاپیک های مورد علاقه",
+    "latest-topics": "آخرین تاپیک ها",
+    "top-topics": "بهترین تاپیک ها"
+  },
+  "invite": {
+    "invite": "دوستان خود را به عضویت ما درآورید",
+    "share": "اشتراک گذاری با دوستان"
+  },
+  "latest-results": "آخرین نتایج",
+  "leaderboard": {
+    "be-first": "اول شو"
+  },
+  "leagues": {
+    "daily": "لیگ روزانه",
+    "grand": "گرند لیگ",
+    "history": "تاریخچه لیگ ها",
+    "weekly": "لیگ هفتگی"
+  },
+  "login": "وارد شوید",
+  "menu": {
+    "deactivate": "غیرفعال کردن",
     "home": "خانه",
-    "leagues": "لیگ ها",
-    "profile":  "پروفایل",
-    "top-players": "بهترین بازیکنان",
-    "rewards":  "جوایز",
     "invite-friends": "دعوت از دوستان",
-    "settings": "تنظیمات",
+    "leagues": "لیگ ها",
     "logout": "خروج",
-    "deactivate" : "غیرفعال کردن"
+    "profile": "پروفایل",
+    "rewards": "جوایز",
+    "settings": "تنظیمات",
+    "top-players": "بهترین بازیکنان"
   },
   "modal": {
     "confirm": "آیا میخواهید از حساب خود خارج شوید؟",
     "deactivate": "آیا میخواهید اکانت خود را غیرفعال کنید؟",
-    "removeFriend": "حذف {{user}} از لیست دوستان؟",
     "removeAvatar": "آیا میخواهید آواتار حذف شود؟",
+    "removeFriend": "حذف {{user}} از لیست دوستان؟",
     "share": "اشتراک گذاری {{type}}"
   },
-  "filterTabs": {
-    "all": "همه",
-    "daily": "روزانه",
-    "weekly": "هفتگی",
-    "monthly": "ماهانه"
-  },
-  "home": {
-    "top-topics": "بهترین تاپیک ها",
-    "latest-topics": "آخرین تاپیک ها",
-    "favorite-topics": "تاپیک های مورد علاقه"
-  },
-  "leagues" : {
-    "daily": "لیگ روزانه",
-    "weekly": "لیگ هفتگی",
-    "grand": "گرند لیگ",
-    "history": "تاریخچه لیگ ها"
-  },
+  "phone-number": "شماره تلفن",
+  "phone-number-placeholder": "شماره تلفن خود را وارد کنید",
+  "play": "بازی",
+  "player": "بازیکن",
+  "point": "پوینت",
   "profile": {
+    "performance": {
+      "played-leagues": "تاریخچه لیگ هایی که بازی کرده اید",
+      "played-topics": "تاریخچه تاپیک هایی که بازی کرده اید"
+    },
     "tabs": {
       "favorites": "تاپیک های مورد علاقه",
-      "performance": "پرفورمنس",
-      "friends": "دوستان"
-    },
-    "performance": {
-      "played-topics": "تاریخچه تاپیک هایی که بازی کرده اید",
-      "played-leagues": "تاریخچه لیگ هایی که بازی کرده اید"
+      "friends": "دوستان",
+      "performance": "پرفورمنس"
     }
   },
   "profile-edit": {
     "username": "نام کاربری",
     "validationMsg": "نام کاربری باید بین 8 تا 20 کاراکتر باشد و شامل اندرلاین ( _ ) نباشد"
   },
-  "leaderboard": {
-    "be-first": "اول شو"
-  },
-  "invite": {
-    "share": "اشتراک گذاری با دوستان",
-    "invite": "دوستان خود را به عضویت ما درآورید"
-  },
-  "settings" : {
-    "preferred": "زبان مورد علاقه خود را انتخاب کنید"
-  },
+  "recent-search": "جستجو های اخیر",
+  "remove": "حذف",
+  "remove-favorites": "حذف از علاقه مندی ها",
+  "resend": "ارسال دوباره کد",
+  "resend-time": "ارسال دوباره کد تا",
+  "reward": "جایزه",
   "rewards": {
     "all": "همه کوپن های هدیه",
-    "received": "دریافت شده",
-    "receive": "دریافت",
-    "in-process": "در حال پردازش",
     "gift": "کوپن هدیه",
+    "in-process": "در حال پردازش",
+    "receive": "دریافت",
+    "received": "دریافت شده",
     "title": "جوایز"
   },
-  "friends": {
-    "add": "اضافه کردن به دوستان",
-    "requested": "درخواست شده",
-    "accept": "قبول",
-    "reject": "رد"
+  "score": "امتیاز",
+  "search": "جستجو",
+  "see-all": "دیدن همه",
+  "see-more": "بیشتر",
+  "settings": {
+    "preferred": "زبان مورد علاقه خود را انتخاب کنید"
   },
-  "btn" : {
-    "quick-play": "بازی سریع",
-    "edit-profile": "ویرایش پروفایل",
-    "save": "ذخیره تغییرات",
-    "copy-link": "کپی لینک",
-    "copied-to-cb": "لینک کپی شد"
-  },
+  "share": "اشتراک گذاری",
+  "telegram": "تلگرام",
   "timer": {
     "days": "روز",
     "hours": "ساعت",
     "minutes": "دقیقه",
     "seconds": "ثانیه"
   },
-  "search" : "جستجو",
-  "remove": "حذف",
-  "recent-search": "جستجو های اخیر",
-  "see-all" : "دیدن همه",
-  "see-more": "بیشتر",
-  "your-pos": "رتبه شما",
-  "score": "امتیاز",
-  "cancel": "لغو",
-  "share": "اشتراک گذاری",
-  "play": "بازی",
-  "player": "بازیکن",
-  "remove-favorites": "حذف از علاقه مندی ها",
-  "add-to-favorites": "افزودن به علاقه مندی ها",
-  "telegram": "تلگرام",
-  "whatsapp": "واتساپ",
-  "twitter": "توییتر",
-  "description": "توضیحات",
   "topic-leaderboard": "تابلوی امتیازات",
+  "twitter": "توییتر",
+  "verify-header": "کد ارسال شده را وارد نمایید",
+  "whatsapp": "واتساپ",
   "winner-awards": "جوایز برندگان",
-  "latest-results": "آخرین نتایج",
-  "point": "پوینت",
-  "reward": "جایزه"
+  "your-pos": "رتبه شما"
 }

@@ -1,111 +1,119 @@
 {
+  "add-to-favorites": "Add to favorites",
+  "btn": {
+    "copied-to-cb": "Link copied to clipboard",
+    "copy-link": "Copy link",
+    "edit-profile": "Edit profile",
+    "quick-play": "Quick play",
+    "save": "Save changes"
+  },
+  "cancel": "Cancel",
+  "code-sent": "Confirmation code sent to {{phone}}",
+  "continue": "Continue",
+  "description": "Description",
+  "filterTabs": {
+    "all": "All",
+    "daily": "Daily",
+    "monthly": "Monthly",
+    "weekly": "Weekly"
+  },
+  "friends": {
+    "accept": "Accept",
+    "add": "Add friend",
+    "reject": "Reject",
+    "requested": "Requested"
+  },
+  "home": {
+    "favorite-topics": "Favorite topics",
+    "latest-topics": "Latest topics",
+    "top-topics": "Top topics"
+  },
+  "invite": {
+    "invite": "Invite your friends to join us",
+    "share": "Share with friends"
+  },
+  "latest-results": "Latest results",
+  "leaderboard": {
+    "be-first": "Be the first"
+  },
+  "leagues": {
+    "daily": "Daily league",
+    "grand": "Grand league",
+    "history": "League history",
+    "weekly": "Weekly league"
+  },
+  "login": "Log in",
   "menu": {
+    "deactivate": "deactivation",
     "home": "Home",
-    "leagues": "Leagues",
-    "profile": "Profile",
-    "top-players": "Top players",
-    "rewards": "Rewards",
     "invite-friends": "Invite friends",
-    "settings": "Settings",
+    "leagues": "Leagues",
     "logout": "Logout",
-    "deactivate": "deactivation"
+    "profile": "Profile",
+    "rewards": "Rewards",
+    "settings": "Settings",
+    "top-players": "Top players"
   },
   "modal": {
     "confirm": "Do you want to Log out of your account?",
     "deactivate": "Do you want to deactivate your account?",
-    "removeFriend": "Remove {{user}} from friends?",
     "removeAvatar": "Remove profile photo",
+    "removeFriend": "Remove {{user}} from friends?",
     "share": "Share the {{type}}"
   },
-  "filterTabs": {
-    "all": "All",
-    "daily": "Daily",
-    "weekly": "Weekly",
-    "monthly": "Monthly"
-  },
-  "home": {
-    "top-topics": "Top topics",
-    "latest-topics": "Latest topics",
-    "favorite-topics": "Favorite topics"
-  },
-  "leagues": {
-    "daily": "Daily league",
-    "weekly": "Weekly league",
-    "grand": "Grand league",
-    "history": "League history"
-  },
+  "phone-number": "Phone number",
+  "phone-number-placeholder": "Enter your phone number",
+  "play": "Play",
+  "player": "Player",
+  "point": "Point",
   "profile": {
+    "performance": {
+      "played-leagues": "History Of Participating Leagues",
+      "played-topics": "Played Topics History"
+    },
     "tabs": {
       "favorites": "Favorite topics",
-      "performance": "performance",
-      "friends": "friends"
-    },
-    "performance": {
-      "played-topics": "Played Topics History",
-      "played-leagues": "History Of Participating Leagues"
+      "friends": "friends",
+      "performance": "performance"
     }
   },
   "profile-edit": {
     "username": "Username",
     "validationMsg": "The username should be between 8 and 20 characters long and no underline ( _ ) should be used"
   },
-  "leaderboard": {
-    "be-first": "Be the first"
-  },
-  "invite": {
-    "share": "Share with friends",
-    "invite": "Invite your friends to join us"
-  },
-  "settings" : {
-    "preferred": "Select your preferred language"
-  },
+  "recent-search": "Recent search",
+  "remove": "Remove",
+  "remove-favorites": "Remove from favorites",
+  "resend": "Resend verification code",
+  "resend-time": "Resend verification code until another",
+  "reward": "Reward",
   "rewards": {
     "all": "All Gift Vouchers",
-    "received": "Received",
-    "receive": "Receive",
-    "in-process": "In process",
     "gift": "Gift Voucher",
+    "in-process": "In process",
+    "receive": "Receive",
+    "received": "Received",
     "title": "Rewards"
   },
-  "friends": {
-    "add": "Add friend",
-    "requested": "Requested",
-    "accept": "Accept",
-    "reject": "Reject"
+  "score": "score",
+  "search": "Search",
+  "see-all": "See all",
+  "see-more": "See more",
+  "settings": {
+    "preferred": "Select your preferred language"
   },
-  "btn": {
-    "quick-play": "Quick play",
-    "edit-profile": "Edit profile",
-    "save": "Save changes",
-    "copy-link": "Copy link",
-    "copied-to-cb": "Link copied to clipboard"
-  },
+  "share": "Share",
+  "telegram": "Telegram",
   "timer": {
     "days": "days",
     "hours": "hours",
     "minutes": "minutes",
     "seconds": "seconds"
   },
-  "search": "Search",
-  "remove": "Remove",
-  "recent-search": "Recent search",
-  "see-all": "See all",
-  "see-more": "See more",
-  "your-pos": "Your position",
-  "score": "score",
-  "cancel": "Cancel",
-  "share": "Share",
-  "play": "Play",
-  "player": "Player",
-  "remove-favorites": "Remove from favorites",
-  "add-to-favorites": "Add to favorites",
-  "telegram": "Telegram",
-  "whatsapp": "Whatsapp",
-  "twitter": "Twitter",
-  "description": "Description",
   "topic-leaderboard": "Topic leaderboard",
+  "twitter": "Twitter",
+  "verify-header": "Enter the verification code",
+  "whatsapp": "Whatsapp",
   "winner-awards": "Winner awards",
-  "latest-results": "Latest results",
-  "point": "Point",
-  "reward": "Reward"
+  "your-pos": "Your position"
 }

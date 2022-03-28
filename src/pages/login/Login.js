@@ -9,8 +9,12 @@ import ApiCall from "common/services/ApiCall";
 import "./Login.scss";
 
 import imgMain from "assets/images/pics/login.svg";
+import Text from "common/components/UI/text/Text";
+import { useTranslation } from "react-i18next";
+import FilledButton from "common/components/UI/button/FilledButton";
 
 const Login = () => {
+	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
@@ -71,30 +75,26 @@ const Login = () => {
 
 			<div className="login-body">
 				<div className="login-body__title">
-					<p>Log in</p>
+					<Text ns="login" />
 					<img className="login-body__image" src={imgMain} alt="" />
 				</div>
 
 				<form onSubmit={handleGetOtp} noValidate autoComplete="off" className="login-form">
-					<label htmlFor="phone-number" className="login-form__label">
-						Phone Number
-					</label>
+					<Text ns="phone-number" htmlFor="phone-number" className="login-form__label" />
 
 					<input
 						id="phone-number"
 						className={`login-form__input ${error ? "login-form__input_error" : ""}`}
 						autoFocus={true}
 						type="tel"
-						placeholder="Enter your phone number"
+						placeholder={t("phone-number-placeholder")}
 						maxLength={11}
 						onChange={handleChangePhone}
 					/>
 
 					<p className="login-form__error-message">{error && "Please enter a valid phone number"}</p>
 
-					<button type="submit" className="login-form__submit">
-						Login
-					</button>
+					<FilledButton as="button" ns="login" type="submit" className="login-form__submit" />
 				</form>
 			</div>
 		</div>
