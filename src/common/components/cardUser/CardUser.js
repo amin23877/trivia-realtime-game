@@ -16,7 +16,7 @@ const CardUser = ({ id, avatar, info, avatarSize = { mobile: 22, desktop: 46 }, 
 
 			<div className={classes.content ?? s.content}>
 				<p className={classes.username ?? ""}>{username}</p>
-				<p className={classes.info ?? s.info}>{info}</p>
+				<div className={classes.info ?? s.info}>{info}</div>
 			</div>
 		</Link>
 	);
