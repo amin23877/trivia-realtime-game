@@ -1,5 +1,6 @@
 import React from "react";
 import ShareModal from "common/components/modals/ShareModal";
+import Text from "common/components/UI/text/Text";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
 import { useNavigate } from "react-router-dom";
@@ -63,7 +64,7 @@ const CardInner = ({ banner, title, type, subtitle, children, bannerSize = 110, 
 							renderButton={(handleOpen) => (
 								<p onClick={handleOpen} className="card-inner__share">
 									<ShareIcon />
-									Share
+									<Text ns="share" />
 								</p>
 							)}
 						/>

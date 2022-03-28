@@ -7,10 +7,10 @@ const CountdownTimer = ({ className, timerProps, separator, showTimeIcon = false
 	const { hours, minutes, seconds, days } = timerProps;
 
 	const rt = {
-		days: days < 10 ? `0${days}` : `${days}`,
-		hours: hours < 10 ? `0${hours}` : `${hours}`,
-		minutes: minutes < 10 ? `0${minutes}` : `${minutes}`,
-		seconds: seconds < 10 ? `0${seconds}` : `${seconds}`,
+		"timer.days": days < 10 ? `0${days}` : `${days}`,
+		"timer.hours": hours < 10 ? `0${hours}` : `${hours}`,
+		"timer.minutes": minutes < 10 ? `0${minutes}` : `${minutes}`,
+		"timer.seconds": seconds < 10 ? `0${seconds}` : `${seconds}`,
 	};
 
 	return (

@@ -36,9 +36,7 @@ const TopicCardInner = ({ data, id }) => {
 			<hr className="d-xl-none my-0" />
 
 			<div className={s.actionButtons}>
-				<FilledButton variant="secondary" onClick={handlePlay} className={s.playBtn}>
-					Play
-				</FilledButton>
+				<FilledButton ns="play" variant="secondary" onClick={handlePlay} className={s.playBtn} />
 
 				<HandleFavoriteButton initialStatus={data.status} id={id} />
 			</div>

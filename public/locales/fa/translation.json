@@ -14,7 +14,8 @@
     "confirm": "آیا میخواهید از حساب خود خارج شوید؟",
     "deactivate": "آیا میخواهید اکانت خود را غیرفعال کنید؟",
     "removeFriend": "حذف {{user}} از لیست دوستان؟",
-    "removeAvatar": "آیا میخواهید آواتار حذف شود؟"
+    "removeAvatar": "آیا میخواهید آواتار حذف شود؟",
+    "share": "اشتراک گذاری {{type}}"
   },
   "filterTabs": {
     "all": "همه",
@@ -76,7 +77,14 @@
     "quick-play": "بازی سریع",
     "edit-profile": "ویرایش پروفایل",
     "save": "ذخیره تغییرات",
-    "copy-link": "کپی لینک"
+    "copy-link": "کپی لینک",
+    "copied-to-cb": "لینک کپی شد"
+  },
+  "timer": {
+    "days": "روز",
+    "hours": "ساعت",
+    "minutes": "دقیقه",
+    "seconds": "ثانیه"
   },
   "search" : "جستجو",
   "remove": "حذف",
@@ -85,5 +93,19 @@
   "see-more": "بیشتر",
   "your-pos": "رتبه شما",
   "score": "امتیاز",
-  "cancel": "لغو"
+  "cancel": "لغو",
+  "share": "اشتراک گذاری",
+  "play": "بازی",
+  "player": "بازیکن",
+  "remove-favorites": "حذف از علاقه مندی ها",
+  "add-to-favorites": "افزودن به علاقه مندی ها",
+  "telegram": "تلگرام",
+  "whatsapp": "واتساپ",
+  "twitter": "توییتر",
+  "description": "توضیحات",
+  "topic-leaderboard": "تابلوی امتیازات",
+  "winner-awards": "جوایز برندگان",
+  "latest-results": "آخرین نتایج",
+  "point": "پوینت",
+  "reward": "جایزه"
 }

@@ -9,6 +9,7 @@ import { SET_TYPE_LEADERBOARD_COMPONENT } from "redux/actions/mainActions/genera
 import { TYPE_LEADERBOARD_COMPONENT } from "common/values/TYPES";
 
 import s from "./InnerTopic.module.scss";
+import Text from "common/components/UI/text/Text";
 
 const InnerTopic = () => {
 	let { id } = useParams();
@@ -26,7 +27,7 @@ const InnerTopic = () => {
 				<TopicCardInner id={id} data={dataInnerTopic} />
 
 				<div className={s.contentSection}>
-					<p className={s.title}>Description</p>
+					<Text ns="description" className={s.title} />
 
 					<p className={s.text}>{dataInnerTopic?.description}</p>
 
@@ -38,7 +39,7 @@ const InnerTopic = () => {
 						))}
 					</div>
 
-					<p className={`${s.title} ms-2 ms-xl-0`}>Topic Leaderboard</p>
+					<Text ns="topic-leaderboard" className={`${s.title} ms-2 ms-xl-0`} />
 
 					<div className="mt-4">
 						<TopicLeaderboard id={id} />

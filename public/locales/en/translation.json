@@ -14,7 +14,8 @@
     "confirm": "Do you want to Log out of your account?",
     "deactivate": "Do you want to deactivate your account?",
     "removeFriend": "Remove {{user}} from friends?",
-    "removeAvatar": "Remove profile photo"
+    "removeAvatar": "Remove profile photo",
+    "share": "Share the {{type}}"
   },
   "filterTabs": {
     "all": "All",
@@ -76,7 +77,14 @@
     "quick-play": "Quick play",
     "edit-profile": "Edit profile",
     "save": "Save changes",
-    "copy-link": "Copy link"
+    "copy-link": "Copy link",
+    "copied-to-cb": "Link copied to clipboard"
+  },
+  "timer": {
+    "days": "days",
+    "hours": "hours",
+    "minutes": "minutes",
+    "seconds": "seconds"
   },
   "search": "Search",
   "remove": "Remove",
@@ -85,5 +93,19 @@
   "see-more": "See more",
   "your-pos": "Your position",
   "score": "score",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "share": "Share",
+  "play": "Play",
+  "player": "Player",
+  "remove-favorites": "Remove from favorites",
+  "add-to-favorites": "Add to favorites",
+  "telegram": "Telegram",
+  "whatsapp": "Whatsapp",
+  "twitter": "Twitter",
+  "description": "Description",
+  "topic-leaderboard": "Topic leaderboard",
+  "winner-awards": "Winner awards",
+  "latest-results": "Latest results",
+  "point": "Point",
+  "reward": "Reward"
 }
