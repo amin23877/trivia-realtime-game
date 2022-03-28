@@ -72,6 +72,7 @@
   },
   "multi-player": "با دوستان",
   "new-cat": "دسته بندی جدید",
+  "notifs": "اعلان ها",
   "one-player": "یک نفره",
   "phone-number": "شماره تلفن",
   "phone-number-placeholder": "شماره تلفن خود را وارد کنید",
@@ -120,6 +121,8 @@
     "preferred": "زبان مورد علاقه خود را انتخاب کنید"
   },
   "share": "اشتراک گذاری",
+  "share-with-friends": "اشتراک گذاری با دوستان",
+  "share-with-friends-subtitle": "دوستان خود را به جمع ما دعوت کنید",
   "start-again": "شروع دوباره",
   "start-game": "شروع بازی",
   "telegram": "تلگرام",

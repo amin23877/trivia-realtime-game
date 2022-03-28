@@ -11,7 +11,7 @@ import "./Leaderboard.scss";
 const Leaderboard = () => {
 	return (
 		<div className="fadeInFast w-100 leaderboard">
-			<HeaderGoBack title="General Leaderboard" />
+			<HeaderGoBack title="menu.top-players" />
 			<div className="leaderboard-body">
 				<LeaderboardTabs />
 			</div>

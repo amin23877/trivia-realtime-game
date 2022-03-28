@@ -6,10 +6,7 @@ import s from "./Footer.module.scss";
 const PlayFooter = () => {
 	return (
 		<div className={s.playFooter}>
-			<FilledButton variant="secondary" className={s.playFooterBtn}>
-				Play
-				<div className={s.playIconFilled} />
-			</FilledButton>
+			<FilledButton ns="play" endIcon={s.playIconFilled} variant="secondary" className={s.playFooterBtn} />
 		</div>
 	);
 };

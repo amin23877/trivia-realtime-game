@@ -72,6 +72,7 @@
   },
   "multi-player": "With friends",
   "new-cat": "New Category",
+  "notifs": "Notifications",
   "one-player": "1 Player",
   "phone-number": "Phone number",
   "phone-number-placeholder": "Enter your phone number",
@@ -120,6 +121,8 @@
     "preferred": "Select your preferred language"
   },
   "share": "Share",
+  "share-with-friends": "Share with friends",
+  "share-with-friends-subtitle": "Invite your friends to join us",
   "start-again": "Start again",
   "start-game": "Start game",
   "telegram": "Telegram",

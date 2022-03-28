@@ -7,6 +7,7 @@ import { SET_GAME_SELECTION_TYPE, SET_OPEN_GAME_TYPES } from "redux/actions/main
 
 // Styles, Icons, Images
 import s from "./Footer.module.scss";
+import Text from "common/components/UI/text/Text";
 
 const FooterLink = ({ title, iconNormal, iconActive, ...rest }) => {
 	return (
@@ -14,7 +15,7 @@ const FooterLink = ({ title, iconNormal, iconActive, ...rest }) => {
 			{(props) => (
 				<div className={props.isActive ? s.activeLink : s.normalLink}>
 					<div className={props.isActive ? iconActive : iconNormal} />
-					{title}
+					<Text ns={title} />
 				</div>
 			)}
 		</NavLink>
@@ -31,21 +32,26 @@ const Footer = () => {
 
 	return (
 		<div className={s.footer}>
-			<FooterLink to="/" title="Home" iconNormal={s.homeIconNormal} iconActive={s.homeIconActive} />
-			<FooterLink to="/leagues" title="Leagues" iconNormal={s.leagueIconNormal} iconActive={s.leagueIconActive} />
+			<FooterLink to="/" title="menu.home" iconNormal={s.homeIconNormal} iconActive={s.homeIconActive} />
+			<FooterLink
+				to="/leagues"
+				title="menu.leagues"
+				iconNormal={s.leagueIconNormal}
+				iconActive={s.leagueIconActive}
+			/>
 
 			<div onClick={handleOpenGameSelect} className="text-center">
 				<div className={s.playButtonCircle}>
 					<div className={s.playIconOutlined} />
 				</div>
 
-				<p className={s.footerText}>Play</p>
+				<Text ns="play" className={s.footerText} />
 			</div>
 
-			<FooterLink to="/search" title="Search" iconNormal={s.searchIconNormal} iconActive={s.searchIconActive} />
+			<FooterLink to="/search" title="search" iconNormal={s.searchIconNormal} iconActive={s.searchIconActive} />
 			<FooterLink
 				to="/profile"
-				title="Profile"
+				title="menu.profile"
 				iconNormal={s.profileIconNormal}
 				iconActive={s.profileIconActive}
 			/>

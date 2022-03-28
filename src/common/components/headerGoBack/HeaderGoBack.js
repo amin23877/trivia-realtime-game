@@ -13,7 +13,6 @@ const HeaderGoBack = ({ title, renderOtherSide }) => {
 	const navigate = useNavigate();
 
 	const handleGoBack = () => {
-		console.log("hi");
 		navigate(-1);
 	};
 

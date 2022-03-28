@@ -9,12 +9,12 @@ import Text from "common/components/UI/text/Text";
 const Invite = () => {
 	return (
 		<>
-			<HeaderGoBack title="Invite friends" />
+			<HeaderGoBack title="menu.invite-friends" />
 
 			<div className={s.container}>
-				<Text className={s.title} ns="invite.share" />
+				<Text className={s.title} ns="share-with-friends" />
 
-				<Text className={s.subtitle} ns="invite.invite" />
+				<Text className={s.subtitle} ns="share-with-friends-subtitle" />
 
 				<img alt="invite friends" src={image} className={s.image} />
 

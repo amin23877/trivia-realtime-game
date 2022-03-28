@@ -12,6 +12,7 @@ import ModalLogoutConfirm from "common/components/modals/ModalLogoutConfirm";
 
 // Styles, Icons, Images
 import s from "./Menu.module.scss";
+import Text from "common/components/UI/text/Text";
 
 const Menu = ({ onDrawerClose }) => {
 	const navigate = useNavigate();
@@ -42,7 +43,7 @@ const Menu = ({ onDrawerClose }) => {
 					<div className={s.giftIcon} />
 				</div>
 
-				<p>Rewards</p>
+				<Text ns="menu.rewards" />
 			</div>
 
 			<div className={s.menuItem} onClick={() => navigate("/menu/notification")}>
@@ -50,7 +51,15 @@ const Menu = ({ onDrawerClose }) => {
 					<div className={s.notifIcon} />
 				</div>
 
-				<p>notification</p>
+				<Text ns="notifs" />
+			</div>
+
+			<div className={s.menuItem} onClick={() => navigate("/settings")}>
+				<div className={s.iconContainer}>
+					<div className={s.settingsIcon} />
+				</div>
+
+				<Text ns="menu.settings" />
 			</div>
 
 			<div className={s.menuItem} onClick={() => navigate("/invite")}>
@@ -58,7 +67,7 @@ const Menu = ({ onDrawerClose }) => {
 					<div className={s.inviteIcon} />
 				</div>
 
-				<p>Invite friends</p>
+				<Text ns="menu.invite-friends" />
 			</div>
 
 			<ModalLogoutConfirm
@@ -68,7 +77,7 @@ const Menu = ({ onDrawerClose }) => {
 							<div className={s.logoutIcon} />
 						</div>
 
-						<p>Logout</p>
+						<Text ns="menu.logout" />
 					</div>
 				)}
 			/>
@@ -80,7 +89,7 @@ const Menu = ({ onDrawerClose }) => {
 							<div className={s.deactivationIcon} />
 						</div>
 
-						<p>deactivation</p>
+						<Text ns="menu.deactivate" />
 					</div>
 				)}
 			/>
