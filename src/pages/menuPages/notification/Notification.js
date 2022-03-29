@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 import { useMediaQuery } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { TOGGLE_NOTIF_DRAWER } from "redux/actions/mainActions/generalActions";
-import NotificationWidget from "common/components/notificationWidget/NotificationWidget";
+import NotificationWidget from "common/components/notification/Notification";
 import { DESKTOP_BREAKPOINT } from "common/values/CORE";
 
 import "./Notification.scss";

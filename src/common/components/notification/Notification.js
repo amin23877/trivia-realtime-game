@@ -10,7 +10,7 @@ import { ACCEPT_REQUEST_NOTIF, DELETE_NOTIF } from "redux/actions/notifActions/n
 import { SET_STATUS } from "redux/actions/friendStatusActions/friendStatusActions";
 import { friendStatusTypes } from "redux/actions/friendStatusActions/actionsType";
 
-import "./NotificationWidget.scss";
+import "./Notification.scss";
 import Text from "common/components/UI/text/Text";
 
 function UserNotif({ name, image, id, accepted, loading }) {

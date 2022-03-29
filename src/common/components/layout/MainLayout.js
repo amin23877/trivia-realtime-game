@@ -9,7 +9,7 @@ import Sidebar from "common/components/sidebar/Sidebar";
 import Footer from "common/components/footer/Footer";
 import Loading from "common/components/loading/Loading";
 import SelectGameType from "pages/home/homeComponents/selectGameType/SelectGameType";
-import NotificationWidget from "common/components/notificationWidget/NotificationWidget";
+import NotificationWidget from "common/components/notification/Notification";
 
 import { fetchUser } from "redux/actions/userActions/userActions";
 import { fetchNotif } from "redux/reducers/notifReducer/notifReducer";
