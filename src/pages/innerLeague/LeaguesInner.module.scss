@@ -15,6 +15,8 @@ $size-avatar: 30px;
 
     @include desktop {
         padding-top: 2rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 }
 
@@ -126,4 +128,28 @@ $size-avatar: 30px;
 .score {
     composes: cell;
     color: $secondary;
+}
+
+.bestPlayersPoint, .bestPlayersScores {
+    @include fontSize($fs-xs, $fs-m);
+    flex-grow: 1;
+}
+
+.bestPlayersScores {
+    color: $secondary;
+}
+
+.bestPlayersPoint {
+    color: $primary;
+}
+
+.bestPlayersRewards {
+    @include fontSize($fs-s, $fs-l);
+    color: $gold;
+    flex-grow: 1;
+    margin-top: 5px;
+
+    @include desktop {
+        margin-top: 0;
+    }
 }

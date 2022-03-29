@@ -5,23 +5,24 @@ import ProgressBar from "common/components/UI/ProgressBar";
 import s from "./ProfilePerformance.module.scss";
 import PerformanceLevelIcon from "assets/images/icons/performance-level-icon.svg";
 
-export const PerformanceLevelCard = ({ data }) => {
+export const PerformanceLevelCard = ({ xp, levelXP, level }) => {
 	return (
 		<div className={s.levelCard}>
 			<div className={s.xp}>
-				<div className={s.xpValue}>XP: {data?.xp}</div>
+				<div className={s.xpValue}>XP: {xp}</div>
 
 				<div className={s.xpProgress}>
-					<ProgressBar value={data?.xp} />
+					{/* value must be in percent */}
+					<ProgressBar value={(xp * 100) / 800} />
 
-					<span>{data?.max_xp || 100}</span>
+					<span>{levelXP}</span>
 				</div>
 			</div>
 
 			<div className={s.level}>
 				<img className={s.stars} src={PerformanceLevelIcon} alt="performance level icon" />
 
-				<span>{data?.level}</span>
+				<span>{level}</span>
 			</div>
 		</div>
 	);

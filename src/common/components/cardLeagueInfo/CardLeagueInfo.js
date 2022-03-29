@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CountdownTimer from "common/components/countdownTimer/CountDownTimer";
 import CountDownTimerGrand from "common/components/countdownTimer/CountDownTimerGrand";
-import CountDownTimerHistory from "common/components/countdownTimer/CountDownTimerHistory";
-
+import CountDownTimerNormal from "common/components/countdownTimer/CountDownTimerNormal";
 import Countdown from "react-countdown";
 import { IMAGE_URL } from "common/values/CORE";
 
@@ -73,15 +71,27 @@ const CardLeagueInfo = ({ info }) => {
 				{type === "not-started" ? (
 					<div className="card-league-timer">
 						<p className="to-start ">to start</p>
-						<Countdown date={info?.endTime} renderer={CountDownTimerGrand} onComplete={handleStop} />
+						<Countdown
+							date={info?.endTime}
+							renderer={(props) => <CountDownTimerGrand timerProps={props} />}
+							onComplete={handleStop}
+						/>
 					</div>
 				) : type === "expired" ? (
 					<div className="card-league-timer">
-						<Countdown date={info?.endTime} renderer={CountDownTimerHistory} onComplete={handleStop} />
+						<Countdown
+							date={info?.endTime}
+							renderer={(props) => <CountDownTimerNormal color="gray" timerProps={props} />}
+							onComplete={handleStop}
+						/>
 					</div>
 				) : (
 					<div className="d-flex card-league-timer">
-						<Countdown date={info?.endTime} renderer={CountdownTimer} onComplete={handleStop} />
+						<Countdown
+							date={info?.endTime}
+							renderer={(props) => <CountDownTimerNormal timerProps={props} />}
+							onComplete={handleStop}
+						/>
 					</div>
 				)}
 

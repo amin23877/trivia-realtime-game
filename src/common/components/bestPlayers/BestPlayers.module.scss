@@ -2,15 +2,23 @@
 
 .bestPlayers {
   display: flex;
+  gap: 1rem;
+  padding: 0 1.5rem;
 
   @include desktop {
-    padding: 0 2rem;
+    gap: 3.5rem;
+    padding: 0 4rem;
   }
 }
 
+.center {
+  justify-content: center;
+}
+
 .player {
+  display: grid;
+  place-items: center;
   flex-shrink: 1;
-  margin: auto;
   padding: 10px;
   width: 88px;
   text-align: center;
@@ -23,8 +31,15 @@
   }
 }
 
+.image {
+  @include desktop {
+    width: 88px;
+    height: 100px;
+  }
+}
+
 .best {
-  margin-top: -20px;
+  transform: translateY(-20px);
 }
 
 .avatar {
@@ -34,26 +49,9 @@
 .username {
   @include fontSize($fs-xs, $fs-l);
   padding-top: 5px;
+  text-align: center;
 
   @include desktop {
     padding: 5px 0;
   }
 }
-
-.points {
-  @include fontSize($fs-xs, $fs-m);
-  color: $primary;
-  flex-grow: 1;
-}
-
-.rewards {
-  @include fontSize($fs-s, $fs-l);
-  color: $secondary;
-  flex-grow: 1;
-  margin-top: 5px;
-
-  @include desktop {
-    margin-top: 0;
-  }
-}
-

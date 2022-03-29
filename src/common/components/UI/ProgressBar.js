@@ -48,4 +48,4 @@ ProgressBar.propTypes = {
 	value: PropTypes.number,
 };
 
-export default React.memo(ProgressBar);
+export default ProgressBar;

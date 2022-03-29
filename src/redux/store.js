@@ -5,11 +5,15 @@ import { topicsReducer } from "./reducers/topicReducer/topicsReducer";
 import { generalReducer } from "./reducers/mainReducer/generalReducer";
 import { userReducer } from "./reducers/userReducer/userReducer";
 import { composeWithDevTools } from "redux-devtools-extension";
+import { notifReducer } from "redux/reducers/notifReducer/notifReducer";
+import { friendStatusReducer } from "redux/reducers/friendStatusReducer/friendStatusReducer";
 
 const rootReducer = combineReducers({
 	stateGeneral: generalReducer,
 	stateTopic: topicsReducer,
 	stateUser: userReducer,
+	stateNotif: notifReducer,
+	stateFriendStatus: friendStatusReducer,
 });
 
 const composeEnhancers = composeWithDevTools({});

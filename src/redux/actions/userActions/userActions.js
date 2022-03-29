@@ -36,7 +36,7 @@ export const fetchUser = () => {
 	};
 };
 
-export const updateUser = (field, data, callback) => {
+export const updateUser = (field, data, onSuccess) => {
 	return (dispatch) => {
 		let action;
 		let body = new FormData();
@@ -62,7 +62,7 @@ export const updateUser = (field, data, callback) => {
 
 				dispatch(action(res.data[field]));
 
-				callback();
+				onSuccess();
 			})
 			.catch((err) => {
 				dispatch(SET_SPINNER(false));

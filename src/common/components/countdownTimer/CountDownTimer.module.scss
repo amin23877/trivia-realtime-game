@@ -1,0 +1,92 @@
+@import "assets/scss/styles";
+
+.container {
+  display: flex;
+}
+
+.normalContainer {
+  align-items: start;
+}
+
+.grandContainer {
+  color: #fff;
+  align-items: center;
+}
+
+.boxContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  min-width: 2rem;
+
+  @include desktop {
+    min-width: 4rem;
+  }
+}
+
+.box {
+  @include fontSize($fs-normal, $fs-xxxl);
+
+  font-weight: 500;
+  text-align: center;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 4px;
+
+  @include desktop {
+    padding: 4px 8px;
+  }
+}
+
+.box-primary {
+  composes: box;
+  background-color: $primary;
+  box-shadow: 0 1px 2px rgba(118, 112, 112, 0.25), inset 2px 2px 4px #9A98F3, inset -2px -2px 4px #5B59BD;
+}
+
+.box-secondary {
+  composes: box;
+  background-color: $secondary;
+  box-shadow: 0 1px 2px rgba(118, 112, 112, 0.25), inset 2px 2px 4px #E67E97, inset -2px -2px 4px #D24065;
+}
+
+.box-gray {
+  composes: box;
+  background-color: $grey-2;
+}
+
+.text {
+  @include fontSize($fs-xs, $fs-l);
+}
+
+.textWhite {
+  composes: text;
+  color: #fff;
+}
+
+.line, .colon {
+  margin: 0 3px;
+
+  &:last-of-type {
+    display: none;
+  }
+}
+
+.line {
+  margin-top: .25rem;
+  height: 15px;
+  width: 1px;
+  background-color: #fff;
+  transform: rotate(180deg);
+
+  @include desktop {
+    height: 32px;
+   margin-top: .5rem;
+  }
+}
+
+.colon {
+  color: $secondary;
+  font-weight:900;
+}

@@ -1,26 +1,29 @@
-// #countdownTimer step1
-import React from "react";
+import React, { Fragment } from "react";
 
-import "./CountdownTimer.scss";
+import s from "./CountDownTimer.module.scss";
+import iconBomb from "assets/images/icons/icon-bomb.svg";
 
-const CountdownTimer = (props) => {
-	const { hours, minutes, seconds } = props;
+const CountdownTimer = ({ className, timerProps, separator, showTimeIcon = false, renderTime }) => {
+	const { hours, minutes, seconds, days } = timerProps;
+
 	const rt = {
-		h: hours < 10 ? `0${hours}` : `${hours}`,
-		m: minutes < 10 ? `0${minutes}` : `${minutes}`,
-		s: seconds < 10 ? `0${seconds}` : `${seconds}`,
+		days: days < 10 ? `0${days}` : `${days}`,
+		hours: hours < 10 ? `0${hours}` : `${hours}`,
+		minutes: minutes < 10 ? `0${minutes}` : `${minutes}`,
+		seconds: seconds < 10 ? `0${seconds}` : `${seconds}`,
 	};
 
 	return (
-		<div className="d-flex countdownTimer">
-			<p className="box">{rt.h.substring(0, 1)}</p>
-			<p className="box">{rt.h.substring(1, 2)}</p>
-			<p className="colon">{":"}</p>
-			<p className="box">{rt.m.substring(0, 1)}</p>
-			<p className="box">{rt.m.substring(1, 2)}</p>
-			<p className="colon">{":"}</p>
-			<p className="box">{rt.s.substring(0, 1)}</p>
-			<p className="box">{rt.s.substring(1, 2)}</p>
+		<div className={`${s.container} ${className ?? ""}`}>
+			{showTimeIcon && <img className="me-2" src={iconBomb} alt="" />}
+
+			{Object.entries(rt).map(([key, value], index) => (
+				<Fragment key={index}>
+					{renderTime(key, value)}
+
+					{separator === "line" ? <p className={s.line} /> : <p className={s.colon}>:</p>}
+				</Fragment>
+			))}
 		</div>
 	);
 };

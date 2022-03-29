@@ -15,7 +15,7 @@ const CardUser = ({ id, avatar, info, avatarSize = { mobile: 22, desktop: 46 }, 
 			<Avatar src={IMAGE_URL + encodeURI(avatar)} size={avatarSize} />
 
 			<div className={classes.content ?? s.content}>
-				<p className={classes.username ?? false}>{username}</p>
+				<p className={classes.username ?? ""}>{username}</p>
 				<p className={classes.info ?? s.info}>{info}</p>
 			</div>
 		</Link>
@@ -23,9 +23,9 @@ const CardUser = ({ id, avatar, info, avatarSize = { mobile: 22, desktop: 46 }, 
 };
 
 CardUser.propTypes = {
-	id: PropTypes.number.isRequired,
+	id: PropTypes.string.isRequired,
 	avatar: PropTypes.string,
-	info: PropTypes.string,
+	info: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 	username: PropTypes.string,
 	avatarSize: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
 	classes: PropTypes.object,

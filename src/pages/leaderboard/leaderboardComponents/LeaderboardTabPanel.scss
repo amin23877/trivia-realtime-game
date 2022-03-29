@@ -36,11 +36,27 @@ $card-radius : .5rem;
       @include fontSize($fs-xs, $fs-l);
       color: $primary;
       font-weight: 500;
-      padding-left: 10px;
     }
 
     .info {
       padding: 15px;
+
+      .empty-number-one {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+
+        p {
+          color: $secondary;
+        }
+
+        img {
+          @include desktop {
+            width: 57px;
+            height: 93px;
+          }
+        }
+      }
     }
 
     .bundle {

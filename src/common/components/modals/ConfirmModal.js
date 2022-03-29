@@ -1,34 +1,14 @@
-import React, { useState } from "react";
-import { Modal } from "@material-ui/core";
+import React from "react";
 import Avatar from "common/components/UI/Avatar";
+import ModalBase from "common/components/modals/ModalBase";
 
 import s from "common/components/modals/ConfirmModal.module.scss";
 import { IMAGE_URL } from "common/values/CORE";
 
-const ConfirmModal = ({ alertIcon = true, avatar, question, actionText, action, renderButton }) => {
-	const [open, setOpen] = useState(false);
-
-	const handleOpen = () => setOpen(true);
-
-	const handleClose = () => setOpen(false);
-
-	const handleAction = () => {
-		action();
-		handleClose(); // close modal when action executed
-	};
-
+const ConfirmModal = ({ alertIcon = true, avatar, question, actionText, renderButton, action }) => {
 	return (
-		<>
-			{renderButton(handleOpen)}
-
-			<Modal
-				BackdropProps={{ className: "_modal-backdrop" }}
-				disableAutoFocus
-				disableEnforceFocus
-				className="_modal-content-center"
-				open={open}
-				onClose={handleClose}
-			>
+		<ModalBase renderButton={renderButton} closeAfterAction>
+			{(handlers) => (
 				<div className="_modal-content-box">
 					<div className={s.questionSection}>
 						{alertIcon && <div className={s.alertIcon} />}
@@ -39,17 +19,17 @@ const ConfirmModal = ({ alertIcon = true, avatar, question, actionText, action, 
 					</div>
 
 					<div className={s.actionSection}>
-						<p className={s.actionRed} onClick={handleAction}>
+						<p className={s.actionRed} onClick={() => handlers.handleAction(action)}>
 							{actionText}
 						</p>
 
-						<p className={s.action} onClick={handleClose}>
+						<p className={s.action} onClick={handlers.handleClose}>
 							Cancel
 						</p>
 					</div>
 				</div>
-			</Modal>
-		</>
+			)}
+		</ModalBase>
 	);
 };
 

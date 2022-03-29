@@ -47,6 +47,9 @@
   }
 }
 
+.leaderboard {
+  composes: imgContainer;
+}
 
 .message {
   @include fontSize($fs-m, $fs-l);

@@ -1,9 +1,17 @@
 import React from "react";
+import { useListLoad } from "common/hooks/useListLoad";
 
 import s from "./ProfilePerformance.module.scss";
 
-const PerformanceList = ({ data, title, children }) => {
-	if (!data) return null;
+const PAGE_SIZE = 5;
+
+const PerformanceList = ({ apiEndpoint, title, children, dataFieldName }) => {
+	const { data, status, endOfList, fetchMore } = useListLoad(apiEndpoint, PAGE_SIZE, dataFieldName);
+
+	if (status !== "success") return null;
+
+	// show nothing if response is not valid
+	if (!Array.isArray(data)) return null;
 
 	return (
 		<>
@@ -12,7 +20,11 @@ const PerformanceList = ({ data, title, children }) => {
 			<div className={s.list}>
 				{children(data)}
 
-				{data.length >= 5 && <div className={s.listFooter}>See more</div>}
+				{!endOfList && (
+					<div onClick={fetchMore} className={s.listFooter}>
+						See more
+					</div>
+				)}
 			</div>
 		</>
 	);

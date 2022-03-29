@@ -7,7 +7,6 @@ import { IMAGE_URL } from "common/values/CORE";
 import { useNavigate } from "react-router-dom";
 
 const PlayedHistoryCard = ({ data }) => {
-	// console.log("1>>> ", data);
 	const navigate = useNavigate();
 
 	const handleNavigate = (event, path) => {
@@ -32,9 +31,13 @@ const PlayedHistoryCard = ({ data }) => {
 			</div>
 
 			<div
-				data-value="65%"
+				data-value={data.percentage + "%"}
 				style={{
-					backgroundImage: `conic-gradient(var(--bg-secondary) 0%, var(--bg-secondary) 35%, var(--secondary) 35%, var(--secondary) 100%)`,
+					backgroundImage: `conic-gradient(var(--bg-secondary) 0%,
+					 				  var(--bg-secondary) ${100 - data.percentage}%,
+					  				  var(--secondary) ${100 - data.persentage}%,
+					   				  var(--secondary) 100%)
+					   				`,
 				}}
 				className={s.circleProgress}
 			/>

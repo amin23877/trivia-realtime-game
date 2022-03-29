@@ -1,12 +1,11 @@
 // Reacts
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import Countdown from "react-countdown";
 // Hooks
 import { useNavigate } from "react-router-dom";
 // Components, Services, Functions
 import Logo from "common/components/UI/Logo";
 import ApiCall from "common/services/ApiCall";
-import CountDownTimerSecond from "common/components/countdownTimer/CountDownTimerSecond";
 // Redux
 import { useDispatch } from "react-redux";
 import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
@@ -14,13 +13,28 @@ import { SET_SPINNER } from "redux/actions/mainActions/generalActions";
 import "./Login.scss";
 import imgMain from "assets/images/pics/login-otp.svg";
 
-const VerificationCode = () => {
+/* memoize countdown for prevent reset timer when input filled */
+const RemainTimeCountdown = memo(({ setHasTime }) => {
 	const timeRemain = 90;
 	const handleStopTimer = (e) => {
 		// console.log(e);
 		setHasTime(true);
 	};
 
+	return (
+		<Countdown
+			date={Date.now() + timeRemain * 1000}
+			renderer={({ minutes, seconds }) => (
+				<>
+					<span>{minutes}</span>:<span>{seconds}</span>
+				</>
+			)}
+			onComplete={(e) => handleStopTimer(e)}
+		/>
+	);
+});
+
+const VerificationCode = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
@@ -152,11 +166,7 @@ const VerificationCode = () => {
 						<div className="timer">
 							<p className="timer">Resend verification code until another</p>
 							<div className="timer-tag text-center">
-								<Countdown
-									date={Date.now() + timeRemain * 1000}
-									renderer={CountDownTimerSecond}
-									onComplete={(e) => handleStopTimer(e)}
-								/>
+								<RemainTimeCountdown setHasTime={setHasTime} />
 							</div>
 						</div>
 					)}

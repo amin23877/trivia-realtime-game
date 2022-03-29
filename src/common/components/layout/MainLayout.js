@@ -9,6 +9,7 @@ import SelectGameType from "pages/home/homeComponents/selectGameType/SelectGameT
 import NotificationWidget from "common/components/notificationWidget/NotificationWidget";
 
 import { fetchUser } from "redux/actions/userActions/userActions";
+import { fetchNotif } from "redux/reducers/notifReducer/notifReducer";
 import { SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
 
 import "./MainLayout.scss";
@@ -19,6 +20,7 @@ const MainLayout = ({ footer = false, sidebar = true }) => {
 
 	useEffect(() => {
 		dispatch(fetchUser());
+		dispatch(fetchNotif());
 	}, [dispatch]);
 
 	return (

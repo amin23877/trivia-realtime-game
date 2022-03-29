@@ -30,7 +30,7 @@ const OthersProfile = () => {
 					onChange: handleChangeTab,
 					tabs: ["Favorite Topics", "Performance"],
 				}}
-				actionButton={<FriendActionButton isFriend={response.friend} id={id} />}
+				actionButton={<FriendActionButton initialStatus={response.friend} id={id} />}
 				data={response}
 			/>
 
@@ -39,7 +39,14 @@ const OthersProfile = () => {
 			</TabPanel>
 
 			<TabPanel className={s.profileContents} activeTab={activeTab} value={1}>
-				<ProfilePerformance id={id} />
+				<ProfilePerformance
+					id={id}
+					progressProps={{
+						level: response.level,
+						xp: response.xp,
+						levelXP: response.xp + response.requiredXP,
+					}}
+				/>
 			</TabPanel>
 		</div>
 	);
