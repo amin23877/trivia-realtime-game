@@ -25,7 +25,7 @@ const Notification = () => {
 
 	return (
 		<div className="notif-root">
-			<HeaderGoBack title="Notification" />
+			<HeaderGoBack title="notifs" />
 
 			<NotificationWidget />
 		</div>

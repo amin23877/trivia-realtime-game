@@ -21,10 +21,7 @@ const UserProfile = () => {
 
 	const editProfileBtn = (
 		<Link to="/profile/edit">
-			<OutlinedButton className={s.editButton} variant="secondary">
-				<div className={s.editIcon} />
-				Edit Profile
-			</OutlinedButton>
+			<OutlinedButton ns="btn.edit-profile" startIcon={s.editIcon} className={s.editButton} variant="secondary" />
 		</Link>
 	);
 
@@ -34,7 +31,7 @@ const UserProfile = () => {
 				tabsProps={{
 					value: activeTab,
 					onChange: handleChangeTab,
-					tabs: ["Favorite Topics", "Performance", "Friend"],
+					tabs: ["profile.tabs.favorites", "profile.tabs.performance", "profile.tabs.friends"],
 				}}
 				actionButton={editProfileBtn}
 				data={user}

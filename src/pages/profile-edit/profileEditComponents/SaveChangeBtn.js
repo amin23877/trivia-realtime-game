@@ -31,12 +31,11 @@ const SaveChangeBtn = ({ className, onError, newUsername, ...rest }) => {
 	return (
 		<FilledButton
 			{...rest}
+			ns="btn.save"
 			variant="secondary"
 			onClick={handleChangeUsername}
 			className={`save-changes-btn ${className}`}
-		>
-			Save Changes
-		</FilledButton>
+		/>
 	);
 };
 

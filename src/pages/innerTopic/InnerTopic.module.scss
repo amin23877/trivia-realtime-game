@@ -82,12 +82,7 @@ $leaderboard-max-width : 722px;
   }
 }
 
-.addToFavorite {
-  color: $secondary;
-}
-
 .removeFromFavorite {
-  color: $grey-1;
   white-space: nowrap;
 }
 
@@ -165,9 +160,9 @@ $leaderboard-max-width : 722px;
   @include desktop {
     display: block;
   }
+}
 
-  span {
-    text-decoration: underline;
-  }
+.position {
+  text-decoration: underline;
 }
 

@@ -13,6 +13,7 @@ import afghanWirelessLogo from "assets/images/logo/afghan-wireless-logo.png";
 import backIcon from "assets/images/icons/arrow-back-friend-profile.svg";
 import { useSelector } from "react-redux";
 import { IMAGE_URL } from "common/values/CORE";
+import Text from "common/components/UI/text/Text";
 
 /*
  * 	fake transaction
@@ -54,13 +55,13 @@ const RewardMobileHeader = () => {
 	const handleGoBack = () => {
 		navigate(-1);
 	};
-	console.log(user);
+
 	return (
 		<div className={s.mobileHeader}>
 			<div className="d-flex align-items-center">
 				<img onClick={handleGoBack} alt="logo" src={backIcon} className="me-3" />
 				<img alt="logo" src={afghanWirelessLogo} />
-				<p>Rewards</p>
+				<Text ns="rewards.title" />
 			</div>
 
 			<div className="d-flex gap-2">
@@ -83,14 +84,16 @@ const RewardsDetails = () => {
 
 				<span className={s.line} />
 
-				<p>All Gift Vouchers: 26</p>
+				<p>
+					<Text as="span" ns="rewards.all" /> : 26
+				</p>
 			</div>
 
 			<div className={s.detailsRightSide}>
 				<div className={s.received}>
 					<div className="d-flex flex-column align-items-center">
 						<ReceivedIcon />
-						Received
+						<Text ns="rewards.received" />
 					</div>
 
 					<span className={s.receiveCircle}>24</span>
@@ -99,7 +102,7 @@ const RewardsDetails = () => {
 				<div className={s.inProgress}>
 					<div className="d-flex flex-column align-items-center">
 						<InProgressIcon />
-						In progress
+						<Text ns="rewards.in-process" />
 					</div>
 
 					<span className={s.progressCircle}>2</span>
@@ -113,11 +116,8 @@ const Rewards = () => {
 	return (
 		<div className={s.rewardsContainer}>
 			<RewardMobileHeader />
-
 			<RewardsDetails />
-
-			<p className={s.title}>Rewards:</p>
-
+			<Text className={s.title} ns="rewards.title" />
 			<ul className={s.rewardsList}>
 				{rewards.map((reward, index) => (
 					<RewardCard key={index} data={reward} />

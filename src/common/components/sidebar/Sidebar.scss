@@ -138,6 +138,11 @@ $menu-item-h : 54px;
   @include svg-icon('/assets/images/icons/invite-icon.svg',20px ,20px);
 }
 
+.settings-icon {
+  @extend .icon;
+  @include svg-icon('/assets/images/icons/settings-icon.svg',20px ,20px);
+}
+
 .logout-icon {
   @extend .icon;
   @include svg-icon('/assets/images/icons/logout.svg' ,20px ,20px);

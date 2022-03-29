@@ -1,5 +1,6 @@
 import React from "react";
 import CardUser from "common/components/cardUser/CardUser";
+import Text from "common/components/UI/text/Text";
 
 // Styles, Icons, Images
 import "./LeaderboardTabPanel.scss";
@@ -18,12 +19,16 @@ const LeaderboardTabPanelHeader = ({ numberOne, myPosition }) => {
 							id={numberOne.UserId._id}
 							username={numberOne.UserId.username}
 							avatar={numberOne.UserId.avatar}
-							info={<p className="points">{numberOne.score} score</p>}
+							info={
+								<p className="points">
+									{numberOne.score} <Text as="span" ns="score" />
+								</p>
+							}
 							avatarSize={{ mobile: 34, desktop: 56 }}
 						/>
 					) : (
 						<div className="empty-number-one">
-							<p>Be the first</p>
+							<Text ns="leaderboard.be-first" />
 							<img src={runnerImage} alt="runner" />
 						</div>
 					)}
@@ -34,7 +39,9 @@ const LeaderboardTabPanelHeader = ({ numberOne, myPosition }) => {
 				</div>
 			</div>
 
-			<p className="subtitle">Your position: {myPosition?.place ?? 0}</p>
+			<p className="subtitle">
+				<Text as="span" ns="your-pos" /> : {myPosition?.place ?? 0}
+			</p>
 		</div>
 	);
 };

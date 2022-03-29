@@ -11,6 +11,7 @@ import { SET_STATUS } from "redux/actions/friendStatusActions/friendStatusAction
 import { friendStatusTypes } from "redux/actions/friendStatusActions/actionsType";
 
 import "./NotificationWidget.scss";
+import Text from "common/components/UI/text/Text";
 
 function UserNotif({ name, image, id, accepted, loading }) {
 	const dispatch = useDispatch();
@@ -39,7 +40,7 @@ function UserNotif({ name, image, id, accepted, loading }) {
 				avatar={image}
 				avatarSize={{ mobile: 34, desktop: 44 }}
 				username={name}
-				info={!accepted && "Wants to be your friend"}
+				info={!accepted && <Text ns="wants-tobe-friend" as="span" />}
 			/>
 
 			{!accepted ? (
@@ -48,17 +49,24 @@ function UserNotif({ name, image, id, accepted, loading }) {
 						<CircularProgress size={25} />
 					) : (
 						<>
-							<span onClick={accept} className="notif-widget-item__accept">
-								Accept
-							</span>
-							<span onClick={reject} className="notif-widget-item__reject">
-								Reject
-							</span>
+							<Text
+								as="span"
+								ns="friends.accept"
+								onClick={accept}
+								className="notif-widget-item__accept"
+							/>
+
+							<Text
+								as="span"
+								ns="friends.reject"
+								onClick={reject}
+								className="notif-widget-item__reject"
+							/>
 						</>
 					)}
 				</div>
 			) : (
-				<p className="notif-widget-item__accepted">is your friend Now!</p>
+				<Text ns="is-friend-now" className="notif-widget-item__accepted" />
 			)}
 		</div>
 	);

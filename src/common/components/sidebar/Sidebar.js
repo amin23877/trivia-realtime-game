@@ -1,4 +1,6 @@
 import React from "react";
+import CardUser from "common/components/cardUser/CardUser";
+import Text from "common/components/UI/text/Text";
 import ModalConfirmDeactivation from "common/components/modals/ModalConfirmDeactivation";
 import ModalLogoutConfirm from "common/components/modals/ModalLogoutConfirm";
 import FilledButton from "common/components/UI/button/FilledButton";
@@ -8,16 +10,14 @@ import { SET_GAME_SELECTION_TYPE, SET_OPEN_GAME_TYPES } from "redux/actions/main
 
 import "./Sidebar.scss";
 
-// image
-import CardUser from "common/components/cardUser/CardUser";
-
 const menuItems = [
-	{ name: "Home", route: "/", icon: "home-icon" },
-	{ name: "League", route: "/leagues", icon: "league-icon" },
-	{ name: "Profile", route: "/profile", icon: "profile-icon" },
-	{ name: "Top players", route: "/leaderboard", icon: "leaderboard-icon" },
-	{ name: "Rewards", route: "/menu/rewards", icon: "gift-icon" },
-	{ name: "Invite friends", route: "/invite", icon: "invite-icon" },
+	{ ns: "menu.home", route: "/", icon: "home-icon" },
+	{ ns: "menu.leagues", route: "/leagues", icon: "league-icon" },
+	{ ns: "menu.profile", route: "/profile", icon: "profile-icon" },
+	{ ns: "menu.top-players", route: "/leaderboard", icon: "leaderboard-icon" },
+	{ ns: "menu.rewards", route: "/menu/rewards", icon: "gift-icon" },
+	{ ns: "menu.settings", route: "/settings", icon: "settings-icon" },
+	{ ns: "menu.invite-friends", route: "/invite", icon: "invite-icon" },
 ];
 
 const Sidebar = () => {
@@ -41,9 +41,12 @@ const Sidebar = () => {
 				/>
 			</div>
 
-			<FilledButton variant="secondary" className="quick-play-btn" onClick={handleQuickPlay}>
-				Quick Play
-			</FilledButton>
+			<FilledButton
+				ns="btn.quick-play"
+				variant="secondary"
+				className="quick-play-btn"
+				onClick={handleQuickPlay}
+			/>
 
 			<ul className="sidebar-menu">
 				{menuItems.map((item, index) => (
@@ -56,7 +59,7 @@ const Sidebar = () => {
 								`}
 							>
 								<div className={item.icon} />
-								{item.name}
+								<Text ns={item.ns} />
 							</li>
 						)}
 					</NavLink>
@@ -66,7 +69,7 @@ const Sidebar = () => {
 					renderButton={(handleOpen) => (
 						<li onClick={handleOpen} className="sidebar-menu-item sidebar-menu-item_hover-effect-purple">
 							<div className="logout-icon" />
-							Logout
+							<Text ns="menu.logout" />
 						</li>
 					)}
 				/>
@@ -78,7 +81,7 @@ const Sidebar = () => {
 							className="sidebar-menu-item sidebar-menu-item_red sidebar-menu-item_hover-effect-red"
 						>
 							<div className="deactivation-icon" />
-							deactivation
+							<Text ns="menu.deactivate" />
 						</li>
 					)}
 				/>

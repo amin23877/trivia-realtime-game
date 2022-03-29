@@ -1,5 +1,6 @@
 import React, { forwardRef } from "react";
 import { ResultItem } from "pages/searchExplore/searchExploreComponents/ResultItem";
+import Text from "common/components/UI/text/Text";
 
 /*
  *  fake data
@@ -17,8 +18,8 @@ export const SearchResult = forwardRef(({ searchText, results, className }, ref)
 		<div ref={ref} className={`explore-result-wrapper ${className}`}>
 			{!searchText && (
 				<div className="explore-result-header">
-					<p>Recent searches</p>
-					<p className="explore-result-remove">Remove</p>
+					<Text ns="recent-search" />
+					<Text ns="remove" className="explore-result-remove" />
 				</div>
 			)}
 

@@ -17,17 +17,18 @@ import { TYPE_LEAGUE_HOME } from "common/values/TYPES";
 import "swiper/css";
 import "./Leagues.scss";
 import arrowForwardMini from "assets/images/icons/arrow-forward-mini.svg";
+import Text from "common/components/UI/text/Text";
 
-const LeaguesCategory = ({ data, title, seeAllPageLink, children }) => {
+const LeaguesCategory = ({ data, titleNs, seeAllPageLink, children }) => {
 	return (
 		data && (
 			<>
 				<div className="d-flex justify-content-between align-items-center">
-					<p className="leagues-title flex-grow-1">{title}</p>
+					<Text className="leagues-title flex-grow-1" ns={titleNs} />
 
 					{seeAllPageLink && (
 						<Link className="leagues-subtitle" to={seeAllPageLink}>
-							see all
+							<Text as="span" ns="see-all" />
 							<img className="mx-2" src={arrowForwardMini} alt="" />
 						</Link>
 					)}
@@ -57,7 +58,7 @@ const Leagues = () => {
 				</div>
 
 				<div className="leagues-body">
-					<LeaguesCategory title="Daily League" data={dataLeagueHome[TYPE_LEAGUE_HOME.DAILY]}>
+					<LeaguesCategory titleNs="leagues.daily" data={dataLeagueHome[TYPE_LEAGUE_HOME.DAILY]}>
 						<div className="card-league">
 							<div
 								className="ratio _dish-cardLeagueInfo"
@@ -70,7 +71,7 @@ const Leagues = () => {
 						</div>
 					</LeaguesCategory>
 
-					<LeaguesCategory title="Weekly League" data={dataLeagueHome[TYPE_LEAGUE_HOME.WEEKLY]}>
+					<LeaguesCategory titleNs="leagues.weekly" data={dataLeagueHome[TYPE_LEAGUE_HOME.WEEKLY]}>
 						<div className="card-league">
 							<div
 								className="ratio _dish-cardLeagueInfo"
@@ -83,7 +84,7 @@ const Leagues = () => {
 						</div>
 					</LeaguesCategory>
 
-					<LeaguesCategory title="Grand League" data={dataLeagueHome[TYPE_LEAGUE_HOME.GRAND]}>
+					<LeaguesCategory titleNs="leagues.grand" data={dataLeagueHome[TYPE_LEAGUE_HOME.GRAND]}>
 						<div className="card-league">
 							<div
 								className="ratio _dish-cardLeagueInfo"
@@ -102,7 +103,7 @@ const Leagues = () => {
 
 					<LeaguesCategory
 						seeAllPageLink="/leagues/history"
-						title="League History"
+						titleNs="leagues.history"
 						data={dataLeagueHome[TYPE_LEAGUE_HOME.HISTORY]}
 					>
 						<Swiper slidesPerView={1} spaceBetween={16}>

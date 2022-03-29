@@ -1,0 +1,149 @@
+{
+  "add-to-favorites": "افزودن به علاقه مندی ها",
+  "answer": "جواب",
+  "back-to-home": "برگشت به خانه",
+  "btn": {
+    "copied-to-cb": "لینک کپی شد",
+    "copy-link": "کپی لینک",
+    "edit-profile": "ویرایش پروفایل",
+    "quick-play": "بازی سریع",
+    "save": "ذخیره تغییرات"
+  },
+  "cancel": "لغو",
+  "code-sent": "کد تایید به {{phone}} ارسال شد",
+  "continue": "ادامه",
+  "correct-answer": "جواب های درست",
+  "create-game": "ساخت بازی",
+  "create-game-msg": "یک بازی جدید برای بازی با دوستان بسازید",
+  "description": "توضیحات",
+  "enter-join-code": "کد ورود را وارد کنید",
+  "filterTabs": {
+    "all": "همه",
+    "daily": "روزانه",
+    "monthly": "ماهانه",
+    "weekly": "هفتگی"
+  },
+  "find-playmate": "جستجوی رقیب برای شما",
+  "friends": {
+    "accept": "قبول",
+    "add": "اضافه کردن به دوستان",
+    "reject": "رد",
+    "requested": "درخواست شده"
+  },
+  "home": {
+    "favorite-topics": "تاپیک های مورد علاقه",
+    "latest-topics": "آخرین تاپیک ها",
+    "top-topics": "بهترین تاپیک ها"
+  },
+  "invite": "دعوت",
+  "is-friend-now": "این کاربر هم اکنون دوست شماست",
+  "join": "پیوستن",
+  "join-code": "کد پیوستن",
+  "joined-friends": "دوستانی که عضو شده اند",
+  "latest-results": "آخرین نتایج",
+  "leaderboard": {
+    "be-first": "اول شو"
+  },
+  "leagues": {
+    "daily": "لیگ روزانه",
+    "grand": "گرند لیگ",
+    "history": "تاریخچه لیگ ها",
+    "weekly": "لیگ هفتگی"
+  },
+  "leave": "خروج",
+  "level": "سطح",
+  "login": "وارد شوید",
+  "menu": {
+    "deactivate": "غیرفعال کردن",
+    "home": "خانه",
+    "invite-friends": "دعوت از دوستان",
+    "leagues": "لیگ ها",
+    "logout": "خروج",
+    "profile": "پروفایل",
+    "rewards": "جوایز",
+    "settings": "تنظیمات",
+    "top-players": "بهترین بازیکنان"
+  },
+  "modal": {
+    "confirm": "آیا میخواهید از حساب خود خارج شوید؟",
+    "deactivate": "آیا میخواهید اکانت خود را غیرفعال کنید؟",
+    "removeAvatar": "آیا میخواهید آواتار حذف شود؟",
+    "removeFriend": "حذف {{user}} از لیست دوستان؟",
+    "share": "اشتراک گذاری {{type}}"
+  },
+  "multi-player": "با دوستان",
+  "new-cat": "دسته بندی جدید",
+  "notifs": "اعلان ها",
+  "one-player": "یک نفره",
+  "phone-number": "شماره تلفن",
+  "phone-number-placeholder": "شماره تلفن خود را وارد کنید",
+  "play": "بازی",
+  "play-again": "بازی دوباره",
+  "play-with-friend": "بازی با دوستان",
+  "player": "بازیکن",
+  "point": "پوینت",
+  "profile": {
+    "performance": {
+      "played-leagues": "تاریخچه لیگ هایی که بازی کرده اید",
+      "played-topics": "تاریخچه تاپیک هایی که بازی کرده اید"
+    },
+    "tabs": {
+      "favorites": "تاپیک های مورد علاقه",
+      "friends": "دوستان",
+      "performance": "پرفورمنس"
+    }
+  },
+  "profile-edit": {
+    "username": "نام کاربری",
+    "validationMsg": "نام کاربری باید بین 8 تا 20 کاراکتر باشد و شامل اندرلاین ( _ ) نباشد"
+  },
+  "question": "سوال",
+  "questions": "سوالات",
+  "recent-search": "جستجو های اخیر",
+  "remove": "حذف",
+  "remove-favorites": "حذف از علاقه مندی ها",
+  "resend": "ارسال دوباره کد",
+  "resend-time": "ارسال دوباره کد تا",
+  "reward": "جایزه",
+  "rewards": {
+    "all": "همه کوپن های هدیه",
+    "gift": "کوپن هدیه",
+    "in-process": "در حال پردازش",
+    "receive": "دریافت",
+    "received": "دریافت شده",
+    "title": "جوایز"
+  },
+  "score": "امتیاز",
+  "search": "جستجو",
+  "see-all": "دیدن همه",
+  "see-more": "بیشتر",
+  "select-cat": "دسته بندی مورد نظر را انتخاب کنید",
+  "settings": {
+    "preferred": "زبان مورد علاقه خود را انتخاب کنید"
+  },
+  "share": "اشتراک گذاری",
+  "share-with-friends": "اشتراک گذاری با دوستان",
+  "share-with-friends-subtitle": "دوستان خود را به جمع ما دعوت کنید",
+  "start-again": "شروع دوباره",
+  "start-game": "شروع بازی",
+  "telegram": "تلگرام",
+  "timer": {
+    "days": "روز",
+    "hours": "ساعت",
+    "minutes": "دقیقه",
+    "seconds": "ثانیه"
+  },
+  "topic-leaderboard": "تابلوی امتیازات",
+  "total-score": "مجموع امتیازات",
+  "twitter": "توییتر",
+  "two-player": "دو نفره",
+  "verify-header": "کد ارسال شده را وارد نمایید",
+  "view-answers": "دیدن جواب ها",
+  "wait-to-start": "تا شروع صبر کنید",
+  "wants-tobe-friend": "میخواهد که دوست شما باشد",
+  "whatsapp": "واتساپ",
+  "winner-awards": "جوایز برندگان",
+  "you": "شما",
+  "your-pos": "رتبه شما",
+  "your-score": "امتیاز شما"
+}

@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import s from "pages/profile/profileTabs/Performance/cards/PlayedHistoryCard.module.scss";
 import { IMAGE_URL } from "common/values/CORE";
 import { useNavigate } from "react-router-dom";
+import Text from "common/components/UI/text/Text";
 
 const PlayedHistoryCard = ({ data }) => {
 	const navigate = useNavigate();
@@ -27,7 +28,9 @@ const PlayedHistoryCard = ({ data }) => {
 					<div className={s.category}>{data?.topicLeaderboard?.TopicId?.categoryName}</div>
 				</div>
 
-				<div className={s.position}>Your Position:&nbsp; {data?.place || 0}</div>
+				<div className={s.position}>
+					<Text ns="your-pos" as="span" /> : {data?.place || 0}
+				</div>
 			</div>
 
 			<div

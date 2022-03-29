@@ -8,8 +8,8 @@ const ModalConfirmDeactivation = ({ renderButton }) => {
 	return (
 		<ConfirmModal
 			action={() => console.log("you deactivate")}
-			actionText="deactivate"
-			question="Do you want to deactivate your account?"
+			actionText="menu.deactivate"
+			question="modal.deactivate"
 			renderButton={renderButton}
 		/>
 	);

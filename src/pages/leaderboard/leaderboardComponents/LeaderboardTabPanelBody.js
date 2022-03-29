@@ -10,6 +10,7 @@ import { List, ListFooter, ListItem } from "common/components/UI/list/List";
 
 // Styles, Icons, Images
 import "./LeaderboardTabPanel.scss";
+import Text from "common/components/UI/text/Text";
 
 const LeaderboardTabPanelBody = ({ dataLeaderboard, endOfList, fetchMore }) => {
 	return (
@@ -26,7 +27,9 @@ const LeaderboardTabPanelBody = ({ dataLeaderboard, endOfList, fetchMore }) => {
 							userId={el?.UserId._id}
 							avatar={el?.UserId?.avatar}
 						>
-							<p className="list-point-number">{el?.score} score</p>
+							<p className="list-point-number">
+								{el?.score} <Text as="span" ns="score" />
+							</p>
 						</ListItem>
 					))}
 

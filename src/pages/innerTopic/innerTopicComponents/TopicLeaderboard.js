@@ -7,12 +7,13 @@ import { useListLoad } from "common/hooks/useListLoad";
 
 import s from "../InnerTopic.module.scss";
 import EmptyLeaderboard from "common/components/empties/EmptyLeaderboard";
+import Text from "common/components/UI/text/Text";
 
 const tabs = [
-	{ label: "All points", value: "all" },
-	{ label: "Daily", value: "day" },
-	{ label: "Weekly", value: "week" },
-	{ label: "Monthly", value: "month" },
+	{ label: "filterTabs.all", value: "all" },
+	{ label: "filterTabs.daily", value: "day" },
+	{ label: "filterTabs.weekly", value: "week" },
+	{ label: "filterTabs.monthly", value: "month" },
 ];
 
 const TopicLeaderboard = ({ id }) => {
@@ -30,7 +31,7 @@ const TopicLeaderboard = ({ id }) => {
 				<Tabs value={timespan} onChange={handleTimespan} tabs={tabs} />
 
 				<p className={s.yourPosition}>
-					Your position : <span>should fixed</span>
+					<Text as="span" ns="your-pos" /> : <span className={s.position}>should fixed</span>
 				</p>
 
 				{data.length === 0 ? (
@@ -41,14 +42,17 @@ const TopicLeaderboard = ({ id }) => {
 							className="mt-5"
 							theBest={_.slice(data, 0, 3)}
 							renderAchievements={(data) => (
-								<span className={s.bestPlayersScore}>{data.score} score</span>
+								<span className={s.bestPlayersScore}>
+									{data.score}
+									<Text as="span" ns="score" />
+								</span>
 							)}
 						/>
 
 						{data.length > 3 && (
 							<List className="mt-3 mt-xl-4">
 								<ListHeader>
-									<p className={s.scoreText}>score</p>
+									<Text ns="score" className={s.scoreText} />
 								</ListHeader>
 
 								{_.slice(data, 3, data.length).map((player, index) => (

@@ -1,0 +1,149 @@
+{
+  "add-to-favorites": "Add to favorites",
+  "answer": "Answer",
+  "back-to-home": "Back To Home",
+  "btn": {
+    "copied-to-cb": "Link copied to clipboard",
+    "copy-link": "Copy link",
+    "edit-profile": "Edit profile",
+    "quick-play": "Quick play",
+    "save": "Save changes"
+  },
+  "cancel": "Cancel",
+  "code-sent": "Confirmation code sent to {{phone}}",
+  "continue": "Continue",
+  "correct-answer": "Correct answers",
+  "create-game": "Create a game",
+  "create-game-msg": "Create a new game to play with friends",
+  "description": "Description",
+  "enter-join-code": "Enter a join code",
+  "filterTabs": {
+    "all": "All",
+    "daily": "Daily",
+    "monthly": "Monthly",
+    "weekly": "Weekly"
+  },
+  "find-playmate": "Search for rival players",
+  "friends": {
+    "accept": "Accept",
+    "add": "Add friend",
+    "reject": "Reject",
+    "requested": "Requested"
+  },
+  "home": {
+    "favorite-topics": "Favorite topics",
+    "latest-topics": "Latest topics",
+    "top-topics": "Top topics"
+  },
+  "invite": "Invite",
+  "is-friend-now": "Is your friend now",
+  "join": "Join",
+  "join-code": "Join Code",
+  "joined-friends": "People who have joined",
+  "latest-results": "Latest results",
+  "leaderboard": {
+    "be-first": "Be the first"
+  },
+  "leagues": {
+    "daily": "Daily league",
+    "grand": "Grand league",
+    "history": "League history",
+    "weekly": "Weekly league"
+  },
+  "leave": "Leave",
+  "level": "Level",
+  "login": "Log in",
+  "menu": {
+    "deactivate": "deactivation",
+    "home": "Home",
+    "invite-friends": "Invite friends",
+    "leagues": "Leagues",
+    "logout": "Logout",
+    "profile": "Profile",
+    "rewards": "Rewards",
+    "settings": "Settings",
+    "top-players": "Top players"
+  },
+  "modal": {
+    "confirm": "Do you want to Log out of your account?",
+    "deactivate": "Do you want to deactivate your account?",
+    "removeAvatar": "Remove profile photo",
+    "removeFriend": "Remove {{user}} from friends?",
+    "share": "Share the {{type}}"
+  },
+  "multi-player": "With friends",
+  "new-cat": "New Category",
+  "notifs": "Notifications",
+  "one-player": "1 Player",
+  "phone-number": "Phone number",
+  "phone-number-placeholder": "Enter your phone number",
+  "play": "Play",
+  "play-again": "Play Again",
+  "play-with-friend": "Play with friend",
+  "player": "Player",
+  "point": "Point",
+  "profile": {
+    "performance": {
+      "played-leagues": "History Of Participating Leagues",
+      "played-topics": "Played Topics History"
+    },
+    "tabs": {
+      "favorites": "Favorite topics",
+      "friends": "friends",
+      "performance": "performance"
+    }
+  },
+  "profile-edit": {
+    "username": "Username",
+    "validationMsg": "The username should be between 8 and 20 characters long and no underline ( _ ) should be used"
+  },
+  "question": "Question",
+  "questions": "Questions",
+  "recent-search": "Recent search",
+  "remove": "Remove",
+  "remove-favorites": "Remove from favorites",
+  "resend": "Resend verification code",
+  "resend-time": "Resend verification code until another",
+  "reward": "Reward",
+  "rewards": {
+    "all": "All Gift Vouchers",
+    "gift": "Gift Voucher",
+    "in-process": "In process",
+    "receive": "Receive",
+    "received": "Received",
+    "title": "Rewards"
+  },
+  "score": "score",
+  "search": "Search",
+  "see-all": "See all",
+  "see-more": "See more",
+  "select-cat": "Select category you want",
+  "settings": {
+    "preferred": "Select your preferred language"
+  },
+  "share": "Share",
+  "share-with-friends": "Share with friends",
+  "share-with-friends-subtitle": "Invite your friends to join us",
+  "start-again": "Start again",
+  "start-game": "Start game",
+  "telegram": "Telegram",
+  "timer": {
+    "days": "days",
+    "hours": "hours",
+    "minutes": "minutes",
+    "seconds": "seconds"
+  },
+  "topic-leaderboard": "Topic leaderboard",
+  "total-score": "Total score",
+  "twitter": "Twitter",
+  "two-player": "2 Player",
+  "verify-header": "Enter the verification code",
+  "view-answers": "View Answers",
+  "wait-to-start": "Wait to start",
+  "wants-tobe-friend": "Wants to be your friend",
+  "whatsapp": "Whatsapp",
+  "winner-awards": "Winner awards",
+  "you": "You",
+  "your-pos": "Your position",
+  "your-score": "Your score"
+}

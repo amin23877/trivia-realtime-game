@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import OutlinedButton from "common/components/UI/button/OutlinedButton";
 import s from "pages/innerTopic/InnerTopic.module.scss";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
@@ -15,9 +16,9 @@ const config = {
 const HandleFavoriteButton = ({ initialStatus, id }) => {
 	const [status, setStatus] = useState(initialStatus);
 
-	const { fetcher: addToFavorite, success: addSuccess } = useRequest(`topic/${id}/add`, config);
+	const { fetcher: addToFavorite, status: addStatus } = useRequest(`topic/${id}/add`, config);
 
-	const { fetcher: removeFromFavorite, success: removeSuccess } = useRequest(`topic/${id}/remove`, config);
+	const { fetcher: removeFromFavorite, status: removeStatus } = useRequest(`topic/${id}/remove`, config);
 
 	/*
 	 * 	status === 0  means that topic not added to favorites
@@ -25,22 +26,25 @@ const HandleFavoriteButton = ({ initialStatus, id }) => {
 	 * */
 
 	useEffect(() => {
-		if (addSuccess) setStatus(1);
-	}, [addSuccess]);
+		if (addStatus === "success") setStatus(1);
+	}, [addStatus]);
 
 	useEffect(() => {
-		if (removeSuccess) setStatus(0);
-	}, [removeSuccess]);
+		if (removeStatus === "success") setStatus(0);
+	}, [removeStatus]);
 
-	return status === 1 ? (
-		<p className={s.removeFromFavorite} onClick={removeFromFavorite}>
-			<RemoveIcon /> Remove from Favorites
-		</p>
-	) : (
-		<p className={s.addToFavorite} onClick={addToFavorite}>
-			<AddIcon /> Add to favorites
-		</p>
-	);
+	const getBtnProps = (status) => {
+		const isNotAdded = status === 0;
+		return {
+			ns: isNotAdded ? "add-to-favorites" : "remove-favorites",
+			onClick: isNotAdded ? addToFavorite : removeFromFavorite,
+			startIcon: isNotAdded ? <AddIcon /> : <RemoveIcon />,
+			className: isNotAdded ? s.addToFavorite : s.removeFromFavorite,
+			variant: isNotAdded ? "secondary" : "gray",
+		};
+	};
+
+	return <OutlinedButton {...getBtnProps(status)} />;
 };
 
 export default HandleFavoriteButton;

@@ -27,23 +27,3 @@
     padding: 0;
   }
 }
-
-.topics {
-  padding-top: 1.75rem;
-
-  .topics-header {
-    padding-bottom: .5rem;
-    padding-right: 1.5rem;
-
-    &__title {
-      @include fontSize($fs-m, $fs-xxl);
-    }
-
-    .subtitle {
-      @include fontSize($fs-normal ,$fs-m);
-
-      color: colorBlack(50);
-      cursor: pointer;
-    }
-  }
-}

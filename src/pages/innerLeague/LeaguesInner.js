@@ -10,6 +10,8 @@ import CardInner from "common/components/cardInner/CardInner";
 import PlayFooter from "common/components/footer/PlayFooter";
 import LeagueLeaderboard from "pages/innerLeague/innerLeagueComponents/LeagueLeaderboard";
 import FilledButton from "common/components/UI/button/FilledButton";
+import CountDownTimerNormal from "common/components/countdownTimer/CountDownTimerNormal";
+import Text from "common/components/UI/text/Text";
 
 // Redux
 import { useDispatch } from "react-redux";
@@ -19,7 +21,6 @@ import { SET_GAME_SELECTION_TYPE } from "redux/actions/mainActions/generalAction
 import s from "./LeaguesInner.module.scss";
 import PersonIcon from "@material-ui/icons/Person";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
-import CountDownTimerNormal from "common/components/countdownTimer/CountDownTimerNormal";
 
 const ordinal = require("ordinal");
 
@@ -76,7 +77,9 @@ const LeaguesInner = () => {
 
 						<p className={s.playersNumber}>
 							{dataInnerLeague?.players > 1 ? <SupervisorAccountIcon /> : <PersonIcon />}
-							<span className="mx-1">{`${dataInnerLeague?.players} player`}</span>
+							<span className="mx-1">
+								{dataInnerLeague?.players} <Text as="span" ns="player" />
+							</span>
 						</p>
 
 						{calcLeagueType(dataInnerLeague?.startTime, dataInnerLeague?.endTime) !== "expired" && (
@@ -92,11 +95,11 @@ const LeaguesInner = () => {
 				</CardInner>
 
 				<div className={s.innerLeagueBody}>
-					<p className={s.title}>Description:</p>
+					<Text ns="description" className={s.title} />
 
 					<p className={s.text}>{dataInnerLeague?.description}</p>
 
-					<p className={`${s.title} mt-4 mt-xl-5`}>Winners Awards:</p>
+					<Text ns="winner-awards" className={`${s.title} mt-4 mt-xl-5`} />
 
 					<div className={s.awards}>
 						{dataInnerLeague?.rewards?.map((el, index) => (
@@ -115,8 +118,11 @@ const LeaguesInner = () => {
 					</div>
 
 					<div className={s.board}>
-						<p className={s.title}>Latest results:</p>
-						<p className={s.yourPosition}>Your position : 0</p>
+						<Text ns="latest-results" className={s.title} />
+
+						<p className={s.yourPosition}>
+							<Text as="span" ns="your-pos" /> : 0
+						</p>
 
 						<LeagueLeaderboard id={id} isOnePlayerLeague={dataInnerLeague.players === 1} />
 					</div>

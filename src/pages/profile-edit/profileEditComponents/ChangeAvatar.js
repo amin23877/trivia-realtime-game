@@ -42,8 +42,8 @@ const ChangeAvatar = () => {
 
 			<ConfirmModal
 				alertIcon={false}
-				question="Remove Profile Photo?"
-				actionText="Remove"
+				question="modal.removeAvatar"
+				actionText="remove"
 				action={handleRemoveAvatar}
 				renderButton={(handleOpen) => (
 					<span onClick={handleOpen} className="change-avatar-btn">
