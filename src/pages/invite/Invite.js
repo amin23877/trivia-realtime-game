@@ -1,10 +1,10 @@
 import React from "react";
 import HeaderGoBack from "common/components/headerGoBack/HeaderGoBack";
+import Text from "common/components/UI/text/Text";
+import InviteButton from "pages/invite/InviteButton";
 
 import s from "./Invite.module.scss";
 import image from "assets/images/pics/invite-image.svg";
-import FilledButton from "common/components/UI/button/FilledButton";
-import Text from "common/components/UI/text/Text";
 
 const Invite = () => {
 	return (
@@ -18,7 +18,7 @@ const Invite = () => {
 
 				<img alt="invite friends" src={image} className={s.image} />
 
-				<FilledButton ns="btn.copy-link" endIcon={s.linkIcon} variant="secondary" className={s.button} />
+				<InviteButton />
 			</div>
 		</>
 	);
