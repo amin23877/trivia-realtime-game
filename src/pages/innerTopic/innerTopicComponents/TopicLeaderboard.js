@@ -8,6 +8,7 @@ import { useListLoad } from "common/hooks/useListLoad";
 import s from "../InnerTopic.module.scss";
 import EmptyLeaderboard from "common/components/empties/EmptyLeaderboard";
 import Text from "common/components/UI/text/Text";
+import { useRequest } from "common/hooks/useRequest";
 
 const tabs = [
 	{ label: "filterTabs.all", value: "all" },
@@ -21,6 +22,8 @@ const TopicLeaderboard = ({ id }) => {
 
 	const { data, success, endOfList, fetchMore } = useListLoad(`topicleaderboard/${id}/${timespan}`, 10);
 
+	const { response, success: getMyPosSuccess } = useRequest(`topicleaderboard/${id}/${timespan}/me`);
+
 	const handleTimespan = (event, newValue) => {
 		setTimespan(newValue);
 	};
@@ -31,7 +34,8 @@ const TopicLeaderboard = ({ id }) => {
 				<Tabs value={timespan} onChange={handleTimespan} tabs={tabs} />
 
 				<p className={s.yourPosition}>
-					<Text as="span" ns="your-pos" /> : <span className={s.position}>should fixed</span>
+					<Text as="span" ns="your-pos" /> :{" "}
+					<span className={s.position}>{getMyPosSuccess && response.place}</span>
 				</p>
 
 				{data.length === 0 ? (

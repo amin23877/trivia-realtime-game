@@ -153,13 +153,9 @@ $leaderboard-max-width : 722px;
 }
 
 .yourPosition {
-  display: none;
+  @include fontSize($fs-normal, $fs-l);
   color: $secondary;
   margin-top: .75rem;
-
-  @include desktop {
-    display: block;
-  }
 }
 
 .position {

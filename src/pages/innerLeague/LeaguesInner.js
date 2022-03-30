@@ -43,7 +43,9 @@ const LeaguesInner = () => {
 
 	const navigate = useNavigate();
 
-	const { response: dataInnerLeague, success } = useRequest(`league/${id}`);
+	const { response: dataInnerLeague, success: getDataInnerLeagueSuccess } = useRequest(`league/${id}`);
+
+	const { response: myPos, success: getMyPosSuccess } = useRequest(`league/leaderboard/${id}/me`);
 
 	const handlePlay = () => {
 		dispatch(SET_GAME_SELECTION_TYPE({ type: "league", id: id }));
@@ -55,7 +57,7 @@ const LeaguesInner = () => {
 	};
 
 	return (
-		success && (
+		getDataInnerLeagueSuccess && (
 			<div className={s.leaguesInner}>
 				<CardInner
 					type="league"
@@ -121,7 +123,7 @@ const LeaguesInner = () => {
 						<Text ns="latest-results" className={s.title} />
 
 						<p className={s.yourPosition}>
-							<Text as="span" ns="your-pos" /> : 0
+							<Text as="span" ns="your-pos" /> : {getMyPosSuccess && myPos.place}
 						</p>
 
 						<LeagueLeaderboard id={id} isOnePlayerLeague={dataInnerLeague.players === 1} />
