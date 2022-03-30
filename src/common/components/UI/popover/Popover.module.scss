@@ -1,0 +1,35 @@
+@import "assets/scss/styles";
+
+.container {
+  text-align: center;
+  min-width: 10rem;
+  width: max-content;
+  position: absolute;
+  background-color: white;
+  color: black;
+  padding: 1rem;
+  border-radius: .5rem;
+  box-shadow: 0 3px 5px rgba(94, 92, 106, 0.1);
+}
+
+.open-from-bottom, .open-from-top {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.open-from-top {
+  bottom: 100%;
+  margin-bottom: .25rem;
+}
+
+.open-from-bottom {
+  top: 100%;
+}
+
+.open-from-left {
+  right: 100%;
+}
+
+.open-from-right {
+  left: 100%;
+}
