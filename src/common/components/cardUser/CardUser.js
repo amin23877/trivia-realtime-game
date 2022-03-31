@@ -14,8 +14,10 @@ const CardUser = ({ id, avatar, info, avatarSize = { mobile: 22, desktop: 46 }, 
 		<Link className={classes.container ?? s.container} to={`/profile/${id !== userId ? id : ""}`}>
 			<Avatar src={IMAGE_URL + encodeURI(avatar)} size={avatarSize} />
 
-			<div lang="en" className={classes.content ?? s.content}>
-				<p className={classes.username ?? ""}>{username}</p>
+			<div className={classes.content ?? s.content}>
+				<p lang="en" className={classes.username ?? ""}>
+					{username}
+				</p>
 				<div className={classes.info ?? s.info}>{info}</div>
 			</div>
 		</Link>
