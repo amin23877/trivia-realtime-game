@@ -11,7 +11,9 @@ const CountDownTimerNormal = ({ color = "secondary", timerProps }) => {
 			separator="line"
 			renderTime={(ns, value) => (
 				<div className={s.boxContainer}>
-					<p className={s["box-" + color]}>{value}</p>
+					<p lang="en" className={s["box-" + color]}>
+						{value}
+					</p>
 				</div>
 			)}
 		/>
