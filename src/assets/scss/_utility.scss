@@ -1,8 +1,7 @@
 // ======================================================
 // Mixin
 // ======================================================
-@import './dimensions';
-@import './font';
+@import "./variables";
 
 @mixin desktop() {
   @media (min-width: $breakpoint-xl) {

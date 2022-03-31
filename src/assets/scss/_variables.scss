@@ -1,0 +1,86 @@
+// ======================================================
+// Custom Color variables
+// ======================================================
+$primary:  #0064A2;
+$primary59:  #0064A259;
+$primary26:  #0064A226;
+$primary-light: #d5d4f7;
+$waitBg:#033c72;
+$secondary: #F47A20;
+$secondary4d:#F47A204d;
+$secondary66:#F47A2066;
+$bg-secondary: #FFEDE0;
+
+$red-2: #f53636;
+$green-1: #12ae25;
+$orange-1: #cfa306;
+$orange-2: #eeb217;
+$orange-3: #f8b827;
+$orange-4: #c06434;
+$grey-1: #8e8b9e;
+$grey-2: #cac7c7;
+$gold: #eeb217;
+
+$bg-login: #f7f8fc;
+$bg-home: #f9f9f9;
+$bg-home-card: #f5a367;
+$bg-seachbox: #eeedf7;
+$bg-btn-play: #f83f5f;
+$bg-profile: #f9f9f9;
+
+$br-light: #d2d5d9;
+
+$input-bg-default: rgba(20, 35, 186, 0.05);
+
+$text-footer: #8e8b9e;
+$text-dark: #2c2c2c;
+
+$snackbar-success-bg: #d0f8e0;
+$snackbar-success: #058c42;
+$snackbar-error-bg: #fcd3d8;
+$snackbar-error: #d90429;
+$snackbar-alert-bg: #fef7d7;
+$snackbar-alert: #faa307;
+
+// ======================================================
+// font sizes
+// ======================================================
+
+$fs-xs: 10px;
+$fs-s: 11px;
+$fs-normal: 12px;
+$fs-sm: 13px;
+$fs-m: 14px;
+$fs-l: 16px;
+$fs-xl: 18px;
+$fs-xxl: 20px;
+$fs-xxxl: 24px;
+
+// ======================================================
+// Custom Breakpoint variables
+// ======================================================
+$breakpoint-xxs: 320px;
+$breakpoint-xs: 450px;
+$breakpoint-s: 640px;
+$breakpoint-m: 960px;
+$breakpoint-l: 1024px;
+$breakpoint-xl: 1199px;
+$breakpoint-xxl: 1920px;
+
+// ======================================================
+// other
+// ======================================================
+
+$desktop-header-height: 65px;
+$mobile-header-height: 35px;
+$height-footer: 70px;
+$sidebar-width: 290px;
+$height-body-HF: calc(100% - #{$mobile-header-height} - #{$height-footer});
+$height-body-H: calc(100% - #{$mobile-header-height});
+$height-body-F: calc(100% - #{$height-footer});
+
+$height-header-goback: 60px;
+$height-header-path: 45px;
+
+$divider : 1px solid #00000033;
+

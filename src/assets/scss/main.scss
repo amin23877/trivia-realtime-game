@@ -1,0 +1,476 @@
+@import "./styles";
+@import "./form";
+@import "./material";
+@import "./modal";
+
+// ======================================================
+// keyframes
+// ======================================================
+
+@keyframes fadeInSmallToBigAnim {
+  0% {
+    opacity: 0;
+    transform: scale(0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -moz-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+}
+
+@-moz-keyframes fadeInSmallToBigAnim {
+  0% {
+    opacity: 0;
+    transform: scale(0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -moz-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+}
+
+@-webkit-keyframes fadeInSmallToBigAnim {
+  0% {
+    opacity: 0;
+    transform: scale(0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -moz-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes fadeInAnim {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeInAnim {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeInAnim {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+
+// ======================================================
+// declare fonts
+// ======================================================
+
+@font-face {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: 900;
+  src: url('../fonts/eot/IRANSansWeb_Black.eot');
+  src: url('../fonts/eot/IRANSansWeb_Black.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
+  url('../fonts/woff2/IRANSansWeb_Black.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+  url('../fonts/woff/IRANSansWeb_Black.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+  url('../fonts/ttf/IRANSansWeb_Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: bold;
+  src: url('../fonts/eot/IRANSansWeb_Bold.eot');
+  src: url('../fonts/eot/IRANSansWeb_Bold.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
+  url('../fonts/woff2/IRANSansWeb_Bold.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+  url('../fonts/woff/IRANSansWeb_Bold.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+  url('../fonts/ttf/IRANSansWeb_Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/eot/IRANSansWeb_Medium.eot');
+  src: url('../fonts/eot/IRANSansWeb_Medium.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
+  url('../fonts/woff2/IRANSansWeb_Medium.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+  url('../fonts/woff/IRANSansWeb_Medium.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+  url('../fonts/ttf/IRANSansWeb_Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/eot/IRANSansWeb_Light.eot');
+  src: url('../fonts/eot/IRANSansWeb_Light.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
+  url('../fonts/woff2/IRANSansWeb_Light.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+  url('../fonts/woff/IRANSansWeb_Light.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+  url('../fonts/ttf/IRANSansWeb_Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: 200;
+  src: url('../fonts/eot/IRANSansWeb_UltraLight.eot');
+  src: url('../fonts/eot/IRANSansWeb_UltraLight.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
+  url('../fonts/woff2/IRANSansWeb_UltraLight.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+  url('../fonts/woff/IRANSansWeb_UltraLight.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+  url('../fonts/ttf/IRANSansWeb_UltraLight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/eot/IRANSansWeb.eot');
+  src: url('../fonts/eot/IRANSansWeb.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
+  url('../fonts/woff2/IRANSansWeb.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+  url('../fonts/woff/IRANSansWeb.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+  url('../fonts/ttf/IRANSansWeb.ttf') format('truetype');
+}
+
+// ======================================================
+// css resets
+// ======================================================
+
+html,
+body,
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: IRANSans, sans-serif !important;
+}
+
+/* use roboto font for each element has english text (lang attribute sets to "en") */
+:where(*,*:before,*:after):lang(en) {
+  font-family: Roboto, sans-serif !important;
+}
+
+p {
+  margin-bottom: 0 !important;
+}
+
+a {
+  color: inherit !important;
+  text-decoration: none !important;
+
+  &:hover {
+    color: inherit !important;
+  }
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  outline: unset;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 2px !important;
+  height: 3px !important;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px rgba(31, 0, 75, 0.05) !important;
+  border-radius: 25px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(31, 0, 75, 0.01) !important;
+  border-radius: 3px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c7c3c3 !important;
+}
+
+// ======================================================
+// utility classes
+// ======================================================
+
+.fadeIn {
+  -moz-animation-name: fadeInAnim;
+  -o-animation-name: fadeInAnim;
+  -webkit-animation-name: fadeInAnim;
+  animation-name: fadeInAnim;
+  -moz-animation-duration: 2s;
+  -o-animation-duration: 2s;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+}
+
+.fadeInFast {
+  -moz-animation-name: fadeInAnim;
+  -o-animation-name: fadeInAnim;
+  -webkit-animation-name: fadeInAnim;
+  animation-name: fadeInAnim;
+  -moz-animation-duration: 500ms;
+  -o-animation-duration: 500ms;
+  -webkit-animation-duration: 500ms;
+  animation-duration: 500ms;
+}
+
+.color-primary {
+  color: $primary !important;
+}
+
+._wh-100 {
+  width: 100%;
+  height: 100%;
+}
+
+._bg-home {
+  background-color: $bg-home;
+}
+
+._bg-login {
+  background-color: #f7f8fc;
+}
+
+._leaderboardContainer {
+  width: 100%;
+  max-width: 722px;
+  margin: 0 auto;
+}
+
+._backdrop-filter {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+._header {
+  height: $mobile-header-height;
+
+  @media (min-width: $breakpoint-xl) {
+    height: $desktop-header-height;
+  }
+}
+
+._footer {
+  height: $height-footer;
+}
+
+._body-height-HF {
+  height: $height-body-HF;
+}
+
+._body-height-H {
+  height: $height-body-H;
+}
+
+._body-height-F {
+  height: $height-body-F;
+
+  /* there is no footer on desktop */
+  @media (min-width: $breakpoint-xl) {
+    height: 100%;
+  }
+}
+
+._header-goback {
+  padding: 0 20px;
+  height: $height-header-goback;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  ._header-title {
+    @include fsM;
+    color: $primary;
+  }
+}
+
+._header-path {
+  height: $height-header-path;
+  ._path {
+    @include fsM;
+    color: colorBlack(50);
+    cursor: pointer;
+  }
+  ._lastPath {
+    color: $primary;
+  }
+
+  ._arrow {
+    font-size: 14px;
+    margin: 0 5px;
+  }
+}
+
+._header-shadow {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+._br-bottom {
+  border-bottom: 1px solid $br-light;
+}
+
+._dish-cardLeagueInfo {
+  width: 100% !important;
+  min-height: 150px;
+  margin: auto;
+  --bs-aspect-ratio: 40%;
+}
+
+._topic-card {
+  --image-h: 100px;
+
+  @include desktop {
+    --image-h: 135px;
+  }
+
+  min-width: calc(clamp(100px, 40%, 200px));
+
+  display: flex;
+  flex-direction: column;
+
+  margin: 5px !important;
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  // --bs-aspect-ratio: 90%; // #ratio
+  box-shadow: 0 3px 5px rgba(39, 39, 40, 0.1);
+
+  .card-img {
+    flex-grow: 1;
+    width: 100%;
+    height: var(--image-h);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .card-info {
+    @include fontSize($fs-normal, $fs-m);
+    padding: 2px 5px;
+
+    @include desktop {
+      padding: 0.5rem;
+    }
+
+    .title {
+      padding-bottom: 0.5rem;
+      color: colorBlack(85);
+
+      @include desktop {
+        padding-bottom: 1.25rem;
+      }
+    }
+    .subtitle {
+      @include fontSize(8px, $fs-m);
+      color: colorBlack(65);
+    }
+    .rate {
+      color: $orange-2;
+      font-weight: 500;
+    }
+  }
+}
+
+._empty-list {
+  max-width: 50%;
+  height: auto;
+}
+
+._cursor-pointer {
+  cursor: pointer;
+}
+
+._topic-card-container {
+  width: calc(clamp(100px, 40%, 200px));
+  min-width: calc(clamp(100px, 40%, 200px));
+  margin: 5px !important;
+  background-color: white;
+  border-radius: 0.5rem;
+}
+
+._pagination {
+  width: fit-content !important;
+
+  .Mui-selected {
+    background-color: $primary !important;
+    color: white !important;
+  }
+}
+._pagination.MuiPagination-root {
+  width: fit-content !important;
+  margin: auto;
+}
+
+._profile-background {
+  background-color: white;
+  background-image: url("/assets/images/backgrounds/profile-background.png");
+  background-size: cover;
+  box-shadow: 0 3px 5px rgba(94, 92, 106, 0.1);
+  z-index: 1;
+
+  @include desktop {
+    box-shadow: none;
+  }
+}
+
+.br1 {
+  border: 1px solid red;
+}
+.br2 {
+  border: 1px solid blue;
+}
+.br3 {
+  border: 2px solid green;
+}
+.bg1 {
+  background-color: bisque;
+}
+.bg2 {
+  background-color: aquamarine;
+}

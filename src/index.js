@@ -5,6 +5,8 @@ import store from "redux/store"; // #redux step1
 import App from "./App";
 import "common/services/i18n";
 
+import "assets/scss/main.scss";
+
 ReactDOM.render(
 	// #redux step2
 	<React.Suspense fallback={null}>
