@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useTranslation } from "react-i18next";
 
 import { Outlet } from "react-router-dom";
 
@@ -16,9 +15,10 @@ import { fetchNotif } from "redux/reducers/notifReducer/notifReducer";
 import { SET_OPEN_GAME_TYPES } from "redux/actions/mainActions/generalActions";
 
 import "./MainLayout.scss";
+import { useChangeLang } from "common/hooks/useChangeLang";
 
 const MainLayout = ({ footer = false, sidebar = true }) => {
-	const { i18n } = useTranslation();
+	const { changeLang } = useChangeLang();
 	const dispatch = useDispatch();
 
 	const { openGameTypes, openNotifDrawer } = useSelector((state) => state.stateGeneral);
@@ -34,10 +34,8 @@ const MainLayout = ({ footer = false, sidebar = true }) => {
 
 	/* initialize user language */
 	useEffect(() => {
-		if (loadUserStatus === "success") {
-			i18n.changeLanguage(userInfo.language);
-		}
-	}, [i18n, loadUserStatus, userInfo.language]);
+		if (loadUserStatus === "success") changeLang(userInfo.language);
+	}, [changeLang, loadUserStatus, userInfo.language]);
 
 	if (loadUserStatus === "loading" || loadUserStatus === "idle") {
 		return <Loading variant="full-page" />;

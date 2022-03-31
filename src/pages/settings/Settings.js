@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
 import FilledButton from "common/components/UI/button/FilledButton";
 
 import s from "./Settings.module.scss";
@@ -7,9 +6,10 @@ import { useDispatch } from "react-redux";
 import { updateUser } from "redux/actions/userActions/userActions";
 import Text from "common/components/UI/text/Text";
 import HeaderGoBack from "common/components/headerGoBack/HeaderGoBack";
+import { useChangeLang } from "common/hooks/useChangeLang";
 
 const Settings = () => {
-	const { i18n } = useTranslation();
+	const { changeLang, i18n } = useChangeLang();
 
 	const dispatch = useDispatch();
 
@@ -25,7 +25,7 @@ const Settings = () => {
 		if (selectedLang !== i18n.language) {
 			dispatch(
 				updateUser("language", selectedLang, () => {
-					i18n.changeLanguage(selectedLang);
+					changeLang(selectedLang);
 				})
 			);
 		}
@@ -42,7 +42,7 @@ const Settings = () => {
 				<div className={s.selectContainer}>
 					<Text ns="settings.preferred" as="label" />
 
-					<select className={s.select} value={selectedLang} onChange={handleSelectLang}>
+					<select lang="en" className={s.select} value={selectedLang} onChange={handleSelectLang}>
 						<option value="en">English</option>
 						<option value="fa">Persian</option>
 					</select>
