@@ -22,6 +22,7 @@ const useStyles = makeStyles({
 		borderRadius: 6,
 		minHeight: "auto",
 		minWidth: "auto",
+		fontFamily: "inherit",
 		flexGrow: ({ variant }) => (variant === "button" ? 0 : 1),
 		padding: ({ variant }) => (variant === "button" ? "5px 10px" : "12px 24px"),
 
