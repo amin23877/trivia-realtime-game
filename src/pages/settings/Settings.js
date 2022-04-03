@@ -45,6 +45,7 @@ const Settings = () => {
 					<select className={s.select} value={selectedLang} onChange={handleSelectLang}>
 						<option value="en">English</option>
 						<option value="fa">Persian</option>
+						<option value="ps">Pashto</option>
 					</select>
 				</div>
 
