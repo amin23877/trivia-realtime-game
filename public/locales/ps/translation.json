@@ -1,5 +1,5 @@
 {
-	"back-to-topic": "بازگشت به تاپیک",
+	"back-to-topic": "موضوع ته ببرته تګ",
 	"add-to-favorites": "د خوښې وړ لیسټ کې اضافه کول",
 	"answer": "ځواب",
 	"back-to-home": "اصلی منیو ته بیرته تګ",
@@ -39,7 +39,7 @@
 	"invite": "بلنه",
 	"is-friend-now": "دا کارونکی اوس ستاسو د ملګرو په لیسټ کې دی",
 	"join": "ګډون کول",
-	"join-code": "کد پیوستن",
+	"join-code": "د ګډوڼ کوډ",
 	"joined-friends": "ملګري چې غړي شوي",
 	"latest-results": "وروستۍ پایلې",
 	"leaderboard": {
@@ -91,7 +91,7 @@
 		"tabs": {
 			"favorites": "د خوښې وړ موضوعات",
 			"friends": "ملګري",
-			"performance": "پرفورمنس"
+			"performance": "اجراأت"
 		}
 	},
 	"profile-edit": {
