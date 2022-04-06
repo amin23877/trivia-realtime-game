@@ -31,6 +31,7 @@ import InnerTopic from "pages/innerTopic/InnerTopic";
 import Page404 from "pages/404/Page404";
 import Invite from "pages/invite/Invite";
 import Settings from "pages/settings/Settings";
+import Upload from "pages/Upload";
 
 const RouterConfig = () => {
 	return (
@@ -45,6 +46,8 @@ const RouterConfig = () => {
 
 						<Route exact path="/profile" element={<UserProfile />} />
 						<Route exact path="/profile/:id" element={<OthersProfile />} />
+
+						<Route exact path="/upload" element={<Upload />} />
 					</Route>
 				</Route>
 

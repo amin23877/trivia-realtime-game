@@ -40,7 +40,6 @@ const OnePlayer = ({ type = "quickPlay" }) => {
 		socketRef.current = socket;
 	}, [myInfo, socket]);
 
-	
 	useEffect(() => {
 		const socketp = io(socketUrl, { transports: ["websocket"] });
 		setSocket(socketp);
@@ -174,12 +173,11 @@ const OnePlayer = ({ type = "quickPlay" }) => {
 		setCorrectAnswer(null);
 		setMyOption(null);
 		setGameResult(null);
-	}
+	};
 
 	const handleShowAnswers = () => {
 		setGameState("showAnswers");
-
-	}
+	};
 	const handleBackAnswers = () => {
 		setGameState("gameResult");
 	};
@@ -216,7 +214,7 @@ const OnePlayer = ({ type = "quickPlay" }) => {
 					authData={authData}
 					handleNewCat={handleNewCat}
 					handleShowAnswers={handleShowAnswers}
-
+					type={type}
 				/>
 			)}
 			{gameState == "showAnswers" && (

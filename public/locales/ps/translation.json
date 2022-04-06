@@ -1,0 +1,150 @@
+{
+	"back-to-topic": "بازگشت به تاپیک",
+	"add-to-favorites": "د خوښې وړ لیسټ کې اضافه کول",
+	"answer": "ځواب",
+	"back-to-home": "اصلی منیو ته بیرته تګ",
+	"btn": {
+		"copied-to-cb": "لینک کاپي شو",
+		"copy-link": "د لینک کاپي کول",
+		"edit-profile": "د پروفایل سمول",
+		"quick-play": "چټکه لوبه",
+		"save": "د بدلونونو ذخیره"
+	},
+	"cancel": "لغوه کول ",
+	"code-sent": "د تایید کود ته {{phone}} واستول شو",
+	"continue": "ادامه",
+	"correct-answer": "صحیح ځوابونه",
+	"create-game": "د لوبې جوړول",
+	"create-game-msg": "د ملګرو سره د لوبې کولو لپاره نوې لوبه جوړه کړئ",
+	"description": "توضیحات",
+	"enter-join-code": "د ننوتلو کود ولیګئ",
+	"filterTabs": {
+		"all": "ټول",
+		"daily": "ورځني",
+		"monthly": "میاشتنی",
+		"weekly": "ونیز "
+	},
+	"find-playmate": "ستاسو لپاره د سیال لټوڼ",
+	"friends": {
+		"accept": "منل",
+		"add": "د ملګرو په ډله کې زیاتول",
+		"reject": "ردول",
+		"requested": "غوښتل شوی"
+	},
+	"home": {
+		"favorite-topics": "د خوښې وړ موضوعات",
+		"latest-topics": "وروستي موضوعات",
+		"top-topics": "غوره مضامین"
+	},
+	"invite": "بلنه",
+	"is-friend-now": "دا کارونکی اوس ستاسو د ملګرو په لیسټ کې دی",
+	"join": "ګډون کول",
+	"join-code": "کد پیوستن",
+	"joined-friends": "ملګري چې غړي شوي",
+	"latest-results": "وروستۍ پایلې",
+	"leaderboard": {
+		"be-first": "لومړی شو"
+	},
+	"leagues": {
+		"daily": "ورځنی لیګ",
+		"grand": "ګرند لیګ",
+		"history": "د لیګونو تایخچه",
+		"weekly": "ونیز لیګونه"
+	},
+	"leave": "وتل",
+	"level": "کچه",
+	"login": "ننوځئ",
+	"menu": {
+		"deactivate": "غیر فعالول",
+		"home": "کور",
+		"invite-friends": "د ملګرو بلنه",
+		"leagues": "لیګونه",
+		"logout": "وتل",
+		"profile": "پروفایل",
+		"rewards": "جایزې",
+		"settings": "تنظیمات",
+		"top-players": "غوره لوبغاړي"
+	},
+	"modal": {
+		"confirm": "آیا غواړۍ له خپل حساب څخه ووځئ؟",
+		"deactivate": "آیا غواړۍ له خپل حساب غیر فعاله کړئ؟",
+		"removeAvatar": "ایا تاسو غواړئ اوتار لرې کړئ؟",
+		"removeFriend": "پاکول {{user}} د ملګرو له ډلې څخه؟",
+		"share": "شریکول {{type}}"
+	},
+	"multi-player": "ملګرو سره ",
+	"new-cat": "نوی ویش ",
+	"notifs": "اعلانونه",
+	"one-player": "یو نفر",
+	"phone-number": "د ټلیفون شمیره",
+	"phone-number-placeholder": "خپله شمیره ولیکئ",
+	"play": "لوبه",
+	"play-again": "بیا لوبه",
+	"play-with-friend": "ملګرو سره لوبې",
+	"player": "لوبغاړی",
+	"point": "امتیاز",
+	"profile": {
+		"performance": {
+			"played-leagues": "ستاسو د لوبول شویو لیګونو تاریخچه",
+			"played-topics": "ستاسو د لوبول شویو موضوعاتو تاریخچه"
+		},
+		"tabs": {
+			"favorites": "د خوښې وړ موضوعات",
+			"friends": "ملګري",
+			"performance": "پرفورمنس"
+		}
+	},
+	"profile-edit": {
+		"username": "د کارولو نوم",
+		"validationMsg": "کارن نوم باید د 8 او 20 حروفو ترمنځ وي او باید اندر آنلاین (_) نه وي "
+	},
+	"question": "پوښتنه",
+	"questions": "پوښتنې",
+	"recent-search": "وروستۍ څیړنې",
+	"remove": "پاکول",
+	"remove-favorites": "د خوښې وړ لیست څخه پاکول",
+	"resend": "د کود بیا استول",
+	"resend-time": "د کود بیا استول تر",
+	"reward": "جایزه",
+	"rewards": {
+		"all": "ټول ډالۍ شوی کوپن ",
+		"gift": "د کوپن ډالۍ",
+		"in-process": "د کار په لړ کې",
+		"receive": "لاسته راغلی",
+		"received": "لاسته راغلي",
+		"title": "جایزې"
+	},
+	"score": "امتیاز",
+	"search": "پلټنه",
+	"see-all": "د ټولو لیدل",
+	"see-more": "نور",
+	"select-cat": "د پام وړ لیست غوره کړئ",
+	"settings": {
+		"preferred": "د خپلې خوښې وړ ژبه وټاکئ"
+	},
+	"share": "شریکول",
+	"share-with-friends": "ملګرو سره شریکول",
+	"share-with-friends-subtitle": "خپلو ملګرو ته د ډلې بلنه ورکړئ",
+	"start-again": "د لوبې بیل پیل",
+	"start-game": "د لوبې پیل",
+	"telegram": "تلگرام",
+	"timer": {
+		"days": "ورځ",
+		"hours": "ګرۍ",
+		"minutes": "دقیقه",
+		"seconds": "ثانیه"
+	},
+	"topic-leaderboard": "د متیازاتو چارت",
+	"total-score": "ټول امتیازات",
+	"twitter": "توییتر",
+	"two-player": "دوه نفره",
+	"verify-header": "استول شوی کود ولیګئ",
+	"view-answers": "د ځوابونو لیدل",
+	"wait-to-start": "تر پیله انتظار وباسئ",
+	"wants-tobe-friend": "آیا غواړئ چې ستاسو ملګری اووسي",
+	"whatsapp": "واتسپ",
+	"winner-awards": "د ګټونکو جایزې",
+	"you": "تاسو",
+	"your-pos": "ستاسو رتبه",
+	"your-score": "ستاسو امتیاز"
+}
