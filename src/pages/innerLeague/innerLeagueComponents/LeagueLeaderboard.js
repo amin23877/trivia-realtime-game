@@ -52,14 +52,14 @@ const LeagueLeaderboard = ({ id, isOnePlayerLeague }) => {
 
 						return (
 							<ListItem
-								userId={player.UserId._id}
+								userId={player?.UserId?._id}
 								key={index}
 								index={index + 4}
-								username={UserId.username}
-								avatar={UserId.avatar}
+								username={UserId?.username}
+								avatar={UserId?.avatar}
 							>
 								<div className="d-flex">
-									{isOnePlayerLeague && <p className={s.reward}>{reward} ‌ ‌ ‌ AFN</p>}
+									{isOnePlayerLeague && <p className={s.reward}>{reward} AFN</p>}
 									<p className={s.point}>{point}</p>
 									{isOnePlayerLeague && <p className={s.score}>{score}</p>}
 								</div>
