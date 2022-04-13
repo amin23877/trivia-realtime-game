@@ -51,7 +51,7 @@ const OnePlayer = ({ type = "quickPlay" }) => {
 		socketp.on("authentication", (e) => {
 			console.log("authDataOnFetch", e);
 			setAuthData(e);
-			if (type == "topic" || type == "league") {
+			if (type === "topic" || type === "league") {
 				console.log("id is", id);
 				setSelectedCategory({ _id: id });
 			}
@@ -66,13 +66,14 @@ const OnePlayer = ({ type = "quickPlay" }) => {
 				// socketp.close();
 			}, 1000);
 		});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
 		if (!categories) {
 			Dispatch(GET_CATEGORIES_LIST(token));
 		}
-	}, [categories]);
+	}, [Dispatch, categories, token]);
 
 	useEffect(() => {
 		if (selectedCategory) {
@@ -122,13 +123,15 @@ const OnePlayer = ({ type = "quickPlay" }) => {
 		switch (type) {
 			case "quickPlay":
 				navigate("/");
-
 				break;
 			case "topic":
 				navigate("/topics/" + id);
 				break;
 			case "league":
 				navigate("/leagues/" + id);
+				break;
+			default:
+				navigate("/");
 				break;
 		}
 	};
@@ -142,7 +145,7 @@ const OnePlayer = ({ type = "quickPlay" }) => {
 		setMyOption(opt);
 	};
 	const handlePlayAgain = () => {
-		if (type == "quickPlay") {
+		if (type === "quickPlay") {
 			setSelectedCategory({ ...selectedCategory });
 			setGameState("showWaitForStart");
 		} else {
@@ -159,7 +162,7 @@ const OnePlayer = ({ type = "quickPlay" }) => {
 	};
 
 	const handleNewCat = () => {
-		if (type == "quickPlay") {
+		if (type === "quickPlay") {
 			setSelectedCategory(null);
 			setGameState("showCategories");
 		} else {
@@ -183,15 +186,15 @@ const OnePlayer = ({ type = "quickPlay" }) => {
 	};
 	return (
 		<>
-			{gameState == "showCategories" && (
+			{gameState === "showCategories" && (
 				<CategoriesList
 					categories={categories}
 					handleGotoBack={handleGotoBack}
 					handleSelectCategory={handleSelectCategory}
 				/>
 			)}
-			{gameState == "showWaitForStart" && <WaitForStart />}
-			{gameState == "showQuestions" && (
+			{gameState === "showWaitForStart" && <WaitForStart />}
+			{gameState === "showQuestions" && (
 				<ShowQuestion
 					singleGameQuestion={singleGameQuestion}
 					handleSelectOption={handleSelectOption}
@@ -206,7 +209,7 @@ const OnePlayer = ({ type = "quickPlay" }) => {
 					authData={authData}
 				/>
 			)}
-			{gameState == "gameResult" && (
+			{gameState === "gameResult" && (
 				<GameResult
 					handlePlayAgain={handlePlayAgain}
 					myInfo={myInfo}
@@ -217,7 +220,7 @@ const OnePlayer = ({ type = "quickPlay" }) => {
 					type={type}
 				/>
 			)}
-			{gameState == "showAnswers" && (
+			{gameState === "showAnswers" && (
 				<ViewAnswers
 					gameResultData={gameResultData}
 					myInfo={myInfo}

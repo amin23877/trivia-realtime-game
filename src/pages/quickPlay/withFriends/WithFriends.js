@@ -11,6 +11,7 @@ import EnterGameCode from "./EnterGameCode/EnterGameCode";
 import FriendsList from "./FriendsList/FriendsList";
 import StartTimer from "./startTimer/StartTimer";
 import MpGameResult from "./gameResult/MpGameResult";
+
 const WithFriends = ({ type = "quickPlay" }) => {
 	const Dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -83,7 +84,7 @@ const WithFriends = ({ type = "quickPlay" }) => {
 		if (!categories) {
 			Dispatch(GET_CATEGORIES_LIST(token));
 		}
-	}, [categories]);
+	}, [Dispatch, categories, token]);
 
 	useEffect(() => {
 		if (selectedCategory) {
@@ -106,7 +107,6 @@ const WithFriends = ({ type = "quickPlay" }) => {
 				console.log("socketId Not Found", authData);
 				alert("socket id not detected");
 				document.location.reload();
-
 			}
 		}
 	}, [selectedCategory]);
@@ -156,6 +156,9 @@ const WithFriends = ({ type = "quickPlay" }) => {
 			case "topic":
 				setSelectedCategory({ _id: id });
 				break;
+			default:
+				setGameState("showCategories");
+				break;
 		}
 	};
 	const handleLeaveGame = () => {
@@ -178,7 +181,7 @@ const WithFriends = ({ type = "quickPlay" }) => {
 
 	return (
 		<>
-			{gameState == "EnterGameCode" && (
+			{gameState === "EnterGameCode" && (
 				<EnterGameCode
 					handleOpenCategories={handleOpenCategories}
 					joinCode={joinCode}
@@ -186,14 +189,14 @@ const WithFriends = ({ type = "quickPlay" }) => {
 					handleJoinWithCode={handleJoinWithCode}
 				/>
 			)}
-			{gameState == "showCategories" && (
+			{gameState === "showCategories" && (
 				<CategoriesList
 					categories={categories}
 					handleGotoBack={handleGotoBack}
 					handleSelectCategory={handleSelectCategory}
 				/>
 			)}
-			{gameState == "friendsList" && (
+			{gameState === "friendsList" && (
 				<FriendsList
 					joinCode={joinCode}
 					categories={categories}
@@ -206,8 +209,8 @@ const WithFriends = ({ type = "quickPlay" }) => {
 					type={type}
 				/>
 			)}
-			{gameState == "startTimer" && <StartTimer />}
-			{gameState == "showQuestions" && (
+			{gameState === "startTimer" && <StartTimer />}
+			{gameState === "showQuestions" && (
 				<ShowQuestion
 					singleGameQuestion={mpQuestion}
 					handleSelectOption={handleSelectOption}
@@ -223,7 +226,7 @@ const WithFriends = ({ type = "quickPlay" }) => {
 					myOption={myOption}
 				/>
 			)}
-			{gameState == "gameResult" && (
+			{gameState === "gameResult" && (
 				<MpGameResult
 					authData={authData}
 					myInfo={myInfo}

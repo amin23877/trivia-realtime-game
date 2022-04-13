@@ -4,8 +4,10 @@ import Text from "common/components/UI/text/Text";
 import s from "./RewardCard.module.scss";
 
 import giftImage from "assets/images/pics/gift-image.svg";
+import useRTL from "common/hooks/useRTL";
 
 const RewardCard = ({ data }) => {
+	const { isRtl } = useRTL();
 	const cardStyle =
 		data.type === "in-process" ? s.processReward : data.type === "receive" ? s.receiveReward : s.reward;
 
@@ -40,9 +42,15 @@ const RewardCard = ({ data }) => {
 				<img src={giftImage} alt="gift" />
 			</div>
 
-			{data.type === "receive" && <Text ns="rewards.receive" className={s.receiveButton} />}
-			{data.type === "in-process" && <Text ns="rewards.in-process" className={s.processFloatText} />}
-			{data.type === "received" && <Text ns="rewards.received" className={s.receivedFloatText} />}
+			{data.type === "receive" && (
+				<Text ns="rewards.receive" className={s.receiveButton} style={{ right: isRtl ? 480 : 50 }} />
+			)}
+			{data.type === "in-process" && (
+				<Text ns="rewards.in-process" className={s.processFloatText} style={{ right: isRtl ? 480 : 50 }} />
+			)}
+			{data.type === "received" && (
+				<Text ns="rewards.received" className={s.receivedFloatText} style={{ right: isRtl ? 480 : 50 }} />
+			)}
 		</li>
 	);
 };

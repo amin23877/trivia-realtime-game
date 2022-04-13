@@ -13,6 +13,7 @@ Text.propTypes = {
 	params: PropTypes.object,
 	as: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 	rest: PropTypes.any,
+	style: PropTypes.any,
 };
 
 export default Text;

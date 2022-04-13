@@ -3,7 +3,7 @@ import "./ShowQuestion.scss";
 import redTime from "assets/images/icons/Red-time.svg";
 import yellowTime from "assets/images/icons/Yellow-time.svg";
 import greenTime from "assets/images/icons/Green-time.svg";
-import userIcon from "assets/images/icons/footer-profile.svg";
+
 import { IMAGE_URL } from "common/values/CORE";
 import { Button } from "@material-ui/core";
 import Text from "common/components/UI/text/Text";
@@ -97,6 +97,7 @@ const ShowQuestion = ({
 				<div className="show-question__header--player-info">
 					<img
 						src={single ? IMAGE_URL + authData.avatar : IMAGE_URL + doubleGameReady[myInfo.player].avatar}
+						alt=""
 					/>
 					<Text ns="your-score" />
 					<span>{myInfo.score}</span>
@@ -104,7 +105,7 @@ const ShowQuestion = ({
 
 				{!single && (
 					<div className="show-question__header--player-info pull-right">
-						<img src={IMAGE_URL + doubleGameReady[rivalInfo.player].avatar} />
+						<img src={IMAGE_URL + doubleGameReady[rivalInfo.player].avatar} alt="" />
 						<p>{doubleGameReady[rivalInfo.player].username}</p>
 						<span>{rivalInfo.score}</span>
 					</div>
@@ -120,7 +121,7 @@ const ShowQuestion = ({
 				</p>
 			</div>
 			<div className="show-question__timer" style={pauseTimer ? { filter: "opacity(0.5)" } : {}}>
-				<img src={_renderClockIcon()} />
+				<img src={_renderClockIcon()} alt="" />
 				<p style={{ color: _renderColor() }} className="show-question__timer--text">
 					{time}
 				</p>
@@ -131,12 +132,12 @@ const ShowQuestion = ({
 			<div className="show-question__options">
 				<Button
 					className={`${pauseTimer ? "show-question__options--disabled" : ""} ${
-						correctAnswer == (single ? singleGameQuestion : doubleGameQuestion).option1
+						correctAnswer === (single ? singleGameQuestion : doubleGameQuestion).option1
 							? "show-question__options--true"
 							: ""
 					} ${
-						myOption == (single ? singleGameQuestion : doubleGameQuestion).option1 &&
-						myOption != correctAnswer &&
+						myOption === (single ? singleGameQuestion : doubleGameQuestion).option1 &&
+						myOption !== correctAnswer &&
 						correctAnswer != null
 							? "show-question__options--false"
 							: ""
@@ -144,7 +145,7 @@ const ShowQuestion = ({
 					onClick={() => _handleSelectOption((single ? singleGameQuestion : doubleGameQuestion).option1)}
 				>
 					{(single ? singleGameQuestion : doubleGameQuestion).option1}
-					{!single && rivalAnswer == doubleGameQuestion?.option1 && (
+					{!single && rivalAnswer === doubleGameQuestion?.option1 && (
 						<p className="show-question__options--rival-selection">
 							{doubleGameReady[rivalInfo.player].username}
 						</p>
@@ -152,12 +153,12 @@ const ShowQuestion = ({
 				</Button>
 				<Button
 					className={`${pauseTimer ? "show-question__options--disabled" : ""} ${
-						correctAnswer == (single ? singleGameQuestion : doubleGameQuestion).option2
+						correctAnswer === (single ? singleGameQuestion : doubleGameQuestion).option2
 							? "show-question__options--true"
 							: ""
 					} ${
-						myOption == (single ? singleGameQuestion : doubleGameQuestion).option2 &&
-						myOption != correctAnswer &&
+						myOption === (single ? singleGameQuestion : doubleGameQuestion).option2 &&
+						myOption !== correctAnswer &&
 						correctAnswer != null
 							? "show-question__options--false"
 							: ""
@@ -168,12 +169,12 @@ const ShowQuestion = ({
 				</Button>
 				<Button
 					className={`${pauseTimer ? "show-question__options--disabled" : ""} ${
-						correctAnswer == (single ? singleGameQuestion : doubleGameQuestion).option3
+						correctAnswer === (single ? singleGameQuestion : doubleGameQuestion).option3
 							? "show-question__options--true"
 							: ""
 					} ${
-						myOption == (single ? singleGameQuestion : doubleGameQuestion).option3 &&
-						myOption != correctAnswer &&
+						myOption === (single ? singleGameQuestion : doubleGameQuestion).option3 &&
+						myOption !== correctAnswer &&
 						correctAnswer != null
 							? "show-question__options--false"
 							: ""
@@ -184,12 +185,12 @@ const ShowQuestion = ({
 				</Button>
 				<Button
 					className={`${pauseTimer ? "show-question__options--disabled" : ""} ${
-						correctAnswer == (single ? singleGameQuestion : doubleGameQuestion).option4
+						correctAnswer === (single ? singleGameQuestion : doubleGameQuestion).option4
 							? "show-question__options--true"
 							: ""
 					} ${
-						myOption == (single ? singleGameQuestion : doubleGameQuestion).option4 &&
-						myOption != correctAnswer &&
+						myOption === (single ? singleGameQuestion : doubleGameQuestion).option4 &&
+						myOption !== correctAnswer &&
 						correctAnswer != null
 							? "show-question__options--false"
 							: ""

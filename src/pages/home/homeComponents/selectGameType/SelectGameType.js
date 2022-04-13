@@ -1,4 +1,4 @@
-import { Backdrop, ClickAwayListener } from "@material-ui/core";
+import { ClickAwayListener } from "@material-ui/core";
 import onePlayerIcon from "assets/images/icons/1player.svg";
 import twoPlayersIcon from "assets/images/icons/2players.svg";
 import withFriendsIcon from "assets/images/icons/withFriends.svg";
@@ -61,7 +61,7 @@ const SelectGameType = ({ handleOpenGameTypes, open }) => {
 	return (
 		<div className={clsx("select-game-type", gameSelectionType.type == "topic" && "select-game-type-topic")}>
 			<ClickAwayListener onClickAway={() => closeGameTypes()}>
-				<div className="select-game-type__game-types-container">
+				<div style={{ direction: "ltr" }} className="select-game-type__game-types-container">
 					{gameTypes.map((type, index) => {
 						return type.exclude == gameSelectionType.type ? (
 							<></>
@@ -74,7 +74,7 @@ const SelectGameType = ({ handleOpenGameTypes, open }) => {
 								}`}
 								onClick={() => handleClickItem(type, index)}
 							>
-								<img src={type.icon} />
+								<img src={type.icon} alt={type.title} />
 								<Text ns={type.title} />
 							</div>
 						);
