@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { Button } from "@material-ui/core";
+import { useTranslation } from "react-i18next";
+
+import Text from "common/components/UI/text/Text";
+
 import "./AnswerDetail.scss";
 import greenTime from "assets/images/icons/Green-time.svg";
 import flagIcon from "assets/images/icons/flag.svg";
-import { Button } from "@material-ui/core";
 import arrowBack from "assets/images/icons/arrow-back.svg";
-import Text from "common/components/UI/text/Text";
 
 const AnswerDetail = ({
 	question,
@@ -17,24 +20,26 @@ const AnswerDetail = ({
 	setOpenReport,
 }) => {
 	const [pauseTimer, setPauseTimer] = useState(true);
+	const { i18n } = useTranslation();
+	const questionData = question?.question[i18n.language] || "";
 
 	return (
 		<div className="answer-detail w-100 h-100">
 			<div className="answer-detail__header">
 				<div onClick={() => handleSetSelectedAnswer(null, null)}>
-					<img src={arrowBack} />
+					<img src={arrowBack} alt="" />
 					<p>
 						<Text as="span" ns="question" /> {index + 1}
 					</p>
 				</div>
-				<img src={flagIcon} onClick={() => setOpenReport(true)} />
+				<img src={flagIcon} onClick={() => setOpenReport(true)} alt="flag" />
 			</div>
 			<div className="answer-detail__question">
 				<div className="answer-detail__question--number">{index + 1}</div>
-				<p className="answer-detail__question--text">{question.title}</p>
+				<p className="answer-detail__question--text">{questionData.title}</p>
 			</div>
 			<div className="answer-detail__timer" style={pauseTimer ? { filter: "opacity(0.5)" } : {}}>
-				<img src={greenTime} />
+				<img src={greenTime} alt="" />
 				<p style={{ color: "#12AE25" }} className="answer-detail__timer--text">
 					20
 				</p>
@@ -47,72 +52,72 @@ const AnswerDetail = ({
 			</div>
 			<div className="answer-detail__options">
 				<Button
-					className={`${question.answer == question.option1 ? "answer-detail__options--true" : ""} ${
-						question[myInfo.player]?.answer == question.option1 &&
-						question[myInfo.player]?.answer != question.answer
+					className={`${questionData.answer === questionData.option1 ? "answer-detail__options--true" : ""} ${
+						question[myInfo.player]?.answer === questionData.option1 &&
+						question[myInfo.player]?.answer !== questionData.answer
 							? "answer-detail__options--false"
 							: ""
 					}`}
 				>
-					{question[myInfo.player]?.answer == question.option1 && (
+					{question[myInfo.player]?.answer === questionData.option1 && (
 						<Text ns="you" className="answer-detail__options--selected-answer" />
 					)}
-					{!single && question[rivalInfo?.player].answer == question.option1 && (
+					{!single && question[rivalInfo?.player].answer === questionData.option1 && (
 						<p className="answer-detail__options--selected-answer">
 							{doubleGameReady[rivalInfo.player].username}
 						</p>
 					)}
-					{question.option1}
+					{questionData.option1}
 				</Button>
 				<Button
-					className={`${question.answer == question.option2 ? "answer-detail__options--true" : ""} ${
-						question[myInfo.player]?.answer == question.option2 &&
-						question[myInfo.player]?.answer != question.answer
+					className={`${questionData.answer === questionData.option2 ? "answer-detail__options--true" : ""} ${
+						question[myInfo.player]?.answer === questionData.option2 &&
+						question[myInfo.player]?.answer !== questionData.answer
 							? "answer-detail__options--false"
 							: ""
 					}`}
 				>
-					{question.option2}
-					{question[myInfo.player]?.answer == question.option2 && (
+					{questionData.option2}
+					{question[myInfo.player]?.answer === questionData.option2 && (
 						<Text ns="you" className="answer-detail__options--selected-answer" />
 					)}
-					{!single && question[rivalInfo?.player].answer == question.option2 && (
-						<p className="answer-detail__options--selected-answer">
-							{doubleGameReady[rivalInfo.player].username}
-						</p>
-					)}
-				</Button>
-				<Button
-					className={`${question.answer == question.option3 ? "answer-detail__options--true" : ""} ${
-						question[myInfo.player]?.answer == question.option3 &&
-						question[myInfo.player]?.answer != question.answer
-							? "answer-detail__options--false"
-							: ""
-					}`}
-				>
-					{question.option3}
-					{question[myInfo.player]?.answer == question.option3 && (
-						<Text ns="you" className="answer-detail__options--selected-answer" />
-					)}
-					{!single && question[rivalInfo?.player].answer == question.option3 && (
+					{!single && question[rivalInfo?.player].answer === questionData.option2 && (
 						<p className="answer-detail__options--selected-answer">
 							{doubleGameReady[rivalInfo.player].username}
 						</p>
 					)}
 				</Button>
 				<Button
-					className={`${question.answer == question.option4 ? "answer-detail__options--true" : ""} ${
-						question[myInfo.player]?.answer == question.option4 &&
-						question[myInfo.player]?.answer != question.answer
+					className={`${questionData.answer === questionData.option3 ? "answer-detail__options--true" : ""} ${
+						question[myInfo.player]?.answer === questionData.option3 &&
+						question[myInfo.player]?.answer !== questionData.answer
 							? "answer-detail__options--false"
 							: ""
 					}`}
 				>
-					{question.option4}
-					{question[myInfo.player]?.answer == question.option4 && (
+					{questionData.option3}
+					{question[myInfo.player]?.answer === questionData.option3 && (
 						<Text ns="you" className="answer-detail__options--selected-answer" />
 					)}
-					{!single && question[rivalInfo?.player].answer == question.option4 && (
+					{!single && question[rivalInfo?.player].answer === questionData.option3 && (
+						<p className="answer-detail__options--selected-answer">
+							{doubleGameReady[rivalInfo.player].username}
+						</p>
+					)}
+				</Button>
+				<Button
+					className={`${questionData.answer === questionData.option4 ? "answer-detail__options--true" : ""} ${
+						question[myInfo.player]?.answer === questionData.option4 &&
+						question[myInfo.player]?.answer !== questionData.answer
+							? "answer-detail__options--false"
+							: ""
+					}`}
+				>
+					{questionData.option4}
+					{question[myInfo.player]?.answer === questionData.option4 && (
+						<Text ns="you" className="answer-detail__options--selected-answer" />
+					)}
+					{!single && question[rivalInfo?.player].answer === questionData.option4 && (
 						<p className="answer-detail__options--selected-answer">
 							{doubleGameReady[rivalInfo.player].username}
 						</p>
